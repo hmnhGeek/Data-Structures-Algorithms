@@ -1,3 +1,5 @@
+# Problem link - https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/
+
 def commons_in_all(mtx):
     '''
         Overall time complexity is O(n*m).
