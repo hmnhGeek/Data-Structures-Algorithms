@@ -10,6 +10,8 @@ def get_occurrence(arr, k):
 
         # update low and high which track the first occurrence
         if arr[mid] >= k:
+            # we need to find lower bound, so move left if you find
+            # a number greater than or equal to k, otherwise move right.
             high = mid - 1
         else:
             low = mid + 1
@@ -20,21 +22,23 @@ def get_occurrence(arr, k):
     if low >= len(arr) or arr[low] != k:
         return -1, -1
 
-    # if first occurrence is found, initialize last occurrence index.
-    # with the low value.
-    last = low
+    # store the first occurrence as we are going to perform
+    # another binary search to get the last occurrence by
+    # resetting low and high values.
+    first_occurrence = low
+    low, high = 0, len(arr) - 1
 
-    # iterate in the list till arr[last] is k.
-    while last < len(arr) and arr[last] == k:
-        last += 1
+    while low <= high:
+        mid = int(low + (high - low)/2)
 
-    # once either of the condition in the while fails,
-    # last will be on one index forward position.
-    # Decrement its value by 1.
-    last -= 1
+        if arr[mid] <= k:
+            # we need to find upper bound, so move right if you find
+            # a number less than or equal to k, otherwise move left.
+            low = mid + 1
+        else:
+            high = mid - 1
 
-    # return first and last occurrences.
-    return low, last
+    return first_occurrence, low - 1
 
 
 print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 2))
@@ -44,3 +48,4 @@ print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 13))
 print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 11))
 print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 15))
 print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 16))
+print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 5))
