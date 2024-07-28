@@ -18,7 +18,7 @@ def get_occurrence(arr, k):
     if low == -1:
         return low, low
 
-    # if first occurrence is found, initialize last occurrence index
+    # if first occurrence is found, initialize last occurrence index.
     # with the low value.
     last = low
 
