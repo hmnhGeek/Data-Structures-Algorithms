@@ -14,9 +14,11 @@ def get_occurrence(arr, k):
         else:
             low = mid + 1
 
-    # if first occurrence was not found, no need to find last as well.
-    if low == -1:
-        return low, low
+    # if first occurrence was not found
+    # or if low went outside the array,
+    # no need to find last as well.
+    if low >= len(arr) or arr[low] != k:
+        return -1, -1
 
     # if first occurrence is found, initialize last occurrence index.
     # with the low value.
@@ -41,3 +43,4 @@ print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 8))
 print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 13))
 print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 11))
 print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 15))
+print(get_occurrence([2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15], 16))
