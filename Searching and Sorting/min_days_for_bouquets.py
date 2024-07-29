@@ -1,3 +1,5 @@
+# Problem link - https://www.naukri.com/code360/problems/rose-garden_2248080
+
 def is_possible(arr, mid, m, k):
     '''This function takes O(n) time and O(1) space.'''
 
