@@ -1,3 +1,5 @@
+# Problem link - https://www.naukri.com/code360/problems/search-in-rotated-sorted-array_1082554
+
 def check_in_rotated_sorted(arr, target):
     # The time complexity is still O(log(n)) as its just a binary search
     # with only a slight modification to the reduction of search space.
