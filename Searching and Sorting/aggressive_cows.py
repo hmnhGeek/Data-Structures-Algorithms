@@ -33,6 +33,7 @@ def aggressive_cows(stalls, num_cows):
     # maximum distance between any two stalls will be (max - min) when only two cows can be placed, isn't it?
     high = max(stalls) - min(stalls)
 
+    # this will take a time complexity of O(n*log(max - min)) and O(1) space.
     while low <= high:
         mid = int(low + (high - low)/2)
 
