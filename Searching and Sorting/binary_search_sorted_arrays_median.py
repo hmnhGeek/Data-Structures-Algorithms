@@ -1,3 +1,6 @@
+# Problem link - https://leetcode.com/problems/median-of-two-sorted-arrays/description/
+# Solution - https://www.youtube.com/watch?v=F9c7LpRZWVQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
+
 def find_median(a1, a2):
     # The time complexity would be O(n + log(len(short))). n is coming because we take
     # an average a linear time to determine the shorter length array out of a1 and a2.
