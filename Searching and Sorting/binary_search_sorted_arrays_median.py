@@ -30,7 +30,7 @@ def find_median(a1, a2):
         # rest mid2 number of elements will be picked from larger array. Irrespective
         # of n being even or odd, (n+1)//2 will always return total number of elements
         # required on left side. Say, if n = 10, then 11/2 = 5 (5 on left and 5 on right).
-        # If n = 9, 10//2 = 5. Hence we just have to decide how many to keep on left.
+        # If n = 9, 10//2 = 5. Hence, we just have to decide how many to keep on left.
         mid2 = (n + 1)//2 - mid1
 
         # we create 4 numbers
