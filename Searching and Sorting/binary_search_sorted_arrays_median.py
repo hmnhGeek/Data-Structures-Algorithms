@@ -27,11 +27,11 @@ def find_median(a1, a2):
         # pick mid1 number of elements from short array (as indexing starts from 0).
         mid1 = int(low + (high - low)/2)
 
-        # rest mid2 number of elements will be picked from larger array. In odd case,
-        # we have to decide how many elements should lie to the left to hypothetical
-        # median line. We can't just say n//2 - mid1 because in that case the median
-        # line would cross over the median number.
-        mid2 = n//2 - mid1 if n % 2 == 0 else (n + 1)//2 - mid1
+        # rest mid2 number of elements will be picked from larger array. Irrespective
+        # of n being even or odd, (n+1)//2 will always return total number of elements
+        # required on left side. Say, if n = 10, then 11/2 = 5 (5 on left and 5 on right).
+        # If n = 9, 10//2 = 5. Hence we just have to decide how many to keep on left.
+        mid2 = (n + 1)//2 - mid1
 
         # we create 4 numbers
         # l1 is the maximum picked from shorter array on the left side
