@@ -71,6 +71,8 @@ class MinHeap:
 # Dijkstra will not work for graphs having even one single negative weight or a negative weight cycle.
 # For example, try performing Dijkstra on this graph: {0: {node = 1, wt = -2}, 1: {node = 0, wt = -2}}.
 # You will encounter an infinite loop. Therefore, distances should always be positive.
+# Also note that a simple Queue can also be used, but a priority queue is greedy in the sense that it
+# first looks for the shortest available distance, thereby avoiding comparisons with higher distances.
 def dijkstra(graph, source):
     # The time complexity is O(E*log(V)) and space complexity O(V) to store all the
     # nodes in the priority queue.
