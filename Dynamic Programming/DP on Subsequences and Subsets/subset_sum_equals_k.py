@@ -115,8 +115,8 @@ def memoized():
 
     def is_sum_possible(arr, target):
         # Because of memoization, we have reduced calls to recursive f() for overlapping
-        # sub-problems, and thus, time complexity is now O(n). Space complexity is O(n + n*target)
-        # for the recursion stack and the dp array.
+        # sub-problems, and thus, time complexity is now O(n*target). Space complexity
+        # is O(n + n*target) for the recursion stack and the dp array.
 
         # avoid recursion if possible.
         if len(arr) == 0:
@@ -173,7 +173,7 @@ def memoized():
 
 def tabulation():
     def is_sum_possible(arr, target):
-        # Time complexity is now O(n). Space complexity is O(n*target) for the dp array.
+        # Time complexity is now O(n*target). Space complexity is O(n*target) for the dp array.
 
         # avoid recursion if possible.
         if len(arr) == 0:
@@ -260,7 +260,7 @@ def tabulation():
 
 def space_optimized():
     def is_sum_possible(arr, target):
-        # Time complexity is now O(n). Space complexity is O(target) for the dp array.
+        # Time complexity is now O(n*target). Space complexity is O(target) for the dp array.
 
         # avoid recursion if possible.
         if len(arr) == 0:

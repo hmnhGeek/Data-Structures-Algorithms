@@ -7,8 +7,9 @@ def get_min_diff(arr):
     # for each target sum by making recursive calls for each sum. In tabulation, we could have achieved
     # the results in better space (by avoiding recursions), but tabulation holds useless space of O(n*k).
     # Space optimized solution directly does everything in O(k) space. Refer to that question for better
-    # understanding. For now, we can say that the time complexity is O(n + k) and space complexity is O(k).
-    # O(n + k) because at the end, we are also looping k times to check the minimum difference.
+    # understanding. For now, we can say that the time complexity is O(n*k + k) and space complexity is O(k).
+    # Note that k = target. Also, time complexity is n*k + k because there is an additional loop at the end
+    # to update the minimum difference.
 
     sigma = sum(arr)
     target = sigma
