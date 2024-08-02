@@ -124,12 +124,10 @@ def memoized():
         if len(arr) == 1:
             return arr[0] == target
 
-        # it's a very complicated search space to think of. For indices, it's simple, simply go from 0
-        # till n - 1. However, for target, we need to think a little. Consider this example [1, 7, 2, 9, 10]
-        # with target = 6. At the least, what can target range go to? Shouldn't it go till target - max(arr), i.e.,
-        # 6 - 10 = -4. Check by drawing recursion tree, and you will see that this statement is true. At max,
-        # target range can go till target, i.e., 6. Hence, the target search space is from -4 to 6.
-        dp = {i: {tgt: None for tgt in range(target - max(arr), target + 1)} for i in range(len(arr))}
+        # For indices, it's simple, simply go from 0 till n - 1.
+        # Target can range from 0 to whatever that has been passed in the argument.
+        # Negative target values will be handled by Python dictionary automatically if they ever come.
+        dp = {i: {tgt: None for tgt in range(target + 1)} for i in range(len(arr))}
 
         # we will make a call from the end of the array. Let us make a call to f()
         # and check if last index can make a target or not. Internally, this function
@@ -183,12 +181,10 @@ def tabulation():
         if len(arr) == 1:
             return arr[0] == target
 
-        # it's a very complicated search space to think of. For indices, it's simple, simply go from 0
-        # till n - 1. However, for target, we need to think a little. Consider this example [1, 7, 2, 9, 10]
-        # with target = 6. At the least, what can target range go to? Shouldn't it go till target - max(arr), i.e.,
-        # 6 - 10 = -4. Check by drawing recursion tree, and you will see that this statement is true. At max,
-        # target range can go till target, i.e., 6. Hence, the target search space is from -4 to 6.
-        dp = {i: {tgt: False for tgt in range(target - max(arr), target + 1)} for i in range(len(arr))}
+        # For indices, it's simple, simply go from 0 till n - 1.
+        # Target can range from 0 to whatever that has been passed in the argument.
+        # Negative target values will be handled by Python dictionary automatically if they ever come.
+        dp = {i: {tgt: False for tgt in range(target + 1)} for i in range(len(arr))}
 
         # for all the indices, set the value of target = 0 to True, because at any index, if we find target = 0,
         # we can say that target can be achieved in this array.
@@ -209,9 +205,9 @@ def tabulation():
                 # additional checks for left and right, assume initially for them to be false only.
                 # consider this case: in array [1, 7, 2, 9, 10] when in this loop tgt = 1 and index = 1,
                 # in that case, tgt - arr[index] = -6 which is not present in our dp target space which
-                # is from -4 to 6. Hence, we will by default mark left and right as False. Technically,
+                # is from 0 to 6. Hence, we will by default mark left and right as False. Technically,
                 # what this means is that when you come to index 1 in the array, you can never have target
-                # as 1, that's why ou search space is also reduced.
+                # as 1, that's why our search space is also reduced.
                 left, right = False, False
 
                 if tgt - arr[index] in dp[index - 1]:
@@ -272,14 +268,10 @@ def space_optimized():
         if len(arr) == 1:
             return arr[0] == target
 
-        # it's a very complicated search space to think of. For indices, it's simple, simply go from 0
-        # till n - 1. However, for target, we need to think a little. Consider this example [1, 7, 2, 9, 10]
-        # with target = 6. At the least, what can target range go to? Shouldn't it go till target - max(arr), i.e.,
-        # 6 - 10 = -4. Check by drawing recursion tree, and you will see that this statement is true. At max,
-        # target range can go till target, i.e., 6. Hence, the target search space is from -4 to 6.
-
+        # Target can range from 0 to whatever that has been passed in the argument.
+        # Negative target values will be handled by Python dictionary automatically if they ever come.
         # Currently, prev denotes target space for index = 0, and so, we will start from index = 1.
-        prev = {tgt: False for tgt in range(target - max(arr), target + 1)}
+        prev = {tgt: False for tgt in range(target + 1)}
 
         # set the value of target = 0 to True for index = 0.
         prev[0] = True
@@ -292,7 +284,7 @@ def space_optimized():
         # we have already set values for target = 0 and index = 0, let us start looping both of them
         # from values 1.
         for index in range(1, n):
-            curr = {tgt: False for tgt in range(target - max(arr), target + 1)}
+            curr = {tgt: False for tgt in range(target + 1)}
 
             # always mark target = 0 in curr as True.
             curr[0] = True
@@ -301,7 +293,7 @@ def space_optimized():
                 # additional checks for left and right, assume initially for them to be false only.
                 # consider this case: in array [1, 7, 2, 9, 10] when in this loop tgt = 1 and index = 1,
                 # in that case, tgt - arr[index] = -6 which is not present in our dp target space which
-                # is from -4 to 6. Hence, we will by default mark left and right as False. Technically,
+                # is from 0 to 6. Hence, we will by default mark left and right as False. Technically,
                 # what this means is that when you come to index 1 in the array, you can never have target
                 # as 1, that's why ou search space is also reduced.
                 left, right = False, False

@@ -6,7 +6,7 @@
 # of both subsets is same, we can compute the sum of complete array and divide the sum by 2; this would
 # be the target sum which we can feed to the code in subset_sum_equals_k.py. If the sum of the array is
 # odd, then partition is not possible because the whole array is made of integers and no partition could
-# form an integral sum//2 if sum is odd. Please watch the soltion for more clarity.
+# form an integral sum//2 if sum is odd. Please watch the solution for more clarity.
 
 def recursive():
     def f(arr, index, target):
@@ -91,7 +91,7 @@ def memoized():
         if len(arr) == 1:
             return arr[0] == required_target
 
-        dp = {i: {tgt: None for tgt in range(required_target - max(arr), required_target + 1)} for i in range(len(arr))}
+        dp = {i: {tgt: None for tgt in range(required_target + 1)} for i in range(len(arr))}
         return f(arr, len(arr) - 1, required_target, dp)
 
     def is_partition_possible(arr):
@@ -140,7 +140,7 @@ def tabulation():
         if len(arr) == 1:
             return arr[0] == required_target
 
-        dp = {i: {tgt: False for tgt in range(required_target - max(arr), required_target + 1)} for i in range(len(arr))}
+        dp = {i: {tgt: False for tgt in range(required_target + 1)} for i in range(len(arr))}
         for index in dp:
             dp[index][0] = True
 
@@ -205,12 +205,12 @@ def space_optimized():
         if len(arr) == 1:
             return arr[0] == required_target
 
-        prev = {tgt: False for tgt in range(required_target - max(arr), required_target + 1)}
+        prev = {tgt: False for tgt in range(required_target + 1)}
         prev[0] = True
         prev[arr[0]] = True
 
         for index in range(1, len(arr)):
-            curr = {tgt: False for tgt in range(required_target - max(arr), required_target + 1)}
+            curr = {tgt: False for tgt in range(required_target + 1)}
             curr[0] = True
 
             for tgt in range(1, required_target + 1):
