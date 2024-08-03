@@ -115,9 +115,10 @@ def rotten_oranges(mtx):
             x0, y0 = adj_node
 
             # if the adjacent node is not rotten in the original matrix, and it is not yet visited,
-            # then visit it and push it to queue with an incremental time value.
+            # then visit it, rot it and push it to queue with an incremental time value.
             if mtx[x0][y0] == 1 and not visited[x0][y0]:
                 visited[x0][y0] = True
+                mtx[x0][y0] = 2
                 queue.enqueue((x0, y0, t + 1))
 
     # now once again iterate on the original and visited matrices in O(nm) time.
