@@ -165,7 +165,69 @@ def tabulation():
     )
 
 
-# recursive()
-memoized()
+def space_optimized():
+    def loot_max(houses):
+        # Time complexity is O(n) and space is O(1) for constant space for prev & prev2 used.
+
+        n = len(houses)
+
+        # initialize prev and prev2 denoting money that can be looted for 0th house and -1st house (imaginary),
+        # respectively. These are basically the base cases.
+        prev2 = {False: 0, True: 0}
+        prev = {False: 0, True: houses[0]}
+
+        # start in the opposite direction of the memoized solution.
+        for index in range(1, n):
+            # if index = 1, then in True case it is certain to pick money from this house, but, in this case,
+            # prev index can be 0 (which is handled in base case) and hence nothing needs to be added. For
+            # index > 1, max money can be updated.
+            curr = {False: 0, True: houses[index]}
+
+            # if index needs to be looted, add its profit and get the max profit by skipping the adjacent house on
+            # the left and check if the profit is max by considering the new house or by not considering it. Add that
+            # profit here.
+            if index > 1:
+                curr[True] = houses[index] + max(prev2[True], prev2[False])
+
+            # if index needs not to be looted, add no profit and get the max profit by considering the adjacent house or
+            # by not considering it. Add that profit here to 0.
+            curr[False] = 0 + max(prev[True], prev[False])
+
+            # update previous variables.
+            prev2 = prev
+            prev = curr
+
+        # return the max profit that can be made by considering the last house (in prev) or by not considering it.
+        return max(prev.values())
+
+    print(
+        loot_max([6, 5, 5, 7, 4])
+    )
+
+    print(
+        loot_max([1, 5, 3])
+    )
+
+    print(
+        loot_max([1, 2, 3, 1])
+    )
+
+    print(
+        loot_max([2, 7, 9, 3, 1])
+    )
+
+
+print("Recursive Solution")
+recursive()
+
 print()
+print("Memoized Solution")
+memoized()
+
+print()
+print("Tabulation Solution")
 tabulation()
+
+print()
+print("Space Optimized Solution")
+space_optimized()
