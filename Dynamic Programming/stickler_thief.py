@@ -112,5 +112,60 @@ def memoized():
     )
 
 
-recursive()
+def tabulation():
+    def loot_max(houses):
+        # Time complexity is O(n) and space is O(n) for the 2D dp array.
+
+        n = len(houses)
+
+        # initialize a 2D DP array where each index has two keys: pick or not pick.
+        # both initialized as 0.
+        dp = {i: {False: 0, True: 0} for i in range(n)}
+
+        # Base cases (refer recursion)
+        dp[0][True] = houses[0]
+        dp[0][False] = 0
+
+        # start in the opposite direction of the memoized solution.
+        for index in range(1, n):
+            # if index needs to be looted, add its profit and get the max profit by skipping the adjacent house on
+            # the left and check if the profit is max by considering the new house or by not considering it. Add that
+            # profit here.
+
+            # if index <= 1, then in True case it is certain to pick money from this house, but, in this case,
+            # index can be 0 (which is handled in base case), or index can be 1, in which case, index 0 won't be
+            # considered. In both the cases, since we are building from bottom to top, an addition of 0 will be done.
+            dp[index][True] = houses[index] + 0
+
+            # let's update max money that can be added but only for houses post index 1.
+            if index > 1:
+                dp[index][True] = houses[index] + max(dp[index - 2][True], dp[index - 2][False])
+
+            # if index needs not to be looted, add no profit and get the max profit by considering the adjacent house or
+            # by not considering it. Add that profit here to 0.
+            dp[index][False] = 0 + max(dp[index - 1][True], dp[index - 1][False])
+
+        # return the max profit that can be made by considering the last house or by not considering it.
+        return max(dp[n - 1][True], dp[n - 1][False])
+
+    print(
+        loot_max([6, 5, 5, 7, 4])
+    )
+
+    print(
+        loot_max([1, 5, 3])
+    )
+
+    print(
+        loot_max([1, 2, 3, 1])
+    )
+
+    print(
+        loot_max([2, 7, 9, 3, 1])
+    )
+
+
+# recursive()
 memoized()
+print()
+tabulation()
