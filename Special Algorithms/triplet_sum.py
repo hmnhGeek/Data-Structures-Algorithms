@@ -1,4 +1,5 @@
 # Problem link - https://leetcode.com/problems/3sum/description/
+# Solution - https://www.youtube.com/watch?v=DhFh8Kw7ymk
 
 def using_sets():
     def get_triplet_sum(arr):
