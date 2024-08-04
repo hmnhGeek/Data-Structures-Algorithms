@@ -1,3 +1,5 @@
+# Problem link - https://www.geeksforgeeks.org/eventual-safe-states/
+
 class Node:
     def __init__(self, data):
         self.data = data
