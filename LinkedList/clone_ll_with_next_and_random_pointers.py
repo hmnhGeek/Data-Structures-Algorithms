@@ -1,3 +1,8 @@
+# Problem link - https://www.geeksforgeeks.org/problems/clone-a-linked-list-with-next-and-random-pointer/1
+# Solution - https://www.youtube.com/watch?v=q570bKdrnlw
+
+# Approach 2 is something which I came up myself.
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -215,8 +220,95 @@ def approach2():
     print(f"L1 is not equal to Copied L1: {l1.head != l1_copied.head}")
 
 
+def approach3():
+    # This approach takes O(N) time and O(1) space with no multiple O(N) iterations;
+    # only 3 iterations are required unlike in approach 2, where to find the indices,
+    # multiple iterations were required.
+    def insert_new_nodes(linked_list: LinkedList):
+        # This function creates a copy of every node in the list and assigns it as the
+        # next pointer of the current node. The present next node of the current node
+        # becomes the next node of the copied node. This happens in O(N) time.
+        curr = linked_list.head
+        while curr is not None:
+            new_node = Node(curr.data)
+            temp = curr.next
+            curr.next = new_node
+            new_node.next = temp
+            curr = temp
+
+    def update_arb_pointers(linked_list: LinkedList):
+        # This function updates the arb pointers of the copied nodes (inserted in the original
+        # list), by iterating in the modified original list. The idea is that the copied node
+        # of each node from the original list lies as the next node. So if 7's arb pointer is
+        # 13, then 7' (which is 7.next) arb pointer will be 13' (which is 13.next). This
+        # operation happens in O(N) time.
+        curr = linked_list.head
+        while curr is not None:
+            copied_node = curr.next
+            copied_arb_node = curr.arb.next if curr.arb is not None else None
+            if copied_node is not None:
+                copied_node.arb = copied_arb_node
+            curr = curr.next.next
+
+    def extract_new_list(linked_list: LinkedList) -> LinkedList:
+        # This function extracts the copied nodes that were inserted in the original list
+        # and restores the original list back. So if the list is like 7 -> 7' -> 13 -> 13',
+        # then 7.next = 7.next.next (13) and 7'.next = 13.next (i.e., 13'). This operation
+        # takes O(N) time.
+        head_of_new_list = linked_list.head.next
+        tail_of_new_list = None
+        curr = linked_list.head
+        while curr is not None:
+            next_node = curr.next.next
+            copied_curr = curr.next
+            curr.next = next_node
+            copied_curr.next = next_node.next if next_node is not None else None
+            curr = next_node
+            if next_node is None:
+                tail_of_new_list = copied_curr
+
+        copied_list = LinkedList()
+        copied_list.head = head_of_new_list
+        copied_list.tail = tail_of_new_list
+        return copied_list
+
+    def clone_linked_list(linked_list: LinkedList) -> LinkedList:
+        # We will divide this problem into 3 sub-problems.
+
+        # The first sub-problem is to create new nodes and insert them in between the
+        # original list only. For example: 7 -> 7' -> 13 -> 13' -> 11 -> 11' -> ...
+        insert_new_nodes(linked_list)
+
+        # Then we update the `arb` pointers of the copied nodes by iterating in the
+        # modified list.
+        update_arb_pointers(linked_list)
+
+        # finally, once the arb pointers are assigned, we extract the copied node, restore
+        # the original list and return the extracted list as new list.
+        return extract_new_list(linked_list)
+
+    # Example:
+    l1 = LinkedList()
+    for i in [7, 13, 11, 10, 1]:
+        l1.push(i)
+
+    # assign the pointers
+    l1.head.next.arb = l1.head
+    l1.head.next.next.arb = l1.tail
+    l1.head.next.next.next.arb = l1.head.next.next
+    l1.tail.arb = l1.head
+
+    # clone the list and show
+    l1_copied = clone_linked_list(l1)
+    l1_copied.show()
+    print(f"L1 is not equal to Copied L1: {l1.head != l1_copied.head}")
+
+
 print(f"Approach 1: O(N) time and O(N) space")
 approach1()
 print()
 print(f"Approach 2: O(N) time and O(1) space")
 approach2()
+print()
+print(f"Approach 3: O(N) time and O(1) space")
+approach3()
