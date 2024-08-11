@@ -163,3 +163,22 @@ class BinarySearchTree:
 
     def show(self):
         self._show(self.root)
+
+
+def construct_tree_from_preorder(preorder) -> BinarySearchTree:
+    # Overall time complexity is O(N * log(N)) and space is O(1).
+
+    # Create a blank BST
+    binary_search_tree = BinarySearchTree()
+
+    # The first data point in the preorder list is always root node.
+    # insert the root node in O(1) time.
+    root_data = preorder[0]
+    binary_search_tree.insert(root_data)
+
+    # insert all the nodes from 1st index from the preorder list.
+    # this will take O(N * log(N)) time
+    for index in range(1, len(preorder)):
+        binary_search_tree.insert(preorder[index])
+    return binary_search_tree
+
