@@ -1,7 +1,6 @@
 # Problem link - https://www.geeksforgeeks.org/problems/clone-a-linked-list-with-next-and-random-pointer/1
 # Solution - https://www.youtube.com/watch?v=q570bKdrnlw
 
-# Approach 2 is something which I came up myself and solved it.
 
 class Node:
     def __init__(self, data):
