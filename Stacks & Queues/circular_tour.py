@@ -43,6 +43,7 @@ def best_starting_point(petrol_pumps: List[PetrolPump]) -> int:
 
 
 def circular_tour(petrol_amount, next_distances):
+    # convert petrol pumps to List[PetrolPump] in O(N) time.
     petrol_pumps = []
     for i in range(len(petrol_amount)):
         petrol_pumps.append(PetrolPump(petrol_amount[i], next_distances[i]))
