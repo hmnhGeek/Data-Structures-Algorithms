@@ -63,7 +63,6 @@ class LinkedList:
         print(random_nodes)
 
 
-
 def approach1():
     # In this approach, we first create all the new nodes using the original list, and
     # then create the linkages. This takes O(N) time and O(N) space.
@@ -126,4 +125,98 @@ def approach1():
     l1_copied.show()
     print(f"L1 is not equal to Copied L1: {l1.head != l1_copied.head}")
 
+
+def approach2():
+    # This approach takes O(N) time and O(1) space, although the iterations have increased
+    # because of finding indices and nodes at those indices.
+    def clone_linked_list(linked_list):
+        curr = linked_list.head
+
+        # create variables to store head and tail pointers of the copied list.
+        # The `prev` pointer should be used to create linkages in the new list.
+        # The prev pointer is not for storing tail information as was the case
+        # in the approach 1.
+        copied_head = None
+        copied_tail = None
+        prev = None
+
+        while curr is not None:
+            # create the new node
+            new_node = Node(curr.data)
+
+            # if the current node is original head, the new node must also be the head
+            # of the copied list. Update the copied_head variable.
+            if curr == linked_list.head:
+                copied_head = new_node
+
+            # if the current node is original tail, the new node must also be the tail
+            # of the copied list. Update the copied_tail variable.
+            if curr == linked_list.tail:
+                copied_tail = new_node
+
+            # The prev node is from the copied list that we are creating, and it is storing
+            # the parent level information in the new list to create the next pointer linkages.
+            if prev is not None:
+                prev.next = new_node
+
+            # move the prev pointer to new node as in the next iteration this will become
+            # the parent of the next new node.
+            prev = new_node
+
+            # as usual, move the curr to next.
+            curr = curr.next
+
+        # create the new list and update its head and tail pointers
+        copied_linked_list = LinkedList()
+        copied_linked_list.head = copied_head
+        copied_linked_list.tail = copied_tail
+
+        # till now, in the new list we have only created the linkages of the next pointers.
+        # We still have to create linkages of the arbitrary pointers.
+
+        # both the lists will have same length
+        orig_curr = linked_list.head
+        new_curr = copied_head
+
+        # iterate on original list
+        while orig_curr is not None:
+            # get the index of the arbitrary pointer of the original current node.
+            index_of_orig_arb_pointer = linked_list.get_index_of(orig_curr.arb)
+
+            # if the index is not None, then find the node at this index in the new list.
+            # this will be the arbitrary node of the current node from the new list. if the
+            # index was None, there is no need to do anything as `arb` pointers are by
+            # default None only.
+            if index_of_orig_arb_pointer is not None:
+                new_arb_node = copied_linked_list.get_node_at(index_of_orig_arb_pointer)
+                new_curr.arb = new_arb_node
+
+            # move the current pointers to their respective next nodes at the same time.
+            orig_curr = orig_curr.next
+            new_curr = new_curr.next
+
+        # once the arbitrary pointers are copied, we can return the copied list.
+        return copied_linked_list
+
+    # Example:
+    l1 = LinkedList()
+    for i in [7, 13, 11, 10, 1]:
+        l1.push(i)
+
+    # assign the pointers
+    l1.head.next.arb = l1.head
+    l1.head.next.next.arb = l1.tail
+    l1.head.next.next.next.arb = l1.head.next.next
+    l1.tail.arb = l1.head
+
+    # clone the list and show
+    l1_copied = clone_linked_list(l1)
+    l1_copied.show()
+    print(f"L1 is not equal to Copied L1: {l1.head != l1_copied.head}")
+
+
+print(f"Approach 1: O(N) time and O(N) space")
 approach1()
+print()
+print(f"Approach 2: O(N) time and O(1) space")
+approach2()
