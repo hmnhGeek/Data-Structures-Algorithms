@@ -182,3 +182,16 @@ def construct_tree_from_preorder(preorder) -> BinarySearchTree:
         binary_search_tree.insert(preorder[index])
     return binary_search_tree
 
+
+# Example
+preorder = [10, 5, 1, 7, 40, 50]
+tree = construct_tree_from_preorder(preorder)
+tree.show()
+print()
+preorder2 = [22, 12, 8, 20, 30, 25, 40]
+tree2 = construct_tree_from_preorder(preorder2)
+tree2.show()
+print()
+preorder3 = [100, 20, 10, 30, 200, 150, 300]
+tree3 = construct_tree_from_preorder(preorder3)
+tree3.show()
