@@ -1,6 +1,7 @@
 # Explanation - https://www.youtube.com/watch?v=mJcZjjKzeqk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=45
 
 class PriorityQueueNode:
+    # This class is used to represent the data type that can be stored in the Min Heap.
     def __init__(self, edge_weight, node, parent):
         self.weight = edge_weight
         self.node = node
@@ -8,12 +9,15 @@ class PriorityQueueNode:
 
 
 class MinimumSpanningTreeEdge:
+    # This class is used to represent an edge from the minimum spanning tree, after obtaining
+    # the MST using Prim's Algorithm
     def __init__(self, parent, node):
         self.parent = parent
         self.node = node
 
 
 class MinHeap:
+    # Priority Queue class to implement Prim's Algorithm
     def __init__(self):
         self.heap = []
 
@@ -88,30 +92,54 @@ class PrimsMinimumSpanningTree:
         self.graph = adj_list
 
     def _get_min_spanning_tree(self, source_node=0):
+        # we would be needing a visited array, so create one
         visited = {i: False for i in self.graph}
+
+        # we also need a priority queue. push the source node into the priority queue
+        # with initial edge weight as 0 and parent as None.
         pq = MinHeap()
         pq.insert(PriorityQueueNode(0, source_node, None))
 
+        # create a list storing the minimum spanning tree and the tree sum as 0.
         minimum_spanning_tree = []
         minimum_spanning_tree_sum = 0
 
+        # while the priority queue is not empty; this will run for the number of edges times.
+        # time complexity is O(E*log(E)). The nested E*log(E) will not square the complexity.
         while not pq.is_empty():
+            # pop the node with the least weight; will take O(log(E)) time
             pq_node = pq.pop()
 
+            # if the node is not visited yet
             if not visited[pq_node.node]:
+                # mark the node as visited
                 visited[pq_node.node] = True
+
+                # add the popped weight into the mst sum
                 minimum_spanning_tree_sum += pq_node.weight
+
+                # if the node's parent is not None, that it is not the first node,
+                # that means we have an edge; add it to mst.
                 if pq_node.parent is not None:
                     minimum_spanning_tree.append(MinimumSpanningTreeEdge(pq_node.parent, pq_node.node))
 
+                # loop for the adjacent nodes and push them to the queue; this will also take O(E log(E))
                 for adj in self.graph[pq_node.node]:
                     adj_node, edge_wt = adj
                     pq.insert(PriorityQueueNode(edge_wt, adj_node, pq_node.node))
 
+        # return the tree and the tree sum
         return minimum_spanning_tree, minimum_spanning_tree_sum
 
     def get_min_spanning_tree(self, source_node=0):
+        # Time complexity is O(E*log(E)) and space complexity is O(V + E); V for visited array
+        # and E for MST.
+
+        # obtain the tree and its sum
         min_spanning_tree, min_spanning_tree_sum = self._get_min_spanning_tree(source_node)
+
+        # create a blank list for storing edges obtained above in the tree in readable format
+        # and return this information.
         printable_edges = []
         for mst_edge in min_spanning_tree:
             printable_edges.append((mst_edge.parent, mst_edge.node))
