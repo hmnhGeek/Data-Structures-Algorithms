@@ -110,8 +110,8 @@ class PrimsMinimumSpanningTree:
 
         return minimum_spanning_tree, minimum_spanning_tree_sum
 
-    def get_min_spanning_tree(self):
-        min_spanning_tree, min_spanning_tree_sum = self._get_min_spanning_tree()
+    def get_min_spanning_tree(self, source_node=0):
+        min_spanning_tree, min_spanning_tree_sum = self._get_min_spanning_tree(source_node)
         printable_edges = []
         for mst_edge in min_spanning_tree:
             printable_edges.append((mst_edge.parent, mst_edge.node))
@@ -129,3 +129,24 @@ graph1 = PrimsMinimumSpanningTree(
 )
 
 print(graph1.get_min_spanning_tree())
+
+graph2 = PrimsMinimumSpanningTree(
+    {
+        1: [[2, 2]],
+        2: [[1, 2], [3, 3]],
+        3: [[1, 10], [2, 3]]
+    }
+)
+print(graph2.get_min_spanning_tree(1))
+
+graph3 = PrimsMinimumSpanningTree(
+    {
+        0: [[1, 1], [2, 7]],
+        1: [[0, 1], [2, 5], [3, 3], [4, 4]],
+        2: [[0, 7], [1, 5], [3, 6]],
+        3: [[1, 3], [2, 6], [4, 2]],
+        4: [[1, 4], [3, 2]]
+    }
+)
+
+print(graph3.get_min_spanning_tree())
