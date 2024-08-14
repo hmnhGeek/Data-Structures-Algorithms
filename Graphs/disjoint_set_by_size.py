@@ -19,14 +19,17 @@ class DisjointSet:
         if ult_par_u == ult_par_v:
             return
 
+        # The only difference between rank and size approach is that the rank increments by 1 unit
+        # only whereas the size increments by the amount of size of smaller sized subtree. And this
+        # will be done in both cases.
         if self.size[ult_par_u] < self.size[ult_par_v]:
+            # u subset is being assigned to v, hence size of v has increased.
             self.parent[ult_par_u] = ult_par_v
+            self.size[ult_par_v] += self.size[ult_par_u]
         else:
+            # v subset is being assigned to u, hence size of u has increased.
             self.parent[ult_par_v] = ult_par_u
-            if self.size[ult_par_v] == self.size[ult_par_u]:
-                # The only difference between rank and size approach is that the rank increments by 1 unit
-                # only whereas the size increments by the amount of size of smaller sized subtree.
-                self.size[ult_par_v] += self.size[ult_par_u]
+            self.size[ult_par_u] += self.size[ult_par_v]
 
     def in_same_set(self, u, v):
         return self.find_ultimate_parent(u) == self.find_ultimate_parent(v)
