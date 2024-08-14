@@ -1,3 +1,5 @@
+# Explanation - https://www.youtube.com/watch?v=aBxjDBC4M1U&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=46
+
 class DisjointSet:
     '''This code remains the same as in disjoint_set.py file. Read comments there.'''
     def __init__(self, size):
