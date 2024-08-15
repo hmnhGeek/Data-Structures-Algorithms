@@ -351,6 +351,17 @@ def space_optimized():
     )
 
 
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
+memoized()
+
+print()
+print("Tabulation Solution")
+tabulation()
+
+print()
+print("Space Optimized Solution")
 space_optimized()
