@@ -1,3 +1,6 @@
+# Problem link - https://www.naukri.com/code360/problems/rod-cutting-problem_800284?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=mO8XpGoJwuo&list=PLgUwDviBIf0pwFf-BnpkXxs0Ra0eU2sJY&index=11
+
 def recursive():
     def solve_the_rod_cutting_problem(profits_per_cut, index, available_length_of_rod):
         # Since we are staying at the same index in case of "considering index", the time complexity is >= O(2^n) or
