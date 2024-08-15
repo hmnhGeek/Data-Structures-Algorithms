@@ -139,4 +139,70 @@ def memoized():
     )
 
 
-memoized()
+def tabulation():
+    def rod_cutting_problem(length_of_rod, profits_per_cut):
+        # Time complexity is O(n^2) and space complexity is O(n^2) with recursion stack space removed.
+
+        # store the length of the array of prices
+        n = len(profits_per_cut)
+
+        # since the indices of the prices array denotes cuts, and in question it is given that the max number of cuts
+        # that are allowed is equal to the length of the rod, check the edge case where the length of cuts from the
+        # prices array is more than the length of the rod.
+        if n > length_of_rod:
+            return -1
+
+        dp = {i: {j: float('-inf') for j in range(length_of_rod + 1)} for i in range(n)}
+
+        # base case for index = i = 0
+        for available_length_of_rod in dp[0]:
+            dp[0][available_length_of_rod] = available_length_of_rod * profits_per_cut[0]
+
+        # base case for available length of rod = 0
+        for index in dp:
+            dp[index][0] = 0
+
+        for index in range(1, n):
+            for available_length_of_rod in range(length_of_rod + 1):
+                # first assume that you cannot cut the rod into (index + 1) unit cuts. So you will get -inf profit.
+                # This will be useful when you have to compare max profit.
+                left_recursion = float('-inf')
+
+                # However, if the cut length <= available rod length, then you can actually make index + 1 unit cuts
+                if index + 1 <= available_length_of_rod:
+                    # add the profit by making one (index + 1) cut, and recurse on same index (as you can make
+                    # multiple such cuts) by decreasing the length of available rod by the cut length unit.
+                    left_recursion = profits_per_cut[index] + dp[index][available_length_of_rod - index - 1]
+
+                # in the case when you decide not to cut the rod in (index + 1) unit cut, simply move to index - 1
+                # with same length of the rod.
+                right_recursion = dp[index - 1][available_length_of_rod]
+
+                # return the max profit obtained from both the approaches.
+                dp[index][available_length_of_rod] = max(left_recursion, right_recursion)
+
+        return dp[n - 1][length_of_rod]
+
+    print(
+        rod_cutting_problem(
+            5,
+            [2, 5, 7, 8, 10]
+        )
+    )
+
+    print(
+        rod_cutting_problem(
+            8,
+            [3, 5, 8, 9, 10, 17, 17, 20]
+        )
+    )
+
+    print(
+        rod_cutting_problem(
+            6,
+            [3, 5, 6, 7, 10, 12]
+        )
+    )
+
+
+tabulation()
