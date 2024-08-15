@@ -241,7 +241,16 @@ def tabulation():
 
 
 def space_optimized():
+    def find_correct_order_of_strings(string1, string2):
+        # if the first string is of shorter length, return it as second string, else return original order.
+        min_length = min(len(string1), len(string2))
+        if min_length == len(string1):
+            return string2, string1
+        return string1, string2
+
     def get_lcs_string(string1, string2):
+        string1, string2 = find_correct_order_of_strings(string1, string2)
+
         if len(string1) == 0 or len(string2) == 0:
             return ""
 
