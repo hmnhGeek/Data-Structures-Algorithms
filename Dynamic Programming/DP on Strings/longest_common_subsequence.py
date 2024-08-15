@@ -257,8 +257,18 @@ def tabulation():
 
 
 def space_optimized():
+    def find_correct_order_of_strings(string1, string2):
+        # if the first string is of shorter length, return it as second string, else return original order.
+        min_length = min(len(string1), len(string2))
+        if min_length == len(string1):
+            return string2, string1
+        return string1, string2
+
     def longest_common_subsequence(string1, string2):
         # Time complexity would be O(n*m) and space complexity would be O(m) for the prev row.
+
+        # always use the shorter string as string 2. This will ensure that we further optimize O(m) space.
+        string1, string2 = find_correct_order_of_strings(string1, string2)
 
         # if either of the string is empty, return 0 as there will be no common subsequence at all
         if len(string1) == 0 or len(string2) == 0:
