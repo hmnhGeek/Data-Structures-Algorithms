@@ -36,6 +36,9 @@ class LinkedList:
 
 
 class MinHeap:
+    """
+        This min heap will store data of type Node.
+    """
     def __init__(self):
         self.heap = []
 
