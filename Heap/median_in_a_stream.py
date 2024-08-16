@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
 
+# Implement a base Heap class which will have common methods for both Min and Max Heaps
 class Heap(ABC):
     def __init__(self):
         self.heap = []
@@ -153,6 +154,30 @@ class MaxHeap(Heap):
 
 
 class DataStreamMedianFinder:
+    """
+        The approach to solve the problem is that whenever the stream has even number of elements, the median is the
+        average of the middle two numbers, whereas in odd case, it's just the middle number from the data stream.
+
+        We take a Max Heap on the left and Min Heap on the right. Here is the algorithm:
+
+        ALGORITHM FOR INSERTING VALUE x
+        1. If max heap is empty, insert x into max heap.
+        2. If max heap is not empty:
+            a. If x is larger than the max value on the left (top of max heap), then insert x into min heap
+            b. Else insert x in max heap only.
+        3. Balance both the heaps.
+            a. If both heaps have same size or max heap (i.e. left side) has just 1 element extra, nothing to do.
+            b. If left side has more than one element extra, i.e., data stream is skewed to the left, pop an element
+                from max heap and push to the min heap.
+            c. If right side is more skewed, pop an element from right and push it to left. This case should not
+                occur.
+            NOTE: We don't need any loop to balance because as soon as we are inserting, we are balancing also.
+
+        ALGORITHM FOR GETTING THE MEDIAN
+        1. Is the size of the data stream even?
+            a. YES: Then both max and min heap must be having some top values. Return the average of both their tops.
+            b. NO: Just return the top of max heap.
+    """
     def __init__(self):
         self.min_heap = MinHeap()
         self.max_heap = MaxHeap()
