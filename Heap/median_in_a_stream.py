@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/1
+# Solution - https://www.youtube.com/watch?v=Yv2jzDzYlp8
+
 from abc import ABC, abstractmethod
 
 
@@ -179,6 +182,7 @@ class DataStreamMedianFinder:
             b. NO: Just return the top of max heap.
     """
     def __init__(self):
+        # Overall space occupied will be O(n) combined for both the heaps.
         self.min_heap = MinHeap()
         self.max_heap = MaxHeap()
 
@@ -207,8 +211,10 @@ class DataStreamMedianFinder:
             self.max_heap.insert(self.min_heap.pop())
 
     def insert_in_stream(self, x):
+        # O(1)
         top_of_max_heap = self.max_heap.get_top()
 
+        # insertions take O(log(n)) time
         if top_of_max_heap is not None:
             if x > top_of_max_heap:
                 self.min_heap.insert(x)
@@ -217,9 +223,12 @@ class DataStreamMedianFinder:
         else:
             self.max_heap.insert(x)
 
+        # balancing the heaps also takes O(log(n)) time.
         self._balance_heaps()
 
     def get_median(self):
+        # checking even size or not takes O(1) time.
+        # getting top also takes O(1) time, thus, overall O(1) time.
         if self._is_size_even():
             left_top = self.max_heap.get_top()
             right_top = self.min_heap.get_top()
@@ -228,10 +237,17 @@ class DataStreamMedianFinder:
 
 
 def test_data_stream_median_finder(stream):
+    # Overall time complexity is O(n*log(n)) and space complexity is O(n) combined for both the heaps.
     data_stream_median_finder = DataStreamMedianFinder()
+
+    # This loop runs n times.
     for i in stream:
         print(f"Inserting {i} into the data stream.")
+
+        # Inserting into DataStreamMedianFinder() is O(log(n)) operation.
         data_stream_median_finder.insert_in_stream(i)
+
+        # Getting median is O(1) operation.
         print(f"Median at this point is {data_stream_median_finder.get_median()}")
 
 
