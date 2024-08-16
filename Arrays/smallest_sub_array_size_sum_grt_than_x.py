@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/smallest-subarray-with-sum-greater-than-x5651/1
+# Solution - https://www.youtube.com/watch?v=UXValb-h70s
+
 def recursive():
     def solve_smallest_subarray(arr, index, sum_to_form, recursion_depth, global_min, original_value):
         # if you've reached index 0
