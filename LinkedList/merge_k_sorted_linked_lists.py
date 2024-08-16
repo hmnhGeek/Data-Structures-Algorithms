@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/merge-k-sorted-linked-lists/1
+
+
 from typing import List
 
 
@@ -110,22 +113,35 @@ class SortedLinkedListMerger:
         self.merged_list = LinkedList()
 
     def merge(self):
+        # Overall time complexity is O(n*k*log(k)) and O(n + k) space.
+
+        # create a dummy node, this will be useful for finding the starting point of the merged list
         dummy_node = Node(-1)
         curr = dummy_node
 
+        # first push the k linked lists heads into the min heap in O(log(k)) time with O(k) space for the heap.
         for linked_list in self.lls:
             self.min_heap.insert(linked_list.head)
 
+        # This will run for all the nodes in the heap, i.e., n*k times
         while not self.min_heap.is_empty():
+            # O(log(k)) operation
             node = self.min_heap.pop()
 
+            # again an O(log(k)) operation; we want to push the next node of the popped node to maintain sorted order.
             if node.next is not None:
                 self.min_heap.insert(node.next)
 
+            # in the merged section, point curr's next to the popped node
             curr.next = node
+
+            # then update the curr to popped node.
             curr = node
 
+        # head of the merged list is dummy node's next
         self.merged_list.head = dummy_node.next
+
+        # tail of the merged list is the last node in the traversal, i.e., curr.
         self.merged_list.tail = curr
 
 
