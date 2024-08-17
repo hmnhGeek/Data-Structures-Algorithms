@@ -170,7 +170,7 @@ class BinarySearchTree:
         print()
 
 
-class BinarySearchTreeWithBalancedProperty:
+class BSTBalancer:
     def __init__(self, bst: BinarySearchTree):
         self.bst = bst
 
@@ -208,7 +208,7 @@ def example1():
     bst.insert(20)
     bst.insert(10)
     bst.show()
-    BinarySearchTreeWithBalancedProperty(bst).balance()
+    BSTBalancer(bst).balance()
     bst.show()
 
 
@@ -219,7 +219,7 @@ def example2():
     bst.insert(2)
     bst.insert(1)
     bst.show()
-    BinarySearchTreeWithBalancedProperty(bst).balance()
+    BSTBalancer(bst).balance()
     bst.show()
 
 
@@ -233,7 +233,7 @@ def example3():
     bst.insert(6)
     bst.insert(7)
     bst.show()
-    BinarySearchTreeWithBalancedProperty(bst).balance()
+    BSTBalancer(bst).balance()
     bst.show()
 
 
