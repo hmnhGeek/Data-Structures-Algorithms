@@ -49,27 +49,28 @@ class MaxHeapValidator:
         level_order = []
         queue = Queue()
         queue.enqueue(self.root)
-        on_last_level = False
 
         while not queue.is_empty():
             node = queue.pop()
-            level_order.append(node.data)
-            a_child_added = False
+            level_order.append(node.data if node != float('inf') else node)
 
-            if (node.left or node.right) and on_last_level:
-                return None
+            if node == float('inf'):
+                continue
+
+            if node.left is None and node.right is None:
+                queue.enqueue(float('inf'))
+                queue.enqueue(float('inf'))
+                continue
 
             if node.left is not None:
                 queue.enqueue(node.left)
-                a_child_added = True
             if node.right is not None:
                 queue.enqueue(node.right)
-                a_child_added = True
 
-            if not a_child_added:
-                on_last_level = True
-
-        return level_order
+        for i in range(-1, -len(level_order) - 1, -1):
+            if level_order[i] != float('inf'):
+                break
+        return level_order[:i+1]
 
     def _get_lci(self, level_order, pi):
         lci = 2*pi + 1
@@ -105,8 +106,6 @@ class MaxHeapValidator:
     def is_valid_max_heap(self):
         self.valid_max_heap = True
         level_order = self.get_level_order()
-        if level_order is None:
-            return False
         self._max_heapify_down(level_order, 0)
         return self.valid_max_heap
 
@@ -159,7 +158,58 @@ def example4():
     print(MaxHeapValidator(n97).is_valid_max_heap())
 
 
+def example5():
+    n97 = TreeNode(97)
+    n46 = TreeNode(46)
+    n37 = TreeNode(37)
+    n12 = TreeNode(12)
+    n3 = TreeNode(3)
+    n7 = TreeNode(7)
+    n31 = TreeNode(31)
+    n97.left = n46
+    n46.left = n12
+    n37.left = n7
+    n46.right = n3
+    n97.right = n37
+    n37.right = n31
+    print(MaxHeapValidator(n97).is_valid_max_heap())
+
+
+def example6():
+    n9, n7, n5, n3, n1, n4 = TreeNode(9), TreeNode(7), TreeNode(5), TreeNode(3), TreeNode(1), TreeNode(4)
+    n9.left = n7
+    n7.left = n3
+    n7.right = n1
+    n9.right = n5
+    n5.right = n4
+    print(MaxHeapValidator(n9).is_valid_max_heap())
+
+
+def example7():
+    n40 = TreeNode(40)
+    n36 = TreeNode(36)
+    n23 = TreeNode(23)
+    n10 = TreeNode(10)
+    n5 = TreeNode(5)
+    n6 = TreeNode(6)
+    n1 = TreeNode(1)
+    n14 = TreeNode(14)
+    n0 = TreeNode(0)
+    n40.left = n36
+    n36.left = n10
+    n10.left = n1
+    n23.left = n5
+    n5.left = n14
+    n40.right = n23
+    n23.right = n6
+    n6.left = n0
+    print(MaxHeapValidator(n40).is_valid_max_heap())
+
+
 example1()
 example2()
 example3()
 example4()
+example5()
+example6()
+example7()
