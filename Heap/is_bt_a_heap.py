@@ -49,28 +49,27 @@ class MaxHeapValidator:
         level_order = []
         queue = Queue()
         queue.enqueue(self.root)
+        on_last_level = False
 
         while not queue.is_empty():
             node = queue.pop()
-            level_order.append(node.data if node != float('inf') else node)
+            level_order.append(node.data)
+            a_child_added = False
 
-            if node == float('inf'):
-                continue
-
-            if node.left is None and node.right is None:
-                queue.enqueue(float('inf'))
-                queue.enqueue(float('inf'))
-                continue
+            if (node.left or node.right) and on_last_level:
+                return None
 
             if node.left is not None:
                 queue.enqueue(node.left)
+                a_child_added = True
             if node.right is not None:
                 queue.enqueue(node.right)
+                a_child_added = True
 
-        for i in range(-1, -len(level_order) - 1, -1):
-            if level_order[i] != float('inf'):
-                break
-        return level_order[:i+1]
+            if not a_child_added:
+                on_last_level = True
+
+        return level_order
 
     def _get_lci(self, level_order, pi):
         lci = 2*pi + 1
@@ -106,7 +105,8 @@ class MaxHeapValidator:
     def is_valid_max_heap(self):
         self.valid_max_heap = True
         level_order = self.get_level_order()
-        print(level_order)
+        if level_order is None:
+            return False
         self._max_heapify_down(level_order, 0)
         return self.valid_max_heap
 
