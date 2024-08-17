@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/
+
+
 class Node:
     def __init__(self, data):
         self.parent = None
@@ -183,20 +186,38 @@ class BSTBalancer:
     def balanced_insert(self, balanced_bst, low, high, inorder):
         if low > high:
             return
+
+        # find the mid-element from inorder traversal and insert it into the balanced BST
         mid = (low + high) // 2
         balanced_bst.insert(inorder[mid])
+
+        # use left split to insert into left subtree
         self.balanced_insert(balanced_bst, low, mid - 1, inorder)
+
+        # user right split to insert into right subtree
         self.balanced_insert(balanced_bst, mid + 1, high, inorder)
 
     def balance(self):
+        # Overall time complexity is O(N) and space complexity is O(N + log(N)) with log(N) coming from recursion
+        # stack space.
+
+        # first fetch the inorder traversal of the unbalanced BST in O(N) time and O(N) space.
         inorder_traversal = []
         self.get_inorder(self.bst.root, inorder_traversal)
 
+        # create a new BST which would be balanced.
         balanced_bst = BinarySearchTree()
+
+        # the idea is to insert into the balanced BST using the inorder traversal by repetitively splitting the list
+        # into half and inserting the `mid` element. The left half split will be used recursively to insert into left
+        # subtree and the right half split will be used recursively to insert into the right subtree. This would take
+        # O(N) time as we are traversing for each node in the inorder traversal, however, the stack space would be
+        # only O(log(N)).
         n = len(inorder_traversal)
         low, high = 0, n - 1
-
         self.balanced_insert(balanced_bst, low, high, inorder_traversal)
+
+        # once the balanced BST is populated, delete the unbalanced tree and refer to the updated balanced BST.
         unbalanced_bst = self.bst
         self.bst = balanced_bst
         del unbalanced_bst
@@ -237,4 +258,9 @@ def example3():
     bst.show()
 
 
+print("Example 1")
+example1()
+print("\nExample 2")
+example2()
+print("\nExample 3")
 example3()
