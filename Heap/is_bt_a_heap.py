@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/is-binary-tree-heap/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -46,27 +49,53 @@ class MaxHeapValidator:
         self.valid_max_heap = True
 
     def get_level_order(self):
+        # in a queue, push the root node as we are about to do a BFS traversal on this BT.
         level_order = []
         queue = Queue()
         queue.enqueue(self.root)
 
+        # typical BFS
         while not queue.is_empty():
             node = queue.pop()
+
+            # if the popped element is a node, store its data, otherwise it must be float('inf'); in that case simply
+            # append float('inf') in level order.
             level_order.append(node.data if node != float('inf') else node)
 
+            # if node is inf, it's a null node, having no children, continue and skip below part
             if node == float('inf'):
                 continue
 
+            # if node is a leaf node, add two inf values into queue denoting a leaf node has been inserted just before.
+            # ensure to continue as nothing else after this needs to be added into the queue.
             if node.left is None and node.right is None:
                 queue.enqueue(float('inf'))
                 queue.enqueue(float('inf'))
                 continue
 
+            # if the node is not a leaf node, insert its left and right children into the queue respectively.
             if node.left is not None:
                 queue.enqueue(node.left)
             if node.right is not None:
                 queue.enqueue(node.right)
 
+        # start traversing from the reverse side of level order and get the first non-inf element index. Till this
+        # index is the actual level order traversal. You may ask why add inf at all when at the end we are removing
+        # them. inf denote that anything after them in the level order will never be a node. However, consider this
+        # example:
+        """
+                        97
+                       /  \___
+                      46      37
+                     /  \     / \
+                    12   3   7  31
+                        / \
+                       2   4
+        """
+        # if we don't insert inf, the level order would be 97, 46, 37, 12, 3, 7, 31, 2, 4 which is a max-heap. But it is
+        # not a max heap. By inserting inf we get this [97, 46, 37, 12, inf, inf, 3, 7, 31, 2, 4, inf, ..]. At the end
+        # it is expected to have inf. But not in b/w. This is because it's not a complete BT. A complete BT must have
+        # left and right leaf nodes for node 12 otherwise left and right nodes must not exist for node 3.
         for i in range(-1, -len(level_order) - 1, -1):
             if level_order[i] != float('inf'):
                 break
@@ -98,14 +127,23 @@ class MaxHeapValidator:
         max_child_index = self._get_max_child_index(level_order, lci, rci)
 
         if max_child_index is not None:
+            # if at any point max heap property fails, set the global valid variable to false.
             if level_order[pi] < level_order[max_child_index]:
                 self.valid_max_heap = False
                 return
             self._max_heapify_down(level_order, max_child_index)
 
     def is_valid_max_heap(self):
+        # Overall time complexity is O(N) and space is also O(N).
+
+        # assume the BT is a max heap for now.
         self.valid_max_heap = True
+
+        # extract the level order traversal of this BT. Takes O(N) time and O(N) space (with queue also taking same).
         level_order = self.get_level_order()
+
+        # do a max heapification downwards and at any point if heapification property fails, set global valid_max_heap
+        # property to false and return it. Takes O(log(N)) time.
         self._max_heapify_down(level_order, 0)
         return self.valid_max_heap
 
