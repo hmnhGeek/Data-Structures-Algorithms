@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/rearrange-characters-string-no-two-adjacent/
+
+
 class Node:
     def __init__(self, character, count):
         self.char = character
@@ -75,32 +78,60 @@ class MaxHeap:
 
 
 def rearrange_string(string: str) -> str:
-    max_heap = MaxHeap()
-    frequencies = dict()
+    """
+        Overall time complexity is O(n * log(m)) and space is O(m).
+    """
 
+    # create an empty max heap which will be used to rearrange the string
+    max_heap = MaxHeap()
+
+    # get the count of each character of the string into a dictionary. Assume that the number of distinct characters
+    # in the string are m.
+    frequencies = dict()
     for character in string:
         if character not in frequencies:
             frequencies[character] = 1
         else:
             frequencies[character] += 1
 
+    # push the character, and it's frequency into the max heap as Node data type. This will take O(log(m)) time. In the
+    # worst case, the heap will have all the characters and so, the space it will occupy will be O(m).
     for character in frequencies:
         max_heap.insert(Node(character, frequencies[character]))
 
+    # we will also use a variable to store previously used character, as we don't want it to be added again in to the
+    # result if it again has the highest frequency.
     previous_used_character = None
+
+    # create a resultant string with its length
     rearranged_string = ""
     length_of_rearranged_string = 0
+
+    # while the heap is not empty; this will run `n` times, i.e., until all the characters of the strings are not
+    # utilized. Hence, the time taken by this loop will be O(n * log(m)).
     while not max_heap.is_empty():
+        # get the most frequent character (except previously used one, which would be None in first iteration). This
+        # will take O(log(m)) time.
         character_node = max_heap.pop()
+
+        # add this character to the resultant string and decrement its frequency. Also, increase the length of resultant
+        # string.
         rearranged_string += character_node.char
         length_of_rearranged_string += 1
         character_node.count -= 1
 
+        # now, we are about to update the previous variable, but before that, we must ensure that previous is not None.
+        # if it is not None, and the count of previous character has not become 0, we must add it back to the max heap.
+        # This will take O(log(m)) time.
         if previous_used_character is not None and previous_used_character.count > 0:
             max_heap.insert(previous_used_character)
 
+        # update the previous used character with the current node.
         previous_used_character = character_node
 
+    # if the length of original and resultant string is same, return the resultant string; this means we were able to
+    # rearrange all the characters such that no one of them is adjacent, otherwise return None as the characters cannot
+    # be rearranged.
     return rearranged_string if length_of_rearranged_string == len(string) else None
 
 
