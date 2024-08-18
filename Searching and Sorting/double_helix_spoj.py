@@ -141,4 +141,93 @@ def memoized():
     print(get_max_path_sum([-5, 100, 1000, 1005], [-12, 1000, 1001]))
 
 
-memoized()
+def recursive2():
+    def traverse(arr, row, col):
+        if col < 0:
+            return float('-inf')
+
+        if col == 0:
+            return arr[row][col]
+
+        left = traverse(arr, row, col - 1)
+        right = float('-inf')
+        cell_val = arr[row][col]
+
+        if row == 0:
+            switch_idx = get_idx_from(arr[1], cell_val)
+        else:
+            switch_idx = get_idx_from(arr[0], cell_val)
+
+        if switch_idx is not None:
+            right = traverse(arr, 1 if row == 0 else 0, switch_idx - 1)
+
+        return cell_val + max(left, right)
+
+    def get_max_path_sum(arr1, arr2):
+        n1, n2 = len(arr1), len(arr2)
+        nmax = max(n1, n2)
+        arr = [[float('-inf') for _ in range(nmax)], [float('-inf') for _ in range(nmax)]]
+
+        for i in range(len(arr1)):
+            arr[0][i] = arr1[i]
+
+        for j in range(len(arr2)):
+            arr[1][j] = arr2[j]
+
+        n = len(arr[0])
+        return max(traverse(arr, 0, n - 1), traverse(arr, 1, n - 1))
+
+    print(get_max_path_sum([0, 2, 6, 7, 8, 9], [0, 2, 4, 5, 7, 9]))
+    print(
+        get_max_path_sum([3, 5, 7, 9, 20, 25, 30, 40, 55, 56, 57, 60, 62], [1, 4, 7, 11, 14, 25, 44, 47, 55, 57, 100]))
+    print(get_max_path_sum([-5, 100, 1000, 1005], [-12, 1000, 1001]))
+
+
+def memoized2():
+    def traverse(arr, row, col, dp):
+        if col < 0:
+            return float('-inf')
+
+        if col == 0:
+            return arr[row][col]
+
+        if dp[row][col] is not None:
+            return dp[row][col]
+
+        left = traverse(arr, row, col - 1, dp)
+        right = float('-inf')
+        cell_val = arr[row][col]
+
+        if row == 0:
+            switch_idx = get_idx_from(arr[1], cell_val)
+        else:
+            switch_idx = get_idx_from(arr[0], cell_val)
+
+        if switch_idx is not None:
+            right = traverse(arr, 1 if row == 0 else 0, switch_idx - 1, dp)
+
+        dp[row][col] = cell_val + max(left, right)
+        return dp[row][col]
+
+    def get_max_path_sum(arr1, arr2):
+        n1, n2 = len(arr1), len(arr2)
+        nmax = max(n1, n2)
+        arr = [[float('-inf') for _ in range(nmax)], [float('-inf') for _ in range(nmax)]]
+        dp = [[None for _ in range(nmax)], [None for _ in range(nmax)]]
+
+        for i in range(len(arr1)):
+            arr[0][i] = arr1[i]
+
+        for j in range(len(arr2)):
+            arr[1][j] = arr2[j]
+
+        n = len(arr[0])
+        return max(traverse(arr, 0, n - 1, dp), traverse(arr, 1, n - 1, dp))
+
+    print(get_max_path_sum([0, 2, 6, 7, 8, 9], [0, 2, 4, 5, 7, 9]))
+    print(
+        get_max_path_sum([3, 5, 7, 9, 20, 25, 30, 40, 55, 56, 57, 60, 62], [1, 4, 7, 11, 14, 25, 44, 47, 55, 57, 100]))
+    print(get_max_path_sum([-5, 100, 1000, 1005], [-12, 1000, 1001]))
+
+
+memoized2()
