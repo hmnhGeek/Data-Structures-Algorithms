@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/three-way-partitioning/1
+# Solution - https://www.youtube.com/watch?v=QtpTDMBJqH0
+
+
 def with_space():
     def partition(arr, range_interval):
         """
@@ -95,6 +99,7 @@ def two_pointer_approach():
         high = n - 1
 
         i = 0
+        # check until you cross high, because after high, all elements are at correct position.
         while i <= high:
             # if the ith element is greater than y, swap with high, decrement high and in the next iteration
             # check again for the same i. We are sure that after swapping the high element > y, and therefore
