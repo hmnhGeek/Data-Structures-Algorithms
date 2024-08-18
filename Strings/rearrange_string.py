@@ -79,7 +79,8 @@ class MaxHeap:
 
 def rearrange_string(string: str) -> str:
     """
-        Overall time complexity is O(n * log(m)) and space is O(m).
+        Overall time complexity is O(n * log(m)) and space is O(m + n), with n being added to store the
+        resultant string.
     """
 
     # create an empty max heap which will be used to rearrange the string
