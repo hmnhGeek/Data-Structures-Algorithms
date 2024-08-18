@@ -19,7 +19,7 @@ def get_idx_from(arr, elem):
 
 def traverse(arr1, arr2, row, col):
     # The recursion stack will take O(path length) space, i.e., O(max(len(arr1), len(arr2)) = O(N) (assuming same length
-    # of both the arrays in worst case. The time complexity would be O({2^N} * log(N)) where in at each cell we have
+    # of both the arrays in worst case). The time complexity would be O({2^N} * log(N)) where in at each cell we have
     # two options, either to continue on same array, or switch and at each cell we also do a binary search to check if
     # the same value exist in the other array or not.
 
