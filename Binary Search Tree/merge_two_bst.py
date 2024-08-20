@@ -205,22 +205,35 @@ def merge_inorder_traversals(inorder1, inorder2):
 
 
 def construct_tree(tree: BinarySearchTree, low: int, high: int, inorder):
+    # Overall time complexity is O(N + M) and space would be O(log(N + M))
+
     if low > high:
         return
 
+    # calculate mid element
     mid = int(low + (high - low)/2)
+
+    # insert in O(log(N + M)) time
     tree.insert(inorder[mid])
+
+    # construct the left subtree
     construct_tree(tree, low, mid - 1, inorder)
+
+    # construct the right subtree
     construct_tree(tree, mid + 1, high, inorder)
 
 
 def merge_bst(bst1: BinarySearchTree, bst2: BinarySearchTree):
+    # Overall time complexity is O(N + M) and space is O(N + M).
+
+    # get the inorder traversals of both the trees in O(N + M) time and O(log(N) + log(M)) space.
     inorder1 = bst1.get_inorder()
     inorder2 = bst2.get_inorder()
 
-    # merge the inorder lists
+    # merge the inorder lists in O(N + M) time and O(N + M) space
     inorder = merge_inorder_traversals(inorder1, inorder2)
 
+    # Construct the merged tree in O(N + M) and O(log(N + M)) space
     merged_tree = BinarySearchTree()
     construct_tree(merged_tree, 0, len(inorder) - 1, inorder)
     return merged_tree
@@ -288,4 +301,10 @@ def example4():
     merged.show()
 
 
+example1()
+print()
+example2()
+print()
+example3()
+print()
 example4()
