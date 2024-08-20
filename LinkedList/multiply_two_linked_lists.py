@@ -81,5 +81,19 @@ def example2():
     print(multiply(l1, l2))
 
 
+def example3():
+    print("Example 3")
+    l1 = LinkedList()
+    l1.build([3, 2, 1])
+    l2 = LinkedList()
+    l2.build([1, 2])
+    l1.show()
+    l2.show()
+    print(multiply(l1, l2))
+
+
 example1()
+print()
 example2()
+print()
+example3()
