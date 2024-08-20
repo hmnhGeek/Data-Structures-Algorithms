@@ -144,9 +144,34 @@ def example3():
     print(shortest_path(root, seven, nine))
 
 
+def example4():
+    # Creating nodes
+    root = Node(3)
+    five = Node(5)
+    one = Node(1)
+    six = Node(6)
+    two = Node(2)
+    seven = Node(7)
+    four = Node(4)
+
+    # Constructing the tree
+    root.left = five
+    root.right = one
+
+    five.left = six
+    five.right = two
+
+    two.left = seven
+    two.right = four
+
+    print(shortest_path(root, four, one))
+
+
 print("\nExample 1")
 example1()
 print("\n\nExample 2")
 example2()
 print("\n\nExample 3")
 example3()
+print("\n\nExample 4")
+example4()
