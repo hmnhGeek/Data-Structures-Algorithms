@@ -39,6 +39,7 @@ class Queue:
 
 
 def get_adjacent_nodes(mtx, i, j, n, m):
+    # This function returns the 0-valued adjacent nodes of cell (i, j) in O(1) time and O(1) space.
     result = []
 
     if 0 <= i - 1 < n and mtx[i - 1][j] == 0:
