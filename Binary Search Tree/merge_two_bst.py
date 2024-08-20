@@ -241,4 +241,51 @@ def example1():
     mt.show()
 
 
-example1()
+def example2():
+    t1 = BinarySearchTree()
+    t1.insert(5)
+    t1.insert(3)
+    t1.insert(0)
+
+    t2 = BinarySearchTree()
+    t2.insert(8)
+    t2.insert(2)
+    t2.insert(1)
+    t2.insert(10)
+
+    merged = merge_bst(t1, t2)
+    merged.show()
+
+
+def example3():
+    t1 = BinarySearchTree()
+    t1.insert(3)
+    t1.insert(2)
+    t1.insert(1)
+    t1.insert(5)
+
+    t2 = BinarySearchTree()
+    t2.insert(4)
+    t2.insert(1)
+    t2.insert(2)
+    t2.insert(7)
+    t2.insert(9)
+
+    merged = merge_bst(t2, t1)
+    merged.show()
+
+
+def example4():
+    t1 = BinarySearchTree()
+    t1.insert(2)
+    t1.insert(1)
+    t1.insert(3)
+
+    t2 = BinarySearchTree()
+    t2.insert(4)
+
+    merged = merge_bst(t1, t2)
+    merged.show()
+
+
+example4()
