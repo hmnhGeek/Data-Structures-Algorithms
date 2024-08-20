@@ -169,3 +169,76 @@ class BinarySearchTree:
     def show(self):
         self._show(self.root)
 
+    def _get_inorder(self, start, inorder):
+        if start:
+            self._get_inorder(start.left, inorder)
+            inorder.append(start.data)
+            self._get_inorder(start.right, inorder)
+
+    def get_inorder(self):
+        inorder = []
+        self._get_inorder(self.root, inorder)
+        return inorder
+
+
+def merge_inorder_traversals(inorder1, inorder2):
+    i, j = 0, 0
+    merged = []
+
+    while i < len(inorder1) and j < len(inorder2):
+        if inorder1[i] <= inorder2[j]:
+            merged.append(inorder1[i])
+            i += 1
+        else:
+            merged.append(inorder2[j])
+            j += 1
+
+    while i < len(inorder1):
+        merged.append(inorder1[i])
+        i += 1
+
+    while j < len(inorder2):
+        merged.append(inorder2[j])
+        j += 1
+
+    return merged
+
+
+def construct_tree(tree: BinarySearchTree, low: int, high: int, inorder):
+    if low > high:
+        return
+
+    mid = int(low + (high - low)/2)
+    tree.insert(inorder[mid])
+    construct_tree(tree, low, mid - 1, inorder)
+    construct_tree(tree, mid + 1, high, inorder)
+
+
+def merge_bst(bst1: BinarySearchTree, bst2: BinarySearchTree):
+    inorder1 = bst1.get_inorder()
+    inorder2 = bst2.get_inorder()
+
+    # merge the inorder lists
+    inorder = merge_inorder_traversals(inorder1, inorder2)
+
+    merged_tree = BinarySearchTree()
+    construct_tree(merged_tree, 0, len(inorder) - 1, inorder)
+    return merged_tree
+
+
+def example1():
+    t1 = BinarySearchTree()
+    t1.insert(3)
+    t1.insert(1)
+    t1.insert(5)
+
+    t2 = BinarySearchTree()
+    t2.insert(4)
+    t2.insert(2)
+    t2.insert(6)
+
+    mt = merge_bst(t1, t2)
+    mt.show()
+
+
+example1()
