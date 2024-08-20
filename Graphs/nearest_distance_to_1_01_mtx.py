@@ -52,7 +52,7 @@ def get_adjacent_nodes(mtx, i, j, n, m):
 def binary_mtx_nearest_1(mtx):
     n, m = len(mtx), len(mtx[0])
     visited = [[False for _ in range(m)] for _ in range(n)]
-    distances = [[0 for _ in range(m)] for _ in range(n)]
+    distances = [[float('inf') for _ in range(m)] for _ in range(n)]
     queue = Queue()
 
     for i in range(n):
@@ -63,7 +63,7 @@ def binary_mtx_nearest_1(mtx):
     while not queue.is_empty():
         i, j, dist = queue.dequeue()
         visited[i][j] = True
-        distances[i][j] = dist
+        distances[i][j] = min(dist, distances[i][j])
 
         adj_nodes = get_adjacent_nodes(mtx, i, j, n, m)
         for adj_node in adj_nodes:
@@ -92,5 +92,25 @@ print(
 print(
     binary_mtx_nearest_1(
         [[1, 0, 1], [1, 1, 0], [1, 0, 0]]
+    )
+)
+
+print(
+    binary_mtx_nearest_1(
+        [
+            [0, 0, 0, 1],
+            [0, 0, 1, 1],
+            [0, 1, 1, 0]
+        ]
+    )
+)
+
+print(
+    binary_mtx_nearest_1(
+        [
+            [1, 0, 0],
+            [0, 0, 1],
+            [0, 1, 1]
+        ]
     )
 )
