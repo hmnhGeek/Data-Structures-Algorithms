@@ -45,12 +45,14 @@ def multiply(l1: LinkedList, l2: LinkedList) -> int:
     while curr1 is not None:
         # update the number by multiplying it by 10 and adding curr's data value to the result
         num1 = num1*10 + curr1.data
+        num1 %= (10**9 + 7)
         curr1 = curr1.next
 
     # extract the number in second list
     while curr2 is not None:
         # update the number by multiplying it by 10 and adding curr's data value to the result
         num2 = num2*10 + curr2.data
+        num2 %= (10**9 + 7)
         curr2 = curr2.next
 
     # return the multiplied number
