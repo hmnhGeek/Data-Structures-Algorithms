@@ -32,18 +32,26 @@ class Graph:
         self.graph = adjacency_list
 
     def get_num_components(self):
+        # create a disjoint set to keep track of connected components
         disjoint_set = DisjointSet(list(self.graph.keys()))
         connected_components = 0
 
+        # iterate over each node of in the graph and then on their corresponding adjacent nodes.
         for node in self.graph:
             for adj_node in self.graph[node]:
+                # if they both are not in the same component (and since there is an edge between them in the original
+                # graph), create a connection between them in the disjoint set.
                 if not disjoint_set.in_same_component(node, adj_node):
                     disjoint_set.union_by_size(node, adj_node)
 
+        # once the parents are updated, check for those parents which are parent of themselves.
+        # count such occurrences because the self parents are the parents of all the nodes in
+        # their connected components.
         for parent in disjoint_set.parents:
             if parent == disjoint_set.parents[parent]:
                 connected_components += 1
 
+        # return the count of such connected components.
         return connected_components
 
 
