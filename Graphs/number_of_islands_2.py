@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/number-of-islands/1
+# Solution - https://www.youtube.com/watch?v=Rn6B-Q4SNyA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=51
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.ranks = {i: 0 for i in nodes}
@@ -51,25 +55,52 @@ class NumberOfIslands:
         return neighbours
 
     def mark_land(self, i, j):
+        # mark the cell in visited matrix as True.
         self.visited[i][j] = True
+
+        # get the neighbouring cells for the cell (i, j) in O(1) time and space.
         neighbouring_cells = self.get_neighbours(i, j)
+
+        # get the node number from the (i, j). This will be used in the disjoint set as disjoint set only understands
+        # integer values.
         node = i*self.m + j
+
+        # assume that addition of this cell into the landmass contribute to a new island altogether.
         self.num_islands += 1
 
+        # loop on the neighbouring cells; this loop will run at max 4 times for 4 neighbours and disjoint set ops are
+        # also constant time. Hence, the overall time complexity is O(1). Space used is for visited matrix, which would
+        # be O(m*n).
         for neighbour in neighbouring_cells:
             x, y = neighbour
+
+            # fetch the node number for the adjacent node; to be used in disjoint set
             adj_node = x*self.m + y
+
+            # if the adjacent node is visited, then basically the `node` and `adjacent node` can merge into a single
+            # connected component, i.e., island
             if self.visited[x][y]:
+                # so, if they are already not in a same component, group them into one. Also, decrement the contribution
+                # made by cell (i, j) into num_islands because now this cell does not have an individual existence.
                 if not self.disjoint_set.in_same_component(node, adj_node):
                     self.disjoint_set.union_by_rank(node, adj_node)
                     self.num_islands -= 1
 
-    def live_track(self, cell):
+    def live_track(self, cells):
+        # Overall time complexity is O(k + m*n) = O(m*n). The factor m*n is coming because we have to construct the
+        # visited array, and also we need to give space for it which makes the space complexity as O(m*n).
+
+        # This function gives the number of islands at each instance of addition of a new cell as an island.
         track = []
-        for i, j in cell:
+        # iterate over each cell in the cells array and if the cell is not previously visited, mark it as a land. This
+        # will run depending upon the length of cells array. Assume it to be `k`.
+        for i, j in cells:
             if not self.visited[i][j]:
+                # This takes O(1) time.
                 self.mark_land(i, j)
+            # at each instance, append the number of islands into a list which we will return.
             track.append(self.num_islands)
+        # return the number of islands at each instance.
         return track
 
 
