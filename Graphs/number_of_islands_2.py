@@ -93,3 +93,25 @@ print(
         ]
     )
 )
+
+print(
+    NumberOfIslands(4, 5).live_track(
+        [
+            (1, 1),
+            (0, 1),
+            (3, 3),
+            (3, 4)
+        ]
+    )
+)
+
+print(
+    NumberOfIslands(4, 5).live_track(
+        [
+            (0, 0),
+            (1, 1),
+            (2, 2),
+            (3, 3)
+        ]
+    )
+)
