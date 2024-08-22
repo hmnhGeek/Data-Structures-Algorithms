@@ -29,11 +29,11 @@ class DisjointSet:
 
 
 class NumberOfIslands:
-    def __init__(self, ocean_map):
-        self.graph = ocean_map
+    def __init__(self, n, m):
+        self.graph = [[0 for _ in range(m)] for _ in range(n)]
         self.num_islands = 0
-        self.n = len(ocean_map)
-        self.m = len(ocean_map[0])
+        self.n = n
+        self.m = m
         self.visited = [[False for _ in range(self.m)] for _ in range(self.n)]
         self.disjoint_set = DisjointSet([i for i in range(self.n * self.m)])
 
@@ -76,9 +76,7 @@ class NumberOfIslands:
 
 
 print(
-    NumberOfIslands(
-        [[0 for _ in range(5)] for _ in range(4)]
-    ).live_track(
+    NumberOfIslands(4, 5).live_track(
         [
             (0, 0),
             (0, 0),
