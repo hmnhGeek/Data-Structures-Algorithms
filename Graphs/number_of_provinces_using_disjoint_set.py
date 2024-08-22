@@ -32,11 +32,14 @@ class Graph:
         self.graph = adjacency_list
 
     def get_num_components(self):
-        # create a disjoint set to keep track of connected components
+        # Overall time complexity is O({V + E}*4*alpha) and O(V) space.
+
+        # create a disjoint set to keep track of connected components. This will take O(V) space.
         disjoint_set = DisjointSet(list(self.graph.keys()))
         connected_components = 0
 
         # iterate over each node of in the graph and then on their corresponding adjacent nodes.
+        # this will take O({V + E}*4*aplha) time.
         for node in self.graph:
             for adj_node in self.graph[node]:
                 # if they both are not in the same component (and since there is an edge between them in the original
@@ -46,7 +49,7 @@ class Graph:
 
         # once the parents are updated, check for those parents which are parent of themselves.
         # count such occurrences because the self parents are the parents of all the nodes in
-        # their connected components.
+        # their connected components. This will take O(V) time.
         for parent in disjoint_set.parents:
             if parent == disjoint_set.parents[parent]:
                 connected_components += 1
