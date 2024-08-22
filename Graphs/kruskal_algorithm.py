@@ -116,3 +116,13 @@ print(
         }
     ).get_minimum_spanning_tree()
 )
+
+print(
+    KruskalAlgorithm(
+        {
+            0: [[1, 5], [2, 1]],
+            1: [[0, 5], [2, 3]],
+            2: [[0, 1], [1, 3]]
+        }
+    ).get_minimum_spanning_tree()
+)
