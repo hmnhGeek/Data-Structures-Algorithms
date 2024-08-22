@@ -30,7 +30,6 @@ class DisjointSet:
 
 class NumberOfIslands:
     def __init__(self, n, m):
-        self.graph = [[0 for _ in range(m)] for _ in range(n)]
         self.num_islands = 0
         self.n = n
         self.m = m
@@ -52,7 +51,6 @@ class NumberOfIslands:
         return neighbours
 
     def mark_land(self, i, j):
-        self.graph[i][j] = 1
         self.visited[i][j] = True
         neighbouring_cells = self.get_neighbours(i, j)
         node = i*self.m + j
@@ -61,7 +59,7 @@ class NumberOfIslands:
         for neighbour in neighbouring_cells:
             x, y = neighbour
             adj_node = x*self.m + y
-            if self.graph[x][y] == 1:
+            if self.visited[x][y]:
                 if not self.disjoint_set.in_same_component(node, adj_node):
                     self.disjoint_set.union_by_rank(node, adj_node)
                     self.num_islands -= 1
