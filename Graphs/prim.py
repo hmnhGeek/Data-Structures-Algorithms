@@ -126,7 +126,9 @@ class PrimsMinimumSpanningTree:
                 # loop for the adjacent nodes and push them to the queue; this will also take O(E log(E))
                 for adj in self.graph[pq_node.node]:
                     adj_node, edge_wt = adj
-                    pq.insert(PriorityQueueNode(edge_wt, adj_node, pq_node.node))
+                    # if the adjacent node is not visited, then only add it the min heap.
+                    if not visited[adj_node]:
+                        pq.insert(PriorityQueueNode(edge_wt, adj_node, pq_node.node))
 
         # return the tree and the tree sum
         return minimum_spanning_tree, minimum_spanning_tree_sum
