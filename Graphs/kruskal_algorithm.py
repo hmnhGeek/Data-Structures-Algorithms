@@ -48,24 +48,30 @@ class KruskalAlgorithm:
     def get_minimum_spanning_tree(self):
         # Overall time complexity is O(V + E{1 + log(E) + 4*alpha}) and space complexity is O(V + E).
 
-        # Get in O(V + E + E*log(E)) time and O(E) space.
+        # Get the sorted edge list in O(V + E + E*log(E)) time and O(E) space.
         edge_list = self._get_sorted_edges_list()
 
-        # This will take O(V) space.
+        # Initialize a disjoint set containing nodes from the graph. This will take O(V) space.
         disjoint_set = DisjointSet(list(self.graph.keys()))
+
+        # Initialize variables for MST.
         minimum_spanning_tree = []
         minimum_spanning_tree_wt = 0
 
-        # This loop will run for E times. Hence, time complexity would be O(E*4*alpha)
+        # This loop will run for E times. Hence, time complexity would be O(E*4*alpha). The idea
+        # behind this loop is to check if the source and destination nodes are in same component
+        # or not. If they are not, connect them with edge_wt. Next time, if we get same source
+        # and destination nodes, they will be already connected with a smaller weight, and hence
+        # it would be a MST. Ensure to increase the MST weight also.
         for edge in edge_list:
             edge_wt, source, dest = edge
-
             # union and components check will take O(4*alpha) time
             if not disjoint_set.in_same_components(source, dest):
                 disjoint_set.union_by_rank(source, dest)
                 minimum_spanning_tree.append(edge)
                 minimum_spanning_tree_wt += edge_wt
 
+        # finally return the MST variables.
         return minimum_spanning_tree, minimum_spanning_tree_wt
 
 
