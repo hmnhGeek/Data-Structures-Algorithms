@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/account-merge/1
+# Solution - https://www.youtube.com/watch?v=FMwpt_aQOGw&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=50
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.sizes = {i: 1 for i in nodes}
@@ -28,35 +32,59 @@ class DisjointSet:
 
 
 def account_merge(accounts):
-    node_map = {}
-    for i in range(len(accounts)):
-        node_map[i] = accounts[i][0]
+    # let's have each row (as an index) as a node in the disjoint set
+    disjoint_set = DisjointSet([i for i in range(len(accounts))])
 
-    disjoint_set = DisjointSet(list(node_map.keys()))
+    # create a blank dictionary to map email IDs to the 0th index of every row in accounts
     temp_set = dict()
 
+    # loop on all the email IDs (basically all rows but from 1st cols and 0th col is for name)
     for row in range(len(accounts)):
         for col in range(1, len(accounts[row])):
+            # store the current email ID for now.
             email = accounts[row][col]
+
+            # if this email ID is seen for the first time, assign its value in temp set as the
+            # row index from which it is picked up (row index represents the name, but since
+            # indices are unique, we are using them instead of actual names which can repeat)
             if email not in temp_set:
                 temp_set[email] = row
+
+            # however, if in some other row, we again see a same email ID which is already in
+            # the dictionary, then the row numbers from the set of this existing email ID and
+            # the current different row index must lie in the same component. Use disjoint set
+            # to merge them into a single component.
             elif temp_set[email] != row:
                 disjoint_set.union_by_size(temp_set[email], row)
 
-    result = [[node_map[i]] for i in disjoint_set.parents]
-    for node in temp_set:
-        parent = temp_set[node]
-        ultimate_parent = disjoint_set.find_ultimate_parent(parent)
-        result[ultimate_parent].append(node)
+    # finally the disjoint set have all the rows from accounts connected appropriately.
+    # create a result 2D array and insert the actual names now in each row.
+    result = [[accounts[i][0]] for i in range(len(accounts))]
 
+    # start looping on the emails stored in the temp set
+    for email in temp_set:
+        # get the parent of this email from temp set
+        parent = temp_set[email]
+        # find the ultimate parent of this parent also (remember, this is an integer value
+        # representing an index)
+        ultimate_parent = disjoint_set.find_ultimate_parent(parent)
+        # and in the result 2D array, append this email to row containing the name of
+        # ultimate parent.
+        result[ultimate_parent].append(email)
+
+    # finally sort the email IDs
     for row in result:
         row[1:] = sorted(row[1:])
 
+    # now create a final list in which we will store only those rows from result which
+    # have some email IDs
     final_result = []
     for row in result:
+        # if there is more than just name in the row, add it to final_result
         if len(row) > 1:
             final_result.append(row)
 
+    # finally return final result
     return final_result
 
 
