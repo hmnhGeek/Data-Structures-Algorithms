@@ -42,8 +42,8 @@ class FloydWarshall:
 
         # the whole idea of Floyd-Warshall is that there is a "via" node through
         # which we will compute the distances from nodes i to j. Let that via node be
-        # `k`. If you get a better distance from i to j, via k, adj_mtx[i][j] with that
-        # distance, else keep it as is.
+        # `k`. If you get a better distance from i to j, via k, then update the value of
+        # adj_mtx[i][j] with that distance, else keep it as is.
         for k in range(len(self.graph)):
             for i in range(len(self.graph)):
                 for j in range(len(self.graph)):
