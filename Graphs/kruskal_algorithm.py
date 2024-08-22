@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+# Solution - https://www.youtube.com/watch?v=DMnDM_sxVig
+
 class DisjointSet:
     def __init__(self, nodes):
         self.ranks = {i: 0 for i in nodes}
