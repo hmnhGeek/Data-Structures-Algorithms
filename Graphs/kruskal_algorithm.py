@@ -34,6 +34,7 @@ class KruskalAlgorithm:
         self.graph = adjacency_list
 
     def _get_sorted_edges_list(self):
+        # The time complexity would be O(V + E + E*log(E)) and space complexity would be O(E).
         edge_list = []
 
         for node in self.graph:
@@ -45,13 +46,21 @@ class KruskalAlgorithm:
         return edge_list
 
     def get_minimum_spanning_tree(self):
+        # Overall time complexity is O(V + E{1 + log(E) + 4*alpha}) and space complexity is O(V + E).
+
+        # Get in O(V + E + E*log(E)) time and O(E) space.
         edge_list = self._get_sorted_edges_list()
+
+        # This will take O(V) space.
         disjoint_set = DisjointSet(list(self.graph.keys()))
         minimum_spanning_tree = []
         minimum_spanning_tree_wt = 0
 
+        # This loop will run for E times. Hence, time complexity would be O(E*4*alpha)
         for edge in edge_list:
             edge_wt, source, dest = edge
+
+            # union and components check will take O(4*alpha) time
             if not disjoint_set.in_same_components(source, dest):
                 disjoint_set.union_by_rank(source, dest)
                 minimum_spanning_tree.append(edge)
