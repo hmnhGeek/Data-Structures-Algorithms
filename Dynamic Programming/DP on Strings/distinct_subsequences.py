@@ -121,6 +121,55 @@ def tabulation():
     print(get_distinct_subsequences("dingdingdingding", "ing"))
     print(get_distinct_subsequences("aaaaa", "a"))
 
+
+def space_optimized():
+    def get_distinct_subsequences(string, lookup):
+        # Time complexity is O(n*m) and space is also O(m) with no recursion.
+
+        n = len(string)
+        m = len(lookup)
+
+        # initialize prev representing the 0th index of string.
+        prev = {j: 0 for j in range(m)}
+
+        # fill out first col, i.e., lookup[0] column. No need to fill row 0, i.e. string[0] row because for columns
+        # j = 1 to m - 1, lookup[j] would basically mean that you're at index 0 of string but still lookup string has
+        # at least one character left to compare, so all will be 0 in that case. However, the lookup[0] case will not
+        # be so. In tabulation, we build from bottom to up.
+        # set dp[0][0] meaning string[0] and lookup[0] to 1 if both of them are equal, meaning that we have 1
+        # subsequence found. Now, we must add 1 to (dp[i - 1][j - 1] + dp[i - 1][j]), but j = 0. Hence, dp[i - 1][j - 1]
+        # will always return 0. Hence, we have to add a 1 or a 0 only to dp[i - 1][j].
+        # we will use recursion code above to write the base case.
+        prev[0] = 1 if string[0] == lookup[0] else 0
+
+        for i in range(1, n):
+            curr = {j: 0 for j in range(m)}
+            curr[0] = prev[0] + (1 if string[i] == lookup[0] else 0)
+            for j in range(1, m):
+                # again, if the characters in both the strings match, then you've two options at this juncture:
+                # 1. reduce indices of both and consider getting a match.
+                # 2. reduce only `i` and stay at `j`, basically not considering `i` even though it's a match with `j`.
+                if string[i] == lookup[j]:
+                    left = prev[j - 1]
+                    right = prev[j]
+                    # return the sum of distinct subsequences so obtained.
+                    curr[j] = left + right
+                # if there is not a match, you have no option but to stay at same `j` but move lower on `i`.
+                else:
+                    curr[j] = prev[j]
+            prev = curr
+
+        return prev[m - 1]
+
+    print(get_distinct_subsequences("brootgroot", "brt"))
+    print(get_distinct_subsequences("dingdingdingding", "ing"))
+    print(get_distinct_subsequences("aaaaa", "a"))
+    print(get_distinct_subsequences("abc", "abc"))
+    print(get_distinct_subsequences("rabbbit", "rabbit"))
+    print(get_distinct_subsequences("geeksforgeeks", "ge"))
+    print(get_distinct_subsequences("babgbag", "bag"))
+
+
 memoized()
 print()
-tabulation()
+space_optimized()
