@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/shortest-supersequence_4244493?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=xElxAuBcvsU&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=32
+
+
 def recursive():
     def solve_lcs(str1, i, str2, j):
         if i < 0 or j < 0:
@@ -97,6 +101,10 @@ def get_lcs(str1, str2):
 
 
 def get_shortest_common_subsequence(str1, str2):
+    """
+        Overall time complexity is O(m*n + m + n) and space complexity is O(m).
+    """
+
     # This will take O(n*m) time and O(m) space.
     lcs = get_lcs(str1, str2)
 
@@ -107,7 +115,8 @@ def get_shortest_common_subsequence(str1, str2):
     i = 0
     j = 0
 
-    # while you're still within the limits of both the strings
+    # while you're still within the limits of both the strings. This whole operation would take
+    # O(m + n) time.
     while i < len(str1) and j < len(str2):
         # if the current characters of both the strings are not in lcs, then add both the characters
         # in the final string and increment both i and j together.
