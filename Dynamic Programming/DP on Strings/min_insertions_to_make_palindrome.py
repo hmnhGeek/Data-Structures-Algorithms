@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/minimum-insertions-to-make-palindrome_985293?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=xPBLEj41rFU&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=30
+
+
 def recursive():
     def solve_lcs(str1, i, str2, j):
         if i < 0 or j < 0:
@@ -110,7 +114,19 @@ def longest_common_palindromic_subsequence(string):
 
 
 def min_insertions_to_make_palindrome(string):
+    """
+        The whole idea is to find the longest palindromic subsequence in the string first. Once you get that, you can
+        subtract this from the whole length of the string which should give you the number of characters which makes
+        it impossible to make this string a palindrome. So, you basically require to insert these characters again
+        into the string to make it palindrome and hence the answer is (len(string) - lcps(string)).
+
+        Overall time complexity is O(n^2).
+        Overall space complexity is O(n).
+    """
     n = len(string)
+
+    # longest_common_palindromic_subsequence() extends longest_common_subsequence() function which takes O(nm) time and
+    # O(m) space. Here, n = m, and so, the time complexity is O(n^2) and space complexity is O(n).
     lcp = longest_common_palindromic_subsequence(string)
     return n - lcp
 
