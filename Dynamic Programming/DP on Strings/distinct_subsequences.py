@@ -136,9 +136,9 @@ def space_optimized():
         # j = 1 to m - 1, lookup[j] would basically mean that you're at index 0 of string but still lookup string has
         # at least one character left to compare, so all will be 0 in that case. However, the lookup[0] case will not
         # be so. In tabulation, we build from bottom to up.
-        # set dp[0][0] meaning string[0] and lookup[0] to 1 if both of them are equal, meaning that we have 1
-        # subsequence found. Now, we must add 1 to (dp[i - 1][j - 1] + dp[i - 1][j]), but j = 0. Hence, dp[i - 1][j - 1]
-        # will always return 0. Hence, we have to add a 1 or a 0 only to dp[i - 1][j].
+        # set prev[0] meaning string[0] and lookup[0] to 1 if both of them are equal, meaning that we have 1
+        # subsequence found. Now, we must add 1 to (prev[j - 1] + prev[j]), but j = 0. Hence, prev[j - 1]
+        # will always return 0. Hence, we have to add a 1 or a 0 only to prev[j].
         # we will use recursion code above to write the base case.
         prev[0] = 1 if string[0] == lookup[0] else 0
 
