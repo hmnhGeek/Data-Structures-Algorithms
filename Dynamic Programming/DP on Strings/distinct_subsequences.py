@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/distinct-subsequences/description/
+# Solution - https://www.youtube.com/watch?v=nVG7eTiD2bY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=34
+
+
 def recursive():
     def solve_num_distinct_subsequences(string, i, lookup, j):
         """
@@ -170,6 +174,17 @@ def space_optimized():
     print(get_distinct_subsequences("babgbag", "bag"))
 
 
-memoized()
+print("Recursion Solution")
+recursive()
+
 print()
+print("Memoized Solution")
+memoized()
+
+print()
+print("Tabulation Solution")
+tabulation()
+
+print()
+print("Space Optimized Solution")
 space_optimized()
