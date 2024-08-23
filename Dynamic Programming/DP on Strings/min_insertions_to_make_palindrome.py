@@ -103,3 +103,21 @@ def longest_common_subsequence(str1, str2):
         prev = curr
 
     return prev[m - 1]
+
+
+def longest_common_palindromic_subsequence(string):
+    return longest_common_subsequence(string, string[-1:-len(string)-1:-1])
+
+
+def min_insertions_to_make_palindrome(string):
+    n = len(string)
+    lcp = longest_common_palindromic_subsequence(string)
+    return n - lcp
+
+
+print(min_insertions_to_make_palindrome("abca"))
+print(min_insertions_to_make_palindrome("abcdefg"))
+print(min_insertions_to_make_palindrome("aaaaa"))
+print(min_insertions_to_make_palindrome("zzazz"))
+print(min_insertions_to_make_palindrome("mbadm"))
+print(min_insertions_to_make_palindrome("leetcode"))
