@@ -1,4 +1,9 @@
 def solve_num_distinct_subsequences(string, i, lookup, j):
+    """
+        Time complexity is exponential (2^n apx)
+        Space complexity is O(n) where n is the length of string.
+    """
+
     # if `j` became negative, this means we have looked for everything in lookup, and so we can
     # say that we have found an occurrence of lookup in string, return 1, irrespective of what
     # `i` is right now.
