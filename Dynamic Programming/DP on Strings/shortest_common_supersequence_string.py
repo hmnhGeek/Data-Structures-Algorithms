@@ -97,41 +97,67 @@ def get_lcs(str1, str2):
 
 
 def get_shortest_common_subsequence(str1, str2):
+    # This will take O(n*m) time and O(m) space.
     lcs = get_lcs(str1, str2)
-    scs = ""
+
+    # initialize the resultant string
+    shortest_common_supersequence = ""
+
+    # start from the 0th indices of both the strings.
     i = 0
     j = 0
 
+    # while you're still within the limits of both the strings
     while i < len(str1) and j < len(str2):
+        # if the current characters of both the strings are not in lcs, then add both the characters
+        # in the final string and increment both i and j together.
         if str1[i] not in lcs and str2[j] not in lcs:
-            scs += str1[i] + str2[j]
+            shortest_common_supersequence += str1[i] + str2[j]
             i += 1
             j += 1
         else:
+            # otherwise, if string 1's character is in lcs, then first add string 2's characters till we
+            # don't get to the index j at which both s1[i] and s2[j] are same, i.e., both are in lcs. It
+            # is possible that at the start only both are same, and that's fine; we would not add any
+            # character from s2 then.
             if str1[i] in lcs:
                 while j < len(str2) and str2[j] != str1[i]:
-                    scs += str2[j]
+                    shortest_common_supersequence += str2[j]
                     j += 1
-                scs += str1[i]
+
+                # at this point j is at an index such that s2[j] = s1[i] and they are in lcs. So we will
+                # add this character only once (either from s1 or s2, your choice), but then increment
+                # both i and j.
+                shortest_common_supersequence += str1[i]
                 i += 1
                 j += 1
             else:
+                # else case would surely be that s1[i] is not in lcs but s2[j] is in lcs. In that case,
+                # continuously add from s1 until s1[i] = s2[j] which are both in lcs.
                 while i < len(str1) and str1[i] != str2[j]:
-                    scs += str1[i]
+                    shortest_common_supersequence += str1[i]
                     i += 1
-                scs += str2[j]
+
+                # at this point i is at an index such that s2[j] = s1[i] and they are in lcs. So we will
+                # add this character only once (either from s1 or s2, your choice), but then increment
+                # both i and j.
+                shortest_common_supersequence += str2[j]
                 j += 1
                 i += 1
 
+    # once you're out of bounds in any of the string, check if characters are left from s1 or not, if yes,
+    # then add them.
     while i < len(str1):
-        scs += str1[i]
+        shortest_common_supersequence += str1[i]
         i += 1
 
+    # similar check for s2 is needed as well.
     while j < len(str2):
-        scs += str2[j]
+        shortest_common_supersequence += str2[j]
         j += 1
 
-    return scs
+    # finally return the shortest common subsequence.
+    return shortest_common_supersequence
 
 
 print(get_shortest_common_subsequence("brute", "groot"))
