@@ -1,19 +1,13 @@
 def solve_num_distinct_subsequences(string, i, lookup, j):
-    # if at any point there is nothing to left in string to compare, return 0.
+    # if `j` became negative, this means we have looked for everything in lookup, and so we can
+    # say that we have found an occurrence of lookup in string, return 1, irrespective of what
+    # `i` is right now.
+    if j < 0:
+        return 1
+
+    # if at any point there is nothing to left in string to compare (and j > 0), return 0.
     if i < 0:
         return 0
-
-    # if you are at 0th index of lookup string, you must be fixed on it and continuously check
-    # for characters in `string` and add up 1 as and when match is completed.
-    if j == 0:
-        # if the ith index character in string matches with first character of lookup string,
-        # add 1, but stay on same `j` index and look for lower indices in string. Basically,
-        # here we are trying to find the count of distinct subsequences which start with
-        # character lookup[0]. Else, don't add this 1, and simply do the same.
-        if string[i] == lookup[0]:
-            return 1 + solve_num_distinct_subsequences(string, i - 1, lookup, j)
-        else:
-            return solve_num_distinct_subsequences(string, i - 1, lookup, j)
 
     # again, if the characters in both the strings match, then you've two options at this juncture:
     # 1. reduce indices of both and consider getting a match.
