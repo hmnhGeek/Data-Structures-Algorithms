@@ -65,3 +65,29 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+def get_min_cost_of_connecting_ropes(ropes):
+    if len(ropes) == 0:
+        return 0
+    if len(ropes) == 1:
+        return ropes[0]
+
+    min_heap = MinHeap()
+    for rope in ropes:
+        min_heap.insert(rope)
+
+    cost = 0
+    while not min_heap.is_empty():
+        rope1, rope2 = min_heap.pop(), min_heap.pop()
+        cost += (rope1 + rope2)
+        if not min_heap.is_empty():
+            min_heap.insert(rope1 + rope2)
+    return cost
+
+
+print(get_min_cost_of_connecting_ropes([4, 3, 2, 6]))
+print(get_min_cost_of_connecting_ropes([4, 2, 7, 6, 9]))
+print(get_min_cost_of_connecting_ropes([1, 2, 3]))
+print(get_min_cost_of_connecting_ropes([1, 2, 3, 4, 5]))
+print(get_min_cost_of_connecting_ropes([10]))
+print(get_min_cost_of_connecting_ropes([]))
