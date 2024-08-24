@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,21 +70,42 @@ class MinHeap:
 
 
 def get_min_cost_of_connecting_ropes(ropes):
+    """
+        Overall time complexity is O(n*log(n)) and space complexity is O(n) for the min heap.
+    """
+
+    # if there are no ropes, return 0 cost
     if len(ropes) == 0:
         return 0
+
+    # if there is only one rope, return the cost as the rope length
     if len(ropes) == 1:
         return ropes[0]
 
+    # initialize a min heap to solve this problem and put all the ropes into this min heap. This shall take O(n*log(n))
+    # time and O(n) space.
     min_heap = MinHeap()
     for rope in ropes:
         min_heap.insert(rope)
 
+    # initialize a cost variable to keep track of the cost.
     cost = 0
+
+    # while the heap is not empty, run this algorithm. This will run for n ropes. Overall O(n*log(n)) time.
     while not min_heap.is_empty():
+        # pop two min-length ropes, in O(log(n)) time
         rope1, rope2 = min_heap.pop(), min_heap.pop()
+
+        # add the sum of their lengths to the cost
         cost += (rope1 + rope2)
+
+        # if the min heap is not yet empty, i.e., we have more ropes to connect, then add this newly formed rope back
+        # to the min heap, so that in next iteration, other ropes can be connected with this rope as well. This will
+        # take O(log(n)) time.
         if not min_heap.is_empty():
             min_heap.insert(rope1 + rope2)
+
+    # finally return the cost
     return cost
 
 
