@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -77,19 +80,36 @@ class MatrixMedianFinder:
         self.m = len(mtx[0])
 
     def find_median(self):
+        """
+            Overall time complexity is O(n*log(n)) and space complexity is O(n + n*m).
+        """
+
+        # the required term (median) in the hypothetical flattened array would be (1 + (n - 1)/2)
         required_term = 1 + (self.num_elements - 1) // 2
 
+        # insert the first column in the min heap in O(n*log(n)) time and O(n) space.
         for i in range(self.n):
             self.min_heap.insert((self.mtx[i][0], i, 0))
 
+        # count the number of terms while popping from the min heap
         counter = 0
         while not self.min_heap.is_empty():
+            # get the minimum element from the heap in O(log(n)) time.
             term, row, col = self.min_heap.pop()
+
+            # increase the counter after popping
             counter += 1
+
+            # if the term number is equal to the required term number, return term as the median
             if counter == required_term:
                 return term
+
+            # otherwise, insert the next element of the popped element from the matrix into the min heap in O(log(n))
+            # time.
             if col + 1 < self.m:
                 self.min_heap.insert((self.mtx[row][col + 1], row, col + 1))
+
+        # return None, although this should never execute.
         return None
 
 
