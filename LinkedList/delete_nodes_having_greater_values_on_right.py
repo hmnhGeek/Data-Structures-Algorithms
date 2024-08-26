@@ -43,6 +43,9 @@ class LinkedList:
         # Reverse in O(N) time.
         self.reverse()
 
+        # Please note that the head of this reversed linked list (or the tail of the original list)
+        # will never be deleted.
+
         # store -inf as max till now.
         max_data = float('-inf')
 
