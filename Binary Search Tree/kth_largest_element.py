@@ -154,3 +154,38 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+    def get_kth_largest(self, k):
+        # Overall time complexity is O(k*log(N)) and O(1) space.
+        counter = 1
+
+        # start from the leftmost node of the BST - get it in O(H) time and O(1) space.
+        curr = self.get_leftmost_leaf(self.root)
+
+        # This loop will run k times.
+        while counter != k:
+            # This will run for O(H) = O(log(N)) time.
+            curr = self.get_successor(curr)
+            counter += 1
+        return curr.data if curr else None
+
+
+def example1():
+    tree = BinarySearchTree()
+    tree.insert(2)
+    tree.insert(4)
+    tree.insert(9)
+    print(tree.get_kth_largest(2))
+    print(tree.get_kth_largest(3))
+
+
+def example2():
+    tree = BinarySearchTree()
+    tree.insert(9)
+    tree.insert(10)
+    print(tree.get_kth_largest(10))
+    print(tree.get_kth_largest(1))
+    print(tree.get_kth_largest(2))
+
+
+example1()
+example2()
