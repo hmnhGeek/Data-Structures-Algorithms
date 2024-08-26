@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/minimum-characters-added-front-make-string-palindrome/
+# Solution - https://www.youtube.com/watch?v=zL0O6Q6kEAQ&pp=ygUtbWluaW11bSBjaGFyYWN0ZXJzIHRvIG1ha2Ugc3RyaW5nIHBhbGluZHJvbWUg
+
+
 def find_min_chars_to_make_palindrome(string):
     # Time complexity is O(N) and space complexity is O(1)
 
