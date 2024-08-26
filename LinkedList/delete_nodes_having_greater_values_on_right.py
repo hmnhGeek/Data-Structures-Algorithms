@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/delete-nodes-having-greater-value-on-right/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -18,6 +21,7 @@ class LinkedList:
             self.tail = node
 
     def reverse(self):
+        # Standard reverse function in O(N) time and O(1) space.
         curr = self.head
         prev = None
         while curr is not None:
@@ -28,23 +32,45 @@ class LinkedList:
         self.head, self.tail = self.tail, self.head
 
     def flatten(self):
+        """
+            The idea is to reverse the linked list first and then iterate on it in such a way
+            that at any node, if it's data is less than max till now, delete this node, else
+            keep moving.
+
+            This will take O(3N) time and O(1) space.
+        """
+
+        # Reverse in O(N) time.
         self.reverse()
-        max_node = float('-inf')
+
+        # store -inf as max till now.
+        max_data = float('-inf')
+
+        # start iterating on the reversed list
         prev, curr = None, self.head
         while curr is not None:
-            if curr.data < max_node:
+            # if the current node's data is less than the max till now, then we must delete the
+            # current node. Point prev's next to curr's next and if the curr node that is being
+            # deleted is a tail node, then update the tail to prev.
+            if curr.data < max_data:
                 if prev is not None:
                     prev.next = curr.next
                 if curr == self.tail:
                     self.tail = prev
-                curr = curr.next
-            elif max_node < curr.data:
-                max_node = curr.data
+
+            # else if we get a new maximum value, then update that value and simply update prev to
+            # curr node.
+            elif max_data < curr.data:
+                max_data = curr.data
                 prev = curr
-                curr = curr.next
             else:
+                # if the max value and current node's data is same, simply move ahead
                 prev = curr
-                curr = curr.next
+
+            # move to next curr
+            curr = curr.next
+
+        # finally reverse the list again in O(N).
         self.reverse()
 
     def show(self):
