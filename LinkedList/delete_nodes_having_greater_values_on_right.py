@@ -55,49 +55,24 @@ class LinkedList:
         print()
 
 
-l = LinkedList()
-for i in [12, 15, 10, 11, 5, 6, 2, 3]:
-    l.push(i)
-l.show()
-l.flatten()
-l.show()
+def test(example_list):
+    l = LinkedList()
+    for i in example_list:
+        l.push(i)
+    l.show()
+    l.flatten()
+    l.show()
+    print()
 
 
-l1 = LinkedList()
-for i in [10, 20, 30, 40, 50, 60]:
-    l1.push(i)
-l1.show()
-l1.flatten()
-l1.show()
+test([12, 15, 10, 11, 5, 6, 2, 3])
 
+test([10, 20, 30, 40, 50, 60])
 
-l2 = LinkedList()
-for i in [8, 7, 8, 4, 5, 6, 2, 1, -1]:
-    l2.push(i)
-l2.show()
-l2.flatten()
-l2.show()
+test([8, 7, 8, 4, 5, 6, 2, 1, -1])
 
+test([6, 5, 3, 2, 1, -1])
 
-l3 = LinkedList()
-for i in [6, 5, 3, 2, 1, -1]:
-    l3.push(i)
-l3.show()
-l3.flatten()
-l3.show()
+test([10, 8, 7, 12, 5, -1])
 
-
-l4 = LinkedList()
-for i in [10, 8, 7, 12, 5, -1]:
-    l4.push(i)
-l4.show()
-l4.flatten()
-l4.show()
-
-
-l5 = LinkedList()
-for i in [5, 6, 7, 8, 10, 12, -1]:
-    l5.push(i)
-l5.show()
-l5.flatten()
-l5.show()
+test([5, 6, 7, 8, 10, 12, -1])
