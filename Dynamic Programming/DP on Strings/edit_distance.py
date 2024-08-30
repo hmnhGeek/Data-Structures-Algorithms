@@ -1,7 +1,14 @@
 def recursive():
     def solve_edit_distance(s1, i, s2, j):
+        # Time complexity is exponential and space complexity is O(n + m).
+
+        # if s1 is exhausted, then we simply need insert operations `left over characters of s2` times,
+        # which is `j + 1`.
         if i < 0:
             return j + 1
+
+        # if s2 is exhausted, we need to simply delete from s1 to come to s2 and that would be `leftover
+        # characters from s1`, i.e., i + 1.
         if j < 0:
             return i + 1
 
