@@ -80,4 +80,8 @@ def video_solution():
     print(best_time([7, 6, 4, 3, 1]))
 
 
+print("My Solution")
+my_solution()
+print()
+print("Video Solution")
 video_solution()
