@@ -2,6 +2,13 @@
 # Solution - https://www.youtube.com/watch?v=ZmlQ3vgAOMo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=36
 
 
+def check_all_stars(string, index):
+    for i in range(1, index + 1):
+        if string[i - 1] != "*":
+            return False
+    return True
+
+
 def recursive():
     def solve_wildcard(s1, i, s2, j):
         # Time complexity is exponential and space complexity is O(m + n).
@@ -14,7 +21,7 @@ def recursive():
         # if string 2 got exhausted but not string 1, check now if string 1 has all "*"s because only *s can
         # be matched with a blank string.
         if j < 0:
-            return all(i == "*" for i in s1)
+            return all(k == "*" for k in s1[:i+1])
 
         # if s1[i] matches with s2[j] or s1[i] is a "?", then we have found a match, move both i and j below.
         if s1[i] == s2[j] or s1[i] == "?":
@@ -65,7 +72,7 @@ def memoized():
         # if string 2 got exhausted but not string 1, check now if string 1 has all "*"s because only *s can
         # be matched with a blank string.
         if j == 0:
-            return all(i == "*" for i in s1)
+            return check_all_stars(s1, i)
 
         if dp[i][j] is not None:
             return dp[i][j]
@@ -123,8 +130,8 @@ def tabulation():
 
         # for all the indices in string1 and blank string 2 (j = 0); check if the slices till :i in string 1 are all *s
         # or not. Refer base case in memoization and recursive solutions.
-        for i in dp:
-            dp[i][0] = all(k == "*" for k in s1[:i])
+        for i in range(1, n + 1):
+            dp[i][0] = check_all_stars(s1, i)
 
         for i in range(1, n + 1):
             for j in range(1, m + 1):
@@ -178,7 +185,7 @@ def space_optimized():
             curr = {j: False for j in range(m + 1)}
             # for all the indices in string1 and blank string 2 (j = 0); check if the slices till :i in string 1 are
             # all *s or not. Refer base case in memoization and recursive solutions.
-            curr[0] = all(k == "*" for k in s1[:i])
+            curr[0] = check_all_stars(s1, i)
 
             for j in range(1, m + 1):
                 # if s1[i] matches with s2[j] or s1[i] is a "?", then we have found a match, move both i and j below.
