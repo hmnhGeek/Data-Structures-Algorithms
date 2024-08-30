@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/
+# Solution - https://www.youtube.com/watch?v=nGJmxkUJQGs&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=39
+
+
 def recursive():
     def get_max_profit(prices, i, n, can_buy):
         # if you flow outside the list, there is no profit to be made.
@@ -163,10 +167,17 @@ def space_optimized():
     print(buy_and_sell([1, 2, 3, 4, 5]))
 
 
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
+
 print()
+print("Space Optimized Solution")
 space_optimized()
