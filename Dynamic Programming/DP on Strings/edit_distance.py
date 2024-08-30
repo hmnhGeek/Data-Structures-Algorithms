@@ -36,6 +36,9 @@ def recursive():
     print(edit_distance("horse", "ros"))
     print(edit_distance("abc", "dc"))
     print(edit_distance("whgtdwhgtdg", "aswcfg"))
+    print(edit_distance("geek", "gesek"))
+    print(edit_distance("cat", "cut"))
+    print(edit_distance("sunday", "saturday"))
 
 
 recursive()
