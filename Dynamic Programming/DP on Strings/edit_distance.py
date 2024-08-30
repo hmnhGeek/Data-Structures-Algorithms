@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/edit-distance_630420?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=fJaKO8FbDdo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=34
+
+
 def recursive():
     def solve_edit_distance(s1, i, s2, j):
         # Time complexity is exponential and space complexity is O(n + m).
@@ -177,8 +181,73 @@ def tabulation():
     print(edit_distance("sunday", "saturday"))
 
 
+def space_optimized():
+    def edit_distance(s1, s2):
+        """
+            Time complexity will be O(m*n) and space would be O(m).
+        """
+
+        # whenever we have i < 0 or j < 0 kind of base conditions in recursion, try to bring indexing scheme to 1-based
+        # indexing scheme. We don't need the recursive solution above, but just for reference, you can consider the
+        # code above to be utilized here. In this recursion, we have taken 1-based indexing. Just ensure that when you
+        # refer to any index in strings s1 or s2, subtract 1 from it to bring back to 0-based indexing scheme.
+
+        n = len(s1)
+        m = len(s2)
+
+        # note that i and j will now run till n and m.
+        prev = {j: 0 for j in range(m + 1)}
+
+        # index 0 of s1 (refer recursive solution in tabulation)
+        for j in prev:
+            prev[j] = j
+
+        # note that i and j will now run till n and m.
+        for i in range(1, n + 1):
+            curr = {j: 0 for j in range(m + 1)}
+
+            # for every row, the 1st column will be equal to i (refer base case j == 0 in recursion of tabulation).
+            curr[0] = i
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    curr[j] = prev[j - 1]
+                else:
+                    # insert post `i` index in s1; thus an insert operation in s1 and so, i remains the same
+                    # but `j` will reduce because we have made a match. `i` is still on the non-matched character.
+                    insert = 1 + curr[j - 1]
+
+                    # we can also delete the index `i` and move to `i - 1` and try to match it with `j`
+                    delete = 1 + prev[j]
+
+                    # we can replace character at index `i` to match it with `j` and then reduce both.
+                    replace = 1 + prev[j - 1]
+
+                    # out of all three done above, we will return minimum operations count.
+                    curr[j] = min(insert, delete, replace)
+            prev = curr
+
+        # answer always lie on the last index of the dp array
+        return prev[m]
+
+    print(edit_distance("horse", "ros"))
+    print(edit_distance("abc", "dc"))
+    print(edit_distance("whgtdwhgtdg", "aswcfg"))
+    print(edit_distance("geek", "gesek"))
+    print(edit_distance("cat", "cut"))
+    print(edit_distance("sunday", "saturday"))
+
+
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
+
+print()
+print("Space Optimized Solution")
+space_optimized()
