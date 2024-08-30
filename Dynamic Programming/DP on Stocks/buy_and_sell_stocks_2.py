@@ -97,6 +97,7 @@ def tabulation():
         num_days = len(stock_prices_day_wise)
         dp = {i: {True: 0, False: 0} for i in range(num_days + 1)}
 
+        # notice the direction of tabulation code.
         for i in range(num_days - 1, -1, -1):
             for can_buy in dp[i]:
                 # if there is a possibility to buy, then we have 2 cases: 1. you buy and move on next index with
@@ -123,8 +124,49 @@ def tabulation():
     print(buy_and_sell([1, 2, 3, 4, 5]))
 
 
+def space_optimized():
+    def buy_and_sell(stock_prices_day_wise):
+        # Overall time complexity is O(n) and space is O(1)
+
+        num_days = len(stock_prices_day_wise)
+
+        # instead of using prev as name, use name `nxt` denoting next because this time our tabulation direction is
+        # from n -> 0.
+        nxt = {True: 0, False: 0}
+
+        # notice the direction of tabulation code.
+        for i in range(num_days - 1, -1, -1):
+            curr = {True: 0, False: 0}
+            for can_buy in [True, False]:
+                # if there is a possibility to buy, then we have 2 cases: 1. you buy and move on next index with
+                # can_buy set to False as you cannot buy further until you sell the current one. 2. You don't do
+                # anything, simply move to next day with same possibility of can_buy set as True. Finally,
+                # return the max profit out of these 2 cases.
+                if can_buy:
+                    curr[can_buy] = max(-stock_prices_day_wise[i] + nxt[False], 0 + nxt[True])
+
+                # if there is a possibility to not buy, then we have 2 cases:
+                # 1. you sell and move on next index with can_buy set to True as you can now buy on upcoming days.
+                # 2. You don't do anything, simply move to next day with same possibility of can_buy set as False.
+                # Finally, return the max profit out of these 2 cases.
+                else:
+                    curr[can_buy] = max(stock_prices_day_wise[i] + nxt[True], 0 + nxt[False])
+            nxt = curr
+
+        # on the 0th day, denoted by nxt, you have the option to buy, and that's why passing it as True. This variable
+        # is not `should_buy` but `can_buy`; basically, it just denotes a possibility. Thus, no need to
+        # take max(can_buy = False, can_buy = True).
+        return nxt[True]
+
+    print(buy_and_sell([1, 2, 3, 4, 5, 6, 7]))
+    print(buy_and_sell([7, 6, 5, 4, 3, 2, 1]))
+    print(buy_and_sell([1, 2, 3, 4, 5]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
