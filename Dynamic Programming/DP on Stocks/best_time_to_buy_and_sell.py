@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+# Solution - https://www.youtube.com/watch?v=excAOvwF_Wk&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=36
+
+
 def get_right_maximums(prices):
     # Overall time and space complexity is O(n) and O(n) respectively.
 
