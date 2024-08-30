@@ -2,6 +2,7 @@
 # Solution - https://www.youtube.com/watch?v=ZmlQ3vgAOMo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=36
 
 
+# function to check if a slice of string with 1-based indexing contains all *s or not.
 def check_all_stars(string, index):
     for i in range(1, index + 1):
         if string[i - 1] != "*":
