@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/buy-and-sell-stock_1071012?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=-uQGzhYj8BQ&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=38
+
+
 def recursive():
     def solve_for_profit(stock_prices, day, total_days, can_buy, count_transactions):
         # if at most 2 transactions have been completed, there can't be any more profit, return 0.
@@ -213,10 +217,17 @@ def space_optimized():
     print(buy_sell_max_2_times([3, 8, 2, 1, 6, 9, 2]))
 
 
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
+
 print()
+print("Space Optimized Solution")
 space_optimized()
