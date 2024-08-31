@@ -81,8 +81,34 @@ def tabulation():
     print(sell_stock([5, 4, 3]))
 
 
+def space_optimized():
+    def sell_stock(stock_prices):
+        # Time complexity is O(2n) and space is O(4) = O(1).
+        num_days = len(stock_prices)
+        nxt = {True: 0, False: 0}
+        nxt2nxt = {True: 0, False: 0}
+
+        for day in range(num_days - 1, -1, -1):
+            curr = {True: 0, False: 0}
+            for can_buy in [True, False]:
+                if can_buy:
+                    curr[can_buy] = max(-stock_prices[day] + nxt[False], nxt[True])
+                else:
+                    # in case of selling, use day + 2 (one day consumed for cooldown)
+                    curr[can_buy] = max(stock_prices[day] + nxt2nxt[True], nxt[False])
+            nxt2nxt = nxt
+            nxt = curr
+        return nxt[True]
+
+    print(sell_stock([4, 9, 0, 4, 10]))
+    print(sell_stock([1, 2, 3, 4]))
+    print(sell_stock([5, 4, 3]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
