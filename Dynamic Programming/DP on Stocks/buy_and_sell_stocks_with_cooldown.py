@@ -51,10 +51,30 @@ def memoized():
         return dp[day][can_buy]
 
     def sell_stock(stock_prices):
-        # Time complexity is O(n) and space is O(2n).
+        # Time complexity is O(2n) and space is O(3n).
         num_days = len(stock_prices)
-        dp = {i: {True: None, False: None} for i in range(num_days)}
+        dp = {i: {True: None, False: None} for i in range(num_days + 2)}
         return solve(stock_prices, 0, num_days, True, dp)
+
+    print(sell_stock([4, 9, 0, 4, 10]))
+    print(sell_stock([1, 2, 3, 4]))
+    print(sell_stock([5, 4, 3]))
+
+
+def tabulation():
+    def sell_stock(stock_prices):
+        # Time complexity is O(2n) and space is O(2n).
+        num_days = len(stock_prices)
+        dp = {i: {True: 0, False: 0} for i in range(num_days + 2)}
+
+        for day in range(num_days - 1, -1, -1):
+            for can_buy in [True, False]:
+                if can_buy:
+                    dp[day][can_buy] = max(-stock_prices[day] + dp[day + 1][False], dp[day + 1][True])
+                else:
+                    # in case of selling, use day + 2 (one day consumed for cooldown)
+                    dp[day][can_buy] = max(stock_prices[day] + dp[day + 2][True], dp[day + 1][False])
+        return dp[0][True]
 
     print(sell_stock([4, 9, 0, 4, 10]))
     print(sell_stock([1, 2, 3, 4]))
@@ -64,3 +84,5 @@ def memoized():
 recursive()
 print()
 memoized()
+print()
+tabulation()
