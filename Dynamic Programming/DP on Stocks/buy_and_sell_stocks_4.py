@@ -1,3 +1,9 @@
+# Problem link - https://www.naukri.com/code360/problems/best-time-to-buy-and-sell-stock_1080698?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=IV1dHbk5CDc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=40
+
+# Please refer to the buy_and_sell_stocks_3.py file for comments. This problem is same as that one.
+
+
 def recursive():
     def get_max_profit(stock_prices, day, total_days, can_buy, count_transactions, max_allowed_transactions):
         if count_transactions == max_allowed_transactions:
@@ -293,10 +299,17 @@ def space_optimized():
     )
 
 
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
+
 print()
+print("Space Optimized Solution")
 space_optimized()
