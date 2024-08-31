@@ -27,4 +27,40 @@ def recursive():
     print(sell_stock([5, 4, 3]))
 
 
+def memoized():
+    def solve(stock_prices, day, num_days, can_buy, dp):
+        # since we are using day + 2 in recursion, if we sell at last day, we will exceed num_days;
+        # hence >=.
+        if day >= num_days:
+            return 0
+
+        if dp[day][can_buy] is not None:
+            return dp[day][can_buy]
+
+        if can_buy:
+            dp[day][can_buy] = max(
+                -stock_prices[day] + solve(stock_prices, day + 1, num_days, False, dp),
+                solve(stock_prices, day + 1, num_days, True, dp)
+            )
+        else:
+            # in case of selling, use day + 2 (one day consumed for cooldown)
+            dp[day][can_buy] = max(
+                stock_prices[day] + solve(stock_prices, day + 2, num_days, True, dp),
+                solve(stock_prices, day + 1, num_days, False, dp)
+            )
+        return dp[day][can_buy]
+
+    def sell_stock(stock_prices):
+        # Time complexity is O(n) and space is O(2n).
+        num_days = len(stock_prices)
+        dp = {i: {True: None, False: None} for i in range(num_days)}
+        return solve(stock_prices, 0, num_days, True, dp)
+
+    print(sell_stock([4, 9, 0, 4, 10]))
+    print(sell_stock([1, 2, 3, 4]))
+    print(sell_stock([5, 4, 3]))
+
+
 recursive()
+print()
+memoized()
