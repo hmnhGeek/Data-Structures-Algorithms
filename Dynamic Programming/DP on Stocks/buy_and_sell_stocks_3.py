@@ -163,8 +163,60 @@ def tabulation():
     print(buy_sell_max_2_times([3, 8, 2, 1, 6, 9, 2]))
 
 
+def space_optimized():
+    def buy_sell_max_2_times(stock_prices):
+        # Time complexity of the recursive solution is O(n*2*3) and space complexity is O(2*3) = O(1). Remember that the
+        # transaction limit is capped at 2. Had it been variable, then the time complexity would not be O(n).
+
+        # get the number of days that we have the data for.
+        num_days = len(stock_prices)
+
+        # initialize a 2D `next` array for this memoized solution. We are passing 3 for `j` because
+        # count_transactions can be 0, 1, 2. Also, this `nxt` array denotes day == num_days base case.
+        nxt = {True: {j: 0 for j in range(3)}, False: {j: 0 for j in range(3)}}
+
+        # start from the last day (opposite of memoization solution direction).
+        for day in range(num_days - 1, -1, -1):
+            # create similar array for the current day.
+            curr = {True: {j: 0 for j in range(3)}, False: {j: 0 for j in range(3)}}
+            for can_buy in [True, False]:
+                # now, note that we don't want to start count_transactions from 2 because for 2 we would have to refer
+                # key 3 (which does not exist). Anyway, for all count_transactions = 2, the value is already 0, and
+                # this is one of the other base cases. And so, count_transactions + 1 = 1 + 1 = 2 won't create any
+                # issues.
+                for count_transactions in range(1, -1, -1):
+                    # if there is a possibility to buy, then either buy it on this day or don't buy it. However,
+                    # ensure that you don't increase the transaction count; transaction count increases by 1 only
+                    # when a stock is sold.
+                    if can_buy:
+                        curr[can_buy][count_transactions] = max(
+                            -stock_prices[day] + nxt[False][count_transactions], nxt[True][count_transactions]
+                        )
+                    # if you cannot buy, try selling the stock. Remember, if you sell the stock, ensure to increase
+                    # the transaction count by 1, else, don't sell and continue to the next day with same transaction
+                    # count.
+                    else:
+                        curr[can_buy][count_transactions] = max(
+                            stock_prices[day] + nxt[True][count_transactions + 1],
+                            nxt[False][count_transactions]
+                        )
+            nxt = curr
+
+        # get the maximum profit by setting the possibility to buy on 0th day as True, with 0 transactions done till
+        # now.
+        return nxt[True][0]
+
+    print(buy_sell_max_2_times([3, 3, 5, 0, 3, 1, 4]))
+    print(buy_sell_max_2_times([1, 3, 1, 2, 4, 8]))
+    print(buy_sell_max_2_times([5, 4, 3, 2, 1]))
+    print(buy_sell_max_2_times([1, 2, 3, 4, 5]))
+    print(buy_sell_max_2_times([3, 8, 2, 1, 6, 9, 2]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
