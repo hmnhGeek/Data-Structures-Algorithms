@@ -224,8 +224,79 @@ def tabulation():
     )
 
 
+def space_optimized():
+    def get_maximum_profit_by_selling_stocks(stock_prices, max_allowed_transactions):
+        # Time complexity is O(6n) and space complexity is O(6) = O(1).
+        num_days = len(stock_prices)
+        nxt = {True: {j: 0 for j in range(max_allowed_transactions + 1)}, False: {j: 0 for j in range(max_allowed_transactions + 1)}}
+
+        for day in range(num_days - 1, -1, -1):
+            curr = {True: {j: 0 for j in range(max_allowed_transactions + 1)}, False: {j: 0 for j in range(max_allowed_transactions + 1)}}
+            for can_buy in [True, False]:
+                for count_transactions in range(max_allowed_transactions - 1, -1, -1):
+                    if can_buy:
+                        curr[can_buy][count_transactions] = max(
+                            -stock_prices[day] + nxt[False][count_transactions],
+                            nxt[True][count_transactions]
+                        )
+                    else:
+                        curr[can_buy][count_transactions] = max(
+                            stock_prices[day] + nxt[True][count_transactions + 1],
+                            nxt[False][count_transactions]
+                        )
+            nxt = curr
+
+        return nxt[True][0]
+
+    print(
+        get_maximum_profit_by_selling_stocks([3, 2, 6, 5, 0, 3], 2)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks([8, 5, 1, 3, 10], 2)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks([10, 8, 6, 2], 2)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks([2, 6, 5, 2], 0)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks([1, 2, 3, 5], 2)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks(
+            [2, 4, 1], 2
+        )
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks(
+            [12, 14, 17, 10, 14, 13, 12, 15], 3
+        )
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks(
+            [100, 30, 15, 10, 8, 25, 80], 3
+        )
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks(
+            [90, 80, 70, 60, 50], 1
+        )
+    )
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
