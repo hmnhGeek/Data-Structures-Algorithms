@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/highway-billboards_3125969?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=IGIe46xw3YY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=40
+
+
 def recursive():
     def solve(stock_prices, day, num_days, can_buy):
         # since we are using day + 2 in recursion, if we sell at last day, we will exceed num_days;
@@ -105,10 +109,17 @@ def space_optimized():
     print(sell_stock([5, 4, 3]))
 
 
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
+
 print()
+print("Space Optimized Solution")
 space_optimized()
