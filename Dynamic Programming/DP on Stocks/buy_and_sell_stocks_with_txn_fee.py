@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/rahul-and-his-chocolates_3118974?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=k4eK-vEmnKg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=42
+
+
 def buy_and_sell(stock_prices_day_wise, transaction_fee):
     # Overall time complexity is O(n) and space is O(1)
     # The idea is to levy the transaction fee either on selling time or on buying time (both
