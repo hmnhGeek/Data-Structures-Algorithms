@@ -109,8 +109,75 @@ def memoized():
     def get_maximum_profit_by_selling_stocks(stock_prices, max_allowed_transactions):
         # Time complexity is O(6n) and space complexity is O(7n).
         num_days = len(stock_prices)
-        dp = {i: {True: {j: None for j in range(3)}, False: {j: None for j in range(3)}} for i in range(num_days)}
+        dp = {i: {True: {j: None for j in range(max_allowed_transactions + 1)}, False: {j: None for j in range(max_allowed_transactions + 1)}} for i in range(num_days)}
         return get_max_profit(stock_prices, 0, num_days, True, 0, max_allowed_transactions, dp)
+
+    print(
+        get_maximum_profit_by_selling_stocks([3, 2, 6, 5, 0, 3], 2)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks([8, 5, 1, 3, 10], 2)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks([10, 8, 6, 2], 2)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks([2, 6, 5, 2], 0)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks([1, 2, 3, 5], 2)
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks(
+            [2, 4, 1], 2
+        )
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks(
+            [12, 14, 17, 10, 14, 13, 12, 15], 3
+        )
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks(
+            [100, 30, 15, 10, 8, 25, 80], 3
+        )
+    )
+
+    print(
+        get_maximum_profit_by_selling_stocks(
+            [90, 80, 70, 60, 50], 1
+        )
+    )
+
+
+def tabulation():
+    def get_maximum_profit_by_selling_stocks(stock_prices, max_allowed_transactions):
+        # Time complexity is O(6n) and space complexity is O(6n).
+        num_days = len(stock_prices)
+        dp = {i: {True: {j: 0 for j in range(max_allowed_transactions + 1)}, False: {j: 0 for j in range(max_allowed_transactions + 1)}} for i in range(num_days + 1)}
+
+        for day in range(num_days - 1, -1, -1):
+            for can_buy in [True, False]:
+                for count_transactions in range(max_allowed_transactions - 1, -1, -1):
+                    if can_buy:
+                        dp[day][can_buy][count_transactions] = max(
+                            -stock_prices[day] + dp[day + 1][False][count_transactions],
+                            dp[day + 1][True][count_transactions]
+                        )
+                    else:
+                        dp[day][can_buy][count_transactions] = max(
+                            stock_prices[day] + dp[day + 1][True][count_transactions + 1],
+                            dp[day + 1][False][count_transactions]
+                        )
+
+        return dp[0][True][0]
 
     print(
         get_maximum_profit_by_selling_stocks([3, 2, 6, 5, 0, 3], 2)
@@ -160,3 +227,5 @@ def memoized():
 recursive()
 print()
 memoized()
+print()
+tabulation()
