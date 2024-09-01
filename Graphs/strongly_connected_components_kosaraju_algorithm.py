@@ -54,6 +54,11 @@ class Graph:
                     reversed_graph[adj_node] = [node]
                 else:
                     reversed_graph[adj_node].append(node)
+
+        for node in self.graph:
+            if node not in reversed_graph:
+                reversed_graph[node] = []
+
         return reversed_graph
 
     def _get_topological_order(self, source_node):
@@ -122,4 +127,19 @@ print(
             7: [5]
         }
     ).get_strongly_connected_components(3)
+)
+
+print(
+    Graph(
+        {
+            0: [2],
+            1: [0],
+            2: [1],
+            3: [2],
+            4: [3, 6],
+            5: [4],
+            6: [5],
+            7: [4, 6]
+        }
+    ).get_strongly_connected_components(7)
 )
