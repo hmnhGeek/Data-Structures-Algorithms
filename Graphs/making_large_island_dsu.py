@@ -106,6 +106,12 @@ def make_large_island(mtx):
                 # ensure that you clear the set for next 0-cell.
                 temp_set.clear()
 
+    # Now, there could be an edge case when the entire matrix is originally made of all 1s. In that case, max_size will
+    # be -inf and will never be modified. In such case, we must update the max size by looping on the matrix once again.
+    # This will again take O(n^2) time.
+    for node in range(n**2):
+        max_size = max(max_size, disjoint_set.sizes[disjoint_set.find_ultimate_parent(node)])
+
     # return the maximum size that was obtained.
     return max_size
 
