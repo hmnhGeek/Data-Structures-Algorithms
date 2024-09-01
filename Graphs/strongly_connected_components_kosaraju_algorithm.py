@@ -47,20 +47,11 @@ class Graph:
         stack.push(node)
 
     def _reverse(self):
-        # Reversing the graph will take O(V + E) time and O(V + E) space for storing this graph separately.
-        reversed_graph = {}
+        # # Reversing the graph will take O(V + E) time and O(V + E) space for storing this graph separately.
+        reversed_graph = {i: [] for i in self.graph}
         for node in self.graph:
             for adj_node in self.graph[node]:
-                if adj_node not in reversed_graph:
-                    reversed_graph[adj_node] = [node]
-                else:
-                    reversed_graph[adj_node].append(node)
-
-        # it could be possible that certain nodes are missing in the reversed graph, add them from the original graph.
-        for node in self.graph:
-            if node not in reversed_graph:
-                reversed_graph[node] = []
-
+                reversed_graph[adj_node].append(node)
         return reversed_graph
 
     def _get_topological_order(self, source_node):
@@ -145,22 +136,22 @@ print(
             6: [7],
             7: [5]
         }
-    ).get_strongly_connected_components(3)
+    ).get_strongly_connected_components(1)
 )
 
 print(
     Graph(
         {
-            0: [2],
-            1: [0],
-            2: [1],
-            3: [2],
-            4: [3, 6],
-            5: [4],
-            6: [5],
-            7: [4, 6]
+            0: [1],
+            1: [2],
+            2: [0, 3],
+            3: [4],
+            4: [5, 7],
+            5: [6],
+            6: [4, 7],
+            7: []
         }
-    ).get_strongly_connected_components(7)
+    ).get_strongly_connected_components(0)
 )
 
 print(
