@@ -162,3 +162,30 @@ print(
         }
     ).get_strongly_connected_components(7)
 )
+
+print(
+    Graph(
+        {
+            0: [1],
+            1: [2, 4],
+            2: [3],
+            3: [2],
+            4: [0]
+        }
+    ).get_strongly_connected_components(0)
+)
+
+print(
+    Graph(
+        {
+            1: [2],
+            2: [3, 5, 6],
+            3: [4, 7],
+            4: [3, 8],
+            5: [1, 6],
+            6: [7],
+            7: [6],
+            8: [4, 7]
+        }
+    ).get_strongly_connected_components(1)
+)
