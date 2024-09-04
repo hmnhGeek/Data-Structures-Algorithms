@@ -30,9 +30,9 @@ class Graph:
                 # update the min time of this node by comparing it with the min time of adjacent node.
                 min_time[node] = min(min_time[node], min_time[adj_node])
 
-                # if the min time of adjacent node is more than the min time of this node, the edge between
+                # if the min time of adjacent node is more than the in time of this node, the edge between
                 # them must be a bridge.
-                if min_time[adj_node] > min_time[node]:
+                if min_time[adj_node] > in_time[node]:
                     bridges.append((node, adj_node))
             else:
                 # else, if the adjacent node is already visited, no need of a DFS; simply update the min time
