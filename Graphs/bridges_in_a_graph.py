@@ -1,3 +1,8 @@
+# Problem link - https://leetcode.com/problems/critical-connections-in-a-network/
+# Solution - https://www.youtube.com/watch?v=qrAub5z8FeA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=55
+# Better explanation - https://www.youtube.com/watch?v=CsGP_s_3GWg
+
+
 class Graph:
     def __init__(self, adjacency_list):
         self.graph = adjacency_list
