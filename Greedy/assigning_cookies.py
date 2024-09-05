@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/assign-cookies/
+# Solution - https://www.youtube.com/watch?v=DIX2p7vb9co&list=PLgUwDviBIf0rF1w2Koyh78zafB0cz7tea&index=1
+
+
 def get_num_assigned_cookies(cookie_sizes, greed_factors):
     """
         Overall time complexity is O(nlog(n) + mlog(m) + n + m) and overall space complexity is O(1).
