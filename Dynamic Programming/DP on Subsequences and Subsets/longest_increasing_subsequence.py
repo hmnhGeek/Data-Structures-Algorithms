@@ -168,6 +168,7 @@ def tabulation():
         for i in dp:
             dp[i][None] = 0
 
+        # Base case
         for j in dp[0]:
             dp[0][j] = 1 if arr[0] < get_value(arr, j) else 0
 
@@ -217,10 +218,81 @@ def tabulation():
     print(get_length_of_longest_increasing_subsequence([0, 1, 0, 3, 2, 3]))
 
 
+def space_optimized():
+    def get_length_of_longest_increasing_subsequence(arr):
+        # Time complexity is O(n^2) and space complexity is O(n + 1).
+
+        n = len(arr)
+
+        # create a prev array for 0th index
+        prev = {j: 0 for j in range(n)}
+        # introduce a None key for 0th index.
+        prev[None] = 0
+
+        # Base case
+        for j in prev:
+            prev[j] = 1 if arr[0] < get_value(arr, j) else 0
+
+        for index in range(1, n):
+            curr = {j: 0 for j in range(n)}
+            curr[None] = 0
+
+            # For every index, specifically do a `None` prev_index code run
+            # now assume that the left recursion is not possible.
+            left = float('-inf')
+
+            # check if the value at current index is less than the max value. If yes, then
+            # this index value can be taken into consideration.
+            if arr[index] < get_value(arr, None):
+                # take this index value and increase the length. Also, update the max value
+                # with the current index value.
+                left = 1 + prev[index]
+
+            # if we don't pick the current index in the sequence, then go to next index, with
+            # same length and same max value.
+            right = prev[None]
+            curr[None] = max(left, right)
+
+            # since prev_index = None is done, now populate for j = 0 to n - 1.
+            for prev_index in range(n):
+                # now assume that the left recursion is not possible.
+                left = float('-inf')
+
+                # check if the value at current index is less than the max value. If yes, then
+                # this index value can be taken into consideration.
+                if arr[index] < get_value(arr, prev_index):
+                    # take this index value and increase the length. Also, update the max value
+                    # with the current index value.
+                    left = 1 + prev[index]
+
+                # if we don't pick the current index in the sequence, then go to next index, with
+                # same length and same max value.
+                right = prev[prev_index]
+                curr[prev_index] = max(left, right)
+            prev = curr
+
+        # assuming that you've got current max value as infinite start with last index
+        # with the longest increasing subsequence length of 0.
+        return prev[None]
+
+    print(get_length_of_longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18]))
+    print(get_length_of_longest_increasing_subsequence([5, 4, 11, 1, 16, 8]))
+    print(get_length_of_longest_increasing_subsequence([1, 2, 2]))
+    print(get_length_of_longest_increasing_subsequence([7, 7, 7, 7, 7, 7, 7]))
+    print(get_length_of_longest_increasing_subsequence([0, 1, 0, 3, 2, 3]))
+
+
+print("Recursive Solution")
 recursive()
+
 print()
-recursive1()
-print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
+
+print()
+print("Space Optimized Solution")
+space_optimized()
