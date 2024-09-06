@@ -1,31 +1,37 @@
 def get_value(prev):
     if len(prev) == 0:
         return float('inf')
-    return prev[-1]
+    return prev[0]
 
 
-def get_all_lis(arr, index, prev, sequences):
+def get_all_lis(arr, index, prev):
     if index == 0:
         if arr[0] < get_value(prev):
-            sequences.append(prev + [arr[index]])
-        sequences.append(prev)
+            # sequences.append(prev + [arr[index]])
+            return [arr[index]] + prev
+        # sequences.append(prev)
         return prev
 
     left = []
     if arr[index] < get_value(prev):
-        left = get_all_lis(arr, index - 1, prev + [arr[index]], sequences)
-    right = get_all_lis(arr, index - 1, prev, sequences)
+        left = get_all_lis(arr, index - 1, [arr[index]] + prev)
+    right = get_all_lis(arr, index - 1, prev)
     longest = max(left, right, key=len)
-    sequences.append(longest)
+    # sequences.append(longest)
     return longest
 
 
 def get_longest_increasing_subsequences(arr):
     n = len(arr)
-    lis = []
-    get_all_lis(arr, n - 1, [], lis)
-    result = max(lis, key=len)
-    return result[-1:-len(result) - 1:-1]
+    longest_increasing_subsequences = []
+
+    # for each recursion stack, pass prev = [].
+    longest_increasing_subsequence = get_all_lis(arr, n - 1, [])
+
+    # get
+    # result = max(longest_increasing_subsequences, key=len)
+    # return result[-1:-len(result) - 1:-1]
+    return longest_increasing_subsequence
 
 
 print(get_longest_increasing_subsequences([10, 9, 2, 5, 3, 7, 101, 18]))
