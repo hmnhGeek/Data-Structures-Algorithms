@@ -27,6 +27,7 @@ def get_all_lis(arr, index, prev):
 
 
 def get_longest_increasing_subsequences(arr):
+    # Time complexity is O(2^n) and space complexity is O(n) for the longest increasing subsequence.
     n = len(arr)
     # for each recursion stack, pass prev = [].
     return get_all_lis(arr, n - 1, [])
