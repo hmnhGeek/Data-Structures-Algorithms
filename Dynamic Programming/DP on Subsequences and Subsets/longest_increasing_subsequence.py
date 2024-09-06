@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/longest-increasing-subsequence/description/
+# Solution - https://www.youtube.com/watch?v=ekcwMsSIzVc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=42
+
+
 def recursive():
     def solve(arr, index, length, max_val):
         # Time complexity is O(2^n) and space complexity is O(n).
