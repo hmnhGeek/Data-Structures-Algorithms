@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/construction-of-longest-increasing-subsequence-using-dynamic-programming/
+# Solution - https://www.youtube.com/watch?v=IFfYfonAFGc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=43
+
+
 def get_front_value_from(prev):
     if len(prev) == 0:
         return float('inf')
