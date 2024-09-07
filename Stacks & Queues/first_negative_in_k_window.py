@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -39,19 +42,37 @@ class Queue:
 
 
 def first_negative(arr, k):
+    # Overall time complexity is O(n - k) and space complexity is O(n - k + 1 + k) {+k for queue}.
+    # And n - k + 1 for the result array - O(n).
+
     n = len(arr)
     result = []
+
+    # define a blank queue
     queue = Queue()
+    # push negative integers from first window into the queue.
     for i in range(k):
         if arr[i] < 0:
             queue.enqueue(arr[i])
 
+    # now iterate on all the windows
     for i in range(n - k + 1):
+        # append the front element from the queue in O(1) time.
         result.append(0 if queue.front() is None else queue.front())
+
+        # for the next iteration, if the starting element of current window is negative,
+        # then basically in the next window, a negative integer is being removed, so it
+        # is not needed in the queue; pop it from the queue. This will take O(1) time.
         if arr[i] < 0:
             queue.dequeue()
+
+        # if the first element from the next window is negative, then a negative element
+        # is being pushed in to the window in next iteration; and so, push this element
+        # into the queue as well. This will take O(1) time.
         if i + k < n and arr[i + k] < 0:
             queue.enqueue(arr[i + k])
+
+    # finally return the result.
     return result
 
 
