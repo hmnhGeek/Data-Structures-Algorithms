@@ -7,7 +7,6 @@ def bruteforce(arr, k):
     for i in range(n - k + 1):
         # assume that no negative value is found
         negative_found = False
-
         # iterate on each element in the window
         for j in range(i, i + k):
             if arr[j] < 0:
