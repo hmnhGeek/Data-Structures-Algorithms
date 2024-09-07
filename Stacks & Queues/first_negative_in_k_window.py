@@ -46,6 +46,11 @@ def first_negative(arr, k):
     # And n - k + 1 for the result array - O(n).
 
     n = len(arr)
+
+    # if window size is more than the array length, return -1.
+    if k >= n:
+        return -1
+
     result = []
 
     # define a blank queue
@@ -106,3 +111,7 @@ print(bruteforce([-8, 2, 3, -6, 10], 2))
 print(bruteforce([12, -1, -7, 8, -15, 30, 16, 28], 3))
 print(first_negative([-8, 2, 3, -6, 10], 2))
 print(first_negative([12, -1, -7, 8, -15, 30, 16, 28], 3))
+print(first_negative([4, 0, 3, -12, 1], 3))
+print(first_negative([45, 12, -6], 1))
+print(first_negative([4, -7, 4, 6, 7, -11, 2, 4], 2))
+print(first_negative([1, 2, 3], 10))
