@@ -1,30 +1,13 @@
 class Node:
     def __init__(self, data):
-        self.parent = None
         self.left = None
         self.data = data
         self.right = None
-        self.size = 1
-        self.d = 1
-        self.ht = 1
 
 
 class BinarySearchTree:
     def __init__(self):
         self.root = None
-        self.d = 0
-
-    def recalc_augmentation(self, parent):
-        self.d = 0
-        while parent is not None:
-            left_sz, right_sz = parent.left.size if parent.left else 0, parent.right.size if parent.right else 0
-            left_ht, right_ht = parent.left.ht if parent.left else 0, parent.right.ht if parent.right else 0
-
-            parent.size = 1 + left_sz + right_sz
-            parent.ht = 1 + max(left_ht, right_ht)
-            parent.d = 1 + left_ht + right_ht
-            self.d = max(self.d, parent.d)
-            parent = parent.parent
 
     def _insert(self, start, node):
         if node is None or start is None:
@@ -34,22 +17,17 @@ class BinarySearchTree:
             if start.right is not None:
                 return self._insert(start.right, node)
             start.right = node
-            node.parent = start
-            self.recalc_augmentation(start)
             return
 
         if start.left is not None:
             return self._insert(start.left, node)
         start.left = node
-        node.parent = start
-        self.recalc_augmentation(start)
         return
 
     def insert(self, x):
         node = Node(x)
         if self.root is None:
             self.root = node
-            self.d = 1
             return
         return self._insert(self.root, node)
 
@@ -78,9 +56,35 @@ class BinarySearchTree:
     def _show(self, start):
         if start:
             self._show(start.left)
-            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
+            print(f"Data = {start.data}{' (root)' if start == self.root else ''}")
             self._show(start.right)
 
     def show(self):
         self._show(self.root)
 
+
+class BstToMinHeapConvertor:
+    def __init__(self):
+        pass
+
+    def convert(self, binary_search_tree: BinarySearchTree):
+        inorder = binary_search_tree.get_inorder()
+        preorder = binary_search_tree.get_preorder()
+        inorder = [i.data for i in inorder]
+        for i in range(len(preorder)):
+            preorder[i].data = inorder[i]
+
+
+tree = BinarySearchTree()
+tree.insert(4)
+tree.insert(2)
+tree.insert(6)
+tree.insert(1)
+tree.insert(3)
+tree.insert(5)
+tree.insert(7)
+tree.show()
+print()
+bst_to_min_heap_convertor = BstToMinHeapConvertor()
+bst_to_min_heap_convertor.convert(tree)
+tree.show()
