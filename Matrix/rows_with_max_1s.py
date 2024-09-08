@@ -17,6 +17,7 @@ def count_1s(row, low, high):
 
 
 def get_row_with_max_1s(mtx):
+    # Time complexity is O(n*log(m)) and space complexity is O(1).
     result = None
     mx_count = 0
     n, m = len(mtx), len(mtx[0])
