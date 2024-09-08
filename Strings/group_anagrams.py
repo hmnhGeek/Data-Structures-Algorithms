@@ -34,3 +34,6 @@ def group_strings(strings):
 
 print(group_strings(["act", "god", "cat", "dog", "tac"]))
 print(group_strings(["no", "on", "is"]))
+print(group_strings(["eat", "tea", "tan", "ate", "nat", "bat"]))
+print(group_strings([""]))
+print(group_strings(["a"]))
