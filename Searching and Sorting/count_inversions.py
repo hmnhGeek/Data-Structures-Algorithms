@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+# Solution - https://www.youtube.com/watch?v=AseUmwVNaoY&t=933s
+
+
 def bruteforce():
     # The bruteforce approach takes O(n^2) time and O(1) space.
     # The idea is to count all the numbers on the right of ith index which are smaller than ith element.
@@ -35,6 +39,9 @@ class CountInversions:
                 i += 1
             else:
                 merged.append(right[j])
+                # if left array has a greater element than the right array, simply add (len(left) - i) to the
+                # inversion count because all elements greater than left[i], i.e., right of `i` will give one
+                # pair each to the inversion count.
                 self.inversions += (len(left) - i)
                 j += 1
 
@@ -60,7 +67,9 @@ class CountInversions:
         self._merge_sort(0, len(self.arr) - 1)
 
     def count_inversions(self):
+        # perform a simple merge sort in O(nlog(n)) time and O(n) space.
         self.merge_sort()
+        # return the inversion count
         return self.inversions
 
 
