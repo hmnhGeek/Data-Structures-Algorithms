@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/palindromic-array-1587115620/1
+
+
 def is_palindrome(string):
     return string == string[-1:-len(string)-1:-1]
 
