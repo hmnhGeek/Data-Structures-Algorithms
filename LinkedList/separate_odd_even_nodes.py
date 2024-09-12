@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/segregate-even-and-odd-nodes-in-a-linked-list5035/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -34,6 +37,11 @@ class LinkedListSplitter:
         self.linked_list = linked_list
 
     def split(self):
+        """
+            Since we are just traversing the list and using constant amount of variables in each use case, the time
+            complexity is O(n) and space complexity is O(1).
+        """
+
         # create a dummy node which will be useful to update the head of the linked list
         # once segregation is done. Point it's next pointer to the original head of the
         # linked list for now. Later, when an even node is prepended, at that time,
