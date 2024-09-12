@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/description/
+# Solution - https://www.youtube.com/watch?v=pBWCOCS636U&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=2
+
+
 def get_max_points_from_cards(cards_with_points, deck_size):
     """
         Time complexity is O(k) and space complexity is O(1).
