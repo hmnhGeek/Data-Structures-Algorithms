@@ -107,12 +107,12 @@ class LinkedListSplitter:
 
 
 def test(_list):
-    l = LinkedList()
-    l.build(_list)
-    l.show()
-    splitter = LinkedListSplitter(l)
+    linked_list = LinkedList()
+    linked_list.build(_list)
+    linked_list.show()
+    splitter = LinkedListSplitter(linked_list)
     splitter.split()
-    l.show()
+    linked_list.show()
     print()
 
 
