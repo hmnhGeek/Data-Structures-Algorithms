@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/fruits-and-baskets_985356
+# Solution - https://www.youtube.com/watch?v=e3bs0uA1NhQ&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=6
+
+
 def get_max_fruits_into_basket(fruit_categories):
     # store the number of trees for array traversal
     num_trees = len(fruit_categories)
