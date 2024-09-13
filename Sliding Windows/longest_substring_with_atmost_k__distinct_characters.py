@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/distinct-characters_2221410
+# Solution - https://www.youtube.com/watch?v=teM9ZsVRQyc&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=7
+
+
 def get_longest_substring_with_k_distinct_characters(string, k):
     # Time complexity O(n) and space complexity is O(h + k) where h is the number of unique
     # characters.
