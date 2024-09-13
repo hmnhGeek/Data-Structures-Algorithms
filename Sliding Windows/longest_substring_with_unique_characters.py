@@ -1,4 +1,12 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-substring-without-repeating-characters_758894
+# Solution - https://www.youtube.com/watch?v=-zSxTJkcdAo&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=3
+
+
 def get_longest_substring_with_unique_characters(string):
+    """
+        The time complexity is O(n) and space complexity is O(n) for the dictionary.
+    """
+
     # create a dictionary to store the last index where a character was found.
     last_character_sighting = dict()
 
