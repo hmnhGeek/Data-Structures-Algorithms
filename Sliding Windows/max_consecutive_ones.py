@@ -10,14 +10,11 @@ def get_max_consecutive_ones_with_k_zeros(array, k):
             right += 1
         else:
             num_zeroes_used += 1
-            if num_zeroes_used <= k:
-                max_size_recorded = max(max_size_recorded, right - left + 1)
-            else:
-                while num_zeroes_used > k:
-                    left += 1
-                    if array[left - 1] == 0:
-                        num_zeroes_used -= 1
-                max_size_recorded = max(max_size_recorded, right - left + 1)
+            while num_zeroes_used > k:
+                left += 1
+                if array[left - 1] == 0:
+                    num_zeroes_used -= 1
+            max_size_recorded = max(max_size_recorded, right - left + 1)
             right += 1
 
     return max_size_recorded
