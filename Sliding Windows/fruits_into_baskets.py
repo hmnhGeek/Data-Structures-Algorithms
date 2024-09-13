@@ -3,6 +3,8 @@
 
 
 def get_max_fruits_into_basket(fruit_categories):
+    # The time complexity is O(n) and space complexity is O(k) where k is the number of unique fruits.
+
     # store the number of trees for array traversal
     num_trees = len(fruit_categories)
 
