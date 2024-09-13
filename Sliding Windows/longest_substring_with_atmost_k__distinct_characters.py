@@ -27,3 +27,8 @@ def get_longest_substring_with_k_distinct_characters(string, k):
 print(get_longest_substring_with_k_distinct_characters("aaabbccd", 2))
 print(get_longest_substring_with_k_distinct_characters("abbbbbbc", 2))
 print(get_longest_substring_with_k_distinct_characters("abcddefg", 3))
+print(get_longest_substring_with_k_distinct_characters("aaaaaaaa", 3))
+print(get_longest_substring_with_k_distinct_characters("abcefg", 1))
+print(get_longest_substring_with_k_distinct_characters("aabbcc", 1))
+print(get_longest_substring_with_k_distinct_characters("aabbcc", 3))
+print(get_longest_substring_with_k_distinct_characters("aaabbb", 3))
