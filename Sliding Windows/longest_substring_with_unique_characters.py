@@ -46,11 +46,8 @@ def get_longest_substring_with_unique_characters(string):
             else:
                 # however, if the `right` character is already in the window previously,
                 # that is, it's last index >= left boundary, we must shrink the window
-                # from left by one index, i.e., left += 1. We need not do it in a while
-                # loop, because it will be surely removed in next iterations (because
-                # the `right` pointer will not move unless this character is removed from
-                # the left side of the window.
-                left += 1
+                # from left by moving left to just-next index of the last sighting index.
+                left = last_sighting_index + 1
 
         # now, if the new window size is larger than the current window size stored globally,
         # update the max window size and also update the indices of the window as the longest
