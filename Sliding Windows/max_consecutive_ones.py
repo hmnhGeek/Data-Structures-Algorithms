@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/max-consecutive-ones-iii/
+# Solution - https://www.youtube.com/watch?v=3E4JBHSLpYk&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=4
+
+
 def get_max_consecutive_ones_with_k_zeros(array, k):
     # Time complexity would be O(n) and space would be O(1).
 
