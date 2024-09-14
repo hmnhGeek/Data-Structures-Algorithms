@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/longest-increasing-subsequence/description/
+# Solution - https://www.youtube.com/watch?v=on2hvxBXJH4&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=44
+
+
 def binary_search(arr, elem):
     """
 
@@ -19,13 +23,30 @@ def binary_search(arr, elem):
 
 
 def get_longest_increasing_subsequence(arr):
+    """
+    Overall time complexity is O(nlog(n)) and space complexity is O(n).
+    :param arr: A list of integers in any order.
+    :return: The length of the longest increasing subsequence from the list.
+    """
+
+    # create a blank list to store elements while traversing the list. It will occupy O(n) space in worst case.
     result = []
+
+    # traverse in the list - This will take O(n) time; thus it will take O(nlog(n)) time.
     for elem in arr:
+        # in the result list, get the index of the element that is equal to or just greater than the element from this
+        # array. In the worst case, the result array will store all the elements from the array `arr` if `arr` is
+        # already sorted. Hence, we can assume O(log(n)) time here.
         index_to_insert_at = binary_search(result, elem)
+
+        # if the index is just out of bounds, append the element
         if index_to_insert_at == len(result):
             result.append(elem)
         else:
+            # else update the index value in the result array with this element.
             result[index_to_insert_at] = elem
+
+    # finally, return the length of this result array.
     return len(result)
 
 
