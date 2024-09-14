@@ -152,6 +152,55 @@ def tabulation():
     print(get_longest_string_chain(["a", "bc", "ad", "adc", "bcd"]))
 
 
+def space_optimized():
+    def get_longest_string_chain(strings):
+        # Overall time complexity is O(n^2) and space complexity is O(n).
+
+        n = len(strings)
+        # we need to sort in order to maintain the correct usage of `have_unit_diff()` function because in this function
+        # string 1 is always assumed to be shorter than string 2. This will take O(n*log(n)) time.
+        strings.sort()
+
+        # add a previous array for the 0th index.
+        previous = {j: 0 for j in strings}
+        # add a None key for 0th index.
+        previous[None] = 0
+
+        # for all the string2 (i.e., prev), assume them to be 2nd in chain and set their base cases with 0th string.
+        for prev in previous:
+            previous[prev] = 1 if have_unit_diff(strings[0], prev) else 0
+
+        # since we have set up 0th index, start from index = 1.
+        for index in range(1, n):
+            # create a curr dictionary
+            curr = {j: 0 for j in strings}
+            curr[None] = 0
+
+            # for string2 as prev
+            for prev in curr:
+                left = float('-inf')
+                # if the index element and prev have a unit difference only, then only perform left recursion
+                if have_unit_diff(strings[index], prev):
+                    # perform left recursion by making prev = strings[index]
+                    left = 1 + previous[strings[index]]
+
+                # perform only the right recursion with same prev
+                right = previous[prev]
+
+                # return max out of left and right to get the longest chain.
+                curr[prev] = max(left, right)
+
+            # update previous
+            previous = curr
+
+        return previous[None]
+
+    print(get_longest_string_chain(["a", "b", "ba", "bca", "bda", "bdca"]))
+    print(get_longest_string_chain(["x", "xx", "y", "xyx"]))
+    print(get_longest_string_chain(["m", "nm", "mmm"]))
+    print(get_longest_string_chain(["a", "bc", "ad", "adc", "bcd"]))
+
+
 print("Recursive Solution")
 recursive()
 
@@ -160,3 +209,6 @@ memoized()
 
 print("Tabulation Solution")
 tabulation()
+
+print("Space Optimized Solution")
+space_optimized()
