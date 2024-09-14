@@ -67,3 +67,5 @@ def get_longest_string_chain(strings):
 
 print(get_longest_string_chain(["a", "b", "ba", "bca", "bda", "bdca"]))
 print(get_longest_string_chain(["x", "xx", "y", "xyx"]))
+print(get_longest_string_chain(["m", "nm", "mmm"]))
+print(get_longest_string_chain(["a", "bc", "ad", "adc", "bcd"]))
