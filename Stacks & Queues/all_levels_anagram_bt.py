@@ -61,37 +61,63 @@ class BinaryTree:
         self.root = root
 
     def get_level_order(self):
+        # Time complexity is O(N + E) where E is the edges in the tree and space complexity is O(2N) for queue and the
+        # traversal dictionary.
+
+        # To perform a level order traversal, we use a Queue data structure
         queue = Queue()
+
+        # if root node is not None, we add it.
         if self.root is not None:
             queue.push((self.root, 0))
+
+        # initialize an empty level order dictionary
         level_order_traversal = {}
 
+        # typical BFS code.
         while not queue.is_empty():
+            # pop the current node with its level
             node, level = queue.pop()
+
+            # if the level popped is not present in the traversal, add the level for the first time with node as one of
+            # the first nodes to be found at this level.
             if level not in level_order_traversal:
                 level_order_traversal[level] = [node.data]
             else:
+                # else, if the level is already there, add the node into that level.
                 level_order_traversal[level].append(node.data)
 
+            # add left and right children of the node to the queue with incremented level values.
             if node.left is not None:
                 queue.push((node.left, level + 1))
             if node.right is not None:
                 queue.push((node.right, level + 1))
+
+        # return the level order traversal
         return level_order_traversal
 
 
 def are_anagrams(tree1: BinaryTree, tree2: BinaryTree) -> bool:
+    # get the level order of both the trees in O(N + E) time and O(N) space.
     level_order_1 = tree1.get_level_order()
     level_order_2 = tree2.get_level_order()
 
+    # if there is a difference in the level counts, return False, they are not anagrams.
     if len(level_order_1) != len(level_order_2):
         return False
 
+    # however, if the level counts is same and the levels start from 0, then all the keys in level_order_1 will be
+    # present in the level_order_2
     for level in level_order_1:
         nodes1 = level_order_1[level]
         nodes2 = level_order_2[level]
+
+        # using the Utility class, check if the levels are anagram or not, if not, then the trees themselves are not
+        # anagrams.
         if Utility.counter(nodes1) != Utility.counter(nodes2):
             return False
+
+    # if all the levels came out to be anagrams, then the trees are anagrams.
     return True
 
 
