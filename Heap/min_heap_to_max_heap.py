@@ -121,8 +121,12 @@ def show_heap(h):
 
 
 def convert_min_to_max_heap(min_heap: MinHeap) -> MaxHeap:
+    # Overall time complexity is O(N*log(N)) and space complexity is O(N).
+
     max_heap = MaxHeap()
+    # This will run for N times
     while not min_heap.is_empty():
+        # These operations are O(log(N)) time
         max_heap.insert(min_heap.pop())
     return max_heap
 
