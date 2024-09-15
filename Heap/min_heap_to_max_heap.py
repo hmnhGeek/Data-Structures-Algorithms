@@ -114,3 +114,32 @@ class MaxHeap(Heap):
                 self.heap[pi], self.heap[max_child_index] = self.heap[max_child_index], self.heap[pi]
             self.heapify_down(max_child_index)
 
+
+def show_heap(h):
+    while not h.is_empty():
+        print(h.pop())
+
+
+def convert_min_to_max_heap(min_heap: MinHeap) -> MaxHeap:
+    max_heap = MaxHeap()
+    while not min_heap.is_empty():
+        max_heap.insert(min_heap.pop())
+    return max_heap
+
+
+# Example 1
+l1 = [3, 5, 9, 6, 8, 20, 10, 12, 18, 9]
+h1 = MinHeap()
+for i in l1:
+    h1.insert(i)
+h2 = convert_min_to_max_heap(h1)
+show_heap(h2)
+print()
+
+# Example 2
+l2 = [3, 4, 8, 11, 13]
+h1 = MinHeap()
+for i in l2:
+    h1.insert(i)
+h2 = convert_min_to_max_heap(h1)
+show_heap(h2)
