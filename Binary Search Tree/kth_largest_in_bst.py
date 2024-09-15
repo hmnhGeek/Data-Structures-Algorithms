@@ -165,13 +165,40 @@ class BinarySearchTree:
         return inorder
 
     def get_kth_largest(self, k):
+        # This method will take O(N) time and O(N) space.
         inorder = self.get_inorder()
         if k > len(inorder) or k <= 0:
             return
-        return inorder[len(inorder) - k]
+        return inorder[len(inorder) - k].data
 
     def get_kth_smallest(self, k):
+        # This method will take O(N) time and O(N) space.
         inorder = self.get_inorder()
         if k > len(inorder) or k <= 0:
             return
-        return inorder[k]
+        return inorder[k - 1].data
+
+
+# Example 1
+tree1 = BinarySearchTree()
+tree1.insert(4)
+tree1.insert(2)
+tree1.insert(9)
+tree1.show()
+print(tree1.get_kth_largest(2))
+
+# Example 2
+tree2 = BinarySearchTree()
+tree2.insert(9)
+tree2.insert(10)
+tree2.show()
+print(tree2.get_kth_largest(1))
+
+# Example 3
+tree3 = BinarySearchTree()
+tree3.insert(2)
+tree3.insert(1)
+tree3.insert(3)
+tree3.show()
+print(tree3.get_kth_smallest(2))
+print(tree3.get_kth_smallest(5))
