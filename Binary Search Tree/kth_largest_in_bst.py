@@ -153,3 +153,25 @@ class BinarySearchTree:
     def show(self):
         self._show(self.root)
 
+    def _get_inorder(self, start, inorder):
+        if start:
+            self._get_inorder(start.left, inorder)
+            inorder.append(start)
+            self._get_inorder(start.right, inorder)
+
+    def get_inorder(self):
+        inorder = []
+        self._get_inorder(self.root, inorder)
+        return inorder
+
+    def get_kth_largest(self, k):
+        inorder = self.get_inorder()
+        if k > len(inorder) or k <= 0:
+            return
+        return inorder[len(inorder) - k]
+
+    def get_kth_smallest(self, k):
+        inorder = self.get_inorder()
+        if k > len(inorder) or k <= 0:
+            return
+        return inorder[k]
