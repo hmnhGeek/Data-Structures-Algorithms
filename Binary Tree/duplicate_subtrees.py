@@ -43,3 +43,14 @@ two1.left = four3
 one.right = three
 three.right = four2
 find_duplicate_subtrees(one)
+print()
+
+# Example 2
+five, four, six, three, four2, three2, six2 = Node(5), Node(4), Node(6), Node(3), Node(4), Node(3), Node(6)
+five.left = four
+four.left = three
+four2.left = three2
+five.right = six
+four.right = four2
+four2.right = six2
+find_duplicate_subtrees(five)
