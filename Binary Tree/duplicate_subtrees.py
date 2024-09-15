@@ -10,18 +10,29 @@ class Node:
 
 
 def solve_duplicate_subtrees(root, mp, result):
+    # Time complexity is O(N^2) because we are visiting every node again and again for each subtree
+    # Space complexity is O(N).
+
+    # This is the base case, if node is None, return "N" denoting a null node.
     if root is None:
         return "N"
 
+    # get the subtree string for root, i.e., root.data, left_subtree_string, right_subtree_string
     subtree_string = f"{root.data},{solve_duplicate_subtrees(root.left, mp, result)},{solve_duplicate_subtrees(root.right, mp, result)}"
 
+    # if the subtree at root's string is in map already
     if subtree_string in mp:
+        # check if the subtree has been identified second time only.
         if mp[subtree_string] == 1:
+            # if yes, then add it in the result
             result.append(root.data)
+        # irrespective, increment the subtree count.
         mp[subtree_string] += 1
     else:
+        # if encountered for the first time, make its count 1.
         mp[subtree_string] = 1
 
+    # return the subtree string which will be used by other recursion calls
     return subtree_string
 
 
@@ -29,6 +40,7 @@ def find_duplicate_subtrees(root):
     mp = {}
     result = []
     solve_duplicate_subtrees(root, mp, result)
+    # print all those subtrees whose count is more than 1
     for i in mp:
         if mp[i] > 1:
             print(i)
