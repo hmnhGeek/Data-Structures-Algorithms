@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/duplicate-subtrees/1
+# Solution - https://www.youtube.com/watch?v=m0dG99f5ct4
+
+
 class Node:
     def __init__(self, data):
         self.left = None
