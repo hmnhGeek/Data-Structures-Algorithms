@@ -16,13 +16,16 @@ def bruteforce():
         result = 0
         for i in range(n):
             for j in range(i, n):
-                substr = string[i:j]
+                substr = string[i:j+1]
                 counts = counter(substr)
                 if len(counts) == 3:
                     result += 1
         return result
 
     print(num_substrings_with_all_three_chars("bbacba"))
+    print(num_substrings_with_all_three_chars("abcabc"))
+    print(num_substrings_with_all_three_chars("aaacb"))
+    print(num_substrings_with_all_three_chars("abc"))
 
 
 bruteforce()
