@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/description/
+# Solution - https://www.youtube.com/watch?v=xtqN4qlgr8s&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=7
+
+
 def bruteforce():
     def counter(string):
         d = {}
@@ -63,19 +67,31 @@ def optimal():
         # Overall time complexity is O(N) and space complexity is O(1).
         i, j = 0, 0
         result = 0
+
+        # keep a counter dictionary to store the frequencies of each character
         counter = {"a": 0, "b": 0, "c": 0}
 
-        # This will take O(N) time
+        # While the right pointer is within bounds; This will take O(N) time.
         while j < len(string):
+            # if there is at least one character still missing in the substring, then first
+            # increase the frequency of the current jth character and then move j to the right.
             if not all(v != 0 for k, v in counter.items()):
                 counter[string[j]] += 1
                 j += 1
             else:
+                # if all the characters are present in the substring from i to j (j excluded),
+                # then the count of such substrings would be n - (j - 1). Also, now start shrinking
+                # the window from left side.
                 result += (len(string) - (j - 1))
+
+                # shrink the window.
                 counter[string[i]] -= 1
                 i += 1
 
-        # This will take another O(N) time.
+        # At the end, if there are still all the characters in the counter array,
+        # shrink continuously from the left as right boundary is already
+        # exhausted. Also, increase result count by only 1, because now you are shrinking
+        # from the left side only. This will take another O(N) time.
         while all(v != 0 for k, v in counter.items()):
             result += 1
             counter[string[i]] -= 1
