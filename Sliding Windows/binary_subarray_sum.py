@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/library/binary-subarrays-with-sum-788
+# Solution - https://www.youtube.com/watch?v=XnMdNUkX6VM&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=9
+
+
 def get_less_than_equal_to_sum(arr, k):
     # Time complexity is O(N) and space complexity is O(1).
 
