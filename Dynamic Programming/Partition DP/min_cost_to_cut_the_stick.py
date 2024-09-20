@@ -105,8 +105,14 @@ def tabulation():
     print(min_cost(9, [5, 6, 1, 4, 2]))
 
 
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
+
