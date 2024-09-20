@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/matrix-chain-multiplication_975344?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.naukri.com/code360/problems/matrix-chain-multiplication_975344?source=youtube&campaign=striver_dp_videos
+
+
 """
     This is a typical partition DP problem. According to the question, if the matrix sizes are given as
     [10, 20, 30, 40, 50], then these imply as follows:
@@ -145,8 +149,13 @@ def tabulation():
     print(matrix_chain_multiplication([1, 4, 3, 2]))
 
 
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
