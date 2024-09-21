@@ -35,3 +35,14 @@ class Solution:
         self._merge_sort(arr, 0, len(arr) - 1)
 
 
+arr1 = [2, 3, 4, 1]
+Solution().merge_sort(arr1)
+print(arr1)
+
+arr2 = [56, 2, 45]
+Solution().merge_sort(arr2)
+print(arr2)
+
+arr3 = [5, 6, 3, 2, 1, 6, 7]
+Solution().merge_sort(arr3)
+print(arr3)
