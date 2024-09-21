@@ -68,10 +68,14 @@ class MinHeap:
 
 
 def heap_sort(arr):
+    # Overall time complexity is O(nlog(n)) and space complexity is O(n).
     min_heap = MinHeap()
+
+    # push all the elements of the array into the heap. This will take O(n*log(n)) time and O(n) space.
     for i in arr:
         min_heap.insert(i)
 
+    # build back the sorted array in O(n*log(n)) time.
     counter = 0
     while not min_heap.is_empty():
         arr[counter] = min_heap.pop()
@@ -79,23 +83,37 @@ def heap_sort(arr):
 
 
 def sort_matrix(mtx):
+    # Overall time complexity is O(mn*log(mn)) and space complexity is O(mn).
+
+    # store the dimensions of the matrix
     n, m = len(mtx), len(mtx[0])
+
+    # these indices will be useful in building up the sorted matrix.
     i_counter, j_counter = 0, 0
+
+    # construct a copy matrix of size n*m with None values. This will take O(m*n) space.
     sorted_mtx = [[None for _ in range(m)] for _ in range(n)]
 
+    # flatten the matrix in an array.
     flattened_mtx = []
     for i in range(n):
         for j in range(m):
             flattened_mtx.append(mtx[i][j])
 
+    # sort the flattened matrix in O(nm * log(nm)) time and O(nm) space.
     heap_sort(flattened_mtx)
+
+    # build back the sorted matrix by traversing into the sorted flattened matrix. This will take O(m*n) time.
     for i in flattened_mtx:
         sorted_mtx[i_counter][j_counter] = i
+        # increment the column each time you assign an element
         j_counter += 1
+        # if at any point the j_counter exceeds the right boundary, move to the next row.
         if j_counter == m:
             j_counter = 0
             i_counter += 1
 
+    # return the sorted matrix.
     return sorted_mtx
 
 
