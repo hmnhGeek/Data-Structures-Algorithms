@@ -6,17 +6,17 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -66,3 +66,48 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+def heap_sort(arr):
+    min_heap = MinHeap()
+    for i in arr:
+        min_heap.insert(i)
+
+    counter = 0
+    while not min_heap.is_empty():
+        arr[counter] = min_heap.pop()
+        counter += 1
+
+
+def sort_matrix(mtx):
+    n, m = len(mtx), len(mtx[0])
+    i_counter, j_counter = 0, 0
+    sorted_mtx = [[None for _ in range(m)] for _ in range(n)]
+
+    flattened_mtx = []
+    for i in range(n):
+        for j in range(m):
+            flattened_mtx.append(mtx[i][j])
+
+    heap_sort(flattened_mtx)
+    for i in flattened_mtx:
+        sorted_mtx[i_counter][j_counter] = i
+        j_counter += 1
+        if j_counter == m:
+            j_counter = 0
+            i_counter += 1
+
+    return sorted_mtx
+
+
+mtx1 = [[10, 20, 30, 40],
+        [15, 25, 35, 45],
+        [27, 29, 37, 48],
+        [32, 33, 39, 50]]
+sorted_mtx1 = sort_matrix(mtx1)
+for i in sorted_mtx1:
+    print(i)
+
+mtx2 = [[1, 5, 3], [2, 8, 7], [4, 6, 9]]
+sorted_mtx2 = sort_matrix(mtx2)
+for i in sorted_mtx2:
+    print(i)
