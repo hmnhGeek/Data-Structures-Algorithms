@@ -15,10 +15,11 @@ def get_smallest_window(main_string, substring):
 
     while j < n:
         while all(v != 0 for v in substring_count_tracker.values()):
-            window_size = (j - i)
-            if min_length > window_size >= len(substring):
-                min_length = window_size
-                result = main_string[i:j]
+            if freq == substring_count_tracker:
+                window_size = (j - i)
+                if min_length > window_size >= len(substring):
+                    min_length = window_size
+                    result = main_string[i:j]
 
             if main_string[i] in freq:
                 substring_count_tracker[main_string[i]] -= 1
@@ -29,10 +30,11 @@ def get_smallest_window(main_string, substring):
         j += 1
 
     while all(v != 0 for v in substring_count_tracker.values()):
-        window_size = (j - i)
-        if min_length > window_size >= len(substring):
-            min_length = window_size
-            result = main_string[i:j]
+        if freq == substring_count_tracker:
+            window_size = (j - i)
+            if min_length > window_size >= len(substring):
+                min_length = window_size
+                result = main_string[i:j]
 
         if main_string[i] in freq:
             substring_count_tracker[main_string[i]] -= 1
