@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/smallest-window-in-a-string-containing-all-the-characters-of-another-string-1587115621/1
+
+
 def get_freq(string):
     # function to give the frequencies of each character in a string.
     d = {i: 0 for i in string}
@@ -7,6 +10,8 @@ def get_freq(string):
 
 
 def get_smallest_window(main_string, substring):
+    # The sliding window technique will take O(len(main_string)) time and O(n) space where n = len(substring).
+
     # get the frequency of substring characters in O(n) time and O(n) space in worst case.
     freq = get_freq(substring)
 
