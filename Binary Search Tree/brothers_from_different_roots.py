@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/brothers-from-different-root/1
+# Solution - https://www.youtube.com/watch?v=jZlQLrK14Bw&t=335s
+
+
 class Node:
     def __init__(self, data):
         self.parent = None
@@ -175,21 +179,38 @@ class SiblingsFinder:
         self.bst2 = bst2
 
     def find_pairs_with_sum(self, k: int):
+        # Time complexity is O(n) for traversing the trees (i.e., n1 + n2). Space complexity is
+        # O(n1 + n2) = O(n) for storing the inorder traversals.
+
+        # store a result list for storing the pairs from both trees whose sum is k.
         result = []
+
+        # get the inorder traversal of both trees. Note that these will be sorted arrays.
         inorder1 = self.bst1.get_inorder()
         inorder2 = self.bst2.get_inorder()
+
+        # create two pointers in which `i` starts from 0th index of first tree
+        # and `j` starts from the last index of the second tree.
         i, j = 0, len(inorder2) - 1
 
+        # while both i and j are in bounds.
         while i < len(inorder1) and j >= 0:
+            # get the current sum
             curr_sum = inorder1[i] + inorder2[j]
+
+            # if the current sum is same as k, add it to result and decrement `j`.
+            # no need to increment `i`.
             if curr_sum == k:
                 result.append((inorder1[i], inorder2[j]))
                 j -= 1
             elif curr_sum < k:
+                # else if current sum is less than k, then we must increase the sum by incrementing `i`.
                 i += 1
             else:
+                # else if sum is higher than `k`, decrease the sum by decrementing `j`.
                 j -= 1
 
+        # finally return the result.
         return result
 
 
