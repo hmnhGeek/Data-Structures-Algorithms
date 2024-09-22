@@ -168,3 +168,46 @@ class BstWithTraversal(BinarySearchTree):
         self._get_inorder(self.root, inorder)
         return inorder
 
+
+class SiblingsFinder:
+    def __init__(self, bst1: BstWithTraversal, bst2: BstWithTraversal):
+        self.bst1 = bst1
+        self.bst2 = bst2
+
+    def find_pairs_with_sum(self, k: int):
+        result = []
+        inorder1 = self.bst1.get_inorder()
+        inorder2 = self.bst2.get_inorder()
+        i, j = 0, len(inorder2) - 1
+
+        while i < len(inorder1) and j >= 0:
+            curr_sum = inorder1[i] + inorder2[j]
+            if curr_sum == k:
+                result.append((inorder1[i], inorder2[j]))
+                j -= 1
+            elif curr_sum < k:
+                i += 1
+            else:
+                j -= 1
+
+        return result
+
+
+# Example 1
+t1 = BstWithTraversal()
+t2 = BstWithTraversal()
+t1.insert(5)
+t1.insert(3)
+t1.insert(7)
+t1.insert(2)
+t1.insert(4)
+t1.insert(6)
+t1.insert(8)
+t2.insert(10)
+t2.insert(6)
+t2.insert(15)
+t2.insert(3)
+t2.insert(8)
+t2.insert(11)
+t2.insert(18)
+print(SiblingsFinder(t1, t2).find_pairs_with_sum(16))
