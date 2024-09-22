@@ -152,3 +152,19 @@ class BinarySearchTree:
     def show(self):
         self._show(self.root)
 
+
+class BstWithTraversal(BinarySearchTree):
+    def __init__(self):
+        super().__init__()
+
+    def _get_inorder(self, root, inorder):
+        if root is not None:
+            self._get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            self._get_inorder(root.right, inorder)
+
+    def get_inorder(self):
+        inorder = []
+        self._get_inorder(self.root, inorder)
+        return inorder
+
