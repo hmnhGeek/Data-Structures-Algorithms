@@ -232,3 +232,16 @@ t2.insert(8)
 t2.insert(11)
 t2.insert(18)
 print(SiblingsFinder(t1, t2).find_pairs_with_sum(16))
+
+
+# Example 2
+t1 = BstWithTraversal()
+t2 = BstWithTraversal()
+t1.insert(1)
+t1.insert(3)
+t1.insert(2)
+t2.insert(3)
+t2.insert(2)
+t2.insert(4)
+t2.insert(1)
+print(SiblingsFinder(t1, t2).find_pairs_with_sum(4))
