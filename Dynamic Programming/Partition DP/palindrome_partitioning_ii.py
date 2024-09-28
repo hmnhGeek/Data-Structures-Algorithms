@@ -1,3 +1,12 @@
+def is_palindrome(string, i, j):
+    while i < j:
+        if string[i] != string[j]:
+            return False
+        i += 1
+        j -= 1
+    return True
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
@@ -7,18 +16,14 @@ def recursive():
         if i == n:
             return 0
 
-        # hold a temp string for palindrome checks on the partitioned string.
-        temp = ""
+        # hold a min_partitions.
         min_partitions = float('inf')
 
         # loop from `i` till `n` and try to see if partition can be done at the given index.
         for index in range(i, n):
-            # store the character at the index.
-            temp += string[index]
-
             # if the temp string formed till now is a palindrome, then add `1` to the answer to create
             # a partition and recursively solve for the right part.
-            if temp == temp[-1:-len(temp)-1:-1]:
+            if is_palindrome(string, i, index):
                 cost = 1 + solve(string, index + 1, n)
                 # also update the min_partitions
                 min_partitions = min(min_partitions, cost)
@@ -50,18 +55,14 @@ def memoized():
         if dp[i] is not None:
             return dp[i]
 
-        # hold a temp string for palindrome checks on the partitioned string.
-        temp = ""
+        # store min_partitions
         min_partitions = float('inf')
 
         # loop from `i` till `n` and try to see if partition can be done at the given index.
         for index in range(i, n):
-            # store the character at the index.
-            temp += string[index]
-
             # if the temp string formed till now is a palindrome, then add `1` to the answer to create
             # a partition and recursively solve for the right part.
-            if temp == temp[-1:-len(temp)-1:-1]:
+            if is_palindrome(string, i, index):
                 cost = 1 + solve(string, index + 1, n, dp)
                 # also update the min_partitions
                 min_partitions = min(min_partitions, cost)
