@@ -49,7 +49,7 @@ def recursive():
 
 def memoized():
     """
-        Time complexity is O(n^2) and space complexity is O(n + n^2).
+        Time complexity is O(n^2) and space complexity is O(n + n).
     """
     def solve(string, i, n, dp):
         # if the partition pointer has reached end, there can be no further partitions, return 0.
@@ -90,7 +90,7 @@ def memoized():
 
 def tabulation():
     """
-        Time complexity is O(n^2) and space complexity is O(n^2).
+        Time complexity is O(n^2) and space complexity is O(n).
     """
     def palindrome_partitioning(string):
         n = len(string)
