@@ -129,8 +129,13 @@ def tabulation():
     print(burst_balloons([1, 5, 2, 8]))
 
 
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
