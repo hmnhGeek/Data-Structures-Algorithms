@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/palindrome-partitioning-ii/description/
+# Solution - https://www.youtube.com/watch?v=_H8V5hJUGd0&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=54
+
+
 def is_palindrome(string, i, j):
     while i < j:
         if string[i] != string[j]:
@@ -119,8 +123,13 @@ def tabulation():
     print(palindrome_partitioning("ab"))
 
 
+print("Recursion Solution")
 recursive()
+
 print()
+print("Memoized Solution")
 memoized()
+
 print()
+print("Tabulation Solution")
 tabulation()
