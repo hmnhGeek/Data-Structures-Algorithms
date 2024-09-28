@@ -40,7 +40,7 @@ def recursive():
 def memoized():
     def solve(balloons, i, j, dp):
         """
-            The time complexity is O(n^2) and space complexity is O(n + n^2).
+            The time complexity is O(n^3) and space complexity is O(n + n^2).
         """
 
         # if there are no more balloons left to be burst, return 0 coins.
