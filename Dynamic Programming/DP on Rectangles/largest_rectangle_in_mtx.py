@@ -40,22 +40,41 @@ class Stack:
 
 
 def get_largest_area(histogram):
+    """
+        Overall time complexity is O(n) and space complexity is O(n).
+    """
+
+    # initialize and empty stack to hold data in a linearly increasing fashion.
     stack = Stack()
     max_area = 0
     n = len(histogram)
+
+    # loop on the bars of the histogram
     for i in range(len(histogram)):
-        while stack.top() != -1 and histogram[i] < histogram[stack.top()]:
+        # while the stack is not empty and the current (ith) bar is less than the top of the stack, then it means
+        # that this ith bar can act as the right boundary of the top element of the stack. Also, the element just
+        # prior to the top element on the stack can act as the left boundary of the top element.
+        # Hence, we can calculate the area of the rectangle with top element as the height and width equal to
+        # ((i - 1) - (top + 1) + 1).
+        while not stack.is_empty() and histogram[i] < histogram[stack.top()]:
+            # pop the top element so that the next top element act as the left boundary.
             bar = stack.pop()
             area = histogram[bar] * ((i - 1) - (stack.top() + 1) + 1)
+            # then update the max area.
             max_area = max(max_area, area)
         else:
+            # however, if the stack is empty or the ith bar >= top element, simply push the ith bar on to the stack.
             stack.push(i)
 
+    # at the end, till the stack is not empty, we are sure that every top element on the stack will have a right
+    # boundary as `n - 1` and the left boundary will be `top + 1`.
     while not stack.is_empty():
         bar = stack.pop()
         area = histogram[bar] * ((n - 1) - (stack.top() + 1) + 1)
+        # update the max area accordingly.
         max_area = max(max_area, area)
 
+    # finally return the max_area.
     return max_area
 
 
