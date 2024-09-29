@@ -83,3 +83,43 @@ print(get_largest_area([2, 1, 5, 6, 2, 3]))
 print(get_largest_area([2, 4]))
 print(get_largest_area([60, 20, 50, 40, 10, 50, 60]))
 print(get_largest_area([3, 5, 1, 7, 5, 9]))
+
+
+def get_histogram(prior, current):
+    for i in range(len(current)):
+        prior[i] = prior[i] + current[i] if current[i] != 0 else 0
+    return prior
+
+
+def max_area_in_matrix(mtx):
+    max_area = 0
+    n, m = len(mtx), len(mtx[0])
+    prior_row = [0]*m
+    for i in range(n):
+        current_row = mtx[i]
+        histogram = get_histogram(prior_row, current_row)
+        max_area = max(max_area, get_largest_area(histogram))
+        prior_row = histogram
+    return max_area
+
+
+print(
+    max_area_in_matrix(
+        [
+            [0, 1, 1, 0],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 0, 0]
+        ]
+    )
+)
+
+print(
+    max_area_in_matrix(
+        [
+            [0, 1, 1],
+            [1, 1, 1],
+            [0, 1, 1]
+        ]
+    )
+)
