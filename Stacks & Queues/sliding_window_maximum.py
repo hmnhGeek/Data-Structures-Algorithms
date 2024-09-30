@@ -18,6 +18,11 @@ class DoublyLinkedList:
             return
         return self.head.data
 
+    def get_back(self):
+        if self.is_empty():
+            return
+        return self.tail.data
+
     def push_front(self, x):
         node = Node(x)
         if self.is_empty():
@@ -68,3 +73,22 @@ class DoublyLinkedList:
             print(curr.data, end=" ")
             curr = curr.next
         print()
+
+
+def get_sliding_window_maximum(arr, k):
+    n = len(arr)
+    doubly_linked_list = DoublyLinkedList()
+    result = DoublyLinkedList()
+    for i in range(n):
+        if not doubly_linked_list.is_empty() and doubly_linked_list.get_front() == i - k:
+            doubly_linked_list.pop_front()
+        while not doubly_linked_list.is_empty() and arr[doubly_linked_list.get_back()] <= arr[i]:
+            doubly_linked_list.pop_back()
+        doubly_linked_list.push_back(i)
+        if i >= k - 1:
+            result.push_back(arr[doubly_linked_list.get_front()])
+    return result
+
+
+result1 = get_sliding_window_maximum([1, 3, -1, -3, 5, 3, 6, 7], 3)
+result1.show()
