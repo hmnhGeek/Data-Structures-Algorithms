@@ -70,26 +70,49 @@ class MaxHeap:
 
 
 def reorganize_string(string: str) -> str:
+    """
+        Time complexity is O(n*log(m)) and space complexity is O(m).
+    """
+
+    # initialize a max heap to get the most frequent character in O(log(m)) time where `m` is the number of
+    # distinct characters in the string.
     max_heap = MaxHeap()
+
+    # store a `prev` keyword which will be used to track the last character used in the resultant string.
     prev = None
+
+    # push the frequencies of each character into the max heap. This will take O(n + m*log(m)) time
     frequencies = dict(Counter(string))
+    # This will take O(m*log(m)) time and O(m) space.
     for k, v in frequencies.items():
         max_heap.insert((k, v))
 
+    # store a resultant string
     result = ""
+
+    # while the heap is not empty, this will run for `n` times. Thus, it would take O(n*log(m)) time.
     while not max_heap.is_empty():
+        # pop the most frequent in O(log(m)) time.
         character, frequency = max_heap.pop()
         result += character
 
+        # if there was any prev character used in the resultant string, push it back to max heap
+        # because it can be used again now. Also, push only if the frequency is more than 0. This
+        # would take O(log(m)) time.
         if prev is not None:
             if prev[1] > 0:
                 max_heap.insert(prev)
 
+        # update the `prev` to current character with a decremented frequency.
         prev = (character, frequency - 1)
 
+    # finally after the heap is empty, check if there is still some character left in prev with > 0 frequency.
+    # This would mean that there will be adjacent-same characters, hence the reorganization is not possible.
+    # We should thus return a blank string.
     if prev is not None and prev[1] > 0:
         return ""
 
+    # return result.
     return result
 
 
