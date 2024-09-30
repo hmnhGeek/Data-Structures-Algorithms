@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/sum-minimum-maximum-elements-subarrays-size-k/
+# Solution - https://www.youtube.com/watch?v=CZQGRp93K4k
+
+
 class Node:
     def __init__(self, data):
         self.data = data
