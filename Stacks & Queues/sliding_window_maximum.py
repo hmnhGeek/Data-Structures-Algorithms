@@ -80,17 +80,40 @@ class DoublyLinkedList:
 
 
 def get_sliding_window_maximum(arr, k):
+    """
+        Time complexity is O(n) and space complexity O(k).
+    """
+
     n = len(arr)
+
+    # create a doubly linked list instance for using it as a deque.
     doubly_linked_list = DoublyLinkedList()
+
+    # create a doubly linked list instance for storing the max results.
     result = DoublyLinkedList()
+
+    # iterate on all the indices of the array.
     for i in range(n):
+        # if from the front side, there is an index (i - k) which is out of window from the left side,
+        # pop from the front side.
         if not doubly_linked_list.is_empty() and doubly_linked_list.get_front() == i - k:
             doubly_linked_list.pop_front()
+
+        # while the deque is not empty and from the back side, if the elements are <= current ith element,
+        # then continuously pop from back side. This will ensure that deque will store elements in decreasing
+        # order, so that the max lies in the front always.
         while not doubly_linked_list.is_empty() and arr[doubly_linked_list.get_back()] <= arr[i]:
             doubly_linked_list.pop_back()
+
+        # push the current index from the back side.
         doubly_linked_list.push_back(i)
+
+        # if you've crossed the first window, start pushing the front to the result because front element is
+        # the max element.
         if i >= k - 1:
             result.push_back(arr[doubly_linked_list.get_front()])
+
+    # return the doubly linked list `result`.
     return result
 
 
