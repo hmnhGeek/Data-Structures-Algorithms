@@ -55,18 +55,27 @@ class Utility:
             # while the stack is not empty and the top element on the stack >= current element
             while not stack.is_empty() and histogram[stack.top()] >= histogram[i]:
                 # if ith element is smaller than top element, then ith bar can act as a right boundary
-                # of the top element.
+                # of the top element. The next top element on the stack can act as the left boundary
+                # of the popped element because on the stack we are storing elements in a linearly
+                # increasing fashion.
                 bar = stack.pop()
+
+                # calculate the area and update the max_area value.
                 area = histogram[bar] * ((i - 1) - (stack.top() + 1) + 1)
                 max_area = max(max_area, area)
             else:
+                # otherwise, if the stack is empty or the top element is less than current element, push
+                # the ith index on to the stack.
                 stack.push(i)
 
+        # while there are some elements left in the stack
         while not stack.is_empty():
+            # for each popped bar, last index will act as the right boundary
             bar = stack.pop()
             area = histogram[bar] * ((n - 1) - (stack.top() + 1) + 1)
             max_area = max(max_area, area)
 
+        # return the max area
         return max_area
 
 
