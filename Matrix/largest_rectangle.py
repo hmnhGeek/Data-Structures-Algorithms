@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/maximal-rectangle/description/
+# Solution -  https://www.youtube.com/watch?v=tOylVCugy9k
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -89,6 +93,10 @@ print(Utility.get_largest_area_rectangle_in_histogram([3, 5, 1, 7, 5, 9]))
 
 
 def max_area_rectangle(mtx):
+    """
+        Time complexity is O(n*m) and space complexity is O(n*m) for using the matrix.
+    """
+
     n, m = len(mtx), len(mtx[0])
     prior_row = [0 for _ in range(m)]
     max_area = 0
