@@ -45,6 +45,10 @@ class Utility:
 
     @staticmethod
     def get_largest_area_rectangle_in_histogram(histogram):
+        """
+            Overall time complexity is O(n) and overall space complexity is O(n).
+        """
+
         # define a stack class, and store the maximum area as 0.
         stack = Stack()
         max_area = 0
@@ -79,5 +83,55 @@ class Utility:
         return max_area
 
 
+print("Testing the Utility() class.")
 print(Utility.get_largest_area_rectangle_in_histogram([60, 20, 50, 40, 10, 50, 60]))
 print(Utility.get_largest_area_rectangle_in_histogram([3, 5, 1, 7, 5, 9]))
+
+
+def max_area_rectangle(mtx):
+    n, m = len(mtx), len(mtx[0])
+    prior_row = [0 for _ in range(m)]
+    max_area = 0
+    for i in range(n):
+        current_row = mtx[i]
+        histogram = [current_row[k] + prior_row[k] if current_row[k] != 0 else 0 for k in range(m)]
+        max_area = max(max_area, Utility.get_largest_area_rectangle_in_histogram(histogram))
+        prior_row = histogram
+    return max_area
+
+
+print("\nTesting main problem")
+print(
+    max_area_rectangle(
+        [
+            [0, 1, 1, 0],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 0, 0]
+        ]
+    )
+)
+print(
+    max_area_rectangle(
+        [
+            [1, 0, 1, 0, 0],
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 1, 0]
+        ]
+    )
+)
+print(
+    max_area_rectangle(
+        [
+            [0]
+        ]
+    )
+)
+print(
+    max_area_rectangle(
+        [
+            [1]
+        ]
+    )
+)
