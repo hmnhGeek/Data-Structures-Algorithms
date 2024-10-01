@@ -45,11 +45,17 @@ class Utility:
 
     @staticmethod
     def get_largest_area_rectangle_in_histogram(histogram):
+        # define a stack class, and store the maximum area as 0.
         stack = Stack()
         max_area = 0
         n = len(histogram)
+
+        # loop on each bar in O(n) time
         for i in range(n):
+            # while the stack is not empty and the top element on the stack >= current element
             while not stack.is_empty() and histogram[stack.top()] >= histogram[i]:
+                # if ith element is smaller than top element, then ith bar can act as a right boundary
+                # of the top element.
                 bar = stack.pop()
                 area = histogram[bar] * ((i - 1) - (stack.top() + 1) + 1)
                 max_area = max(max_area, area)
