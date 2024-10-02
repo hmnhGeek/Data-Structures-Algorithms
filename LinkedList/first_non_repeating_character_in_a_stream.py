@@ -1,3 +1,5 @@
+# Problem link - https://www.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream1216/1
+
 class UsingDictionary:
     @classmethod
     def get_non_repeating(cls, d):
