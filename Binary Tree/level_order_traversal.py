@@ -40,21 +40,29 @@ class LevelOrderTraversal:
     def traverse(root):
         # Time complexity is O(n) and space complexity is O(n) for the queue.
         queue = Queue()
+
+        # push the root node with level as 1 to the queue
         queue.push((root, 1))
         result = {}
 
+        # until the queue gets empty, which will happen only after all the nodes are traversed...
         while not queue.is_empty():
+            # pop the current node
             node, level = queue.pop()
 
+            # add the node into result set at level = `level`.
             if level in result:
                 result[level].append(node.data)
             else:
                 result[level] = [node.data]
 
+            # push the left and right children of the popped node to the queue with next level
             if node.left is not None:
                 queue.push((node.left, level + 1))
             if node.right is not None:
                 queue.push((node.right, level + 1))
+
+        # return the result set.
         return result
 
 
