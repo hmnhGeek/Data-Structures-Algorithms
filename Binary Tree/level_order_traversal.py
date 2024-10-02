@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/level-order-traversal/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +38,7 @@ class Queue:
 class LevelOrderTraversal:
     @staticmethod
     def traverse(root):
+        # Time complexity is O(n) and space complexity is O(n) for the queue.
         queue = Queue()
         queue.push((root, 1))
         result = {}
