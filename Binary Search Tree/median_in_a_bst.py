@@ -146,3 +146,47 @@ class BinarySearchTree:
 
     def show(self):
         self._show(self.root)
+
+    def _get_inorder(self, start, inorder):
+        if start:
+            self._get_inorder(start.left, inorder)
+            inorder.append(start.data)
+            self._get_inorder(start.right, inorder)
+
+    def get_inorder(self):
+        inorder = []
+        self._get_inorder(self.root, inorder)
+        return inorder
+
+    def find_median(self):
+        # this will take O(n) time and O(n) space.
+        inorder = self.get_inorder()
+        return Utility.get_median(inorder)
+
+
+class Utility:
+    @staticmethod
+    def get_median(arr):
+        n = len(arr)
+        if n % 2 == 1:
+            return arr[n//2]
+        return (arr[n//2] + arr[(n//2) - 1])/2
+
+
+# Example 1
+t = BinarySearchTree()
+for i in [6, 3, 8, 1, 4, 7, 9]:
+    t.insert(i)
+print(t.find_median())
+
+# Example 2
+t = BinarySearchTree()
+for i in [20, 8, 22, 4, 12, 10, 14]:
+    t.insert(i)
+print(t.find_median())
+
+# Example 3
+t = BinarySearchTree()
+for i in [2, 0, 6, 1, 5, 8]:
+    t.insert(i)
+print(t.find_median())
