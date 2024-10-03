@@ -1,5 +1,5 @@
 # Problem link - https://www.geeksforgeeks.org/problems/game-with-string4100/1
-
+from collections import Counter
 
 class MaxHeap:
     def __init__(self):
@@ -68,3 +68,30 @@ class MaxHeap:
         self.max_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def game_with_string(string: str, k: int) -> int:
+        if k >= len(string):
+            return 0
+        frequencies = list(dict(Counter(string)).values())
+        max_heap = MaxHeap()
+        for frequency in frequencies:
+            max_heap.push(frequency)
+
+        counter = k
+        while counter != 0:
+            max_freq = max_heap.pop()
+            max_freq -= 1
+            counter -= 1
+            if max_freq > 0:
+                max_heap.push(max_freq)
+
+        result = 0
+        while not max_heap.is_empty():
+            result += (max_heap.pop())**2
+        return result
+
+
+print(Solution.game_with_string("abccc", 1))
+print(Solution.game_with_string("aabcbcbcabcc", 3))
