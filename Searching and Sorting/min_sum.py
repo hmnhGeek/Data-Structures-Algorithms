@@ -1,4 +1,10 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-sum4058/1
+
+
 class QuickSort:
+    """
+        Refer to explanation in file quick_sort.py for this algorithm.
+    """
     @classmethod
     def _get_partition_index(cls, arr, low, high):
         pivot = arr[low]
@@ -25,3 +31,22 @@ class QuickSort:
     def sort(arr):
         n = len(arr)
         return QuickSort._quick_sort(arr, 0, n - 1)
+
+
+class Solution:
+    @staticmethod
+    def get_min_sum(arr):
+        copy = [i for i in arr]
+        QuickSort.sort(copy)
+        num1, num2 = 0, 0
+        multiplier = 1
+        for i in range(-1, -len(copy) - 1, -2):
+            num1 += copy[i]*multiplier
+            if i - 1 >= -len(copy):
+                num2 += copy[i - 1]*multiplier
+            multiplier *= 10
+        return num1 + num2
+
+
+print(Solution.get_min_sum([6, 8, 4, 5, 2, 3]))
+print(Solution.get_min_sum([5, 3, 0, 7, 4]))
