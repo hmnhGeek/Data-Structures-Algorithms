@@ -34,17 +34,33 @@ class QuickSort:
 
 
 class Solution:
+    """
+        Overall time complexity is O(n*log(n)) and space complexity is O(n).
+    """
     @staticmethod
     def get_min_sum(arr):
+        # create a copy of the original array so that we don't modify the original array.
+        # This will take O(n) space.
         copy = [i for i in arr]
+
+        # apply quick sort on the copied array in O(n*log(n)) time. Sorting will ensure that the most significant
+        # digits of each number is low.
         QuickSort.sort(copy)
+
+        # create the two numbers and a multiplier for 10s powers.
         num1, num2 = 0, 0
         multiplier = 1
+
+        # start iterating from the end of the copied array.
         for i in range(-1, -len(copy) - 1, -2):
+            # assign digits to num1 and num2
             num1 += copy[i]*multiplier
             if i - 1 >= -len(copy):
                 num2 += copy[i - 1]*multiplier
+            # update the multiplier to the next power of 10.
             multiplier *= 10
+
+        # return the sum of the numbers.
         return num1 + num2
 
 
