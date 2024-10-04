@@ -40,6 +40,29 @@ def memoized():
     print(climb_stairs(5))
 
 
+def tabulation():
+    # T: O(n) and space is O(n)
+    def climb_stairs(num_stairs):
+        dp = {i: 0 for i in range(num_stairs + 1)}
+        dp[0] = 1
+
+        for index in range(1, num_stairs + 1):
+            if 0 <= index - 2 < num_stairs + 1:
+                right = dp[index - 2]
+            else:
+                right = 0
+            dp[index] = dp[index - 1] + right
+
+        return dp[num_stairs]
+
+    print(climb_stairs(2))
+    print(climb_stairs(3))
+    print(climb_stairs(4))
+    print(climb_stairs(5))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
