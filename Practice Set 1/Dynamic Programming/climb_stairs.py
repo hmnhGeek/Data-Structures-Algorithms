@@ -61,8 +61,33 @@ def tabulation():
     print(climb_stairs(5))
 
 
+def space_optimized():
+    # T: O(n) and space is O(1)
+    def climb_stairs(num_stairs):
+        prev_prev = 0
+        prev = 1
+        for index in range(1, num_stairs + 1):
+            curr = 0
+            if 0 <= index - 2 < num_stairs + 1:
+                right = prev_prev
+            else:
+                right = 0
+            curr = prev + right
+            prev_prev = prev
+            prev = curr
+
+        return prev
+
+    print(climb_stairs(2))
+    print(climb_stairs(3))
+    print(climb_stairs(4))
+    print(climb_stairs(5))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
