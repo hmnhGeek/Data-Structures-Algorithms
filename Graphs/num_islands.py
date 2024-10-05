@@ -1,4 +1,5 @@
 # Problem link - https://www.geeksforgeeks.org/problems/find-the-number-of-islands/1
+# Solution - https://www.youtube.com/watch?v=muncqlKJrH0&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=8
 
 
 class Utils:
@@ -63,6 +64,13 @@ class Graph:
 class Solution:
     @staticmethod
     def find_num_islands(matrix):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # The problem is same as that in `num_provinces.py`. The only difference here is that we are given a
+        # matrix. We can either directly work on the matrix or convert the matrix to a graph and then perform
+        # DFS traversal on it get the number of components.
         return Graph.dfs(Utils.convert_grid_to_graph(matrix))
 
 
