@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/flood-fill-algorithm1856/1
+# Solution - https://www.youtube.com/watch?v=C-2_uSRli8o&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=9
+
+
 class Node:
     def __init__(self, data):
         self.data = data
