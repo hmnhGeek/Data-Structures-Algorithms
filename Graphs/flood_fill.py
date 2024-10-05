@@ -35,6 +35,7 @@ class Queue:
 class FloodFill:
     @classmethod
     def _get_neighbours(cls, matrix, i, j, n, m):
+        # get the neighbours of (i, j) which are not 0; we will compare the colors in the parent method.
         neighbours = []
         if 0 <= i - 1 < n and matrix[i - 1][j] != 0:
             neighbours.append((i - 1, j))
@@ -48,22 +49,42 @@ class FloodFill:
 
     @staticmethod
     def bfs(graph, start_x, start_y, new_color):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # We will be using BFS traversal to perform flood fill. Create a queue and push the starting
+        # coordinates in it.
         queue = Queue()
         queue.push((start_x, start_y))
+
+        # create a blank visited matrix.
         n, m = len(graph), len(graph[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
+
+        # while the queue is not empty
         while not queue.is_empty():
+            # pop the current node and visit it.
             x, y = queue.pop()
             visited[x][y] = True
+
+            # store the original color.
             original = graph[x][y]
+
+            # paint the popped node with new color.
             if graph[x][y] != new_color:
                 graph[x][y] = new_color
 
+            # get the neighbour nodes of this current node and loop on them
             neighbours = FloodFill._get_neighbours(graph, x, y, n, m)
             for adj in neighbours:
                 x0, y0 = adj
+                # if the adjacent node is not visited and the color is still the original color,
+                # push it to the queue.
                 if graph[x0][y0] == original and not visited[x0][y0]:
                     queue.push((x0, y0))
+
+        # return the flood filled graph.
         return graph
 
 
