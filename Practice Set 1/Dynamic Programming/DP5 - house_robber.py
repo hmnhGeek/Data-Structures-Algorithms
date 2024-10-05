@@ -94,8 +94,33 @@ def tabulation():
     print(house_robber([1, 2, 3, 1, 3, 5, 8, 1, 9]))
 
 
+def space_optimized():
+    # T: O(n) and S: O(1)
+    def house_robber(arr):
+        n = len(arr)
+        prev_prev = {True: -1e6, False: -1e6}
+        prev = {True: arr[0], False: 0}
+
+        for index in range(1, n):
+            curr = {True: -1e6, False: -1e6}
+            if index - 2 >= 0:
+                curr[True] = arr[index] + max(prev_prev[True], prev_prev[False])
+            curr[False] = max(prev[True], prev[False])
+            prev_prev = prev
+            prev = curr
+
+        return max(prev[True], prev[False])
+
+    print(house_robber([2, 1, 4, 9]))
+    print(house_robber([1, 2, 4]))
+    print(house_robber([1, 2, 3, 5, 4]))
+    print(house_robber([1, 2, 3, 1, 3, 5, 8, 1, 9]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
