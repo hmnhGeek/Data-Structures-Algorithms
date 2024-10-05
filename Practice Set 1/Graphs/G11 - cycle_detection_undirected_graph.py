@@ -34,9 +34,8 @@ class Queue:
 
 class Graph:
     @staticmethod
-    def has_cycle(graph, start_node):
+    def _has_cycle(graph, start_node, visited):
         queue = Queue()
-        visited = {i: False for i in graph}
         queue.push((start_node, None))
         while not queue.is_empty():
             node, parent = queue.pop()
@@ -46,6 +45,15 @@ class Graph:
             for adj_node in graph[node]:
                 if not visited[adj_node]:
                     queue.push((adj_node, node))
+        return False
+
+    @staticmethod
+    def has_cycle(graph):
+        visited = {i: False for i in graph}
+        for node in visited:
+            if not visited[node]:
+                if Graph._has_cycle(graph, node, visited):
+                    return True
         return False
 
 
@@ -59,8 +67,7 @@ print(
             5: [7],
             6: [3, 7],
             7: [5, 6]
-        },
-        1
+        }
     )
 )
 
@@ -71,7 +78,7 @@ print(
             1: [0, 2],
             2: [1, 3],
             3: [2]
-        }, 2
+        }
     )
 )
 
@@ -82,6 +89,17 @@ print(
             1: [0, 2],
             2: [0, 1, 3],
             3: [2]
-        }, 3
+        }
+    )
+)
+
+print(
+    Graph.has_cycle(
+        {
+            0: [],
+            1: [2, 3],
+            2: [1, 3],
+            3: [1, 2]
+        }
     )
 )
