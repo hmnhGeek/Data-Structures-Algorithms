@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/total-unique-paths_1081470?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.naukri.com/code360/problems/total-unique-paths_1081470?source=youtube&campaign=striver_dp_videos
+
+
 def recursive():
     # T: O(2^(nm)) and S: O(n + m)
     def solve(i, j, n, m):
