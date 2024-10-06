@@ -132,18 +132,6 @@ def memoized():
 
 
 def tabulation():
-    def solve(arr, day_index, activity_index, num_activities, dp):
-        if day_index == 0:
-            return arr[0][activity_index]
-        if dp[day_index][activity_index] is not None:
-            return dp[day_index][activity_index]
-        max_pts = 0
-        for next_activity_index in range(num_activities):
-            if next_activity_index != activity_index:
-                max_pts = max(max_pts, solve(arr, day_index - 1, next_activity_index, num_activities, dp))
-        dp[day_index][activity_index] = arr[day_index][activity_index] + max_pts
-        return dp[day_index][activity_index]
-
     def ninja_training(mtx):
         """
             Overall time complexity is O(nm^2) and space complexity is O(n*m).
@@ -210,8 +198,76 @@ def tabulation():
     )
 
 
+def space_optimized():
+    def ninja_training(mtx):
+        """
+            Overall time complexity is O(nm^2) and space complexity is O(m).
+        """
+
+        # let num_activities = m and num_days = n
+        num_days = len(mtx)
+        num_activities = len(mtx[0])
+        prev = {j: 0 for j in range(num_activities)}
+        for j in prev:
+            prev[j] = mtx[0][j]
+
+        for day_index in range(1, num_days):
+            curr = {j: 0 for j in range(num_activities)}
+            for activity_index in range(num_activities):
+                sub_max_pts = 0
+                # This will run for m times.
+                for next_activity_index in range(num_activities):
+                    if next_activity_index != activity_index:
+                        sub_max_pts = max(sub_max_pts, prev[next_activity_index])
+                curr[activity_index] = mtx[day_index][activity_index] + sub_max_pts
+            prev = curr
+
+        return max(prev.values())
+
+    print(
+        ninja_training(
+            [
+                [10, 40, 70],
+                [20, 50, 80],
+                [30, 60, 90]
+            ]
+        )
+    )
+
+    print(
+        ninja_training(
+            [
+                [1, 2, 5],
+                [3, 1, 1],
+                [3, 3, 3]
+            ]
+        )
+    )
+
+    print(
+        ninja_training(
+            [
+                [18, 11, 19],
+                [4, 13, 7],
+                [1, 8, 13]
+            ]
+        )
+    )
+
+    print(
+        ninja_training(
+            [
+                [10, 50, 1],
+                [5, 100, 11]
+            ]
+        )
+    )
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
