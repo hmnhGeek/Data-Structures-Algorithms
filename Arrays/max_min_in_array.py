@@ -34,4 +34,5 @@ def get_min_max(arr):
     return copy[0], copy[-1]
 
 
-print(get_min_max([2, 6, 8, 0, 9, 9, 7]))
+print(get_min_max([3, 5, 4, 1, 9]))
+print(get_min_max([22, 14, 8, 17, 35, 3]))
