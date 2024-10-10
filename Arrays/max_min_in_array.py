@@ -82,7 +82,24 @@ def get_min_max_merge_sort(arr):
     return copy[0], copy[-1]
 
 
+def get_min_max_linear_time(arr):
+    # This will take O(n) time and O(1) space.
+
+    _min = 1e6
+    _max = -1e6
+
+    for i in arr:
+        if i < _min:
+            _min = i
+        if i > _max:
+            _max = i
+
+    return _min, _max
+
+
 print(get_min_max([3, 5, 4, 1, 9]))
 print(get_min_max([22, 14, 8, 17, 35, 3]))
 print(get_min_max_merge_sort([3, 5, 4, 1, 9]))
 print(get_min_max_merge_sort([22, 14, 8, 17, 35, 3]))
+print(get_min_max_linear_time([3, 5, 4, 1, 9]))
+print(get_min_max_linear_time([22, 14, 8, 17, 35, 3]))
