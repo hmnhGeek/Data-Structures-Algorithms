@@ -157,24 +157,43 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def _populate_nodes(root: Node, low: int, high: int, result: list):
+        # if the node is None, return from the recursion stack.
         if root is None:
             return
 
+        # if the current node's data is in inclusive range, then...
         if low <= root.data <= high:
+            # push the data into the result list
             result.append(root.data)
+            # search in left subtree with high <-- data - 1 (because now we don't want inclusive high).
             Solution._populate_nodes(root.left, low, root.data - 1, result)
+            # search in the right subtree with low <-- data
             Solution._populate_nodes(root.right, root.data, high, result)
+
+        # if the root's data is not in the range, there are two possibilities...
+        # the node's data < low
         elif root.data < low:
+            # it means there is no point in searching in left subtree, so search in right with same range.
             Solution._populate_nodes(root.right, low, high, result)
         else:
+            # else if data > high, it means there is no point in searching in right subtree, so search in left with the
+            # same range.
             Solution._populate_nodes(root.left, low, high, result)
 
     @staticmethod
     def get_nodes_in_range(bst: BinarySearchTree, low: int, high: int):
+        """
+            Overall time complexity is O(n) and space complexity is also O(n).
+        """
+
+        # create a blank list to store the results
         result = []
+        # if the range is invalid, return blank list.
         if low > high:
             return result
+        # populate the result list in O(n) time and O(n) recursion stack space.
         Solution._populate_nodes(bst.root, low, high, result)
+        # return the result.
         return result
 
 
