@@ -80,3 +80,5 @@ class Solution:
 
 print(Solution.next_smaller([4, 8, 5, 2, 25]))
 print(Solution.next_smaller([13, 7, 6, 12]))
+print(Solution.next_smaller([4, 10, 5, 8, 20, 15, 3, 12]))
+print(Solution.next_smaller([5, 15, 20, 25, 12, 20]))
