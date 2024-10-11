@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/count-bst-nodes-that-lie-in-a-given-range/1
+
+
 class Node:
     def __init__(self, data):
         self.parent = None
@@ -150,3 +153,55 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _populate_nodes(root: Node, low: int, high: int, result: list):
+        if root is None:
+            return
+
+        if low <= root.data <= high:
+            result.append(root.data)
+            Solution._populate_nodes(root.left, low, root.data - 1, result)
+            Solution._populate_nodes(root.right, root.data, high, result)
+        elif root.data < low:
+            Solution._populate_nodes(root.right, low, high, result)
+        else:
+            Solution._populate_nodes(root.left, low, high, result)
+
+    @staticmethod
+    def get_nodes_in_range(bst: BinarySearchTree, low: int, high: int):
+        result = []
+        if low > high:
+            return result
+        Solution._populate_nodes(bst.root, low, high, result)
+        return result
+
+
+# Example 1
+tree1 = BinarySearchTree()
+tree1.insert(10)
+tree1.insert(5)
+tree1.insert(50)
+tree1.insert(1)
+tree1.insert(40)
+tree1.insert(100)
+print(Solution.get_nodes_in_range(tree1, 5, 45))
+
+# Example 2
+tree2 = BinarySearchTree()
+for i in [5, 4, 6, 3, 7]:
+    tree2.insert(i)
+print(Solution.get_nodes_in_range(tree2, 2, 8))
+
+# Example 3
+tree3 = BinarySearchTree()
+for i in [10, 5, 15, 3, 7, 18]:
+    tree3.insert(i)
+print(Solution.get_nodes_in_range(tree3, 7, 15))
+
+# Example 4
+tree4 = BinarySearchTree()
+for i in [10, 5, 15, 3, 7, 13, 18, 1, 6]:
+    tree4.insert(i)
+print(Solution.get_nodes_in_range(tree4, 6, 10))
