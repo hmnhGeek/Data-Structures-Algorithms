@@ -157,8 +157,65 @@ def tabulation():
     )
 
 
+def space_optimized():
+    """
+        Time complexity is O(nm) and space complexity O(m).
+    """
+    def unique_paths(mtx):
+        n, m = len(mtx), len(mtx[0])
+        prev = {j: 0 for j in range(m)}
+        for j in prev:
+            if mtx[0][j] == 0:
+                prev[j] = 1
+
+        for i in range(1, n):
+            curr = {j: 0 for j in range(m)}
+            curr[0] = 1 if mtx[i][0] == 0 else 0
+            for j in range(1, m):
+                left = 0
+                if 0 <= i - 1 < n and mtx[i - 1][j] != -1:
+                    left = prev[j]
+
+                right = 0
+                if 0 <= j - 1 < m and mtx[i][j - 1] != -1:
+                    right = curr[j - 1]
+                curr[j] = left + right
+            prev = curr
+        return prev[m - 1]
+
+    print(
+        unique_paths(
+            [
+                [0, 0, 0],
+                [0, -1, 0],
+                [0, 0, 0]
+            ]
+        )
+    )
+
+    print(
+        unique_paths(
+            [
+                [0, -1],
+                [-1, 0]
+            ]
+        )
+    )
+
+    print(
+        unique_paths(
+            [
+                [0, -1],
+                [0, 0]
+            ]
+        )
+    )
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
