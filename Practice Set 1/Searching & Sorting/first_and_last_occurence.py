@@ -32,3 +32,4 @@ class Solution:
 
 print(Solution.get_first_and_last([1, 3, 5, 5, 5, 5, 67, 123, 125], 5))
 print(Solution.get_first_and_last([1, 3, 5, 5, 5, 5, 7, 123, 125], 7))
+print(Solution.get_first_and_last([1, 3, 5, 5, 5, 5, 7, 123, 125], 90))
