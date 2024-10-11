@@ -43,6 +43,9 @@ class Stack:
 class Solution:
     @staticmethod
     def next_smaller(arr):
+        """
+            Time complexity is O(n)
+        """
         stack = Stack()
         result = [None for i in range(len(arr))]
         for i in range(len(arr) - 1, -1, -1):
