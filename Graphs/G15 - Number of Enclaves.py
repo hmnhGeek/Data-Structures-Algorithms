@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/number-of-enclaves/description/
+# Solution - https://www.youtube.com/watch?v=rxKcepXQgU4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=15
+
+
 class Solution:
     @staticmethod
     def _get_neighbours(mtx, i, j, n, m):
@@ -25,6 +29,12 @@ class Solution:
 
     @staticmethod
     def num_enclaves(mtx):
+        """
+            The approach is similar to the G14 problem. The only difference here is that we first convert the bordered
+            components of 1 values to 2s and then count the middle 1s and finally convert back the 2s to 1s.
+
+            Time complexity is O(n*m) and space complexity is O(n*m).
+        """
         n, m = len(mtx), len(mtx[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
 
