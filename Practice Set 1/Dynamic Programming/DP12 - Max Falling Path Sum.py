@@ -1,0 +1,74 @@
+def recursive():
+    """
+        Time complexity is O(3^{mn}) and space complexity is O(m + n)
+    """
+
+    def solve(mtx, i, j, n, m):
+        if i == 0:
+            return mtx[0][j]
+
+        left = -1e6
+        if 0 <= i - 1 < n and 0 <= j - 1 < m:
+            left = solve(mtx, i - 1, j - 1, n, m)
+
+        middle = -1e6
+        if 0 <= i - 1 < n and 0 <= j < m:
+            middle = solve(mtx, i - 1, j, n, m)
+
+        right = -1e6
+        if 0 <= i - 1 < n and 0 <= j + 1 < m:
+            right = solve(mtx, i - 1, j + 1, n, m)
+
+        return mtx[i][j] + max(left, middle, right)
+
+    def max_path(mtx):
+        n, m = len(mtx), len(mtx[0])
+        max_val = -1e6
+        for j in range(m):
+            max_val = max(max_val, solve(mtx, n - 1, j, n, m))
+        return max_val
+
+    print(
+        max_path(
+            [
+                [1, 2, 10, 4],
+                [100, 3, 2, 1],
+                [1, 1, 20, 2],
+                [1, 2, 2, 1]
+            ]
+        )
+    )
+
+    print(
+        max_path(
+            [
+                [10, 2, 3],
+                [3, 7, 2],
+                [8, 1, 5]
+            ]
+        )
+    )
+
+    print(
+        max_path(
+            [
+                [1, 2, 3],
+                [9, 8, 7],
+                [4, 5, 6]
+            ]
+        )
+    )
+
+    print(
+        max_path(
+            [
+                [10, 10, 2, -13, 20, 4],
+                [1, -9, -81, 30, 2, 5],
+                [0, 10, 4, -79, 2, -10],
+                [1, -5, 2, 20, -11, 4]
+            ]
+        )
+    )
+
+
+recursive()
