@@ -149,6 +149,82 @@ def memoized():
     )
 
 
+def tabulation():
+    """
+        Time complexity is O(mn) and space complexity is O(mn)
+    """
+    def max_path(mtx):
+        n, m = len(mtx), len(mtx[0])
+        max_val = -1e6
+        dp = {i: {j: -1e6 for j in range(m)} for i in range(n)}
+        for j in dp[0]:
+            dp[0][j] = mtx[0][j]
+
+        for i in range(1, n):
+            for j in range(m):
+                left = -1e6
+                if 0 <= i - 1 < n and 0 <= j - 1 < m:
+                    left = dp[i - 1][j - 1]
+
+                middle = -1e6
+                if 0 <= i - 1 < n and 0 <= j < m:
+                    middle = dp[i - 1][j]
+
+                right = -1e6
+                if 0 <= i - 1 < n and 0 <= j + 1 < m:
+                    right = dp[i - 1][j + 1]
+
+                dp[i][j] = mtx[i][j] + max(left, middle, right)
+
+        for j in range(m):
+            max_val = max(max_val, dp[n - 1][j])
+        return max_val
+
+    print(
+        max_path(
+            [
+                [1, 2, 10, 4],
+                [100, 3, 2, 1],
+                [1, 1, 20, 2],
+                [1, 2, 2, 1]
+            ]
+        )
+    )
+
+    print(
+        max_path(
+            [
+                [10, 2, 3],
+                [3, 7, 2],
+                [8, 1, 5]
+            ]
+        )
+    )
+
+    print(
+        max_path(
+            [
+                [1, 2, 3],
+                [9, 8, 7],
+                [4, 5, 6]
+            ]
+        )
+    )
+
+    print(
+        max_path(
+            [
+                [10, 10, 2, -13, 20, 4],
+                [1, -9, -81, 30, 2, 5],
+                [0, 10, 4, -79, 2, -10],
+                [1, -5, 2, 20, -11, 4]
+            ]
+        )
+    )
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
