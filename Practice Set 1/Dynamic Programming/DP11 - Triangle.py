@@ -1,3 +1,6 @@
+# Problem link - https://www.naukri.com/code360/problems/triangle_1229398?source=youtube&campaign=striver_dp_videos
+
+
 def recursive():
     """
         T: O(2^{nm}) and space is O(n + m)
