@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/bipartite-graph/1
+# Solution - https://www.youtube.com/watch?v=-vu34sct1g8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=17
+
+
 class Node:
     def __init__(self, data):
         self.data = data
