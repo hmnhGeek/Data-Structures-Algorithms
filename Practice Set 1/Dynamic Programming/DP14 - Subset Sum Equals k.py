@@ -1,3 +1,6 @@
+# Problem link - https://www.naukri.com/code360/problems/subset-sum-equal-to-k_1550954?leftPanelTab=1%3Fsource%3Dyoutube&campaign=striver_dp_videos
+
+
 def recursive():
     def solve(arr, i, target):
         # Time complexity is O(2^n) and space complexity is O(n)
