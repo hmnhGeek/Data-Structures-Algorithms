@@ -254,8 +254,101 @@ def tabulation():
                          [1, 0, 2, 3, 0, 0, 6]]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nm^2) and space complexity is O(m^2).
+    """
+    def cherry_pickup(mtx):
+        n, m = len(mtx), len(mtx[0])
+        ans = 0
+        prev = {j: {k: 0 for k in range(m)} for j in range(m)}
+
+        # define dp for 1st row; base case
+        for j in prev[0]:
+            if j != m - 1:
+                prev[0][j] = mtx[0][0]
+            else:
+                prev[0][j] = mtx[0][0] + mtx[0][m - 1]
+        for i in prev:
+            if i != 0:
+                for j in prev[i]:
+                    if j == m - 1:
+                        prev[i][j] = mtx[0][m - 1]
+
+        # start from 1st row.
+        for row in range(1, n):
+            curr = {j: {k: 0 for k in range(m)} for j in range(m)}
+            for i in range(m):
+                for j in range(m):
+                    result = 0
+                    for di in [-1, 0, 1]:
+                        for dj in [-1, 0, 1]:
+                            if 0 <= row - 1 < n and 0 <= i + di < m and 0 <= j + dj < m:
+                                result = max(result, prev[i + di][j + dj])
+                    if i == j:
+                        curr[i][j] = mtx[row][i] + result
+                    else:
+                        curr[i][j] = mtx[row][i] + mtx[row][j] + result
+            prev = curr
+
+        # loop on the last row of the dp
+        for i in range(m):
+            for j in range(m):
+                ans = max(ans, prev[i][j])
+        return ans
+
+    print(
+        cherry_pickup(
+            [
+                [2, 3, 1, 2],
+                [3, 4, 2, 2],
+                [5, 6, 3, 5]
+            ]
+        )
+    )
+
+    print(
+        cherry_pickup(
+            [
+                [1, 1],
+                [1, 2]
+            ]
+        )
+    )
+
+    print(
+        cherry_pickup(
+            [
+                [3, 7],
+                [7, 6]
+            ]
+        )
+    )
+
+    print(
+        cherry_pickup(
+            [
+                [4, 5],
+                [3, 7],
+                [4, 2]
+            ]
+        )
+    )
+
+    print(
+        cherry_pickup(
+            [[3, 1, 1], [2, 5, 1], [1, 5, 5], [2, 1, 1]]
+        )
+    )
+
+    print(cherry_pickup([[1, 0, 0, 0, 0, 0, 1], [2, 0, 0, 0, 0, 3, 0], [2, 0, 9, 0, 0, 0, 0], [0, 3, 0, 5, 4, 0, 0],
+                         [1, 0, 2, 3, 0, 0, 6]]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
