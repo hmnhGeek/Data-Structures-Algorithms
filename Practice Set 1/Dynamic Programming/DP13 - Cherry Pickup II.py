@@ -1,3 +1,6 @@
+# Problem link - https://www.naukri.com/code360/problems/ninja-and-his-friends_3125885?source=youtube&campaign=striver_dp_videos
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(m + n).
