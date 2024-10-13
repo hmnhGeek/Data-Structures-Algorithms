@@ -39,10 +39,19 @@ class Graph:
     def is_bipartite(graph):
         # create a dictionary to store the colors of the nodes.
         node_colors = {i: None for i in graph}
-        # get a random starting node; here we take the 1st node from the graph.
-        start_node = list(node_colors.keys())[0]
-        # return if the graph is a bipartite graph or not by performing DFS from this start_node with color 0.
-        return Graph._dfs(graph, start_node, node_colors, 0)
+
+        # initialize a variable to store the result. Assume this graph is bipartite.
+        is_bipartite = True
+
+        # loop on all the nodes of the graph.
+        for node in node_colors:
+            # if the node is not yet colored, i.e., it is not yet visited, we have found a component; run DFS on
+            # this node and take a logical AND with the result. Basically, here we are trying to check that all
+            # components of the graph need to be bipartite in order for the whole graph to be termed as bipartite.
+            if node_colors[node] is None:
+                is_bipartite = is_bipartite and Graph._dfs(graph, node, node_colors, 0)
+        # finally return the bipartite result for the whole graph.
+        return is_bipartite
 
 
 class Solution:
