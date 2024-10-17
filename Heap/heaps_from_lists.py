@@ -82,10 +82,58 @@ class MinHeap(Heap):
             self.heapify_down(min_child_index)
 
 
+class MaxHeap(Heap):
+    def __init__(self):
+        super().__init__()
+
+    def get_max_child_index(self, lci, rci):
+        if lci is None and rci is None:
+            return
+        if lci is None:
+            return rci
+        if rci is None:
+            return lci
+        max_child_index = lci
+        if self.heap[rci] > self.heap[max_child_index]:
+            max_child_index = rci
+        return max_child_index
+
+    def heapify_up(self, start_index):
+        if start_index == 0:
+            return
+        pi = self.get_pi(start_index)
+        lci, rci = self.get_lci(pi), self.get_rci(pi)
+        max_child_index = self.get_max_child_index(lci, rci)
+
+        if max_child_index is not None:
+            if self.heap[pi] < self.heap[max_child_index]:
+                self.heap[pi], self.heap[max_child_index] = self.heap[max_child_index], self.heap[pi]
+            self.heapify_up(pi)
+
+    def heapify_down(self, pi):
+        lci, rci = self.get_lci(pi), self.get_rci(pi)
+        max_child_index = self.get_max_child_index(lci, rci)
+
+        if max_child_index is not None:
+            if self.heap[pi] < self.heap[max_child_index]:
+                self.heap[pi], self.heap[max_child_index] = self.heap[max_child_index], self.heap[pi]
+            self.heapify_down(max_child_index)
+
+
 # Example - Testing MinHeap class
 min_heap = MinHeap()
 for i in [4, 10, 3, 5, 1]:
     min_heap.insert(i)
 
 while not min_heap.is_empty():
-    print(min_heap.pop())
+    print(min_heap.pop(), end=" ")
+
+print()
+
+# Example - Testing MaxHeap class
+max_heap = MaxHeap()
+for i in [1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17]:
+    max_heap.insert(i)
+
+while not max_heap.is_empty():
+    print(max_heap.pop(), end=" ")
