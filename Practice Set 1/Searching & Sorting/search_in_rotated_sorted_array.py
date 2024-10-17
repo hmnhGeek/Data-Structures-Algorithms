@@ -18,6 +18,13 @@ class Solution:
             if arr[mid] == target:
                 return mid
 
+            # if sorted part cannot be identified because all three pointers are same, increment low and decrement
+            # high and continue until you can identify sorted part.
+            if arr[low] == arr[mid] == arr[high]:
+                low += 1
+                high -= 1
+                continue
+
             # if the left part is sorted
             if arr[low] <= arr[mid]:
                 # check if target lies in left part, if yes, move high
@@ -44,3 +51,4 @@ print(Solution.search([4, 5, 6, 7, 0, 1, 2], 3))
 print(Solution.search([1], 0))
 print(Solution.search([2, 5, -3, 0], 5))
 print(Solution.search([2, 5, -3, 0], 1))
+print(Solution.search([3, 3, 1, 3, 3, 3, 3], 1))
