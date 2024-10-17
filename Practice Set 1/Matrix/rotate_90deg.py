@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/rotate-a-matrix-by-90-degree-in-clockwise-direction-without-using-any-extra-space/
+
+
 class Matrix:
     @staticmethod
     def _transpose(mtx, n):
@@ -14,7 +17,7 @@ class Matrix:
         n = len(mtx)
         # This will take O(n^2) time
         Matrix._transpose(mtx, n)
-        # this will alse take O(n^2) time.
+        # this will also take O(n^2) time.
         for i in range(n):
             mtx[i] = mtx[i][-1:-n-1:-1]
 
