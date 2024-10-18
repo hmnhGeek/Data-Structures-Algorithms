@@ -174,3 +174,5 @@ class Solution:
 
 
 print(Solution.just_greater([8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]))
+print(Solution.just_greater([2, 6, 9, 1, 3, 2]))
+print(Solution.just_greater([17, 18, 5, 4, 6, 1]))
