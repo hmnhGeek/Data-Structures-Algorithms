@@ -37,7 +37,7 @@ class BinaryTree:
     @staticmethod
     def get_height(root: Node) -> int:
         """
-            Time complexity would be O(n) and space complexity would be O(n) for the stack space.
+            Time complexity would be O(n) and space complexity would be O(height) for the stack space.
         """
 
         # start from the root node with a height of 1.
