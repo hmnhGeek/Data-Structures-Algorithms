@@ -48,7 +48,8 @@ class BinarySearchTree:
             self.root = node
             self.d = 1
             return
-        return self._insert(self.root, node)
+        self._insert(self.root, node)
+        return node
 
     def get_leftmost_leaf(self, node):
         if node is None:
@@ -135,10 +136,28 @@ class BinarySearchTree:
     def _show(self, start):
         if start:
             self._show(start.left)
-            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
+            print(
+                f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
             self._show(start.right)
 
     def show(self):
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def just_greater(arr):
+        result = []
+        bst = BinarySearchTree()
+        for i in range(-1, -len(arr) - 1, -1):
+            node = bst.insert(arr[i])
+            successor = bst.get_successor(node)
+            if successor is not None:
+                result.append(successor.data)
+            else:
+                result.append(-1)
+        return result[-1:-len(result) - 1:-1]
+
+
+print(Solution.just_greater([8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]))
