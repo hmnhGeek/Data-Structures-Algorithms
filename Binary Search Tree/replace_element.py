@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/replace-every-element-with-the-least-greater-element-on-its-right/
+
+
 class Node:
     def __init__(self, data):
         self.parent = None
@@ -148,15 +151,25 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def just_greater(arr):
+        """
+            Overall time complexity is O(n*log(n)) and space complexity is O(n).
+        """
+
+        # create a blank result list and initialize a BST.
         result = []
         bst = BinarySearchTree()
+
+        # start inserting into BST from the right side. This will run for n times.
         for i in range(-1, -len(arr) - 1, -1):
             node = bst.insert(arr[i])
+            # get the successor of node in O(log(n)) time.
             successor = bst.get_successor(node)
+            # append the successor's data into result
             if successor is not None:
                 result.append(successor.data)
             else:
                 result.append(-1)
+        # return the reverse of the result array in O(n) time.
         return result[-1:-len(result) - 1:-1]
 
 
