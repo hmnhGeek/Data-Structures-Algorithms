@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/height-of-binary-tree/1
+
+
 class Node:
     def __init__(self, data):
         self.left = None
@@ -8,24 +11,36 @@ class Node:
 class BinaryTree:
     @staticmethod
     def _get_height(root: Node, depth: int) -> int:
+        # if the node is itself is None, return a 0 height
         if root is None:
             return 0
 
+        # if the root node is a leaf node, return the current depth.
         if root.left is None and root.right is None:
             return depth
 
+        # assume the left height to be -inf for the left subtree of the current root.
         left = -1e6
         if root.left:
+            # if there exist a left subtree, get its height by passing `depth + 1` as height for the left node.
             left = BinaryTree._get_height(root.left, depth + 1)
 
+        # assume the right height to be -inf for the right subtree of the current root.
         right = -1e6
         if root.right:
+            # if there exist a right subtree, get its height by passing `depth + 1` as height for the right node.
             right = BinaryTree._get_height(root.right, depth + 1)
 
+        # return the max height achieved from both the subtrees of the root.
         return max(left, right)
 
     @staticmethod
     def get_height(root: Node) -> int:
+        """
+            Time complexity would be O(n) and space complexity would be O(n) for the stack space.
+        """
+
+        # start from the root node with a height of 1.
         return BinaryTree._get_height(root, 1)
 
 
