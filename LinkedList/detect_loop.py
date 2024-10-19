@@ -37,14 +37,33 @@ class LoopDetector:
                 return True
         return False
 
+    @staticmethod
+    def memory_based_detection(linked_list: LinkedList) -> bool:
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
+        # The idea is to store the nodes as you visit them into a set. If a node is found
+        # in the set, there is a loop.
+        visited = set()
+        curr = linked_list.head
+        while curr is not None:
+            if curr in visited:
+                return True
+            visited.add(curr)
+            curr = curr.next
+        return False
+
 
 linked_list1 = LinkedList()
 for i in [1, 2, 3, 4, 5]:
     linked_list1.push(i)
 linked_list1.tail.next = linked_list1.head.next.next.next
 print(LoopDetector.floyd_loop_detection(linked_list1))
+print(LoopDetector.memory_based_detection(linked_list1))
 
 linked_list2 = LinkedList()
 for i in [1, 2, 3, 4, 5]:
     linked_list2.push(i)
 print(LoopDetector.floyd_loop_detection(linked_list2))
+print(LoopDetector.memory_based_detection(linked_list2))
