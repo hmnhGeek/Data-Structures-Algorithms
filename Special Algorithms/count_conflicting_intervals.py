@@ -16,6 +16,7 @@ def search_conflicting_intervals(intervals, low, high, end_time):
             low = last_slot = mid + 1
         else:
             high = mid - 1
+    # return the conflicting intervals
     return conflicting_intervals
 
 
