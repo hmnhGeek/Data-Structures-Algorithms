@@ -1,3 +1,6 @@
+# Problem link - https://www.naukri.com/code360/problems/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum_842494
+# Solution - https://www.youtube.com/watch?v=GS_OqZb2CWc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=17
+
 def recursive():
     def solve(arr, index, target):
         if target == 0:
@@ -61,23 +64,38 @@ def tabulation():
     print(subset_sum([1, 6, 11, 5], 12))
 
 
-def space_optimized():
-    def subset_sum(arr, target):
-        n = len(arr)
-        prev = {j: False for j in range(target + 1)}
-        prev[0] = True
-        prev[arr[0]] = True
+def subset_sum(arr, target):
+    """
+        Time complexity is O(n*target) and space complexity is O(target).
+    """
+    n = len(arr)
+    prev = {j: False for j in range(target + 1)}
+    prev[0] = True
+    prev[arr[0]] = True
 
-        for index in range(1, n):
-            curr = {j: False for j in range(target + 1)}
-            curr[0] = True
-            for tgt in range(target + 1):
-                left = False
-                if arr[index] <= tgt:
-                    left = prev[tgt - arr[index]]
-                right = prev[tgt]
-                curr[tgt] = left or right
-            prev = curr
-        return prev[target]
+    for index in range(1, n):
+        curr = {j: False for j in range(target + 1)}
+        curr[0] = True
+        for tgt in range(target + 1):
+            left = False
+            if arr[index] <= tgt:
+                left = prev[tgt - arr[index]]
+            right = prev[tgt]
+            curr[tgt] = left or right
+        prev = curr
+    return prev[target]
 
-    print(subset_sum([1, 6, 11, 5], 13))
+
+def min_partition(arr):
+    sigma = sum(arr)
+    for target in range(sigma//2, sigma):
+        if subset_sum(arr, target):
+            break
+    return abs(2*target - sigma)
+
+
+print(min_partition([1, 2, 3, 4]))
+print(min_partition([8, 6, 5]))
+print(min_partition([1, 6, 11, 5]))
+print(min_partition([1, 5, 11, 5]))
+print(min_partition([3, 1, 5, 2, 8]))
