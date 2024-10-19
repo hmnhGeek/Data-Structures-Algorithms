@@ -22,6 +22,13 @@ class LinkedList:
 class LoopDetector:
     @staticmethod
     def floyd_loop_detection(linked_list: LinkedList) -> bool:
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # The idea is to store two pointers slow and fast. `slow` moves one node at a time
+        # while `fast` moves two nodes at a time. At any point (except the start), if slow
+        # and fast become the same, we have a loop.
         slow = fast = linked_list.head
         while slow and fast and fast.next:
             slow = slow.next
