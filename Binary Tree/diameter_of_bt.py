@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/diameter-of-binary-tree/1
+# Solution - https://takeuforward.org/data-structure/calculate-the-diameter-of-a-binary-tree/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,16 +11,29 @@ class Node:
 class BinaryTree:
     @staticmethod
     def _get_height(root: Node, maxi: int):
+        # if the root node is null, return 0 for height and maxi for diameter
         if root is None:
             return 0, maxi
+
+        # calculate left and right heights
         left_height, maxi = BinaryTree._get_height(root.left, maxi)
         right_height, maxi = BinaryTree._get_height(root.right, maxi)
+
+        # update the maxi for getting the correct diameter
         maxi = max(maxi, 1 + left_height + right_height)
+
+        # return the height and correct diameter for node = root.
         return 1 + max(left_height, right_height), maxi
 
     @staticmethod
     def get_diameter(root: Node) -> int:
+        """
+            Time complexity would be O(n) and space complexity would be O(n).
+        """
+
+        # start from the root node, and pass `maxi = 0`.
         _, diameter = BinaryTree._get_height(root, 0)
+        # get the correct diameter and return it.
         return diameter
 
 
