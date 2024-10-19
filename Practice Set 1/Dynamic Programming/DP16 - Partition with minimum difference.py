@@ -60,4 +60,24 @@ def tabulation():
 
     print(subset_sum([1, 6, 11, 5], 12))
 
-tabulation()
+
+def space_optimized():
+    def subset_sum(arr, target):
+        n = len(arr)
+        prev = {j: False for j in range(target + 1)}
+        prev[0] = True
+        prev[arr[0]] = True
+
+        for index in range(1, n):
+            curr = {j: False for j in range(target + 1)}
+            curr[0] = True
+            for tgt in range(target + 1):
+                left = False
+                if arr[index] <= tgt:
+                    left = prev[tgt - arr[index]]
+                right = prev[tgt]
+                curr[tgt] = left or right
+            prev = curr
+        return prev[target]
+
+    print(subset_sum([1, 6, 11, 5], 13))
