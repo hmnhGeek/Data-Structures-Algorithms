@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/detect-loop-in-a-linked-list/#naive-approach-using-hashset-on-time-and-on-space
+
+
 class Node:
     def __init__(self, data):
         self.data = data
