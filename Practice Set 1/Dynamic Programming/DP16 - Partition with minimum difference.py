@@ -39,3 +39,25 @@ def memoized():
         return solve(arr, n - 1, target, dp)
 
     print(subset_sum([1, 6, 11, 5], 15))
+
+
+def tabulation():
+    def subset_sum(arr, target):
+        n = len(arr)
+        dp = {i: {j: False for j in range(target + 1)} for i in range(n)}
+        for i in dp:
+            dp[i][0] = True
+        dp[0][arr[0]] = True
+
+        for index in range(1, n):
+            for tgt in range(target + 1):
+                left = False
+                if arr[index] <= tgt:
+                    left = dp[index - 1][tgt - arr[index]]
+                right = dp[index - 1][tgt]
+                dp[index][tgt] = left or right
+        return dp[n - 1][target]
+
+    print(subset_sum([1, 6, 11, 5], 12))
+
+tabulation()
