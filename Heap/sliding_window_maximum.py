@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -72,18 +75,37 @@ class MaxHeap:
 class SlidingWindowMaximum:
     @staticmethod
     def get_max(arr, k):
+        """
+            Overall time complexity is O({n - k + k}*log(n)) and space complexity is O(n).
+        """
+
         n = len(arr)
+        # if the window size is greater than the length of the array, simply print max of the array.
         if k > n:
             print(max(arr))
             return
+
+        # initialize a max heap
         max_heap = MaxHeap()
+
+        # insert the first k elements from the array into the max heap. This will take O(k*log(n)) time.
         for i in range(k):
             max_heap.insert(arr[i])
+
+        # iterate on the array with window size of k...
         for i in range(n - k + 1):
+            # print the top from the max heap, denoting the max element in the current window.
             print(max_heap.top(), end=" ")
+
+            # now shrink the window from left and if the element that is getting removed is the
+            # top element from the max heap, pop it from the max heap.
             if arr[i] == max_heap.top():
+                # This will take O(log(n)) time.
                 max_heap.pop()
+
+            # add the (i + k)th element in the heap.
             if 0 <= i + k < n:
+                # This will take O(log(n)) time.
                 max_heap.insert(arr[i + k])
         print()
 
