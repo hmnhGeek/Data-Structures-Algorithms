@@ -45,3 +45,5 @@ class StringConverter:
 print(StringConverter.convert("ABD", "BAD"))
 print(StringConverter.convert("EACBD", "EABCD"))
 print(StringConverter.convert("GeeksForGeeks", "ForGeeksGeeks"))
+print(StringConverter.convert("AbcD", "bcAD"))
+print(StringConverter.convert("IFDfxPCdNvCNXPe", "NFfPICxeCNDdXPv"))
