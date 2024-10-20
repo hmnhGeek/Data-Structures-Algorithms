@@ -39,19 +39,38 @@ class Stack:
 class Graph:
     @staticmethod
     def _dfs(graph, node, visited, stack):
+        # mark this node as visited.
         visited[node] = True
+
+        # traverse on the adjacent nodes of this node.
         for adj_node in graph[node]:
+            # if the adjacent node is not visited, initiate a DFS call for this adjacent node.
             if not visited[adj_node]:
                 Graph._dfs(graph, adj_node, visited, stack)
+
+        # once all the adjacent nodes are done with, push this node into the stack. All the
+        # adjacent nodes must have been push to this stack within the above recursive calls.
         stack.push(node)
 
     @staticmethod
     def get_topological_sort(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # create a visited array for DFS traversal.
         visited = {i: False for i in graph}
+
+        # initialize an empty stack.
         stack = Stack()
+
+        # traverse on the nodes from the graph.
         for node in graph:
+            # if the node is not visited, initiate a DFS call.
             if not visited[node]:
                 Graph._dfs(graph, node, visited, stack)
+
+        # continuously pop from the stack until it gets empty; this is the topological order.
         while not stack.is_empty():
             print(stack.pop(), end=" ")
         print()
