@@ -46,22 +46,6 @@ def memoized():
 
 
 def tabulation():
-    def solve(arr, index, target, dp):
-        if target == 0:
-            return True
-        if index == 0:
-            return arr[0] == target
-
-        if dp[index][target] is not None:
-            return dp[index][target]
-
-        left = False
-        if arr[index] <= target:
-            left = solve(arr, index - 1, target - arr[index], dp)
-        right = solve(arr, index - 1, target, dp)
-        dp[index][target] = left or right
-        return left or right
-
     def subset_sum(arr, target):
         n = len(arr)
         dp = {i: {j: False for j in range(target + 1)} for i in range(n)}
@@ -83,8 +67,33 @@ def tabulation():
     print(subset_sum([2, 5, 1, 6, 7], 4))
 
 
+def space_optimized():
+    def subset_sum(arr, target):
+        n = len(arr)
+        prev = {j: False for j in range(target + 1)}
+        prev[0] = True
+        prev[arr[0]] = True
+
+        for index in range(1, n):
+            curr = {j: False for j in range(target + 1)}
+            curr[0] = True
+            for tgt in range(target + 1):
+                left = False
+                if arr[index] <= tgt:
+                    left = prev[tgt - arr[index]]
+                right = prev[tgt]
+                curr[tgt] = left or right
+            prev = curr
+        return prev[target]
+
+    print(subset_sum([4, 3, 2, 1], 5))
+    print(subset_sum([2, 5, 1, 6, 7], 4))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
