@@ -67,33 +67,40 @@ def tabulation():
     print(subset_sum([2, 5, 1, 6, 7], 4))
 
 
-def space_optimized():
-    def subset_sum(arr, target):
-        n = len(arr)
-        prev = {j: False for j in range(target + 1)}
-        prev[0] = True
-        prev[arr[0]] = True
-
-        for index in range(1, n):
-            curr = {j: False for j in range(target + 1)}
-            curr[0] = True
-            for tgt in range(target + 1):
-                left = False
-                if arr[index] <= tgt:
-                    left = prev[tgt - arr[index]]
-                right = prev[tgt]
-                curr[tgt] = left or right
-            prev = curr
-        return prev[target]
-
-    print(subset_sum([4, 3, 2, 1], 5))
-    print(subset_sum([2, 5, 1, 6, 7], 4))
+def subset_sum(arr, target):
+    n = len(arr)
+    prev = {j: 0 for j in range(target + 1)}
+    prev[0] = 1
+    prev[arr[0]] = 1
+    for index in range(1, n):
+        curr = {j: 0 for j in range(target + 1)}
+        curr[0] = 1
+        for tgt in range(target + 1):
+            left = 0
+            if arr[index] <= tgt:
+                left = prev[tgt - arr[index]]
+            right = prev[tgt]
+            curr[tgt] = left + right
+        prev = curr
+    return prev[target]
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
+def count_partitions(arr, diff):
+    s = sum(arr)
+    count = 0
+    for target in range(s // 2, s + 1):
+        s1 = target
+        if 2 * s1 - s == diff:
+            count_subsets = subset_sum(arr, s1)
+            count += count_subsets
+    return count
+
+
+print(count_partitions([5, 2, 6, 4], 3))
+print(count_partitions([5, 2, 5, 1], 3))
+print(count_partitions([1, 1, 1, 1], 0))
+print(count_partitions([4, 6, 3], 1))
+print(count_partitions([3, 1, 1, 2, 1], 4))
+print(count_partitions([3, 2, 2, 5, 1], 1))
+print(count_partitions([0, 0, 0, 0, 0, 0, 0, 0, 1], 1))
+print(count_partitions([1, 2, 3, 1, 2], 1))
