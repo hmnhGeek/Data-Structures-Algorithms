@@ -59,6 +59,33 @@ def memoized():
     print(knapsack([4, 5, 6], [1, 2, 3], 3))
 
 
+def tabulation():
+    """
+        T: O(n*cap) and space is O(n*cap)
+    """
+    def knapsack(wt, val, cap):
+        n = len(wt)
+        dp = {i: {j: -1e6 for j in range(cap + 1)} for i in range(n)}
+        for j in dp[0]:
+            dp[0][j] = val[0] if wt[0] <= j else 0
+
+        for index in range(1, n):
+            for c in range(cap + 1):
+                left = -1e6
+                if wt[index] <= c:
+                    left = val[index] + dp[index - 1][c - wt[index]]
+                right = dp[index - 1][c]
+                dp[index][c] = max(left, right)
+        return dp[n - 1][cap]
+
+    print(knapsack([3, 4, 5], [30, 50, 60], 8))
+    print(knapsack([1, 2, 4, 5], [5, 4, 8, 6], 5))
+    print(knapsack([4, 5, 1], [1, 2, 3], 4))
+    print(knapsack([4, 5, 6], [1, 2, 3], 3))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
