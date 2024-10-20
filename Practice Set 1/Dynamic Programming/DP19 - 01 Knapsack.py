@@ -26,4 +26,39 @@ def recursive():
     print(knapsack([4, 5, 6], [1, 2, 3], 3))
 
 
+def memoized():
+    """
+        T: O(n*cap) and space is O(n + n*cap)
+    """
+
+    def solve(wt, val, index, cap, dp):
+        if index == 0:
+            if wt[0] <= cap:
+                return val[0]
+            else:
+                return 0
+
+        if dp[index][cap] is not None:
+            return dp[index][cap]
+
+        left = -1e6
+        if wt[index] <= cap:
+            left = val[index] + solve(wt, val, index - 1, cap - wt[index], dp)
+        right = solve(wt, val, index - 1, cap, dp)
+        dp[index][cap] = max(left, right)
+        return dp[index][cap]
+
+    def knapsack(wt, val, cap):
+        n = len(wt)
+        dp = {i: {j: None for j in range(cap + 1)} for i in range(n)}
+        return solve(wt, val, n - 1, cap, dp)
+
+    print(knapsack([3, 4, 5], [30, 50, 60], 8))
+    print(knapsack([1, 2, 4, 5], [5, 4, 8, 6], 5))
+    print(knapsack([4, 5, 1], [1, 2, 3], 4))
+    print(knapsack([4, 5, 6], [1, 2, 3], 3))
+
+
 recursive()
+print()
+memoized()
