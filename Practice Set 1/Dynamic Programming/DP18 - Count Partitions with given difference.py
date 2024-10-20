@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/count-of-subsets-with-given-difference/
+# Solution - https://www.youtube.com/watch?v=zoilQD1kYSg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=19
+
+
 def recursive():
     def solve(arr, index, target):
         if target == 0:
