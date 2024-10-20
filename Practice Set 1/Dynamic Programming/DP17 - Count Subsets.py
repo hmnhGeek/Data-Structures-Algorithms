@@ -70,8 +70,34 @@ def tabulation():
     print(count_subsets([2, 34, 5], 40))
 
 
+def space_optimized():
+    def count_subsets(arr, target):
+        n = len(arr)
+        prev = {j: 0 for j in range(target + 1)}
+        prev[0] = 1
+        prev[arr[0]] = 1
+
+        for index in range(1, n):
+            curr = {j: 0 for j in range(target + 1)}
+            curr[0] = 1
+            for tgt in range(target + 1):
+                left = 0
+                if arr[index] <= tgt:
+                    left = prev[tgt - arr[index]]
+                right = prev[tgt]
+                curr[tgt] = left + right
+            prev = curr
+        return prev[target]
+
+    print(count_subsets([1, 2, 2, 3], 3))
+    print(count_subsets([1, 1, 4, 5], 5))
+    print(count_subsets([2, 34, 5], 40))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
