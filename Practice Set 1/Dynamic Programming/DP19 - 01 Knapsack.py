@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/0-1-knapsack-problem-dp-10/
+# Solution - https://www.youtube.com/watch?v=GqOmJHQZivw&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=20
+
+
 def recursive():
     """
         T: O(2^n) and space is O(n)
