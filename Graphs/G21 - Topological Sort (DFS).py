@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/topological-sort/1
+# Solution - https://www.youtube.com/watch?v=5lZ0iJMrUMk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=21
+
+
 class Node:
     def __init__(self, data):
         self.data = data
