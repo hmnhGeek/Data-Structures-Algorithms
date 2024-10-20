@@ -84,8 +84,37 @@ def tabulation():
     print(knapsack([4, 5, 6], [1, 2, 3], 3))
 
 
+def space_optimized():
+    """
+        T: O(n*cap) and space is O(cap)
+    """
+    def knapsack(wt, val, cap):
+        n = len(wt)
+        prev = {j: -1e6 for j in range(cap + 1)}
+        for j in prev:
+            prev[j] = val[0] if wt[0] <= j else 0
+
+        for index in range(1, n):
+            curr = {j: -1e6 for j in range(cap + 1)}
+            for c in range(cap + 1):
+                left = -1e6
+                if wt[index] <= c:
+                    left = val[index] + prev[c - wt[index]]
+                right = prev[c]
+                curr[c] = max(left, right)
+            prev = curr
+        return prev[cap]
+
+    print(knapsack([3, 4, 5], [30, 50, 60], 8))
+    print(knapsack([1, 2, 4, 5], [5, 4, 8, 6], 5))
+    print(knapsack([4, 5, 1], [1, 2, 3], 4))
+    print(knapsack([4, 5, 6], [1, 2, 3], 3))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
