@@ -1,4 +1,11 @@
+# Problem link - https://www.naukri.com/code360/problems/number-of-subsets_3952532?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=ZHyb-A2Mte4&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=18
+
 def recursive():
+    """
+        T: 2^{n*target} and S: O(target)
+    """
+
     def solve(arr, index, target):
         if target == 0:
             return 1
@@ -21,6 +28,10 @@ def recursive():
 
 
 def memoized():
+    """
+        T: O(n*target) and S: O(target*n + target)
+    """
+
     def solve(arr, index, target, dp):
         if target == 0:
             return 1
@@ -48,6 +59,10 @@ def memoized():
 
 
 def tabulation():
+    """
+            T: O(n*target) and S: O(target*n)
+    """
+
     def count_subsets(arr, target):
         n = len(arr)
         dp = {i: {j: 0 for j in range(target + 1)} for i in range(n)}
@@ -71,6 +86,10 @@ def tabulation():
 
 
 def space_optimized():
+    """
+            T: O(n*target) and S: O(target)
+    """
+
     def count_subsets(arr, target):
         n = len(arr)
         prev = {j: 0 for j in range(target + 1)}
