@@ -125,3 +125,15 @@ print(
         }
     )
 )
+
+print(
+    Graph.get_eventual_safe_nodes(
+        {
+            0: [1],
+            1: [3],
+            2: [4],
+            3: [0, 2],
+            4: []
+        }
+    )
+)
