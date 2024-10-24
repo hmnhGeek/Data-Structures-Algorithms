@@ -115,3 +115,4 @@ class Graph:
 Graph.get_topological_sort([[0, 1]])
 Graph.get_topological_sort([[0, 1], [0, 2], [1, 3], [2, 3]])
 Graph.get_topological_sort([[0, 1], [1, 0]])
+Graph.get_topological_sort([[1, 2], [2, 3], [2, 4], [3, 4], [4, 3]])
