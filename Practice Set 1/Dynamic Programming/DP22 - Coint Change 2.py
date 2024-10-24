@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/ways-to-make-coin-change_630471?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=HgyouUi11zk&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=23
+
+
 def recursive():
     def solve(arr, index, target):
         if target == 0:
