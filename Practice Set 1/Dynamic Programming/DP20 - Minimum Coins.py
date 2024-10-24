@@ -1,4 +1,7 @@
 def recursive():
+    """
+        Time complexity is O(2^n) and space complexity is O(n).
+    """
     def solve(arr, index, target):
         if target == 0:
             return 0
@@ -26,4 +29,42 @@ def recursive():
     print(minimum_coins([4, 6, 2], 5))
 
 
+def memoized():
+    """
+        Time complexity is O(n*amount) and space complexity is O(n + n*amount).
+    """
+    def solve(arr, index, target, dp):
+        if target == 0:
+            return 0
+
+        if index == 0:
+            return target // arr[0] if target % arr[0] == 0 else 1e6
+
+        if dp[index][target] is not None:
+            return dp[index][target]
+
+        left = 1e6
+        if target >= arr[index]:
+            left = 1 + solve(arr, index, target - arr[index], dp)
+        right = solve(arr, index - 1, target, dp)
+        dp[index][target] = min(left, right)
+        return dp[index][target]
+
+    def minimum_coins(denominations, amount):
+        num_denominations = len(denominations)
+        dp = {i: {j: None for j in range(amount + 1)} for i in range(num_denominations)}
+        num_coins = solve(denominations, num_denominations - 1, amount, dp)
+        return num_coins if num_coins != 1e6 else -1
+
+    print(minimum_coins([1, 2, 3], 7))
+    print(minimum_coins([12, 1, 3], 4))
+    print(minimum_coins([1, 2], 11))
+    print(minimum_coins([25, 10, 5], 30))
+    print(minimum_coins([9, 6, 5, 1], 19))
+    print(minimum_coins([5, 1], 0))
+    print(minimum_coins([4, 6, 2], 5))
+
+
 recursive()
+print()
+memoized()
