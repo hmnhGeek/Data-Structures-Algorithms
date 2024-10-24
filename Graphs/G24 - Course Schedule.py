@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/course-schedule/1
+# Solution - https://www.youtube.com/watch?v=WAOfKpxYHR8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=24
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,40 +39,68 @@ class Stack:
 class Graph:
     @staticmethod
     def _dfs(graph, node, visited, path_visited, stack):
+        # mark the node as visited and path visited.
         visited[node] = True
         path_visited[node] = True
+
+        # iterate on the adjacent nodes of the graph.
         for adj_node in graph[node]:
+            # if the adjacent node is not visited, start a DFS from this adjacent node.
             if not visited[adj_node]:
                 has_cycle = Graph._dfs(graph, adj_node, visited, path_visited, stack)
+                # if a cycle is detected from this adjacent node, return True. No need
+                # to worry about stack now.
                 if has_cycle:
                     return True
+            # if the node is visited and path visited, there's a cycle, return True.
             elif path_visited[adj_node]:
                 return True
+
+        # finally, unmark the node from path visited and push it to stack for topological sorting.
         path_visited[node] = False
         stack.push(node)
+
+        # return False as no cycle is detected.
         return False
 
     @staticmethod
     def get_topological_sort(edges):
+        """
+            This is a DFS approach and hence the time complexity is O(V + E) and space
+            complexity is O(V).
+        """
+
+        # form the adjacency list from the list of edges.
         graph = Graph._from_edge_list(edges)
+
+        # create visited and path visited arrays to detect a cycle.
         visited = {i: False for i in graph}
         path_visited = {i: False for i in graph}
+
+        # maintain a stack to perform topological sort.
         stack = Stack()
 
+        # iterate on the nodes of the graph
         for node in visited:
+            # if the current node is not visited, perform a DFS starting from this node.
             if not visited[node]:
+                # if there is a cycle detected, break, no need to perform further topological
+                # sort as course schedule is not possible in a cyclic graph.
                 if Graph._dfs(graph, node, visited, path_visited, stack):
-                    break
+                    print(-1)
+                    return
 
-        if stack.length < len(graph):
-            print(-1)
-
+        # if no cycle was detected, spit out the topological order or the course schedule order
+        # from the stack.
         while not stack.is_empty():
             print(stack.pop(), end=" ")
         print()
 
     @staticmethod
     def _from_edge_list(edges):
+        """
+            This method constructs the adjacency list from a edge list in O(E) time.
+        """
         graph = {}
         for edge in edges:
             if edge[0] not in graph:
