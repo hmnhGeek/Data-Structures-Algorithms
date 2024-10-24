@@ -51,6 +51,33 @@ def memoized():
     print(coin_change_2([2], 3))
 
 
+def tabulation():
+    def coin_change_2(coins, target):
+        n = len(coins)
+        dp = {i: {j: 0 for j in range(target + 1)} for i in range(n)}
+        for i in dp:
+            dp[i][0] = 1
+        for j in dp[0]:
+            if j % coins[0] == 0:
+                dp[0][j] = 1
+
+        for index in range(1, n):
+            for tgt in range(1, target + 1):
+                left = 0
+                if coins[index] <= tgt:
+                    left = dp[index][tgt - coins[index]]
+                right = dp[index - 1][tgt]
+                dp[index][tgt] = left + right
+        return dp[n - 1][target]
+
+    print(coin_change_2([3, 1, 2], 4))
+    print(coin_change_2([5, 3, 2], 1))
+    print(coin_change_2([1, 2, 5], 5))
+    print(coin_change_2([2], 3))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
