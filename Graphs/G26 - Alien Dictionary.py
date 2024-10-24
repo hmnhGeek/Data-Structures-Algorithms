@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/alien-dictionary/1
+# Solution - https://www.youtube.com/watch?v=U3N_je7tWAs&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=26
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -70,7 +74,10 @@ class Solution:
 
     @staticmethod
     def _get_graph(words, k):
+        # This will take O(k) space.
         graph = {i: [] for i in Solution.alphabets[:k]}
+
+        # connect the edges between the graphs in O(n*k) time
         for i in range(len(words) - 1):
             first, second = words[i], words[i + 1]
             Solution._add_edge(graph, first, second)
@@ -78,8 +85,11 @@ class Solution:
 
     @staticmethod
     def get_alien_dictionary(words, k):
+        # form a DAG from a given order of words with `k` characters from the English alphabets.
         graph = Solution._get_graph(words, k)
+        # get the topological sort in O(k + E) time and O(k) space.
         topo_sort = Graph.get_topological_sort(graph)
+        # print the order of alphabets
         print(topo_sort)
 
 
