@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/target-sum_4127362?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=b3GD8263-PQ&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=22
+
+
 def recursive():
     def solve(arr, index, target):
         if target == 0:
@@ -73,36 +77,37 @@ def tabulation():
     print(subset_sum([1, 1, 1, 1], 1))
 
 
-def space_optimized():
-    def subset_sum(arr, target):
-        n = len(arr)
-        prev = {j: 0 for j in range(target + 1)}
-        prev[0] = 1
-        for j in prev:
-            if j == arr[0]:
-                prev[j] = 1
+def subset_sum(arr, target):
+    """
+        Time complexity is O(n*target) and space complexity is O(target).
+    """
+    n = len(arr)
+    prev = {j: 0 for j in range(target + 1)}
+    prev[0] = 1
+    for j in prev:
+        if j == arr[0]:
+            prev[j] = 1
 
-        for index in range(1, n):
-            curr = {j: 0 for j in range(target + 1)}
-            curr[0] = 1
-            for tgt in range(1, target + 1):
-                left = 0
-                if arr[index] <= tgt:
-                    left = prev[tgt - arr[index]]
-                right = prev[tgt]
-                curr[tgt] = left + right
-            prev = curr
-        return prev[target]
-
-    print(subset_sum([2, 1, 3, 1], 5))
-    print(subset_sum([1, 2, 3, 3], 6))
-    print(subset_sum([1, 1, 1, 1], 1))
+    for index in range(1, n):
+        curr = {j: 0 for j in range(target + 1)}
+        curr[0] = 1
+        for tgt in range(1, target + 1):
+            left = 0
+            if arr[index] <= tgt:
+                left = prev[tgt - arr[index]]
+            right = prev[tgt]
+            curr[tgt] = left + right
+        prev = curr
+    return prev[target]
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
+def target_sum(arr, k):
+    s = sum(arr)
+    s1 = (s + k)//2
+    return subset_sum(arr, s1)
+
+
+print(target_sum([1, 1, 1, 1, 1], 3))
+print(target_sum([1, 2, 3, 1], 3))
+print(target_sum([1, 2, 3], 2))
+print(target_sum([1, 1], 0))
