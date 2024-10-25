@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+# Solution - https://www.youtube.com/watch?v=NPZn9jBrX8U&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=26
+
+
 def recursive():
     """
         Time complexity is exponential and space is O(n1 + n2)
@@ -77,8 +81,34 @@ def tabulation():
     print(lcs_length("ABC", "CBA"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n1*n2) and space is O(n2)
+    """
+    def lcs_length(s1, s2):
+        n1, n2 = len(s1), len(s2)
+        prev = {j: 0 for j in range(n2 + 1)}
+
+        for i in range(1, n1 + 1):
+            curr = {j: 0 for j in range(n2 + 1)}
+            for j in range(1, n2 + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    curr[j] = 1 + prev[j - 1]
+                else:
+                    curr[j] = max(curr[j - 1], prev[j])
+            prev = curr
+        return prev[n2]
+
+    print(lcs_length("adebc", "dcadb"))
+    print(lcs_length("ab", "defg"))
+    print(lcs_length("AGGTAB", "GXTXAYB"))
+    print(lcs_length("ABC", "CBA"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
