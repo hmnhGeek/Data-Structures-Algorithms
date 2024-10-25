@@ -74,7 +74,35 @@ def tabulation():
                     left = values[index] + dp[index][cap - weights[index]]
                 right = dp[index - 1][cap]
                 dp[index][cap] = max(left, right)
-        return dp[n - 1][cap]
+        return dp[n - 1][capacity]
+
+    print(unbounded_knapsack([2, 4, 6], [5, 11, 13], 10))
+    print(unbounded_knapsack([5, 10, 20], [7, 2, 4], 15))
+    print(unbounded_knapsack([4, 17], [6, 12], 3))
+
+
+def space_optimized():
+    """
+        Time complexity is O(capacity*n) and space complexity is O(capacity).
+    """
+    def unbounded_knapsack(weights, values, capacity):
+        n = len(weights)
+        prev = {j: 0 for j in range(capacity + 1)}
+        for j in prev:
+            prev[j] = (j // weights[0]) * values[0]
+        prev[0] = 0
+
+        for index in range(1, n):
+            curr = {j: 0 for j in range(capacity + 1)}
+            curr[0] = 0
+            for cap in range(1, capacity + 1):
+                left = 0
+                if weights[index] <= cap:
+                    left = values[index] + curr[cap - weights[index]]
+                right = prev[cap]
+                curr[cap] = max(left, right)
+            prev = curr
+        return prev[capacity]
 
     print(unbounded_knapsack([2, 4, 6], [5, 11, 13], 10))
     print(unbounded_knapsack([5, 10, 20], [7, 2, 4], 15))
@@ -86,3 +114,5 @@ print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
