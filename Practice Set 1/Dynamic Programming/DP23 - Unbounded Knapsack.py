@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/unbounded-knapsack-repetition-items-allowed/
+# Solution - https://www.youtube.com/watch?v=OgvOZ6OrJoY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=24
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
@@ -107,6 +111,8 @@ def space_optimized():
     print(unbounded_knapsack([2, 4, 6], [5, 11, 13], 10))
     print(unbounded_knapsack([5, 10, 20], [7, 2, 4], 15))
     print(unbounded_knapsack([4, 17], [6, 12], 3))
+    print(unbounded_knapsack([1, 50], [1, 30], 100))
+    print(unbounded_knapsack([1, 3, 4, 5], [10, 40, 50, 70], 8))
 
 
 recursive()
