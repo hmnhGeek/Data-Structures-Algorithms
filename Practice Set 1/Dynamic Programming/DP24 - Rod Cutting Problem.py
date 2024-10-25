@@ -81,8 +81,38 @@ def tabulation():
     print(rod_cut([3, 5, 6, 7, 10, 12], 6))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n*length) and space complexity is O(length).
+    """
+    def rod_cut(prices, length):
+        n = len(prices)
+        prev = {j: 0 for j in range(length + 1)}
+        for j in prev:
+            prev[j] = j*prices[0]
+        prev[0] = 0
+
+        for index in range(2, n + 1):
+            curr = {j: 0 for j in range(length + 1)}
+            curr[0] = 0
+            for l in range(length + 1):
+                left = 0
+                if index <= l:
+                    left = prices[index - 1] + curr[l - index]
+                right = prev[l]
+                curr[l] = max(left, right)
+            prev = curr
+        return prev[length]
+
+    print(rod_cut([2, 5, 7, 8, 10], 5))
+    print(rod_cut([3, 5, 8, 9, 10, 17, 17, 20], 8))
+    print(rod_cut([3, 5, 6, 7, 10, 12], 6))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
