@@ -55,6 +55,34 @@ def memoized():
     print(rod_cut([3, 5, 6, 7, 10, 12], 6))
 
 
+def tabulation():
+    """
+        Time complexity is O(n*length) and space complexity is O(n*length).
+    """
+    def rod_cut(prices, length):
+        n = len(prices)
+        dp = {i: {j: 0 for j in range(length + 1)} for i in range(1, n + 1)}
+        for j in dp[1]:
+            dp[1][j] = j*prices[0]
+        for i in dp:
+            dp[i][0] = 0
+
+        for index in range(2, n + 1):
+            for l in range(length + 1):
+                left = 0
+                if index <= l:
+                    left = prices[index - 1] + dp[index][l - index]
+                right = dp[index - 1][l]
+                dp[index][l] = max(left, right)
+        return dp[n][length]
+
+    print(rod_cut([2, 5, 7, 8, 10], 5))
+    print(rod_cut([3, 5, 8, 9, 10, 17, 17, 20], 8))
+    print(rod_cut([3, 5, 6, 7, 10, 12], 6))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
