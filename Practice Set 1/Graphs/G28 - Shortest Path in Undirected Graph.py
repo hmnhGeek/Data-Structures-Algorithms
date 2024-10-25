@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1
+# Solution - https://www.youtube.com/watch?v=C4gxoTaI71U&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=28
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -66,5 +70,17 @@ print(
             8: [6, 7]
         },
         0
+    )
+)
+
+print(
+    Graph.get_min_distances(
+        {
+            0: [3],
+            1: [3],
+            2: [],
+            3: [0, 1]
+        },
+        3
     )
 )
