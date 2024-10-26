@@ -1,11 +1,28 @@
+# Problem link - https://www.naukri.com/code360/problems/common-elements-present-in-all-rows-of-a-matrix_1118111
+
+
 def find_common(mtx):
+    """
+        Time complexity is O(m*n) and space is O(m).
+    """
+
+    # store the unique elements from the first row.
     prev = set(mtx[0])
+
+    # iterate from the first row
     for i in range(1, len(mtx)):
+        # initialize a current set to store all the common elements till this row.
         curr = set()
+        # iterate on each column of this row
         for j in mtx[i]:
+            # if the current value is in prev row, add it in curr set
             if j in prev:
                 curr.add(j)
+
+        # update prev
         prev = curr
+
+    # return prev
     return prev
 
 
