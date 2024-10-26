@@ -30,7 +30,7 @@ class LinkedList:
 
     def show(self):
         if self.tail.next is not None:
-            print("Loop detected!")
+            print(f"Loop detected! Starting from node {self.tail.next.data}.")
             return
         curr = self.head
         while curr is not None:
