@@ -51,12 +51,6 @@ class WeiszfeldOptimumPointCalculator:
         self.threshold = convergence_threshold
         self.max_iterations = 1000
 
-    def _average_position(self) -> Point:
-        """Computes the average position of the points."""
-        avg_x = sum(point.x for point in self.points) / len(self.points)
-        avg_y = sum(point.y for point in self.points) / len(self.points)
-        return Point(avg_x, avg_y)
-
     def _project_point_on_line(self, point: Point) -> Point:
         """Projects a given point onto the line."""
         # Line equation: Ax + By + C = 0
@@ -89,11 +83,12 @@ class WeiszfeldOptimumPointCalculator:
 
     def compute_optimum_point(self) -> Point:
         x_intercept = self.line.get_x_intercept()
-        # Compute average position
-        average_point = self._average_position()
-
-        # Project the average point onto the line
-        reference_point = self._project_point_on_line(average_point)
+        # # Compute average position
+        # average_point = self._average_position()
+        #
+        # # Project the average point onto the line
+        # reference_point = self._project_point_on_line(average_point)
+        reference_point = Point(x_intercept, 0)
         iterations = 0
 
         while iterations < self.max_iterations:
