@@ -46,14 +46,20 @@ class WeiszfeldOptimumPointCalculator:
         self.line = line
         self.points = points
         self.threshold = convergence_threshold
+        self.max_iterations = 1000
 
     def _update_reference_point(self, reference_point: Point, distances: List[float]) -> Point:
         numerator = 0
         denominator = 0
         for idx in range(len(self.points)):
             point = self.points[idx]
-            numerator += (point.x/distances[idx])
-            denominator += (1/distances[idx])
+            if distances[idx] != 0:
+                numerator += (point.x/distances[idx])
+                denominator += (1/distances[idx])
+
+        if denominator == 0:
+            return reference_point
+
         next_x_of_reference_point = numerator/denominator
         next_y_of_reference_point = self.line.get_y_from_x(next_x_of_reference_point)
         return Point(next_x_of_reference_point, next_y_of_reference_point)
@@ -64,8 +70,9 @@ class WeiszfeldOptimumPointCalculator:
     def compute_optimum_point(self) -> Point:
         x_intercept = self.line.get_x_intercept()
         reference_point = Point(x_intercept, 0)
+        iterations = 0
 
-        while 1:
+        while iterations < self.max_iterations:
             distances = []
             for point in self.points:
                 distances.append(reference_point.distance_from(point.x, point.y))
@@ -74,11 +81,27 @@ class WeiszfeldOptimumPointCalculator:
             reference_point = self._update_reference_point(reference_point, distances)
             if self._within_threshold(prev_reference_point, reference_point):
                 return reference_point
+            iterations += 1
+        return reference_point
 
 
 # Example
 line = Line(1, -1, -3)
 points = [Point(-3, -2), Point(-1, 0), Point(-1, 2), Point(1, 2), Point(3, 4)]
 woc = WeiszfeldOptimumPointCalculator(line, points, 0.0000001)
+result = woc.compute_optimum_point()
+print(result, result.calculate_distance_sum_from_points(points))
+
+# Example 2
+line = Line(1, 1, -3)
+points = [Point(1, 2), Point(2, 1), Point(4, 0)]
+woc = WeiszfeldOptimumPointCalculator(line, points, 0.01)
+result = woc.compute_optimum_point()
+print(result, result.calculate_distance_sum_from_points(points))
+
+# Example 3
+line = Line(1, -1, 0)
+points = [Point(-1, 1), Point(1, -1)]
+woc = WeiszfeldOptimumPointCalculator(line, points, 0.01)
 result = woc.compute_optimum_point()
 print(result, result.calculate_distance_sum_from_points(points))
