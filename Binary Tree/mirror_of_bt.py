@@ -46,6 +46,24 @@ class Solution:
         Solution._get_mirror(root)
         TreeInorder.get(root)
 
+    @staticmethod
+    def _get_new_mirror_tree(root: Node, root_dash: Node):
+        if root is None or root_dash is None:
+            return
+        root_dash.left = Node(root.right.data) if root.right else None
+        root_dash.right = Node(root.left.data) if root.left else None
+        Solution._get_new_mirror_tree(root.right, root_dash.left)
+        Solution._get_new_mirror_tree(root.left, root_dash.right)
+
+    @staticmethod
+    def get_mirror_tree(root: Node):
+        print()
+        if root is None:
+            return
+        mirror_root = Node(root.data)
+        Solution._get_new_mirror_tree(root, mirror_root)
+        return mirror_root
+
 
 # Example 1
 two, three, four, five, six = Node(2), Node(3), Node(4), Node(5), Node(6)
@@ -54,7 +72,8 @@ three.left = two
 five.right = six
 three.right = four
 TreeInorder.get(five)
-Solution.get_mirror(five)
+mirror = Solution.get_mirror_tree(five)
+TreeInorder.get(mirror)
 
 print()
 print()
@@ -65,7 +84,8 @@ one.left = twelve
 two.right = eight
 eight.right = nine
 TreeInorder.get(two)
-Solution.get_mirror(two)
+mirror = Solution.get_mirror_tree(two)
+TreeInorder.get(mirror)
 
 print()
 print()
@@ -81,4 +101,5 @@ three.right = four
 six.right = ten
 eight.right = twelve
 TreeInorder.get(five)
-Solution.get_mirror(five)
+mirror = Solution.get_mirror_tree(five)
+TreeInorder.get(mirror)
