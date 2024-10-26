@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/optimum-location-point-minimize-total-distance/
+
+
 from typing import List
 
 
@@ -64,6 +67,16 @@ class WeiszfeldOptimumPointCalculator:
         return Point(x_proj, y_proj)
 
     def _update_reference_point(self, distances) -> Point:
+        """
+            The update equation for calculating the nearest point to a set of points in Weiszfeld Algorithm is:
+
+            x_(k+1) = \frac{\sum_{i = 1}^{i = n} \frac{x_i}{d_i} } {\sum_{i = 1}^{i = n}(1/d_i)}
+            y_(k+1) = \frac{\sum_{i = 1}^{i = n} \frac{y_i}{d_i} } {\sum_{i = 1}^{i = n}(1/d_i)}
+
+            After getting the updated nearest point, the point must be projected back on the line. Thus, the updated
+            reference point for further iterations in the Weiszfeld Algorithm would be the projection of the nearest
+            point calculated in this step.
+        """
         numerator_for_x = 0
         numerator_for_y = 0
         denominator = 0
@@ -78,28 +91,46 @@ class WeiszfeldOptimumPointCalculator:
         nearest_point_to_all_points = Point(numerator_for_x/denominator, numerator_for_y/denominator)
         return self._project_point_on_line(nearest_point_to_all_points)
 
+    def _populate_distances(self, reference_point: Point, distances: dict):
+        """Populates the referenced distances dictionary with distance of each point from reference point."""
+        for point in self.points:
+            distances.update({point: reference_point.distance_from(point.x, point.y)})
+
     def _within_threshold(self, prev_reference_point: Point, reference_point: Point) -> bool:
         return abs(reference_point.x - prev_reference_point.x) < self.threshold and abs(reference_point.y - prev_reference_point.y) < self.threshold
 
     def compute_optimum_point(self) -> Point:
+        # The starting point can be any point on the line. Here, x-intercept of the line has been taken. This also
+        # proves the fact that if the x-intercept lies far away from the cluster of points, then also this algorithm
+        # would yield the correct result.
         x_intercept = self.line.get_x_intercept()
-        # # Compute average position
-        # average_point = self._average_position()
-        #
-        # # Project the average point onto the line
-        # reference_point = self._project_point_on_line(average_point)
         reference_point = Point(x_intercept, 0)
+
+        # a variable to stop infinite loop in case the result never reaches within threshold.
         iterations = 0
 
         while iterations < self.max_iterations:
+            # populate the distance of each point in the points list from the reference point.
             distances = {}
-            for point in self.points:
-                distances.update({point: reference_point.distance_from(point.x, point.y)})
+            self._populate_distances(reference_point, distances)
+
+            # hold the current value of the reference point
             prev_reference_point = reference_point
+
+            # update the reference point using the update mathematical function from Weiszfeld Algorithm.
             reference_point = self._update_reference_point(distances)
+
+            # if the new reference point and old reference point lie within threshold, we've got the correct
+            # nearest point on the line to all the points in the list such that the distance is minimized. Return
+            # this point.
             if self._within_threshold(prev_reference_point, reference_point):
                 return reference_point
+
+            # increment the iteration count.
             iterations += 1
+
+        # if the max allowed iterations are crossed and still the threshold is breached, return whatever reference
+        # point has been calculated till now.
         return reference_point
 
 
