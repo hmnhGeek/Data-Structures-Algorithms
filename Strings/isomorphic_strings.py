@@ -1,4 +1,5 @@
 # Problem link - https://www.geeksforgeeks.org/problems/isomorphic-strings-1587115620/1
+# Solution - https://www.youtube.com/watch?v=7yF-U1hLEqQ&t=480s
 
 
 def is_isomorphic(s1, s2):
