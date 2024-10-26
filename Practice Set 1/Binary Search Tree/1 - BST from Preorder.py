@@ -1,6 +1,9 @@
 # Problem link - https://www.geeksforgeeks.org/problems/preorder-to-postorder4423/1
 
 
+from typing import List
+
+
 class Node:
     def __init__(self, data):
         self.parent = None
@@ -147,9 +150,34 @@ class BinarySearchTree:
     def _show(self, start: Node):
         if start:
             self._show(start.left)
-            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
+            print(
+                f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
             self._show(start.right)
 
     def show(self):
         self._show(self.root)
 
+
+class BstByPreorder(BinarySearchTree):
+    def __init__(self, preorder: List[int]):
+        super().__init__()
+        self.preorder = preorder
+
+    def construct(self):
+        self.root = None
+        self.d = 0
+        for data in self.preorder:
+            self.insert(data)
+
+    def __str__(self):
+        self.show()
+        return ""
+
+
+bst = BstByPreorder([40, 30, 35, 80, 100])
+bst.construct()
+print(bst)
+
+bst2 = BstByPreorder([40, 30, 32, 35, 80, 90, 100, 120])
+bst2.construct()
+print(bst2)
