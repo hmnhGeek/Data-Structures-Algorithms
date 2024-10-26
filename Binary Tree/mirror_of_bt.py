@@ -42,21 +42,28 @@ class Solution:
 
     @staticmethod
     def get_mirror(root: Node):
+        """Modifies the existing tree"""
         print()
         Solution._get_mirror(root)
         TreeInorder.get(root)
 
     @staticmethod
     def _get_new_mirror_tree(root: Node, root_dash: Node):
+        # if either of the nodes is None, end the recursion.
         if root is None or root_dash is None:
             return
+
+        # Lateral Inversion
         root_dash.left = Node(root.right.data) if root.right else None
         root_dash.right = Node(root.left.data) if root.left else None
+
+        # recursively call for the left and right subtrees of the new tree.
         Solution._get_new_mirror_tree(root.right, root_dash.left)
         Solution._get_new_mirror_tree(root.left, root_dash.right)
 
     @staticmethod
     def get_mirror_tree(root: Node):
+        """Creates a new tree in O(n) time and O(n) space."""
         print()
         if root is None:
             return
