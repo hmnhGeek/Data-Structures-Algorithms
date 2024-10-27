@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1
+
+
 class Node:
     def __init__(self, data):
         self.parent = None
@@ -161,20 +164,37 @@ class DeadEndFinder:
 
     @staticmethod
     def find_dead_end_nodes(bst: BinarySearchTree):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
+        # get the inorder traversal of the tree in O(n) time and O(n) space.
         inorder = DeadEndFinder.get_inorder(bst)
-        if len(inorder) <= 1:
-            return []
-
         result = []
-        first_node_in_inorder = inorder[0]
-        if first_node_in_inorder.data == 1 and inorder[1].data - first_node_in_inorder.data <= 1 and DeadEndFinder._is_leaf(first_node_in_inorder):
-            result.append(first_node_in_inorder.data)
 
+        # if the tree does not contain any node or only has one node, there is no dead end.
+        if len(inorder) <= 1:
+            return result
+        
+        # Specially check for the first node in the inorder traversal, i.e. the left most node in the tree.
+        leftmost_node = inorder[0]
+        
+        # if the leftmost node has data = 1 and the difference between next node and itself is <= 1, and it is also a
+        # leaf node, then nothing can be inserted between leftmost node and its next node. Plus we can't insert anything
+        # before 1 as only natural numbers are allowed. Hence, this leftmost node is a dead end.
+        if leftmost_node.data == 1 and inorder[1].data - leftmost_node.data <= 1 and DeadEndFinder._is_leaf(leftmost_node):
+            result.append(leftmost_node.data)
+
+        # loop on the inorder traversal from the first node till the second last node (O(n) time).
         for i in range(1, len(inorder) - 1):
+            # get the current node
             node = inorder[i]
+
+            # if the difference between the node and its predecessor and respectively with its successor is <= 1 and
+            # this node is a leaf node, then this node is a dead end. Add this node into result list.
             if inorder[i + 1].data - node.data <= 1 and node.data - inorder[i - 1].data <= 1 and DeadEndFinder._is_leaf(node):
                 result.append(node.data)
-
+        # return the result list.
         return result
 
 
