@@ -25,7 +25,7 @@ class kStacks:
     def pop(self, stack_no):
         print(f"Popping from stack {stack_no}.")
         low = self.k * (stack_no - 1)
-        high = self.k * stack_no if stack_no * self.k < self.n else self.n - 1
+        high = self.k * stack_no if stack_no * self.k < self.n else self.n
         top = self.pointers[stack_no - 1]
         if top == low - 1:
             print(f"Stack number {stack_no} is empty!")
@@ -63,3 +63,11 @@ stacks.push(4, 56)
 stacks.pop(1)
 
 stacks.push(1, -1)
+
+stacks.pop(4)
+
+stacks.pop(4)
+
+stacks.push(4, 16)
+
+stacks.push(4, 24)
