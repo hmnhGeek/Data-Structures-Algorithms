@@ -4,23 +4,31 @@
 from typing import List
 
 
-def solve(word, sentence_list, n, i, list_of_sentences, word_lists):
+def solve(i, n, sentence_list, list_of_sentences, word_lists):
+    # add the words from last list, if index == n.
     if i == n:
         for w in word_lists[i]:
             sentence = sentence_list + [w,]
             list_of_sentences.append(" ".join(sentence))
         return
 
+    # else recursively call for the next list and append the current word in sentence list.
     for w in word_lists[i]:
-        solve(w, sentence_list + [w,], n, i + 1, list_of_sentences, word_lists)
+        solve(i + 1, n, sentence_list + [w,], list_of_sentences, word_lists)
 
 
-def print_sentences(word_lists: List[List[str]]) -> List[str]:
+def print_sentences(word_lists: List[List[str]]):
+    """
+        Overall time complexity is O(n^m) where n is the number of word lists and m is the
+        number of words in a word list. Space complexity is O(n) for recursion stack.
+    """
+
+    # store a reference to an empty list which will hold the list of sentences.
     list_of_sentences = []
-    start_list = word_lists[0]
     n = len(word_lists)
-    for word in start_list:
-        solve(word, [word,], n - 1, 1, list_of_sentences, word_lists)
+
+    # start the recursion from 0th index and go till last list of words
+    solve(0, n - 1, [], list_of_sentences, word_lists)
 
     for sentence in list_of_sentences:
         print(sentence)
