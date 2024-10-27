@@ -69,28 +69,18 @@ class InorderTraversal:
         # start from the root node.
         curr = root
 
-        # ALGORITHM
-        # For a given node, go all the way to leftmost leaf node while pushing to stack.
-        # While popping the current node, print it, and go top its right subtree and follow step 1 on right subtree root
-
-        # initially, push the left border of the tree into stack
-        while curr is not None:
-            stack.push(curr)
-            curr = curr.left
-
-        # update stack until it gets empty.
-        while not stack.is_empty():
-            # pop the current node and print it.
-            node = stack.pop()
-            print(node.data, end=" ")
-
-            # get the right subtree root (basically we printed left, node, and now going to right subtree)
-            right_subtree = node.right
-
-            # continuously push left boundary of this subtree into the stack.
-            while right_subtree is not None:
-                stack.push(right_subtree)
-                right_subtree = right_subtree.left
+        while not stack.is_empty() or curr is not None:
+            # if the current node exists, push it into the stack (defer it)
+            # and move to its left child.
+            if curr is not None:
+                stack.push(curr)
+                curr = curr.left
+            else:
+                # otherwise, if the current node is null, pop an element from the stack,
+                # print it, and finally set the current node to its right child.
+                node = stack.pop()
+                print(node.data, end=" ")
+                curr = node.right
         print()
 
 
