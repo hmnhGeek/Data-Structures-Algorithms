@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
+# Solution - https://www.youtube.com/watch?v=2D0D8HE6uak&t=1529s
+
+
 from typing import List
 
 
@@ -34,3 +38,4 @@ def find_missing_and_repeating(arr: List[int]) -> MissingAndRepeatingDTO:
 print(find_missing_and_repeating([2, 2]))
 print(find_missing_and_repeating([1, 3, 3]))
 print(find_missing_and_repeating([4, 3, 6, 2, 1, 1]))
+print(find_missing_and_repeating([1, 2, 3, 4, 4, 5]))
