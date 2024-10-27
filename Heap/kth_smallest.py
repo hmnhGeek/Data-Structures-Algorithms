@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/kth-smallest-largest-element-in-unsorted-array/
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -67,17 +70,32 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def get_kth_smallest(arr, k):
+        """
+            Overall time complexity is O((n - k)*log(k) + k*log(k)) = O(n*log(k))
+            Overall space complexity is O(k) for the max heap.
+        """
+
+        # if k is out of bounds, return None.
         if k > len(arr) or k <= 0:
             return
+
+        # initialize an empty max heap.
         max_heap = MaxHeap()
+
+        # push first k elements from the array into the stack in O(k*log(k)) time.
         for i in range(k):
             max_heap.push(arr[i])
 
+        # iterate from kth element till end of the array. This will take O((n - k)*log(k))
         for i in range(k, len(arr)):
+            # if the ith element is smaller than the top of the max heap, it could be
+            # a potential candidate for kth smallest. Pop the top of max heap and push
+            # this element on the max heap. Both operations will take O(log(k)) time.
             if arr[i] < max_heap.heap[0]:
                 max_heap.pop()
                 max_heap.push(arr[i])
 
+        # return the kth smallest in O(1) time from the top of the max heap.
         return max_heap.heap[0]
 
 
