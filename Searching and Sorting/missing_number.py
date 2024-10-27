@@ -13,6 +13,7 @@ class MissingAndRepeatingDTO:
     def __str__(self):
         return f"Missing: {self.missing}, Repeating: {self.repeating}"
 
+
 def find_missing_and_repeating(arr: List[int]) -> MissingAndRepeatingDTO:
     n = len(arr)
     s, sq_s = 0, 0
