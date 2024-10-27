@@ -141,3 +141,63 @@ class BinarySearchTree:
         self._show(self.root)
 
 
+class DeadEndFinder:
+    @staticmethod
+    def _get_inorder(start: Node, inorder):
+        if start:
+            DeadEndFinder._get_inorder(start.left, inorder)
+            inorder.append(start)
+            DeadEndFinder._get_inorder(start.right, inorder)
+
+    @staticmethod
+    def get_inorder(bst: BinarySearchTree):
+        inorder = []
+        DeadEndFinder._get_inorder(bst.root, inorder)
+        return inorder
+
+    @staticmethod
+    def _is_leaf(node: Node):
+        return node.left is None and node.right is None
+
+    @staticmethod
+    def find_dead_end_nodes(bst: BinarySearchTree):
+        inorder = DeadEndFinder.get_inorder(bst)
+        if len(inorder) <= 1:
+            return []
+
+        result = []
+        first_node_in_inorder = inorder[0]
+        if first_node_in_inorder.data == 1 and inorder[1].data - first_node_in_inorder.data <= 1 and DeadEndFinder._is_leaf(first_node_in_inorder):
+            result.append(first_node_in_inorder.data)
+
+        for i in range(1, len(inorder) - 1):
+            node = inorder[i]
+            if inorder[i + 1].data - node.data <= 1 and node.data - inorder[i - 1].data <= 1 and DeadEndFinder._is_leaf(node):
+                result.append(node.data)
+
+        return result
+
+
+# Example 1
+t1 = BinarySearchTree()
+for i in [8, 5, 9, 2, 7, 1]:
+    t1.insert(i)
+print(DeadEndFinder.find_dead_end_nodes(t1))
+
+# Example 2
+t2 = BinarySearchTree()
+for i in [8, 7, 10, 2, 9, 13]:
+    t2.insert(i)
+print(DeadEndFinder.find_dead_end_nodes(t2))
+
+# Example 3
+t3 = BinarySearchTree()
+for i in [10, 6, 12, 2, 8, 11, 15]:
+    t3.insert(i)
+print(DeadEndFinder.find_dead_end_nodes(t3))
+
+# Example 4
+t4 = BinarySearchTree()
+for i in [7, 4, 8]:
+    t4.insert(i)
+print(DeadEndFinder.find_dead_end_nodes(t4))
