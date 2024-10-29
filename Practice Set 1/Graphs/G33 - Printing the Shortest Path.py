@@ -64,3 +64,45 @@ class MinHeap:
         return item
 
 
+class Graph:
+    @staticmethod
+    def print_shortest_path_from(source, destination, graph):
+        if source not in graph or destination not in graph:
+            return
+
+        min_heap = MinHeap()
+        distances = {i: 1e6 for i in graph}
+        parents = {i: None for i in graph}
+        distances[source] = 0
+        min_heap.insert((distances[source], source))
+
+        while not min_heap.is_empty():
+            distance, node = min_heap.pop()
+            for adj in graph[node]:
+                adj_node, wt = adj
+                if distances[adj_node] > distance + wt:
+                    distances[adj_node] = distance + wt
+                    parents[adj_node] = node
+                    min_heap.insert((distances[adj_node], adj_node))
+
+        trace_back = [destination,]
+        parent = destination
+        while parents[parent] is not None:
+            trace_back.append(parents[parent])
+            parent = parents[parent]
+        return trace_back[-1:-len(trace_back)-1:-1]
+
+
+print(
+    Graph.print_shortest_path_from(
+        1,
+        5,
+        {
+            1: [[2, 2], [4, 1]],
+            2: [[1, 2], [3, 4], [5, 5]],
+            3: [[2, 4], [4, 3], [5, 1]],
+            4: [[1, 1], [3, 3]],
+            5: [[2, 5], [3, 1]]
+        }
+    )
+)
