@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-increasing-subsequence_630459?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=ekcwMsSIzVc
+
+
 def recursive():
     def solve(arr, index, prev):
         if index < 0:
@@ -70,8 +74,39 @@ def tabulation():
     print(longest_increasing_subsequence([1, 2, 2]))
 
 
+def space_optimized():
+    """
+        Time complexity: O(n^2)
+        Space complexity is O(n)
+    """
+    def longest_increasing_subsequence(arr):
+        n = len(arr)
+        maxval = max(arr)
+        prev1 = {j: 0 for j in arr}
+        prev1[maxval + 1] = 0
+
+        for index in range(1, n + 1):
+            curr = {j: 0 for j in arr}
+            curr[maxval + 1] = 0
+            for prev in curr:
+                left = 0
+                if arr[index - 1] < prev:
+                    left = 1 + prev1[arr[index - 1]]
+                right = prev1[prev]
+                curr[prev] = max(left, right)
+            prev1 = curr
+
+        return prev1[maxval + 1]
+
+    print(longest_increasing_subsequence([10, 9, 2, 5, 3, 7, 101, 18]))
+    print(longest_increasing_subsequence([5, 4, 11, 1, 16, 8]))
+    print(longest_increasing_subsequence([1, 2, 2]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
