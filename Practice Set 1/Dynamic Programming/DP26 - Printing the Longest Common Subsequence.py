@@ -77,8 +77,36 @@ def tabulation():
     print(get_lcs("ab", "defg"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n1*n2) and space complexity is O(n2)
+    """
+    def get_lcs(s1: str, s2: str) -> str:
+        n1 = len(s1)
+        n2 = len(s2)
+        prev = {j: "" for j in range(n2 + 1)}
+
+        for i in range(1, n1 + 1):
+            curr = {j: "" for j in range(n2 + 1)}
+            for j in range(1, n2 + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    curr[j] = prev[j - 1] + s1[i - 1]
+                else:
+                    left = prev[j]
+                    right = curr[j - 1]
+                    curr[j] = max(left, right, key=len)
+            prev = curr
+        return prev[n2]
+
+    print(get_lcs("abcde", "bdgek"))
+    print(get_lcs("adebc", "dcadb"))
+    print(get_lcs("ab", "defg"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
