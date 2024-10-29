@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+# Solution - https://www.youtube.com/watch?v=V6H1qAeB-l4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=32
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -97,5 +101,27 @@ print(
             5: [[3, 2], [2, 6], [4, 3]]
         },
         0
+    )
+)
+
+
+print(
+    Graph.get_shortest_path(
+        {
+            0: [[1, 9]],
+            1: [[0, 9]]
+        },
+        0
+    )
+)
+
+print(
+    Graph.get_shortest_path(
+        {
+            0: [[1, 1], [2, 6]],
+            1: [[0, 1], [2, 3]],
+            2: [[0, 6], [1, 3]]
+        },
+        2
     )
 )
