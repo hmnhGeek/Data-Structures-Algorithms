@@ -1,3 +1,7 @@
+# Problem link - https://www.youtube.com/watch?v=rp1SMw7HSO8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=35
+# Solution - https://www.youtube.com/watch?v=rp1SMw7HSO8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=35
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -103,6 +107,20 @@ print(
             3: [[2, 4], [4, 3], [5, 1]],
             4: [[1, 1], [3, 3]],
             5: [[2, 5], [3, 1]]
+        }
+    )
+)
+
+
+print(
+    Graph.print_shortest_path_from(
+        1,
+        4,
+        {
+            1: [[2, 2], [4, 1]],
+            2: [[1, 2], [3, 4]],
+            3: [[2, 4], [4, 3]],
+            4: [[1, 1], [3, 3]]
         }
     )
 )
