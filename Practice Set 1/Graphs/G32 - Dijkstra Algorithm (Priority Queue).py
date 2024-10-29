@@ -63,3 +63,39 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Graph:
+    @staticmethod
+    def get_shortest_path(graph, source_node):
+        if source_node not in graph:
+            return
+
+        distances = {i: 1e6 for i in graph}
+        distances[source_node] = 0
+        min_heap = MinHeap()
+        min_heap.insert((source_node, distances[source_node]))
+
+        while not min_heap.is_empty():
+            node, distance = min_heap.pop()
+            for adj in graph[node]:
+                adj_node, wt = adj
+                if distances[adj_node] > distance + wt:
+                    distances[adj_node] = distance + wt
+                    min_heap.insert((adj_node, distances[adj_node]))
+
+        return distances.values()
+
+
+print(
+    Graph.get_shortest_path(
+        {
+            0: [[1, 4], [2, 4]],
+            1: [[0, 4], [2, 2]],
+            2: [[0, 4], [1, 2], [3, 3], [5, 6], [4, 1]],
+            3: [[2, 3], [5, 2]],
+            4: [[2, 1], [5, 3]],
+            5: [[3, 2], [2, 6], [4, 3]]
+        },
+        0
+    )
+)
