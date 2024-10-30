@@ -48,23 +48,6 @@ def memoized():
 
 
 def tabulation():
-    def solve(s1, i, s2, j, dp):
-        if i == 0 or j == 0:
-            return ""
-
-        if dp[i][j] is not None:
-            return dp[i][j]
-
-        if s1[i - 1] == s2[j - 1]:
-            dp[i][j] = solve(s1, i - 1, s2, j - 1, dp) + s1[i - 1]
-        else:
-            dp[i][j] = max(
-                solve(s1, i - 1, s2, j, dp),
-                solve(s1, i, s2, j - 1, dp),
-                key=len
-            )
-        return dp[i][j]
-
     def lcs(s1, s2):
         n1 = len(s1)
         n2 = len(s2)
@@ -86,8 +69,34 @@ def tabulation():
     print(lcs("abcd", "abzde"))
 
 
+def space_optimized():
+    def lcs(s1, s2):
+        n1 = len(s1)
+        n2 = len(s2)
+        prev = {j: "" for j in range(n2 + 1)}
+
+        for i in range(1, n1 + 1):
+            curr = {j: "" for j in range(n2 + 1)}
+            for j in range(1, n2 + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    curr[j] = prev[j - 1] + s1[i - 1]
+                else:
+                    curr[j] = max(
+                        prev[j],
+                        curr[j - 1],
+                        key=len
+                    )
+            prev = curr
+
+        return prev[n2]
+
+    print(lcs("abcd", "abzde"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
