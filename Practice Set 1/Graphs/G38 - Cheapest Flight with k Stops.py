@@ -63,3 +63,76 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Graph:
+    @staticmethod
+    def get_cheapest_flight_cost(graph, source, destination, num_stops_bearable):
+        if source not in graph or destination not in graph:
+            return
+        pq = MinHeap()
+        distances = {i: 1e6 for i in graph}
+        distances[source] = 0
+
+        # insert with +1 stops because we will count the destination as one of the stops.
+        pq.insert((distances[source], source, num_stops_bearable + 1))
+
+        while not pq.is_empty():
+            distance, node, k = pq.pop()
+            if node == destination:
+                return distance
+
+            # if for the popped node, no more stops are available and it's not even the destination node,
+            # then do nothing and continue to the next element in the PQ.
+            if k == 0:
+                continue
+
+            for adj in graph[node]:
+                adj_node, edge_wt = adj
+                if distances[adj_node] > distance + edge_wt:
+                    distances[adj_node] = distance + edge_wt
+                    # we have consumed one stop now, hence, k - 1.
+                    pq.insert((distances[adj_node], adj_node, k - 1))
+        return distances[destination]
+
+
+print(
+    Graph.get_cheapest_flight_cost(
+        {
+            0: [[1, 100]],
+            1: [[2, 100], [3, 600]],
+            2: [[0, 100], [3, 200]],
+            3: []
+        },
+        0,
+        3,
+        1
+    )
+)
+
+print(
+    Graph.get_cheapest_flight_cost(
+        {
+            0: [[1, 100], [2, 500]],
+            1: [[2, 100]],
+            2: []
+        },
+        0,
+        2,
+        0
+    )
+)
+
+print(
+    Graph.get_cheapest_flight_cost(
+        {
+            0: [[1, 5], [3, 5]],
+            1: [[2, 2], [4, 1]],
+            2: [],
+            3: [[1, 2]],
+            4: [[2, 1]]
+        },
+        0,
+        2,
+        2
+    )
+)
