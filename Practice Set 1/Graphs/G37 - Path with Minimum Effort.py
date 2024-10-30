@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/path-with-minimum-effort/1
+# Solution - https://www.youtube.com/watch?v=0ytpZyiZFhA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=37
+
+
 class Graph:
     @staticmethod
     def _dfs(graph, i, j, p, q, visited, max_effort, all_efforts, n, m):
