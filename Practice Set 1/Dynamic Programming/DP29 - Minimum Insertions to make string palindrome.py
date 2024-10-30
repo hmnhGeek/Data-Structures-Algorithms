@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/minimum-insertions-to-make-palindrome_985293?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=xPBLEj41rFU&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=30
+
+
 def recursive():
     def solve(s1, i, s2, j):
         if i == 0 or j == 0:
