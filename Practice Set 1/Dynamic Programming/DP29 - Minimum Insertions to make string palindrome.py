@@ -93,8 +93,7 @@ def space_optimized():
     print(lcs("abcd", "abzde"))
 
 
-def space_optimized_2():
-    def lcs(s1, s2):
+def lcs(s1, s2):
         n1 = len(s1)
         n2 = len(s2)
         dp = {i: {j: 0 for j in range(n2 + 1)} for i in range(n1 + 1)}
@@ -114,6 +113,8 @@ def space_optimized_2():
         while i > 0 and j > 0:
             if s1[i - 1] == s2[j - 1]:
                 result += s1[i - 1]
+                i -= 1
+                j -= 1
             else:
                 if dp[i - 1][j] >= dp[i][j - 1]:
                     i -= 1
@@ -121,15 +122,14 @@ def space_optimized_2():
                     j -= 1
         return result[-1:-len(result)-1:-1]
 
-    print(lcs("abcd", "abzde"))
+
+def get_min_chars_to_make_palindrome(string):
+    reversed = string[-1:-len(string)-1:-1]
+    longest_palindromic_subsequence = lcs(string, reversed)
+    return len(string) - len(longest_palindromic_subsequence)
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
-print()
-space_optimized_2()
+print(get_min_chars_to_make_palindrome("codingninjas"))
+print(get_min_chars_to_make_palindrome("abcdefg"))
+print(get_min_chars_to_make_palindrome("abca"))
+print(get_min_chars_to_make_palindrome("aaaaa"))
