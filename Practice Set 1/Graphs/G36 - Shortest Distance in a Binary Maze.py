@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/shortest-path-in-a-binary-maze-1655453161/1
+# Solution - https://www.youtube.com/watch?v=U5Mw4eyUmw4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=36
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -99,6 +103,11 @@ class BinaryMaze:
                 for neighbour in neighbours:
                     x1, y1 = neighbour
                     adj_node = x1 * self.m + y1
+
+                    # if the adjacent node is the destination node itself, return the min distance
+                    if x1 == xj and y1 == yj:
+                        return min(distances[adj_node], distance + 1)
+
                     if distances[adj_node] > distance + 1:
                         distances[adj_node] = distance + 1
                         pq.insert((distances[adj_node], x1, y1))
@@ -125,4 +134,41 @@ print(
          [1, 1, 1, 1, 0],
          [1, 0, 1, 0, 1]]
     ).shortest_distance((0, 0), (3, 4))
+)
+
+print(
+    BinaryMaze(
+        [
+            [1, 1, 1, 1],
+            [0, 1, 1, 0],
+            [0, 0, 1, 1]
+        ]
+    ).shortest_distance((0, 0), (2, 3))
+)
+
+print(
+    BinaryMaze(
+        [
+            [1, 1],
+            [0, 1]
+        ]
+    ).shortest_distance((0, 0), (1, 1))
+)
+
+print(
+    BinaryMaze(
+        [
+            [1, 1],
+            [1, 1]
+        ]
+    ).shortest_distance((0, 1), (1, 1))
+)
+
+print(
+    BinaryMaze(
+        [
+            [1, 0],
+            [0, 1]
+        ]
+    ).shortest_distance((0, 0), (1, 1))
 )
