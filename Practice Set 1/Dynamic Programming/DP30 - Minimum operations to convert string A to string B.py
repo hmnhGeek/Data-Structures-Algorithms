@@ -37,3 +37,4 @@ def min_ops_to_convert(s1, s2):
 print(min_ops_to_convert("abcd", "anc"))
 print(min_ops_to_convert("aaa", "aa"))
 print(min_ops_to_convert("edl", "xcqja"))
+print(min_ops_to_convert("heap", "pea"))
