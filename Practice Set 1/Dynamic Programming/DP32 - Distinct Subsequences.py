@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/distinct-subsequences_981277
+# Solution - https://www.youtube.com/watch?v=nVG7eTiD2bY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=33
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n + m).
@@ -93,8 +97,42 @@ def tabulation():
     print(distinct_subsequences("abcd", "abe"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nm) and space complexity is O(m).
+    """
+    def distinct_subsequences(string, search_term):
+        n = len(string)
+        m = len(search_term)
+        prev = {j: 0 for j in range(m + 1)}
+        prev[0] = 1
+
+        for i in range(1, n + 1):
+            curr = {j: 0 for j in range(m + 1)}
+            curr[0] = 1
+            for j in range(1, m + 1):
+                left = 0
+                if string[i - 1] == search_term[j - 1]:
+                    left = prev[j - 1]
+                right = prev[j]
+                curr[j] = left + right
+            prev = curr
+
+        return prev[m]
+
+    print(distinct_subsequences("babgbag", "bag"))
+    print(distinct_subsequences("brootgroot", "brt"))
+    print(distinct_subsequences("dingdingdingding", "ing"))
+    print(distinct_subsequences("aaaaa", "a"))
+    print(distinct_subsequences("rabbbit", "rabbit"))
+    print(distinct_subsequences("banana", "ban"))
+    print(distinct_subsequences("abcd", "abe"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
