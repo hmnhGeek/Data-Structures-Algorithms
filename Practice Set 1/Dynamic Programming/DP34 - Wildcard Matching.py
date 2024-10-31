@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/wildcard-pattern-matching_701650?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=ZmlQ3vgAOMo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=35
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity O(n + m).
@@ -119,8 +123,55 @@ def tabulation():
     print(match("**", ""))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nm) and space complexity O(m).
+    """
+    def match(s1, s2):
+        n = len(s1)
+        m = len(s2)
+        prev = {j: False for j in range(m + 1)}
+        prev[0] = True
+        for j in prev:
+            if j > 0:
+                prev[j] = False
+
+        for i in range(1, n + 1):
+            curr = {j: False for j in range(m + 1)}
+            for j in curr:
+                if j > 0:
+                    curr[j] = False
+            curr[0] = True
+            for k in range(1, i + 1):
+                if s1[k - 1] != "*":
+                    curr[0] = False
+                    break
+
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1] or s1[i - 1] == "?":
+                    curr[j] = prev[j - 1]
+                elif s1[i - 1] == "*":
+                    curr[j] = prev[j] or curr[j - 1]
+                else:
+                    curr[j] = False
+            prev = curr
+
+        return prev[m]
+
+    print(match("?ay", "ray"))
+    print(match("ab*cd", "abdefcd"))
+    print(match("ab?d", "abcc"))
+    print(match("ba*a?", "baaabab"))
+    print(match("a", "aa"))
+    print(match("*", "aa"))
+    print(match("?a", "cb"))
+    print(match("**", ""))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
