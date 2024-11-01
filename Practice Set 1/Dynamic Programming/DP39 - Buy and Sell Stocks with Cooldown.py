@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/highway-billboards_3125969?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=IGIe46xw3YY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=40
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
@@ -81,8 +85,34 @@ def tabulation():
     print(best_time([5, 4, 3]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n) and space complexity is O(1).
+    """
+    def best_time(prices):
+        n = len(prices)
+        nxt2 = {j: 0 for j in [True, False]}
+        nxt = {j: 0 for j in [True, False]}
+        for index in range(n - 1, -1, -1):
+            curr = {j: 0 for j in [True, False]}
+            for can_buy in [True, False]:
+                if can_buy:
+                    curr[can_buy] = max(-prices[index] + nxt[False], nxt[True])
+                else:
+                    curr[can_buy] = max(prices[index] + nxt2[True], nxt[False])
+            nxt2 = nxt
+            nxt = curr
+        return nxt[True]
+
+    print(best_time([4, 9, 0, 4, 10]))
+    print(best_time([1, 2, 3, 4]))
+    print(best_time([5, 4, 3]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
