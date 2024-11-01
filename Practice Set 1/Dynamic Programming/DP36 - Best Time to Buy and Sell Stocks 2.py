@@ -85,8 +85,34 @@ def tabulation():
     print(best_time([1, 2, 3, 4, 5]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n) and space complexity is O(1).
+    """
+    def best_time(prices):
+        n = len(prices)
+        nxt = {True: 0, False: 0}
+
+        for index in range(n - 1, -1, -1):
+            curr = {True: 0, False: 0}
+            for can_buy in [True, False]:
+                if can_buy:
+                    curr[can_buy] = max(-prices[index] + nxt[False], nxt[True])
+                else:
+                    curr[can_buy] = max(prices[index] + nxt[True], nxt[False])
+            nxt = curr
+        return nxt[True]
+
+    print(best_time([7, 1, 5, 3, 6, 4]))
+    print(best_time([1, 2, 3, 4, 5, 6, 7]))
+    print(best_time([7, 6, 5, 4, 3, 2, 1]))
+    print(best_time([1, 2, 3, 4, 5]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
