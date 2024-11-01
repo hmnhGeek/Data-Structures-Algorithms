@@ -61,6 +61,28 @@ def memoized():
     print(best_time([5, 4, 3]))
 
 
+def tabulation():
+    """
+        Time complexity is O(n) and space complexity is O(n).
+    """
+    def best_time(prices):
+        n = len(prices)
+        dp = {i: {j: 0 for j in [True, False]} for i in range(n + 2)}
+        for index in range(n - 1, -1, -1):
+            for can_buy in [True, False]:
+                if can_buy:
+                    dp[index][can_buy] = max(-prices[index] + dp[index + 1][False], dp[index + 1][True])
+                else:
+                    dp[index][can_buy] = max(prices[index] + dp[index + 2][True], dp[index + 1][False])
+        return dp[0][True]
+
+    print(best_time([4, 9, 0, 4, 10]))
+    print(best_time([1, 2, 3, 4]))
+    print(best_time([5, 4, 3]))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
