@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/best-time-to-buy-and-sell-stock_1080698?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=IV1dHbk5CDc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=39
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
