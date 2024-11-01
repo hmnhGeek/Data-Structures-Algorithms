@@ -63,3 +63,43 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Graph:
+    @staticmethod
+    def get_prim_mst(graph, source):
+        if source not in graph:
+            return
+        mst_wt = 0
+        mst_edges = []
+        pq = MinHeap()
+        visited = {i: False for i in graph}
+        pq.insert((0, source, None))
+
+        while not pq.is_empty():
+            distance, node, parent = pq.pop()
+            if parent is not None and not visited[node]:
+                mst_wt += distance
+                mst_edges.append((parent, node))
+
+            visited[node] = True
+
+            for adj in graph[node]:
+                adj_node, edge_wt = adj
+                if not visited[adj_node]:
+                    pq.insert((edge_wt, adj_node, node))
+
+        return mst_wt, mst_edges
+
+
+print(
+    Graph.get_prim_mst(
+        {
+            0: [[1, 2], [2, 1]],
+            1: [[0, 2], [2, 1]],
+            2: [[0, 1], [1, 1], [4, 2], [3, 2]],
+            3: [[2, 2], [4, 1]],
+            4: [[2, 2], [3, 1]]
+        },
+        0
+    )
+)
