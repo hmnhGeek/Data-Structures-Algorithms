@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+# Solution - https://www.youtube.com/watch?v=mJcZjjKzeqk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=45
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,6 +71,10 @@ class MinHeap:
 class Graph:
     @staticmethod
     def get_prim_mst(graph, source):
+        """
+            Time complexity is O(E*log(E)) and space complexity is O(V + E).
+        """
+
         if source not in graph:
             return
         mst_wt = 0
@@ -82,7 +90,6 @@ class Graph:
                 mst_edges.append((parent, node))
 
             visited[node] = True
-
             for adj in graph[node]:
                 adj_node, edge_wt = adj
                 if not visited[adj_node]:
@@ -99,6 +106,29 @@ print(
             2: [[0, 1], [1, 1], [4, 2], [3, 2]],
             3: [[2, 2], [4, 1]],
             4: [[2, 2], [3, 1]]
+        },
+        0
+    )
+)
+
+print(
+    Graph.get_prim_mst(
+        {
+            0: [[1, 5], [2, 1]],
+            1: [[0, 5], [2, 3]],
+            2: [[0, 1], [1, 3]]
+        },
+        0
+    )
+)
+
+print(
+    Graph.get_prim_mst(
+        {
+            0: [[1, 1], [2, 3], [3, 4]],
+            1: [[0, 1], [2, 2]],
+            2: [[1, 2], [0, 3], [3, 5]],
+            3: [[0, 4], [2, 5]]
         },
         0
     )
