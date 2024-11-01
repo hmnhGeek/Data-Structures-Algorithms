@@ -5,6 +5,10 @@
 class Graph:
     @staticmethod
     def floyd_warshall(graph):
+        """
+            Time complexity is O(V^3) and space complexity is O(V^2).
+        """
+
         n = len(graph)
         distances = [[graph[i][j] for j in range(n)] for i in range(n)]
 
@@ -27,3 +31,14 @@ class Graph:
 
 print(Graph.floyd_warshall([[0, 25], [-1, 0]]))
 print(Graph.floyd_warshall([[0, 1, 43],[1, 0, 6], [-1, -1, 0]]))
+print(
+    Graph.floyd_warshall(
+        [
+            [0, 4, -1, 5, -1],
+            [-1, 0, 1, -1, 6],
+            [2, -1, 0, 3, -1],
+            [-1, -1, 1, 0, 2],
+            [1, -1, -1, 4, 0]
+        ]
+    )
+)
