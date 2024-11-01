@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/1
+# Solution - https://www.youtube.com/watch?v=PwMVNSJ5SLI&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=43
+
+
 class Graph:
     @staticmethod
     def _get_graph(edge_list, n):
@@ -39,9 +43,16 @@ class Solution:
 
     @staticmethod
     def get(edge_list, n, threshold):
+        """
+            Time complexity is O(n^3) and space complexity is O(n^2).
+        """
+
+        # Ot(n^3) and Os(n^2)
         min_distances = Graph.floyd_warshall(edge_list, n)
         min_count = 1e6
         city = -1
+
+        # This will also take O(n^2) time.
         for row in range(n):
             count = Solution._get_count(min_distances[row], threshold)
             if min_count >= (count - 1):
