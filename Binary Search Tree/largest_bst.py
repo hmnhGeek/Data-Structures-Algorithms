@@ -9,6 +9,12 @@ class Node:
         self.d = 1
 
 
+class BTNode:
+    def __init__(self, data):
+        self.left = self.right = None
+        self.data = data
+
+
 class BinarySearchTree:
     def __init__(self):
         self.root = None
@@ -150,3 +156,60 @@ class BinarySearchTree:
         print()
 
 
+class Vector:
+    def __init__(self, size, max_val, min_val):
+        self.size = size
+        self.max_val = max_val
+        self.min_val = min_val
+
+
+class MaxSizeBSTFinder:
+    @staticmethod
+    def find_max_size(root: Node):
+        # if the root node is None, return a vector <size: 0, max: -inf, min: inf>
+        if root is None:
+            return Vector(0, -1e6, 1e6)
+
+        left_result = MaxSizeBSTFinder.find_max_size(root.left)
+        right_result = MaxSizeBSTFinder.find_max_size(root.right)
+        if left_result.max_val < root.data < right_result.min_val:
+            return Vector(
+                1 + left_result.size + right_result.size,
+                max(left_result.max_val, root.data, right_result.max_val),
+                min(left_result.min_val, root.data, right_result.min_val)
+            )
+        else:
+            return Vector(
+                max(left_result.size, right_result.size),
+                1e6,
+                -1e6
+            )
+
+# Example 1
+n20, n15, n40, n14, n18, n30, n60, n17, n16, n19, n50 = BTNode(20), BTNode(15), BTNode(40), BTNode(14), BTNode(18), BTNode(30), BTNode(60), BTNode(17), BTNode(16), BTNode(19), BTNode(50)
+n20.left = n15
+n15.left = n14
+n18.left = n16
+n40.left = n30
+n60.left = n50
+n20.right = n40
+n40.right = n60
+n15.right = n18
+n18.right = n19
+n14.right = n17
+print(MaxSizeBSTFinder.find_max_size(n20).size)
+
+
+# Example 2
+n10 = BTNode(10)
+n5 = BTNode(5)
+n15 = BTNode(15)
+n1 = BTNode(1)
+n8 = BTNode(8)
+n7 = BTNode(7)
+n10.left = n5
+n5.left = n1
+n5.right = n8
+n10.right = n15
+n15.right = n7
+print(MaxSizeBSTFinder.find_max_size(n10).size)
