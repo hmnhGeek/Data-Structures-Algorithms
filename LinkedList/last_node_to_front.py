@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/move-last-element-to-front-of-a-given-linked-list/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -22,18 +25,28 @@ class LinkedList:
         self.length += 1
 
     def move_to_front(self):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # if the linked list is empty or has only 1 element, return, nothing needs to be done.
         if self.is_empty():
             return
         if self.length == 1:
             return
 
+        # traverse the linked list until you reach tail node.
         prev, curr = None, self.head
         while curr != self.tail:
             prev = curr
             curr = curr.next
 
+        # make the prev node as tail
         if prev is not None:
             prev.next = None
+            self.tail = prev
+
+        # make the current node as head
         if curr is not None:
             curr.next = self.head
             self.head = curr
