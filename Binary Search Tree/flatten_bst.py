@@ -152,17 +152,26 @@ class BstFlatten:
     @staticmethod
     def _flatten(root):
         if root:
+            # inorder traversal
             BstFlatten._flatten(root.left)
+
+            # flattening the links
             BstFlatten.prev.right = root
             root.left = BstFlatten.prev
             BstFlatten.prev = root
+
             BstFlatten._flatten(root.right)
 
     @staticmethod
     def flatten(bst: BinarySearchTree):
+        # create a dummy node and point global prev to this dummy node.
         dummy_node = Node(None)
         BstFlatten.prev = dummy_node
+
+        # recursively flatten the BST in O(n) time and O(log(n)) recursion space.
         BstFlatten._flatten(bst.root)
+
+        # traverse the flattened BST
         curr = dummy_node.right
         while curr is not None:
             print(curr.data, end=" -> ")
