@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/flatten-bst-to-sorted-list-increasing-order/
+
+
 class Node:
     def __init__(self, data):
         self.parent = None
@@ -142,3 +145,43 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class BstFlatten:
+    prev = None
+
+    @staticmethod
+    def _flatten(root):
+        if root:
+            BstFlatten._flatten(root.left)
+            BstFlatten.prev.right = root
+            root.left = BstFlatten.prev
+            BstFlatten.prev = root
+            BstFlatten._flatten(root.right)
+
+    @staticmethod
+    def flatten(bst: BinarySearchTree):
+        dummy_node = Node(None)
+        BstFlatten.prev = dummy_node
+        BstFlatten._flatten(bst.root)
+        curr = dummy_node.right
+        while curr is not None:
+            print(curr.data, end=" -> ")
+            curr = curr.right
+
+
+bst = BinarySearchTree()
+for i in [2, 6, 8, 0, 9, 9, 7]:
+    bst.insert(i)
+BstFlatten.flatten(bst)
+
+print()
+bst2 = BinarySearchTree()
+for i in [5, 3, 7, 2, 4, 6, 8]:
+    bst2.insert(i)
+BstFlatten.flatten(bst2)
+
+print()
+bst3 = BinarySearchTree()
+for i in [1, 2, 3, 4, 5]:
+    bst3.insert(i)
+BstFlatten.flatten(bst3)
