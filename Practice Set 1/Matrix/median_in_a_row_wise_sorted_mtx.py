@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -35,7 +38,7 @@ class MinHeap:
         if start_index == 0:
             return
         pi = self.get_pi(start_index)
-        lci, rci = self.get_lci(pi), self.get_pi(pi)
+        lci, rci = self.get_lci(pi), self.get_rci(pi)
         min_child_index = self.get_min_child_index(lci, rci)
         if min_child_index is not None:
             if self.heap[pi][0] > self.heap[min_child_index][0]:
@@ -43,7 +46,7 @@ class MinHeap:
             self.min_heapify_up(pi)
 
     def min_heapify_down(self, pi):
-        lci, rci = self.get_lci(pi), self.get_pi(pi)
+        lci, rci = self.get_lci(pi), self.get_rci(pi)
         min_child_index = self.get_min_child_index(lci, rci)
         if min_child_index is not None:
             if self.heap[pi][0] > self.heap[min_child_index][0]:
@@ -63,3 +66,48 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Matrix:
+    @staticmethod
+    def median_finder(mtx):
+        """
+            Time complexity is O(m*n*log(n)) and space complexity is O(n).
+        """
+
+        n, m = len(mtx), len(mtx[0])
+        min_heap = MinHeap()
+        counter = 0
+        median_counter = (n*m)//2 + 1
+
+        for i in range(n):
+            min_heap.insert((mtx[i][0], i, 0))
+
+        while not min_heap.is_empty():
+            item, i, j = min_heap.pop()
+            counter += 1
+            if counter == median_counter:
+                return item
+
+            if 0 <= j + 1 < m:
+                min_heap.insert((mtx[i][j + 1], i, j + 1))
+
+
+print(
+    Matrix.median_finder(
+        [
+            [1, 3, 5],
+            [2, 6, 9],
+            [3, 6, 9]
+        ]
+    )
+)
+
+print(
+    Matrix.median_finder(
+        [
+            [1],
+            [2],
+            [3]
+        ]
+    )
+)
