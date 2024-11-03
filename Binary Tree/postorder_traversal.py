@@ -45,6 +45,9 @@ class Node:
 class PostOrder:
     @staticmethod
     def _recursive(root: Node, postorder):
+        """
+            Time complexity is O(n) and space complexity is O(n) for recursion stack.
+        """
         if root:
             PostOrder._recursive(root.left, postorder)
             PostOrder._recursive(root.right, postorder)
@@ -58,6 +61,9 @@ class PostOrder:
 
     @staticmethod
     def iterative(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         if root is None:
             return
         result = []
