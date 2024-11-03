@@ -9,17 +9,17 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -77,7 +77,7 @@ class Matrix:
         n, m = len(mtx), len(mtx[0])
         min_heap = MinHeap()
         counter = 0
-        median_counter = (n*m)//2 + 1
+        median_counter = (n * m) // 2 + 1
 
         for i in range(n):
             min_heap.insert((mtx[i][0], i, 0))
@@ -110,4 +110,22 @@ print(
             [3]
         ]
     )
+)
+
+print(
+    Matrix.median_finder([
+        [1, 2, 3, 4, 5],
+        [8, 9, 11, 12, 13],
+        [21, 23, 25, 27, 29]
+    ])
+)
+
+print(
+    Matrix.median_finder([
+        [1, 5, 7, 9, 11],
+        [2, 3, 4, 8, 9],
+        [4, 11, 14, 19, 20],
+        [6, 10, 22, 99, 100],
+        [7, 15, 17, 24, 28]
+    ])
 )
