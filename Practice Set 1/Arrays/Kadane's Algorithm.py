@@ -1,4 +1,10 @@
+# Problem link - https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1
+
+
 def max_subarray_sum(arr):
+    """
+        Time complexity is O(n) and space complexity is O(1).
+    """
     max_sum = -1e6
     curr = 0
     for i in range(len(arr)):
