@@ -6,6 +6,7 @@
     The only way to figure out about KMP algorithm is to watch the video. The algorithm is rather complex.
 """
 
+
 def get_lps_array(pattern):
     prev_lps = 0
     i = 1
