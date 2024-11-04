@@ -1,6 +1,13 @@
 # Problem link - https://www.geeksforgeeks.org/k-th-largest-sum-contiguous-subarray/
 
 
+"""
+    Approach - Generate all sub-array sums in an array. This will take O(n^2) time and O(n*(n+1)/2) space.
+    Then push these n*(n+1)/2 elements into a max heap. Continuously pop from heap and at the kth pop, return the
+    answer. Total time complexity is O(n^2 log(n^2)) and space complexity is O(n(n+1)/2).
+"""
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
