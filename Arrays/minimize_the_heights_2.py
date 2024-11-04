@@ -58,7 +58,38 @@ class RecursiveSolution:
         return RecursiveSolution.solve(arr, n - 1, k, tracking_arr)
 
 
+print("Using recursive approach")
 print(RecursiveSolution.minimize_the_heights([1, 5, 8, 10], 2))
 print(RecursiveSolution.minimize_the_heights([3, 9, 12, 16, 20], 3))
 print(RecursiveSolution.minimize_the_heights([12, 6, 4, 15, 17, 10], 6))
 print(RecursiveSolution.minimize_the_heights([12, 6, 4, 15, 17, 10], 3))
+
+
+class EfficientSolution:
+    @staticmethod
+    def minimize_the_heights(arr, k):
+        """
+            Overall time complexity is O(nlog(n)) and space complexity is O(1).
+        """
+
+        # This will take O(nlog(n)) time.
+        QuickSort.sort(arr)
+        result = arr[-1] - arr[0]
+        smallest = arr[0] + k
+        largest = arr[-1] - k
+
+        # This will take O(n) time.
+        for i in range(len(arr) - 1):
+            mini = min(smallest, arr[i + 1] - k)
+            maxi = max(largest, arr[i] + k)
+            if mini < 0:
+                continue
+            result = min(result, maxi - mini)
+        return result
+
+
+print("\nUsing efficient approach")
+print(EfficientSolution.minimize_the_heights([1, 5, 8, 10], 2))
+print(EfficientSolution.minimize_the_heights([3, 9, 12, 16, 20], 3))
+print(EfficientSolution.minimize_the_heights([12, 6, 4, 15, 17, 10], 6))
+print(EfficientSolution.minimize_the_heights([12, 6, 4, 15, 17, 10], 3))
