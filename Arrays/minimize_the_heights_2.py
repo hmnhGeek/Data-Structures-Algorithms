@@ -1,4 +1,5 @@
 # Problem link - https://www.geeksforgeeks.org/problems/minimize-the-heights3351/1
+# Solution - https://www.youtube.com/watch?v=30vDmZg5MZ8
 
 
 class QuickSort:
