@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/number-of-provinces/1
+# Solution - https://www.youtube.com/watch?v=ZGr5nX-Gi6Y&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=48
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.sizes = {i: 1 for i in nodes}
@@ -32,3 +36,55 @@ class DisjointSet:
         return count
 
 
+class Solution:
+    @staticmethod
+    def get_provinces(graph):
+        """
+            Overall time complexity is O(n^2) and space complexity is O(n).
+        """
+
+        # Takes O(n) space.
+        ds = DisjointSet([i for i in range(len(graph))])
+
+        # Takes O(n^2) time.
+        for i in range(len(graph)):
+            for j in range(len(graph)):
+                if i != j and graph[i][j] == 1 and not ds.in_same_components(i, j):
+                    ds.union(i, j)
+
+        # returns count in O(n) time.
+        return ds.get_num_components()
+
+
+print(
+    Solution.get_provinces(
+        [
+            [1, 1, 0, 0, 0, 0, 0],
+            [1, 1, 1, 0, 0, 0, 0],
+            [0, 1, 1, 0, 0, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 1, 1, 0, 0],
+            [0, 0, 0, 0, 0, 1, 1],
+            [0, 0, 0, 0, 0, 1, 1]
+        ]
+    )
+)
+
+print(
+    Solution.get_provinces(
+        [
+            [1, 1],
+            [1, 1]
+        ]
+    )
+)
+
+print(
+    Solution.get_provinces(
+        [
+            [1, 0, 1],
+            [0, 1, 0],
+            [1, 0, 1]
+        ]
+    )
+)
