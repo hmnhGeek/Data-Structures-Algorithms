@@ -77,7 +77,7 @@ class Solution:
         Solution._group_nodes_and_emails(ds, node_to_emails_mapping, emails_to_node_mapping)
 
         # finally, using the node-name mapping created above, we will restore the names and sort the emails for each
-        # row.
+        # row. Finally return the result.
         final_result = []
         Solution._prepare_final_result(node_to_emails_mapping, final_result, name_node_mapping)
         return final_result
