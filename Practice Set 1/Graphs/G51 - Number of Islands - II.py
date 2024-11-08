@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/number-of-islands/1
+# Solution - https://www.youtube.com/watch?v=Rn6B-Q4SNyA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=52
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.ranks = {i: 0 for i in nodes}
