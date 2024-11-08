@@ -40,49 +40,52 @@ class Solution:
         return m * x + y, x, y
 
     @staticmethod
-    def _visit_and_unify(visited, x, y, node, ds, m, n):
+    def _visit_and_unify(visited, x, y, node, ds, m, n, count: int):
+        if visited[x][y] == 1:
+            return count
+
         visited[x][y] = 1
+        count += 1
 
         if 0 <= x - 1 < n and visited[x - 1][y]:
             adj_node, _, _ = Solution._get_node((x - 1, y), m)
             if not ds.in_same_components(node, adj_node):
                 ds.union(node, adj_node)
+                count -= 1
 
-        elif 0 <= y + 1 < m and visited[x][y + 1]:
+        if 0 <= y + 1 < m and visited[x][y + 1]:
             adj_node, _, _ = Solution._get_node((x, y + 1), m)
             if not ds.in_same_components(node, adj_node):
                 ds.union(node, adj_node)
+                count -= 1
 
-        elif 0 <= x + 1 < n and visited[x + 1][y]:
+        if 0 <= x + 1 < n and visited[x + 1][y]:
             adj_node, _, _ = Solution._get_node((x + 1, y), m)
             if not ds.in_same_components(node, adj_node):
                 ds.union(node, adj_node)
+                count -= 1
 
-        elif 0 <= y - 1 < m and visited[x][y - 1]:
+        if 0 <= y - 1 < m and visited[x][y - 1]:
             adj_node, _, _ = Solution._get_node((x, y - 1), m)
             if not ds.in_same_components(node, adj_node):
                 ds.union(node, adj_node)
+                count -= 1
 
-    @staticmethod
-    def _prepare_result(ds, n, m, visited, result):
-        connected_components = ds.get_num_components()
-        for i in range(n):
-            for j in range(m):
-                if visited[i][j] == 0:
-                    connected_components -= 1
-        result.append(connected_components)
+        return count
 
     @staticmethod
     def number_of_islands(n, m, cells):
         ds = DisjointSet([i for i in range(n * m)])
         visited = [[0 for _ in range(m)] for _ in range(n)]
         result = []
+        islands = 0
         for cell in cells:
             node, x, y = Solution._get_node(cell, m)
-            Solution._visit_and_unify(visited, x, y, node, ds, m, n)
-            Solution._prepare_result(ds, n, m, visited, result)
+            islands = Solution._visit_and_unify(visited, x, y, node, ds, m, n, islands)
+            result.append(islands)
         return result
 
 
 print(Solution.number_of_islands(4, 5, [(1, 1), (0, 1), (3, 3), (3, 4)]))
 print(Solution.number_of_islands(4, 5, [(0, 0), (1, 1), (2, 2), (3, 3)]))
+print(Solution.number_of_islands(4, 5, [(0, 0), (0, 0), (1, 1), (1, 0), (0, 1), (0, 3), (1, 3), (0, 4), (3, 2), (2, 2), (1, 2), (0, 2)]))
