@@ -27,22 +27,22 @@ class DisjointSet:
 
 class Solution:
     @staticmethod
-    def accounts_merge(accounts):
-        n = len(accounts)
-        name_node_mapping = {i: accounts[i][0] for i in range(n)}
-        ds = DisjointSet([i for i in name_node_mapping])
-        emails_to_node_mapping = {}
+    def _perform_union_operations(ds: DisjointSet, emails_to_node_mapping, accounts, n):
         for row in range(n):
             for email in range(1, len(accounts[row])):
                 if accounts[row][email] not in emails_to_node_mapping:
                     emails_to_node_mapping[accounts[row][email]] = row
                 else:
                     ds.union(row, emails_to_node_mapping[accounts[row][email]])
-        node_to_emails_mapping = {i: [] for i in name_node_mapping}
+
+    @staticmethod
+    def _group_nodes_and_emails(ds: DisjointSet, node_to_emails_mapping, emails_to_node_mapping):
         for email in emails_to_node_mapping:
             ulp_email = ds.find_ultimate_parent(emails_to_node_mapping[email])
             node_to_emails_mapping[ulp_email].append(email)
-        final_result = []
+
+    @staticmethod
+    def _prepare_final_result(node_to_emails_mapping, final_result, name_node_mapping):
         for node in node_to_emails_mapping:
             if len(node_to_emails_mapping[node]) > 0:
                 row_to_add = [name_node_mapping[node], ]
@@ -50,6 +50,21 @@ class Solution:
                 emails_to_add.sort()
                 row_to_add.extend(emails_to_add)
                 final_result.append(row_to_add)
+
+    @staticmethod
+    def accounts_merge(accounts):
+        n = len(accounts)
+        name_node_mapping = {i: accounts[i][0] for i in range(n)}
+        ds = DisjointSet([i for i in name_node_mapping])
+
+        emails_to_node_mapping = {}
+        Solution._perform_union_operations(ds, emails_to_node_mapping, accounts, n)
+
+        node_to_emails_mapping = {i: [] for i in name_node_mapping}
+        Solution._group_nodes_and_emails(ds, node_to_emails_mapping, emails_to_node_mapping)
+
+        final_result = []
+        Solution._prepare_final_result(node_to_emails_mapping, final_result, name_node_mapping)
         return final_result
 
 
