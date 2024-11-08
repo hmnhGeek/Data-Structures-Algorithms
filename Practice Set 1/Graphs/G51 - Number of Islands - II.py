@@ -40,40 +40,47 @@ class Solution:
         return m * x + y, x, y
 
     @staticmethod
+    def _visit_and_unify(visited, x, y, node, ds, m, n):
+        visited[x][y] = 1
+
+        if 0 <= x - 1 < n and visited[x - 1][y]:
+            adj_node, _, _ = Solution._get_node((x - 1, y), m)
+            if not ds.in_same_components(node, adj_node):
+                ds.union(node, adj_node)
+
+        elif 0 <= y + 1 < m and visited[x][y + 1]:
+            adj_node, _, _ = Solution._get_node((x, y + 1), m)
+            if not ds.in_same_components(node, adj_node):
+                ds.union(node, adj_node)
+
+        elif 0 <= x + 1 < n and visited[x + 1][y]:
+            adj_node, _, _ = Solution._get_node((x + 1, y), m)
+            if not ds.in_same_components(node, adj_node):
+                ds.union(node, adj_node)
+
+        elif 0 <= y - 1 < m and visited[x][y - 1]:
+            adj_node, _, _ = Solution._get_node((x, y - 1), m)
+            if not ds.in_same_components(node, adj_node):
+                ds.union(node, adj_node)
+
+    @staticmethod
+    def _prepare_result(ds, n, m, visited, result):
+        connected_components = ds.get_num_components()
+        for i in range(n):
+            for j in range(m):
+                if visited[i][j] == 0:
+                    connected_components -= 1
+        result.append(connected_components)
+
+    @staticmethod
     def number_of_islands(n, m, cells):
         ds = DisjointSet([i for i in range(n * m)])
         visited = [[0 for _ in range(m)] for _ in range(n)]
         result = []
         for cell in cells:
             node, x, y = Solution._get_node(cell, m)
-            visited[x][y] = 1
-
-            if 0 <= x - 1 < n and visited[x - 1][y]:
-                adj_node, _, _ = Solution._get_node((x - 1, y), m)
-                if not ds.in_same_components(node, adj_node):
-                    ds.union(node, adj_node)
-
-            elif 0 <= y + 1 < m and visited[x][y + 1]:
-                adj_node, _, _ = Solution._get_node((x, y + 1), m)
-                if not ds.in_same_components(node, adj_node):
-                    ds.union(node, adj_node)
-
-            elif 0 <= x + 1 < n and visited[x + 1][y]:
-                adj_node, _, _ = Solution._get_node((x + 1, y), m)
-                if not ds.in_same_components(node, adj_node):
-                    ds.union(node, adj_node)
-
-            elif 0 <= y - 1 < m and visited[x][y - 1]:
-                adj_node, _, _ = Solution._get_node((x, y - 1), m)
-                if not ds.in_same_components(node, adj_node):
-                    ds.union(node, adj_node)
-
-            connected_components = ds.get_num_components()
-            for i in range(n):
-                for j in range(m):
-                    if visited[i][j] == 0:
-                        connected_components -= 1
-            result.append(connected_components)
+            Solution._visit_and_unify(visited, x, y, node, ds, m, n)
+            Solution._prepare_result(ds, n, m, visited, result)
         return result
 
 
