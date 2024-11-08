@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/maximum-connected-group-making-a-large-island/
+# Solution - https://www.youtube.com/watch?v=lgiz0Oup6gM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=52
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.sizes = {i: 1 for i in nodes}
@@ -46,17 +50,17 @@ class MakeLargeIsland:
 
     def make(self):
         n, m = len(self.mtx), len(self.mtx[0])
-        ds = DisjointSet([i for i in range(n*m)])
+        ds = DisjointSet([i for i in range(n * m)])
         largest = 1
 
         for i in range(n):
             for j in range(m):
                 if self.mtx[i][j] == 1:
                     neighbours = self.get_neighbours(i, j, n, m)
-                    node = i*m + j
+                    node = i * m + j
                     for neighbour in neighbours:
                         x, y = neighbour
-                        adj_node = x*m + y
+                        adj_node = x * m + y
                         if not ds.in_same_components(node, adj_node):
                             ds.union(node, adj_node)
 
@@ -65,10 +69,10 @@ class MakeLargeIsland:
                 if self.mtx[i][j] == 0:
                     neighbours = self.get_neighbours(i, j, n, m)
                     hash_set = set()
-                    node = i*m + j
+                    node = i * m + j
                     for neighbour in neighbours:
                         x, y = neighbour
-                        adj_node = x*m + y
+                        adj_node = x * m + y
                         hash_set.add(ds.find_ultimate_parent(adj_node))
                     island_size = 0
                     for temp_node in hash_set:
@@ -94,5 +98,15 @@ print(
             [1, 0, 1],
             [1, 0, 1],
         ]
+    ).make()
+)
+
+print(
+    MakeLargeIsland(
+        [[1, 0, 1, 1, 0],
+         [1, 0, 0, 1, 0],
+         [0, 1, 1, 0, 1],
+         [1, 0, 1, 0, 1],
+         [0, 1, 0, 1, 0]]
     ).make()
 )
