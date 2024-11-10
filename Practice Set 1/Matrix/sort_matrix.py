@@ -75,3 +75,22 @@ print(
         ]
     )
 )
+
+print(
+    Solution.sort_matrix(
+        [
+            [5, 4, 7],
+            [1, 3, 8],
+            [2, 9, 6]
+        ]
+    )
+)
+
+print(
+    Solution.sort_matrix(
+        [
+            [5, 4, 7],
+            [1, 3, 8]
+        ]
+    )
+)
