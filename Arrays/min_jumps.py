@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1
+# Solution - https://www.youtube.com/watch?v=7SBVnw7GSTk & https://www.youtube.com/watch?v=tZAa_jJ3SwQ
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
@@ -92,29 +96,53 @@ def tabulation():
 
 
 def is_end_reachable(arr):
+    """
+        Time complexity is O(n) and space complexity is O(1).
+    """
     max_index_reachable = 0
     n = len(arr)
     for i in range(n):
+        # if the current index is within max reachable index, then continue. It can become otherwise,
+        # if there's a 0 in between. Then we must return a False.
         if i <= max_index_reachable:
+            # if the next maximum jump can increase max reachable index, then update it.
             if arr[i] + i > max_index_reachable:
                 max_index_reachable = arr[i] + i
         else:
             return False
+    # return answer.
     return max_index_reachable >= n - 1
 
 
 def min_jumps(arr):
+    """
+        Time complexity is O(n) and space complexity is O(1).
+    """
+
+    # if end is not reachable, return -1.
     if not is_end_reachable(arr):
         return -1
+
+    # initialize jumps to 0.
     jumps = 0
+    # initialize a window.
     left, right = 0, 0
     n = len(arr)
+
+    # while the whole array is not traversed.
     while right < n - 1:
+        # set the farthest point to 0.
         farthest = 0
+        # loop for all the indices from left to right. And update the farthest index that can be reached while staying
+        # at index `index`.
         for index in range(left, right + 1):
             farthest = max(farthest, index + arr[index])
+
+        # switch to the next window.
         left = right + 1
         right = farthest
+
+        # and update the number of jumps
         jumps += 1
     return jumps
 
