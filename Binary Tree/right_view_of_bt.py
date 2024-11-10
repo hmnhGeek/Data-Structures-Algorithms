@@ -47,6 +47,28 @@ class TreeNode:
 
 class Solution:
     @staticmethod
+    def _get_right_view_recursively(root: TreeNode, level: int, queue: Queue):
+        if root is None:
+            return
+
+        if level == queue.length:
+            queue.push(root.data)
+
+        Solution._get_right_view_recursively(root.right, level + 1, queue)
+        Solution._get_right_view_recursively(root.left, level + 1, queue)
+
+    @staticmethod
+    def recursive_right_view(root: TreeNode):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
+        queue = Queue()
+        Solution._get_right_view_recursively(root, 0, queue)
+        while not queue.is_empty():
+            print(queue.pop(), end=" ")
+        print()
+
+    @staticmethod
     def get_right_view_of_a_binary_tree(root: TreeNode):
         """
             Time complexity is O(n) and space complexity is O(n) in worst case when tree is completely linear.
@@ -84,6 +106,8 @@ n3.right = n7
 n2.right = n5
 n4.right = n8
 Solution.get_right_view_of_a_binary_tree(n1)
+Solution.recursive_right_view(n1)
+print()
 
 
 # Example 2
@@ -91,6 +115,8 @@ n1, n2, n3 = TreeNode(1), TreeNode(2), TreeNode(3)
 n1.left = n3
 n1.right = n2
 Solution.get_right_view_of_a_binary_tree(n1)
+Solution.recursive_right_view(n1)
+print()
 
 
 # Example 3
@@ -104,3 +130,4 @@ n20.left = n40
 n10.right = n30
 n20.right = n60
 Solution.get_right_view_of_a_binary_tree(n10)
+Solution.recursive_right_view(n10)
