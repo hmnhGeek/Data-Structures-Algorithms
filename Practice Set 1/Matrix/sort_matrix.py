@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/sorted-matrix2333/1
+
+
 class QuickSort:
     @staticmethod
     def _get_partition_index(arr, low, high):
@@ -28,12 +31,23 @@ class QuickSort:
 class Solution:
     @staticmethod
     def sort_matrix(mtx):
+        """
+            Overall time complexity is O(n*m*log(nm)) and space complexity is O(nm).
+        """
+
+        # get the dimensions of the matrix
         n, m = len(mtx), len(mtx[0])
+
+        # store all the elements of the matrix in a temp array in O(n*m) time and O(nm) space.
         temp = []
         for i in range(n):
             for j in range(m):
                 temp.append(mtx[i][j])
+
+        # sort the temp array in O(n*m*log(nm)) time.
         QuickSort.sort(temp)
+
+        # rebuild the matrix in O(n*m) time.
         result = []
         i = 0
         while i < n * m:
