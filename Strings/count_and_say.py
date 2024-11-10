@@ -1,4 +1,12 @@
+# Problem link - https://www.geeksforgeeks.org/look-and-say-sequence/
+
+
 class Solution:
+    """
+        Time complexity is O(n*m) where m is the number of character in the longest string and
+        n is the number asked for in the function. Space complexity is O(1).
+    """
+
     @staticmethod
     def _get_seq(s: str):
         # point the `i` counter to 1.
