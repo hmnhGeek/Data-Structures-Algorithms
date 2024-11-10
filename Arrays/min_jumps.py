@@ -5,14 +5,15 @@ def recursive():
         if arr[index] == 0:
             return 1e6
 
-        min_val = 1e6
+        min_steps = 1e6
         for i in range(1, arr[index] + 1):
-            min_val = min(min_val, 1 + solve(arr, index + i, n))
-        return min_val
+            min_steps = min(min_steps, 1 + solve(arr, index + i, n))
+        return min_steps
 
     def min_jumps(arr):
         n = len(arr)
-        return solve(arr, 0, n)
+        min_steps_found = solve(arr, 0, n)
+        return min_steps_found if min_steps_found < 1e6 else -1
 
     print(min_jumps([1, 4, 3, 2, 6, 7]))
     print(min_jumps([1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9]))
