@@ -24,3 +24,40 @@ class QuickSort:
     def sort(arr):
         QuickSort._sort(arr, 0, len(arr) - 1)
 
+
+class Solution:
+    @staticmethod
+    def sort_matrix(mtx):
+        n, m = len(mtx), len(mtx[0])
+        temp = []
+        for i in range(n):
+            for j in range(m):
+                temp.append(mtx[i][j])
+        QuickSort.sort(temp)
+        result = []
+        i = 0
+        while i < n * m:
+            row = [temp[j] for j in range(i, i + m)]
+            i += m
+            result.append(row)
+        return result
+
+
+print(
+    Solution.sort_matrix(
+        [
+            [10, 20, 30, 40],
+            [15, 25, 35, 45],
+            [27, 29, 37, 48],
+            [32, 33, 39, 50]
+        ]
+    )
+)
+
+print(
+    Solution.sort_matrix(
+        [
+            [1, 5, 3], [2, 8, 7], [4, 6, 9]
+        ]
+    )
+)
