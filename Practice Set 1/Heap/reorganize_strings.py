@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/rearrange-characters-string-no-two-adjacent/
+
+
 from collections import Counter
 
 
@@ -89,8 +92,8 @@ class Solution:
 
         if prev is not None and prev[1] > 0:
             print("-1")
-            return
-        print(result)
+        else:
+            print(result)
 
 
 Solution.reorganize_string("aaabb")
