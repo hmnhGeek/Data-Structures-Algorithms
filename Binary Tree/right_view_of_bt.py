@@ -1,3 +1,10 @@
+# Problem link - https://www.geeksforgeeks.org/problems/right-view-of-binary-tree/1
+
+"""
+    Refer to solution in left_view_of_a_bt.py
+"""
+
+
 class QueueNode:
     def __init__(self, data):
         self.data = data
@@ -41,6 +48,10 @@ class TreeNode:
 class Solution:
     @staticmethod
     def get_right_view_of_a_binary_tree(root: TreeNode):
+        """
+            Time complexity is O(n) and space complexity is O(n) in worst case when tree is completely linear.
+        """
+
         level = 0
         queue = Queue()
         queue.push((root, level))
