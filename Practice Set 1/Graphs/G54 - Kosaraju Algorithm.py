@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
+# Solution - https://www.youtube.com/watch?v=R6uoSjZ2imo&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -80,24 +84,27 @@ class Solution:
     def get_strongly_connected_components(graph):
         # create a stack to store the nodes in order of reachability.
         stack = Stack()
+
+        # Will take O(V) space.
         visited = {i: False for i in graph}
 
-        # attempt a DFS from one of the nodes and populate the stack.
+        # attempt a DFS from one of the nodes and populate the stack. It will take O(V + E) time.
         for node in graph:
             if not visited[node]:
                 Solution._dfs(graph, visited, node, stack)
 
-        # reverse the graph
+        # reverse the graph. It will take O(V + E) time and O(V + E) space.
         reversed_graph = Solution._reverse_graph(graph)
 
-        # restore visited array
+        # restore visited array.
         visited = {i: False for i in graph}
 
         # create a temp_stack to store the individual SCCs.
         temp_stack = Stack()
         strongly_connected_components = []
 
-        # collect the individual SCCs into the list and print it.
+        # collect the individual SCCs into the list and print it. This will also take O(V + E) time and O(V + E) space.
+        # because its a simple DFS.
         Solution._collect_strongly_connected_components(stack, visited, reversed_graph, temp_stack, strongly_connected_components)
         print(strongly_connected_components)
 
@@ -112,5 +119,23 @@ Solution.get_strongly_connected_components(
         5: [6],
         6: [4, 7],
         7: []
+    }
+)
+
+Solution.get_strongly_connected_components(
+    {
+        0: [2, 3],
+        1: [0],
+        2: [1],
+        3: [4],
+        4: []
+    }
+)
+
+Solution.get_strongly_connected_components(
+    {
+        0: [1],
+        1: [2],
+        2: [0]
     }
 )
