@@ -68,17 +68,17 @@ class Graph:
         print()
 
 
-# Graph.get_articulation_points(
-#     {
-#         0: [1, 2, 3],
-#         1: [0],
-#         2: [0, 3, 4, 5],
-#         3: [0, 2],
-#         4: [2, 6],
-#         5: [2, 6],
-#         6: [4, 5]
-#     }
-# )
+Graph.get_articulation_points(
+    {
+        0: [1, 2, 3],
+        1: [0],
+        2: [0, 3, 4, 5],
+        3: [0, 2],
+        4: [2, 6],
+        5: [2, 6],
+        6: [4, 5]
+    }
+)
 
 
 Graph.get_articulation_points(
@@ -100,5 +100,15 @@ Graph.get_articulation_points(
         "E": ["C", "D", "F", "G"],
         "F": ["E", "G"],
         "G": ["E", "F"]
+    }
+)
+
+Graph.get_articulation_points(
+    {
+        1: [2],
+        2: [3],
+        3: [4],
+        4: [5],
+        5: []
     }
 )
