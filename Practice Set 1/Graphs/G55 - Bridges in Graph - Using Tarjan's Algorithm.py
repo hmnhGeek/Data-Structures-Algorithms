@@ -35,6 +35,10 @@ class Graph:
 
     @staticmethod
     def find_bridges(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         # ensure that you reset time of insertion to 1 before starting up with the algorithm.
         Graph._tin = 1
 
