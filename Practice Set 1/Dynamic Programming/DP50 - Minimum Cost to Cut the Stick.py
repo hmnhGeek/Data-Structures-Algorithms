@@ -13,6 +13,7 @@ def recursive():
         return min_cost
 
     def get_min_cost_to_cut(cut_coordinates, length_of_rod):
+        cut_coordinates.sort()
         rod = [0,] + cut_coordinates + [length_of_rod,]
         return solve(rod, 1, len(cut_coordinates))
 
