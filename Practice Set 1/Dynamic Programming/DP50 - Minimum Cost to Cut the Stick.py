@@ -65,6 +65,7 @@ def tabulation():
         rod = [0,] + cut_coordinates + [length_of_rod,]
         dp = {i: {j: 0 for j in range(len(cut_coordinates) + 2)} for i in range(len(cut_coordinates) + 2)}
 
+        # in recursion i: 1 -> len(cut_coordinates) and j: len(cut_coordinates) -> i.
         for i in range(len(cut_coordinates), 0, -1):
             for j in range(i, len(cut_coordinates) + 1):
                 min_cost = 1e6
