@@ -35,10 +35,15 @@ class Stack:
 class Solution:
     @staticmethod
     def _dfs(graph, visited, node, stack):
+        # mark the node as visited
         visited[node] = True
+
+        # attempt DFS on adjacent nodes.
         for adj_node in graph[node]:
             if not visited[adj_node]:
                 Solution._dfs(graph, visited, adj_node, stack)
+
+        # push the current node into stack.
         stack.push(node)
 
     @staticmethod
@@ -50,31 +55,54 @@ class Solution:
         return reversed_graph
 
     @staticmethod
-    def kosaraju(graph):
-        stack = Stack()
-        visited = {i: False for i in graph}
-        for node in graph:
-            if not visited[node]:
-                Solution._dfs(graph, visited, node, stack)
-
-        reversed_graph = Solution._reverse_graph(graph)
-        visited = {i: False for i in graph}
-        temp_stack = Stack()
-        strongly_connected_components = []
+    def _collect_strongly_connected_components(stack, visited, reversed_graph, temp_stack, strongly_connected_components):
+        # while the ordered stack is not empty, i.e., not all the nodes are visited...
         while not stack.is_empty():
+            # pop the node
             node = stack.pop()
+
+            # if the node is not visited, attempt a DFS but use temp_stack this time.
             if not visited[node]:
+                # since the DFS is attempted on reversed_graph, only strongly connected components will be visited
+                # and store the nodes of these SCCs in temp_stack.
                 Solution._dfs(reversed_graph, visited, node, temp_stack)
+
+            # store the individual nodes from the SCC into a list.
             component = []
             while not temp_stack.is_empty():
                 component.append(temp_stack.pop())
 
+            # if the component has some nodes, push it to SCC list.
             if len(component) > 0:
                 strongly_connected_components.append(component)
+
+    @staticmethod
+    def get_strongly_connected_components(graph):
+        # create a stack to store the nodes in order of reachability.
+        stack = Stack()
+        visited = {i: False for i in graph}
+
+        # attempt a DFS from one of the nodes and populate the stack.
+        for node in graph:
+            if not visited[node]:
+                Solution._dfs(graph, visited, node, stack)
+
+        # reverse the graph
+        reversed_graph = Solution._reverse_graph(graph)
+
+        # restore visited array
+        visited = {i: False for i in graph}
+
+        # create a temp_stack to store the individual SCCs.
+        temp_stack = Stack()
+        strongly_connected_components = []
+
+        # collect the individual SCCs into the list and print it.
+        Solution._collect_strongly_connected_components(stack, visited, reversed_graph, temp_stack, strongly_connected_components)
         print(strongly_connected_components)
 
 
-Solution.kosaraju(
+Solution.get_strongly_connected_components(
     {
         0: [1],
         1: [2],
