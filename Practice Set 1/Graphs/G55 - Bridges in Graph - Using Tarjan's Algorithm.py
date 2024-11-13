@@ -1,34 +1,57 @@
+# Problem link - https://www.geeksforgeeks.org/bridge-in-a-graph/
+# Solution - https://www.youtube.com/watch?v=qrAub5z8FeA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=55
+
+
 class Graph:
-    tin = 1
+    _tin = 1
 
     @staticmethod
     def _dfs(graph, visited, t_low, tin, parent, node, bridges):
+        # mark the node as visited, and make low and insertion time both as Graph._tin.
         visited[node] = True
-        tin[node] = Graph.tin
-        t_low[node] = Graph.tin
-        Graph.tin += 1
+        tin[node] = Graph._tin
+        t_low[node] = Graph._tin
+
+        # increment the global timer.
+        Graph._tin += 1
+
+        # run DFS on the adjacent nodes of the current node.
         for adj_node in graph[node]:
             if not visited[adj_node]:
                 Graph._dfs(graph, visited, t_low, tin, node, adj_node, bridges)
-        for adj_node in graph[node]:
+
+            # once you are back from one of the adjacent node, before moving to the next
+            # adjacent node, check if the adjacent node is not parent and if not, update
+            # the low time of the current node.
             if adj_node != parent:
                 t_low[node] = min(t_low[node], t_low[adj_node])
 
+        # once all the adjacent nodes are visited, and you're about to back-track to the parent,
+        # check if the low time of parent is less than that of current node or not. If it is, then
+        # (parent, node) is a bridge.
         if parent is not None:
             if t_low[parent] < t_low[node]:
                 bridges.append((parent, node))
 
     @staticmethod
     def find_bridges(graph):
-        Graph.tin = 1
+        # ensure that you reset time of insertion to 1 before starting up with the algorithm.
+        Graph._tin = 1
+
+        # create a list to store the bridges.
         bridges = []
+
+        # for each node, define time of insertion, lowest time of insertion and visited array.
         t_low = {i: 0 for i in graph}
         tin = {i: 0 for i in graph}
         visited = {i: False for i in graph}
 
+        # typical DFS.
         for node in graph:
             if not visited[node]:
                 Graph._dfs(graph, visited, t_low, tin, None, node, bridges)
+
+        # return the bridges.
         return bridges
 
 
