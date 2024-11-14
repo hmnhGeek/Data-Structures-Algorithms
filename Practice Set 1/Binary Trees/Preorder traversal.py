@@ -86,7 +86,15 @@ class InorderTraversal:
                 self._push_all_left_nodes(stack, node.right)
         print()
 
+    def _recursive(self, start: TreeNode):
+        if start:
+            self._recursive(start.left)
+            print(start.data, end=" ")
+            self._recursive(start.right)
 
+    def recursive(self):
+        self._recursive(self.root)
+        print()
 
 
 # Example 1
@@ -104,3 +112,4 @@ obj1.iterative()
 obj1.recursive()
 obj2 = InorderTraversal(n1)
 obj2.iterative()
+obj2.recursive()
