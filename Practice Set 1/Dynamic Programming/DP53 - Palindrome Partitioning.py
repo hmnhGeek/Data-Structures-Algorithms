@@ -46,4 +46,44 @@ def recursive():
     print(palindrome_partitioning("ababbbabbababa"))
 
 
+def memoized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n + n).
+    """
+    def solve(string, i, n, dp):
+        if i == n:
+            return 0
+
+        if dp[i] is not None:
+            return dp[i]
+
+        min_cost = 1e6
+        temp = ""
+        for j in range(i, n):
+            temp += string[j]
+            if is_palindrome(temp):
+                cost = 1 + solve(string, j + 1, n, dp)
+                min_cost = min(min_cost, cost)
+        dp[i] = min_cost
+        return dp[i]
+
+    def palindrome_partitioning(string: str):
+        n = len(string)
+        dp = {i: None for i in range(n)}
+        # solve function will return the number of partitions and we need number of cuts
+        # return solve - 1.
+        return solve(string, 0, n, dp) - 1
+
+    print(palindrome_partitioning("aaccb"))
+    print(palindrome_partitioning("ababa"))
+    print(palindrome_partitioning("aababa"))
+    print(palindrome_partitioning("aab"))
+    print(palindrome_partitioning("a"))
+    print(palindrome_partitioning("ab"))
+    print(palindrome_partitioning("geek"))
+    print(palindrome_partitioning("ababbbabbababa"))
+
+
 recursive()
+print()
+memoized()
