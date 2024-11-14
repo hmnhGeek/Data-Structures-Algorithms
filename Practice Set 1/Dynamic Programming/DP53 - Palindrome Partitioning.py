@@ -84,6 +84,40 @@ def memoized():
     print(palindrome_partitioning("ababbbabbababa"))
 
 
+def tabulation():
+    """
+        Time complexity is O(n^2) and space complexity is O(n).
+    """
+    def palindrome_partitioning(string: str):
+        n = len(string)
+        dp = {i: 1e6 for i in range(n + 1)}
+        dp[n] = 0
+        for i in range(n - 1, -1, -1):
+            min_cost = 1e6
+            temp = ""
+            for j in range(i, n):
+                temp += string[j]
+                if is_palindrome(temp):
+                    cost = 1 + dp[j + 1]
+                    min_cost = min(min_cost, cost)
+            dp[i] = min_cost
+
+        # solve function will return the number of partitions and we need number of cuts
+        # return solve - 1.
+        return dp[0] - 1
+
+    print(palindrome_partitioning("aaccb"))
+    print(palindrome_partitioning("ababa"))
+    print(palindrome_partitioning("aababa"))
+    print(palindrome_partitioning("aab"))
+    print(palindrome_partitioning("a"))
+    print(palindrome_partitioning("ab"))
+    print(palindrome_partitioning("geek"))
+    print(palindrome_partitioning("ababbbabbababa"))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
