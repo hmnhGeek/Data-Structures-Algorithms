@@ -1,3 +1,5 @@
+# Check videos from L5-L13 in https://www.youtube.com/watch?v=lxTGsVXjwvM&list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&index=11
+
 class StackNode:
     def __init__(self, data):
         self.data = data
