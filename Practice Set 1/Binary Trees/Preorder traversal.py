@@ -66,6 +66,28 @@ class PreorderTraversal:
         print()
 
 
+class InorderTraversal:
+    def __init__(self, root: TreeNode):
+        self.root = root
+
+    def _push_all_left_nodes(self, stack: Stack, curr: TreeNode):
+        while curr is not None:
+            stack.push(curr)
+            curr = curr.left
+
+    def iterative(self):
+        stack = Stack()
+        self._push_all_left_nodes(stack, self.root)
+
+        while not stack.is_empty():
+            node = stack.pop()
+            print(node.data, end=" ")
+            if node.right is not None:
+                self._push_all_left_nodes(stack, node.right)
+        print()
+
+
+
 
 # Example 1
 n1, n2, n3, n4, n5, n6, n7, n8, n9 = TreeNode(1), TreeNode(2), TreeNode(3), TreeNode(4), TreeNode(5), TreeNode(6), TreeNode(7), TreeNode(8), TreeNode(9)
@@ -80,3 +102,5 @@ n6.right = n7
 obj1 = PreorderTraversal(n1)
 obj1.iterative()
 obj1.recursive()
+obj2 = InorderTraversal(n1)
+obj2.iterative()
