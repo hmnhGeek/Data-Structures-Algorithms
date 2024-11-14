@@ -97,6 +97,28 @@ class InorderTraversal:
         print()
 
 
+class PostorderTraversal:
+    def __init__(self, root: TreeNode):
+        self.root = root
+
+    def iterative(self):
+        stack = Stack()
+        stack.push(self.root)
+        postorder = Stack()
+
+        while not stack.is_empty():
+            node = stack.pop()
+            postorder.push(node)
+            if node.left is not None:
+                stack.push(node.left)
+            if node.right is not None:
+                stack.push(node.right)
+
+        while not postorder.is_empty():
+            print(postorder.pop().data, end=" ")
+        print()
+
+
 # Example 1
 n1, n2, n3, n4, n5, n6, n7, n8, n9 = TreeNode(1), TreeNode(2), TreeNode(3), TreeNode(4), TreeNode(5), TreeNode(6), TreeNode(7), TreeNode(8), TreeNode(9)
 n1.left = n2
@@ -113,3 +135,5 @@ obj1.recursive()
 obj2 = InorderTraversal(n1)
 obj2.iterative()
 obj2.recursive()
+obj3 = PostorderTraversal(n1)
+obj3.iterative()
