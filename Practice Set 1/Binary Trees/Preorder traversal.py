@@ -42,6 +42,16 @@ class PreorderTraversal:
     def __init__(self, root: TreeNode):
         self.root = root
 
+    def _recursive(self, root: TreeNode):
+        if root:
+            print(root.data, end=" ")
+            self._recursive(root.left)
+            self._recursive(root.right)
+
+    def recursive(self):
+        self._recursive(self.root)
+        print()
+
     def iterative(self):
         stack = Stack()
         stack.push(self.root)
@@ -69,3 +79,4 @@ n3.right = n9
 n6.right = n7
 obj1 = PreorderTraversal(n1)
 obj1.iterative()
+obj1.recursive()
