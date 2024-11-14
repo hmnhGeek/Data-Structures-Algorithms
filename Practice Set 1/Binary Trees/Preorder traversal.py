@@ -101,6 +101,16 @@ class PostorderTraversal:
     def __init__(self, root: TreeNode):
         self.root = root
 
+    def _recursive(self, root: TreeNode):
+        if root:
+            self._recursive(root.left)
+            self._recursive(root.right)
+            print(root.data, end=" ")
+
+    def recursive(self):
+        self._recursive(self.root)
+        print()
+
     def iterative(self):
         stack = Stack()
         stack.push(self.root)
@@ -137,3 +147,4 @@ obj2.iterative()
 obj2.recursive()
 obj3 = PostorderTraversal(n1)
 obj3.iterative()
+obj3.recursive()
