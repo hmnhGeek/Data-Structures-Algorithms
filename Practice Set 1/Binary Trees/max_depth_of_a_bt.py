@@ -18,8 +18,20 @@ class BinaryTree:
 
     def get_max_depth(self):
         self._max_depth = 0
-        self._get_max_depth(self.root, 0)
+        self._get_max_depth(self.root, 1)
         return self._max_depth
+
+
+class MainSolution:
+    def __init__(self, root: Node):
+        self.root = root
+
+    def get_depth(self, root: Node):
+        if root is None:
+            return 0
+        left_ht = self.get_depth(root.left)
+        right_ht = self.get_depth(root.right)
+        return 1 + max(left_ht, right_ht)
 
 
 # Example 1
@@ -31,3 +43,5 @@ n4.left = n5
 n3.right = n6
 t = BinaryTree(n1)
 print(t.get_max_depth())
+t1 = MainSolution(n1)
+print(t1.get_depth(n1))
