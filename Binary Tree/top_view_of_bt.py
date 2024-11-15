@@ -1,4 +1,5 @@
 # Problem link - https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1
+# Solution - https://www.youtube.com/watch?v=Et9OCDNvJ78&t=206s
 
 
 class TreeNode:
@@ -51,18 +52,26 @@ class Solution:
         # create a dictionary to store the first node on each vertical view line.
         view = {}
 
+        # create a blank queue and push root node with 0 vertical line.
         queue = Queue()
         queue.push((root, 0))
 
+        # typical BFS...
         while not queue.is_empty():
+            # pop node and vertical line for this node.
             node, vertical_line = queue.pop()
+
+            # if the vertical line is encountered for the first time, add it to the top view.
             if vertical_line not in view:
                 view[vertical_line] = node.data
+
+            # push left and right nodes with their vertical lines into the queue.
             if node.left is not None:
                 queue.push((node.left, vertical_line - 1))
             if node.right is not None:
                 queue.push((node.right, vertical_line + 1))
 
+        # from min to max vertical lines in the view, print the top view.
         for i in range(min(view), max(view) + 1):
             print(view[i], end=" ")
         print()
@@ -97,4 +106,17 @@ n1.right = n3
 n2.right = n4
 n4.right = n5
 n5.right = n6
+Solution.get_top_view(n1)
+
+
+# Example 4
+n1, n2, n3, n4, n5, n6, n9, n10, n11 = TreeNode(1), TreeNode(2), TreeNode(3), TreeNode(4), TreeNode(5), TreeNode(6), TreeNode(9), TreeNode(10), TreeNode(11)
+n1.left = n2
+n1.right = n3
+n2.left = n4
+n2.right = n10
+n4.right = n5
+n5.right = n6
+n3.left = n9
+n3.right = n11
 Solution.get_top_view(n1)
