@@ -85,8 +85,11 @@ class MaxAreaCalculator:
         return max_area
 
 
-# Using the utility method to find max area in histogram.
+print("Using the utility method to find max area in histogram.")
 print(MaxAreaCalculator.find_max_area_in_histogram([3, 5, 1, 7, 5, 9]))
 print(MaxAreaCalculator.find_max_area_in_histogram([60, 20, 50, 40, 10, 50, 60]))
 print(MaxAreaCalculator.find_max_area_in_histogram([2, 1, 5, 6, 2, 3]))
 print(MaxAreaCalculator.find_max_area_in_histogram([2, 4]))
+print()
+
+
