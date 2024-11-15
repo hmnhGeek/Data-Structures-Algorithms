@@ -1,4 +1,7 @@
 def recursive():
+    """
+        Time complexity is exponential and space is O(n).
+    """
     def solve(string, i, j):
         if i >= j:
             return True
@@ -18,8 +21,45 @@ def recursive():
                     length = j - i + 1
         return string[start:start+length]
 
+    print(get_longest_palindromic_substring("aaaabbaa"))
+    print(get_longest_palindromic_substring("abc"))
+    print(get_longest_palindromic_substring("abacdfgdcaba"))
+
+
+def memoized():
+    """
+        Time complexity is O(n^4) and space is O(n + n^2)
+    """
+    def solve(string, i, j, dp):
+        if i >= j:
+            return True
+
+        if dp[i][j] is not None:
+            return dp[i][j]
+
+        if string[i] == string[j]:
+            dp[i][j] = solve(string, i + 1, j - 1, dp)
+        else:
+            dp[i][j] = False
+        return dp[i][j]
+
+    def get_longest_palindromic_substring(string: str):
+        start = 0
+        length = 0
+        n = len(string)
+        dp = {i: {j: None for j in range(n)} for i in range(n)}
+        for i in range(n):
+            for j in range(i, n):
+                if solve(string, i, j, dp) and j - i + 1 > length:
+                    start = i
+                    length = j - i + 1
+        return string[start:start+length]
 
     print(get_longest_palindromic_substring("aaaabbaa"))
+    print(get_longest_palindromic_substring("abc"))
+    print(get_longest_palindromic_substring("abacdfgdcaba"))
 
 
 recursive()
+print()
+memoized()
