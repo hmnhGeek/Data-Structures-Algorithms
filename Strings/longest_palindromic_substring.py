@@ -1,3 +1,8 @@
+# Problem link - https://www.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1
+# Solution - https://www.youtube.com/watch?v=XYQecbcd6_c&t=348s
+# Solution - https://www.youtube.com/watch?v=n_kL8BkURVA
+
+
 def recursive():
     """
         Time complexity is exponential and space is O(n).
@@ -63,3 +68,44 @@ def memoized():
 recursive()
 print()
 memoized()
+print()
+
+
+class Solution:
+    @staticmethod
+    def longest_palindromic_substring(string):
+        """
+            Worst case time complexity is O(n^2) and space complexity is O(1).
+        """
+        result, length = "", 0
+        n = len(string)
+
+        # loop on each character of the string.
+        for i in range(n):
+            # assuming this character to be the center, expand outwards and search for the maximum possible palindromic
+            # substring and update the results. Do this for both odd and even length strings.
+
+            # ODD CASE
+            left, right = i, i
+            while left >= 0 and right < n and string[left] == string[right]:
+                if right - left + 1 > length:
+                    result = string[left:right+1]
+                    length = right - left + 1
+                left -= 1
+                right += 1
+
+            # EVEN CASE
+            left, right = i, i + 1
+            while left >= 0 and right < n and string[left] == string[right]:
+                if right - left + 1 > length:
+                    result = string[left:right+1]
+                    length = right - left + 1
+                left -= 1
+                right += 1
+
+        return result
+
+
+print(Solution.longest_palindromic_substring("aaaabbaa"))
+print(Solution.longest_palindromic_substring("abc"))
+print(Solution.longest_palindromic_substring("abacdfgdcaba"))
