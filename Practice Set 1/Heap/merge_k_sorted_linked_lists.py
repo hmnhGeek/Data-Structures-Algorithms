@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/merge-k-sorted-linked-lists/
+
+
 from typing import List
 
 
@@ -100,14 +103,23 @@ class MinHeap:
 class Solution:
     @staticmethod
     def merge_sorted_linked_lists(linked_lists: List[LinkedList]) -> LinkedList:
+        """
+            Overall time complexity is O(nk*log(k)) and space complexity is O(k).
+        """
+
         min_heap = MinHeap()
         dummy_node = starter = Node(-1)
+
+        # This will take O(log(k)) time and O(k) space.
         for linked_list in linked_lists:
             min_heap.insert(linked_list.head)
 
+        # This will run for all the nodes, i.e. k*n
         while not min_heap.is_empty():
+            # O(log(k)) time
             node = min_heap.pop()
             starter.next = node
+            # O(log(k))
             if node.next is not None:
                 min_heap.insert(node.next)
             node.next = None
