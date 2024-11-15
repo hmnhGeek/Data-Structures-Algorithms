@@ -7,21 +7,41 @@ class TreeNode:
         self.left = self.right = None
 
 
-class Solution:
-    @staticmethod
-    def _update_top_view(root: TreeNode, line: int, view: dict):
-        # if the root is null, return from the recursion.
-        if root is None:
+class QueueNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class Queue:
+    def __init__(self):
+        self.head = self.tail = None
+        self.length = 0
+
+    def is_empty(self):
+        return self.length == 0
+
+    def push(self, x):
+        node = QueueNode(x)
+        if self.is_empty():
+            self.head = self.tail = node
+        else:
+            self.tail.next = node
+            self.tail = node
+        self.length += 1
+
+    def pop(self):
+        if self.is_empty():
             return
+        item = self.head.data
+        node = self.head
+        self.head = self.head.next
+        del node
+        self.length -= 1
+        return item
 
-        # if the vertical line is encountered for the first time, add it in the view.
-        if line not in view:
-            view[line] = root.data
 
-        # do the recursion for left and right nodes as well.
-        Solution._update_top_view(root.left, line - 1, view)
-        Solution._update_top_view(root.right, line + 1, view)
-
+class Solution:
     @staticmethod
     def get_top_view(root: TreeNode):
         """
@@ -30,11 +50,19 @@ class Solution:
 
         # create a dictionary to store the first node on each vertical view line.
         view = {}
-        # assume root node to be on 0th vertical line and start the recursion.
-        Solution._update_top_view(root, 0, view)
 
-        # start from the left most vertical line to the right most vertical line, print the first nodes
-        # on each vertical line.
+        queue = Queue()
+        queue.push((root, 0))
+
+        while not queue.is_empty():
+            node, vertical_line = queue.pop()
+            if vertical_line not in view:
+                view[vertical_line] = node.data
+            if node.left is not None:
+                queue.push((node.left, vertical_line - 1))
+            if node.right is not None:
+                queue.push((node.right, vertical_line + 1))
+
         for i in range(min(view), max(view) + 1):
             print(view[i], end=" ")
         print()
@@ -60,3 +88,13 @@ n20.right = n60
 n30.left = n90
 n30.right = n100
 Solution.get_top_view(n10)
+
+
+# Example 3
+n1, n2, n3, n4, n5, n6 = TreeNode(1), TreeNode(2), TreeNode(3), TreeNode(4), TreeNode(5), TreeNode(6)
+n1.left = n2
+n1.right = n3
+n2.right = n4
+n4.right = n5
+n5.right = n6
+Solution.get_top_view(n1)
