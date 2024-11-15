@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/intersection-of-two-sorted-linked-lists/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -31,15 +34,27 @@ class LinkedList:
 class Solution:
     @staticmethod
     def intersect_linked_lists(l1: LinkedList, l2: LinkedList) -> LinkedList:
+        """
+            Overall time complexity is O(n + m) and space complexity is O(n + m).
+        """
+
+        # initialize two pointers on the heads of both linked lists.
         i, j = l1.head, l2.head
+
+        # initialize an output linked list.
         l3 = LinkedList()
+
+        # while BOTH the linked lists have some elements to traverse.
         while i is not None and j is not None:
+            # if the elements match, push the element into result list and move both pointers.
             if i.data == j.data:
                 l3.push(i.data)
                 i = i.next
                 j = j.next
+            # if `i` < `j`, traverse to the next l1 element.
             elif i.data < j.data:
                 i = i.next
+            # if `j` < `i`, traverse to the next l2 element
             else:
                 j = j.next
         return l3
@@ -57,3 +72,4 @@ def test(a1, a2):
 test([1, 2, 2, 3, 4, 4, 5], [1, 4, 4, 5, 5])
 test([1, 2, 3, 4, 6], [2, 4, 6, 8])
 test([10, 20, 40, 50], [15, 40])
+test([1, 1, 2, 3, 4], [2, 3, 4])
