@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1
+
+
 class TreeNode:
     def __init__(self, data):
         self.data = data
@@ -6,22 +9,33 @@ class TreeNode:
 
 class Solution:
     @staticmethod
-    def _update_top_view(root: TreeNode, line: int, view: dict, leftmost_line: list):
+    def _update_top_view(root: TreeNode, line: int, view: dict):
+        # if the root is null, return from the recursion.
         if root is None:
             return
+
+        # if the vertical line is encountered for the first time, add it in the view.
         if line not in view:
             view[line] = root.data
-            leftmost_line[0] = min(leftmost_line[0], line)
 
-        Solution._update_top_view(root.left, line - 1, view, leftmost_line)
-        Solution._update_top_view(root.right, line + 1, view, leftmost_line)
+        # do the recursion for left and right nodes as well.
+        Solution._update_top_view(root.left, line - 1, view)
+        Solution._update_top_view(root.right, line + 1, view)
 
     @staticmethod
     def get_top_view(root: TreeNode):
+        """
+            Time complexity is O(n) and space complexity O(log(n)).
+        """
+
+        # create a dictionary to store the first node on each vertical view line.
         view = {}
-        left_most_line = [0]
-        Solution._update_top_view(root, 0, view, left_most_line)
-        for i in range(left_most_line[0], left_most_line[0] + len(view)):
+        # assume root node to be on 0th vertical line and start the recursion.
+        Solution._update_top_view(root, 0, view)
+
+        # start from the left most vertical line to the right most vertical line, print the first nodes
+        # on each vertical line.
+        for i in range(min(view), max(view) + 1):
             print(view[i], end=" ")
         print()
 
