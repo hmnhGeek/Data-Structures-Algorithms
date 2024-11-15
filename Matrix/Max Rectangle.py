@@ -93,3 +93,52 @@ print(MaxAreaCalculator.find_max_area_in_histogram([2, 4]))
 print()
 
 
+class Solution:
+    @staticmethod
+    def max_rectangle_in_matrix(mtx):
+        max_rect_area = 0
+        n, m = len(mtx), len(mtx[0])
+        prev_row = [0]*m
+        for i in range(n):
+            row = mtx[i]
+            histogram = [row[j] + prev_row[j] if row[j] != 0 else 0 for j in range(m)]
+            area = MaxAreaCalculator.find_max_area_in_histogram(histogram)
+            max_rect_area = max(max_rect_area, area)
+            prev_row = histogram
+        return max_rect_area
+
+
+print(
+    Solution.max_rectangle_in_matrix(
+        [
+            [0, 1, 1, 0],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 0, 0]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle_in_matrix(
+        [
+            [1, 0, 1, 0, 0],
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 1, 0]
+        ]
+    )
+)
+
+print(Solution.max_rectangle_in_matrix([[0]]))
+print(Solution.max_rectangle_in_matrix([[1]]))
+
+print(
+    Solution.max_rectangle_in_matrix(
+        [
+            [0, 1, 1],
+            [1, 1, 1],
+            [0, 1, 1]
+        ]
+    )
+)
