@@ -120,6 +120,7 @@ class Solution:
         return max_rect_area
 
 
+print("Max Rectangle Area Calculation in a Matrix")
 print(
     Solution.max_rectangle_in_matrix(
         [
