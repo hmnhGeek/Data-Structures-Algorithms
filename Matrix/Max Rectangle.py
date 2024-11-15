@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/
+
+
 class StackNode:
     def __init__(self, data):
         self.data = data
@@ -96,15 +99,24 @@ print()
 class Solution:
     @staticmethod
     def max_rectangle_in_matrix(mtx):
+        """
+            Overall time complexity is O(nm) and space complexity is O(m) if we don't include the input matrix.
+        """
+
         max_rect_area = 0
         n, m = len(mtx), len(mtx[0])
-        prev_row = [0]*m
+        prev_histogram = [0]*m
         for i in range(n):
             row = mtx[i]
-            histogram = [row[j] + prev_row[j] if row[j] != 0 else 0 for j in range(m)]
+            # if the current row element is not 0, add up previous histogram's bar.
+            histogram = [row[j] + prev_histogram[j] if row[j] != 0 else 0 for j in range(m)]
+            # calculate max area in O(m) time and O(m) space.
             area = MaxAreaCalculator.find_max_area_in_histogram(histogram)
+            # update the max rectangle area.
             max_rect_area = max(max_rect_area, area)
-            prev_row = histogram
+            # set prev histogram to this current histogram
+            prev_histogram = histogram
+        # return max area of rectangle in this matrix.
         return max_rect_area
 
 
