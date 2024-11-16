@@ -62,9 +62,39 @@ class ExpressionEvaluator:
                 stack.push(elem)
         while not stack.is_empty():
             postfix += stack.pop()
-        return postfix
+        return postfix.strip()
+
+    @staticmethod
+    def evaluate_postfix(postfix: str):
+        stack = Stack()
+        literals = postfix.split()
+        for literal in literals:
+            if literal not in ExpressionEvaluator._precedences:
+                stack.push(int(literal))
+            else:
+                x = stack.pop()
+                y = stack.pop()
+                if literal == "+":
+                    stack.push(x + y)
+                elif literal == "-":
+                    stack.push(y - x)
+                elif literal == "*":
+                    stack.push(y * x)
+                elif literal == "/":
+                    stack.push(y // x)
+                elif literal == "^":
+                    stack.push(y ** x)
+        return stack.pop()
+
+    @staticmethod
+    def evaluate(expression):
+        postfix = ExpressionEvaluator.infix_to_postfix(expression)
+        return ExpressionEvaluator.evaluate_postfix(postfix)
 
 
-print(ExpressionEvaluator.infix_to_postfix("((2+3)*(5/2))"))
-print(ExpressionEvaluator.infix_to_postfix("(121+(101+0))"))
-print(ExpressionEvaluator.infix_to_postfix("(3 * (5 + 2) * (10 - 7))"))
+print(ExpressionEvaluator.infix_to_postfix("( ( 2 + 3 ) * ( 5 / 2 ) )"))
+print(ExpressionEvaluator.infix_to_postfix("( 121 + ( 101 + 0 ) )"))
+print(ExpressionEvaluator.infix_to_postfix("( 3 * ( 5 + 2 ) * ( 10 - 7 ) )"))
+print(ExpressionEvaluator.evaluate("( ( 2 + 3 ) * ( 5 / 2 ) )"))
+print(ExpressionEvaluator.evaluate("( 121 + ( 101 + 0 ) )"))
+print(ExpressionEvaluator.evaluate("( 3 * ( 5 + 2 ) * ( 10 - 7 ) )"))
