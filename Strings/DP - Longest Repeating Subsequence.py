@@ -1,3 +1,8 @@
+# Problem link - https://www.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1
+# Solution for LCS - https://www.youtube.com/watch?v=-zI4mrF2Pb4
+# Solution for LRS - https://www.youtube.com/watch?v=ZqG89Z-dKpI&t=19s
+
+
 def recursive():
     def solve(string, i, j):
         """
