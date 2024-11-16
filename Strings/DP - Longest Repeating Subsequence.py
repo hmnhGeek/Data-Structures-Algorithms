@@ -125,3 +125,46 @@ print()
 tabulation()
 print()
 space_optimized()
+
+print()
+print()
+
+
+def get_longest_repeating_subsequence(string: str):
+    """
+        Time complexity is O(n^2) and space complexity is O(n^2).
+    """
+
+    n = len(string)
+    dp = {i: {j: 0 for j in range(n + 1)} for i in range(n + 1)}
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            # if the characters match at indices i and j and i != j, then we can consume these indices in the
+            # subsequence.
+            if string[i - 1] == string[j - 1] and i != j:
+                dp[i][j] = 1 + dp[i - 1][j - 1]
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+
+    # Once the DP array is filled, reverse engineer to get the LRS.
+    i, j, result = n, n, ""
+    while i > 0 and j > 0:
+        if string[i - 1] == string[j - 1] and i != j:
+            result += string[i - 1]
+            i -= 1
+            j -= 1
+        elif dp[i - 1][j] > dp[i][j - 1]:
+            i -= 1
+        else:
+            j -= 1
+    return result[-1:-len(result)-1:-1]
+
+
+print("Printing the longest repeating subsequence")
+print(get_longest_repeating_subsequence("axxxy"))
+print(get_longest_repeating_subsequence("axxzxy"))
+print(get_longest_repeating_subsequence("abc"))
+print(get_longest_repeating_subsequence("aab"))
+print(get_longest_repeating_subsequence("abcab"))
+print(get_longest_repeating_subsequence("ABCBDCD"))
+print(get_longest_repeating_subsequence("BCCB"))
