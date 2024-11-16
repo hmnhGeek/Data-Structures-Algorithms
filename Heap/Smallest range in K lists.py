@@ -140,3 +140,36 @@ print(
 
 print(Solution.get_min_range([[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]]))
 print(Solution.get_min_range([[1, 2, 3], [1, 2, 3], [1, 2, 3]]))
+
+print(
+    Solution.get_min_range(
+        [
+            [2, 4, 5],
+            [5, 6, 7]
+        ]
+    )
+)
+
+print(
+    Solution.get_min_range(
+        [
+            [1, 1],
+            [9, 12],
+            [4, 9]
+        ]
+    )
+)
+
+print(
+    Solution.get_min_range(
+        [
+            [4, 7, 30],
+            [1, 2, 12],
+            [20, 40, 50]
+        ]
+    )
+)
+
+print(
+    Solution.get_min_range([[3, 6, 8, 12, 31]])
+)
