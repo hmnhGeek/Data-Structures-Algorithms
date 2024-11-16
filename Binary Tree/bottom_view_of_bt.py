@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
+# Solution - https://www.youtube.com/watch?v=0FtVY6I4pB8
+
+
 class TreeNode:
     def __init__(self, data):
         self.data = data
@@ -7,16 +11,26 @@ class TreeNode:
 class Solution:
     @staticmethod
     def _update_bottom_view(root: TreeNode, level, bottom_view):
+        """
+            As we are traversing all the nodes, time complexity is O(n) and space complexity is O(n) for recursion stack.
+        """
+
+        # if null node is found, return from recursion.
         if root is None:
             return
+        # update the last node at each level in the bottom view.
         bottom_view[level] = root.data
+        # recursively call for left and right nodes.
         Solution._update_bottom_view(root.left, level - 1, bottom_view)
         Solution._update_bottom_view(root.right, level + 1, bottom_view)
 
     @staticmethod
     def get_bottom_view(root: TreeNode):
+        # create a dictionary to store the bottom view.
         bottom_view = {}
+        # start with vertical line 0, i.e. vertical line for the root node.
         Solution._update_bottom_view(root, 0, bottom_view)
+        # show the bottom view.
         for i in range(min(bottom_view), max(bottom_view) + 1):
             print(bottom_view[i], end=" ")
         print()
