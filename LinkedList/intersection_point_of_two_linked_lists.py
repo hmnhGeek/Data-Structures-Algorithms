@@ -84,7 +84,13 @@ class Solution:
     def get_intersection_node_v2(l1: LinkedList, l2: LinkedList) -> Node:
         """
             For this solution, refer the video solution. Time complexity is O(n + m) and space is O(1). The above
-            solution is also of the same complexity. You can use any solution. Both are optimal.
+            solution is also of the same complexity. You can use any solution. Both are optimal. In fact, the above
+            solution is better than this one. Why?
+
+            Let's say m > n, then O(|n - m|) = O(m - n). And O(min(n, m)) = O(n).
+            Thus, time complexity becomes O(m - n + n) = O(m) = O(max(n, m)). Why is this happening? Because our linked
+            list class maintains length variable internally. And so, we don't need to calculate length again by
+            traversing the linked lists. In video solution, they have to.
         """
         curr1, curr2 = l1.head, l2.head
         while curr1 != curr2:
