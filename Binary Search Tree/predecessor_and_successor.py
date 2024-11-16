@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/predecessor-and-successor/1
+
+
 class Node:
     def __init__(self, data):
         self.parent = self.left = self.right = None
@@ -140,3 +143,31 @@ class BinarySearchTree:
         self._show(self.root)
 
 
+class Solution:
+    @staticmethod
+    def get_successor_predecessor(bst: BinarySearchTree, data: int):
+        """
+            Overall time complexity is O(H) and space complexity is O(H).
+        """
+
+        # The node with data can be found in O(H) time and O(H) recursion stack space.
+        node = bst.get_node(bst.root, data)
+        if node is not None:
+            # predecessor and successor can be found in O(H) time and O(1) space.
+            predecessor = bst.get_predecessor(node)
+            successor = bst.get_successor(node)
+            return predecessor.data if predecessor else None, successor.data if successor else None
+        return None
+
+
+# Example 1
+bst1 = BinarySearchTree()
+for i in [8, 1, 9, 4, 10, 3]:
+    bst1.insert(i)
+print(Solution.get_successor_predecessor(bst1, 8))
+
+# Example 2
+bst2 = BinarySearchTree()
+for i in [10, 2, 11, 1, 5, 3, 6, 4]:
+    bst2.insert(i)
+print(Solution.get_successor_predecessor(bst2, 11))
