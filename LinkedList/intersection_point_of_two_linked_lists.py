@@ -1,5 +1,5 @@
 # Problem link - https://www.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1
-
+# Solution - https://www.youtube.com/watch?v=0DYoPz2Tpt4
 
 class Node:
     def __init__(self, data):
@@ -80,6 +80,24 @@ class Solution:
         # they must be pointing to the same node, i.e., intersection node. Return the intersection node.
         return curr1.data if curr1 else None
 
+    @staticmethod
+    def get_intersection_node_v2(l1: LinkedList, l2: LinkedList) -> Node:
+        """
+            For this solution, refer the video solution. Time complexity is O(n + m) and space is O(1). The above
+            solution is also of the same complexity. You can use any solution. Both are optimal.
+        """
+        curr1, curr2 = l1.head, l2.head
+        while curr1 != curr2:
+            curr1 = curr1.next
+            curr2 = curr2.next
+            if curr1 == curr2:
+                return curr1.data if curr1 else None
+            if curr1 is None:
+                curr1 = l2.head
+            if curr2 is None:
+                curr2 = l1.head
+        return curr1.data if curr1 else None
+
 
 # Example 1
 l1 = LinkedList()
@@ -90,6 +108,7 @@ l2.build(5, 6, 1)
 l2.intersect_with(l1.head.next.next)
 l2.show()
 print(Solution.get_intersection_node(l1, l2))
+print(Solution.get_intersection_node_v2(l1, l2))
 print()
 
 # Example 2
@@ -101,6 +120,7 @@ l2.build(4, 4, 4)
 l2.intersect_with(l1.head.next)
 l2.show()
 print(Solution.get_intersection_node(l1, l2))
+print(Solution.get_intersection_node_v2(l1, l2))
 print()
 
 # Example 3
@@ -112,6 +132,7 @@ l2.build(1, 9, 1)
 l2.intersect_with(l1.head.next)
 l2.show()
 print(Solution.get_intersection_node(l1, l2))
+print(Solution.get_intersection_node_v2(l1, l2))
 print()
 
 # Example 4
@@ -123,6 +144,7 @@ l2.build(1, 5)
 l2.intersect_with(None)
 l2.show()
 print(Solution.get_intersection_node(l1, l2))
+print(Solution.get_intersection_node_v2(l1, l2))
 print()
 
 # Example 5
@@ -130,4 +152,5 @@ l1 = LinkedList()
 l1.build(2, 6, 4)
 l1.show()
 print(Solution.get_intersection_node(l1, l1))
+print(Solution.get_intersection_node_v2(l1, l1))
 print()
