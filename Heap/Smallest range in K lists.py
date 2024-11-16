@@ -6,17 +6,17 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -62,3 +62,49 @@ class MinHeap:
         del self.heap[-1]
         self.min_heapify_down(0)
         return item
+
+
+class Solution:
+    @staticmethod
+    def get_min_range(lists):
+        min_heap = MinHeap()
+        result = [-1e6, 1e6]
+        max_elem = -1e6
+        for i in range(len(lists)):
+            min_heap.insert((lists[i][0], i, 0))
+            max_elem = max(max_elem, lists[i][0])
+        while 1:
+            min_elem, i, j = min_heap.pop()
+            if max_elem - min_elem < result[1] - result[0]:
+                result = [min_elem, max_elem]
+
+            if 0 <= j + 1 < len(lists[i]):
+                min_heap.insert((lists[i][j + 1], i, j + 1))
+                max_elem = max(max_elem, lists[i][j + 1])
+            else:
+                break
+        return result
+
+
+print(
+    Solution.get_min_range(
+        [
+            [1, 3, 5, 7, 9],
+            [0, 2, 4, 6, 8],
+            [2, 3, 5, 7, 11]
+        ]
+    )
+)
+
+print(
+    Solution.get_min_range(
+        [
+            [1, 2, 3, 4],
+            [5, 6, 7, 8],
+            [9, 10, 11, 12]
+        ]
+    )
+)
+
+print(Solution.get_min_range([[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]]))
+print(Solution.get_min_range([[1, 2, 3], [1, 2, 3], [1, 2, 3]]))
