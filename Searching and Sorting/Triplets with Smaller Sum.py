@@ -24,3 +24,24 @@ class QuickSort:
     def sort(arr):
         QuickSort._sort(arr, 0, len(arr) - 1)
 
+
+class Solution:
+    @staticmethod
+    def triplet_sum_smaller_than(arr, target):
+        QuickSort.sort(arr)
+        n = len(arr)
+        count = 0
+        for i in range(n):
+            j = i + 1
+            k = n - 1
+            while j < k:
+                if arr[i] + arr[j] + arr[k] < target:
+                    count += (k - j)
+                    j += 1
+                else:
+                    k -= 1
+        return count
+
+
+print(Solution.triplet_sum_smaller_than([-2, 0, 1, 3], 2))
+print(Solution.triplet_sum_smaller_than([5, 1, 3, 4, 7], 12))
