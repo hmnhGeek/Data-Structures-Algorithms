@@ -124,3 +124,10 @@ l2.intersect_with(None)
 l2.show()
 print(Solution.get_intersection_node(l1, l2))
 print()
+
+# Example 5
+l1 = LinkedList()
+l1.build(2, 6, 4)
+l1.show()
+print(Solution.get_intersection_node(l1, l1))
+print()
