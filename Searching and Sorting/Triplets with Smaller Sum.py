@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/count-triplets-with-sum-smaller-than-x5549/1
+# Solution - https://www.youtube.com/watch?v=9455buJlb_k
+
+
 class QuickSort:
     @staticmethod
     def _get_partition_index(arr, low, high):
@@ -28,18 +32,37 @@ class QuickSort:
 class Solution:
     @staticmethod
     def triplet_sum_smaller_than(arr, target):
+        """
+            Overall time complexity is O(n^2) and space complexity is O(1).
+        """
+
+        # This will take O(n*log(n)) time.
         QuickSort.sort(arr)
         n = len(arr)
         count = 0
+
+        # This will run for n times. We need not run till n - 2 because the inner while loop will take care of
+        # index out of bounds.
         for i in range(n):
+            # place j next to `i`.
             j = i + 1
+            # place k at last index.
             k = n - 1
+            # This loop will run for additional n times.
             while j < k:
+                # if the sum < target, then all the elements between j and k (k included and j excluded) will have
+                # sum < target because the arr is sorted. Hence, increment the count with (k - j). Also, remain at
+                # same `k` index, i.e., do not reset it to n - 1. Why? Because now we have incremented j by +1. So,
+                # if previous `j` was, say, giving sum >= target for k = n - 1, then increasing `j` will definitely
+                # do that too. Thus, we can avoid these iterations.
                 if arr[i] + arr[j] + arr[k] < target:
                     count += (k - j)
                     j += 1
                 else:
+                    # if the sum >= target, reduce k.
                     k -= 1
+
+        # finally return the count.
         return count
 
 
