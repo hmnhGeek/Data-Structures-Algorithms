@@ -73,21 +73,21 @@ class ExpressionEvaluator:
                 # then continuously pop from the stack until you get the corresponding opening bracket.
                 while stack.top() != ExpressionEvaluator._brackets[0]:
                     # and while popping, push the popped characters into the postfix expression.
-                    postfix += stack.pop()
+                    postfix += stack.pop() + " "
                 # pop the opening bracket.
                 stack.pop()
             else:
                 # finally, ensure that the top element is an operator and continuously pop from the stack unless the
                 # top operator has a lower precedence than the current character.
                 while stack.top() in ExpressionEvaluator._precedences and ExpressionEvaluator._precedences[stack.top()] >= ExpressionEvaluator._precedences[elem]:
-                    postfix += stack.pop()
+                    postfix += stack.pop() + " "
                 # once the top is either an operator with lower precedence or just an opening bracket, push the current
                 # character on the stack.
                 stack.push(elem)
 
         # finally, if the expression got exhausted, pop from the stack until the stack gets empty.
         while not stack.is_empty():
-            postfix += stack.pop()
+            postfix += stack.pop() + " "
 
         # return the postfix expression.
         return postfix.strip()
@@ -139,9 +139,18 @@ class ExpressionEvaluator:
         return ExpressionEvaluator.evaluate_postfix(postfix)
 
 
-print(ExpressionEvaluator.infix_to_postfix("( ( 2 + 3 ) * ( 5 / 2 ) )"))
-print(ExpressionEvaluator.infix_to_postfix("( 121 + ( 101 + 0 ) )"))
-print(ExpressionEvaluator.infix_to_postfix("( 3 * ( 5 + 2 ) * ( 10 - 7 ) )"))
+# print(ExpressionEvaluator.infix_to_postfix("( ( 2 + 3 ) * ( 5 / 2 ) )"))
+# print(ExpressionEvaluator.infix_to_postfix("( 121 + ( 101 + 0 ) )"))
+# print(ExpressionEvaluator.infix_to_postfix("( 3 * ( 5 + 2 ) * ( 10 - 7 ) )"))
+
+# Evaluating expressions - Please note that the entire expression should be enclosed in brackets.
 print(ExpressionEvaluator.evaluate("( ( 2 + 3 ) * ( 5 / 2 ) )"))
 print(ExpressionEvaluator.evaluate("( 121 + ( 101 + 0 ) )"))
 print(ExpressionEvaluator.evaluate("( 3 * ( 5 + 2 ) * ( 10 - 7 ) )"))
+print(ExpressionEvaluator.evaluate("( 7 * ( 5 + 15 ) / ( 2 * 5 ) - 3 )"))
+print(ExpressionEvaluator.evaluate("( 1 * 2 * 3 )"))
+print(ExpressionEvaluator.evaluate("( 2 + 3 * 2 )"))
+print(ExpressionEvaluator.evaluate("( 10 + 2 * 6 )"))
+print(ExpressionEvaluator.evaluate("( 100 * 2 + 12 )"))
+print(ExpressionEvaluator.evaluate("( 100 * ( 2 + 12 ) )"))
+print(ExpressionEvaluator.evaluate("( 100 * ( 2 + 12 ) / 14 )"))
