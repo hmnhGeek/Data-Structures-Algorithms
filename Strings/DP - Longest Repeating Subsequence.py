@@ -88,8 +88,40 @@ def tabulation():
     print(get_longest_repeating_subsequence("BCCB"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n). The code is exactly same as LCS, but the only
+        difference is the explicit check for index i = j.
+    """
+
+    def get_longest_repeating_subsequence(string: str):
+        n = len(string)
+        prev = {j: 0 for j in range(n + 1)}
+        for i in range(1, n + 1):
+            curr = {j: 0 for j in range(n + 1)}
+            for j in range(1, n + 1):
+                # if the characters match at indices i and j and i != j, then we can consume these indices in the
+                # subsequence.
+                if string[i - 1] == string[j - 1] and i != j:
+                    curr[j] = 1 + prev[j - 1]
+                else:
+                    curr[j] = max(prev[j], curr[j - 1])
+            prev = curr
+        return prev[n]
+
+    print(get_longest_repeating_subsequence("axxxy"))
+    print(get_longest_repeating_subsequence("axxzxy"))
+    print(get_longest_repeating_subsequence("abc"))
+    print(get_longest_repeating_subsequence("aab"))
+    print(get_longest_repeating_subsequence("abcab"))
+    print(get_longest_repeating_subsequence("ABCBDCD"))
+    print(get_longest_repeating_subsequence("BCCB"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
