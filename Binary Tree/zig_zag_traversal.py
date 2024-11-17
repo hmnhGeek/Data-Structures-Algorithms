@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/zigzag-tree-traversal/1
+# Solution - https://www.youtube.com/watch?v=3OXWEdlIGl4
+
+
 class Node:
     def __init__(self, data):
         self.data = data
