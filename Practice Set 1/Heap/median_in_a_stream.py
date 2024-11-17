@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -153,6 +156,8 @@ class Stream:
         self.size = 0
 
     def _manage_tops(self):
+        # as explained in the parent call, the max on the left half should be smaller or equal to the min on the right
+        # half. If that is not the case, then exchange the tops of the heaps.
         if self.max_heap.top() > self.min_heap.top():
             temp1 = self.max_heap.pop()
             temp2 = self.min_heap.pop()
@@ -162,18 +167,45 @@ class Stream:
                 self.min_heap.insert(temp1)
 
     def _manage_heap_sizes(self):
+        # as explained in the parent call, we will keep the left heap light. If the size of left heap (max heap) has
+        # become heavier than the right heap (because we are just inserting in the max heap), then pop from left heap
+        # and push it to right heap. This way, we are ensuring that the weights of both the heaps are either same or
+        # the right heap is heavier than the left heap.
         if self.max_heap.size() > self.min_heap.size():
             self.min_heap.insert(self.max_heap.pop())
 
     def add(self, x):
+        """
+            The time complexity of adding to stream is thus O(n*log(n)) and space complexity is O(n) for maintaining the
+            heaps.
+        """
+
+        # we will always insert in max heap (left heap) in O(n*log(n)) time.
         self.max_heap.insert(x)
+        # increment the size of the stream.
         self.size += 1
+        # now, call this method to check if the tops of both the heaps are in correct order or not. The top of left
+        # heap that is max heap, should be less than or equal to the top of min heap (right heap). Why? Because the
+        # median always lies in the middle. The max of left half (given by the max heap) should be less than or equal
+        # to the min of right half (given by the min heap). This should take O(n*log(n)) time whenever needed,
+        # otherwise its O(1) time operation.
         self._manage_tops()
+        # we will always keep the left heap (max heap) light-weight or equal in weight with the right heap (min heap).
+        # This will also take O(n*log(n)) time if required, else it will also be O(1) operation.
         self._manage_heap_sizes()
 
     def get_median(self):
+        """
+            Time complexity is O(1) and space complexity is O(1).
+        """
+
+        # if the size of the stream is even, then the median is the average of the tops of both the heaps. Don't we
+        # need to place checks on `.top` if it is None or not? No, because if the stream size has become even, then
+        # both heaps will contain at least one element.
         if self.size % 2 == 0:
             return (self.max_heap.top() + self.min_heap.top()) / 2
+        # else if the stream size is odd, then we know that median will always lie on the min heap because we have
+        # ensured that the right heap is slightly heavier than the left heap in odd case.
         else:
             return self.min_heap.top()
 
