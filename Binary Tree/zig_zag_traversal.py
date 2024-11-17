@@ -69,16 +69,27 @@ class TreeNode:
 class Solution:
     @staticmethod
     def get_zig_zag_traversal(root: Node):
+        """
+            For each level we are doing shuffling between queue and stack. Hence, time complexity is O(n^2) and space is
+            O(n) because all the nodes go into either stack or queue at a time.
+        """
+        # create blank stack and queue.
         stack = Stack()
         queue = Queue()
 
+        # for root node, set left to right traversal as True and push the root node in to the Queue.
         left_to_right = True
         queue.push(root)
 
+        # run an infinite loop.
         while 1:
+            # till you don't complete a level, i.e., the queue does not get empty for a single level...
             while not queue.is_empty():
+                # pop the node from queue and print it.
                 node = queue.pop()
                 print(node.data, end=" ")
+
+                # push the next level traversal on the stack according to left_to_right variable.
                 if left_to_right:
                     if node.left is not None:
                         stack.push(node.left)
@@ -90,9 +101,15 @@ class Solution:
                     if node.left is not None:
                         stack.push(node.left)
 
+            # empty the stack into the queue. Why? because according to left to right, say true, we pushed in stack
+            # first the left nodes and then the right nodes. But this left to right equal to True was for the previous
+            # level. For next level, we must reverse whatever is in stack. Also, reverse the boolean value of left to
+            # right after stack gets empty (storing the correct order for next level).
             while not stack.is_empty():
                 queue.push(stack.pop())
             left_to_right = not left_to_right
+
+            # if both queue and stack got empty, there are no further nodes to traverse. Break from the infinite loop.
             if queue.is_empty() and stack.is_empty():
                 print()
                 break
