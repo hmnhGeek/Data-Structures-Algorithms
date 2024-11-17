@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/evaluation-of-postfix-expression1735/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -42,12 +45,25 @@ class Solution:
 
     @staticmethod
     def evaluate_postfix(postfix):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
+        # split postfix expression by whitespace.
         postfix = postfix.split()
+
+        # initialize a stack
         stack = Stack()
+
+        # iterate on each element of the postfix list.
         for i in range(len(postfix)):
+            # if the ith element is a operand, push it to stack.
             if postfix[i] not in Solution._operators:
                 stack.push(int(postfix[i]))
             else:
+                # else, if it's an operator, pop the top 2 operands from the stack
+                # and perform the operation and push back the final result back on
+                # the stack.
                 a, b = stack.pop(), stack.pop()
                 if postfix[i] == "+":
                     stack.push(b + a)
@@ -57,6 +73,8 @@ class Solution:
                     stack.push(b * a)
                 else:
                     stack.push(b // a)
+        # at last, if the postfix expression was valid, the stack will have only one element as the final result,
+        # return it.
         return stack.pop()
 
 
