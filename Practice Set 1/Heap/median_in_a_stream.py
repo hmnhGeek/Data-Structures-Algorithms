@@ -2,21 +2,24 @@ class MinHeap:
     def __init__(self):
         self.heap = []
 
+    def size(self):
+        return len(self.heap)
+
     def is_empty(self):
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -63,10 +66,18 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+    def top(self):
+        if self.is_empty():
+            return -1e6
+        return self.heap[0]
+
 
 class MaxHeap:
     def __init__(self):
         self.heap = []
+
+    def size(self):
+        return len(self.heap)
 
     def is_empty(self):
         return len(self.heap) == 0
@@ -129,4 +140,53 @@ class MaxHeap:
         self.max_heapify_down(0)
         return item
 
+    def top(self):
+        if self.is_empty():
+            return 1e6
+        return self.heap[0]
 
+
+class Stream:
+    def __init__(self):
+        self.min_heap = MinHeap()
+        self.max_heap = MaxHeap()
+        self.size = 0
+
+    def _manage_tops(self):
+        if self.max_heap.top() > self.min_heap.top():
+            temp1 = self.max_heap.pop()
+            temp2 = self.min_heap.pop()
+            if temp2:
+                self.max_heap.insert(temp2)
+            if temp1:
+                self.min_heap.insert(temp1)
+
+    def _manage_heap_sizes(self):
+        if self.max_heap.size() > self.min_heap.size():
+            self.min_heap.insert(self.max_heap.pop())
+
+    def add(self, x):
+        self.max_heap.insert(x)
+        self.size += 1
+        self._manage_tops()
+        self._manage_heap_sizes()
+
+    def get_median(self):
+        if self.size % 2 == 0:
+            return (self.max_heap.top() + self.min_heap.top()) / 2
+        else:
+            return self.min_heap.top()
+
+
+def test_stream(*args):
+    stream = Stream()
+    for i in args:
+        stream.add(i)
+        print(stream.get_median(), end=", ")
+    print()
+
+
+test_stream(5, 15, 1, 3)
+test_stream(2, 6, 8, 0, 9, 9, 7)
+test_stream(2, 7, 4, 3, 6, 8, 9, 6, 9, 4, 3, 0)
+test_stream(8, 4, 7, 3, 6, 8)
