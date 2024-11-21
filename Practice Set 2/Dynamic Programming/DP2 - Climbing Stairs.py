@@ -69,8 +69,33 @@ def tabulation():
     print(climbing_stairs(2))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n) and space complexity is O(1).
+    """
+    def climbing_stairs(n):
+        dp = {i: 0 for i in range(n + 1)}
+        prev1 = 1
+        prev2 = 0
+        for i in range(1, n + 1):
+            left = prev1
+            right = prev2
+            curr = left + right
+            prev2 = prev1
+            prev1 = curr
+        return prev1
+
+    print(climbing_stairs(3))
+    print(climbing_stairs(4))
+    print(climbing_stairs(5))
+    print(climbing_stairs(1))
+    print(climbing_stairs(2))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
