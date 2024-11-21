@@ -6,7 +6,7 @@ class Solution:
     @staticmethod
     def get_longest_length(string: str):
         """
-            Time complexity is O(n) and space complexity is O(1).
+            Time complexity is O(n) and space complexity is O(26).
         """
         # initialize left and right pointers and the longest length variable.
         left, right = 0, 0
