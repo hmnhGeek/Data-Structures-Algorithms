@@ -8,9 +8,7 @@ class Solution:
                 Solution._dfs(graph, adj_node, visited, traversal)
 
     @staticmethod
-    def dfs(graph, start_node):
-        if start_node not in graph:
-            return
+    def dfs(graph):
         visited = {i: False for i in graph}
         traversal = []
         for node in graph:
@@ -30,8 +28,7 @@ print(
             6: [2],
             7: [3, 8],
             8: [4, 7]
-        },
-        1
+        }
     )
 )
 
@@ -43,8 +40,7 @@ print(
             2: [0, 4],
             3: [0],
             4: [2]
-        },
-        0
+        }
     )
 )
 
@@ -56,7 +52,18 @@ print(
             2: [1, 0, 3, 4],
             3: [2],
             4: [2]
-        },
-        0
+        }
+    )
+)
+
+print(
+    Solution.dfs(
+        {
+            0: [1],
+            1: [0, 2],
+            2: [1],
+            3: [4],
+            4: [3]
+        }
     )
 )
