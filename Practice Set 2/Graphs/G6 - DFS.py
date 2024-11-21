@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
+# Solution - https://www.youtube.com/watch?v=Qzf1a--rhp8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=6
+
+
 class Solution:
     @staticmethod
     def _dfs(graph, node, visited, traversal):
@@ -9,6 +13,10 @@ class Solution:
 
     @staticmethod
     def dfs(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         visited = {i: False for i in graph}
         traversal = []
         for node in graph:
