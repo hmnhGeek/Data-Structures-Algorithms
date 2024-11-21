@@ -35,6 +35,10 @@ class Queue:
 class Solution:
     @staticmethod
     def bfs(graph, start_node):
+        """
+            Time complexity is O(V + 2E) and space complexity is O(V).
+        """
+
         if start_node not in graph:
             return
         queue = Queue()
