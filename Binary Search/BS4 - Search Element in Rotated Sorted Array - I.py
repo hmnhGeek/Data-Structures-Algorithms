@@ -22,7 +22,11 @@ class Solution:
 def test(arr):
     for i in arr:
         print(f"{i} found at index = {Solution.search_in_rotated_sorted(arr, i)}")
+    print(f"{100} found at index = {Solution.search_in_rotated_sorted(arr, 100)}")
     print()
 
 
 test([7, 8, 9, 1, 2, 3, 4, 5, 6])
+test([12, 15, 18, 2, 4])
+test([8, 9, 4, 5])
+test([2, 3, 5, 8])
