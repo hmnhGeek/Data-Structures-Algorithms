@@ -1,14 +1,25 @@
+# Problem link - https://www.naukri.com/code360/problems/search-in-a-rotated-sorted-array-ii_7449547
+# Solution - https://www.youtube.com/watch?v=w2G2W8l__pc&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=6
+
+
 class Solution:
     @staticmethod
     def search(arr, x):
+        """
+            T: O_worst(n) and O_avg(log(n)) and S: O(1).
+        """
+
         low, high = 0, len(arr) - 1
         while low <= high:
             mid = int(low + (high - low)/2)
             if arr[mid] == x:
                 return mid
+
+            # if all three are same, then shrink the search space.
             if arr[low] == arr[mid] == arr[high]:
                 low += 1
                 high -= 1
+                continue
             if arr[mid] < arr[high]:
                 if arr[mid] < x <= arr[high]:
                     low = mid + 1
