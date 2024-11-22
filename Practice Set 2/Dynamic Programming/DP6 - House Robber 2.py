@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/house-robber_839733?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=3WaxQMELSkw&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=7
+
+
 class Solution:
     @staticmethod
     def __house_robber(arr):
@@ -13,6 +17,8 @@ class Solution:
 
     @staticmethod
     def get_circular_house_robber(arr):
+        # Overall time complexity is O(2n) and space complexity is O(1).
+        # get the max loot from houses 1-(n-1) or 0-(n-2) to avoid first and last house to be together.
         return max(Solution.__house_robber(arr[1:]), Solution.__house_robber(arr[:-1]))
 
 
