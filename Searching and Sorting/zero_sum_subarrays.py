@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/zero-sum-subarrays1825/1
+# Solution - https://www.youtube.com/watch?v=xvNwoz-ufXA&t=857s
+
+
 def recursive():
     def solve(arr, index, current_sum, count):
         # Base case: If we've gone through all elements, return
@@ -52,8 +56,53 @@ def recursive():
     # Test cases
     print(zero_sum_subarray_count([6, -1, -3, 4, -2, 2, 4, 6, -12, -7]))  # Output: 4
     print(zero_sum_subarray_count([0, 0, 5, 5, 0, 0]))  # Output: 6
-    print(zero_sum_subarray_count([0])) # Output: 1
-    print(zero_sum_subarray_count([1, 2, -3, 3, -1, -1])) # Output: 3
+    print(zero_sum_subarray_count([0]))  # Output: 1
+    print(zero_sum_subarray_count([1, 2, -3, 3, -1, -1]))  # Output: 3
 
 
+def sum_subarray_count(arr, k=0):
+    """
+        Overall time complexity is O(n) and space complexity is O(n).
+    """
+
+    # initialize a hash map storing only just count of 0 prefix sum. Because when you have just started, the prefix sum
+    # is just 0 and its count can be assumed to be 1.
+    hash_map = {0: 1}
+
+    # make variable to store the count of such subarrays.
+    count = 0
+
+    # since your first prefix sum is 0, initialize it like that.
+    prefix_sum = 0
+
+    # loop on the array in O(n) time.
+    for index in range(len(arr)):
+        # add the current element in the prefix sum.
+        prefix_sum += arr[index]
+
+        # check if prefix_sum - k is present in hash map or not. If it is present, then it means there can x number of
+        # sub-arrays having sum = k where x is the count of hash_map[prefix_sum - k]. Check out the solution for more
+        # on this.
+        if prefix_sum - k in hash_map:
+            count += hash_map[prefix_sum - k]
+
+        # Also, ensure that you increase the count of prefix_sum in the hash map.
+        if prefix_sum in hash_map:
+            hash_map[prefix_sum] += 1
+        else:
+            hash_map[prefix_sum] = 1
+
+    # return the final count obtained.
+    return count
+
+
+print(f"Recursive Solution")
 recursive()
+print()
+
+print(f"Optimal Solution")
+print(sum_subarray_count([6, -1, -3, 4, -2, 2, 4, 6, -12, -7]))  # Output: 4
+print(sum_subarray_count([0, 0, 5, 5, 0, 0]))  # Output: 6
+print(sum_subarray_count([0]))  # Output: 1
+print(sum_subarray_count([1, 2, -3, 3, -1, -1]))  # Output: 3
+print(sum_subarray_count([1, 2, 3, -3, 1, 1, 1, 4, 2, -3], 3)) # Output: 8
