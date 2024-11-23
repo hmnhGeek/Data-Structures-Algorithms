@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/kth-element-in-matrix/1
+
+
 from typing import List, Optional
 
 
@@ -86,21 +89,42 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_kth_element(mtx: List[List[int]], k: int) -> Optional[int]:
+        """
+            Time complexity is O([n + k] * log(n)) and space complexity is O(n).
+        """
+
+        # get the dimensions of the matrix.
         n = len(mtx)
+
+        # if k is out of bounds on right side, simply return the bottom right corner.
         if k > n**2:
             return mtx[-1][-1]
+        # if k is negative, return None.
         if k < 0:
             return
+
+        # initialize a min heap and push first column in to the min heap in O(n*log(n)) time.
         min_heap = MinHeap()
         for i in range(n):
             min_heap.insert(HeapElement(mtx[i][0], i, 0))
+
+        # initialize a counter to match `k`.
         counter = 0
+
+        # while the counter is not equal to `k`. This will take O(k*log(n)).
         while counter != k:
+            # pop from the min heap and increment the counter, in O(log(n)).
             heap_element = min_heap.pop()
             counter += 1
+
+            # if the counter matches with `k`, return the popped element.
             if counter == k:
                 return heap_element.get_data()
+
+            # get the index of the popped element.
             i, j = heap_element.get_row_index(), heap_element.get_col_index()
+
+            # push the next element into the heap in O(log(n)).
             if 0 <= j + 1 < n:
                 min_heap.insert(HeapElement(mtx[i][j + 1], i, j + 1))
         return -1
