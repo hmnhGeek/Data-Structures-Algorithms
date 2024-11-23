@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/check-for-balanced-tree/1
+
+
 from typing import List
 
 
@@ -10,18 +13,33 @@ class Node:
 class Solution:
     @staticmethod
     def _check_balanced(root: Node, balanced_status: List[bool]) -> int:
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
+
+        # if there is no node, then the height is 0.
         if root is None:
             return 0
+        # get the left and right height of the root.
         left_ht = Solution._check_balanced(root.left, balanced_status)
         right_ht = Solution._check_balanced(root.right, balanced_status)
+        # if the height differences is greater than 1, the tree is not balanced, mark it as un-balanced.
         if abs(left_ht - right_ht) > 1:
             balanced_status[0] = False
+        # return the height at root node to complete the recursion.
         return 1 + max(left_ht, right_ht)
 
     @staticmethod
     def check_if_balanced(root: Node) -> bool:
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
+
+        # storing a variable to hold the balanced status of the tree.
         balanced_status = [True]
+        # recursively call the height method for each node and simultaneously check for the balanced status.
         Solution._check_balanced(root, balanced_status)
+        # return the balanced status after it getting updated from the recursive call.
         return balanced_status[0]
 
 
