@@ -1,3 +1,6 @@
+# Problem link - https://leetcode.com/problems/middle-of-the-linked-list/description/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -16,12 +19,15 @@ class LinkedList:
         print()
 
     def find_middle(self):
+        # In O(n/2) time, we get the middle node.
         slow = fast = self.head
         while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
         return slow.data
 
+    """ Using the builder pattern to construct the linked list, while the core functionalities
+        of the linked list are in the class LinkedList. """
     class Builder:
         def __init__(self):
             self.head = self.tail = None
