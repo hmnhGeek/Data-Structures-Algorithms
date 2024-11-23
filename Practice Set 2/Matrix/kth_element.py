@@ -1,3 +1,6 @@
+from typing import List, Optional
+
+
 class HeapElement:
     def __init__(self, data, x, y):
         self.__data = data
@@ -43,9 +46,9 @@ class MinHeap:
         if rci is None:
             return lci
         min_child_index = lci
-        if self.heap[rci].data < self.heap[min_child_index].data:
+        if self.heap[rci].get_data() < self.heap[min_child_index].get_data():
             min_child_index = rci
-        return rci
+        return min_child_index
 
     def min_heapify_up(self, start_index):
         if start_index == 0:
@@ -54,7 +57,7 @@ class MinHeap:
         lci, rci = self.get_lci(pi), self.get_rci(pi)
         min_child_index = self.get_min_child_index(lci, rci)
         if min_child_index is not None:
-            if self.heap[pi].data > self.heap[min_child_index].data:
+            if self.heap[pi].get_data() > self.heap[min_child_index].get_data():
                 self.heap[pi], self.heap[min_child_index] = self.heap[min_child_index], self.heap[pi]
             self.min_heapify_up(pi)
 
@@ -62,7 +65,7 @@ class MinHeap:
         lci, rci = self.get_lci(pi), self.get_rci(pi)
         min_child_index = self.get_min_child_index(lci, rci)
         if min_child_index is not None:
-            if self.heap[pi].data > self.heap[min_child_index].data:
+            if self.heap[pi].get_data() > self.heap[min_child_index].get_data():
                 self.heap[pi], self.heap[min_child_index] = self.heap[min_child_index], self.heap[pi]
             self.min_heapify_down(min_child_index)
 
@@ -70,7 +73,7 @@ class MinHeap:
         self.heap.append(x)
         self.min_heapify_up(len(self.heap) - 1)
 
-    def pop(self):
+    def pop(self) -> Optional[HeapElement]:
         if self.is_empty():
             return
         item = self.heap[0]
@@ -79,3 +82,50 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_kth_element(mtx: List[List[int]], k: int) -> int:
+        n = len(mtx)
+        if k > n**2:
+            return mtx[-1][-1]
+        if k < 0:
+            return -1
+        min_heap = MinHeap()
+        for i in range(n):
+            min_heap.insert(HeapElement(mtx[i][0], i, 0))
+        counter = 0
+        while counter != k:
+            heap_element = min_heap.pop()
+            counter += 1
+            if counter == k:
+                return heap_element.get_data()
+            i, j = heap_element.get_row_index(), heap_element.get_col_index()
+            if 0 <= j + 1 < n:
+                min_heap.insert(HeapElement(mtx[i][j + 1], i, j + 1))
+        return -1
+
+
+print(
+    Solution.get_kth_element(
+        [
+            [16, 28, 60, 64],
+            [22, 41, 63, 91],
+            [27, 50, 87, 93],
+            [36, 78, 87, 94]
+        ],
+        3
+    )
+)
+
+print(
+    Solution.get_kth_element(
+        [
+            [10, 20, 30, 40],
+            [15, 25, 35, 45],
+            [24, 29, 37, 48],
+            [32, 33, 39, 50]
+        ],
+        7
+    )
+)
