@@ -137,3 +137,23 @@ MySolution.merge_intervals(
         Interval(8, 12),
     ]
 )
+
+print()
+MySolution.merge_intervals(
+    [
+        Interval(7, 8),
+        Interval(1, 5),
+        Interval(2, 4),
+        Interval(4, 6)
+    ]
+)
+
+print()
+MySolution.merge_intervals(
+    [
+        Interval(1, 3),
+        Interval(2, 4),
+        Interval(6, 8),
+        Interval(9, 10)
+    ]
+)
