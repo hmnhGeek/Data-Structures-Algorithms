@@ -1,3 +1,9 @@
+# Problem link - https://www.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1
+
+
+from typing import List
+
+
 class Node:
     def __init__(self, data):
         self.parent = self.left = self.right = None
@@ -139,3 +145,28 @@ class BinarySearchTree:
         print()
 
 
+class Solution:
+    @staticmethod
+    def _construct_bst(bst: BinarySearchTree, level_order: List[int]):
+        for i in level_order:
+            bst.insert(i)
+
+    @staticmethod
+    def _get_successors(bst: BinarySearchTree, root: Node, inorder):
+        if root:
+            Solution._get_successors(bst, root.left, inorder)
+            successor = bst.get_successor(root)
+            inorder.append(f"{root.data} -> {successor.data if successor else -1}")
+            Solution._get_successors(bst, root.right, inorder)
+
+    @staticmethod
+    def get_successors(level_order: List[int]):
+        bst = BinarySearchTree()
+        Solution._construct_bst(bst, level_order)
+        inorder_successors = []
+        Solution._get_successors(bst, bst.root, inorder_successors)
+        return inorder_successors
+
+
+print(Solution.get_successors([10, 8, 12, 3]))
+print(Solution.get_successors([1, 2, 3]))
