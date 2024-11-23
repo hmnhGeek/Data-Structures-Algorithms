@@ -66,3 +66,27 @@ n1.right = n3
 n2.left = n4
 n4.left = n5
 print(Solution.check_if_balanced(n1))
+
+
+# Example 4
+n1, n21, n22, n31, n32, n41, n42 = Node(1), Node(2), Node(2), Node(3), Node(3), Node(4), Node(4)
+n1.left = n21
+n1.right = n22
+n21.left = n31
+n21.right = n32
+n31.left = n41
+n31.right = n42
+print(Solution.check_if_balanced(n1))
+
+
+# Example 5
+n3, n9, n20, n15, n7 = Node(3), Node(9), Node(20), Node(15), Node(7)
+n3.left = n9
+n3.right = n20
+n20.left = n15
+n20.right = n7
+print(Solution.check_if_balanced(n3))
+
+
+# Example 6
+print(Solution.check_if_balanced(None))
