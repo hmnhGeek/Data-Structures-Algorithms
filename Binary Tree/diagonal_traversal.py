@@ -131,3 +131,19 @@ n1.right = n3
 n3.left = n4
 n3.right = n5
 Solution.print_diagonal_traversal(n1)
+
+
+# Example 6
+n1, n2, n3, n4, n5, n6, n7 = TreeNode(1), TreeNode(2), TreeNode(3), TreeNode(4), TreeNode(5), TreeNode(6), TreeNode(7)
+n8, n9, n10, n11 = TreeNode(8), TreeNode(9), TreeNode(10), TreeNode(11)
+n1.left = n2
+n1.right = n7
+n2.left = n3
+n7.right = n8
+n3.right = n4
+n8.left = n9
+n4.left = n5
+n4.right = n6
+n9.left = n10
+n9.right = n11
+Solution.print_diagonal_traversal(n1)
