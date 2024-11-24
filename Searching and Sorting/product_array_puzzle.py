@@ -1,4 +1,5 @@
 # Problem link - https://leetcode.com/problems/product-of-array-except-self/description/
+# Solution - https://www.youtube.com/watch?v=bNvIQI2wAjk&t=311s
 
 
 class Solution:
