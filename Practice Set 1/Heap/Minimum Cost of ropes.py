@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1
+
+
 from typing import List
 
 
@@ -70,14 +73,28 @@ class MinHeap:
 class Solution:
     @staticmethod
     def min_cost_of_ropes(ropes: List[int]) -> int:
+        """
+            Overall time complexity is O(n*log(n)) and space complexity is O(n) for the min heap.
+        """
+
+        # construct a min heap and a min cost variable.
         min_heap = MinHeap()
         min_cost = 0
+
+        # push all the ropes into the heap in O(n*log(n)) time.
         for i in ropes:
             min_heap.insert(i)
+
+        # This should run for n times approximately, i.e., O(n * 3 * log(n))
         while not len(min_heap.heap) == 1:
+            # get the cost of connecting two shortest length ropes, in O(2*log(n)) time.
             cost = min_heap.pop() + min_heap.pop()
+            # add this cost in min_cost.
             min_cost += cost
+            # insert the current cost back to the min heap in O(log(n)) time.
             min_heap.insert(cost)
+
+        # return the min cost obtained.
         return min_cost
 
 
