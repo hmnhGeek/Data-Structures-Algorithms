@@ -202,3 +202,9 @@ for i in [2, 1, 3]:
 print(Solution.get_lca(1, 3, t2))
 print(Solution.get_lca(1, 7, t2))
 print(Solution.get_lca(9, 7, t2))
+
+t3 = BinarySearchTree()
+for i in [6, 2, 8, 0, 4, 7, 9, 3, 5]:
+    t3.insert(i)
+print(Solution.get_lca(2, 8, t3))
+print(Solution.get_lca(2, 4, t3))
