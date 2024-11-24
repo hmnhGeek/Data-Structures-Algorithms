@@ -1,3 +1,6 @@
+# Problem link - https://www.naukri.com/code360/problems/diagonal-traversal_893029
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -41,18 +44,32 @@ class TreeNode:
 class Solution:
     @staticmethod
     def print_diagonal_traversal(root: TreeNode):
+        """
+            Overall time complexity is O(n1 + k*n_i) = O(n) where `k` is the number of left pointers and n_i is the
+            number of nodes pushed for each left pointer. Thus, n1 + k*n_i = n.
+
+            Space complexity is O(n) because in worst case in a left or right skewed binary tree, all nodes will be
+            pushed into the queue at once.
+        """
+
         queue = Queue()
 
-        # push the first diagonal
+        # push the first diagonal into the queue. Assume n1 nodes got pushed where n1 <= n.
         curr = root
         while curr is not None:
             queue.push(curr)
             curr = curr.right
 
+        # now, unless the queue gets empty...
         while not queue.is_empty():
+            # pop the first node and print it
             node = queue.pop()
             print(node.data, end=" ")
+
+            # if the next diagonal is available, i.e., node has a left child.
             if node.left is not None:
+                # push the left child and all the right nodes from this left child, just like we pushed for root node.
+                # Assume that n_i nodes got pushed into the queue where n_i <= n.
                 temp = node.left
                 while temp is not None:
                     queue.push(temp)
