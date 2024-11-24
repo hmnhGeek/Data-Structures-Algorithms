@@ -70,29 +70,43 @@ print(Solution.get_product_array([2, 12, 1, 1, 20, 1]))
 
 print()
 
+
 class OptimalSolution:
     @staticmethod
     def _populate_prefix_into_result(arr, result, n):
         prefix = 1
         for i in range(n):
+            # assign ith index with prefix
             result[i] = prefix
+            # update prefix for next `i` as prefix * arr[i] as this element will be added into the product for the next
+            # `i` index.
             prefix *= arr[i]
 
     @staticmethod
     def _populate_postfix_into_result(arr, result, n):
         postfix = 1
+        # this time traverse from the right side.
         for i in range(n - 1, -1, -1):
+            # multiply with postfix value at index `i`.
             result[i] *= postfix
+            # update postfix for next `i` as prefix * arr[i] as this element will be added into the product for the next
+            # `i` index.
             postfix *= arr[i]
 
     @staticmethod
     def get_product_array(arr):
-        n = len(arr)
+        """
+            Time complexity is O(n) and space complexity is O(n). However, special case [0] is not handled.
+        """
 
+        n = len(arr)
         # create a result array with O(n) space.
         result = [None]*n
+        # populate the result array with prefix product in O(n) time.
         OptimalSolution._populate_prefix_into_result(arr, result, n)
+        # populate the result array with prefix * postfix product in O(n) time.
         OptimalSolution._populate_postfix_into_result(arr, result, n)
+        # finally result will have the final answer.
         return result
 
 
