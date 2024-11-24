@@ -5,7 +5,6 @@ class Node:
 
 
 class Queue:
-    @staticmethod
     def __init__(self):
         self.head = self.tail = None
         self.length = 0
@@ -32,3 +31,43 @@ class Queue:
         self.length -= 1
         return item
 
+
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = self.right = None
+
+
+class Solution:
+    @staticmethod
+    def print_diagonal_traversal(root: TreeNode):
+        queue = Queue()
+
+        # push the first diagonal
+        curr = root
+        while curr is not None:
+            queue.push(curr)
+            curr = curr.right
+
+        while not queue.is_empty():
+            node = queue.pop()
+            print(node.data, end=" ")
+            if node.left is not None:
+                temp = node.left
+                while temp is not None:
+                    queue.push(temp)
+                    temp = temp.right
+        print()
+
+
+# Example 1
+n8, n3, n10, n1, n6, n14, n4, n7, n13 = TreeNode(8), TreeNode(3), TreeNode(10), TreeNode(1), TreeNode(6), TreeNode(14), TreeNode(4), TreeNode(7), TreeNode(13)
+n8.left = n3
+n8.right = n10
+n3.left = n1
+n3.right = n6
+n10.right = n14
+n6.left = n4
+n6.right = n7
+n14.left = n13
+Solution.print_diagonal_traversal(n8)
