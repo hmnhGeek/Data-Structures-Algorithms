@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 class Node:
     def __init__(self, data):
         self.parent = self.left = self.right = None
@@ -138,3 +141,43 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _get_lca(root: Node, x, y):
+        if root is None:
+            return
+        if root.data == x or root.data == y:
+            return root.data
+        left = Solution._get_lca(root.left, x, y)
+        right = Solution._get_lca(root.right, x, y)
+        if left is None and right is None:
+            return
+        if left is None:
+            return right
+        if right is None:
+            return left
+        return root.data
+
+    @staticmethod
+    def get_lca(x, y, bst: BinarySearchTree) -> Optional[Node]:
+        lca = Solution._get_lca(bst.root, x, y)
+        if lca is not None:
+            return lca
+        return None
+
+
+# Example 1
+t1 = BinarySearchTree()
+for i in [5, 4, 6, 3, 7, 8]:
+    t1.insert(i)
+print(Solution.get_lca(7, 8, t1))
+print(Solution.get_lca(7, 3, t1))
+print(Solution.get_lca(4, 4, t1))
+
+t2 = BinarySearchTree()
+for i in [2, 1, 3]:
+    t2.insert(i)
+print(Solution.get_lca(1, 3, t2))
+print(Solution.get_lca(1, 7, t2))
+print(Solution.get_lca(9, 7, t2))
