@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/next-permutation/description/
+# Solution - https://www.youtube.com/watch?v=JDOXKqF60RQ&t=976s
+
+
 class Solution:
     @staticmethod
     def _get_numerical_representation(arr):
@@ -56,6 +60,7 @@ class OptimalSolution:
 
     @staticmethod
     def _get_breakpoint_index(arr, n):
+        # get the first index from the right side which breaks the linearly increasing order from the right side.
         for i in range(n - 2, -1, -1):
             if arr[i] < arr[i + 1]:
                 return i
@@ -63,6 +68,9 @@ class OptimalSolution:
 
     @staticmethod
     def _swap_breakpoint(arr, breakpoint_index, n):
+        # start from the right side and get the first element which is just greater than the breakpoint element. The
+        # right side will always be in decreasing order because breakpoint is the first index at which this decreasing
+        # pattern is distorted.
         for i in range(n - 1, breakpoint_index, -1):
             if arr[i] > arr[breakpoint_index]:
                 arr[i], arr[breakpoint_index] = arr[breakpoint_index], arr[i]
@@ -70,12 +78,29 @@ class OptimalSolution:
 
     @staticmethod
     def get_next_permutation(arr):
+        """
+            Overall time complexity is O(n) and space complexity is O(1).
+        """
+
         n = len(arr)
+
+        # get the breakpoint index in O(n) time and O(1) space. It is the index which is just before the peak element
+        # from the reversed side.
         breakpoint_index = OptimalSolution._get_breakpoint_index(arr, n)
+
+        # if the array is in descending order, then breakpoint index will be None, in that case, the next permutation
+        # will be the first permutation, which can be obtained by reversing the list in-place in O(n) time and O(1)
+        # space.
         if breakpoint_index is None:
             OptimalSolution._reverse(arr, 0, n - 1)
             return
+
+        # if breakpoint is not None, then swap the element at breakpoint with the least element greater than this
+        # element from the right side. This will also take O(n) time but O(1) space.
         OptimalSolution._swap_breakpoint(arr, breakpoint_index, n)
+
+        # Once the swapping is completed, reverse only the right part (linearly decreasing part) in O(n) time and O(1)
+        # space. Finally, the original array would have been converted into its next permutation.
         OptimalSolution._reverse(arr, breakpoint_index + 1, n - 1)
 
 
