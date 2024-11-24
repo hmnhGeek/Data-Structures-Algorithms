@@ -20,13 +20,27 @@ class Solution:
 
     @staticmethod
     def get_next_permutation(arr):
+        """
+            Overall time complexity is O(n + {n! * n} + n! + {n! * log(n!)} + n!) and space complexity is O(n + n!).
+        """
+
         n = len(arr)
+        # in O(n) time, get the numerical representation. Also takes O(n) space internally.
         number = Solution._get_numerical_representation(arr)
+
+        # get the unique permutations in O(n! * n) time and O(n! + n) space.
         permutations = set()
         Solution._get_next_permutation(arr, 0, n, permutations)
+
+        # convert into list in O(n!) time.
         permutations = list(permutations)
+        # sort in O(n! * log(n!))
         permutations.sort()
+
+        # get index of input arr in O(n!) time.
         index_of_arr = permutations.index(tuple(arr))
+
+        # return answer in O(1) time.
         if 0 <= index_of_arr + 1 < len(permutations):
             return list(permutations[index_of_arr + 1])
         return list(permutations[0])
@@ -41,20 +55,27 @@ class OptimalSolution:
             high -= 1
 
     @staticmethod
-    def get_next_permutation(arr):
-        n = len(arr)
-        breakpoint_index = None
+    def _get_breakpoint_index(arr, n):
         for i in range(n - 2, -1, -1):
             if arr[i] < arr[i + 1]:
-                breakpoint_index = i
-                break
-        if breakpoint_index is None:
-            OptimalSolution._reverse(arr, 0, n - 1)
-            return
+                return i
+        return None
+
+    @staticmethod
+    def _swap_breakpoint(arr, breakpoint_index, n):
         for i in range(n - 1, breakpoint_index, -1):
             if arr[i] > arr[breakpoint_index]:
                 arr[i], arr[breakpoint_index] = arr[breakpoint_index], arr[i]
                 break
+
+    @staticmethod
+    def get_next_permutation(arr):
+        n = len(arr)
+        breakpoint_index = OptimalSolution._get_breakpoint_index(arr, n)
+        if breakpoint_index is None:
+            OptimalSolution._reverse(arr, 0, n - 1)
+            return
+        OptimalSolution._swap_breakpoint(arr, breakpoint_index, n)
         OptimalSolution._reverse(arr, breakpoint_index + 1, n - 1)
 
 
