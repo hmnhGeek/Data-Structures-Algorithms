@@ -67,3 +67,42 @@ print(Solution.get_product_array([1, 3, 3, 10, 2]))
 print(Solution.get_product_array([2, 4, 6, 3, 1, 1]))
 print(Solution.get_product_array([1, 10, 1, 2, 2]))
 print(Solution.get_product_array([2, 12, 1, 1, 20, 1]))
+
+print()
+
+class OptimalSolution:
+    @staticmethod
+    def _populate_prefix_into_result(arr, result, n):
+        prefix = 1
+        for i in range(n):
+            result[i] = prefix
+            prefix *= arr[i]
+
+    @staticmethod
+    def _populate_postfix_into_result(arr, result, n):
+        postfix = 1
+        for i in range(n - 1, -1, -1):
+            result[i] *= postfix
+            postfix *= arr[i]
+
+    @staticmethod
+    def get_product_array(arr):
+        n = len(arr)
+
+        # create a result array with O(n) space.
+        result = [None]*n
+        OptimalSolution._populate_prefix_into_result(arr, result, n)
+        OptimalSolution._populate_postfix_into_result(arr, result, n)
+        return result
+
+
+print(OptimalSolution.get_product_array([12, 0]))
+print(OptimalSolution.get_product_array([10, 3, 5, 6, 2]))
+print(OptimalSolution.get_product_array([0]))
+print(OptimalSolution.get_product_array([1, 2, 3, 4, 5]))
+print(OptimalSolution.get_product_array([-1, 1, 0, -3, 3]))
+print(OptimalSolution.get_product_array([1, 2, 3, 4]))
+print(OptimalSolution.get_product_array([1, 3, 3, 10, 2]))
+print(OptimalSolution.get_product_array([2, 4, 6, 3, 1, 1]))
+print(OptimalSolution.get_product_array([1, 10, 1, 2, 2]))
+print(OptimalSolution.get_product_array([2, 12, 1, 1, 20, 1]))
