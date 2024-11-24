@@ -1,3 +1,6 @@
+from typing import List
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -64,3 +67,20 @@ class MinHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def min_cost_of_ropes(ropes: List[int]) -> int:
+        min_heap = MinHeap()
+        min_cost = 0
+        for i in ropes:
+            min_heap.insert(i)
+        while not len(min_heap.heap) == 1:
+            cost = min_heap.pop() + min_heap.pop()
+            min_cost += cost
+            min_heap.insert(cost)
+        return min_cost
+
+
+print(Solution.min_cost_of_ropes([4, 3, 2, 6]))
+print(Solution.min_cost_of_ropes([4, 2, 7, 6, 9]))
+print(Solution.min_cost_of_ropes([10]))
