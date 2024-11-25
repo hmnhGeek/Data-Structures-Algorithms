@@ -51,6 +51,33 @@ def memoized():
     print(grid_unique_paths(3, 7))
 
 
+def tabulation():
+    # Time complexity is O(nm) and space complexity is O(mn)
+    def grid_unique_paths(n, m):
+        dp = {i: {j: 0 for j in range(m)} for i in range(n)}
+        dp[0][0] = 1
+        for i in range(n):
+            for j in range(m):
+                if i == j == 0:
+                    continue
+                left = 0
+                if 0 <= i - 1 < n:
+                    left = dp[i - 1][j]
+                right = 0
+                if 0 <= j - 1 < m:
+                    right = dp[i][j - 1]
+                dp[i][j] = left + right
+        return dp[n - 1][m - 1]
+
+    print(grid_unique_paths(3, 2))
+    print(grid_unique_paths(2, 2))
+    print(grid_unique_paths(1, 1))
+    print(grid_unique_paths(1, 6))
+    print(grid_unique_paths(3, 7))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
