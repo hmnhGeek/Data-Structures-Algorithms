@@ -1,4 +1,5 @@
 # Problem link - https://leetcode.com/problems/rotting-oranges/description/
+# Solution - https://www.youtube.com/watch?v=yf3oUhkvqA0&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=10
 
 
 class Node:
@@ -60,16 +61,21 @@ class Solution:
         neighbours = []
         if 0 <= i - 1 < n and mtx[i - 1][j] == 1:
             neighbours.append((i - 1, j))
-        if 0 <= j + 1 < n and mtx[i][j + 1] == 1:
+        if 0 <= j + 1 < m and mtx[i][j + 1] == 1:
             neighbours.append((i, j + 1))
         if 0 <= i + 1 < n and mtx[i + 1][j] == 1:
             neighbours.append((i + 1, j))
-        if 0 <= j - 1 < n and mtx[i][j - 1] == 1:
+        if 0 <= j - 1 < m and mtx[i][j - 1] == 1:
             neighbours.append((i, j - 1))
         return neighbours
 
     @staticmethod
     def rotten_oranges(mtx):
+        """
+            T: O(mn) and S: O(mn) for queue.
+        """
+
+        # O(mn) time.
         all_rotten_oranges = Solution._get_rotten_oranges(mtx)
         max_time_to_rot_all = 0
         queue = Queue()
@@ -84,6 +90,7 @@ class Solution:
                 mtx[adj_fresh_orange[0]][adj_fresh_orange[1]] = 2
                 queue.push((*adj_fresh_orange, t + 1))
 
+        # O(mn) time.
         all_fresh_oranges_count = Solution._get_fresh_oranges(mtx)
         if all_fresh_oranges_count >= 1:
             return -1
@@ -107,3 +114,17 @@ print(
 print(Solution.rotten_oranges([[2, 2, 2], [0, 2, 0]]))
 print(Solution.rotten_oranges([[2,1,1],[1,1,0],[0,1,1]]))
 print(Solution.rotten_oranges([[0,2]]))
+print(Solution.rotten_oranges(
+    [
+        [2, 1, 0, 2, 1],
+        [1, 0, 1, 2, 1],
+        [1, 0, 0, 2, 1]
+    ]
+))
+print(Solution.rotten_oranges(
+    [
+        [2, 1, 0, 2, 1],
+        [0, 0, 1, 2, 1],
+        [1, 0, 0, 2, 1]
+    ]
+))
