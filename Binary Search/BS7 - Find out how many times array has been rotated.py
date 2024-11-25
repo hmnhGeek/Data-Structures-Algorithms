@@ -5,6 +5,8 @@
 """
     The index of min value in the rotated sorted array represents the number of times the sorted array was rotated.
     Time complexity is O(log(n)) and space complexity is O(1).
+
+    Please refer to code in BS6 problem as this problem is exactly same as that.
 """
 
 
