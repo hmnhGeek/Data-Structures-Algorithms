@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/flood-fill-algorithm1856/1
+# Solution - https://www.youtube.com/watch?v=C-2_uSRli8o&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=9
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -48,21 +52,42 @@ class Solution:
 
     @staticmethod
     def flood_fill(mtx, new_color, x, y):
+        # Time complexity is O(V + E) = O(n*m + E) = O(nm) and space complexity is O(nm) for the queue.
+
+        # get dimensions of mtx
         n, m = len(mtx), len(mtx[0])
+        # if the starting cell is not in mtx return
         if not (0 <= x < n and 0 <= y < m):
             return
-        if mtx[x][y] == 0:
-            return
-        queue = Queue()
+
+        # note the starting color.
         start_color = mtx[x][y]
+        # if the new color and starting color are same, do nothing and return
+        if start_color == new_color:
+            return
+
+        # initialize a queue for BFS
+        queue = Queue()
+        # push starting cell into the queue.
         queue.push((x, y))
+
+        # perform the BFS
         while not queue.is_empty():
+            # get the current cell.
             i, j = queue.pop()
+
+            # if the popped cell has start color, color it with the new color.
             if mtx[i][j] == start_color:
                 mtx[i][j] = new_color
+
+            # get valid neighbours of the current cell (valid are those which have color equal to the starting color).
+            # This would also mean that they are not yet visited.
             neighbours = Solution._get_valid_neighbours(mtx, i, j, n, m, start_color)
+
+            # push these valid neighbours into the queue.
             for neighbour in neighbours:
                 queue.push(neighbour)
+        # return from the method call.
         return
 
     @staticmethod
@@ -91,4 +116,23 @@ Solution.test(
 
 Solution.test(
     [[0, 0, 0], [0, 0, 0]], 0, 0, 0
+)
+
+Solution.test(
+    [
+        [0, 0, 0],
+        [0, 1, 1]
+    ],
+    1,
+    1,
+    1
+)
+
+Solution.test(
+    [
+        [2, 2, 2],
+        [2, 2, 2]
+    ],
+    1,
+    0, 0
 )
