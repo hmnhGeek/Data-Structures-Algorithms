@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/distinct-characters_2221410
+# Solution - https://www.youtube.com/watch?v=teM9ZsVRQyc&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=6
+
+
 class Solution:
     @staticmethod
     def get_longest_substring(string: str, k: int):
@@ -22,7 +26,7 @@ class Solution:
             d[string[right]] += 1
 
             # if the distinct characters count from the dictionary is <= k, update the longest length. This check will
-            # take O(26) time.
+            # take O(26) time. If exactly equal to k was required, then change <= to just ==.
             if sum(1 for value in d.values() if value != 0) <= k:
                 longest_length = max(longest_length, right - left + 1)
                 # also update the start index in case substring needs to be printed.
