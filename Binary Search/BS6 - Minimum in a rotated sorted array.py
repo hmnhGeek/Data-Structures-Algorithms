@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/
+# Solution - https://www.youtube.com/watch?v=nhEMDKMB44g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=7
+
+
 class Solution:
     @staticmethod
     def min_in_uniques(arr):
@@ -40,6 +44,12 @@ class Solution:
         ans = 1e6
         while low <= high:
             mid = int(low + (high - low)/2)
+            # if all the elements are same, shrink the search space.
+            if arr[low] == arr[mid] == arr[high]:
+                ans = min(ans, arr[low])
+                low += 1
+                high -= 1
+                continue
             # if left part is sorted, take the minimum of left part and continue with the unsorted part
             if arr[low] <= arr[mid]:
                 ans = min(ans, arr[low])
@@ -60,6 +70,9 @@ print(Solution.min_in_uniques([11, 13, 15, 17]))
 print(Solution.min_in_uniques([7, 8, 1, 2, 3, 4, 5, 6]))
 print(Solution.min_in_uniques([1, 2]))
 print(Solution.min_in_uniques([2, 1]))
+print(Solution.min_in_uniques([3, 3, 3, 3, 3]))
+print(Solution.min_in_uniques([1, 2, 2, 3, 3, 3, 5]))
+print(Solution.min_in_uniques([5, 5, 5, 5, 1, 2, 3, 3]))
 print()
 print(Solution.min_in_uniques_v2([4, 5, 6, 7, 0, 1, 2]))
 print(Solution.min_in_uniques_v2([4, 1, 2, 3]))
@@ -70,3 +83,6 @@ print(Solution.min_in_uniques_v2([11, 13, 15, 17]))
 print(Solution.min_in_uniques_v2([7, 8, 1, 2, 3, 4, 5, 6]))
 print(Solution.min_in_uniques_v2([1, 2]))
 print(Solution.min_in_uniques_v2([2, 1]))
+print(Solution.min_in_uniques_v2([3, 3, 3, 3, 3]))
+print(Solution.min_in_uniques_v2([1, 2, 2, 3, 3, 3, 5]))
+print(Solution.min_in_uniques_v2([5, 5, 5, 5, 1, 2, 3, 3]))
