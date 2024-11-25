@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/ninja-s-training_3621003?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=AE39gJYuRog&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=8
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
