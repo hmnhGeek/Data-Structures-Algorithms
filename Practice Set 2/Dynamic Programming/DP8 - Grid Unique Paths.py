@@ -22,4 +22,35 @@ def recursive():
     print(grid_unique_paths(3, 7))
 
 
+def memoized():
+    # Time complexity is O(nm) and space complexity is O(m + n + mn)
+    def solve(i, j, n, m, dp):
+        if i == 0 and j == 0:
+            return 1
+
+        if dp[i][j] is not None:
+            return dp[i][j]
+
+        left = 0
+        if 0 <= i - 1 < n:
+            left = solve(i - 1, j, n, m, dp)
+        right = 0
+        if 0 <= j - 1 < m:
+            right = solve(i, j - 1, n, m, dp)
+        dp[i][j] = left + right
+        return dp[i][j]
+
+    def grid_unique_paths(n, m):
+        dp = {i: {j: None for j in range(m)} for i in range(n)}
+        return solve(n - 1, m - 1, n, m, dp)
+
+    print(grid_unique_paths(3, 2))
+    print(grid_unique_paths(2, 2))
+    print(grid_unique_paths(1, 1))
+    print(grid_unique_paths(1, 6))
+    print(grid_unique_paths(3, 7))
+
+
 recursive()
+print()
+memoized()
