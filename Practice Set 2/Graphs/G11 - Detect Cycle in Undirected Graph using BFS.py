@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/detect-cycle-undirected-graph/
+# Solution - https://www.youtube.com/watch?v=BPlrALf1LDU&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=11
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -49,7 +53,12 @@ class Solution:
 
     @staticmethod
     def detect_cycle(graph):
+        """
+            Overall time complexity is O(V + E) and space complexity is O(V).
+        """
+
         visited = {i: False for i in graph}
+        # detect cycle in all the components.
         for node in graph:
             if not visited[node]:
                 component_has_cycle = Solution._detect_cycle(graph, node, visited)
@@ -82,6 +91,51 @@ print(
             5: [2, 7],
             6: [3],
             7: [5]
+        }
+    )
+)
+
+print(
+    Solution.detect_cycle(
+        {
+            0: [1, 2],
+            1: [0, 2],
+            2: [0, 1, 3],
+            3: [2]
+        }
+    )
+)
+
+print(
+    Solution.detect_cycle(
+        {
+            0: [1],
+            1: [0, 2],
+            2: [1, 3],
+            3: [2]
+        }
+    )
+)
+
+print(
+    Solution.detect_cycle(
+        {
+            0: [],
+            1: [2],
+            2: [1, 3],
+            3: [2]
+        }
+    )
+)
+
+print(
+    Solution.detect_cycle(
+        {
+            0: [1],
+            1: [0, 2, 4],
+            2: [1, 3],
+            3: [2, 4],
+            4: [1, 3]
         }
     )
 )
