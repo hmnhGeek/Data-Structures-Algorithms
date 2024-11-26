@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/unique-paths-in-a-grid-with-obstacles/
+# Solution - https://www.youtube.com/watch?v=TmhpgXScLyY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=10
+
+
 def recursive():
     """
         Time complexity is O(2^{mn}) and space complexity is O(m + n).
