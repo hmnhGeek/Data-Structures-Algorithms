@@ -1,34 +1,99 @@
 class Solution:
+    """
+        Time complexity is O(log(n)) and space complexity is O(1).
+    """
     @staticmethod
     def find_peak_element(arr):
+        # handle edge cases separately.
+
+        # if there is only one element, then that will be the peak itself, because out of bounds areas are -inf.
         if len(arr) == 1:
             return arr[0]
+
+        # if arr[1] is same (i.e., plateau from -inf < arr[0] >= arr[1]), then also arr[0] is a peak.
         if arr[0] >= arr[1]:
             return arr[0]
+
+        # same above logic from the right end
         if arr[-1] >= arr[-2]:
             return arr[-1]
+
+        # define the search space now from 1 --> n - 2.
         low, high = 1, len(arr) - 2
         while low <= high:
             mid = int(low + (high - low) / 2)
+
+            # cases for a peak.
+            # if mid element is strictly greater than its neighbours, it's a peak.
             if arr[mid - 1] < arr[mid] and arr[mid] > arr[mid + 1]:
                 return arr[mid]
+
+            # if this is the case
+            """
+                 (mid)______(mid + 1)
+                    /
+                   /
+                  /
+                 (mid - 1)
+            """
+            # then also mid is a peak
             if arr[mid] > arr[mid - 1] and arr[mid] == arr[mid + 1]:
                 return arr[mid]
+
+            # finally, if this is the case
+            """
+                (mid - 1)_______(mid)
+                                \
+                                 \
+                                  \
+                                  (mid + 1)
+            """
+            # then also mid is a peak.
             if arr[mid] > arr[mid + 1] and arr[mid] == arr[mid - 1]:
                 return arr[mid]
 
-            if arr[mid - 1] < arr[mid]:
+            #    (mid - 1) --------- (mid) ---------- (mid + 1)
+            if arr[mid - 1] == arr[mid] == arr[mid + 1]:
                 low = mid + 1
-            elif arr[mid] > arr[mid + 1]:
+
+            #                (mid + 1)
+            #                 /
+            #                /
+            #              (mid)
+            #              /
+            #             /
+            #    (mid - 1)
+            elif arr[mid - 1] < arr[mid] < arr[mid + 1]:
+                low = mid + 1
+
+            #   (mid - 1)
+            #           \
+            #            \
+            #            (mid)
+            #              \
+            #               \
+            #               (mid + 1)
+            elif arr[mid - 1] > arr[mid] > arr[mid + 1]:
                 high = mid - 1
-            elif arr[mid - 1] == arr[mid] == arr[mid + 1]:
-                low = mid + 1
-            elif arr[mid + 1] > arr[mid]:
-                low = mid + 1
-            elif arr[mid - 1] > arr[mid]:
-                high = mid - 1
+
+            # invert of a peak; we can decide to go any side.
             elif arr[mid - 1] > arr[mid] and arr[mid] < arr[mid + 1]:
                 low = mid + 1
+
+            #                            (mid + 1)
+            #                             /
+            #                            /
+            #    (mid - 1) -------- (mid)
+            elif arr[mid] < arr[mid + 1]:
+                low = mid + 1
+
+            #   (mid - 1)
+            #           \
+            #            \
+            #            (mid) --------- (mid + 1)
+            else:
+                high = mid - 1
+
         return -1
 
 
