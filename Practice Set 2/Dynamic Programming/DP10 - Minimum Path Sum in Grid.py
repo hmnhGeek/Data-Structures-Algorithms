@@ -123,6 +123,79 @@ def memoized():
     print(min_path_sum([[1, 2, 3], [4, 5, 6]]))
 
 
+def tabulation():
+    """
+        Time complexity is O(mn) and space complexity is O(mn).
+    """
+    def min_path_sum(mtx):
+        n, m = len(mtx), len(mtx[0])
+        dp = {i: {j: 1e6 for j in range(m)} for i in range(n)}
+        dp[0][0] = mtx[0][0]
+
+        accumulator = mtx[0][0]
+        for i in range(1, n):
+            dp[i][0] = accumulator + mtx[i][0]
+            accumulator += mtx[i][0]
+
+        accumulator = mtx[0][0]
+        for j in range(1, m):
+            dp[0][j] = accumulator + mtx[0][j]
+            accumulator += mtx[0][j]
+
+        for i in range(1, n):
+            for j in range(1, m):
+                left = 1e6
+                if 0 <= i - 1 < n:
+                    left = mtx[i][j] + dp[i - 1][j]
+                right = 1e6
+                if 0 <= j - 1 < m:
+                    right = mtx[i][j] + dp[i][j - 1]
+                dp[i][j] = min(left, right)
+
+        return dp[n - 1][m - 1]
+
+    print(
+        min_path_sum(
+            [
+                [5, 9, 6],
+                [11, 5, 2]
+            ]
+        )
+    )
+
+    print(
+        min_path_sum(
+            [
+                [5]
+            ]
+        )
+    )
+
+    print(
+        min_path_sum(
+            [
+                [1, 2, 3],
+                [4, 5, 4],
+                [7, 5, 9]
+            ]
+        )
+    )
+
+    print(
+        min_path_sum(
+            [
+                [5, 6],
+                [1, 2]
+            ]
+        )
+    )
+
+    print(min_path_sum([[1, 3, 1], [1, 5, 1], [4, 2, 1]]))
+    print(min_path_sum([[1, 2, 3], [4, 5, 6]]))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
