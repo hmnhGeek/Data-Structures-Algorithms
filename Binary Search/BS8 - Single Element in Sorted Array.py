@@ -45,7 +45,9 @@ class Solution:
                 right_count = high - mid
 
             # if there are odd number of elements on the left side, then the single element must be on the left side.
-            if left_count % 2 == 1:
+            # Left count > 0 check is needed to bypass issue when low becomes mid. High can never be mid except when
+            # low = high = mid.
+            if left_count > 0 and left_count % 2 == 1:
                 high = mid - 1
             # if there are odd number of elements on the right side, then the single element must be on the right side.
             else:
@@ -64,3 +66,5 @@ print(Solution.get_single_element([1, 1, 3, 5, 5]))
 print(Solution.get_single_element([1, 1, 4, 4, 15]))
 print(Solution.get_single_element([1, 1, 2, 3, 3, 4, 4, 8, 8]))
 print(Solution.get_single_element([3, 3, 7, 7, 10, 11, 11]))
+print(Solution.get_single_element([1, 1, 3, 3, 4, 5, 5, 7, 7, 8, 8]))
+print(Solution.get_single_element([1, 1, 3, 3, 4, 4, 5, 5, 7, 7, 8]))
