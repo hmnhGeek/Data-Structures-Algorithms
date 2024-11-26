@@ -289,6 +289,10 @@ def space_optimized():
         )
     )
 
+    print(
+        unique_paths([[0, 0, 1, 0, 1],[0, 0, 0, 1, 0], [1, 0, 0, 1, 0], [0, 0, 0, 0, 0]])
+    )
+
 
 recursive()
 print()
