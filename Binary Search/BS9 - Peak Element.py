@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/find-peak-element/description/
+# Solution - https://www.youtube.com/watch?v=cXxmbemS6XM&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=10
+
+
 class Solution:
     """
         Time complexity is O(log(n)) and space complexity is O(1).
