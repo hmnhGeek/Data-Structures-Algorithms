@@ -154,7 +154,7 @@ def tabulation():
             for j in range(1, m):
                 dp[0][j] = 1
 
-        dp[0][0] = 1
+        dp[0][0] = 1 if mtx[0][0] == 0 else 0
 
         for i in range(1, n):
             for j in range(1, m):
@@ -209,8 +209,87 @@ def tabulation():
     )
 
 
+def space_optimized():
+    """
+        Time complexity is O(mn) and space complexity is O(m).
+    """
+    def unique_paths(mtx):
+        n, m = len(mtx), len(mtx[0])
+        prev = {j: 0 for j in range(m)}
+
+        obstacle_found = False
+        for j in range(m):
+            if mtx[0][j] != 0:
+                obstacle_found = True
+                break
+        if obstacle_found:
+            for j in range(1, m):
+                prev[j] = 0
+        else:
+            for j in range(1, m):
+                prev[j] = 1
+
+        prev[0] = 1 if mtx[0][0] == 0 else 0
+
+        for i in range(1, n):
+            curr = {j: 0 for j in range(m)}
+            curr[0] = 1 if mtx[i][0] == 0 else 0
+            for j in range(1, m):
+                if mtx[i][j] != 0:
+                    curr[j] = 0
+                else:
+                    left = 0
+                    if 0 <= i - 1 < n:
+                        left = prev[j]
+                    right = 0
+                    if 0 <= j - 1 < m:
+                        right = curr[j - 1]
+                    curr[j] = left + right
+            prev = curr
+        return prev[m - 1]
+
+    print(
+        unique_paths(
+            [
+                [0, 0, 0],
+                [0, -1, 0],
+                [0, 0, 0]
+            ]
+        )
+    )
+
+    print(
+        unique_paths(
+            [
+                [0, 0],
+                [0, 0]
+            ]
+        )
+    )
+
+    print(
+        unique_paths(
+            [
+                [0, -1],
+                [-1, 0]
+            ]
+        )
+    )
+
+    print(
+        unique_paths(
+            [
+                [0, -1],
+                [0, 0]
+            ]
+        )
+    )
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
