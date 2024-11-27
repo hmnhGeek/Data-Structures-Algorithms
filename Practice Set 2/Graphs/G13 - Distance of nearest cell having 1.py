@@ -62,8 +62,14 @@ class Solution:
 
     @staticmethod
     def get_nearest_1s(mtx):
+        """
+            This will take O(m^2 * n^2) time and O(mn) space.
+        """
+
         n, m = len(mtx), len(mtx[0])
         result = [[None for _ in range(m)] for _ in range(n)]
+
+        # for each cell in the matrix, use BFS to determine the nearest 1.
         for i in range(n):
             for j in range(m):
                 nearest_1_distance = Solution._bfs(mtx, i, j, n, m)
