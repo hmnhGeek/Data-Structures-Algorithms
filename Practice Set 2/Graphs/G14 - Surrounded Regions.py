@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/replace-os-with-xs0052/1
+# Solution - https://www.youtube.com/watch?v=BtdgAys4yMk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=14
+
+
 class Solution:
     @staticmethod
     def _get_valid_neighbours(mtx, i, j, n, m, visited):
@@ -21,8 +25,13 @@ class Solution:
 
     @staticmethod
     def surround_regions(mtx):
+        """
+            Time complexity is O(n * m) and space complexity is O(n * m)
+        """
         n, m = len(mtx), len(mtx[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
+
+        # Visit all the 0s which are attached to any boundary through any linkage.
 
         for j in range(m):
             if mtx[0][j] == 0 and not visited[0][j]:
@@ -40,8 +49,11 @@ class Solution:
             if mtx[i][0] == 0 and not visited[i][0]:
                 Solution._dfs(mtx, i, 0, n, m, visited)
 
+        # once this is done, traverse on n and m
         for i in range(n):
             for j in range(m):
+                # if the current cell is a 0, and it is not visited, then it must not be attached from any boundary,
+                # set that 0 to a 1 as per the problem.
                 if mtx[i][j] == 0 and not visited[i][j]:
                     mtx[i][j] = 1
 
