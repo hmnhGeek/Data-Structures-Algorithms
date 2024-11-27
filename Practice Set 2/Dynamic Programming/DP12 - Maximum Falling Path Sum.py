@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/maximum-path-sum-in-the-matrix_797998?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=N_aJ5qQbYA0&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=13
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(m + n).
@@ -221,8 +225,84 @@ def tabulation():
     )
 
 
+def space_optimized():
+    """
+        Time complexity is O(m^2 * n) and space complexity is O(m).
+    """
+    def max_falling_path(mtx):
+        n, m = len(mtx), len(mtx[0])
+        max_sum_path = -1e6
+        for k in range(m):
+            prev = {j: -1e6 for j in range(m)}
+            for j in range(m):
+                prev[j] = mtx[0][j]
+            for i in range(1, n):
+                curr = {j: -1e6 for j in range(m)}
+                for j in range(m):
+                    up_left = -1e6
+                    if 0 <= i - 1 < n and 0 <= j - 1 < m:
+                        up_left = mtx[i][j] + prev[j - 1]
+
+                    up = -1e6
+                    if 0 <= i - 1 < n:
+                        up = mtx[i][j] + prev[j]
+
+                    up_right = -1e6
+                    if 0 <= i - 1 < n and 0 <= j + 1 < m:
+                        up_right = mtx[i][j] + prev[j + 1]
+
+                    curr[j] = max(up_left, up, up_right)
+                prev = curr
+            max_sum_path = max(max_sum_path, prev[k])
+        return max_sum_path
+
+    print(
+        max_falling_path(
+            [
+                [1, 2, 10, 4],
+                [100, 3, 2, 1],
+                [1, 1, 20, 2],
+                [1, 2, 2, 1]
+            ]
+        )
+    )
+
+    print(
+        max_falling_path(
+            [
+                [10, 2, 3],
+                [3, 7, 2],
+                [8, 1, 5]
+            ]
+        )
+    )
+
+    print(
+        max_falling_path(
+            [
+                [1, 2, 3],
+                [9, 8, 7],
+                [4, 5, 6]
+            ]
+        )
+    )
+
+    print(
+        max_falling_path(
+            [
+                [10, 10, 2, -13, 20, 4],
+                [1, -9, -81, 30, 2, 5],
+                [0, 10, 4, -79, 2, -10],
+                [1, -5, 2, 20, -11, 4]
+            ]
+        )
+    )
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
