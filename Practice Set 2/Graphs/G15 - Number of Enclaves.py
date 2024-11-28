@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/number-of-enclaves/1
+# Solution - https://www.youtube.com/watch?v=rxKcepXQgU4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=15
+
+
 class Solution:
     @staticmethod
     def _get_valid_neighbours(mtx, visited, i, j, n, m):
@@ -21,10 +25,15 @@ class Solution:
 
     @staticmethod
     def get_num_enclaves(mtx):
+        """
+            Time complexity is O(m*n) and space complexity is O(mn).
+        """
+
         n, m = len(mtx), len(mtx[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
         count = 0
 
+        # from each boundary traverse using DFS in O(m*n) time.
         for j in range(m):
             if mtx[0][j] == 1 and not visited[0][j]:
                 Solution._dfs(mtx, visited, 0, j, n, m)
@@ -41,6 +50,8 @@ class Solution:
             if mtx[i][0] == 1 and not visited[i][0]:
                 Solution._dfs(mtx, visited, i, 0, n, m)
 
+        # after all the 1s connected with boundaries are visited, check those 1s which are not and increment their
+        # count and return that count in another O(mn) time.
         for i in range(n):
             for j in range(m):
                 if mtx[i][j] == 1 and not visited[i][j]:
