@@ -91,8 +91,39 @@ def tabulation():
     print(subset_sum([3, 34, 4, 12, 5, 2], 30))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n * k) and space complexity is O(k).
+    """
+    def subset_sum(arr, k):
+        n = len(arr)
+        prev = {j: False for j in range(k + 1)}
+        prev[arr[0]] = True
+        prev[0] = True
+        for i in range(1, n):
+            curr = {j: False for j in range(k + 1)}
+            for j in range(k + 1):
+                left = False
+                if arr[i] <= j:
+                    left = prev[j - arr[i]]
+                right = prev[j]
+                curr[j] = left or right
+            prev = curr
+        return prev[k]
+
+    print(subset_sum([1, 2, 3, 4], 4))
+    print(subset_sum([4, 3, 2, 1], 5))
+    print(subset_sum([2, 5, 1, 6, 7], 4))
+    print(subset_sum([6, 1, 2, 1], 4))
+    print(subset_sum([1, 7, 2, 9, 10], 6))
+    print(subset_sum([3, 34, 4, 12, 5, 2], 9))
+    print(subset_sum([3, 34, 4, 12, 5, 2], 30))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
