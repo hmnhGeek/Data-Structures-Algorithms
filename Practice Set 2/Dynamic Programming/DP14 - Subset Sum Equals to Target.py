@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/subset-sum-problem-dp-25/
+# Solution - https://www.youtube.com/watch?v=fWX9xDmIzRI&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=15
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n).
