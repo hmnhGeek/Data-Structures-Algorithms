@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/
+# Solution - https://www.youtube.com/watch?v=MG-Ac4TAvTY&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=16
+
+
 class Solution:
     @staticmethod
     def _is_possible(arr, mid, days):
@@ -12,6 +16,11 @@ class Solution:
         # start iterating on the packages.
         i = 0
         while i < len(arr):
+            # check if the current package individually is not overweight than ship's capacity. If it is, then return
+            # False as no packages will be shipped because of this package.
+            if arr[i] > mid:
+                return False
+
             # let's see if we add the current day's package, will it overflow the ship's capacity or not.
             if consumed_capacity + arr[i] > mid:
                 # if it does, then we can say that this package must go on the next day. We can then simply increment
@@ -39,6 +48,9 @@ class Solution:
             Overall time complexity is O(n * log(sum(arr))) and space complexity is O(1).
         """
 
+        if days <= 0:
+            return
+
         # let low be the minimum assumed capacity, i.e., 1 unit capacity.
         # let high be the capacity of the ship equal to sum of all the packages. This would mean that the ship will be
         # able to ship all the packages in 1 day.
@@ -46,7 +58,7 @@ class Solution:
 
         # Typical binary search
         while low <= high:
-            mid = int(low + (high - low)/2)
+            mid = int(low + (high - low) / 2)
             is_possible = Solution._is_possible(arr, mid, days)
             # if it is possible to ship all the packages with `mid` capacity within `days` days, let's try to check for
             # some lower capacity.
@@ -61,3 +73,8 @@ class Solution:
 
 
 print(Solution.get_least_ship_capacity([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5))
+print(Solution.get_least_ship_capacity([5, 4, 5, 2, 3, 4, 5, 6], 5))
+print(Solution.get_least_ship_capacity([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1))
+print(Solution.get_least_ship_capacity([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0))
+print(Solution.get_least_ship_capacity([3, 2, 2, 4, 1, 4], 3))
+print(Solution.get_least_ship_capacity([1, 2, 3, 1, 1], 4))
