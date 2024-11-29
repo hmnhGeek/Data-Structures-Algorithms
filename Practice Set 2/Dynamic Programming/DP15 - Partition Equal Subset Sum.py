@@ -49,6 +49,30 @@ def memoized():
     print(subset_sum([2, 3, 3, 3, 4, 5], 10))
 
 
+def tabulation():
+    """
+        Time complexity is O(n * k) and space complexity is O(n * k).
+    """
+    def subset_sum(arr, target):
+        n = len(arr)
+        dp = {i: {j: False for j in range(target + 1)} for i in range(n)}
+        for i in dp:
+            dp[i][0] = True
+        dp[0][arr[0]] = True
+        for index in range(1, n):
+            for k in range(target + 1):
+                left = False
+                if arr[index] <= k:
+                    left = dp[index - 1][k - arr[index]]
+                right = dp[index - 1][k]
+                dp[index][k] = left or right
+        return dp[n - 1][target]
+
+    print(subset_sum([2, 3, 3, 3, 4, 5], 10))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
