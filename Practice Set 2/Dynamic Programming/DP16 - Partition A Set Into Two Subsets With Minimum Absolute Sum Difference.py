@@ -65,8 +65,31 @@ def tabulation():
     print(subset_sum([1, 2, 3, 4], 5))
 
 
+def space_optimized():
+    def subset_sum(arr, target):
+        n = len(arr)
+        prev = {j: False for j in range(target + 1)}
+        prev[0] = True
+        prev[arr[0]] = True
+        for i in range(1, n):
+            curr = {j: False for j in range(target + 1)}
+            for j in range(target + 1):
+                left = False
+                if arr[i] <= j:
+                    left = prev[j - arr[i]]
+                right = prev[j]
+                curr[j] = left or right
+            prev = curr
+        return prev[target]
+
+    print(subset_sum([1, 2, 3, 4], 9))
+    print(subset_sum([1, 2, 3, 4], 5))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
