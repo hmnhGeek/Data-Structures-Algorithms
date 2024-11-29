@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/is-graph-bipartite/description/
+# Solution - https://www.youtube.com/watch?v=-vu34sct1g8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=17
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,19 +39,36 @@ class Queue:
 class Solution:
     @staticmethod
     def is_bipartite(graph, source_node):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # if the source is not present in graph, return
         if source_node not in graph:
             return
+
+        # take O(V) space to store colors on the nodes.
         colors = {i: None for i in graph}
+
+        # initialize a queue to perform BFS and color first node with True.
         queue = Queue()
         queue.push((source_node, True))
+
+        # while queue is not empty
         while not queue.is_empty():
+            # pop the node with its color.
             node, color = queue.pop()
+            # if the popped node is already colored, but the color is opposite, it's not a bipartite graph.
             if colors[node] is not None and colors[node] == (not color):
                 return False
+            # color the node with popped color.
             colors[node] = color
+            # loop in the adjacent nodes.
             for adj_node in graph[node]:
+                # if the color of adjacent node is not colored, color it with opposite color.
                 if colors[adj_node] is None:
                     queue.push((adj_node, not color))
+        # return True, it's a bipartite graph.
         return True
 
 
@@ -78,5 +99,52 @@ print(
             6: [4]
         },
         3
+    )
+)
+
+print(
+    Solution.is_bipartite(
+        {
+            0: [1],
+            1: [0, 2],
+            2: [1]
+        },
+        2
+    )
+)
+
+print(
+    Solution.is_bipartite(
+        {
+            0: [2, 3],
+            1: [2],
+            2: [0, 1, 3],
+            3: [0, 2]
+        },
+        0
+    )
+)
+
+print(
+    Solution.is_bipartite(
+        {
+            0: [1, 2, 3],
+            1: [0, 2],
+            2: [0, 1, 3],
+            3: [0, 2]
+        },
+        3
+    )
+)
+
+print(
+    Solution.is_bipartite(
+        {
+            0: [1, 3],
+            1: [0, 2],
+            2: [1, 3],
+            3: [0, 2]
+        },
+        1
     )
 )
