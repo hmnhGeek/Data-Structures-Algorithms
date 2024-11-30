@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/#efficient-pass-range-in-recursion
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -131,10 +134,28 @@ class BinarySearchTree:
     def _show(self, start):
         if start:
             self._show(start.left)
-            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
+            print(
+                f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
             self._show(start.right)
 
     def show(self):
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def from_preorder(preorder):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+        bst = BinarySearchTree()
+        for i in range(len(preorder)):
+            bst.insert(preorder[i])
+        bst.show()
+
+
+Solution.from_preorder([10, 5, 1, 7, 40, 50])
+Solution.from_preorder([1, 2])
+Solution.from_preorder([2, 1])
+Solution.from_preorder([8, 5, 1, 7, 10, 12])
