@@ -64,6 +64,40 @@ def memoized():
     print(word_wrap([3, 2, 2], 4))
 
 
+def tabulation():
+    """
+        Time complexity is O(n*k) and space complexity is O(n + nk).
+    """
+    def word_wrap(words, k):
+        n = len(words)
+        # j will take `k` ordered values because previous consumed space cannot exceed k.
+        dp = {i: {j: 1e6 for j in range(k + 1)} for i in range(n + 1)}
+        for j in dp[n]:
+            dp[n][j] = 0
+
+        for i in range(n - 1, -1, -1):
+            for prev_consumed_space in range(k + 1):
+                # if we stay on the same line with words[i] word
+                cost_for_being_on_same_line = 1e6
+                consumed_spaces = prev_consumed_space + 1 + words[i]
+                if consumed_spaces <= k:
+                    cost_for_being_on_same_line = dp[i + 1][consumed_spaces]
+
+                # if we move to the next line with words[i] word, then compute the cost by using previous consumed
+                # space and place the current word in the next line.
+                cost_for_switching_lines = (k - prev_consumed_space) ** 2 + dp[i + 1][words[i]]
+
+                # get the minimum cost out of both.
+                dp[i][prev_consumed_space] = min(cost_for_being_on_same_line, cost_for_switching_lines)
+        # start with 1st word and place 0th word in the first line.
+        return dp[1][words[0]]
+
+    print(word_wrap([3, 2, 2, 5], 6))
+    print(word_wrap([3, 2, 2], 4))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
