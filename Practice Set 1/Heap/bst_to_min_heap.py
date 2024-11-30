@@ -187,3 +187,11 @@ bst.show()
 print()
 Solution.convert_to_min_heap(bst)
 bst.show()
+
+bst = BinarySearchTree()
+for i in [6, 4, 8, 1, 5, 7, 10]:
+    bst.insert(i)
+bst.show()
+print()
+Solution.convert_to_min_heap(bst)
+bst.show()
