@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/sort-a-stack-using-recursion/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -40,30 +43,43 @@ class Stack:
 class Solution:
     @staticmethod
     def _sorted_insert(stack, top, element):
+        # if the element to insert is None, simply return the stack, you've sorted the stack.
         if element is None:
             return stack
+
+        # if top element is less than current element, push the current element first and then
+        # push the prev element from the recursion stack.
         if stack.top() <= element:
             stack.push(element)
             if top:
                 stack.push(top)
             return stack
 
+        # gte the sorted stack
         stack = Solution._sorted_insert(stack, stack.pop(), element)
+        # if there is some previous element, push it back.
         if top:
             stack.push(top)
+        # finally return the stack.
         return stack
 
     @staticmethod
     def _sort(stack: Stack, element):
+        # if the stack is empty, simply insert the element and return stack. This will happen when the recursion for
+        # `_sort` ends.
         if stack.is_empty():
             stack.push(element)
             return stack
+
+        # else, if stack is not yet empty, pop an element and _sort recursively.
         stack = Solution._sort(stack, stack.pop())
+        # start building back the stack backwards, by inserting elements in sorted fashion.
         stack = Solution._sorted_insert(stack, None, element)
         return stack
 
     @staticmethod
     def sort_stack(stack: Stack):
+        # start with no element and begin the sorting process.
         Solution._sort(stack, None)
         while not stack.is_empty():
             print(stack.pop(), end=" ")
