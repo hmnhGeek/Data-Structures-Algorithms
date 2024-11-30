@@ -30,8 +30,41 @@ class LinkedList:
         print(curr.data, end=" ")
         print()
 
+    def split(self):
+        if self.length <= 1:
+            return
+        slow, fast = self.head, self.head.next
+        self.tail.next = None
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-l = LinkedList()
-for i in [1, 2, 3, 4]:
-    l.push(i)
-l.show()
+        # slow is now at the middle node.
+        next_list_head = slow.next
+
+        slow.next = self.head
+        l1 = LinkedList()
+        l1.head = self.head
+        l1.tail = slow
+
+        l2 = LinkedList()
+        l2.head = next_list_head
+        l2.tail = self.tail
+        self.tail.next = next_list_head
+
+        return l1, l2
+
+
+def test(*args):
+    l = LinkedList()
+    for i in args:
+        l.push(i)
+    l.show()
+    l1, l2 = l.split()
+    l1.show()
+    l2.show()
+    print()
+
+
+test(10, 4, 9)
+test(10, 4, 9, 10)
