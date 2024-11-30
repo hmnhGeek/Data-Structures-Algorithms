@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -31,8 +34,15 @@ class LinkedList:
         print()
 
     def split(self):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # if there is no node or only one node, return
         if self.length <= 1:
             return
+
+        # use hare and tortoise algorithm to find the middle node.
         slow, fast = self.head, self.head.next
         self.tail.next = None
         while fast and fast.next:
@@ -42,11 +52,13 @@ class LinkedList:
         # slow is now at the middle node.
         next_list_head = slow.next
 
+        # build the first half linked list
         slow.next = self.head
         l1 = LinkedList()
         l1.head = self.head
         l1.tail = slow
 
+        # build the second half linked list
         l2 = LinkedList()
         l2.head = next_list_head
         l2.tail = self.tail
