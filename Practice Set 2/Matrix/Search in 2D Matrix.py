@@ -1,7 +1,16 @@
+# Problem link - https://www.naukri.com/code360/problems/search-in-a-2d-matrix_980531
+
+
 class Solution:
     @staticmethod
     def search(mtx, x):
+        """
+            Time complexity is O(log(nm)) and space complexity is O(1).
+        """
         n, m = len(mtx), len(mtx[0])
+
+        # since the entire matrix is sorted in a way that if you flatten it you'll get a sorted array, we can perform a
+        # simple binary search.
         low = 0
         high = n * m - 1
         while low <= high:
