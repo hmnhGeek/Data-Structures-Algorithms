@@ -93,6 +93,51 @@ def memoized():
     print(edit_distance("whgtdwhgtdg", "aswcfg"))
 
 
+def tabulation():
+    """
+        Time complexity is O(n1 * n2) and space complexity is O(n1 * n2).
+    """
+    def edit_distance(s1: str, s2: str) -> int:
+        n1, n2 = len(s1), len(s2)
+        dp = {i: {j: 1e6 for j in range(n2 + 1)} for i in range(n1 + 1)}
+        for j in dp[0]:
+            dp[0][j] = j
+        for i in dp:
+            dp[i][0] = i
+
+        for i in range(1, n1 + 1):
+            for j in range(1, n2 + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    # if both characters match, simply move to next characters without adding any cost.
+                    dp[i][j] = dp[i - 1][j - 1]
+                else:
+                    # assume that we replaced ith character in s1 to jth character in s2, thus they both now have same
+                    # characters. Add 1 cost and move to next indices.
+                    replace = 1 + dp[i - 1][j - 1]
+
+                    # maybe ith character is not needed, delete it and check for next character in s1, if it matches
+                    # with jth character in s2. Add 1 cost.
+                    deletion = 1 + dp[i - 1][j]
+
+                    # insert jth character at ith index. Now the previous ith character will still remain at `i`. So,
+                    # stay at i only, but decrement j for next character check. Add 1 cost.
+                    insertion = 1 + dp[i][j - 1]
+
+                    # return the minimum cost.
+                    dp[i][j] = min(replace, insertion, deletion)
+        return dp[n1][n2]
+
+    print(edit_distance("geek", "gesek"))
+    print(edit_distance("gfg", "gfg"))
+    print(edit_distance("abc", "def"))
+    print(edit_distance("horse", "ros"))
+    print(edit_distance("intention", "execution"))
+    print(edit_distance("abc", "dc"))
+    print(edit_distance("whgtdwhgtdg", "aswcfg"))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
