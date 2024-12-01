@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/merging-intervals/#expected-approach-checking-overlapping-intervals-only-onlogn-time-and-o1-space
+# Solution - https://www.youtube.com/watch?v=IexN60k62jo&t=1s
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -110,6 +114,10 @@ print(
 
 
 def merge_overlap(arr):
+    """
+        Time complexity is O(n) and space complexity is O(n) for stack.
+    """
+
     # Sort intervals based on start values
     arr.sort()
 
