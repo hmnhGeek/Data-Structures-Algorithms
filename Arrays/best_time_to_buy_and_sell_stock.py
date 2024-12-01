@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+# Solution - https://www.youtube.com/watch?v=excAOvwF_Wk
+
+
 class Solution:
     @staticmethod
     def find_max_profit(arr):
