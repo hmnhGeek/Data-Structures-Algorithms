@@ -153,3 +153,9 @@ min_heap = MinHeap()
 for i in [3, 5, 9, 6, 8, 20, 10, 12, 18, 9]:
     min_heap.insert(i)
 print(Solution.convert(min_heap))
+
+# Example 2
+min_heap = MinHeap()
+for i in [3, 4, 8, 11, 13]:
+    min_heap.insert(i)
+print(Solution.convert(min_heap))
