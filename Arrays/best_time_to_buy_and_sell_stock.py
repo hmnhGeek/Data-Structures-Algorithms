@@ -1,14 +1,29 @@
 class Solution:
     @staticmethod
     def find_max_profit(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         n = len(arr)
+
+        # if there is only 1 or no day available to trade, return 0 profit.
         if n <= 1:
             return 0
+
+        # set the minimum price to be first day's price.
         mini = arr[0]
+        # set initial profit to 0.
         profit = 0
+
+        # loop in the array from second day
         for i in range(1, n):
+            # update the max profit by assuming that you sold on this day and brought it at min price of mini.
             profit = max(profit, arr[i] - mini)
+            # also, update mini with current day's price.
             mini = min(mini, arr[i])
+
+        # return max profit.
         return profit
 
 
