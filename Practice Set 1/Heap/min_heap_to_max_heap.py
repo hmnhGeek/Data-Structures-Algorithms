@@ -145,7 +145,9 @@ class Solution:
         # This will take O(n*log(n)) time and O(n) space.
         while not min_heap.is_empty():
             max_heap.insert(min_heap.pop())
-        return max_heap.heap
+        while not max_heap.is_empty():
+            print(max_heap.pop(), end=" ")
+        print()
 
 
 # Example 1
