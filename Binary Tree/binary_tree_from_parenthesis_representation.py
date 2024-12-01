@@ -58,7 +58,7 @@ class Solution:
     @staticmethod
     def get_tree(string: str):
         """
-            Time complexity is O(n) and space complexity is O(h).
+            Time complexity is O(n) and space complexity is O(h + n).
         """
 
         # create a starting dummy node.
