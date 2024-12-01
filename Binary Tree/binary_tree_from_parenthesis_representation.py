@@ -18,7 +18,7 @@ class Solution:
         if counter[0] < n and Solution._is_digit(string[counter[0]]):
             _sum = 0
             while counter[0] < n and Solution._is_digit(string[counter[0]]):
-                _sum += int(string[counter[0]])
+                _sum = _sum * 10 + int(string[counter[0]])
                 counter[0] += 1
             root.data = _sum
 
