@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/partitions-with-given-difference_3751628?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=zoilQD1kYSg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=19
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n).
@@ -188,3 +192,5 @@ print(Solution.count_subsets([1, 1, 1, 1], 0))
 print(Solution.count_subsets([4, 6, 3], 1))
 print(Solution.count_subsets([3, 1, 1, 2, 1], 0))
 print(Solution.count_subsets([3, 2, 2, 5, 1], 1))
+print(Solution.count_subsets([1, 2, 1, 0, 1, 3, 3], 11))
+print(Solution.count_subsets([1, 2, 3, 1, 2], 1))
