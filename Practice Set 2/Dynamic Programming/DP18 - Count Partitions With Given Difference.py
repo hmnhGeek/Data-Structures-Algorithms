@@ -161,11 +161,22 @@ class Solution:
 
     @staticmethod
     def count_subsets(arr, d):
+        """
+            Time complexity is O(n*d) and space complexity is O(d).
+        """
+
+        # in O(n) time find the sum of the array.
         s = sum(arr)
+
+        # if s1 cannot be found, return 0
         if (s + d) % 2 != 0:
             return 0
+
+        # find s1 and s2
         s1 = (s + d)//2
         s2 = s1 - d
+
+        # find the count of subsets where s1 >= s2 in O(n*s1) time and O(s1) space.
         count = 0
         if s1 >= s2:
             count = Solution._count_subsets(arr, s1)
