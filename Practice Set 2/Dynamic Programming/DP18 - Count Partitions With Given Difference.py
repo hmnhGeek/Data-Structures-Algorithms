@@ -137,10 +137,43 @@ def space_optimized():
     print(count([35, 2, 8, 22], 0))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
+class Solution:
+    @staticmethod
+    def _count_subsets(arr, k):
+        n = len(arr)
+        prev = {j: 0 for j in range(k + 1)}
+
+        for j in prev:
+            prev[j] = 1 if arr[0] == j else 0
+        prev[0] = 1
+
+        for i in range(1, n):
+            curr = {j: 0 for j in range(k + 1)}
+            curr[0] = 1
+            for target in range(k + 1):
+                left = 0
+                if arr[i] <= target:
+                    left = prev[target - arr[i]]
+                right = prev[target]
+                curr[target] = left + right
+            prev = curr
+        return prev[k]
+
+    @staticmethod
+    def count_subsets(arr, d):
+        s = sum(arr)
+        if (s + d) % 2 != 0:
+            return 0
+        s1 = (s + d)//2
+        s2 = s1 - d
+        count = 0
+        if s1 >= s2:
+            count = Solution._count_subsets(arr, s1)
+        return count
+
+
+print(Solution.count_subsets([5, 2, 6, 4], 3))
+print(Solution.count_subsets([1, 1, 1, 1], 0))
+print(Solution.count_subsets([4, 6, 3], 1))
+print(Solution.count_subsets([3, 1, 1, 2, 1], 0))
+print(Solution.count_subsets([3, 2, 2, 5, 1], 1))
