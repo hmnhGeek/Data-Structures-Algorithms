@@ -32,3 +32,35 @@ class Stack:
         return item
 
 
+class Solution:
+    @staticmethod
+    def _dfs(graph, node, stack, visited):
+        visited[node] = True
+        for adj_node in graph[node]:
+            if not visited[adj_node]:
+                Solution._dfs(graph, adj_node, stack, visited)
+        stack.push(node)
+
+    @staticmethod
+    def topological_sort(graph):
+        visited = {i: False for i in graph}
+        stack = Stack()
+        for node in graph:
+            if not visited[node]:
+                Solution._dfs(graph, node, stack, visited)
+
+        while not stack.is_empty():
+            print(stack.pop(), end=" ")
+        print()
+
+
+Solution.topological_sort(
+    {
+        0: [],
+        1: [],
+        2: [3],
+        3: [1],
+        4: [0, 1],
+        5: [0, 2]
+    }
+)
