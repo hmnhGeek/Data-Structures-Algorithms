@@ -1,3 +1,11 @@
+# Problem link - https://www.naukri.com/code360/problems/painter-s-partition-problem_1089557
+# Solution - https://www.youtube.com/watch?v=thUd_WJn6wk&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=20
+
+"""
+    For explanation, please refer to BS18 as the problem is exactly the same.
+"""
+
+
 class Solution:
     @staticmethod
     def _get_painters(arr, mid):
@@ -13,6 +21,10 @@ class Solution:
 
     @staticmethod
     def painter(arr, k):
+        """
+            Time complexity is O(n*log(sum(arr) - max(arr))) and space complexity is O(1).
+        """
+
         if k > len(arr):
             return -1
         low, high = max(arr), sum(arr)
