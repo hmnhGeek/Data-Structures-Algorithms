@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/0-1-knapsack_920542?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=GqOmJHQZivw&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=21
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n).
