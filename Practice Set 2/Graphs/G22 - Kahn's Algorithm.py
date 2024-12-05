@@ -31,3 +31,59 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def _get_indegrees(graph, indegrees):
+        for node in graph:
+            for adj_node in graph[node]:
+                indegrees[adj_node] += 1
+
+    @staticmethod
+    def topo_sort(graph):
+        queue = Queue()
+        indegrees = {i: 0 for i in graph}
+        Solution._get_indegrees(graph, indegrees)
+        for node in indegrees:
+            if indegrees[node] == 0:
+                queue.push(node)
+        while not queue.is_empty():
+            node = queue.pop()
+            print(node, end=" ")
+            for adj_node in graph[node]:
+                indegrees[adj_node] -= 1
+                if indegrees[adj_node] == 0:
+                    queue.push(adj_node)
+        print()
+
+
+Solution.topo_sort(
+    {
+        0: [],
+        1: [],
+        2: [3],
+        3: [1],
+        4: [0, 1],
+        5: [0, 2]
+    }
+)
+
+Solution.topo_sort(
+    {
+        0: [],
+        1: [0],
+        2: [0],
+        3: [0]
+    }
+)
+
+Solution.topo_sort(
+    {
+        0: [],
+        1: [3],
+        2: [3],
+        3: [],
+        4: [0, 1],
+        5: [0, 2]
+    }
+)
