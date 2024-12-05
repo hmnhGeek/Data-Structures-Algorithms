@@ -70,6 +70,42 @@ def memoized():
     print(min_coins([4, 6, 2], 5))
 
 
+def tabulation():
+    """
+        Time complexity is O(n * target) and space complexity is O(n * target).
+    """
+    def min_coins(arr, k):
+        n = len(arr)
+        dp = {i: {j: 1e6 for j in range(k + 1)} for i in range(n)}
+        for j in dp[0]:
+            dp[0][j] = j//arr[0] if j % arr[0] == 0 else 1e6
+        for i in dp:
+            dp[i][0] = 0
+        for index in range(1, n):
+            for target in range(k + 1):
+                left = 1e6
+                if arr[index] <= target:
+                    left = 1 + dp[index][target - arr[index]]
+                right = dp[index - 1][target]
+                dp[index][target] = min(left, right)
+        ans = dp[n - 1][k]
+        return ans if ans != 1e6 else -1
+
+    print(min_coins([1, 2, 3], 7))
+    print(min_coins([1], 0))
+    print(min_coins([12, 1, 3], 4))
+    print(min_coins([2, 1], 11))
+    print(min_coins([1, 2, 5], 11))
+    print(min_coins([2], 3))
+    print(min_coins([1,], 0))
+    print(min_coins([25, 10, 5], 30))
+    print(min_coins([9, 6, 5, 1], 19))
+    print(min_coins([5, 1], 0))
+    print(min_coins([4, 6, 2], 5))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
