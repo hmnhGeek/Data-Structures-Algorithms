@@ -1,3 +1,8 @@
+# Problem link - https://www.geeksforgeeks.org/problems/topological-sort/1
+# Solution - https://www.youtube.com/watch?v=73sneFXuTEg&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=22
+
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -41,17 +46,33 @@ class Solution:
 
     @staticmethod
     def topo_sort(graph):
+        """
+            Overall time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # queue for BFS
         queue = Queue()
+
+        # get the indegrees of the nodes in O(V + E) time and O(V) space.
         indegrees = {i: 0 for i in graph}
         Solution._get_indegrees(graph, indegrees)
+
+        # push all the nodes to the queue which have no indegree.
         for node in indegrees:
             if indegrees[node] == 0:
                 queue.push(node)
+
+        # while the queue is not empty...
         while not queue.is_empty():
+            # pop the node and print it.
             node = queue.pop()
             print(node, end=" ")
+
+            # iterate on the adjacent nodes
             for adj_node in graph[node]:
+                # decrement the indegree of this adjacent node
                 indegrees[adj_node] -= 1
+                # if the adj node is totally disconnected, push it to the queue.
                 if indegrees[adj_node] == 0:
                     queue.push(adj_node)
         print()
