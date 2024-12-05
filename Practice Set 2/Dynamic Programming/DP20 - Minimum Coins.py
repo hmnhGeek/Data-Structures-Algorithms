@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/minimum-elements_3843091?leftPanelTab=1%3Fsource%3Dyoutube&campaign=striver_dpseries
+# Solution - https://www.youtube.com/watch?v=myPeWb3Y68A&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=21
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n)
