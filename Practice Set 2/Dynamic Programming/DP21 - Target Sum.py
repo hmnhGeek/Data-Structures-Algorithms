@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/target-sum-1626326450/1
+# Solution - https://www.youtube.com/watch?v=b3GD8263-PQ&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=22
+
+
 def recursive():
     """
         T: O(2^n) and S: O(n)
@@ -123,6 +127,10 @@ class Solution:
 
     @staticmethod
     def target_sum(arr, target):
+        """
+            Overall time complexity is O(n * target) and space complexity is O(target).
+        """
+
         s = sum(arr)
         if (s + target) % 2 == 1:
             return 0
@@ -134,3 +142,4 @@ print(Solution.target_sum([1, 1, 1, 1, 1], 3))
 print(Solution.target_sum([1, 2, 3, 1], 3))
 print(Solution.target_sum([1, 2, 3], 2))
 print(Solution.target_sum([1, 1], 0))
+print(Solution.target_sum([1], 1))
