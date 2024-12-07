@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/median-of-two-sorted-arrays/description/
+# Solution - https://www.youtube.com/watch?v=F9c7LpRZWVQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
+
+
 class Solution:
     @staticmethod
     def find_median(arr1, arr2):
@@ -60,25 +64,39 @@ class Solution:
 
     @staticmethod
     def find_median_optimal(arr1, arr2):
+        """
+            Overall time complexity is O(log(n1)) and space complexity is O(1).
+        """
+
         n1 = len(arr1)
         n2 = len(arr2)
+        # always perform optimal approach on the shorter array.
         if n2 < n1:
             return Solution.find_median_optimal(arr2, arr1)
+
+        # find the number of elements required on the left part of median.
         left = (n1 + n2 + 1)//2
         n = n1 + n2
+
+        # define search space and perform Binary Search
         low = 0
         high = n1
         while low <= high:
+            # find the number of elements to be picked from arr1.
             mid1 = int(low + (high - low)/2)
+            # the number of elements to be picked from arr2 will be left - mid1.
             mid2 = left - mid1
+            # define l1, l2, r1 and r2.
             l1 = arr1[mid1 - 1] if mid1 - 1 >= 0 else -1e6
             l2 = arr2[mid2 - 1] if mid2 - 1 >= 0 else -1e6
             r1 = arr1[mid1] if mid1 < n1 else 1e6
             r2 = arr2[mid2] if mid2 < n2 else 1e6
+            # if the symmetry is valid, return the median
             if l1 <= r2 and l2 <= r1:
                 if n % 2 == 1:
                     return max(l1, l2)
                 return (max(l1, l2) + min(r1, r2))/2
+            # else reduce the search space
             elif l1 > r2:
                 high = mid1 - 1
             else:
