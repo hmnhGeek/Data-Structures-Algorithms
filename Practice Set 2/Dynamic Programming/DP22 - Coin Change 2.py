@@ -84,8 +84,40 @@ def tabulation():
     print(coin_change_2([2, 5, 3, 6], 10))
 
 
+def space_optimized():
+    """
+        T: O(nk) and S: O(k)
+    """
+    def coin_change_2(arr, k):
+        n = len(arr)
+        prev = {j: 0 for j in range(k + 1)}
+        for j in prev:
+            prev[j] = 1 if j % arr[0] == 0 else 0
+        prev[0] = 1
+        for index in range(1, n):
+            curr = {j: 0 for j in range(k + 1)}
+            curr[0] = 1
+            for target in range(k + 1):
+                left = 0
+                if arr[index] <= target:
+                    left = curr[target - arr[index]]
+                right = prev[target]
+                curr[target] = left + right
+            prev = curr
+        return prev[k]
+
+    print(coin_change_2([1, 2, 3], 4))
+    print(coin_change_2([5, 3, 2], 1))
+    print(coin_change_2([1, 2, 5], 5))
+    print(coin_change_2([2], 3))
+    print(coin_change_2([10], 10))
+    print(coin_change_2([2, 5, 3, 6], 10))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
