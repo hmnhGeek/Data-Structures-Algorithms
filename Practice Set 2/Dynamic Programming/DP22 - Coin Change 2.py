@@ -18,6 +18,11 @@ def recursive():
         return solve(arr, n - 1, k)
 
     print(coin_change_2([1, 2, 3], 4))
+    print(coin_change_2([5, 3, 2], 1))
+    print(coin_change_2([1,2,5], 5))
+    print(coin_change_2([2], 3))
+    print(coin_change_2([10], 10))
+    print(coin_change_2([2, 5, 3, 6], 10))
 
 
 def memoized():
@@ -44,8 +49,43 @@ def memoized():
         return solve(arr, n - 1, k, dp)
 
     print(coin_change_2([1, 2, 3], 4))
+    print(coin_change_2([5, 3, 2], 1))
+    print(coin_change_2([1, 2, 5], 5))
+    print(coin_change_2([2], 3))
+    print(coin_change_2([10], 10))
+    print(coin_change_2([2, 5, 3, 6], 10))
+
+
+def tabulation():
+    """
+        T: O(nk) and S: O(nk)
+    """
+    def coin_change_2(arr, k):
+        n = len(arr)
+        dp = {i: {j: 0 for j in range(k + 1)} for i in range(n)}
+        for j in dp[0]:
+            dp[0][j] = 1 if j % arr[0] == 0 else 0
+        for i in dp:
+            dp[i][0] = 1
+        for index in range(1, n):
+            for target in range(k + 1):
+                left = 0
+                if arr[index] <= target:
+                    left = dp[index][target - arr[index]]
+                right = dp[index - 1][target]
+                dp[index][target] = left + right
+        return dp[n - 1][k]
+
+    print(coin_change_2([1, 2, 3], 4))
+    print(coin_change_2([5, 3, 2], 1))
+    print(coin_change_2([1, 2, 5], 5))
+    print(coin_change_2([2], 3))
+    print(coin_change_2([10], 10))
+    print(coin_change_2([2, 5, 3, 6], 10))
 
 
 recursive()
 print()
 memoized()
+print()
+tabulation()
