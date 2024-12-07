@@ -32,3 +32,71 @@ class Queue:
         return item
 
 
+class Solution:
+    @staticmethod
+    def _populate_indegrees(graph, indegrees):
+        for node in graph:
+            for adj_node in graph[node]:
+                indegrees[adj_node] += 1
+
+    @staticmethod
+    def has_cycle(graph):
+        queue = Queue()
+        indegrees = {i: 0 for i in graph}
+        Solution._populate_indegrees(graph, indegrees)
+        count = 0
+        for i in indegrees:
+            if indegrees[i] == 0:
+                queue.push(i)
+        while not queue.is_empty():
+            node = queue.pop()
+            count += 1
+            for adj_node in graph[node]:
+                indegrees[adj_node] -= 1
+                if indegrees[adj_node] == 0:
+                    queue.push(adj_node)
+        return count != len(graph)
+
+
+print(
+    Solution.has_cycle(
+        {
+            0: [1],
+            1: [2],
+            2: [3],
+            3: [3]
+        }
+    )
+)
+
+print(
+    Solution.has_cycle(
+        {
+            0: [1],
+            1: [2],
+            2: []
+        }
+    )
+)
+
+print(
+    Solution.has_cycle(
+        {
+            0: [1, 2],
+            1: [2],
+            2: [0, 3],
+            3: [3]
+        }
+    )
+)
+
+print(
+    Solution.has_cycle(
+        {
+            0: [1, 2],
+            1: [2],
+            2: [3],
+            3: []
+        }
+    )
+)
