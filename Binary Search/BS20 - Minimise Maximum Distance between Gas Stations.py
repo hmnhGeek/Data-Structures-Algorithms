@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/minimise-max-distance_7541449
+# Solution - https://www.youtube.com/watch?v=kMSBvlZ-_HA&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=21
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -67,19 +71,40 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def place_gas_stations(arr, k):
+        """
+            Overall time complexity is O({n + k} * log(n)) time and O(n) space.
+        """
+
         n = len(arr)
+
+        # define an array of length (n - 1) storing the number of gas stations placed in each slot. We can place the gas
+        # stations outside the array as well but that won't minimize the distance between the gas stations and so, we
+        # must place them within the slots.
         slots = [0] * (n - 1)
+
+        # define a max heap
         max_heap = MaxHeap()
+
+        # push the (slot_length, slot_index) into max heap. The idea is to pop from the max heap continuously to always
+        # get the max length slot so that we can place a new gas station in that slot. This will take O(n*log(n)) time.
+        # And the space used will be O(n).
         for i in range(n - 1):
             diff = arr[i + 1] - arr[i]
             slot_length = (diff / (slots[i] + 1))
             max_heap.insert((slot_length, i))
+
+        # now start placing the `k` gas stations. This is the minimization step. It will take O(k * log(n)) time.
         for i in range(k):
+            # pop the max length slot in O(log(n)) time.
             diff, idx = max_heap.pop()
-            new_diff = arr[idx + 1] - arr[idx]
+            # increment the gas stations placed at this index.
             slots[idx] += 1
-            new_length = (new_diff / (slots[idx] + 1))
+            # update the max diff in this slot as we are evenly dividing the slot by the number of gas stations.
+            new_length = (diff / (slots[idx] + 1))
+            # insert it back into the max heap.
             max_heap.insert((new_length, idx))
+
+        # at the end, the max diff will always be on the top of the heap, return it.
         max_diff_between_stations, _ = max_heap.pop()
         return max_diff_between_stations
 
