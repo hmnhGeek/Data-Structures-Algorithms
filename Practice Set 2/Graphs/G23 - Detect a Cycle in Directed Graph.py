@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+# Solution - https://www.youtube.com/watch?v=iTBaI90lpDQ&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=23
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -41,20 +45,37 @@ class Solution:
 
     @staticmethod
     def has_cycle(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         queue = Queue()
+
+        # get the indegrees of the nodes in O(V + E) time and O(V) space.
         indegrees = {i: 0 for i in graph}
         Solution._populate_indegrees(graph, indegrees)
+
+        # store the count of topo sort.
         count = 0
+
+        # push all the 0 indegree nodes into the queue.
         for i in indegrees:
             if indegrees[i] == 0:
                 queue.push(i)
+
+        # typical topo sort condition
         while not queue.is_empty():
+            # pop the node and increment the count
             node = queue.pop()
             count += 1
+            # loop on the adjacent nodes
             for adj_node in graph[node]:
+                # and decrement the degree of adjacent nodes
                 indegrees[adj_node] -= 1
+                # if the adjacent node is disconnected, push the adj_node into queue.
                 if indegrees[adj_node] == 0:
                     queue.push(adj_node)
+        # return no cycle if topo sort length is same as graph length else return has cycle.
         return count != len(graph)
 
 
