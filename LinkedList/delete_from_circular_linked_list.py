@@ -70,7 +70,7 @@ class CircularLinkedList:
 
 
 cll = CircularLinkedList()
-for i in [2, 6, 8, 0, 9, 9, 7]:
+for i in [1, 2, 3, 4, 5, 6, 7, 8]:
     cll.push(i)
 cll.show()
 cll.delete(0)
