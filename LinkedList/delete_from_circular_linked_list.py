@@ -30,3 +30,33 @@ class CircularLinkedList:
         print(curr.data, end=" ")
         print()
 
+    def delete(self, index):
+        if self.is_empty():
+            return
+        if index not in range(self.length):
+            return
+        curr = self.head
+        counter = 0
+        prev = self.tail
+        while counter != index:
+            prev = curr
+            curr = curr.next
+            counter += 1
+        prev.next = curr.next
+        if curr == self.head:
+            self.head = curr.next
+        elif curr == self.tail:
+            self.tail = prev
+        self.length -= 1
+
+
+cll = CircularLinkedList()
+for i in [2, 6, 8, 0, 9, 9, 7]:
+    cll.push(i)
+cll.show()
+cll.delete(0)
+cll.show()
+cll.delete(5)
+cll.show()
+cll.delete(2)
+cll.show()
