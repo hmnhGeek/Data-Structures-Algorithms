@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -6,17 +9,17 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -67,17 +70,30 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_median(mtx):
+        """
+            Time complexity is O(mn*log(n)) and space complexity is O(n).
+        """
+
         n, m = len(mtx), len(mtx[0])
-        median_index = (n*m + 1)//2
+        # median will be at index (n*m + 1)/2.
+        median_index = (n * m + 1) // 2
+
+        # push the first column in Min Heap in n*log(n) time.
         min_heap = MinHeap()
         for i in range(n):
             min_heap.insert((mtx[i][0], i, 0))
+
+        # store a counter and median elem as None.
         counter = 0
         elem = None
+
+        # This will run for O(mn*log(n)) time.
         while counter != median_index:
+            # pop in log(n) time.
             elem, i, j = min_heap.pop()
             counter += 1
             if 0 <= j + 1 < m:
+                # push in log(n) time.
                 min_heap.insert((mtx[i][j + 1], i, j + 1))
         return elem
 
@@ -98,6 +114,26 @@ print(
             [1],
             [2],
             [3]
+        ]
+    )
+)
+
+print(
+    Solution.get_median(
+        [[1, 5, 7, 9, 11],
+         [2, 3, 4, 8, 9],
+         [4, 11, 14, 19, 20],
+         [6, 10, 22, 99, 100],
+         [7, 15, 17, 24, 28]]
+    )
+)
+
+print(
+    Solution.get_median(
+        [
+            [1, 2, 3, 4, 5],
+            [8, 9, 11, 12, 13],
+            [21, 23, 25, 27, 29]
         ]
     )
 )
