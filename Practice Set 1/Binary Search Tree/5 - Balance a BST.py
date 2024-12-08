@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/
+
+
 class Node:
     def __init__(self, data):
         self.parent = self.left = self.right = None
@@ -156,14 +159,20 @@ class Solution:
         if low > high:
             return
         mid = int(low + (high - low)/2)
+        # insert in O(h) time.
         bst.insert(inorder[mid])
         Solution._construct_balanced(bst, inorder, low, mid - 1)
         Solution._construct_balanced(bst, inorder, mid + 1, high)
 
     @staticmethod
     def balance(bst: BinarySearchTree):
+        """
+            Overall time complexity is O(nh) and space is O(h).
+        """
         balanced_bst = BinarySearchTree()
+        # get inorder in O(n) time and O(h) space.
         inorder = bst.get_inorder()
+        # balance the BST in O(n*h) time and O(h) space.
         Solution._construct_balanced(balanced_bst, inorder, 0, len(inorder) - 1)
         return balanced_bst
 
@@ -175,3 +184,10 @@ for i in [30, 20, 10]:
 t1.show()
 bal = Solution.balance(t1)
 bal.show()
+
+# Example 2
+t2 = BinarySearchTree()
+for i in [4, 3, 5, 2, 6, 1, 7]:
+    t2.insert(i)
+t2.show()
+Solution.balance(t2).show()
