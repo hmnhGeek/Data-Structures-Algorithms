@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/deletion-circular-linked-list/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -31,22 +34,38 @@ class CircularLinkedList:
         print()
 
     def delete(self, index):
+        """
+            T: O(n) and S: O(1)
+        """
+
+        # if the list is empty or the index is out of bounds, return
         if self.is_empty():
             return
         if index not in range(self.length):
             return
+
+        # store traversal variables.
         curr = self.head
         counter = 0
         prev = self.tail
+
+        # while counter hasn't reached index
         while counter != index:
+            # update prev and curr and increment the counter
             prev = curr
             curr = curr.next
             counter += 1
+
+        # delete the linkage between prev and curr
         prev.next = curr.next
+
+        # update head or tail if required.
         if curr == self.head:
             self.head = curr.next
         elif curr == self.tail:
             self.tail = prev
+
+        # decrement the length
         self.length -= 1
 
 
