@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -63,3 +66,28 @@ class MaxHeap:
         self.max_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def rearrange_characters(string):
+        max_heap = MaxHeap()
+        d = dict(Counter(string))
+        for item in d.items():
+            max_heap.insert(item)
+        prev = None
+        result = ""
+        while not max_heap.is_empty():
+            char, freq = max_heap.pop()
+            result += char
+            if prev and prev[1] > 0:
+                max_heap.insert(prev)
+            prev = (char, freq - 1)
+        return result if prev[1] == 0 else ""
+
+
+print(Solution.rearrange_characters("book"))
+print(Solution.rearrange_characters("geeksforgeeks"))
+print(Solution.rearrange_characters("address"))
+print(Solution.rearrange_characters("mississippi"))
+print(Solution.rearrange_characters("aaaa"))
+print(Solution.rearrange_characters("bbbbbb"))
