@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/rearrange-characters4649/1
+
+
 from collections import Counter
 
 
@@ -70,16 +73,27 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def rearrange_characters(string):
+        """
+            Overall time complexity is O(n*log(n)) and space complexity is O(n).
+        """
+
         max_heap = MaxHeap()
+
+        # push all the frequencies into the max heap in O(n*log(n)) time.
         d = dict(Counter(string))
         for item in d.items():
             max_heap.insert(item)
+
+        # run this algorithm till the max heap does not get empty.
         prev = None
         result = ""
+        # overall this runs for O(n*log(n)) time
         while not max_heap.is_empty():
+            # pop in O(log(n)) time.
             char, freq = max_heap.pop()
             result += char
             if prev and prev[1] > 0:
+                # insert in log(n) time.
                 max_heap.insert(prev)
             prev = (char, freq - 1)
         return result if prev[1] == 0 else ""
