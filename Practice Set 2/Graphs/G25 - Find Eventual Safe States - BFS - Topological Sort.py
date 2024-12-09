@@ -31,3 +31,75 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def _get_reversed_graph(graph, reversed_graph):
+        for node in graph:
+            for adj_node in graph[node]:
+                reversed_graph[adj_node].append(node)
+
+    @staticmethod
+    def _populate_indegrees(reversed_graph, indegrees):
+        for node in reversed_graph:
+            for adj_node in reversed_graph[node]:
+                indegrees[adj_node] += 1
+
+    @staticmethod
+    def get_safe_nodes(graph):
+        queue = Queue()
+        reversed_graph = {i: [] for i in graph}
+        indegrees = {i: 0 for i in reversed_graph}
+        Solution._get_reversed_graph(graph, reversed_graph)
+        Solution._populate_indegrees(reversed_graph, indegrees)
+        safe_nodes = set()
+        for node in indegrees:
+            if indegrees[node] == 0:
+                queue.push(node)
+        while not queue.is_empty():
+            node = queue.pop()
+            safe_nodes.add(node)
+            for adj_node in reversed_graph[node]:
+                indegrees[adj_node] -= 1
+                if indegrees[adj_node] == 0:
+                    queue.push(adj_node)
+        return safe_nodes
+    
+
+print(
+    Solution.get_safe_nodes(
+        {
+            0: [1, 2],
+            1: [3],
+            2: [5],
+            3: [0],
+            4: [5],
+            5: [],
+            6: [],
+            7: [1]
+        }
+    )
+)
+
+print(
+    Solution.get_safe_nodes(
+        {
+            0: [1],
+            1: [2],
+            2: [0, 3],
+            3: []
+        }
+    )
+)
+
+print(
+    Solution.get_safe_nodes(
+        {
+            0: [1],
+            1: [3],
+            2: [4],
+            3: [0, 2],
+            4: []
+        }
+    )
+)
