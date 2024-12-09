@@ -49,12 +49,36 @@ class Solution:
                 q += 1
 
     @staticmethod
+    def _dfs(graph, node, visited, stack):
+        visited[node] = True
+        for adj_node in graph[node]:
+            if not visited[adj_node]:
+                Solution._dfs(graph, adj_node, visited, stack)
+        stack.push(node)
+
+    @staticmethod
     def _get_toposort(graph):
         visited = {i: False for i in graph}
+        stack = Stack()
+        for node in graph:
+            if not visited[node]:
+                Solution._dfs(graph, node, visited, stack)
 
+        if stack.length != len(graph):
+            print(False)
+        else:
+            while not stack.is_empty():
+                print(stack.pop(), end=" ")
+            print()
 
     @staticmethod
     def get_alien_dictionary(orders, k):
         graph = {Solution._alphabets[i]: [] for i in range(k)}
         Solution._construct_graph(graph, orders)
-        topo_sort = Solution._get_toposort(graph)
+        Solution._get_toposort(graph)
+
+
+Solution.get_alien_dictionary(["baa","abcd","abca","cab","cad"], 4)
+Solution.get_alien_dictionary(["caa","aaa","aab"], 3)
+Solution.get_alien_dictionary(["dhhid" "dahi" "cedg" "fg" "gdah" "i" "gbdei" "hbgf" "e" "ddde"], 9)
+Solution.get_alien_dictionary(["abc","bat","ade"], 5)
