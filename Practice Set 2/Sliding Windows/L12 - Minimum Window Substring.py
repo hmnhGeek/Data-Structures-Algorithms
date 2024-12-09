@@ -52,6 +52,13 @@ class Solution:
             # finally increment from the right side.
             right += 1
 
+        # at the end also, it is possible that we can achieve even shorter length window.
+        while Solution._satisfied(d, r):
+            min_length = min(min_length, right - left + 1)
+            start_index = left
+            d[string[left]] -= 1
+            left += 1
+
         # return the min window substring.
         return string[start_index:start_index+min_length] if start_index != -1 else ""
 
