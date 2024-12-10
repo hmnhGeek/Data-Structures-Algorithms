@@ -31,4 +31,3 @@ class Queue:
         self.length -= 1
         return item
 
-
