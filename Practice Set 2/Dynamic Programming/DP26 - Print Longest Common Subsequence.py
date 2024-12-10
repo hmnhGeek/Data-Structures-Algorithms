@@ -107,10 +107,49 @@ def space_optimized():
     print(lcs("ABC", "CBA"))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
+class Solution:
+    @staticmethod
+    def lcs(s1, s2):
+        """
+            Overall time complexity is O(n1 * n2) and space complexity is O(n1 * n2).
+        """
+
+        # construct the correct DP matrix in O(n1 * n2) time and O(n1 * n2) space.
+        n1, n2 = len(s1), len(s2)
+        dp = {i: {j: 0 for j in range(n2 + 1)} for i in range(n1 + 1)}
+        for i in range(1, n1 + 1):
+            for j in range(1, n2 + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    dp[i][j] = 1 + dp[i - 1][j - 1]
+                else:
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+
+        # store the result variable and pointers i and j from the end of the matrix.
+        result = ""
+        i, j = n1, n2
+
+        # while both pointers have strings to traverse. This will take O(n1 + n2) time.
+        while i > 0 and j > 0:
+            # if there's a match in characters, add it to the result
+            if s1[i - 1] == s2[j - 1]:
+                result += s1[i - 1]
+                i -= 1
+                j -= 1
+            # if previous row has greater value than previous column, go to previous row.
+            elif dp[i - 1][j] > dp[i][j - 1]:
+                i -= 1
+            else:
+                # else go to previous column.
+                j -= 1
+
+        # return the reverse of result as actual answer.
+        return result[-1:-len(result)-1:-1]
+
+
+print(Solution.lcs("adebc", "dcadb"))
+print(Solution.lcs("ab", "defg"))
+print(Solution.lcs("abcde", "ace"))
+print(Solution.lcs("abc", "abc"))
+print(Solution.lcs("abc", "acd"))
+print(Solution.lcs("AGGTAB", "GXTXAYB"))
+print(Solution.lcs("ABC", "CBA"))
