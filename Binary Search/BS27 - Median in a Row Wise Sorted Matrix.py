@@ -72,7 +72,7 @@ class Solution:
     @staticmethod
     def get_median(mtx):
         """
-            Time complexity is O(nm*log(n)) and space complexity is O(n).
+            Time complexity is O(m*log(n)) and space complexity is O(n).
         """
 
         n, m = len(mtx), len(mtx[0])
@@ -83,7 +83,7 @@ class Solution:
         counter = 0
         median_index = (n * m + 1) // 2
 
-        # this will run for n*m time.
+        # this will run for m time.
         while not min_heap.is_empty():
             # this will take O(log(n)) time.
             elem, x, y = min_heap.pop()
