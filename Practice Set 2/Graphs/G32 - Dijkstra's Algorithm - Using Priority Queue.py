@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+# Solution - https://www.youtube.com/watch?v=V6H1qAeB-l4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=32
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,19 +71,36 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_shortest_path(graph, source):
+        """
+            Time complexity is O(E * log(V)) and space complexity is O(V).
+        """
+
+        # check if the source node is present or not in the graph
         if source not in graph:
             return
+
+        # define a distances array and mark the distance of source node as 0.
         distances = {i: 1e6 for i in graph}
         distances[source] = 0
+
+        # define a priority queue and push the source node into it.
         pq = MinHeap()
         pq.insert((distances[source], source))
+
+        # typical BFS
         while not pq.is_empty():
+            # get the nearest node from PQ.
             distance, node = pq.pop()
+
+            # travel to the adjacent nodes
             for adj in graph[node]:
                 adj_node, wt = adj
+                # update the distance of adjacent nodes if required and push it to PQ.
                 if distances[adj_node] > distance + wt:
                     distances[adj_node] = distance + wt
                     pq.insert((distances[adj_node], adj_node))
+
+        # return the shortest paths from source node.
         return distances.values()
 
 
