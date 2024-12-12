@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/first-and-last-position-of-an-element-in-sorted-array_1082549
+# Solution - https://www.youtube.com/watch?v=hjR1IYVx9lY&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=4
+
+
 class Solution:
     @staticmethod
     def first_occurrence(arr, x):
@@ -23,6 +27,7 @@ class Solution:
 
     @staticmethod
     def get_occurrence(arr, x):
+        # This will take O(2*log(n)) time and O(1) space.
         first, last = Solution.first_occurrence(arr, x), Solution.last_occurrence(arr, x)
         if arr[first] == x and arr[last] == x:
             return first, last
