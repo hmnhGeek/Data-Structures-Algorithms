@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+# Solution - https://www.youtube.com/watch?v=V6H1qAeB-l4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=32
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,19 +39,36 @@ class Queue:
 class Solution:
     @staticmethod
     def get_shortest_path(graph, source):
+        """
+            Time complexity is O(E * log(V)) and space complexity is O(V).
+        """
+
+        # if source node is not in graph, return
         if source not in graph:
             return
+
+        # define distances and mark source node distance as 0.
         distances = {i: 1e6 for i in graph}
         distances[source] = 0
+
+        # define a queue and push source node.
         queue = Queue()
         queue.push((source, 0))
+
+        # typical BFS
         while not queue.is_empty():
+            # pop the current node and distance
             node, distance = queue.pop()
+
+            # loop on the adjacent nodes
             for adj in graph[node]:
                 adj_node, wt = adj
+                # update the adjacent node's distance and push it to the queue if needed
                 if distances[adj_node] > distance + wt:
                     distances[adj_node] = distance + wt
                     queue.push((adj_node, distances[adj_node]))
+
+        # return the shortest distances.
         return distances.values()
 
 
