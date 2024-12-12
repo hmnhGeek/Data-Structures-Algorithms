@@ -1,3 +1,8 @@
+# Problem link - https://www.naukri.com/code360/problems/lower-bound_8165382
+# Problem link - https://www.naukri.com/code360/problems/implement-upper-bound_8165383
+# Solution - https://www.youtube.com/watch?v=6zhGS79oQ4k&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=3
+
+
 class Solution:
     @staticmethod
     def get_lower_bound(arr, x):
@@ -17,6 +22,11 @@ class Solution:
 
     @staticmethod
     def get_upper_bound(arr, x):
+        """
+            Gives the smallest index i such that arr[i] > x.
+
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         low, high = 0, len(arr) - 1
         while low <= high:
             mid = int(low + (high - low) / 2)
