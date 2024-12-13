@@ -64,3 +64,44 @@ class MinHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def get_shortest_path(graph, source, destination):
+        if source not in graph or destination not in graph:
+            return
+        distances = {i: 1e6 for i in graph}
+        distances[source] = 0
+        parents = {i: None for i in graph}
+        parents[source] = source
+        pq = MinHeap()
+        pq.insert((0, source))
+        while not pq.is_empty():
+            distance, node = pq.pop()
+            for adj in graph[node]:
+                adj_node, wt = adj
+                if distances[adj_node] > distance + wt:
+                    distances[adj_node] = distance + wt
+                    parents[adj_node] = node
+                    pq.insert((distances[adj_node], adj_node))
+        path_list = []
+        start_node = destination
+        while parents[start_node] != start_node:
+            path_list.append(start_node)
+            start_node = parents[start_node]
+        path_list.append(start_node)
+        return path_list[-1:-len(path_list)-1:-1]
+
+
+print(
+    Solution.get_shortest_path(
+        {
+            1: [[2, 2], [4, 1]],
+            2: [[1, 2], [3, 4], [5, 5]],
+            3: [[2, 4], [4, 3], [5, 1]],
+            4: [[1, 1], [3, 3]],
+            5: [[2, 5], [3, 1]]
+        },
+        1,
+        5
+    )
+)
