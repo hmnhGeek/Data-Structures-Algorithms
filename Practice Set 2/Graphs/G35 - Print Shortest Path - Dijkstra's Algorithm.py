@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/shortest-path-in-weighted-undirected-graph/1
+# Solution - https://www.youtube.com/watch?v=rp1SMw7HSO8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=35
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,28 +71,51 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_shortest_path(graph, source, destination):
+        """
+            Overall time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # edge case check
         if source not in graph or destination not in graph:
             return
+
+        # define distances array and mark the source node distance as 0.
         distances = {i: 1e6 for i in graph}
         distances[source] = 0
+
+        # define the parents array and set the source parent to source itself.
         parents = {i: None for i in graph}
         parents[source] = source
+
+        # define a min heap and push source node with distance 0 into it.
         pq = MinHeap()
         pq.insert((0, source))
+
+        # typical BFS
         while not pq.is_empty():
+            # pop the nearest node
             distance, node = pq.pop()
+            # loop on the adjacent nodes of this node.
             for adj in graph[node]:
                 adj_node, wt = adj
+                # update the distance and parent of this adjacent node if required.
                 if distances[adj_node] > distance + wt:
                     distances[adj_node] = distance + wt
                     parents[adj_node] = node
+                    # also push this adjacent node into the PQ.
                     pq.insert((distances[adj_node], adj_node))
+
+        # define a path list variable which will store the nodes in the order of the shortest path.
         path_list = []
+
+        # back track from destination to the source node and add it to the path list.
         start_node = destination
         while parents[start_node] != start_node:
             path_list.append(start_node)
             start_node = parents[start_node]
         path_list.append(start_node)
+
+        # return the actual path by reversing the list and returning it.
         return path_list[-1:-len(path_list)-1:-1]
 
 
