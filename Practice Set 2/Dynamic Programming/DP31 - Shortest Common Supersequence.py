@@ -78,10 +78,31 @@ def space_optimized():
     print(lcs_length("abcd", "abzd"))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
+class Solution:
+    @staticmethod
+    def lcs_length(s1, s2):
+        n, m = len(s1), len(s2)
+        prev = {j: 0 for j in range(m + 1)}
+        for i in range(1, n + 1):
+            curr = {j: 0 for j in range(m + 1)}
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    curr[j] = 1 + prev[j - 1]
+                else:
+                    curr[j] = max(prev[j], curr[j - 1])
+            prev = curr
+        return prev[m]
+
+    @staticmethod
+    def shortest_common_supersequence_length(s1, s2):
+        """
+            Time complexity is O(nm) and space complexity is O(m).
+        """
+        _lcs = Solution.lcs_length(s1, s2)
+        return len(s1) + len(s2) - _lcs
+
+
+print(Solution.shortest_common_supersequence_length("brute", "groot"))
+print(Solution.shortest_common_supersequence_length("bleed", "blue"))
+print(Solution.shortest_common_supersequence_length("coding", "ninjas"))
+print(Solution.shortest_common_supersequence_length("blinding", "lights"))
