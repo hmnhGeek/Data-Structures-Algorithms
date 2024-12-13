@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/shortest-supersequence_4244493?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=xElxAuBcvsU&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=32
+
+
 def recursive():
     """
         Time complexity is O(2^{m + n}) and space complexity is O(m + n).
