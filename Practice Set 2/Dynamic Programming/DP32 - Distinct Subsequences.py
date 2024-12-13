@@ -110,8 +110,43 @@ def tabulation():
     print(distinct_subsequences("geeksforgeeks", "ge"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n * m) and space complexity is O(m).
+    """
+    def distinct_subsequences(s1, s2):
+        n, m = len(s1), len(s2)
+        prev = {j: 0 for j in range(m + 1)}
+        prev[0] = 1
+        for i in range(1, n + 1):
+            curr = {j: 0 for j in range(m + 1)}
+            curr[0] = 1
+            for j in range(1, m + 1):
+                # if ith and jth characters match, then we have two options.
+                if s1[i - 1] == s2[j - 1]:
+                    # option 1: use the match and decrement both indices
+                    # option 2: don't match with current i character, match with some other lower index in s1.
+                    # add the results from above two options
+                    curr[j] = prev[j - 1] + prev[j]
+                else:
+                    # if there is no match, use option 2 from above.
+                    curr[j] = prev[j]
+            prev = curr
+        return prev[m]
+
+    print(distinct_subsequences("babgbag", "bag"))
+    print(distinct_subsequences("brootgroot", "brt"))
+    print(distinct_subsequences("dingdingdingding", "ing"))
+    print(distinct_subsequences("aaaaa", "a"))
+    print(distinct_subsequences("rabbbit", "rabbit"))
+    print(distinct_subsequences("banana", "ban"))
+    print(distinct_subsequences("geeksforgeeks", "ge"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
