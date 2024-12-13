@@ -101,8 +101,47 @@ class Solution:
         _lcs = Solution.lcs_length(s1, s2)
         return len(s1) + len(s2) - _lcs
 
+    @staticmethod
+    def print_shortest_common_supersequence(s1, s2):
+        """
+            Time complexity is O(n*m) and space complexity is O(n*m).
+        """
+        n, m = len(s1), len(s2)
+        dp = {i: {j: 0 for j in range(m + 1)} for i in range(n + 1)}
+        for i in range(1, n + 1):
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    dp[i][j] = 1 + dp[i - 1][j - 1]
+                else:
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+
+        shortest_common_supersequence = ""
+        i, j = n, m
+        while i > 0 and j > 0:
+            if s1[i - 1] == s2[j - 1]:
+                shortest_common_supersequence += s1[i - 1]
+                i -= 1
+                j -= 1
+            elif dp[i - 1][j] > dp[i][j - 1]:
+                shortest_common_supersequence += s1[i - 1]
+                i -= 1
+            else:
+                shortest_common_supersequence += s2[j - 1]
+                j -= 1
+        while i > 0:
+            shortest_common_supersequence += s1[i - 1]
+            i -= 1
+        while j > 0:
+            shortest_common_supersequence += s2[j - 1]
+            j -= 1
+        return shortest_common_supersequence[-1:-len(shortest_common_supersequence)-1:-1]
+
 
 print(Solution.shortest_common_supersequence_length("brute", "groot"))
 print(Solution.shortest_common_supersequence_length("bleed", "blue"))
 print(Solution.shortest_common_supersequence_length("coding", "ninjas"))
 print(Solution.shortest_common_supersequence_length("blinding", "lights"))
+print(Solution.print_shortest_common_supersequence("brute", "groot"))
+print(Solution.print_shortest_common_supersequence("bleed", "blue"))
+print(Solution.print_shortest_common_supersequence("coding", "ninjas"))
+print(Solution.print_shortest_common_supersequence("blinding", "lights"))
