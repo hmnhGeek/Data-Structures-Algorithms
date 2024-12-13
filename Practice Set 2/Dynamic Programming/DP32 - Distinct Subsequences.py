@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/subsequence-counting_3755256?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=nVG7eTiD2bY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=33
+
+
 def recursive():
     """
         Time complexity is O(2^{n + m}) and space complexity is O(n + m).
