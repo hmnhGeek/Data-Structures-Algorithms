@@ -59,10 +59,11 @@ def memoized():
             # option 1: use the match and decrement both indices
             # option 2: don't match with current i character, match with some other lower index in s1.
             # add the results from above two options
-            return solve(s1, i - 1, s2, j - 1, dp) + solve(s1, i - 1, s2, j, dp)
+            dp[i][j] = solve(s1, i - 1, s2, j - 1, dp) + solve(s1, i - 1, s2, j, dp)
         else:
             # if there is no match, use option 2 from above.
-            return solve(s1, i - 1, s2, j, dp)
+            dp[i][j] = solve(s1, i - 1, s2, j, dp)
+        return dp[i][j]
 
     def distinct_subsequences(s1, s2):
         n, m = len(s1), len(s2)
