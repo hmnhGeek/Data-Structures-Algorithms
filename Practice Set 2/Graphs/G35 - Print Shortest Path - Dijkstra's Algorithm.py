@@ -72,7 +72,7 @@ class Solution:
     @staticmethod
     def get_shortest_path(graph, source, destination):
         """
-            Overall time complexity is O(V + E) and space complexity is O(V).
+            Overall time complexity is O(E * log(V)) and space complexity is O(V).
         """
 
         # edge case check
