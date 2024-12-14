@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -139,3 +142,66 @@ class BinarySearchTree:
         print()
 
 
+class Solution:
+    @staticmethod
+    def _get_inorder(root: Node, inorder: List[int]):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._get_inorder(root.right, inorder)
+
+    @staticmethod
+    def _get_inorder_data(bst: BinarySearchTree) -> List[int]:
+        inorder = []
+        Solution._get_inorder(bst.root, inorder)
+        return inorder
+
+    @staticmethod
+    def _merge(x: List[int], y: List[int]) -> List[int]:
+        merged = []
+        i, j = 0, 0
+        while i < len(x) and j < len(y):
+            if x[i] <= y[j]:
+                merged.append(x[i])
+                i += 1
+            else:
+                merged.append(y[j])
+                j += 1
+        while i < len(x):
+            merged.append(x[i])
+            i += 1
+        while j < len(y):
+            merged.append(y[j])
+            j += 1
+        return merged
+
+    @staticmethod
+    def _build_merged_bst(inorder: List[int], bst: BinarySearchTree, low: int, high: int):
+        if low > high:
+            return
+        mid = int(low + (high - low)/2)
+        bst.insert(inorder[mid])
+        Solution._build_merged_bst(inorder, bst, low, mid - 1)
+        Solution._build_merged_bst(inorder, bst, mid + 1, high)
+
+    @staticmethod
+    def merge_bsts(bst1: BinarySearchTree, bst2: BinarySearchTree) -> BinarySearchTree:
+        inorder1 = Solution._get_inorder_data(bst1)
+        inorder2 = Solution._get_inorder_data(bst2)
+        merged_inorder = Solution._merge(inorder1, inorder2)
+        merged_bst = BinarySearchTree()
+        Solution._build_merged_bst(merged_inorder, merged_bst, 0, len(merged_inorder) - 1)
+        return merged_bst
+
+
+# Example 1
+bst1 = BinarySearchTree()
+for i in [5, 3, 6, 2, 4]:
+    bst1.insert(i)
+bst2 = BinarySearchTree()
+for i in [2, 1, 3, 7, 6]:
+    bst2.insert(i)
+bst1.show()
+bst2.show()
+merged_bst = Solution.merge_bsts(bst1, bst2)
+merged_bst.show()
