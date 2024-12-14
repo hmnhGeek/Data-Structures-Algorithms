@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-sum4058/1
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -67,17 +70,33 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def get_min_sum(arr):
+        """
+            Time complexity is O(n*log(n)) and space complexity is O(n).
+        """
+
+        # store the numbers in n and m
         n, m = 0, 0
         pow = 0
         h = MaxHeap()
+
+        # push the array elements into max heap in O(n*log(n)) time.
         for i in arr:
             h.insert(i)
+
+        # while the heap is not empty. We use max heap to assign LSB with highest value.
         while not h.is_empty():
+            # construct `n`
             a = h.pop()
             n += (a * 10**pow) if a is not None else 0
+
+            # construct `m`
             b = h.pop()
             m += (b * 10**pow) if b is not None else 0
+
+            # increment power `pow`
             pow += 1
+
+        # return the sum of the numbers
         return n + m
 
 
