@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/reverse-a-doubly-linked-list/1
+
+
 class Node:
     def __init__(self, data):
         self.prev = self.next = None
@@ -34,10 +37,14 @@ class DoublyLinkedList:
         print()
 
     def reverse(self):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         prev, curr = None, self.head
         while curr is not None:
             next_curr = curr.next
             curr.next = prev
+            # additional step of handling the prev pointer
             curr.prev = next_curr
             prev = curr
             curr = next_curr
@@ -56,3 +63,6 @@ def test(*args):
 
 
 test(3, 4, 5)
+test(75, 122, 59, 196)
+test(1, 2, 3)
+test(1)
