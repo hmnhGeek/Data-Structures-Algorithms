@@ -31,7 +31,7 @@ class MaxHeap:
             max_child_index = rci
         return max_child_index
 
-    def min_heapify_up(self, start_index):
+    def max_heapify_up(self, start_index):
         if start_index == 0:
             return
         pi = self.get_pi(start_index)
@@ -40,19 +40,19 @@ class MaxHeap:
         if max_child_index is not None:
             if self.heap[pi] < self.heap[max_child_index]:
                 self.heap[pi], self.heap[max_child_index] = self.heap[max_child_index], self.heap[pi]
-            self.min_heapify_up(pi)
+            self.max_heapify_up(pi)
 
-    def min_heapify_down(self, pi):
+    def max_heapify_down(self, pi):
         lci, rci = self.get_lci(pi), self.get_rci(pi)
         max_child_index = self.get_max_child_index(lci, rci)
         if max_child_index is not None:
-            if self.heap[pi] > self.heap[max_child_index]:
+            if self.heap[pi] < self.heap[max_child_index]:
                 self.heap[pi], self.heap[max_child_index] = self.heap[max_child_index], self.heap[pi]
-            self.min_heapify_down(max_child_index)
+            self.max_heapify_down(max_child_index)
 
     def insert(self, x):
         self.heap.append(x)
-        self.min_heapify_up(len(self.heap) - 1)
+        self.max_heapify_up(len(self.heap) - 1)
 
     def pop(self):
         if self.is_empty():
@@ -60,7 +60,7 @@ class MaxHeap:
         item = self.heap[0]
         self.heap[0], self.heap[-1] = self.heap[-1], self.heap[0]
         del self.heap[-1]
-        self.min_heapify_down(0)
+        self.max_heapify_down(0)
         return item
 
 
@@ -68,8 +68,19 @@ class Solution:
     @staticmethod
     def get_min_sum(arr):
         n, m = 0, 0
+        pow = 0
         h = MaxHeap()
         for i in arr:
             h.insert(i)
         while not h.is_empty():
-            pass
+            a = h.pop()
+            n += (a * 10**pow) if a is not None else 0
+            b = h.pop()
+            m += (b * 10**pow) if b is not None else 0
+            pow += 1
+        return n + m
+
+
+print(Solution.get_min_sum([6, 8, 4, 5, 2, 3]))
+print(Solution.get_min_sum([5, 3, 0, 7, 4]))
+print(Solution.get_min_sum([9, 4]))
