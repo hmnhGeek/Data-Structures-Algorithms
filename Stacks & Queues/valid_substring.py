@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/valid-substring0624/1
+# Solution - https://www.youtube.com/watch?v=gqQsbdTcey0
+
+
 class Node:
     def __init__(self, data):
         self.data = data
