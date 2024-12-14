@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -46,15 +49,24 @@ class Solution:
 
     @staticmethod
     def balanced_parenthesis(string):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         stack = Stack()
         for i in range(len(string)):
             elem = string[i]
+            # if the current character is an opening bracket, push it to the stack.
             if elem in ["[", "{", "("]:
                 stack.push(elem)
+            # else, if it's a closing bracket, check if the top of the stack is its opening bracket or not.
             elif stack.top() == Solution._map[elem]:
+                # if it is, then pop from the stack
                 stack.pop()
             else:
+                # else, there is a imbalance, return False
                 return False
+        # at the end, the stack must be empty for balanced parenthesis.
         return stack.is_empty()
 
 
