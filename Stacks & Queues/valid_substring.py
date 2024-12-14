@@ -40,19 +40,28 @@ class Stack:
 class Solution:
     @staticmethod
     def get_valid(string):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         stack = Stack()
+        # marker to denote when no invalid bracket is present.
         stack.push(-1)
         max_length = 0
         for i in range(len(string)):
             bracket = string[i]
             if bracket == "(":
+                # opening bracket is always pushed into the stack
                 stack.push(i)
             else:
                 stack.pop()
                 if stack.is_empty():
+                    # push the next invalid parenthesis..
                     stack.push(i)
                 else:
+                    # get length of valid section from the index of most recent invalid parenthesis.
                     length = i - stack.top()
+                    # update max length
                     max_length = max(length, max_length)
         return max_length
 
