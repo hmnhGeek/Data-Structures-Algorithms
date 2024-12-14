@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/merge-two-bst-s/1
+
+
 from typing import List
 
 
@@ -186,9 +189,17 @@ class Solution:
 
     @staticmethod
     def merge_bsts(bst1: BinarySearchTree, bst2: BinarySearchTree) -> BinarySearchTree:
+        """
+            Overall time complexity is O(m + n) and space complexity is O(log(n) + log(m) + n + m + log(n + m))
+            or O(n + m) space.
+        """
+
+        # get inorders in O(n + m) time and O(h1 + h2) space.
         inorder1 = Solution._get_inorder_data(bst1)
         inorder2 = Solution._get_inorder_data(bst2)
+        # merge the inorder lists in O(n + m) time and O(n + m) space.
         merged_inorder = Solution._merge(inorder1, inorder2)
+        # get the merged BST in O(m + n) time and O(log(m + n)) space.
         merged_bst = BinarySearchTree()
         Solution._build_merged_bst(merged_inorder, merged_bst, 0, len(merged_inorder) - 1)
         return merged_bst
@@ -200,6 +211,19 @@ for i in [5, 3, 6, 2, 4]:
     bst1.insert(i)
 bst2 = BinarySearchTree()
 for i in [2, 1, 3, 7, 6]:
+    bst2.insert(i)
+bst1.show()
+bst2.show()
+merged_bst = Solution.merge_bsts(bst1, bst2)
+merged_bst.show()
+
+
+# Example 2
+bst1 = BinarySearchTree()
+for i in [12, 9, 6, 11]:
+    bst1.insert(i)
+bst2 = BinarySearchTree()
+for i in [8, 5, 10, 2]:
     bst2.insert(i)
 bst1.show()
 bst2.show()
