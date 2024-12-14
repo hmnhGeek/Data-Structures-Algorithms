@@ -1,4 +1,4 @@
-class MinHeap:
+class MaxHeap:
     def __init__(self):
         self.heap = []
 
@@ -19,36 +19,36 @@ class MinHeap:
         pi = int((ci - 1)/2)
         return pi if pi in range(len(self.heap)) else None
 
-    def get_min_child_index(self, lci, rci):
+    def get_max_child_index(self, lci, rci):
         if lci is None and rci is None:
             return
         if lci is None:
             return rci
         if rci is None:
             return lci
-        min_child_index = lci
-        if self.heap[rci] < self.heap[min_child_index]:
-            min_child_index = rci
-        return min_child_index
+        max_child_index = lci
+        if self.heap[rci] > self.heap[max_child_index]:
+            max_child_index = rci
+        return max_child_index
 
     def min_heapify_up(self, start_index):
         if start_index == 0:
             return
         pi = self.get_pi(start_index)
         lci, rci = self.get_lci(pi), self.get_rci(pi)
-        min_child_index = self.get_min_child_index(lci, rci)
-        if min_child_index is not None:
-            if self.heap[pi] > self.heap[min_child_index]:
-                self.heap[pi], self.heap[min_child_index] = self.heap[min_child_index], self.heap[pi]
+        max_child_index = self.get_max_child_index(lci, rci)
+        if max_child_index is not None:
+            if self.heap[pi] < self.heap[max_child_index]:
+                self.heap[pi], self.heap[max_child_index] = self.heap[max_child_index], self.heap[pi]
             self.min_heapify_up(pi)
 
     def min_heapify_down(self, pi):
         lci, rci = self.get_lci(pi), self.get_rci(pi)
-        min_child_index = self.get_min_child_index(lci, rci)
-        if min_child_index is not None:
-            if self.heap[pi] > self.heap[min_child_index]:
-                self.heap[pi], self.heap[min_child_index] = self.heap[min_child_index], self.heap[pi]
-            self.min_heapify_down(min_child_index)
+        max_child_index = self.get_max_child_index(lci, rci)
+        if max_child_index is not None:
+            if self.heap[pi] > self.heap[max_child_index]:
+                self.heap[pi], self.heap[max_child_index] = self.heap[max_child_index], self.heap[pi]
+            self.min_heapify_down(max_child_index)
 
     def insert(self, x):
         self.heap.append(x)
@@ -64,3 +64,12 @@ class MinHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def get_min_sum(arr):
+        n, m = 0, 0
+        h = MaxHeap()
+        for i in arr:
+            h.insert(i)
+        while not h.is_empty():
+            pass
