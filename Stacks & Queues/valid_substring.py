@@ -37,8 +37,28 @@ class Stack:
         return item
 
 
-# print(Solution.get_valid("()(())("))
-# print(Solution.get_valid("(()("))
-# print(Solution.get_valid("(()())"))
-# print(Solution.get_valid("((()"))
-# print(Solution.get_valid(")()())"))
+class Solution:
+    @staticmethod
+    def get_valid(string):
+        stack = Stack()
+        stack.push(-1)
+        max_length = 0
+        for i in range(len(string)):
+            bracket = string[i]
+            if bracket == "(":
+                stack.push(i)
+            else:
+                stack.pop()
+                if stack.is_empty():
+                    stack.push(i)
+                else:
+                    length = i - stack.top()
+                    max_length = max(length, max_length)
+        return max_length
+
+
+print(Solution.get_valid("()(())("))
+print(Solution.get_valid("(()("))
+print(Solution.get_valid("(()())"))
+print(Solution.get_valid("((()"))
+print(Solution.get_valid(")()())"))
