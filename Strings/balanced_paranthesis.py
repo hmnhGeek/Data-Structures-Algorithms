@@ -36,3 +36,33 @@ class Stack:
             return
         return self.head.data
 
+
+class Solution:
+    _map = {
+        "}": "{",
+        ")": "(",
+        "]": "["
+    }
+
+    @staticmethod
+    def balanced_parenthesis(string):
+        stack = Stack()
+        for i in range(len(string)):
+            elem = string[i]
+            if elem in ["[", "{", "("]:
+                stack.push(elem)
+            elif stack.top() == Solution._map[elem]:
+                stack.pop()
+            else:
+                return False
+        return stack.is_empty()
+
+
+print(Solution.balanced_parenthesis("{([])}"))
+print(Solution.balanced_parenthesis("([]"))
+print(Solution.balanced_parenthesis("()"))
+print(Solution.balanced_parenthesis("[()]{}{[()()]()}"))
+print(Solution.balanced_parenthesis("[(])"))
+print(Solution.balanced_parenthesis("()[]{}"))
+print(Solution.balanced_parenthesis("(]"))
+print(Solution.balanced_parenthesis("{[(])}"))
