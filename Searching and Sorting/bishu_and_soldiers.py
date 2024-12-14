@@ -1,3 +1,7 @@
+# Problem link - https://www.hackerearth.com/problem/algorithm/bishu-and-soldiers-227/
+# Solution - https://www.youtube.com/watch?v=hT1sOIcenBA
+
+
 class QuickSort:
     @staticmethod
     def _get_partition_index(arr, low, high):
@@ -25,3 +29,43 @@ class QuickSort:
         QuickSort._sort(arr, 0, len(arr) - 1)
 
 
+class Solution:
+    @staticmethod
+    def _get_presum(arr):
+        result = []
+        _sum = 0
+        for i in range(len(arr)):
+            _sum += arr[i]
+            result.append(_sum)
+        return result
+
+    @staticmethod
+    def _get_less_equal_powers(arr, x, low, high):
+        while low <= high:
+            mid = int(low + (high - low)/2)
+            if arr[mid] <= x:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return high
+
+    @staticmethod
+    def bishu_soldiers(powers, queries):
+        """
+            Overall time complexity is O({n + m} * log(n)) and space complexity is O(n + m).
+        """
+
+        # Takes O(n*log(n)) time to sort.
+        QuickSort.sort(powers)
+        # Takes O(n) time to compute and takes O(n) space.
+        pre_sum = Solution._get_presum(powers)
+        # Takes O(2m) space for m sized queries.
+        result = []
+        # Takes O(m*log(n)) time where m is the number of queries.
+        for q in queries:
+            powers_less_than_q = Solution._get_less_equal_powers(powers, q, 0, len(powers) - 1)
+            result.append((powers[powers_less_than_q], pre_sum[powers_less_than_q]))
+        return result
+
+
+print(Solution.bishu_soldiers([1, 2, 3, 4, 5, 6, 7], [3, 10, 2]))
