@@ -131,10 +131,11 @@ class BinarySearchTree:
     def _show(self, start):
         if start:
             self._show(start.left)
-            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.sz}, ht = {start.ht}, d = {start.d}")
+            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
             self._show(start.right)
 
     def show(self):
         self._show(self.root)
+        print()
 
 
