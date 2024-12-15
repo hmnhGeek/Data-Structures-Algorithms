@@ -53,9 +53,25 @@ class Solution:
         # finally return the root.
         return root
 
+    @staticmethod
+    def get_postorder(root: Node):
+        if root:
+            Solution.get_postorder(root.left)
+            Solution.get_postorder(root.right)
+            print(root.data, end=" ")
+
 
 # Example 1
 t1 = Solution.construct([1, 6, 8, 7], [1, 6, 7, 8])
-print(t1.left, t1.right.data)
-print(t1.right.left, t1.right.right.data)
-print(t1.right.right.left.data, t1.right.right.right)
+Solution.get_postorder(t1)
+print()
+
+# Example 2
+t2 = Solution.construct([3, 1, 4, 0, 5, 2], [0, 1, 3, 4, 2, 5])
+Solution.get_postorder(t2)
+print()
+
+# Example 3
+t3 = Solution.construct([2, 5, 4, 1, 3], [1, 4, 5, 2, 3])
+Solution.get_postorder(t3)
+print()
