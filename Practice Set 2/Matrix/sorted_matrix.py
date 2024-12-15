@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/sorted-matrix2333/1
+
+
 class MergeSort:
     @staticmethod
     def _merge(arr, low, high):
@@ -51,9 +54,16 @@ class Solution:
 
     @staticmethod
     def sort_mtx(mtx):
+        """
+            Overall time complexity is O(n^2 log(n)) and space complexity is O(n^2).
+        """
+
         n = len(mtx)
+        # This will take O(n^2) time and O(n^2) space.
         flattened_arr = Solution._flatten(mtx, n)
+        # This will take O(n^2 * log(n)) time.
         MergeSort.sort(flattened_arr)
+        # This will take another O(n^2) time.
         Solution._repopulate(mtx, flattened_arr, n)
         for i in range(n):
             print(mtx[i])
@@ -65,3 +75,5 @@ Solution.sort_mtx(
      [27, 29, 37, 48],
      [32, 33, 39, 50]]
 )
+
+Solution.sort_mtx([[1, 5, 3], [2, 8, 7], [4, 6, 9]])
