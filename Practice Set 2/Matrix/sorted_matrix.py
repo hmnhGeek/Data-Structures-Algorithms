@@ -65,6 +65,7 @@ class Solution:
         MergeSort.sort(flattened_arr)
         # This will take another O(n^2) time.
         Solution._repopulate(mtx, flattened_arr, n)
+        # Print the sorted matrix
         for i in range(n):
             print(mtx[i])
 
