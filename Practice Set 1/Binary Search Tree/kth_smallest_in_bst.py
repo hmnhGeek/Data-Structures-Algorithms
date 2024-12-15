@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
+
+
 from typing import List
 
 
@@ -152,8 +155,14 @@ class Solution:
 
     @staticmethod
     def get_kth_smallest(bst: BinarySearchTree, k: int) -> int:
+        """
+            Overall time complexity is O(n) and space complexity is O(log(n)).
+        """
+
+        # get the inorder of the BST in O(n) time and O(log(n)) space.
         inorder = []
         Solution.get_inorder_data(bst.root, inorder)
+        # return the kth smallest number in O(1) time.
         if k - 1 in range(len(inorder)):
             return inorder[k - 1]
         return -1
