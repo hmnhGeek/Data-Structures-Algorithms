@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/find-pairs-given-sum-doubly-linked-list/#expected-approach-using-two-pointer-technique-on-time-and-o1-space
+
+
 from typing import List
 
 
@@ -40,18 +43,30 @@ class DoublyLinkedList:
 class Solution:
     @staticmethod
     def find_pairs(dll: DoublyLinkedList, target: int) -> List[tuple]:
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # keep left and right pointers on the extremes of the DLL.
         left, right = dll.head, dll.tail
+        # keep a result variable to store the valid pairs
         result = []
+
+        # while left is coming before right
         while left != right and (not right.next == left):
             _sum = left.data + right.data
+            # if sum == target, add the (left, right) pair in the result and move both pointers.
             if _sum == target:
                 result.append((left.data, right.data))
                 left = left.next
                 right = right.prev
             elif _sum > target:
+                # if sum is larger than target, we must reduce from right
                 right = right.prev
             else:
+                # else if sum is smaller than target, we must increase sum by increasing left
                 left = left.next
+        # return the result
         return result
 
 
