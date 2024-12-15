@@ -1,3 +1,8 @@
+# Problem link - https://www.geeksforgeeks.org/problems/word-break1352/1
+# Solution - https://www.youtube.com/watch?v=oBUpyPZ08zU
+# Solution (Front Partitioning Logic) - https://www.youtube.com/watch?v=_H8V5hJUGd0
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n).
@@ -95,8 +100,12 @@ def tabulation():
     print(word_break("applepenapple", ["apple", "pen"]))
 
 
+print("Recursive Solution")
 recursive()
 print()
+print("Memoized Solution")
 memoized()
 print()
+print("Tabulation Solution")
 tabulation()
+print()
