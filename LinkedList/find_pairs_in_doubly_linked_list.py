@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -34,3 +37,33 @@ class DoublyLinkedList:
         print()
 
 
+class Solution:
+    @staticmethod
+    def find_pairs(dll: DoublyLinkedList, target: int) -> List[tuple]:
+        left, right = dll.head, dll.tail
+        result = []
+        while left != right and (not right.next == left):
+            _sum = left.data + right.data
+            if _sum == target:
+                result.append((left.data, right.data))
+                left = left.next
+                right = right.prev
+            elif _sum > target:
+                right = right.prev
+            else:
+                left = left.next
+        return result
+
+
+def test(l, target):
+    dll = DoublyLinkedList()
+    dll.build(*l)
+    dll.show()
+    print(Solution.find_pairs(dll, target))
+    print()
+
+
+test([1, 5, 6], 6)
+test([1, 2, 4, 5, 6, 8, 9], 7)
+test([1, 2, 3, 4, 9], 5)
+test([1, 10, 11, 12, 27], 7)
