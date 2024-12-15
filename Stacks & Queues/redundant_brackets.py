@@ -1,5 +1,5 @@
 # Problem link - https://www.geeksforgeeks.org/problems/expression-contains-redundant-bracket-or-not/0
-# Solution - https://www.geeksforgeeks.org/problems/expression-contains-redundant-bracket-or-not/0
+# Solution - https://www.youtube.com/watch?v=BmZnJehDzyU&t=3105s
 
 
 class Node:
