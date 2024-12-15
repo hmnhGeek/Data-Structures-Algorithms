@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/#expected-approach-using-two-pointers-on-time-and-on-space
+
+
 class Solution:
     @staticmethod
     def _segregate_positives_negatives(arr, positives, negatives):
@@ -9,23 +12,38 @@ class Solution:
 
     @staticmethod
     def rearrange(arr):
+        """
+            Overall time complexity is O(2n) and space complexity is O(n).
+        """
+
+        # get positive and negative numbers from the original array into two separate arrays in O(n) time and O(n)
+        # space.
         positives = []
         negatives = []
         Solution._segregate_positives_negatives(arr, positives, negatives)
+
+        # set `i` for the original array as 0.
         i = 0
+        # start with inserting positive integer first
         insert_positives = True
+        # keep 0 pointers for both the positive and negative arrays.
         x, y = 0, 0
+
+        # This loop will run for another O(n) time.
         while i < len(arr):
+            # positive needs to be inserted
             if insert_positives:
                 if x in range(len(positives)):
                     arr[i] = positives[x]
                     x += 1
                     i += 1
             else:
+                # else if negative needs to be inserted.
                 if y in range(len(negatives)):
                     arr[i] = negatives[y]
                     y += 1
                     i += 1
+            # toggle the insertion flag.
             insert_positives = not insert_positives
 
 
