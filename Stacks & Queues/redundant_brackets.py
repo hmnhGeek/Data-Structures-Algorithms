@@ -31,4 +31,36 @@ class Stack:
         self.length -= 1
         return item
 
+    def top(self):
+        if self.is_empty():
+            return
+        return self.head.data
 
+
+class Solution:
+    @staticmethod
+    def redundant_brackets(expression: str) -> bool:
+        stack = Stack()
+        for i in range(len(expression)):
+            char = expression[i]
+            if char in ["(", "+", "-", "*", "/"]:
+                stack.push(char)
+            elif char == ")":
+                redundant_present = True
+                while stack.top() != "(":
+                    if stack.top() in ["+", "-", "*", "/"]:
+                        redundant_present = False
+                    stack.pop()
+                if redundant_present:
+                    return True
+                stack.pop()
+        return False
+
+
+print(Solution.redundant_brackets("((a+b))"))
+print(Solution.redundant_brackets("(a+(b)/c)"))
+print(Solution.redundant_brackets("(a+b+(c+d))"))
+print(Solution.redundant_brackets("(a+b)"))
+print(Solution.redundant_brackets("(a+c*b)+(c))"))
+print(Solution.redundant_brackets("(a*b+(c/d))"))
+print(Solution.redundant_brackets("((a/b))"))
