@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -138,3 +141,38 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def get_inorder_data(root: Node, inorder: List[int]):
+        if root:
+            Solution.get_inorder_data(root.left, inorder)
+            inorder.append(root.data)
+            Solution.get_inorder_data(root.right, inorder)
+
+    @staticmethod
+    def get_kth_smallest(bst: BinarySearchTree, k: int) -> int:
+        inorder = []
+        Solution.get_inorder_data(bst.root, inorder)
+        if k - 1 in range(len(inorder)):
+            return inorder[k - 1]
+        return -1
+
+
+# Example 1
+bst = BinarySearchTree()
+for i in [4, 2, 9]:
+    bst.insert(i)
+print(Solution.get_kth_smallest(bst, 2))
+
+# Example 2
+bst = BinarySearchTree()
+for i in [9, 10]:
+    bst.insert(i)
+print(Solution.get_kth_smallest(bst, 1))
+
+# Example 3
+bst = BinarySearchTree()
+for i in [4, 2, 9]:
+    bst.insert(i)
+print(Solution.get_kth_smallest(bst, 3))
