@@ -1,4 +1,5 @@
 # Problem link - https://www.geeksforgeeks.org/rearrange-array-alternating-positive-negative-items-o1-extra-space/#expected-approach-using-two-pointers-on-time-and-on-space
+# Solution - https://www.youtube.com/watch?v=h4aBagy4Uok
 
 
 class Solution:
