@@ -75,3 +75,4 @@ print()
 t3 = Solution.construct([2, 5, 4, 1, 3], [1, 4, 5, 2, 3])
 Solution.get_postorder(t3)
 print()
+
