@@ -1,3 +1,8 @@
+# Problem link - https://www.hackerearth.com/practice/algorithms/searching/binary-search/practice-problems/algorithm/kth-smallest-number-again-2/
+# Solution - https://www.youtube.com/watch?v=SvM5Y1PDiiA&t=930s
+# Solution (Merge Overlapping Intervals) - https://www.youtube.com/watch?v=IexN60k62jo&t=280s
+
+
 class Solution:
     @staticmethod
     def _merge_intervals(intervals):
