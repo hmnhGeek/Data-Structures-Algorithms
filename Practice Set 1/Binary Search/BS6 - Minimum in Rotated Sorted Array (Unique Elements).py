@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/rotated-array_1093219
+# Solution - https://www.youtube.com/watch?v=nhEMDKMB44g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=7
+
+
 class Solution:
     @staticmethod
     def get_min(arr):
@@ -34,3 +38,4 @@ print(Solution.get_min([3, 4, 1, 2]))
 print(Solution.get_min([25, 30, 5, 10, 15, 20]))
 print(Solution.get_min([4, 5, 6, 7, 0, 1, 2]))
 print(Solution.get_min([11, 13, 15, 17]))
+print(Solution.get_min([4, 2, 3]))
