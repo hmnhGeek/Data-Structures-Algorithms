@@ -113,8 +113,48 @@ def tabulation():
     print(match("?a", "cb"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(m*n) and space complexity is O(m).
+    """
+    def match(s1, s2):
+        n, m = len(s1), len(s2)
+        prev = {j: False for j in range(m + 1)}
+        for j in range(1, m + 1):
+            prev[j] = False
+        prev[0] = True
+        for i in range(1, n + 1):
+            curr = {j: False for j in range(m + 1)}
+            match_possible = True
+            for k in range(i + 1):
+                if s1[k - 1] != "*":
+                    match_possible = False
+                    break
+            curr[0] = match_possible
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1] or s1[i - 1] == "?":
+                    curr[j] = prev[j - 1]
+                elif s1[i - 1] == "*":
+                    curr[j] = prev[j] or curr[j - 1]
+                else:
+                    curr[j] = False
+            prev = curr
+        return prev[m]
+
+    print(match("ab*cd", "abdefcd"))
+    print(match("ab?d", "abcc"))
+    print(match("?ay", "ray"))
+    print(match("ba*a?", "baaabab"))
+    print(match("*", "abc"))
+    print(match("a*ab", "baaabab"))
+    print(match("a?c*", "abcde"))
+    print(match("?a", "cb"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
