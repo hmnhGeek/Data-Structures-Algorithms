@@ -4,10 +4,23 @@
 
 class Solution:
     @staticmethod
+    def _is_min(arr, mid, n):
+        if mid == 0 and arr[0] <= arr[1]:
+            return arr[0]
+        if mid == n - 1 and arr[-2] >= arr[-1]:
+            return arr[-1]
+        return arr[mid - 1] >= arr[mid] and arr[mid + 1] >= arr[mid]
+
+    @staticmethod
     def get_min(arr):
         """
             Time complexity is O(log(n)) and space complexity is O(1).
         """
+
+        if len(arr) == 0:
+            return -1
+        if len(arr) == 1:
+            return arr[0]
 
         # define a search space.
         low, high = 0, len(arr) - 1
@@ -15,7 +28,7 @@ class Solution:
             mid = int(low + (high - low) / 2)
 
             # if mid-element is minimum, then it's the correct answer, return it.
-            if arr[low] >= arr[mid] and arr[high] >= arr[mid]:
+            if Solution._is_min(arr, mid, len(arr)):
                 return arr[mid]
 
             # if from low to high, we have a increasing sequence, then min will be in lower half.
@@ -39,3 +52,9 @@ print(Solution.get_min([25, 30, 5, 10, 15, 20]))
 print(Solution.get_min([4, 5, 6, 7, 0, 1, 2]))
 print(Solution.get_min([11, 13, 15, 17]))
 print(Solution.get_min([4, 2, 3]))
+print(Solution.get_min([7, 8, 1, 2, 3, 4, 5, 6]))
+print(Solution.get_min([1, 2]))
+print(Solution.get_min([2, 1]))
+print(Solution.get_min([3, 3, 3, 3, 3]))
+print(Solution.get_min([1, 2, 2, 3, 3, 3, 5]))
+print(Solution.get_min([5, 5, 5, 5, 1, 2, 3, 3]))
