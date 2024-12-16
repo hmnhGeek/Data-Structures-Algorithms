@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/count-number-of-nice-subarrays/
+# Solution - https://www.youtube.com/watch?v=j_QOv9OT9Og&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=10
+
+
 class Solution:
     @staticmethod
     def _less_than_equal_to_count(arr, k):
