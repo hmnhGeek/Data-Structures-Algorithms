@@ -1,18 +1,36 @@
+# Problem link - https://www.naukri.com/code360/problems/maximum-points-from-cards_8391016
+# Solution - https://www.youtube.com/watch?v=pBWCOCS636U&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=2
+
+
 class Solution:
     @staticmethod
     def max_pts_from_cards(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         n = len(arr)
-        if k == n:
+
+        # edge cases
+        if k >= n:
             return sum(arr)
-        if k not in range(n):
-            return -1
+        if k < 0:
+            return 0
+
+        # create variables to track max sum and current sum, initially both equal.
         _sum = tracker = sum(arr[:k])
+        # keep i at k - 1 index and j at n (out of bounds)
         i, j = k - 1, n
+
         while i >= 0:
+            # update the new sum by add j - 1 index and excluding i index
             tracker += (arr[j - 1] - arr[i])
+            # update max sum
             _sum = max(_sum, tracker)
+            # decrement both i and j
             i -= 1
             j -= 1
+        # return max sum
         return _sum
 
 
