@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/stock-buy-sell/
+# Solution - https://www.youtube.com/watch?v=nGJmxkUJQGs&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=37
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n).
