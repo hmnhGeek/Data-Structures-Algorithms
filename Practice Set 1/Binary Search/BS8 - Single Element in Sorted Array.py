@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/unique-element-in-sorted-array_1112654
+# Solution - https://www.youtube.com/watch?v=AZOmHuHadxQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=9
+
+
 class Solution:
     @staticmethod
     def single_element(arr):
@@ -33,7 +37,7 @@ class Solution:
 
         # typical Binary Search
         while low <= high:
-            mid = int(low + (high - low)/2)
+            mid = int(low + (high - low) / 2)
 
             # if the mid-element is single, return it.
             if arr[mid - 1] != arr[mid] and arr[mid] != arr[mid + 1]:
@@ -73,3 +77,4 @@ print(Solution.single_element([1, 1, 4, 4, 15]))
 print(Solution.single_element([1, 1, 3, 5, 5]))
 print(Solution.single_element([1, 1, 3, 3, 4, 5, 5, 7, 7, 8, 8]))
 print(Solution.single_element([1, 1, 3, 3, 4, 4, 5, 5, 7, 7, 8]))
+print(Solution.single_element([1, 1, 2, 3, 3, 4, 4, 8, 8]))
