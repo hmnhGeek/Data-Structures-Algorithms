@@ -31,3 +31,49 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def _get_graph(edges):
+        graph = {}
+        for edge in edges:
+            src, dst, wt = edge
+            if src not in graph:
+                graph[src] = [[dst, wt]]
+            else:
+                graph[src].append([dst, wt])
+            if dst not in graph:
+                graph[dst] = [[src, wt]]
+            else:
+                graph[dst].append([src, wt])
+        return graph
+
+    @staticmethod
+    def num_ways(edges, source, destination):
+        graph = Solution._get_graph(edges)
+        queue = Queue()
+        distances = {i: 1e6 for i in graph}
+        parents = {i: [] for i in graph}
+        distances[source] = 0
+        parents[source].append(source)
+        queue.push((source, distances[source]))
+        while not queue.is_empty():
+            node, distance = queue.pop()
+            for adj in graph[node]:
+                adj_node, wt = adj
+                if distances[adj_node] > distance + wt:
+                    distances[adj_node] = distance + wt
+                    parents[adj_node] = [node,]
+                    queue.push((adj_node, distances[adj_node]))
+                if distances[adj_node] == distance + wt:
+                    if node not in parents[adj_node]:
+                        parents[adj_node].append(node)
+        return parents
+
+
+print(
+    Solution.num_ways(
+[[0,6,7],[0,1,2],[1,2,3],[1,3,3],[6,3,3],[3,5,1],[6,5,1],[2,5,1],[0,4,5],[4,6,2]],
+        0, 6
+    )
+)
