@@ -35,6 +35,9 @@ class Queue:
 class PathsFinder:
     @staticmethod
     def get_num_paths(start_node, parents):
+        """
+            Time complexity is exponential and space complexity is O(n).
+        """
         if start_node not in parents:
             return 0
         if parents[start_node] == [None]:
@@ -46,6 +49,9 @@ class PathsFinder:
 
     @staticmethod
     def get_num_paths_memoized(start_node, parents, dp):
+        """
+            Time complexity is O(n) and space complexity is O(2n).
+        """
         if start_node not in parents:
             return 0
         if parents[start_node] == [None]:
