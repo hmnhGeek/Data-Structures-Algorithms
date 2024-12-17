@@ -32,6 +32,19 @@ class Queue:
         return item
 
 
+class PathsFinder:
+    @staticmethod
+    def get_num_paths(start_node, parents):
+        if start_node not in parents:
+            return 0
+        if parents[start_node] == [None]:
+            return 1
+        paths = 0
+        for i in parents[start_node]:
+            paths += PathsFinder.get_num_paths(i, parents)
+        return paths
+
+
 class Solution:
     @staticmethod
     def _get_graph(edges):
@@ -49,13 +62,17 @@ class Solution:
         return graph
 
     @staticmethod
+    def _get_all_paths(parents):
+        pass
+
+    @staticmethod
     def num_ways(edges, source, destination):
         graph = Solution._get_graph(edges)
         queue = Queue()
         distances = {i: 1e6 for i in graph}
         parents = {i: [] for i in graph}
         distances[source] = 0
-        parents[source].append(source)
+        parents[source] = [None]
         queue.push((source, distances[source]))
         while not queue.is_empty():
             node, distance = queue.pop()
@@ -63,17 +80,17 @@ class Solution:
                 adj_node, wt = adj
                 if distances[adj_node] > distance + wt:
                     distances[adj_node] = distance + wt
-                    parents[adj_node] = [node,]
+                    parents[adj_node] = [node, ]
                     queue.push((adj_node, distances[adj_node]))
                 if distances[adj_node] == distance + wt:
                     if node not in parents[adj_node]:
                         parents[adj_node].append(node)
-        return parents
+        return PathsFinder.get_num_paths(destination, parents)
 
 
 print(
     Solution.num_ways(
-[[0,6,7],[0,1,2],[1,2,3],[1,3,3],[6,3,3],[3,5,1],[6,5,1],[2,5,1],[0,4,5],[4,6,2]],
+        [[0, 6, 7], [0, 1, 2], [1, 2, 3], [1, 3, 3], [6, 3, 3], [3, 5, 1], [6, 5, 1], [2, 5, 1], [0, 4, 5], [4, 6, 2]],
         0, 6
     )
 )
