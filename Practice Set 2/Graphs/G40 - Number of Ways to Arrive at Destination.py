@@ -44,6 +44,20 @@ class PathsFinder:
             paths += PathsFinder.get_num_paths(i, parents)
         return paths
 
+    @staticmethod
+    def get_num_paths_memoized(start_node, parents, dp):
+        if start_node not in parents:
+            return 0
+        if parents[start_node] == [None]:
+            return 1
+        if dp[start_node] is not None:
+            return dp[start_node]
+        paths = 0
+        for i in parents[start_node]:
+            paths += PathsFinder.get_num_paths(i, parents)
+        dp[start_node] = paths
+        return dp[start_node]
+
 
 class Solution:
     @staticmethod
@@ -85,7 +99,7 @@ class Solution:
                 if distances[adj_node] == distance + wt:
                     if node not in parents[adj_node]:
                         parents[adj_node].append(node)
-        return PathsFinder.get_num_paths(destination, parents)
+        return PathsFinder.get_num_paths_memoized(destination, parents, {i: None for i in graph})
 
 
 print(
