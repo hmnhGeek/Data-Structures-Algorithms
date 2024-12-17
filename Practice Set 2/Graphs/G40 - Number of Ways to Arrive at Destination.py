@@ -38,10 +38,16 @@ class PathsFinder:
         """
             Time complexity is exponential and space complexity is O(n).
         """
+
+        # if start node is not in parents, return a 0.
         if start_node not in parents:
             return 0
+
+        # if we reached the ultimate parent, return 1 as a count of path.
         if parents[start_node] == [None]:
             return 1
+
+        # count the number of paths for each parent.
         paths = 0
         for i in parents[start_node]:
             paths += PathsFinder.get_num_paths(i, parents)
@@ -87,24 +93,49 @@ class Solution:
 
     @staticmethod
     def num_ways(edges, source, destination):
+        # get the graph from the edges using O(E) time and O(V + E) space.
         graph = Solution._get_graph(edges)
+
+        # define a queue
         queue = Queue()
+
+        # define distances and parents for this node.
         distances = {i: 1e6 for i in graph}
         parents = {i: [] for i in graph}
+
+        # mark the distance of source as 0.
         distances[source] = 0
+
+        # mark the parent of source as None.
         parents[source] = [None]
+
+        # push the source node into the queue.
         queue.push((source, distances[source]))
+
+        # typical Dijkstra
         while not queue.is_empty():
+            # pop the current node.
             node, distance = queue.pop()
+
+            # loop on the adjacent nodes
             for adj in graph[node]:
                 adj_node, wt = adj
+
+                # if we were able to find better distance for the adjacent node...
                 if distances[adj_node] > distance + wt:
+                    # then update the distance
                     distances[adj_node] = distance + wt
+                    # also reset the parent with current node.
                     parents[adj_node] = [node, ]
+                    # push the adjacent node
                     queue.push((adj_node, distances[adj_node]))
+
+                # if we found another same length path, simple add it in the parents.
                 if distances[adj_node] == distance + wt:
                     if node not in parents[adj_node]:
                         parents[adj_node].append(node)
+
+        # return the count of shortest paths using Dynamic Programming (Memoization).
         return PathsFinder.get_num_paths_memoized(destination, parents, {i: None for i in graph})
 
 
