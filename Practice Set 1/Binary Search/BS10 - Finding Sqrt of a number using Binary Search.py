@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/square-root-of-an-integer/
+# Solution - https://www.youtube.com/watch?v=Bsv3FPUX_BA&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=11
+
+
 class Solution:
     @staticmethod
     def get_sqrt(n):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
+
         # if the number is negative, no square root can be found.
         if n < 0:
             return -1
@@ -33,3 +41,4 @@ print(Solution.get_sqrt(0))
 print(Solution.get_sqrt(10))
 print(Solution.get_sqrt(625))
 print(Solution.get_sqrt(1000000))
+print(Solution.get_sqrt(88))
