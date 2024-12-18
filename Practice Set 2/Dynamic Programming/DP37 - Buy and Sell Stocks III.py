@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
+# Solution - https://www.youtube.com/watch?v=-uQGzhYj8BQ&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=38
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n).
