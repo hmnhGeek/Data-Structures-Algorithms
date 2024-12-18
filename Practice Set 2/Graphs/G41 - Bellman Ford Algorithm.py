@@ -10,21 +10,34 @@ class Solution:
 
     @staticmethod
     def get_shortest_distances(graph, source):
+        # edge case check
         if source not in graph:
             return
+
+        # define distances and set source distance as 0.
         distances = {i: 1e6 for i in graph}
         distances[source] = 0
+
+        # get the edges from the graph in O(V + E) time and O(E) space.
         v = len(graph)
         edges = Solution._get_edges(graph)
+
+        # loop for V - 1 times.
         for i in range(v - 1):
+            # Loop on all the edges and relax them if required, in E times iteration.
             for edge in edges:
                 u, v, w = edge
                 if distances[u] + w < distances[v]:
                     distances[v] = distances[u] + w
+
+        # loop on all the edges in O(E) time.
         for edge in edges:
             u, v, w = edge
+            # if any relaxation happens, then it means there is a negative cycle.
             if distances[u] + w < distances[v]:
                 return "Negative Cycle Detected!"
+
+        # else, return the shortest paths.
         return list(distances.values())
 
 
