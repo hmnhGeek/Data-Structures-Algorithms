@@ -66,6 +66,39 @@ def memoized():
     print(buy_sell([7, 1, 5, 3, 6, 4]))
 
 
+def tabulation():
+    """
+        Time complexity is O(2*2*n) and space complexity is O(2*2*n).
+    """
+
+    def buy_sell(arr):
+        n = len(arr)
+        dp = {i: {True: {j: 0 for j in range(3)}, False: {j: 0 for j in range(3)}} for i in range(n + 1)}
+        for i in range(n - 1, -1, -1):
+            for can_buy in [True, False]:
+                # for tx = 2, base case is already defined. Thus start from tx = 1.
+                for tx in range(1, -1, -1):
+                    if can_buy:
+                        dp[i][can_buy][tx] = max(
+                            -arr[i] + dp[i + 1][False][tx],
+                            dp[i + 1][True][tx]
+                        )
+                    else:
+                        dp[i][can_buy][tx] = max(
+                            arr[i] + dp[i + 1][True][tx + 1],
+                            dp[i + 1][False][tx]
+                        )
+        return dp[0][True][0]
+
+    print(buy_sell([3, 3, 5, 0, 0, 3, 1, 4]))
+    print(buy_sell([1, 3, 1, 2, 4, 8]))
+    print(buy_sell([5, 4, 3, 2, 1]))
+    print(buy_sell([1, 2, 3, 4, 5]))
+    print(buy_sell([7, 1, 5, 3, 6, 4]))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
