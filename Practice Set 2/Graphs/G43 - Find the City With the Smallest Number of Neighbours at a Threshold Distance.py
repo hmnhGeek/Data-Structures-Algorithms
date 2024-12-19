@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/1
+# Solution - https://www.youtube.com/watch?v=PwMVNSJ5SLI&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=43
+
+
 class Solution:
     @staticmethod
     def _get_adj_mtx(edges, n):
