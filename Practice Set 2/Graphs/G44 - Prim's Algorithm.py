@@ -6,17 +6,17 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -63,3 +63,62 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_mst(graph, source):
+        if source not in graph:
+            return
+        pq = MinHeap()
+        pq.insert((0, source, None))
+        visited = {i: False for i in graph}
+        mst = set()
+        mst_wt = 0
+        while not pq.is_empty():
+            distance, node, parent = pq.pop()
+            if not visited[node] and parent is not None:
+                mst.add((node, parent))
+                mst_wt += distance
+            visited[node] = True
+            for adj in graph[node]:
+                adj_node, wt = adj
+                if not visited[adj_node]:
+                    pq.insert((wt, adj_node, node))
+        return mst, mst_wt
+
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 2], [2, 1]],
+            1: [[0, 2], [2, 1]],
+            2: [[0, 1], [1, 1], [4, 2], [3, 2]],
+            3: [[2, 2], [4, 1]],
+            4: [[2, 2], [3, 1]]
+        },
+        0
+    )
+)
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 5], [2, 1]],
+            1: [[0, 5], [2, 3]],
+            2: [[0, 1], [1, 3]]
+        },
+        0
+    )
+)
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 1], [2, 3], [3, 4]],
+            1: [[0, 1], [2, 2]],
+            2: [[1, 2], [0, 3], [3, 5]],
+            3: [[0, 4], [2, 5]]
+        },
+        0
+    )
+)
