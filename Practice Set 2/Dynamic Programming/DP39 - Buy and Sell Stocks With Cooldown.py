@@ -62,6 +62,37 @@ def memoized():
     print(buy_sell_cooldown([3, 1, 6, 1, 2, 4]))
 
 
+def tabulation():
+    """
+        Time complexity is O(2n) and space complexity is O(2n).
+    """
+    def buy_sell_cooldown(arr):
+        n = len(arr)
+        dp = {i: {j: 0 for j in [True, False]} for i in range(n + 2)}
+        for i in range(n - 1, -1, -1):
+            for can_buy in [True, False]:
+                if can_buy:
+                    dp[i][can_buy] = max(
+                        -arr[i] + dp[i + 1][False],
+                        dp[i + 1][True]
+                    )
+                else:
+                    dp[i][can_buy] = max(
+                        arr[i] + dp[i + 2][True],
+                        dp[i + 1][False]
+                    )
+        return dp[0][True]
+
+    print(buy_sell_cooldown([4, 9, 0, 4, 10]))
+    print(buy_sell_cooldown([1, 2, 3, 4]))
+    print(buy_sell_cooldown([5, 4, 3]))
+    print(buy_sell_cooldown([1, 2, 3, 0, 2]))
+    print(buy_sell_cooldown([1]))
+    print(buy_sell_cooldown([3, 1, 6, 1, 2, 4]))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
