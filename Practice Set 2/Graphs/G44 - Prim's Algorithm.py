@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+# Solution - https://www.youtube.com/watch?v=mJcZjjKzeqk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=45
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,23 +71,46 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_mst(graph, source):
+        """
+            Time complexity is O(E log(E)) and space complexity is O(V + E).
+        """
+
+        # if the source node is not present in the graph, return.
         if source not in graph:
             return
+
+        # define a min heap and push the source node with parent as None and distance to reach source as 0.
         pq = MinHeap()
         pq.insert((0, source, None))
+
+        # define a visited array
         visited = {i: False for i in graph}
+
+        # define MST
         mst = set()
         mst_wt = 0
+
+        # typical Prim's Algorithm, which will run for E times.
         while not pq.is_empty():
+            # pop the current node in log(E) time.
             distance, node, parent = pq.pop()
+
+            # if the current node is not visited and its parent is also not None, add it to MST.
             if not visited[node] and parent is not None:
                 mst.add((node, parent))
                 mst_wt += distance
+
+            # now mark the current node as visited.
             visited[node] = True
+
+            # loop on the adjacent nodes of this current node.
             for adj in graph[node]:
                 adj_node, wt = adj
+                # if the adjacent node is not visited, add it to the PQ. This will take log(E) time.
                 if not visited[adj_node]:
                     pq.insert((wt, adj_node, node))
+
+        # finally, return the MST.
         return mst, mst_wt
 
 
