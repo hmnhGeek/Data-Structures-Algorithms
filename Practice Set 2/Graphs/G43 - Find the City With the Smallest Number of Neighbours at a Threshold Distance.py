@@ -23,18 +23,35 @@ class Solution:
 
     @staticmethod
     def find_city(edges, threshold, n):
+        """
+            Time complexity is O(V^3) and space complexity is O(V^2).
+        """
+
+        # get the adjacency matrix from the edge list in O(E) time and O(V^2) space.
         adj_mtx = Solution._get_adj_mtx(edges, n)
+        # Apply Floyd-Warshall in O(V^3) time to get the shortest distances from all the nodes.
         Solution._apply_floyd_warshall(adj_mtx, n)
+
+        # assume the minimum cities reachable to be n.
         min_cities_reachable = n
+        # from city to be assumed as -1.
         from_city = -1
+
+        # loop on all the cities as from city in O(V^2).
         for i in range(n):
+            # count the number of cities reachable within threshold
             count = 0
             for j in range(n):
+                # count such cities
                 if adj_mtx[i][j] <= threshold:
                     count += 1
+            # if the count is same or lower than min cities reachable, then update the from-city and min cities
+            # reachable count.
             if count <= min_cities_reachable:
                 from_city = i
                 min_cities_reachable = count
+
+        # return the final from_city.
         return from_city
 
 
