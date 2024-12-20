@@ -1,18 +1,32 @@
 def print_lis(arr):
     n = len(arr)
+    # define a DP array and a parents array
     dp, parents = {i: 1 for i in range(n)}, {i: i for i in range(n)}
+
+    # loop on all the indices and its previous indices
     for i in range(n):
         for prev in range(i):
+            # if the current element in the array is greater than prev, and if LIS ending at `i` is of smaller length
+            # than the LIS formed after adding this element to the LIS ending at `prev` index, then update the variables
             if arr[i] > arr[prev] and dp[i] < 1 + dp[prev]:
+                # update LIS length ending at `i`
                 dp[i] = 1 + dp[prev]
+                # update parent of `i` to `prev`
                 parents[i] = prev
 
+    # get the last index of LIS as we will use it to backtrack.
     start_index = max(dp, key=dp.get)
+    # create a result list
     result = []
+
+    # backtracking until ultimate parent is found.
     while parents[start_index] != start_index:
         result.append(arr[start_index])
         start_index = parents[start_index]
+    # add the element at ultimate parent as well.
     result.append(arr[start_index])
+
+    # return the reverse of the result for the correct LIS.
     return result[-1:-len(result) - 1:-1]
 
 
