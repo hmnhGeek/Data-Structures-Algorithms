@@ -43,7 +43,7 @@ def recursive():
 
 def memoized():
     """
-        Time complexity is O(n^2) and space complexity is O(n + 2n).
+        Time complexity is O(n^2) and space complexity is O(n + n^2).
     """
 
     def solve(arr, index, prev, dp):
@@ -78,7 +78,7 @@ def memoized():
 
 def tabulation():
     """
-        Time complexity is O(n^2) and space complexity is O(2n).
+        Time complexity is O(n^2) and space complexity is O(n^2).
     """
 
     def get_lis_length(arr):
