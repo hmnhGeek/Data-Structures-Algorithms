@@ -104,8 +104,44 @@ def tabulation():
     print(get_lis_length([10, 20, 35, 80]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n).
+    """
+
+    def get_lis_length(arr):
+        n = len(arr)
+        prev = {j: 0 for j in range(n + 1)}
+        for j in prev:
+            if get_val_at(arr, 0) < get_val_at(arr, j):
+                prev[j] = 1
+            else:
+                prev[j] = 0
+        for index in range(1, n):
+            curr = {j: 0 for j in range(n + 1)}
+            for j in range(index + 1, n + 1):
+                left = 0
+                if get_val_at(arr, index) < get_val_at(arr, j):
+                    left = 1 + prev[index]
+                right = prev[j]
+                curr[j] = max(left, right)
+            prev = curr
+        return prev[n]
+
+    print(get_lis_length([10, 9, 2, 5, 3, 7, 101, 18]))
+    print(get_lis_length([5, 4, 11, 1, 16, 8]))
+    print(get_lis_length([1, 2, 2]))
+    print(get_lis_length([0, 1, 0, 3, 2, 3]))
+    print(get_lis_length([7, 7, 7, 7, 7, 7, 7]))
+    print(get_lis_length([3, 10, 2, 1, 20]))
+    print(get_lis_length([30, 20, 10]))
+    print(get_lis_length([10, 20, 35, 80]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
