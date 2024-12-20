@@ -27,3 +27,29 @@ class DisjointSet:
     def in_same_component(self, node1, node2):
         return self.find_ultimate_parent(node1) == self.find_ultimate_parent(node2)
 
+
+class Solution:
+    @staticmethod
+    def _get_edges(graph):
+        edges = []
+        for node in graph:
+            for adj in graph[node]:
+                adj_node, wt = adj
+                edges.append([wt, node, adj_node])
+        return edges
+
+    @staticmethod
+    def get_mst(graph):
+        edges = Solution._get_edges(graph)
+        edges.sort(key=lambda x: x[0])
+        mst = set()
+        mst_wt = 0
+        ds = DisjointSet([i for i in graph])
+        for edge in edges:
+            wt, src, dst = edge
+            if not ds.in_same_component(src, dst):
+                ds.union(src, dst)
+                mst.add((src, dst))
+                mst_wt += wt
+        return mst, mst_wt
+
