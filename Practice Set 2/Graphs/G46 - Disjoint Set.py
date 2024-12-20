@@ -28,3 +28,17 @@ class DisjointSetByRank:
         return self.find_ultimate_parent(node1) == self.find_ultimate_parent(node2)
 
 
+# Example for Disjoint Set using Ranks
+dsr = DisjointSetByRank([i for i in range(1, 8)])
+dsr.union(1, 2)
+dsr.union(2, 3)
+dsr.union(4, 5)
+dsr.union(6, 7)
+dsr.union(5, 6)
+print(dsr.in_same_components(3, 7))
+dsr.union(3, 7)
+print(dsr.in_same_components(3, 7))
+
+
+
+
