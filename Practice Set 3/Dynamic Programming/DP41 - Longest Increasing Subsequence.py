@@ -72,6 +72,40 @@ def memoized():
     print(get_lis_length([10, 20, 35, 80]))
 
 
+def tabulation():
+    """
+        Time complexity is O(n^2) and space complexity is O(2n).
+    """
+
+    def get_lis_length(arr):
+        n = len(arr)
+        dp = {i: {j: 0 for j in range(n + 1)} for i in range(n)}
+        for j in dp[0]:
+            if get_val_at(arr, 0) < get_val_at(arr, j):
+                dp[0][j] = 1
+            else:
+                dp[0][j] = 0
+        for index in range(1, n):
+            for prev in range(index + 1, n + 1):
+                left = 0
+                if get_val_at(arr, index) < get_val_at(arr, prev):
+                    left = 1 + dp[index - 1][index]
+                right = dp[index - 1][prev]
+                dp[index][prev] = max(left, right)
+        return dp[n - 1][n]
+
+    print(get_lis_length([10, 9, 2, 5, 3, 7, 101, 18]))
+    print(get_lis_length([5, 4, 11, 1, 16, 8]))
+    print(get_lis_length([1, 2, 2]))
+    print(get_lis_length([0, 1, 0, 3, 2, 3]))
+    print(get_lis_length([7, 7, 7, 7, 7, 7, 7]))
+    print(get_lis_length([3, 10, 2, 1, 20]))
+    print(get_lis_length([30, 20, 10]))
+    print(get_lis_length([10, 20, 35, 80]))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
