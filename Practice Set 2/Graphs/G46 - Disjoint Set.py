@@ -24,7 +24,7 @@ class DisjointSetByRank:
             self.parents[ulp_node2] = ulp_node1
             self.ranks[ulp_node1] += 1
 
-    def in_same_components(self, node1, node2):
+    def in_same_component(self, node1, node2):
         return self.find_ultimate_parent(node1) == self.find_ultimate_parent(node2)
 
 
@@ -64,10 +64,22 @@ dsr.union(2, 3)
 dsr.union(4, 5)
 dsr.union(6, 7)
 dsr.union(5, 6)
-print(dsr.in_same_components(3, 7))
+print(dsr.in_same_component(3, 7))
 dsr.union(3, 7)
-print(dsr.in_same_components(3, 7))
+print(dsr.in_same_component(3, 7))
 
+print()
+
+# Example for Disjoint Set using Sizes
+dss = DisjointSetBySize([i for i in range(1, 8)])
+dss.union(1, 2)
+dss.union(2, 3)
+dss.union(4, 5)
+dss.union(6, 7)
+dss.union(5, 6)
+print(dss.in_same_component(3, 7))
+dss.union(3, 7)
+print(dss.in_same_component(3, 7))
 
 
 
