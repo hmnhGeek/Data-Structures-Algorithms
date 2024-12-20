@@ -37,4 +37,41 @@ def recursive():
     print(get_lis_length([10, 20, 35, 80]))
 
 
+def memoized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n + 2n).
+    """
+
+    def solve(arr, index, prev, dp):
+        if index == 0:
+            if get_val_at(arr, 0) < get_val_at(arr, prev):
+                return 1
+            else:
+                return 0
+        if dp[index][prev] is not None:
+            return dp[index][prev]
+        left = 0
+        if get_val_at(arr, index) < get_val_at(arr, prev):
+            left = 1 + solve(arr, index - 1, index, dp)
+        right = solve(arr, index - 1, prev, dp)
+        dp[index][prev] = max(left, right)
+        return dp[index][prev]
+
+    def get_lis_length(arr):
+        n = len(arr)
+        dp = {i: {j: None for j in range(n + 1)} for i in range(n)}
+        return solve(arr, n - 1, n, dp)
+
+    print(get_lis_length([10, 9, 2, 5, 3, 7, 101, 18]))
+    print(get_lis_length([5, 4, 11, 1, 16, 8]))
+    print(get_lis_length([1, 2, 2]))
+    print(get_lis_length([0, 1, 0, 3, 2, 3]))
+    print(get_lis_length([7, 7, 7, 7, 7, 7, 7]))
+    print(get_lis_length([3, 10, 2, 1, 20]))
+    print(get_lis_length([30, 20, 10]))
+    print(get_lis_length([10, 20, 35, 80]))
+
+
 recursive()
+print()
+memoized()
