@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/heap-sort/
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -6,17 +9,17 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -67,16 +70,29 @@ class MinHeap:
 class Solution:
     @staticmethod
     def heap_sort(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         h = MinHeap()
+
+        # push to heap in O(n * log(n)) time and O(n) space.
         for i in arr:
             h.insert(i)
 
+        # pop from heap in O(n * log(n)) and assign to arr in sorted format.
         i = 0
         while not h.is_empty():
             arr[i] = h.pop()
             i += 1
 
 
+# Example 1
 a1 = [9, 4, 3, 8, 10, 2, 5]
 Solution.heap_sort(a1)
 print(a1)
+
+# Example 2
+a2 = [8, 3, 625, 8, 93, 4, 8, 97, 49, 0, 5, 3, 2, 8, 501]
+Solution.heap_sort(a2)
+print(a2)
