@@ -32,3 +32,31 @@ class Queue:
         return item
 
 
+class Stack:
+    def __init__(self):
+        self.q1 = Queue()
+        self.q2 = Queue()
+
+    def push(self, x):
+        while not self.q1.is_empty():
+            self.q2.push(self.q1.pop())
+        self.q1.push(x)
+        while not self.q2.is_empty():
+            self.q1.push(self.q2.pop())
+
+    def pop(self):
+        return self.q1.pop()
+
+
+stack1 = Stack()
+stack1.push(2)
+stack1.push(3)
+print(stack1.pop())
+stack1.push(4)
+print(stack1.pop())
+print()
+stack2 = Stack()
+stack2.push(2)
+print(stack2.pop())
+print(stack2.pop())
+stack2.push(3)
