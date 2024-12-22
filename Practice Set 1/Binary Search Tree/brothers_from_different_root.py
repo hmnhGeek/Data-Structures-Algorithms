@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/brothers-from-different-root/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -175,17 +178,22 @@ class Solution:
     @staticmethod
     def find_v2(bst1: BinarySearchTree, bst2: BinarySearchTree, x: int):
         """
-            Overall time complexity is O(n * log(m)) and space complexity is O(log(n) + log(m))
+            Overall time complexity is O(n + m) and space complexity is O(n + m).
         """
 
         # get inorder of bst1 in O(n) time and O(log(n)) space.
         inorder1 = Solution._get_inorder(bst1)
         # get inorder of bst2 in O(m) time and O(log(m)) space.
         inorder2 = Solution._get_inorder(bst2)
+
         # store the pairs in result array
         result = []
+
+        # take two pointers and place them at extremes, `i` will be on inorder1.
         i, j = 0, len(inorder2) - 1
-        while i < len(inorder1) and j < len(inorder2):
+
+        # while both indices are within bounds
+        while 0 <= i < len(inorder1) and 0 <= j < len(inorder2):
             _sum = inorder1[i] + inorder2[j]
             if _sum == x:
                 result.append((inorder1[i], inorder2[j]))
