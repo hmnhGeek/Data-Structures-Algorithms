@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/problems/subarray-with-0-sum-1587115621/1
+# Solution - https://www.youtube.com/watch?v=xmguZ6GbatA&t=648s
+
+
 class Solution:
     @staticmethod
     def subarray_with_0_sum(arr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         # define a dictionary to store the indices of the prefix sums. Note that we have explicitly added prefix sum 0
         # with index -1 to denote the starting of the array.
         d = {0: -1}
