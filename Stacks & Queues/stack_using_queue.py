@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/stack-using-two-queues/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -38,6 +41,9 @@ class Stack:
         self.q2 = Queue()
 
     def push(self, x):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         while not self.q1.is_empty():
             self.q2.push(self.q1.pop())
         self.q1.push(x)
@@ -45,6 +51,9 @@ class Stack:
             self.q1.push(self.q2.pop())
 
     def pop(self):
+        """
+            Time complexity is O(1) and space complexity is O(1).
+        """
         return self.q1.pop()
 
 
