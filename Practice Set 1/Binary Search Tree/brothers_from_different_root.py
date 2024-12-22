@@ -155,12 +155,21 @@ class Solution:
 
     @staticmethod
     def find(bst1: BinarySearchTree, bst2: BinarySearchTree, x: int):
+        """
+            Overall time complexity is O(n * log(m)) and space complexity is O(log(n) + log(m))
+        """
+
+        # get inorder of bst1 in O(n) time and O(log(n)) space.
         inorder1 = Solution._get_inorder(bst1)
+        # store the pairs in result array
         result = []
+        # loop on the data points from bst1's inorder.
         for data in inorder1:
+            # check if x - data node is present in bst2 in O(log(m)) time and O(log(m)) space.
             node = bst2.get_node(bst2.root, x - data)
             if node is not None:
                 result.append((data, node.data))
+        # return the result
         return result
 
 
