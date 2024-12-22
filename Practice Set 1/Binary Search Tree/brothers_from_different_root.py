@@ -172,6 +172,32 @@ class Solution:
         # return the result
         return result
 
+    @staticmethod
+    def find_v2(bst1: BinarySearchTree, bst2: BinarySearchTree, x: int):
+        """
+            Overall time complexity is O(n * log(m)) and space complexity is O(log(n) + log(m))
+        """
+
+        # get inorder of bst1 in O(n) time and O(log(n)) space.
+        inorder1 = Solution._get_inorder(bst1)
+        # get inorder of bst2 in O(m) time and O(log(m)) space.
+        inorder2 = Solution._get_inorder(bst2)
+        # store the pairs in result array
+        result = []
+        i, j = 0, len(inorder2) - 1
+        while i < len(inorder1) and j < len(inorder2):
+            _sum = inorder1[i] + inorder2[j]
+            if _sum == x:
+                result.append((inorder1[i], inorder2[j]))
+                i += 1
+                j -= 1
+            elif _sum > x:
+                j -= 1
+            else:
+                i += 1
+        # return the result
+        return result
+
 
 # Example 1
 bst1 = BinarySearchTree()
@@ -181,6 +207,7 @@ bst2 = BinarySearchTree()
 for i in [10, 6, 15, 3, 8, 11, 18]:
     bst2.insert(i)
 print(Solution.find(bst1, bst2, 16))
+print(Solution.find_v2(bst1, bst2, 16))
 
 
 # Example 2
@@ -191,3 +218,4 @@ bst2 = BinarySearchTree()
 for i in [3, 2, 4, 1]:
     bst2.insert(i)
 print(Solution.find(bst1, bst2, 4))
+print(Solution.find_v2(bst1, bst2, 4))
