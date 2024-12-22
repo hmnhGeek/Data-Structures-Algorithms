@@ -37,3 +37,30 @@ class Stack:
         return self.head.data
 
 
+class MaxAreaInHistogramFinder:
+    @staticmethod
+    def find(arr):
+        n = len(arr)
+        stack = Stack()
+        max_area = 0
+        for i in range(n):
+            while not stack.is_empty() and arr[stack.top()] >= arr[i]:
+                bar = arr[stack.pop()]
+                right = i
+                left = stack.top()
+                area = bar * (right - left - 1)
+                max_area = max(max_area, area)
+            stack.push(i)
+        while not stack.is_empty():
+            bar = arr[stack.pop()]
+            right = n
+            left = stack.top()
+            area = bar * (right - left - 1)
+            max_area = max(max_area, area)
+        return max_area
+
+
+print(MaxAreaInHistogramFinder.find([2, 1, 5, 6, 2, 3]))
+print(MaxAreaInHistogramFinder.find([2, 4]))
+print(MaxAreaInHistogramFinder.find([60, 20, 50, 40, 10, 50, 60]))
+print(MaxAreaInHistogramFinder.find([3, 5, 1, 7, 5, 9]))
