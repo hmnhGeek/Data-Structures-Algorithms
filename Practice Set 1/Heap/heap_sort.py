@@ -64,3 +64,19 @@ class MinHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def heap_sort(arr):
+        h = MinHeap()
+        for i in arr:
+            h.insert(i)
+
+        i = 0
+        while not h.is_empty():
+            arr[i] = h.pop()
+            i += 1
+
+
+a1 = [9, 4, 3, 8, 10, 2, 5]
+Solution.heap_sort(a1)
+print(a1)
