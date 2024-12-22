@@ -59,8 +59,83 @@ class MaxAreaInHistogramFinder:
             max_area = max(max_area, area)
         return max_area
 
+#
+# print(MaxAreaInHistogramFinder.find([2, 1, 5, 6, 2, 3]))
+# print(MaxAreaInHistogramFinder.find([2, 4]))
+# print(MaxAreaInHistogramFinder.find([60, 20, 50, 40, 10, 50, 60]))
+# print(MaxAreaInHistogramFinder.find([3, 5, 1, 7, 5, 9]))
 
-print(MaxAreaInHistogramFinder.find([2, 1, 5, 6, 2, 3]))
-print(MaxAreaInHistogramFinder.find([2, 4]))
-print(MaxAreaInHistogramFinder.find([60, 20, 50, 40, 10, 50, 60]))
-print(MaxAreaInHistogramFinder.find([3, 5, 1, 7, 5, 9]))
+
+class Solution:
+    @staticmethod
+    def max_rectangle(mtx):
+        n, m = len(mtx), len(mtx[0])
+        max_area = 0
+        prev = [0]*m
+        for i in range(n):
+            histogram = [0]*m
+            for k in range(m):
+                if mtx[i][k] != 0:
+                    histogram[k] = mtx[i][k] + prev[k]
+            max_area = max(max_area, MaxAreaInHistogramFinder.find(histogram))
+            prev = histogram
+        return max_area
+
+
+print(
+    Solution.max_rectangle(
+        [
+            [0, 1, 1, 0],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 0, 0]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [[0, 1, 1],
+         [1, 1, 1],
+         [0, 1, 1]]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [
+            [1, 0, 1, 0, 0],
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 1, 0]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [
+            [0]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [
+            [1]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [
+            [1, 0, 1, 1],
+            [1, 0, 1, 1],
+            [0, 1, 0, 1],
+            [1, 1, 1, 1],
+            [0, 0, 0, 1]
+        ]
+    )
+)
