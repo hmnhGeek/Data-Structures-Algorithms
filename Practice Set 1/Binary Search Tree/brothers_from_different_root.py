@@ -139,3 +139,46 @@ class BinarySearchTree:
         print()
 
 
+class Solution:
+    @staticmethod
+    def _inorder(root, inorder):
+        if root:
+            Solution._inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._inorder(root.right, inorder)
+
+    @staticmethod
+    def _get_inorder(bst: BinarySearchTree):
+        inorder = []
+        Solution._inorder(bst.root, inorder)
+        return inorder
+
+    @staticmethod
+    def find(bst1: BinarySearchTree, bst2: BinarySearchTree, x: int):
+        inorder1 = Solution._get_inorder(bst1)
+        result = []
+        for data in inorder1:
+            node = bst2.get_node(bst2.root, x - data)
+            if node is not None:
+                result.append((data, node.data))
+        return result
+
+
+# Example 1
+bst1 = BinarySearchTree()
+for i in [5, 3, 7, 2, 4, 6, 8]:
+    bst1.insert(i)
+bst2 = BinarySearchTree()
+for i in [10, 6, 15, 3, 8, 11, 18]:
+    bst2.insert(i)
+print(Solution.find(bst1, bst2, 16))
+
+
+# Example 2
+bst1 = BinarySearchTree()
+for i in [1, 3, 2]:
+    bst1.insert(i)
+bst2 = BinarySearchTree()
+for i in [3, 2, 4, 1]:
+    bst2.insert(i)
+print(Solution.find(bst1, bst2, 4))
