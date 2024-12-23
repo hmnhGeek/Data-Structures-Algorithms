@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/find-median-bst-time-o1-space/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -138,3 +141,31 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _get_inorder(root, inorder):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._get_inorder(root.right, inorder)
+
+    @staticmethod
+    def median(bst: BinarySearchTree):
+        inorder = []
+        Solution._get_inorder(bst.root, inorder)
+        n = len(inorder)
+        if n % 2 == 0:
+            return (inorder[n//2] + inorder[n//2 - 1])/2
+        return inorder[n // 2]
+
+
+bst = BinarySearchTree()
+for i in [6, 3, 8, 1, 4, 7, 9]:
+    bst.insert(i)
+print(Solution.median(bst))
+
+bst2 = BinarySearchTree()
+for i in [20, 8, 22, 4, 12, 10, 14]:
+    bst2.insert(i)
+print(Solution.median(bst2))
