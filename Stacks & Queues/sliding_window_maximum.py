@@ -56,22 +56,50 @@ class Deque:
 class Solution:
     @staticmethod
     def sliding_window_maximum(arr, k):
+        """
+            Overall time complexity is O(n) and space complexity is O(k).
+        """
+
+        # create a deque and push 0th element from the array into it in O(1) time.
         dq = Deque()
         dq.push_back(arr[0])
+
+        # create useful variables.
         n = len(arr)
         result = []
+
+        # loop for the first k elements.
         for i in range(1, k):
+            # we want to keep elements in dq in linearly decreasing fashion. Therefore, pop from back until we get an
+            # element which is greater than ith element, or the dq gets empty.
             while not dq.is_empty() and dq.back() < arr[i]:
                 dq.pop_back()
+            # if any of the above happens, push ith element into dq from back side.
             dq.push_back(arr[i])
+
+        # since we have populated dq for the first window, get the max element for the first window from the front of
+        # the dq.
         result.append(dq.front())
+
+        # now loop for the remaining windows from kth index
         for i in range(k, n):
+            # if the element that is about to get removed is the front element of dq, then this element is no longer
+            # needed in the dq; pop it from the front.
             if arr[i - k] == dq.front():
                 dq.pop_front()
+
+            # we want to keep elements in dq in linearly decreasing fashion. Therefore, pop from back until we get an
+            # element which is greater than ith element, or the dq gets empty.
             while not dq.is_empty() and dq.back() < arr[i]:
                 dq.pop_back()
+
+            # if any of the above happens, push ith element into dq from back side.
             dq.push_back(arr[i])
+
+            # for the current k-length window, get the max element from the front of the dq.
             result.append(dq.front())
+
+        # return the final result.
         return result
 
 
