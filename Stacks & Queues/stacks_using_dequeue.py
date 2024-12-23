@@ -86,14 +86,14 @@ class Queue:
 
 # Example 1
 stack = Stack()
-for i in [2, 6, 8, 0, 9, 9, 7]:
+for i in [1, 2, 3, 4, 5]:
     stack.push(i)
 while not stack.is_empty():
     print(stack.pop(), end=" ")
 print()
 
 queue = Queue()
-for i in [2, 6, 8, 0, 9, 9, 7]:
+for i in [1, 2, 3, 4, 5]:
     queue.push(i)
 while not queue.is_empty():
     print(queue.pop(), end=" ")
