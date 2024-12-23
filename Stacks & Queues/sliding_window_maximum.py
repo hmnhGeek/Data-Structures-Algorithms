@@ -109,3 +109,7 @@ class Solution:
 print(Solution.sliding_window_maximum([1, 2, 3, 1, 4, 5], 3))
 print(Solution.sliding_window_maximum([8, 5, 10, 7, 9, 4, 15, 12, 90, 13], 4))
 print(Solution.sliding_window_maximum([20, 10, 30], 1))
+print(Solution.sliding_window_maximum([1, 3, -1, -3, 5, 3, 6, 7], 3))
+print(Solution.sliding_window_maximum([1], 1))
+print(Solution.sliding_window_maximum([1, 2, 3, 1, 4, 5, 2, 3, 6], 3))
+print(Solution.sliding_window_maximum([5, 1, 3, 4, 2, 6], 1))
