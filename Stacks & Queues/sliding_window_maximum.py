@@ -27,7 +27,8 @@ class Deque:
             return
         node = self.tail
         self.tail = self.tail.prev
-        self.tail.next = None
+        if self.tail is not None:
+            self.tail.next = None
         del node
         self.length -= 1
 
@@ -36,13 +37,44 @@ class Deque:
             return
         node = self.head
         self.head = self.head.next
-        self.head.prev = None
+        if self.head is not None:
+            self.head.prev = None
         del node
         self.length -= 1
 
     def front(self):
         if self.is_empty():
-            return -1
+            return -1e6
         return self.head.data
 
+    def back(self):
+        if self.is_empty():
+            return 1e6
+        return self.tail.data
 
+
+class Solution:
+    @staticmethod
+    def sliding_window_maximum(arr, k):
+        dq = Deque()
+        dq.push_back(arr[0])
+        n = len(arr)
+        result = []
+        for i in range(1, k):
+            while not dq.is_empty() and dq.back() < arr[i]:
+                dq.pop_back()
+            dq.push_back(arr[i])
+        result.append(dq.front())
+        for i in range(k, n):
+            if arr[i - k] == dq.front():
+                dq.pop_front()
+            while not dq.is_empty() and dq.back() < arr[i]:
+                dq.pop_back()
+            dq.push_back(arr[i])
+            result.append(dq.front())
+        return result
+
+
+print(Solution.sliding_window_maximum([1, 2, 3, 1, 4, 5], 3))
+print(Solution.sliding_window_maximum([8, 5, 10, 7, 9, 4, 15, 12, 90, 13], 4))
+print(Solution.sliding_window_maximum([20, 10, 30], 1))
