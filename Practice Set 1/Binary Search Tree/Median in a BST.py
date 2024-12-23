@@ -152,6 +152,11 @@ class Solution:
 
     @staticmethod
     def median(bst: BinarySearchTree):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
+        # get the inorder of the BST in O(n) time and O(n + h) space.
         inorder = []
         Solution._get_inorder(bst.root, inorder)
         n = len(inorder)
