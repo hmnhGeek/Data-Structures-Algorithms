@@ -99,3 +99,35 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def sort_dll(dll: DoublyLinkedList, k: int):
+        min_heap = MinHeap()
+        curr = dll.head
+        for i in range(min(k + 1, dll.length)):
+            min_heap.insert(curr.data)
+            curr = curr.next
+        temp = DoublyLinkedList()
+        while not min_heap.is_empty():
+            temp.push(min_heap.pop())
+            if curr is not None:
+                min_heap.insert(curr.data)
+            curr = curr.next if curr is not None else None
+        dll.head = temp.head
+        dll.tail = temp.tail
+
+
+# Example 1
+dll = DoublyLinkedList()
+dll.build(3, 2, 1, 5, 6, 4)
+dll.show()
+Solution.sort_dll(dll, 2)
+dll.show()
+
+# Example 2
+dll = DoublyLinkedList()
+dll.build(5, 6, 7, 3, 4, 4)
+dll.show()
+Solution.sort_dll(dll, 3)
+dll.show()
