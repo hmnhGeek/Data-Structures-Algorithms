@@ -43,3 +43,30 @@ n10.right = n30
 n20.left = n101
 n20.right = n102
 print(Solution.check_sum_tree(n10))
+
+
+# Example 3
+n26, n10, n3, n4, n6, n31 = Node(26), Node(10), Node(3), Node(4), Node(6), Node(3)
+n26.left = n10
+n26.right = n3
+n10.left = n4
+n10.right = n6
+n3.right = n31
+print(Solution.check_sum_tree(n26))
+
+
+# Example 4
+n26, n10, n3, n2, n6, n31 = Node(26), Node(10), Node(3), Node(2), Node(6), Node(3)
+n26.left = n10
+n26.right = n3
+n10.left = n2
+n10.right = n6
+n3.right = n31
+print(Solution.check_sum_tree(n26))
+
+
+# Example 5
+n1, n2, n3 = Node(1), Node(2), Node(3)
+n3.right = n1
+n1.left = n2
+print(Solution.check_sum_tree(n3))
