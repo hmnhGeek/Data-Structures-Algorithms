@@ -51,3 +51,40 @@ class Dequeue:
         del node
         self.length -= 1
         return item
+
+
+class Stack:
+    def __init__(self):
+        self.dq = Dequeue()
+
+    def is_empty(self):
+        return self.dq.is_empty()
+
+    def push(self, x):
+        self.dq.insert_last(x)
+
+    def pop(self):
+        return self.dq.remove_last()
+
+
+class Queue:
+    def __init__(self):
+        self.dq = Dequeue()
+
+    def is_empty(self):
+        return self.dq.is_empty()
+
+    def push(self, x):
+        self.dq.insert_last(x)
+
+    def pop(self):
+        return self.dq.remove_first()
+
+
+# Example 1
+stack = Stack()
+for i in [2, 6, 8, 0, 9, 9, 7]:
+    stack.push(i)
+while not stack.is_empty():
+    print(stack.pop(), end=" ")
+print()
