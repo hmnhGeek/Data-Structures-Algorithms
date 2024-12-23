@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/sort-k-sorted-doubly-linked-list/
+# Solution - https://www.youtube.com/watch?v=hgcKeJiBCc8
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -103,17 +107,33 @@ class MinHeap:
 class Solution:
     @staticmethod
     def sort_dll(dll: DoublyLinkedList, k: int):
+        """
+            Time complexity is O(n * log(k)) and space complexity is O(k).
+        """
+
+        # define a min heap as a pq and push first `k` data points into it.
         min_heap = MinHeap()
         curr = dll.head
+
+        # This will take O(k * log(k))
         for i in range(min(k + 1, dll.length)):
             min_heap.insert(curr.data)
             curr = curr.next
+
+        # define a temp DLL
         temp = DoublyLinkedList()
+
+        # while the heap is not empty, which will take O(n * log(k)) time
         while not min_heap.is_empty():
+            # push the min node in min heap in O(log(k)) time.
             temp.push(min_heap.pop())
+            # if curr is not None, push it into the min heap in O(log(k)) time.
             if curr is not None:
                 min_heap.insert(curr.data)
+            # move to next curr
             curr = curr.next if curr is not None else None
+
+        # reassign temp to the original DLL (the unsorted DLL will be garbage collected).
         dll.head = temp.head
         dll.tail = temp.tail
 
