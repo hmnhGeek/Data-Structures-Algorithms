@@ -132,14 +132,27 @@ space_optimized()
 
 
 def print_lds(arr):
+    """
+        Time complexity is O(n^2) and space complexity is O(n).
+    """
+
     n = len(arr)
+
+    # define a dp and a parents dictionary
     dp = {i: 1 for i in range(n)}
     parents = {i: i for i in range(n)}
+
+    # loop in `i` index
     for i in range(n):
+        # loop on the prev index from `i + 1` to `n`.
         for prev in range(i + 1, n):
+            # if `i` and `prev` are mutually divisible and `i` can be added into the longest subset, then update the
+            # variables
             if mutual_divisibility(arr, i, prev) and dp[i] < 1 + dp[prev]:
                 dp[i] = 1 + dp[prev]
                 parents[i] = prev
+
+    # back track to get the longest divisible subset
     result = []
     start_index = max(dp, key=dp.get)
     while parents[start_index] != start_index:
