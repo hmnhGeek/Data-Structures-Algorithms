@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/connecting-the-graph/1
+# Solution - https://www.youtube.com/watch?v=FYrl7iz9_ZU&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=49
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.sizes = {i: 1 for i in nodes}
