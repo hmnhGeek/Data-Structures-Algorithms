@@ -34,3 +34,5 @@ class Solution:
 print(Solution.get_max_meetings([1, 3, 0, 5, 8, 5], [2, 4, 6, 7, 9, 9]))
 print(Solution.get_max_meetings([10, 12, 20], [20, 25, 30]))
 print(Solution.get_max_meetings([1, 2], [100, 99]))
+print(Solution.get_max_meetings([1, 3, 6], [4, 8, 7]))
+print(Solution.get_max_meetings([0, 7, 1, 4, 8], [2, 9, 5, 9, 10]))
