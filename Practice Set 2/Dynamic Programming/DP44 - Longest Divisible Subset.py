@@ -129,3 +129,29 @@ print()
 tabulation()
 print()
 space_optimized()
+
+
+def print_lds(arr):
+    n = len(arr)
+    dp = {i: 1 for i in range(n)}
+    parents = {i: i for i in range(n)}
+    for i in range(n):
+        for prev in range(i + 1, n):
+            if mutual_divisibility(arr, i, prev) and dp[i] < 1 + dp[prev]:
+                dp[i] = 1 + dp[prev]
+                parents[i] = prev
+    result = []
+    start_index = max(dp, key=dp.get)
+    while parents[start_index] != start_index:
+        result.append(arr[start_index])
+        start_index = parents[start_index]
+    result.append(arr[start_index])
+    return result[-1:-len(result)-1:-1]
+
+
+print(print_lds([1, 16, 7, 8, 4]))
+print(print_lds([1, 2, 5]))
+print(print_lds([3, 3, 3]))
+print(print_lds([1, 2, 4, 8]))
+print(print_lds([1, 2, 3]))
+print(print_lds([2, 4, 3, 8]))
