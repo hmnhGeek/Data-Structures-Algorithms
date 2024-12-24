@@ -37,17 +37,35 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def num_ops(edges, n):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # in O(V) space, create a disjoint set
         ds = DisjointSet([i for i in range(n)])
+
+        # store a variable to count extra edges
         extra_edges = 0
+
+        # loop on the edges of the graph in O(E) time.
         for edge in edges:
             u, v = edge
+            # if u and v are not in the same component, connect them.
             if not ds.in_same_component(u, v):
                 ds.union(u, v)
             else:
+                # else this is an extra edge in this component
                 extra_edges += 1
+
+        # now get the number of components in O(V) time.
         nc = ds.num_components()
+
+        # if the number of edges required to connect these components <= extra edges, then we can perform the
+        # connections in nc - 1 min operations.
         if nc - 1 <= extra_edges:
             return nc - 1
+
+        # else it is not possible, return -1.
         return -1
 
 
