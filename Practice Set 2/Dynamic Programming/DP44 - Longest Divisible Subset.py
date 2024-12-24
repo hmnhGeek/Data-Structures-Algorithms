@@ -90,8 +90,38 @@ def tabulation():
     print(lds([2, 4, 3, 8]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n).
+    """
+    def lds(arr):
+        n = len(arr)
+        prev = {j: 0 for j in range(1, n + 1)}
+        for j in prev:
+            prev[j] = 1 if mutual_divisibility(arr, 0, j) else 0
+        for index in range(1, n):
+            curr = {j: 0 for j in range(1, n + 1)}
+            for prev_index in range(index + 1, n + 1):
+                left = 0
+                if mutual_divisibility(arr, index, prev_index):
+                    left = 1 + prev[index]
+                right = prev[prev_index]
+                curr[prev_index] = max(left, right)
+            prev = curr
+        return prev[n]
+
+    print(lds([1, 16, 7, 8, 4]))
+    print(lds([1, 2, 5]))
+    print(lds([3, 3, 3]))
+    print(lds([1, 2, 4, 8]))
+    print(lds([1, 2, 3]))
+    print(lds([2, 4, 3, 8]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
