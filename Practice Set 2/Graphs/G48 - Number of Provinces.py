@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/find-the-number-of-states_1377943
+# Solution - https://www.youtube.com/watch?v=ZGr5nX-Gi6Y&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=48
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.ranks = {i: 0 for i in nodes}
@@ -38,12 +42,22 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def num_provinces(adj_mtx):
+        """
+            Time complexity is O(V^2) and space complexity is O(V).
+        """
+
         n = len(adj_mtx)
+        # create a disjoint set in O(V) space.
         ds = DisjointSet([i for i in range(n)])
+
+        # loop in the adjacency matrix in O(V^2).
         for i in range(n):
             for j in range(n):
+                # if there is an edge between `i` and `j`, perform a union operation in O(1) time.
                 if adj_mtx[i][j] == 1:
                     ds.union(i, j)
+
+        # return the number of components in O(V) time.
         return ds.num_components()
 
 
