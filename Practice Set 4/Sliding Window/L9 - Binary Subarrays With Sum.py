@@ -52,3 +52,6 @@ class Solution:
 
 print(Solution.bin_subarray_count([1, 0, 1, 0, 1], 2))
 print(Solution.bin_subarray_count([0, 0, 0, 0, 0], 0))
+print(Solution.bin_subarray_count([1, 0, 1, 1, 0, 1], 2))
+print(Solution.bin_subarray_count([1, 1, 0, 1, 1], 5))
+print(Solution.bin_subarray_count([1, 0, 1, 1, 1, 0, 1], 3))
