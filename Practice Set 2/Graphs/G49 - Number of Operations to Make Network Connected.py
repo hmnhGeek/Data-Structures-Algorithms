@@ -26,4 +26,31 @@ class DisjointSet:
     def in_same_component(self, node1, node2):
         return self.find_ultimate_parent(node1) == self.find_ultimate_parent(node2)
 
+    def num_components(self):
+        count = 0
+        for i in self.parents:
+            if i == self.parents[i]:
+                count += 1
+        return count
 
+
+class Solution:
+    @staticmethod
+    def num_ops(edges, n):
+        ds = DisjointSet([i for i in range(n)])
+        extra_edges = 0
+        for edge in edges:
+            u, v = edge
+            if not ds.in_same_component(u, v):
+                ds.union(u, v)
+            else:
+                extra_edges += 1
+        nc = ds.num_components()
+        if nc - 1 <= extra_edges:
+            return nc - 1
+        return -1
+
+
+print(Solution.num_ops([[0, 1], [0, 2], [1, 2]], 4))
+print(Solution.num_ops([[0, 1], [0, 2], [0, 3], [1, 2], [1, 3]], 6))
+print(Solution.num_ops([[0, 1], [0, 2], [0, 3], [1, 2]], 6))
