@@ -24,6 +24,21 @@ class Solution:
         return dp, parents
 
     @staticmethod
+    def _construct_increasing_part(arr, start_index, left_slope, parents1):
+        while start_index != parents1[start_index]:
+            left_slope.append(arr[start_index])
+            start_index = parents1[start_index]
+        left_slope.append(arr[start_index])
+        left_slope = left_slope[-1:-len(left_slope)-1:-1]
+
+    @staticmethod
+    def _construct_decreasing_part(arr, start_index, right_slope, parents2):
+        while start_index != parents2[start_index]:
+            right_slope.append(arr[start_index])
+            start_index = parents2[start_index]
+        right_slope.append(arr[start_index])
+
+    @staticmethod
     def lbs(arr):
         n = len(arr)
         dp1, parents1 = Solution._front_side(arr)
@@ -31,16 +46,9 @@ class Solution:
         dp = {i: dp1[i] + dp2[i] - 1 for i in range(n)}
         start_index = max(dp, key=dp.get)
         left_slope, right_slope = [], []
-        while start_index != parents1[start_index]:
-            left_slope.append(arr[start_index])
-            start_index = parents1[start_index]
-        left_slope.append(arr[start_index])
-        left_slope = left_slope[-1:-len(left_slope)-1:-1]
+        Solution._construct_increasing_part(arr, start_index, left_slope, parents1)
         start_index = max(dp, key=dp.get)
-        while start_index != parents2[start_index]:
-            right_slope.append(arr[start_index])
-            start_index = parents2[start_index]
-        right_slope.append(arr[start_index])
+        Solution._construct_decreasing_part(arr, start_index, right_slope, parents2)
         return left_slope + right_slope[1::]
 
 
