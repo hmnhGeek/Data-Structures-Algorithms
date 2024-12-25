@@ -14,11 +14,16 @@ class Solution:
         counts = {i: 1 for i in range(n)}
         for i in range(n):
             for prev in range(i):
+                # if there is a longer increasing subsequence, then update the dp and set counts of `i` to the number of
+                # subsequences coming from `j`.
                 if arr[i] > arr[prev] and dp[i] < 1 + dp[prev]:
                     dp[i] = 1 + dp[prev]
                     counts[i] = counts[prev]
                 elif arr[i] > arr[prev] and dp[i] == 1 + dp[prev]:
+                    # if we get again the LIS length, then sum up counts `i` with counts of `j`.
                     counts[i] += counts[prev]
+
+        # get LIS length and count of LIS in nums.
         lis_length = max(dp.values())
         nums = 0
         for i in range(n):
