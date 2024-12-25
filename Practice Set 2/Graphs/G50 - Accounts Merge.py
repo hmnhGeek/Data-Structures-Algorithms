@@ -31,29 +31,50 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def _get_emails_to_name_mapping(mtx, disjoint_set: DisjointSet, n):
+        """
+            Time complexity is O(nm) and space complexity is O(mn).
+        """
+
         temp = {}
         for i in range(n):
             row = mtx[i]
+            # loop on the emails of each row
             for email in row[1::]:
+                # if the email is in temp and the name index is not yet unified, do the union.
                 if email in temp and not disjoint_set.in_same_component(i, temp[email]):
                     disjoint_set.union(i, temp[email])
                 else:
+                    # else, if it is a new email, assign its parent in temp.
                     temp[email] = i
         return temp
 
     @staticmethod
     def _unify_emails(emails_to_name_mapping, disjoint_set: DisjointSet, n):
+        """
+            Time complexity is O(nm + n*m*log(m)) and space complexity is O(nm).
+        """
+
         result = {i: [] for i in range(n)}
+
+        # iterate on the emails from the given mapping.
         for email in emails_to_name_mapping:
+            # extract the parent
             parent = emails_to_name_mapping[email]
+            # find the ultimate parent
             ulp = disjoint_set.find_ultimate_parent(parent)
+            # store the email in the ultimate parent only.
             result[ulp].append(email)
+
+        # sort each row of the result and return only the rows having emails.
         for i in result:
             result[i].sort()
         return {k: v for k, v in result.items() if len(v) != 0}
 
     @staticmethod
     def _build_result(mtx, unified_emails, n):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
         result = []
         for i in unified_emails:
             result.append([mtx[i][0], ] + unified_emails[i])
@@ -61,10 +82,18 @@ class Solution:
 
     @staticmethod
     def accounts_merge(mtx):
+        """
+            Time complexity is O(nm * log(m)) and space complexity is O(nm).
+        """
+
         n = len(mtx)
+        # construct a disjoint set of n vertices representing the indices of the rows.
         ds = DisjointSet([i for i in range(n)])
+        # for each email, get the corresponding names from the matrix.
         emails_to_name_mapping = Solution._get_emails_to_name_mapping(mtx, ds, n)
+        # after iterating on the emails to name mapping, unify them in the disjoint set.
         unified_names_to_emails_mapping = Solution._unify_emails(emails_to_name_mapping, ds, n)
+        # construct the result and return it.
         result = Solution._build_result(mtx, unified_names_to_emails_mapping, n)
         return result
 
