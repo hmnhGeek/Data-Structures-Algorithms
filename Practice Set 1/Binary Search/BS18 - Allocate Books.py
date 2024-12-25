@@ -18,8 +18,8 @@ class Solution:
 
     @staticmethod
     def allocate(arr, k):
-        if k <= 0:
-            return
+        if k <= 0 or k > len(arr):
+            return -1
         low, high = max(arr), sum(arr)
         while low <= high:
             mid = int(low + (high - low)/2)
@@ -32,3 +32,7 @@ class Solution:
 
 
 print(Solution.allocate([25, 46, 28, 49, 24], 4))
+print(Solution.allocate([12, 34, 67, 90], 2))
+print(Solution.allocate([15, 17, 20], 5))
+print(Solution.allocate([22, 23, 67], 1))
+print(Solution.allocate([15, 17, 20], 2))
