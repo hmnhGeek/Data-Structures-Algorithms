@@ -87,3 +87,25 @@ print(
          ["Fern", "Fern5@m.co", "Fern1@m.co", "Fern0@m.co"]]
     )
 )
+
+print(
+    Solution.accounts_merge(
+        [["John", "j1@com", "j2@com", "j3@com"],
+         ["John", "j4@com"],
+         ["Raj", "r1@com", "r2@com"],
+         ["John", "j1@com", "j5@com"],
+         ["Raj", "r2@com", "r3@com"],
+         ["Mary", "m1@com"]]
+    )
+)
+
+print(
+    Solution.accounts_merge(
+        [
+            ["Rohan", "rohan123@gmail.com", "1279ro@gmail.com"],
+            ["Rohit", "rohit101@yahoo.com", "hitman30487@gmail.com"],
+            ["Rohan", "1279ro@gmail.com", "niemann01@gmail.com"],
+            ["Rohan", "kaushik@outlook.com"],
+        ]
+    )
+)
