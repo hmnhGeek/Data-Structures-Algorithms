@@ -22,3 +22,7 @@ class Solution:
 
 
 print(Solution.count_nice_subarrays([1, 1, 2, 1, 1], 3))
+print(Solution.count_nice_subarrays([2, 4, 6], 1))
+print(Solution.count_nice_subarrays([2, 2, 2, 1, 2, 2, 1, 2, 2, 2], 2))
+print(Solution.count_nice_subarrays([2, 5, 6, 9], 2))
+print(Solution.count_nice_subarrays([2, 2, 5, 6, 9, 2, 11], 2))
