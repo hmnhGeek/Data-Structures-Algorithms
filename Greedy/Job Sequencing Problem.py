@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1
+# Solution - https://www.youtube.com/watch?v=QbwltemZbRg
+
+
 class Solution:
     @staticmethod
     def solve(ids, deadlines, profits):
