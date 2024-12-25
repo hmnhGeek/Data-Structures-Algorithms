@@ -45,3 +45,9 @@ class Solution:
 
 
 print(Solution.lbs([1, 11, 2, 10, 4, 5, 2, 1]))
+print(Solution.lbs([1, 2, 1, 2, 1]))
+print(Solution.lbs([1, 3, 5, 3, 2]))
+print(Solution.lbs([1, 2, 1, 3, 4]))
+print(Solution.lbs([12, 11, 40, 5, 3, 1]))
+print(Solution.lbs([80, 60, 30]))
+print(Solution.lbs([10, 10, 10]))
