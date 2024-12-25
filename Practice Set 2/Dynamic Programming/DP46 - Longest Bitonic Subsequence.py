@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-bitonic-sequence_1062688?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=y4vN0WNdrlg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=47
+
+
 class Solution:
     @staticmethod
     def _front_side(arr):
@@ -40,15 +44,33 @@ class Solution:
 
     @staticmethod
     def lbs(arr):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
+
         n = len(arr)
+
+        # in O(n^2) and O(n) space, get the LIS information from left side.
         dp1, parents1 = Solution._front_side(arr)
+
+        # in O(n^2) and O(n) space, get the LIS information from right side.
         dp2, parents2 = Solution._back_side(arr)
+
+        # calculate LBS lengths for each index.
         dp = {i: dp1[i] + dp2[i] - 1 for i in range(n)}
-        start_index = max(dp, key=dp.get)
+
+        # store two arrays for storing the left and right parts of the LBS.
         left_slope, right_slope = [], []
+
+        # get the LIS index and construct the increasing part of the LBS
+        start_index = max(dp, key=dp.get)
         Solution._construct_increasing_part(arr, start_index, left_slope, parents1)
+
+        # get the LIS index and construct the decreasing part of the LBS
         start_index = max(dp, key=dp.get)
         Solution._construct_decreasing_part(arr, start_index, right_slope, parents2)
+
+        # return the LBS.
         return left_slope + right_slope[1::]
 
 
