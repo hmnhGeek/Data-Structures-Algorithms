@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/account-merge/1
+# Solution - https://www.youtube.com/watch?v=FMwpt_aQOGw&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=50
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.ranks = {i: 0 for i in nodes}
