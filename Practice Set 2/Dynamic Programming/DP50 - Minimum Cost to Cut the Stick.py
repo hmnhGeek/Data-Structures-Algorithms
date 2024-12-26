@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/cost-to-cut-a-chocolate_3208460?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=xwomavsC86c&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=51
+
+
 class MergeSort:
     @staticmethod
     def _merge(arr, low, high):
