@@ -76,29 +76,47 @@ class Node:
 
 class Solution:
     @staticmethod
-    def _get_inorder(root, inorder, encoding):
+    def _get_inorder(root, huffman_encodings, encoding):
         if root.left is None and root.right is None:
-            inorder.append((root.character, encoding))
+            huffman_encodings.append((root.character, encoding))
             return
-        Solution._get_inorder(root.left, inorder, encoding + "0")
-        Solution._get_inorder(root.right, inorder, encoding + "1")
+        Solution._get_inorder(root.left, huffman_encodings, encoding + "0")
+        Solution._get_inorder(root.right, huffman_encodings, encoding + "1")
 
     @staticmethod
     def get_huffman_encoding_of(string):
+        # get the frequencies of the characters from the string in a list of tuples.
         mapping = Counter(string)
         frequencies = list(mapping.items())
+
+        # declare a priority queue
         pq = MinHeap()
+
+        # loop on the character and its frequency push them one by one into pq.
         for char, frequency in frequencies:
             pq.insert(Node(char, frequency))
+
+        # while we don't reach to the root node...
         while len(pq.heap) != 1:
+            # get the lowest two nodes by frequencies
             left_node, right_node = pq.pop(), pq.pop()
+
+            # create their parent node (character can be sent as "")
             parent_node = Node("", left_node.data + right_node.data)
+
+            # make the linkages between parent and its children
             parent_node.left = left_node
             parent_node.right = right_node
+
+            # push the parent node back to the pq.
             pq.insert(parent_node)
-        inorder = []
-        Solution._get_inorder(pq.heap[0], inorder, "")
-        return inorder
+
+        # once the pq has only one node (root node) of the huffman tree, perform an inorder traversal of this tree.
+        huffman_encodings = []
+        Solution._get_inorder(pq.heap[0], huffman_encodings, "")
+
+        # return the huffman encodings of each character.
+        return huffman_encodings
 
 
 print(Solution.get_huffman_encoding_of("aaaaabbbbbbbbbccccccccccccdddddddddddddeeeeeeeeeeeeeeee"+"f"*45))
