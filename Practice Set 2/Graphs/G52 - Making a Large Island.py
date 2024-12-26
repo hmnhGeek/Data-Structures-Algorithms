@@ -77,7 +77,7 @@ class Solution:
         n, m = len(mtx), len(mtx[0])
         ds = DisjointSet([i for i in range(n*m)])
         Solution._connect_components(mtx, ds, n, m)
-        largest_island_size = [0]
+        largest_island_size = [max(ds.sizes.values())]
         Solution._get_largest_island(mtx, ds, largest_island_size, n, m)
         return largest_island_size[0]
 
@@ -110,6 +110,27 @@ print(
             [0, 0, 1, 0, 0],
             [0, 0, 1, 1, 1],
             [0, 0, 1, 1, 1]
+        ]
+    )
+)
+
+print(
+    Solution.make_large_island(
+        [
+            [1, 0, 1, 1, 0],
+            [1, 0, 0, 1, 0],
+            [0, 1, 1, 0, 1],
+            [1, 0, 1, 0, 1],
+            [0, 1, 0, 1, 0]
+        ]
+    )
+)
+
+print(
+    Solution.make_large_island(
+        [
+            [1, 1],
+            [1, 1]
         ]
     )
 )
