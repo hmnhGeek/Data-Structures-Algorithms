@@ -97,6 +97,38 @@ def memoized():
     print(min_cost_to_cut_stick([5, 6, 1, 4, 2], 9))
 
 
+def tabulation():
+    """
+        Time complexity is O(n^3) and space complexity is O(n^2).
+    """
+    def min_cost_to_cut_stick(arr, length):
+        MergeSort.sort(arr)
+        n = len(arr)
+        arr = [0, ] + arr + [length, ]
+        dp = {i: {j: 1e6 for j in range(n + 1)} for i in range(n + 2)}
+        for i in dp:
+            for j in dp[i]:
+                if i > j:
+                    dp[i][j] = 0
+        for i in range(n, 0, -1):
+            for j in range(i, n + 1):
+                min_cost = 1e6
+                for index in range(i, j + 1):
+                    cost = (arr[j + 1] - arr[i - 1]) + dp[i][index - 1] + dp[index + 1][j]
+                    min_cost = min(min_cost, cost)
+                dp[i][j] = min_cost
+        return dp[1][n]
+
+    print(min_cost_to_cut_stick([1, 3, 4, 5], 7))
+    print(min_cost_to_cut_stick([1, 3], 4))
+    print(min_cost_to_cut_stick([1, 3, 4], 5))
+    print(min_cost_to_cut_stick([1, 3, 4, 7], 10))
+    print(min_cost_to_cut_stick([1, 3], 10))
+    print(min_cost_to_cut_stick([5, 6, 1, 4, 2], 9))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
