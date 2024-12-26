@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/minimise-max-distance_7541449
+# Solution - https://www.youtube.com/watch?v=kMSBvlZ-_HA&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=21
+
+
 class Solution:
     @staticmethod
     def _num_gas_stations_placed(arr, mid, n):
@@ -23,6 +27,10 @@ class Solution:
 
     @staticmethod
     def minimize_distance(arr, k):
+        """
+            Time complexity is O(n * log(range)) and space complexity is O(1).
+        """
+
         if k <= 0:
             return
 
