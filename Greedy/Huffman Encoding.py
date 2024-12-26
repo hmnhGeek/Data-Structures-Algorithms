@@ -104,3 +104,6 @@ class Solution:
 print(Solution.get_huffman_encoding_of("aaaaabbbbbbbbbccccccccccccdddddddddddddeeeeeeeeeeeeeeee"+"f"*45))
 print(Solution.get_huffman_encoding_of("bcaadddccacacac"))
 print(Solution.get_huffman_encoding_of("eeeeaaaaddcccbbbbbbb"))
+print(Solution.get_huffman_encoding_of("abcd"))
+print(Solution.get_huffman_encoding_of("AAAAAABCCCCCCDDEEEEE"))
+print(Solution.get_huffman_encoding_of("geeksforgeeks"))
