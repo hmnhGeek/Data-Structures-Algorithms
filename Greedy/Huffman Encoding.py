@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/huffman-encoding3345/1
+# Solution - https://www.youtube.com/watch?v=HZOUwKCKF5o
+
+
 from collections import Counter
 
 
@@ -85,6 +89,10 @@ class Solution:
 
     @staticmethod
     def get_huffman_encoding_of(string):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         # get the frequencies of the characters from the string in a list of tuples.
         mapping = Counter(string)
         frequencies = list(mapping.items())
@@ -92,7 +100,7 @@ class Solution:
         # declare a priority queue
         pq = MinHeap()
 
-        # loop on the character and its frequency push them one by one into pq.
+        # loop on the character and its frequency push them one by one into pq. This will take O(n * log(n)) time.
         for char, frequency in frequencies:
             pq.insert(Node(char, frequency))
 
@@ -113,6 +121,8 @@ class Solution:
 
         # once the pq has only one node (root node) of the huffman tree, perform an inorder traversal of this tree.
         huffman_encodings = []
+
+        # This will take another O(n) time and O(log(n)) recursion space.
         Solution._get_inorder(pq.heap[0], huffman_encodings, "")
 
         # return the huffman encodings of each character.
