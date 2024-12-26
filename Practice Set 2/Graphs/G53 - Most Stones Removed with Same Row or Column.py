@@ -26,3 +26,58 @@ class DisjointSet:
     def in_same_components(self, node1, node2):
         return self.find_ultimate_parent(node1) == self.find_ultimate_parent(node2)
 
+    def get_num_components(self):
+        count = 0
+        for i in self.parents:
+            if self.parents[i] == i:
+                count += 1
+        return count
+
+
+class Solution:
+    @staticmethod
+    def _build_disjoint_set(mtx, row, col, nodes):
+        n, m = len(mtx), len(mtx[0])
+        for i in range(n):
+            for j in range(m):
+                if mtx[i][j] == 1:
+                    node = i * m + j
+                    nodes.add(node)
+                    if i in row:
+                        row[i].append(node)
+                    else:
+                        row[i] = [node,]
+                    if j in col:
+                        col[j].append(node)
+                    else:
+                        col[j] = [node,]
+        ds = DisjointSet([i for i in nodes])
+        for r in row:
+            for index in range(1, len(row[r])):
+                ds.union(row[r][0], row[r][index])
+        for c in col:
+            for index in range(1, len(col[c])):
+                ds.union(col[c][0], col[c][index])
+        return ds, len(nodes)
+
+    @staticmethod
+    def remove_stones(mtx):
+        row_set = dict()
+        col_set = dict()
+        nodes = set()
+        disjoint_set, n = Solution._build_disjoint_set(mtx, row_set, col_set, nodes)
+        return n - disjoint_set.get_num_components()
+
+
+print(
+    Solution.remove_stones(
+        [
+            [1, 0, 1, 0],
+            [0, 0, 0, 1],
+            [0, 0, 0, 0],
+            [1, 0, 1, 0],
+            [0, 0, 0, 1]
+        ]
+    )
+)
+
