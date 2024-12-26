@@ -1,12 +1,24 @@
 class Solution:
     @staticmethod
     def _num_gas_stations_placed(arr, mid, n):
+        # assume the number of gas stations placed with mid-distance as max consecutive distance to be 0.
         count = 0
+
+        # loop on the n - 1 slots.
         for i in range(n - 1):
+            # compute the number of gas stations that can be placed in this slot if we assume that at max only mid-
+            # distance is allowed between two consecutive gas stations.
             gas_stations = (arr[i + 1] - arr[i]) // mid
+
+            # if the division was proper, then we must decrement 1 gas station, as for example, diff = 1/mid = 0.5 = 2,
+            # but we can place only 1 gas station and not 2.
             if gas_stations * mid == arr[i + 1] - arr[i]:
                 gas_stations -= 1
+
+            # increment the count of gas stations placed.
             count += gas_stations
+
+        # return the count.
         return count
 
     @staticmethod
