@@ -29,42 +29,42 @@ class DisjointSet:
 
 class Solution:
     @staticmethod
-    def _get_neighbours(mtx, i, j, n):
+    def _get_neighbours(mtx, i, j, n, m):
         neighbours = []
         if 0 <= i - 1 < n and mtx[i - 1][j] == 1:
             neighbours.append((i - 1, j))
-        if 0 <= j + 1 < n and mtx[i][j + 1] == 1:
+        if 0 <= j + 1 < m and mtx[i][j + 1] == 1:
             neighbours.append((i, j + 1))
         if 0 <= i + 1 < n and mtx[i + 1][j] == 1:
             neighbours.append((i + 1, j))
-        if 0 <= j - 1 < n and mtx[i][j - 1] == 1:
+        if 0 <= j - 1 < m and mtx[i][j - 1] == 1:
             neighbours.append((i, j - 1))
         return neighbours
 
     @staticmethod
-    def _connect_components(mtx, ds: DisjointSet, n):
+    def _connect_components(mtx, ds: DisjointSet, n, m):
         for i in range(n):
-            for j in range(n):
+            for j in range(m):
                 if mtx[i][j] == 1:
-                    node = i * n + j
-                    neighbours = Solution._get_neighbours(mtx, i, j, n)
+                    node = i * m + j
+                    neighbours = Solution._get_neighbours(mtx, i, j, n, m)
                     for neighbour in neighbours:
                         x, y = neighbour
-                        adj_node = x * n + y
+                        adj_node = x * m + y
                         if not ds.in_same_component(node, adj_node):
                             ds.union(node, adj_node)
 
     @staticmethod
-    def _get_largest_island(mtx, ds: DisjointSet, largest_size, n):
+    def _get_largest_island(mtx, ds: DisjointSet, largest_size, n, m):
         for i in range(n):
-            for j in range(n):
+            for j in range(m):
                 if mtx[i][j] == 0:
                     ultimate_parents = set()
-                    node = i * n + j
-                    neighbours = Solution._get_neighbours(mtx, i, j, n)
+                    node = i * m + j
+                    neighbours = Solution._get_neighbours(mtx, i, j, n, m)
                     for neighbour in neighbours:
                         x, y = neighbour
-                        adj_node = x * n + y
+                        adj_node = x * m + y
                         ultimate_parents.add(ds.find_ultimate_parent(adj_node))
                     new_island_size = 0
                     for ulp in ultimate_parents:
@@ -74,11 +74,11 @@ class Solution:
 
     @staticmethod
     def make_large_island(mtx):
-        n = len(mtx)
-        ds = DisjointSet([i for i in range(n**2)])
-        Solution._connect_components(mtx, ds, n)
+        n, m = len(mtx), len(mtx[0])
+        ds = DisjointSet([i for i in range(n*m)])
+        Solution._connect_components(mtx, ds, n, m)
         largest_island_size = [0]
-        Solution._get_largest_island(mtx, ds, largest_island_size, n)
+        Solution._get_largest_island(mtx, ds, largest_island_size, n, m)
         return largest_island_size[0]
 
 
@@ -97,6 +97,19 @@ print(
             [1, 0, 1],
             [1, 0, 1],
             [1, 0, 1]
+        ]
+    )
+)
+
+print(
+    Solution.make_large_island(
+        [
+            [1, 1, 0, 1, 1],
+            [1, 1, 0, 1, 1],
+            [1, 1, 0, 1, 1],
+            [0, 0, 1, 0, 0],
+            [0, 0, 1, 1, 1],
+            [0, 0, 1, 1, 1]
         ]
     )
 )
