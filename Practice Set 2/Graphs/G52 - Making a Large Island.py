@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/maximum-connected-group/1
+# Solution - https://www.youtube.com/watch?v=lgiz0Oup6gM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=52
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.sizes = {i: 1 for i in nodes}
@@ -43,6 +47,9 @@ class Solution:
 
     @staticmethod
     def _connect_components(mtx, ds: DisjointSet, n, m):
+        """
+            Time complexity is O(4nm) to connect all the 1-cells.
+        """
         for i in range(n):
             for j in range(m):
                 if mtx[i][j] == 1:
@@ -56,6 +63,10 @@ class Solution:
 
     @staticmethod
     def _get_largest_island(mtx, ds: DisjointSet, largest_size, n, m):
+        """
+            Time complexity is O(4nm).
+        """
+
         for i in range(n):
             for j in range(m):
                 if mtx[i][j] == 0:
@@ -65,19 +76,26 @@ class Solution:
                     for neighbour in neighbours:
                         x, y = neighbour
                         adj_node = x * m + y
+                        # store the ultimate parents only in a set to avoid duplicate additions of sizes.
                         ultimate_parents.add(ds.find_ultimate_parent(adj_node))
                     new_island_size = 0
                     for ulp in ultimate_parents:
                         new_island_size += ds.sizes[ulp]
+                    # add 1 for 0-cell.
                     new_island_size += 1
                     largest_size[0] = max(largest_size[0], new_island_size)
 
     @staticmethod
     def make_large_island(mtx):
+        # get the dimensions of the matrix.
         n, m = len(mtx), len(mtx[0])
+        # create a disjoint set of nm nodes. Thus space consumed will be O(nm).
         ds = DisjointSet([i for i in range(n*m)])
+        # connect all the 1-element cells into components. This will take O(4nm) time.
         Solution._connect_components(mtx, ds, n, m)
+        # store the largest island out of all the components from the disjoint set. This will take another O(nm) time.
         largest_island_size = [max(ds.sizes.values())]
+        # find the largest island by converting each 0 to 1 at a time. This will take another O(4nm) time.
         Solution._get_largest_island(mtx, ds, largest_island_size, n, m)
         return largest_island_size[0]
 
