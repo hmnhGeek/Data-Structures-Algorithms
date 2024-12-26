@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimize-max-distance-to-gas-station/1
+# Solution - https://www.youtube.com/watch?v=kMSBvlZ-_HA&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=21
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -67,22 +71,38 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def minimize_distance(arr, k):
+        """
+            Time complexity is O({n + k} * log(n)) and space complexity is O(n).
+        """
+
+        # edge case
         if k <= 0:
             return
+
+        # create a max heap which will store the max distance by storing the slot index.
         n = len(arr)
         max_heap = MaxHeap()
         gas_stations_placed_tracker = {i: 0 for i in range(n - 1)}
+
+        # in O(n*log(n)) time insert the slots into the max heap
         for i in range(n - 1):
-            max_heap.insert((arr[i + 1] - arr[i], i))
+            max_heap.insert(((arr[i + 1] - arr[i])/(gas_stations_placed_tracker[i] + 1), i))
+
+        # now start placing the k-gas stations in O(k*log(n)) time.
         for i in range(k):
+            # get the highest distance slot
             distance, index = max_heap.pop()
+            # place another gas station on this slot.
             gas_stations_placed_tracker[index] += 1
+            # update the slot distance and insert back into the max heap in log(n) time.
             max_heap.insert(
                 (
                     (arr[index + 1] - arr[index])/(gas_stations_placed_tracker[index] + 1),
                     index
                 )
             )
+
+        # return the max distance from the max heap as answer.
         return max_heap.heap[0][0]
 
 
