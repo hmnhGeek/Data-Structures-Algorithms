@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -65,7 +68,8 @@ class MinHeap:
 
 
 class Node:
-    def __init__(self, data):
+    def __init__(self, character, data):
+        self.character = character
         self.data = data
         self.left = self.right = None
 
@@ -74,19 +78,21 @@ class Solution:
     @staticmethod
     def _get_inorder(root, inorder, encoding):
         if root.left is None and root.right is None:
-            inorder.append(encoding)
+            inorder.append((root.character, encoding))
             return
         Solution._get_inorder(root.left, inorder, encoding + "0")
         Solution._get_inorder(root.right, inorder, encoding + "1")
 
     @staticmethod
-    def get_huffman_encoding_of(frequencies):
+    def get_huffman_encoding_of(string):
+        mapping = Counter(string)
+        frequencies = list(mapping.items())
         pq = MinHeap()
-        for frequency in frequencies:
-            pq.insert(Node(frequency))
+        for char, frequency in frequencies:
+            pq.insert(Node(char, frequency))
         while len(pq.heap) != 1:
             left_node, right_node = pq.pop(), pq.pop()
-            parent_node = Node(left_node.data + right_node.data)
+            parent_node = Node("", left_node.data + right_node.data)
             parent_node.left = left_node
             parent_node.right = right_node
             pq.insert(parent_node)
@@ -95,5 +101,6 @@ class Solution:
         return inorder
 
 
-print(Solution.get_huffman_encoding_of([5, 9, 12, 13, 16, 45]))
-print(Solution.get_huffman_encoding_of([4, 7, 3, 2, 4]))
+print(Solution.get_huffman_encoding_of("aaaaabbbbbbbbbccccccccccccdddddddddddddeeeeeeeeeeeeeeee"+"f"*45))
+print(Solution.get_huffman_encoding_of("bcaadddccacacac"))
+print(Solution.get_huffman_encoding_of("eeeeaaaaddcccbbbbbbb"))
