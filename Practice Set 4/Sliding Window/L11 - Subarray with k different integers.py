@@ -37,3 +37,5 @@ class Solution:
 print(Solution.get_subarray_count([1, 2, 1, 3, 4], 3))
 print(Solution.get_subarray_count([1,2,1,2,3], 2))
 print(Solution.get_subarray_count([1, 2, 3, 4, 5], 1))
+print(Solution.get_subarray_count([2, 1, 3, 2, 4], 2))
+print(Solution.get_subarray_count([1, 2, 3, 4, 5], 4))
