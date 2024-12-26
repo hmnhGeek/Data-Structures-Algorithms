@@ -64,3 +64,29 @@ class MaxHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def minimize_distance(arr, k):
+        if k <= 0:
+            return
+        n = len(arr)
+        max_heap = MaxHeap()
+        gas_stations_placed_tracker = {i: 0 for i in range(n - 1)}
+        for i in range(n - 1):
+            max_heap.insert((arr[i + 1] - arr[i], i))
+        for i in range(k):
+            distance, index = max_heap.pop()
+            gas_stations_placed_tracker[index] += 1
+            max_heap.insert(
+                (
+                    (arr[index + 1] - arr[index])/(gas_stations_placed_tracker[index] + 1),
+                    index
+                )
+            )
+        return max_heap.heap[0][0]
+
+
+print(Solution.minimize_distance([1, 2, 3, 4, 5, 6, 7], 6))
+print(Solution.minimize_distance([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 1))
+print(Solution.minimize_distance([3, 6, 12, 19, 33, 44, 67, 72, 89, 95], 2))
+print(Solution.minimize_distance([1, 13, 17, 23], 5))
