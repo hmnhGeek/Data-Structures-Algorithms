@@ -22,14 +22,9 @@ class Solution:
         return row
 
 
-print(
-    Solution.max_1_row(
-        [
-            [0, 0, 1, 1, 1],
-            [0, 0, 0, 0, 0],
-            [0, 1, 1, 1, 1],
-            [0, 0, 0, 0, 0],
-            [0, 1, 1, 1, 1]
-        ]
-    )
-)
+print(Solution.max_1_row([[1, 1, 1], [0, 0, 1], [0, 0, 0]]))
+print(Solution.max_1_row([[1, 1], [1, 1]]))
+print(Solution.max_1_row([[0, 0, 0], [0, 1, 1]]))
+print(Solution.max_1_row([[0, 0], [1, 1], [0, 0]]))
+print(Solution.max_1_row([[0, 1, 1, 1], [0, 0, 1, 1], [1, 1, 1, 1], [0, 0, 0, 0]]))
+print(Solution.max_1_row([[0, 0, 1, 1], [0, 1, 1, 1], [0, 0, 1, 1], [0, 0, 0, 0]]))
