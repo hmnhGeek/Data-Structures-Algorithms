@@ -42,3 +42,4 @@ class Solution:
 
 
 print(Solution.make_water_connections([7, 5, 4, 2, 9, 3], [4, 9, 6, 8, 7, 1], [98, 72, 10, 22, 17, 66]))
+print(Solution.make_water_connections([1, 3], [2, 4], [60, 50]))
