@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/strongly-connected-components/
+# Solution - https://www.youtube.com/watch?v=R6uoSjZ2imo&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,9 @@ class Stack:
 class Solution:
     @staticmethod
     def _reverse_graph(graph):
+        """
+            Reverse the graph in O(V + E) time and O(V + E) space.
+        """
         reversed_graph = {i: [] for i in graph}
         for node in graph:
             for adj_node in graph[node]:
@@ -43,6 +50,9 @@ class Solution:
 
     @staticmethod
     def _dfs(graph, visited, node, stack):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
         visited[node] = True
         for adj_node in graph[node]:
             if not visited[adj_node]:
@@ -51,6 +61,9 @@ class Solution:
 
     @staticmethod
     def _get_main_stack(graph):
+        """
+            Compute the reachability of each node in a stack in O(V + E) time and O(V) space using plain DFS.
+        """
         stack = Stack()
         visited = {i: False for i in graph}
         for node in graph:
@@ -60,23 +73,43 @@ class Solution:
 
     @staticmethod
     def _get_strongly_connected_components(reversed_graph, main_stack):
+        # store the strongly connected components in `result` array.
         result = []
+        # stored visited array for doing a DFS on the reversed graph.
         visited = {i: False for i in reversed_graph}
+
+        # while not all the nodes from reachability stack have been used...
         while not main_stack.is_empty():
+            # pop the node
             node = main_stack.pop()
+            # if the node is not visited
             if not visited[node]:
+                # create a new traversal stack and `scc` list to store the nodes of the SCC, as this is a new
+                # component that we are starting with. Use DFS to get these nodes.
                 traversal_stack = Stack()
                 scc = []
                 Solution._dfs(reversed_graph, visited, node, traversal_stack)
                 while not traversal_stack.is_empty():
                     scc.append(traversal_stack.pop())
+
+                # finally, add this SCC into result list.
                 result.append(scc)
+
+        # return the result list.
         return result
 
     @staticmethod
     def get_strongly_connected_components(graph):
-        reversed_graph = Solution._reverse_graph(graph)
+        """
+            Overall time complexity is O(V + E) and space complexity is O(V + E).
+        """
+
+        # get the reachability of each node in the graph using simple DFS in O(V + E) time and O(V) space.
         main_stack = Solution._get_main_stack(graph)
+        # get the reversed graph in O(V + E) time and space. We reverse the graph in order to perform DFS from last
+        # finished node in the above main stack and then compute the SCC.
+        reversed_graph = Solution._reverse_graph(graph)
+        # finally, find and return the strongly connected components using the reversed graph in O(V + E) time and space
         return Solution._get_strongly_connected_components(reversed_graph, main_stack)
 
 
