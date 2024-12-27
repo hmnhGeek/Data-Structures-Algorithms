@@ -94,3 +94,39 @@ print(
         }
     )
 )
+
+print(
+    Solution.get_strongly_connected_components(
+        {
+            0: [2, 3],
+            1: [0],
+            2: [1],
+            3: [4],
+            4: []
+        }
+    )
+)
+
+print(
+    Solution.get_strongly_connected_components(
+        {
+            0: [1],
+            1: [2],
+            2: [0]
+        }
+    )
+)
+
+print(
+    Solution.get_strongly_connected_components(
+        {
+            1: [2],
+            2: [3, 4],
+            3: [4, 6],
+            4: [1, 5],
+            5: [6],
+            6: [7],
+            7: [5]
+        }
+    )
+)
