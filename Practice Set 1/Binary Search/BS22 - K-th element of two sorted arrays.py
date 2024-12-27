@@ -1,9 +1,18 @@
+# Problem link - https://www.naukri.com/code360/problems/k-th-element-of-2-sorted-array_1164159
+# Solution - https://www.youtube.com/watch?v=D1oDwWCq50g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=24
+
+
 class Solution:
+    """
+        Time complexity is O(log(min(n1, n2))) and space complexity is O(1).
+    """
+
     @staticmethod
     def find_kth_element(arr1, arr2, k):
         n1, n2 = len(arr1), len(arr2)
         if n1 > n2:
             return Solution.find_kth_element(arr2, arr1, k)
+        # refer to BS22 in Binary Search main folder for understanding about this search space.
         low, high = max(0, k - n2), min(k, n1)
         while low <= high:
             mid1 = int(low + (high - low)/2)
