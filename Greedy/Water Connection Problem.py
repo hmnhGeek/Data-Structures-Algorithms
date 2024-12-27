@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/water-connection-problem/
+# Solution - https://www.youtube.com/watch?v=PxYviqEuWlA
+
+
 class Solution:
     @staticmethod
     def _get_graph(sources, destinations, pipes):
@@ -34,6 +38,10 @@ class Solution:
 
     @staticmethod
     def make_water_connections(sources, destinations, pipes):
+        """
+            Time complexity is O(V + E) and space complexity O(V + E).
+        """
+
         # get the graph and the in and out degrees of each node.
         graph, out_degree, in_degree = Solution._get_graph(sources, destinations, pipes)
 
