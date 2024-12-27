@@ -4,7 +4,7 @@ class Solution:
         n1, n2 = len(arr1), len(arr2)
         if n1 > n2:
             return Solution.find_kth_element(arr2, arr1, k)
-        low, high = 0, n1
+        low, high = max(0, k - n2), min(k, n1)
         while low <= high:
             mid1 = int(low + (high - low)/2)
             mid2 = k - mid1
@@ -22,3 +22,6 @@ class Solution:
 
 
 print(Solution.find_kth_element([2, 3, 6, 7, 9], [1, 4, 8, 10], 4))
+print(Solution.find_kth_element([2, 3, 45], [4, 6, 7, 8], 4))
+print(Solution.find_kth_element([1, 2, 3, 5, 6], [4, 7, 8, 9, 100], 6))
+print(Solution.find_kth_element([100, 112, 256, 349, 770], [72, 86, 113, 119, 265, 445, 892], 7))
