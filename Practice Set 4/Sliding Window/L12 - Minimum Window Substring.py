@@ -1,9 +1,16 @@
+# Problem link - https://leetcode.com/problems/minimum-window-substring/
+# Solution - https://www.youtube.com/watch?v=WJaij9ffOIY&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=12
+
+
 from collections import Counter
 
 
 class Solution:
     @staticmethod
     def _valid_config(d, req):
+        """
+            Time complexity is O(26) and space complexity is O(1).
+        """
         for i in req:
             if d[i] < req[i]:
                 return False
@@ -11,6 +18,10 @@ class Solution:
 
     @staticmethod
     def min_window_substring(string, required):
+        """
+            Time complexity is O(26n) and space complexity is O(1).
+        """
+
         left = right = 0
         n = len(string)
         req = dict(Counter(required))
