@@ -16,7 +16,7 @@ class Solution:
     @staticmethod
     def max_1_row(mtx):
         """
-            Time complexity is O(n * log(m)) and space complexity is O(m).
+            Time complexity is O(n * log(m)) and space complexity is O(1).
         """
 
         n, m = len(mtx), len(mtx[0])
