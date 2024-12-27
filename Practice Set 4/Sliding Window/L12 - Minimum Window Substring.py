@@ -38,4 +38,9 @@ class Solution:
 
 
 print(Solution.min_window_substring("ddaaabbca", "abc"))
-print(Solution.min_window_substring("ddaaabbca", "abbc"))
+print(Solution.min_window_substring("ADOBECODEBANC", "ABC"))
+print(Solution.min_window_substring("a", "a"))
+print(Solution.min_window_substring("a", "aa"))
+print(Solution.min_window_substring("timetopractice", "toc"))
+print(Solution.min_window_substring("zoomlazapzo", "oza"))
+print(Solution.min_window_substring("ABBXC", "BXC"))
