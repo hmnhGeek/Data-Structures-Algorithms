@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1
+# Solution - https://www.youtube.com/watch?v=-tgVpUgsQ5k&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=5
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,17 +39,34 @@ class Queue:
 class Solution:
     @staticmethod
     def bfs(graph, source):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # edge case
         if source not in graph:
             return
+
+        # take a visited array to track node visits
         visited = {i: False for i in graph}
+
+        # push the source node into the queue.
         queue = Queue()
         queue.push(source)
+
+        # typical BFS...
         while not queue.is_empty():
+            # pop the current node and print it if it is not visited.
             node = queue.pop()
             if not visited[node]:
                 print(node, end=" ")
+
+            # mark the current node as visited.
             visited[node] = True
+
+            # loop on the adjacent nodes of this node
             for adj_node in graph[node]:
+                # if they are not yet visited, push them into the queue.
                 if not visited[adj_node]:
                     queue.push(adj_node)
         print()
