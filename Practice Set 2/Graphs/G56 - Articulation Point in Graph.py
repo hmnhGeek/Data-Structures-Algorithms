@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/library/articulation-points-in-a-graph#:~:text=An%20articulation%20point%20in%20a,also%20known%20as%20cut%20vertices.
+# Solution - https://www.youtube.com/watch?v=64KK9K4RpKE
+
+
 class Solution:
     _timer = 0
 
@@ -17,12 +21,18 @@ class Solution:
                     state[node] = True
                 child += 1
             else:
+                # it's not a parent and still it is visited, thus, it's an ancestor and it might get removed and
+                # therefore, take its insertion time only.
                 low[node] = min(low[node], tin[adj_node])
         if child > 1 and parent is None:
             state[node] = True
 
     @staticmethod
     def get_articulation_points(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         Solution._timer = 0
         tin = {i: 0 for i in graph}
         low = {i: 0 for i in graph}
