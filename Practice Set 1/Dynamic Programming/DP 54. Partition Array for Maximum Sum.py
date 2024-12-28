@@ -6,6 +6,7 @@ def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
     """
+
     def solve(arr, index, k, n):
         if index == n:
             return 0
@@ -24,7 +25,7 @@ def recursive():
         return solve(arr, 0, k, n)
 
     print(partition_for_max_sum([1, 15, 7, 9, 2, 5, 10], 3))
-    print(partition_for_max_sum([1,4,1,5,7,3,6,1,9,9,3], 4))
+    print(partition_for_max_sum([1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3], 4))
     print(partition_for_max_sum([1], 1))
 
 
@@ -32,6 +33,7 @@ def memoized():
     """
         Time complexity is O(n^2) and space complexity is O(n + n).
     """
+
     def solve(arr, index, k, n, dp):
         if index == n:
             return 0
@@ -54,7 +56,7 @@ def memoized():
         return solve(arr, 0, k, n, dp)
 
     print(partition_for_max_sum([1, 15, 7, 9, 2, 5, 10], 3))
-    print(partition_for_max_sum([1,4,1,5,7,3,6,1,9,9,3], 4))
+    print(partition_for_max_sum([1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3], 4))
     print(partition_for_max_sum([1], 1))
 
 
@@ -62,6 +64,7 @@ def tabulation():
     """
         Time complexity is O(n^2) and space complexity is O(n).
     """
+
     def partition_for_max_sum(arr, k):
         n = len(arr)
         dp = {i: 0 for i in range(n + 1)}
@@ -79,7 +82,7 @@ def tabulation():
         return dp[0]
 
     print(partition_for_max_sum([1, 15, 7, 9, 2, 5, 10], 3))
-    print(partition_for_max_sum([1,4,1,5,7,3,6,1,9,9,3], 4))
+    print(partition_for_max_sum([1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3], 4))
     print(partition_for_max_sum([1], 1))
 
 
