@@ -1,6 +1,13 @@
+# Problem link - https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/description/
+# Solution - https://www.youtube.com/watch?v=pBWCOCS636U&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=2
+
+
 class Solution:
     @staticmethod
     def max_pts_from_cards(cards, k):
+        """
+            Time complexity is O(k) and space complexity is O(1).
+        """
         if 0 >= k > len(cards):
             return -1
         max_sum = tracking_sum = sum(cards[:k])
