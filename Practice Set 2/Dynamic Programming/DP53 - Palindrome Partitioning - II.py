@@ -43,7 +43,7 @@ def recursive():
 
 def memoized():
     """
-        Time complexity is O(n^2 * m) where m is the length of longest temp string and space complexity is O(n * m).
+        Time complexity is O(n^2 * m) where m is the length of longest temp string and space complexity is O(n + n * m).
     """
 
     def solve(string, i, n, dp):
@@ -77,6 +77,38 @@ def memoized():
     print(get_min_partitions_count("bababcbadcede"))
 
 
+def tabulation():
+    """
+        Time complexity is O(n^2 * m) where m is the length of longest temp string and space complexity is O(n * m).
+    """
+    def get_min_partitions_count(string):
+        n = len(string)
+        dp = {i: 1e6 for i in range(n + 1)}
+        dp[n] = 0
+        for i in range(n - 1, -1, -1):
+            min_cost = 1e6
+            temp = ""
+            for j in range(i, n):
+                temp += string[j]
+                if is_palindrome(temp):
+                    cost = 1 + dp[j + 1]
+                    min_cost = min(min_cost, cost)
+            dp[i] = min_cost
+        return dp[0] - 1
+
+    print(get_min_partitions_count("aaccb"))
+    print(get_min_partitions_count("ababa"))
+    print(get_min_partitions_count("aababa"))
+    print(get_min_partitions_count("aab"))
+    print(get_min_partitions_count("a"))
+    print(get_min_partitions_count("ab"))
+    print(get_min_partitions_count("geek"))
+    print(get_min_partitions_count("ababbbabbababa"))
+    print(get_min_partitions_count("bababcbadcede"))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
