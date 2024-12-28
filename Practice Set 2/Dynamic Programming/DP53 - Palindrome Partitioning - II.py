@@ -1,4 +1,8 @@
 def recursive():
+    """
+        Time complexity is exponential and space complexity is O(n).
+    """
+
     def solve(string, i, n):
         if i == n:
             return 0
@@ -15,10 +19,15 @@ def recursive():
         n = len(string)
         return solve(string, 0, n) - 1
 
-    print(get_min_partitions_count("bababcbadcede"))
     print(get_min_partitions_count("aaccb"))
     print(get_min_partitions_count("ababa"))
     print(get_min_partitions_count("aababa"))
+    print(get_min_partitions_count("aab"))
+    print(get_min_partitions_count("a"))
+    print(get_min_partitions_count("ab"))
+    print(get_min_partitions_count("geek"))
+    print(get_min_partitions_count("ababbbabbababa"))
+    print(get_min_partitions_count("bababcbadcede"))
 
 
 recursive()
