@@ -16,7 +16,7 @@ class Solution:
         arr = [(values[i], weights[i]) for i in range(n)]
 
         # now sort this array in descending order of their value/unit weight. This will take O(n * log(n)) time.
-        arr.sort(key=lambda x: x[0]/x[1], reverse=True)
+        arr.sort(key=lambda x: x[0] / x[1], reverse=True)
 
         # create a variable to store the collected value.
         collected_value = 0
@@ -27,7 +27,7 @@ class Solution:
 
             # multiply the per-unit weight value with whatever is minimum, i.e., if the bag capacity left if less than
             # the item weight, take only whatever the bag allows, else take the entire weight value of the item.
-            collected_value += (value/weight) * min(capacity, weight)
+            collected_value += (value / weight) * min(capacity, weight)
 
             # now reduce the capacity of the bag by the amount of weight taken.
             capacity -= min(capacity, weight)
@@ -41,3 +41,11 @@ class Solution:
 
 
 print(Solution.get_fractional_knapsack([100, 60, 100, 200], [20, 10, 50, 50], 90))
+print(Solution.get_fractional_knapsack([60, 100, 120], [10, 20, 30], 50))
+print(Solution.get_fractional_knapsack([60, 100], [10, 20], 50))
+print(Solution.get_fractional_knapsack([10, 20, 30], [5, 10, 15], 100))
+print(Solution.get_fractional_knapsack([500], [30], 10))
+print(Solution.get_fractional_knapsack([3, 6, 1, 4], [6, 1, 5, 3], 10))
+print(Solution.get_fractional_knapsack([40, 50, 25, 100, 30, 45], [50, 40, 90, 120, 10, 200], 200))
+print(Solution.get_fractional_knapsack([12, 35, 41, 25, 32], [20, 24, 36, 40, 42], 100))
+
