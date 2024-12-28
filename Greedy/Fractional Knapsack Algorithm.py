@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1
+# Solution - https://www.youtube.com/watch?v=1ibsQrnuEEg
+
+
 class Solution:
     @staticmethod
     def get_fractional_knapsack(values, weights, capacity):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         n = len(values)
 
         # collect the information in a separate array holding both (values, capacity) of each item. This will take O(n)
