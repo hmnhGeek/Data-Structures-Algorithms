@@ -38,3 +38,7 @@ class Solution:
 
 print(Solution.get_numeric_representation("GEEKSFORGEEKS"))
 print(Solution.get_numeric_representation("HELLO WORLD"))
+print(Solution.get_numeric_representation("GFG"))
+print(Solution.get_numeric_representation("HEY U"))
+print(Solution.get_numeric_representation("CODINGNINJAS"))
+print(Solution.get_numeric_representation("PREPINSTA"))
