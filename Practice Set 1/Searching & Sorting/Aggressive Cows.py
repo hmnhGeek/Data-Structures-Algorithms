@@ -53,3 +53,7 @@ class Solution:
 
 print(Solution.aggressive_cows([0, 3, 4, 7, 10, 9], 4))
 print(Solution.aggressive_cows([1, 2, 3], 2))
+print(Solution.aggressive_cows([1, 2, 4, 8, 9], 3))
+print(Solution.aggressive_cows([4, 2, 1, 3, 6], 2))
+print(Solution.aggressive_cows([10, 1, 2, 7, 5], 3))
+print(Solution.aggressive_cows([2, 12, 11, 3, 26, 7], 5))
