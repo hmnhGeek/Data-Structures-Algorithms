@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/aggressive-cows_1082559
+# Solution - https://www.youtube.com/watch?v=R_Mfw4ew-Vo&t=703s
+
+
 class QuickSort:
     @staticmethod
     def _get_partition_index(arr, low, high):
