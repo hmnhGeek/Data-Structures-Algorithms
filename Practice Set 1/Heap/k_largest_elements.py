@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/k-largest-elements4206/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,16 +70,30 @@ class MinHeap:
 class Solution:
     @staticmethod
     def k_largest_elements(arr, k):
+        """
+            Overall time complexity is O(n * log(k)) and space complexity is O(2k).
+        """
+
+        # get the length of the array and initialize a Min Heap
         n = len(arr)
         min_heap = MinHeap()
+
+        # push first k elements in to the min heap in k*log(k) time.
         for i in range(k):
             min_heap.insert(arr[i])
+
+        # start iteration from kth index now. This will take O(n * log(k)) time.
         i = k
         while i < n:
+            # if the ith element is greater than the top element of the heap, and since the heap is storing only k
+            # elements, we've found an element which must be in the k largest elements. Thus remove the min element and
+            # push the ith element, in 2*log(k) time.
             if arr[i] > min_heap.heap[0]:
                 min_heap.pop()
                 min_heap.insert(arr[i])
             i += 1
+
+        # get the result in k*log(k) time.
         result = []
         while not min_heap.is_empty():
             result.append(min_heap.pop())
