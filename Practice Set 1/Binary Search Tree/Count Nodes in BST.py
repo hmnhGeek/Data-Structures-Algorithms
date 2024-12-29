@@ -142,23 +142,37 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def _find_count_of_nodes_in_range(root: Node, low, high, counter, nodes):
+        # if the node is None, return from the recursion stack, as we've reached to the bottom of the BST.
         if root is None:
             return
+
+        # if the root's data is even higher than the `high`, there's no point in searching in the right subtree. Search
+        # only in left subtree.
         if root.data > high:
             Solution._find_count_of_nodes_in_range(root.left, low, high, counter, nodes)
+
+        # if the root's data is even lower than the `low`, there's no point in searching in the left subtree. Search
+        # only in right subtree.
         elif root.data < low:
             Solution._find_count_of_nodes_in_range(root.right, low, high, counter, nodes)
+
+        # if however, root is in [low, high]...
         elif low <= root.data <= high:
+            # increment the count of nodes found and add the root into the nodes list.
             counter[0] += 1
             nodes.append(root.data)
+
+            # now search in the left and right subtrees with shrunk ranges.
             Solution._find_count_of_nodes_in_range(root.left, low, root.data, counter, nodes)
             Solution._find_count_of_nodes_in_range(root.right, root.data, high, counter, nodes)
 
     @staticmethod
     def count_nodes(bst: BinarySearchTree, low, high):
+
         counter = [0]
         nodes = []
         Solution._find_count_of_nodes_in_range(bst.root, low, high, counter, nodes)
+        # return the count of nodes and the actual nodes.
         return counter[0], nodes
 
 
