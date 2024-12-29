@@ -141,24 +141,25 @@ class BinarySearchTree:
 
 class Solution:
     @staticmethod
-    def _find_count_of_nodes_in_range(root: Node, low, high, counter):
+    def _find_count_of_nodes_in_range(root: Node, low, high, counter, nodes):
         if root is None:
             return
-
         if root.data > high:
-            Solution._find_count_of_nodes_in_range(root.left, low, high, counter)
+            Solution._find_count_of_nodes_in_range(root.left, low, high, counter, nodes)
         elif root.data < low:
-            Solution._find_count_of_nodes_in_range(root.right, low, high, counter)
+            Solution._find_count_of_nodes_in_range(root.right, low, high, counter, nodes)
         elif low <= root.data <= high:
             counter[0] += 1
-            Solution._find_count_of_nodes_in_range(root.left, low, root.data, counter)
-            Solution._find_count_of_nodes_in_range(root.right, root.data, high, counter)
+            nodes.append(root.data)
+            Solution._find_count_of_nodes_in_range(root.left, low, root.data, counter, nodes)
+            Solution._find_count_of_nodes_in_range(root.right, root.data, high, counter, nodes)
 
     @staticmethod
     def count_nodes(bst: BinarySearchTree, low, high):
         counter = [0]
-        Solution._find_count_of_nodes_in_range(bst.root, low, high, counter)
-        return counter[0]
+        nodes = []
+        Solution._find_count_of_nodes_in_range(bst.root, low, high, counter, nodes)
+        return counter[0], nodes
 
 
 # Example 1
