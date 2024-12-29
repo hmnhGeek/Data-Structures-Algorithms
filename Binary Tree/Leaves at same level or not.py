@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/check-leaves-level/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -30,6 +33,10 @@ class Solution:
 
     @staticmethod
     def at_same_level(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
+
         # keep a reference to the level at which a leaf node is found.
         flag = [None, ]
         # perform this method call starting at level 0.
