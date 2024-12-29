@@ -63,3 +63,26 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def k_largest_elements(arr, k):
+        n = len(arr)
+        min_heap = MinHeap()
+        for i in range(k):
+            min_heap.insert(arr[i])
+        i = k
+        while i < n:
+            if arr[i] > min_heap.heap[0]:
+                min_heap.pop()
+                min_heap.insert(arr[i])
+            i += 1
+        result = []
+        while not min_heap.is_empty():
+            result.append(min_heap.pop())
+        return result
+
+
+print(Solution.k_largest_elements([12, 5, 787, 1, 23], 2))
+print(Solution.k_largest_elements([1, 23, 12, 9, 30, 2, 50], 3))
+print(Solution.k_largest_elements([12, 23], 1))
