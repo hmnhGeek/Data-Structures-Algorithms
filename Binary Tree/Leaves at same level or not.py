@@ -44,3 +44,27 @@ n1, n2, n3 = Node(1), Node(2), Node(3)
 n3.left = n2
 n3.right = n1
 print(Solution.at_same_level(n3))
+
+# Example 4
+n12, n5, n7, n3, n1 = Node(12), Node(5), Node(7), Node(3), Node(1)
+n12.left = n5
+n12.right = n7
+n5.left = n3
+n7.right = n1
+print(Solution.at_same_level(n12))
+
+# Example 5
+n12, n5, n3, n9, n1, n2 = Node(12), Node(5), Node(3), Node(9), Node(1), Node(2)
+n12.left = n5
+n5.left = n3
+n5.right = n9
+n3.left = n1
+n9.left = n2
+print(Solution.at_same_level(n12))
+
+# Example 6
+n12, n5, n7, n3 = Node(12), Node(5), Node(7), Node(3)
+n12.left = n5
+n12.right = n7
+n5.left = n3
+print(Solution.at_same_level(n12))
