@@ -1,4 +1,4 @@
-# Problem link - https://www.naukri.com/code360/problems/rotate-dll_1115782
+# Problem link - https://www.geeksforgeeks.org/rotate-doubly-linked-list-n-nodes/
 
 
 class Node:
