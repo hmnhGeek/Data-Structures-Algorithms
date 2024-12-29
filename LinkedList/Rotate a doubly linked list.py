@@ -32,3 +32,38 @@ class DoublyLinkedList:
             curr = curr.next
         print()
 
+    def rotate(self, p):
+        if p < 0 or p > self.get_length():
+            return
+
+        curr = self.head
+        counter = 1
+        while counter != p:
+            curr = curr.next
+            counter += 1
+
+        head, tail = self.head, self.tail
+        tail.next = head
+        next_head = curr.next
+
+        if curr.next is not None:
+            curr.next.prev = None
+            curr.next = None
+
+        head.prev = tail
+        self.head, self.tail = next_head, curr
+
+
+def test(*args):
+    p = args[-1]
+    n = len(args) - 1
+    dll = DoublyLinkedList()
+    for i in range(n):
+        dll.push(args[i])
+    dll.show()
+    dll.rotate(p)
+    dll.show()
+
+
+test(1, 2, 3, 4, 5, 2)
+test(2, 6, 5, 4, 3)
