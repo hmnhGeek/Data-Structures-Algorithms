@@ -7,21 +7,32 @@ class Node:
 class Solution:
     @staticmethod
     def _perform_check(root: Node, level: int, flag: list):
+        # if root is null, the method should always return True, as we don't want a single child node to return False.
         if root is None:
             return True
+
+        # if root is leaf node
         if root.left is None and root.right is None:
+            # and it is the first leaf node, denoted by flag having None, then we can return True for now.
             if flag[0] is None:
+                # but update the flag
                 flag[0] = level
                 return True
+            # if however, it is some other leaf node, return True if it is on same level, otherwise return False.
             return flag[0] == level
 
+        # recursively check for left and right subtrees now.
         left_check = Solution._perform_check(root.left, level + 1, flag)
         right_check = Solution._perform_check(root.right, level + 1, flag)
+
+        # return true only if both trees return True, else return False.
         return left_check and right_check
 
     @staticmethod
     def at_same_level(root: Node):
+        # keep a reference to the level at which a leaf node is found.
         flag = [None, ]
+        # perform this method call starting at level 0.
         return Solution._perform_check(root, 0, flag)
 
 
