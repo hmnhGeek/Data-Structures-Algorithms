@@ -29,25 +29,43 @@ class QuickSort:
 class Solution:
     @staticmethod
     def _find_num_cows_placed(arr, mid):
+        # place first cow at 0th stall.
         cows_placed = 1
         last_index = 0
+
+        # start checking from the 1st stall.
         for i in range(1, len(arr)):
+            # if the distance between current stall and the last placed cow's stall >= mid-distance, then place the next
+            # cow here and update the last index.
             if arr[i] - arr[last_index] >= mid:
                 cows_placed += 1
                 last_index = i
+
+        # return the number of cows placed.
         return cows_placed
 
     @staticmethod
     def aggressive_cows(arr, k):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
+
+        # sor the array. This will take O(n log(n)) time.
         QuickSort.sort(arr)
         low, high = 0, max(arr) - min(arr)
         while low <= high:
             mid = int(low + (high - low)/2)
+            # get the number of cows placed if mid-distance is used as min distance required between the cows.
             cows_placed = Solution._find_num_cows_placed(arr, mid)
+
+            # if we were not able to place at least k cows, then we must decrease the high.
             if cows_placed < k:
                 high = mid - 1
             else:
+                # if we are able to place >= k cows, then we can try increasing the distance more between the cows.
                 low = mid + 1
+
+        # high would point to the correct distance.
         return high
 
 
