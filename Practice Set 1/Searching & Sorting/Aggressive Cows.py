@@ -54,6 +54,9 @@ class Solution:
             Time complexity is O(n * log(n)) and space complexity is O(1).
         """
 
+        if k <= 0:
+            return
+
         # sor the array. This will take O(n log(n)) time.
         QuickSort.sort(arr)
         low, high = 0, max(arr) - min(arr)
