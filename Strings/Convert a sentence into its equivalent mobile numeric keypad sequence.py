@@ -13,26 +13,50 @@ class Solution:
 
     @staticmethod
     def get_numeric_representation(string):
+        # create a resultant string which will store the numerical form of the string.
         result = ""
+
+        # create a blank dictionary for the repeated characters, so that we don't have to loop again.
         cache = {}
-        for i in string:
-            if i in cache:
-                result += cache[i]
+
+        # loop in the string now.
+        for character in string:
+            # if the character was already checked in previously, directly add it to result from the cache.
+            if character in cache:
+                result += cache[character]
                 continue
+
+            # else loop in the keypad
             for key in Solution._keypad:
-                if i in Solution._keypad[key]:
+                # if the character's key is found.
+                if character in Solution._keypad[key]:
+                    # start a pointer from 0.
                     j = 0
+                    # extract the sequence stored in this key.
                     sequence = Solution._keypad[key]
+
+                    # for this character, let's get the numerical sequence in this variable.
                     key_seq = ""
-                    while j < len(sequence) and sequence[j] != i:
-                        result += str(key)
+                    while j < len(sequence) and sequence[j] != character:
+                        # add the key to key_seq until the character is found.
                         key_seq += str(key)
+                        # also, update the cache for sequence[j] while figuring out for this character.
                         cache[sequence[j]] = key_seq
                         j += 1
-                    result += str(key)
+
+                    # when the character is matched, add key one last time.
                     key_seq += str(key)
-                    cache[i] = key_seq
+
+                    # update the result
+                    result += key_seq
+
+                    # update the cache for this character
+                    cache[character] = key_seq
+
+                    # break, as we have found the character and no further iterations are needed.
                     break
+
+        # return the result finally.
         return result
 
 
