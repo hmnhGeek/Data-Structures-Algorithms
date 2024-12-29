@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/count-bst-nodes-that-lie-in-a-given-range/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -168,7 +171,9 @@ class Solution:
 
     @staticmethod
     def count_nodes(bst: BinarySearchTree, low, high):
-
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         counter = [0]
         nodes = []
         Solution._find_count_of_nodes_in_range(bst.root, low, high, counter, nodes)
