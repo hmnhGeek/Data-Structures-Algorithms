@@ -138,3 +138,53 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _find_count_of_nodes_in_range(root: Node, low, high, counter):
+        if root is None:
+            return
+
+        if root.data > high:
+            Solution._find_count_of_nodes_in_range(root.left, low, high, counter)
+        elif root.data < low:
+            Solution._find_count_of_nodes_in_range(root.right, low, high, counter)
+        elif low <= root.data <= high:
+            counter[0] += 1
+            Solution._find_count_of_nodes_in_range(root.left, low, root.data, counter)
+            Solution._find_count_of_nodes_in_range(root.right, root.data, high, counter)
+
+    @staticmethod
+    def count_nodes(bst: BinarySearchTree, low, high):
+        counter = [0]
+        Solution._find_count_of_nodes_in_range(bst.root, low, high, counter)
+        return counter[0]
+
+
+# Example 1
+tree1 = BinarySearchTree()
+tree1.insert(10)
+tree1.insert(5)
+tree1.insert(50)
+tree1.insert(1)
+tree1.insert(40)
+tree1.insert(100)
+print(Solution.count_nodes(tree1, 5, 45))
+
+# Example 2
+tree2 = BinarySearchTree()
+for i in [5, 4, 6, 3, 7]:
+    tree2.insert(i)
+print(Solution.count_nodes(tree2, 2, 8))
+
+# Example 3
+tree3 = BinarySearchTree()
+for i in [10, 5, 15, 3, 7, 18]:
+    tree3.insert(i)
+print(Solution.count_nodes(tree3, 7, 15))
+
+# Example 4
+tree4 = BinarySearchTree()
+for i in [10, 5, 15, 3, 7, 13, 18, 1, 6]:
+    tree4.insert(i)
+print(Solution.count_nodes(tree4, 6, 10))
