@@ -6,17 +6,17 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -86,3 +86,10 @@ class Solution:
 print(Solution.k_largest_elements([12, 5, 787, 1, 23], 2))
 print(Solution.k_largest_elements([1, 23, 12, 9, 30, 2, 50], 3))
 print(Solution.k_largest_elements([12, 23], 1))
+print(Solution.k_largest_elements([11, 5, 12, 9, 44, 17, 2], 2))
+print(Solution.k_largest_elements([3, 2, 1, 5, 6, 4], 2))
+print(Solution.k_largest_elements([3, 2, 3, 1, 2, 4, 5, 5, 6], 4))
+print(Solution.k_largest_elements([3, 4, 2, 1], 2))
+print(Solution.k_largest_elements([2, 2, 3, 3, 1], 1))
+print(Solution.k_largest_elements([0, 10, 1, 2, 2], 5))
+print(Solution.k_largest_elements([-2, 12, -1, 1, 20, 1], 2))
