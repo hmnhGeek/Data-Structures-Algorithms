@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/convert-sentence-equivalent-mobile-numeric-keypad-sequence/
+
+
 class Solution:
     _keypad = {
         2: "ABC",
@@ -13,6 +16,10 @@ class Solution:
 
     @staticmethod
     def get_numeric_representation(string):
+        """
+            Time complexity is O(length of string) and space complexity is O(length of string for the cache).
+        """
+
         # create a resultant string which will store the numerical form of the string.
         result = ""
 
