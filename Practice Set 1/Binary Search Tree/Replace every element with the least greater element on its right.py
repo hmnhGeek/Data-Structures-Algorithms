@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/replace-every-element-with-the-least-greater-element-on-its-right/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -131,7 +134,8 @@ class BinarySearchTree:
     def _show(self, start):
         if start:
             self._show(start.left)
-            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
+            print(
+                f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
             self._show(start.right)
 
     def show(self):
@@ -169,3 +173,6 @@ class Solution:
 
 
 print(Solution.replace([8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]))
+print(Solution.replace([17, 18, 5, 4, 6, 1]))
+print(Solution.replace([400]))
+print(Solution.replace([1, 4, 2, 6]))
