@@ -30,20 +30,20 @@ class BinarySearchTree:
             start.right = node
             node.parent = start
             self.recalc_aug(start)
-            return
+            return node
         if start.left is not None:
             return self._insert(start.left, node)
         start.left = node
         node.parent = start
         self.recalc_aug(start)
-        return
+        return node
 
     def insert(self, x):
         node = Node(x)
         if self.root is None:
             self.root = node
             self.d = 1
-            return
+            return node
         return self._insert(self.root, node)
 
     def get_leftmost_leaf(self, node):
@@ -138,3 +138,19 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def replace(arr):
+        n = len(arr)
+        result = [-1] * n
+        bst = BinarySearchTree()
+        for i in range(n - 1, -1, -1):
+            node = bst.insert(arr[i])
+            successor = bst.get_successor(node)
+            if successor is not None:
+                result[i] = successor.data
+        return result
+
+
+print(Solution.replace([8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]))
