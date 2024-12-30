@@ -63,3 +63,8 @@ class Solution:
 
 print(Solution.count_reversals("}{{}}{{{"))
 print(Solution.count_reversals("{{}{{{}{{}}{{"))
+print(Solution.count_reversals("}{"))
+print(Solution.count_reversals("{{{"))
+print(Solution.count_reversals("{{{{"))
+print(Solution.count_reversals("{{{{}}"))
+print(Solution.count_reversals("}}}{{{"))
