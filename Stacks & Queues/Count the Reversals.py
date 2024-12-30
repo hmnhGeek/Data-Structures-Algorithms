@@ -1,3 +1,6 @@
+from math import ceil
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -36,3 +39,27 @@ class Stack:
             return
         return self.head.data
 
+
+class Solution:
+    @staticmethod
+    def count_reversals(brackets):
+        n = len(brackets)
+        if n % 2 == 1:
+            return -1
+        stack = Stack()
+        count_open = 0
+        count_closed = 0
+        for i in range(n):
+            if brackets[i] == "{":
+                stack.push(brackets[i])
+                count_open += 1
+            elif brackets[i] == "}" and not stack.is_empty() and stack.top() == "{":
+                stack.pop()
+                count_open -= 1
+            else:
+                count_closed += 1
+        return ceil(count_open/2) + ceil(count_closed/2)
+
+
+print(Solution.count_reversals("}{{}}{{{"))
+print(Solution.count_reversals("{{}{{{}{{}}{{"))
