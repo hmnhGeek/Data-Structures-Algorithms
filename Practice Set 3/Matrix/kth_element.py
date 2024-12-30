@@ -67,24 +67,42 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_kth_element(mtx, k):
+        """
+            Time complexity is O({n + k} * log(n)) time and O(n) space.
+        """
+
         n = len(mtx)
+
+        # edge case
         if k <= 0:
             return
 
+        # create a min heap and push the first column elements into it in O(n * log(n)) time and O(n) space.
         min_heap = MinHeap()
         for i in range(n):
             min_heap.insert((mtx[i][0], i, 0))
 
+        # create a counter variable to track `k` elements
         counter = 0
+        element = -1
+
+        # typical min heap condition. This will ideally run for k times.
         while not min_heap.is_empty():
+            # pop the current element from the heap in O(log(n)) time.
             element, i, j = min_heap.pop()
+            # increment the counter
             counter += 1
+
+            # if counter matches k, return the current element.
             if counter == k:
                 return element
+
+            # else push the next cell from the popped element's row. This will take O(log(n)) time.
             if 0 <= j + 1 < n:
                 min_heap.insert((mtx[i][j + 1], i, j + 1))
-        return element
 
+        # return the max element from the matrix in case k > n^2.
+        return element
 
 
 print(
