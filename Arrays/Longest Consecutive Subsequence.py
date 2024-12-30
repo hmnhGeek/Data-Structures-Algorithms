@@ -29,21 +29,49 @@ class QuickSort:
 class SortingSolution:
     @staticmethod
     def get_longest_consecutive_length(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
+        # create a copy of the original array so that we don't modify the original array. This will take O(n) space.
         copy = [i for i in arr]
+
+        # sort the copied array in O(n * log(n)) time.
         QuickSort.sort(copy)
+
+        # create the longest length variable (this will be the final answer).
         longest_length = 1
+
+        # for each sequence, find the length and then use it to update the longest length variable.
         sequence_length = 1
+
+        # assume that the 0th index element is the first sequence that we start off with
         last_value = copy[0]
+        # thus, start with index = 1
         i = 1
+
+        # loop on the copied array in O(n) time.
         while i < len(copy):
+            # if the current element is consecutive to the previous element
             if copy[i] == copy[i - 1] + 1:
+                # increment the sequence length
                 sequence_length += 1
+                # update the last value to this element
                 last_value = copy[i]
+                # update the longest length
                 longest_length = max(longest_length, sequence_length)
+
+            # if however, the previous and current element is not consecutive
             elif copy[i] != copy[i - 1]:
+                # break the sequence by resetting the sequence length to 1.
                 sequence_length = 1
+                # and update the last value
                 last_value = arr[i]
+
+            # increment i. Note that if the previous and current element are same, there's nothing to do.
             i += 1
+
+        # return the longest length.
         return longest_length
 
 
