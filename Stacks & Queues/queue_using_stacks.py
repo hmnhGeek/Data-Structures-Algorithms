@@ -38,9 +38,15 @@ class Queue:
         self.s2 = Stack()
 
     def push(self, x):
+        # simply push to s1 in O(1) time and O(1) space.
         self.s1.push(x)
 
     def pop(self):
+        """
+            T: O(n) and S: O(1).
+        """
+
+        # push all elements from s1 to s2, then pop from s2 and push back all elements from s2 back to s1.
         while not self.s1.is_empty():
             self.s2.push(self.s1.pop())
         item = self.s2.pop()
