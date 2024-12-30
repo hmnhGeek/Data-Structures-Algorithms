@@ -6,17 +6,17 @@ class MaxHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_max_child_index(self, lci, rci):
@@ -84,3 +84,9 @@ class Solution:
 
 print(Solution.get_kth_smallest([7, 10, 4, 3, 20, 15], 3))
 print(Solution.get_kth_smallest([7, 10, 4, 3, 20, 15], 4))
+print(Solution.get_kth_smallest([1, 2, 6, 4, 5, 3], 3))
+print(Solution.get_kth_smallest([1, 2, 6, 4, 5], 3))
+print(Solution.get_kth_smallest([3, 2, 1, 5, 6, 4], 2))
+print(Solution.get_kth_smallest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4))
+print(Solution.get_kth_smallest([1, 23, 12, 9, 30, 2, 50], 3))
+print(Solution.get_kth_smallest([11, 5, 12, 9, 44, 17, 2], 2))
