@@ -68,17 +68,26 @@ class Solution:
     @staticmethod
     def get_kth_smallest(arr, k):
         n = len(arr)
-        if k <= 0 or k > n:
+
+        # edge case
+        if k <= 0 or k > n or n == 0:
             return
+
+        # define a max heap and push first k elements into it in O(k * log(k)) time and O(k) space.
         max_heap = MaxHeap()
         for i in range(k):
             max_heap.insert(arr[i])
 
+        # loop on the rest of the elements in O({n - k} * log(k))
         for i in range(k, n):
+            # if ith element is smaller than top of the heap, then it will be smaller than all other elements in the
+            # heap, thus, it is a better candidate to be in the max heap. Pop out top and push this element into the
+            # max heap.
             if arr[i] < max_heap.heap[0]:
                 max_heap.pop()
                 max_heap.insert(arr[i])
 
+        # finally, the kth smallest element will be on the top of the heap.
         return max_heap.heap[0]
 
 
