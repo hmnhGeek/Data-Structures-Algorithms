@@ -78,19 +78,40 @@ class SortingSolution:
 class Solution:
     @staticmethod
     def get_longest_consecutive_length(arr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
+        # create a hash set from the elements of the array in O(n) space.
         hash_set = dict.fromkeys(arr)
+
+        # store the max length in the longest length variable.
         longest_length = 1
+
+        # loop in the hash set elements
         for i in hash_set:
+            # if `i` is the first element in its sequence...
             if i - 1 not in hash_set:
+                # start the count with 1 for this sequence.
                 count = 1
                 element = i
+
+                # if next consecutive element is present in hash set...
                 while element + 1 in hash_set:
+                    # increment the count and element both.
                     count += 1
                     element += 1
+
+                # update the longest length by this sequence
                 longest_length = max(longest_length, count)
+
+        # return the longest length
         return longest_length
 
 
+print()
+
+print("Using Sorting")
 print(SortingSolution.get_longest_consecutive_length([2, 6, 1, 9, 4, 5, 3]))
 print(SortingSolution.get_longest_consecutive_length([1, 9, 3, 10, 4, 20, 2]))
 print(SortingSolution.get_longest_consecutive_length([15, 13, 12, 14, 11, 10, 9]))
@@ -100,6 +121,7 @@ print(SortingSolution.get_longest_consecutive_length([0, 3, 7, 2, 5, 8, 4, 6, 0,
 
 print()
 
+print("Using Hash Set")
 print(Solution.get_longest_consecutive_length([2, 6, 1, 9, 4, 5, 3]))
 print(Solution.get_longest_consecutive_length([1, 9, 3, 10, 4, 20, 2]))
 print(Solution.get_longest_consecutive_length([15, 13, 12, 14, 11, 10, 9]))
