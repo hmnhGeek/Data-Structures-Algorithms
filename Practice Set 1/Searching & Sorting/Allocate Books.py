@@ -30,6 +30,8 @@ class Solution:
         return low
 
 
+print(Solution.allocate_books([25, 46, 28, 49, 24], 4))
 print(Solution.allocate_books([12, 34, 67, 90], 2))
-print(Solution.allocate_books([15, 17, 20], 5))
+print(Solution.allocate_books([15, 17, 20], 2))
 print(Solution.allocate_books([22, 23, 67], 1))
+print(Solution.allocate_books([15, 17, 20], 5))
