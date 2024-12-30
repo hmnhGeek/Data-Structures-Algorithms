@@ -142,14 +142,29 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def replace(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         n = len(arr)
+
+        # create a result array of size n with all -1s.
         result = [-1] * n
+
+        # create a BST which will hold all the n-elements, hence O(n) space.
         bst = BinarySearchTree()
+
+        # traverse from the end of the array in n iterations.
         for i in range(n - 1, -1, -1):
+            # insert the ith element in BST in log(n) time.
             node = bst.insert(arr[i])
+            # get the successor of this inserted node in log(n) time.
             successor = bst.get_successor(node)
+            # if successor is found, replace result[i] with it.
             if successor is not None:
                 result[i] = successor.data
+
+        # finally return the result array.
         return result
 
 
