@@ -88,8 +88,9 @@ def test(*args):
     for i in range(n - 1):
         dll.push(args[i])
     dll.show()
-    dll.reverse_in_parts(4)
+    dll.reverse_in_parts(k)
     dll.show()
 
 
 test(1, 2, 3, 4, 5, 6, 4)
+test(1, 2, 3, 4, 5, 6, 2)
