@@ -26,3 +26,27 @@ class QuickSort:
         return QuickSort._sort(arr, 0, len(arr) - 1)
 
 
+class SortingSolution:
+    @staticmethod
+    def get_longest_consecutive_length(arr):
+        copy = [i for i in arr]
+        QuickSort.sort(copy)
+        longest_length = 1
+        sequence_length = 1
+        last_value = copy[0]
+        i = 1
+        while i < len(copy):
+            if copy[i] == copy[i - 1] + 1:
+                sequence_length += 1
+                last_value = copy[i]
+                longest_length = max(longest_length, sequence_length)
+            elif copy[i] != copy[i - 1]:
+                sequence_length = 1
+                last_value = arr[i]
+            i += 1
+        return longest_length
+
+
+print(SortingSolution.get_longest_consecutive_length([2, 6, 1, 9, 4, 5, 3]))
+print(SortingSolution.get_longest_consecutive_length([1, 9, 3, 10, 4, 20, 2]))
+print(SortingSolution.get_longest_consecutive_length([15, 13, 12, 14, 11, 10, 9]))
