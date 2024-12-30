@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/longest-consecutive-subsequence2449/1
+# Solution - https://www.youtube.com/watch?v=oO5uLE7EUlM
+
+
 class QuickSort:
     @staticmethod
     def _get_partition_index(arr, low, high):
