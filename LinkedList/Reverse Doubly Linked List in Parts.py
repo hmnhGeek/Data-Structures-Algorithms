@@ -28,3 +28,14 @@ class DoublyLinkedList:
             print(curr.data, end=" ")
             curr = curr.next
         print()
+
+    def reverse(self):
+        prev, curr = None, self.head
+        while curr is not None:
+            next_curr = curr.next
+            curr.next = prev
+            curr.prev = next_curr
+            prev = curr
+            curr = next_curr
+        self.head, self.tail = self.tail, self.head
+
