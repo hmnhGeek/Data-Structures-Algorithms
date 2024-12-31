@@ -1,4 +1,5 @@
-from collections import OrderedDict
+# Problem link - https://www.geeksforgeeks.org/problems/choose-and-swap0531/1
+# Solution - https://www.youtube.com/watch?v=NhnsINajZRA
 
 
 class Solution:
@@ -9,7 +10,7 @@ class Solution:
         for i in range(len(string)):
             hash_map.remove(string[i])
             if len(hash_map) == 0:
-                return
+                return "".join(string)
             character = list(hash_map)[0]
             if ord(character) < ord(string[i]):
                 second_character = string[i]
@@ -23,3 +24,4 @@ class Solution:
 
 
 print(Solution.choose_and_swap("ccad"))
+print(Solution.choose_and_swap("abba"))
