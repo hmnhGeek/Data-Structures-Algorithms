@@ -78,8 +78,46 @@ class Histogram:
         return max_area
 
 
+print("Testing the histogram class")
 print(Histogram.get_max_area([3, 1, 5, 6, 2, 3]))
 print(Histogram.get_max_area([2, 1, 5, 6, 2, 3]))
 print(Histogram.get_max_area([2, 4]))
 print(Histogram.get_max_area([60, 20, 50, 40, 10, 50, 60]))
 print(Histogram.get_max_area([3, 5, 1, 7, 5, 9]))
+print()
+
+
+class Solution:
+    @staticmethod
+    def max_area_in_mtx(mtx):
+        n, m = len(mtx), len(mtx[0])
+        prev_row = [0]*m
+        max_area = 0
+        for i in range(n):
+            histogram = [prev_row[j] + mtx[i][j] if mtx[i][j] != 0 else 0 for j in range(m)]
+            max_area = max(max_area, Histogram.get_max_area(histogram))
+            prev_row = histogram
+        return max_area
+
+
+print("Testing max area in a matrix")
+print(
+    Solution.max_area_in_mtx(
+        [
+            [0, 1, 1, 0],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 0, 0]
+        ]
+    )
+)
+
+print(
+    Solution.max_area_in_mtx(
+        [
+            [0, 1, 1],
+            [1, 1, 1],
+            [0, 1, 1]
+        ]
+    )
+)
