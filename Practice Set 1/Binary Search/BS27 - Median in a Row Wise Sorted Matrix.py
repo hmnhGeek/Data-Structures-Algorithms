@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/median-of-a-row-wise-sorted-matrix_1115473
+# Solution - https://www.youtube.com/watch?v=Q9wXgdxJq48&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=29
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,18 +71,32 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_median(mtx):
+        """
+            Overall time complexity is O(n * m * log(n)) and space complexity is O(n) space.
+        """
+
         n, m = len(mtx), len(mtx[0])
+
+        # push the first column into min heap in O(n * log(n)) time.
         min_heap = MinHeap()
         for i in range(n):
             min_heap.insert((mtx[i][0], i, 0))
 
+        # to get the median, run a counter which should stop at (nm/2 + 1) count value.
         counter = 0
         required = (n*m)//2 + 1
+
+        # while min heap is not empty. This will run for (nm/2 + 1) times.
         while not min_heap.is_empty():
+            # get the top element and increment the counter.
             element, x, y = min_heap.pop()
             counter += 1
+
+            # if counter is equal to median position, return the element.
             if counter == required:
                 return element
+
+            # if not, and there is next element to the current element, push it to min heap in O(log(n)) time.
             if 0 <= y + 1 < m:
                 min_heap.insert((mtx[x][y + 1], x, y + 1))
         return -1
