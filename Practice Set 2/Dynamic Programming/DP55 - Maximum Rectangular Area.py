@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/
+# Solution - https://www.youtube.com/watch?v=tOylVCugy9k&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=56
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -90,12 +94,20 @@ print()
 class Solution:
     @staticmethod
     def max_area_in_mtx(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(m).
+        """
+
         n, m = len(mtx), len(mtx[0])
+        # create a previous row. It will take O(m) extra space.
         prev_row = [0]*m
         max_area = 0
         for i in range(n):
+            # create a histogram with another O(m) space and update the max area.
             histogram = [prev_row[j] + mtx[i][j] if mtx[i][j] != 0 else 0 for j in range(m)]
+            # get the max area in O(m) time and O(m) space.
             max_area = max(max_area, Histogram.get_max_area(histogram))
+            # remember to update previous row.
             prev_row = histogram
         return max_area
 
@@ -118,6 +130,17 @@ print(
             [0, 1, 1],
             [1, 1, 1],
             [0, 1, 1]
+        ]
+    )
+)
+
+print(
+    Solution.max_area_in_mtx(
+        [
+            [1, 0, 1, 0, 0],
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 1, 0]
         ]
     )
 )
