@@ -19,3 +19,9 @@ class Solution:
 
 
 print(Solution.get_longest("cadbzabcd"))
+print(Solution.get_longest("abcabcbb"))
+print(Solution.get_longest("bbbbb"))
+print(Solution.get_longest("pwwkew"))
+print(Solution.get_longest("ABCBC"))
+print(Solution.get_longest("GEEKSFORGEEKS"))
+print(Solution.get_longest("mississippi"))
