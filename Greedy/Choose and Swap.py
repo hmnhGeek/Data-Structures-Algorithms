@@ -5,6 +5,10 @@
 class Solution:
     @staticmethod
     def choose_and_swap(string):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         string = [i for i in string]
         hash_map = sorted(set(string))
         for i in range(len(string)):
