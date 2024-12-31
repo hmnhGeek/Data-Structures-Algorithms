@@ -40,23 +40,41 @@ class Stack:
 class Histogram:
     @staticmethod
     def get_max_area(arr):
+        """
+            Time complexity is O(n) and space complexity is O(n) for the stack.
+        """
+
+        # create required variables.
         stack = Stack()
         n = len(arr)
         max_area = 0
+
+        # loop in the array
         for i in range(n):
+            # while the stack has some elements and top element is greater than ith element, we must pop, because we
+            # want to maintain linearly increasing order in the stack.
             while not stack.is_empty() and arr[stack.top()] > arr[i]:
+                # for the top element, ith bar will be the right boundary.
                 right = i
+                # get the bar, which is the top element on the stack.
                 bar = arr[stack.pop()]
+                # element just before the top (new top now), will be the left boundary of the bar.
                 left = stack.top()
+                # get the area formed by this bar and update max area.
                 area = bar * (right - left - 1)
                 max_area = max(max_area, area)
+            # finally, once there is no greater element on top of the stack, push `i`.
             stack.push(i)
+
+        # once the iteration is over, stack will contain all those elements whose right boundary is `n`.
         while not stack.is_empty():
             right = n
             bar = arr[stack.pop()]
             left = stack.top()
             area = bar * (right - left - 1)
             max_area = max(max_area, area)
+
+        # return the max area.
         return max_area
 
 
