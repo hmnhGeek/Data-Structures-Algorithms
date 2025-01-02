@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/flood-fill-algorithm1856/1
+# Solution - https://www.youtube.com/watch?v=C-2_uSRli8o&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=9
+
+
 class Solution:
     @staticmethod
     def _get_neighbours(mtx, i, j, n, m):
@@ -31,6 +35,10 @@ class Solution:
 
     @staticmethod
     def flood_fill(mtx, new_color, source_x, source_y):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+
         n, m = len(mtx), len(mtx[0])
 
         # if the cell is not in the matrix, return
