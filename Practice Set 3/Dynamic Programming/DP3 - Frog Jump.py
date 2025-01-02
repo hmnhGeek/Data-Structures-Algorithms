@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/frog-jump_3621012?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=EgG3jsGoPvQ&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=5
+
+
 def recursive():
     def solve(arr, index):
         """
