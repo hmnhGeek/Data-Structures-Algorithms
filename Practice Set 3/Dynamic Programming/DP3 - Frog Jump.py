@@ -88,8 +88,38 @@ def tabulation():
     print(frog_jump([30, 20, 50, 10, 40]))
 
 
+def space_optimized():
+    def solve(arr, index, dp):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+    def frog_jump(arr):
+        n = len(arr)
+        prev2 = prev = 0
+        for index in range(1, n):
+            left = 1e6
+            if index - 1 >= 0:
+                left = abs(arr[index] - arr[index - 1]) + prev
+            right = 1e6
+            if index - 2 >= 0:
+                right = abs(arr[index] - arr[index - 2]) + prev2
+            curr = min(left, right)
+            prev2 = prev
+            prev = curr
+        return prev
+
+    print(frog_jump([30, 10, 60, 10, 60, 50]))
+    print(frog_jump([10, 20, 30, 10]))
+    print(frog_jump([10, 50, 10]))
+    print(frog_jump([7, 4, 4, 2, 6, 6, 3, 4]))
+    print(frog_jump([4, 8, 3, 10, 4, 4]))
+    print(frog_jump([30, 20, 50, 10, 40]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
