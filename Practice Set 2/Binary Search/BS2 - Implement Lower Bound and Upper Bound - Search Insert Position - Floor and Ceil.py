@@ -8,8 +8,8 @@ class Solution:
         low, high = 0, len(arr) - 1
         while low <= high:
             mid = int(low + (high - low)/2)
-            # if arr[mid] <= x, that means the first number > x will be on right
-            if arr[mid] <= x:
+            # if arr[mid] < x, that means the first number >= x will be on right
+            if arr[mid] < x:
                 low = mid + 1
             else:
                 high = mid - 1
