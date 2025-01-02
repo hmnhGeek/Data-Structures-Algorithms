@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-the-number-of-islands/1
+# Solution - https://www.youtube.com/watch?v=muncqlKJrH0&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=8
+
+
 class Solution:
     @staticmethod
     def _get_neighbours(mtx, i, j, n, m):
@@ -22,8 +26,13 @@ class Solution:
 
     @staticmethod
     def _dfs(mtx, i, j, visited, n, m):
+        # mark the cell node as visited.
         visited[i][j] = True
+
+        # get the neighbours of the node in O(1) time and O(8) = O(1) space.
         neighbours = Solution._get_neighbours(mtx, i, j, n, m)
+
+        # loop on the neighbours and start a DFS if not visited.
         for neighbour in neighbours:
             x, y = neighbour
             if not visited[x][y]:
@@ -31,6 +40,10 @@ class Solution:
 
     @staticmethod
     def get_number_of_islands(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+
         # get the dimensions of the matrix.
         n, m = len(mtx), len(mtx[0])
 
