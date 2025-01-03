@@ -68,14 +68,22 @@ class Solution:
                 if mtx[x][y] == 1:
                     mtx[x][y] = 2
                     queue.push((x, y, t + 1))
-        return max_time_taken
+
+        all_rottened = True
+        for i in range(n):
+            if 1 in mtx[i]:
+                all_rottened = False
+            print(mtx[i])
+        return max_time_taken if all_rottened else -1
 
 
 print(
     Solution.rotten_oranges(
-        [[0, 1, 2],
-         [0, 1, 2],
-         [2, 1, 1]]
+        [
+            [0, 1, 2],
+            [0, 1, 2],
+            [2, 1, 1]
+        ]
     )
 )
 
@@ -83,9 +91,20 @@ print(
     Solution.rotten_oranges([[2, 2, 0, 1]])
 )
 
-print(
-    Solution.rotten_oranges(
-        [[2, 2, 2],
-         [0, 2, 0]]
-    )
-)
+print(Solution.rotten_oranges([[2, 2, 2], [0, 2, 0]]))
+print(Solution.rotten_oranges([[2, 1, 1], [1, 1, 0], [0, 1, 1]]))
+print(Solution.rotten_oranges([[0, 2]]))
+print(Solution.rotten_oranges(
+    [
+        [2, 1, 0, 2, 1],
+        [1, 0, 1, 2, 1],
+        [1, 0, 0, 2, 1]
+    ]
+))
+print(Solution.rotten_oranges(
+    [
+        [2, 1, 0, 2, 1],
+        [0, 0, 1, 2, 1],
+        [1, 0, 0, 2, 1]
+    ]
+))
