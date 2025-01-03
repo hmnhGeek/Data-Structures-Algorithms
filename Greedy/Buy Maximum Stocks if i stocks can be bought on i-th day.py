@@ -35,3 +35,7 @@ class Solution:
 
 print(Solution.buy_stocks([10, 7, 19], 45))
 print(Solution.buy_stocks([7, 10, 4], 100))
+print(Solution.buy_stocks([3, 4, 2], 10))
+print(Solution.buy_stocks([2, 1], 5))
+print(Solution.buy_stocks([10, 12, 11], 30))
+print(Solution.buy_stocks([3, 5, 3, 2, 9], 30))
