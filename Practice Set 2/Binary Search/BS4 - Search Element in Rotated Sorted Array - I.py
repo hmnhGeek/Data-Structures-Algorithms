@@ -1,21 +1,39 @@
+# Problem link - https://www.naukri.com/code360/problems/search-in-rotated-sorted-array_1082554
+# Solution - https://www.youtube.com/watch?v=5qGrJbHhqFs&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=5
+
+
 class Solution:
     @staticmethod
     def search(arr, x):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
+
+        # define a search space
         low, high = 0, len(arr) - 1
         while low <= high:
             mid = int(low + (high - low)/2)
+
+            # if mid-element is x, return mid.
             if arr[mid] == x:
                 return mid
+
+            # if left part is sorted
             if arr[low] <= arr[mid]:
+                # and x could be in the left part, then reduce high
                 if arr[low] <= x <= arr[mid]:
                     high = mid - 1
                 else:
+                    # if x is in right part (unsorted), then increase low
                     low = mid + 1
             else:
+                # if right part is sorted, and x is in this part, increment low
                 if arr[mid] <= x <= arr[high]:
                     low = mid + 1
                 else:
+                    # else decrement high.
                     high = mid - 1
+        # return -1 as element is not found.
         return -1
 
 
