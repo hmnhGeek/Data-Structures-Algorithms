@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/rotting-oranges/description/
+# Solution - https://www.youtube.com/watch?v=yf3oUhkvqA0&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=10
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -55,6 +59,10 @@ class Solution:
 
     @staticmethod
     def rotten_oranges(mtx):
+        """
+            Time complexity is O(n*m) and space complexity is O(n*m).
+        """
+
         n, m = len(mtx), len(mtx[0])
         queue = Queue()
         Solution._get_initial_nodes(mtx, n, m, queue)
@@ -66,6 +74,8 @@ class Solution:
             for neighbour in neighbours:
                 x, y = neighbour
                 if mtx[x][y] == 1:
+                    # rot here because if we rot after popping from the queue we would need additional conditions to
+                    # avoid increasing the max value of time.
                     mtx[x][y] = 2
                     queue.push((x, y, t + 1))
 
