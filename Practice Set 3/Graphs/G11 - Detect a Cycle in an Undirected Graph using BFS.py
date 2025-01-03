@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/detect-cycle-undirected-graph/
+# Solution - https://www.youtube.com/watch?v=BPlrALf1LDU&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=11
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,25 +39,44 @@ class Queue:
 class Solution:
     @staticmethod
     def _has_cycle(graph, source, visited):
+        # create a new queue and push the starting node
         queue = Queue()
         queue.push(source)
+
+        # typical BFS...
         while not queue.is_empty():
             node = queue.pop()
+
+            # if the popped node is already visited, return True, which means there's a cycle.
             if visited[node]:
                 return True
+
+            # mark the popped node as visited.
             visited[node] = True
+
+            # loop on the adjacent nodes of this node and if they are not visited, push them to the queue.
             for adj_node in graph[node]:
                 if not visited[adj_node]:
                     queue.push(adj_node)
+
+        # if queue got empty, there was no cycle, return False.
         return False
 
     @staticmethod
     def detect_cycle(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # create a visited dictionary in O(V) space.
         visited = {i: False for i in graph}
         for node in graph:
+            # if a component is detected and its start node is not visited, initiate a BFS
             if not visited[node]:
                 if Solution._has_cycle(graph, node, visited):
+                    # if cycle is detected, return True
                     return True
+        # else, even after traversing all the nodes, if no cycle was found in any of the component, return False.
         return False
 
 
