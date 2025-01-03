@@ -1,11 +1,16 @@
 class Solution:
     @staticmethod
     def search(arr, x):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         low, high = 0, len(arr) - 1
         while low <= high:
             mid = int(low + (high - low)/2)
             if arr[mid] == x:
                 return mid
+            # all the elements `low`, `mid` and `high` are same, and we cannot decide in which direction to move, shrink
+            # the search space.
             if arr[low] == arr[mid] == arr[high]:
                 low += 1
                 high -= 1
