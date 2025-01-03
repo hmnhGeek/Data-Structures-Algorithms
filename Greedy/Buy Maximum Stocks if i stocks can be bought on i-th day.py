@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/buy-maximum-stocks-stocks-can-bought-th-day/
+# Solution - https://www.youtube.com/watch?v=lr5uTrdUQhM
+
+
 class Solution:
     @staticmethod
     def buy_stocks(arr, k):
