@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/search-in-a-rotated-sorted-array-ii_7449547
+# Solution - https://www.youtube.com/watch?v=w2G2W8l__pc&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=6
+
+
 class Solution:
     @staticmethod
     def search(arr, x):
