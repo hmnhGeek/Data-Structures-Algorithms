@@ -7,8 +7,16 @@ class Node:
 class Solution:
     @staticmethod
     def merge(h1, h2):
+        """
+            Time complexity is O(m + m) = O(m) and space complexity is O(1).
+        """
+
+        # create a temp and dummy node pointing to the same node.
         dummy = Node(None)
         temp = dummy
+
+        # The code below is for merging two sorted arrays.
+        # ensure that next pointers of each node are set to None.
         while h1 is not None and h2 is not None:
             if h1.data <= h2.data:
                 temp.child = h1
@@ -20,23 +28,31 @@ class Solution:
                 temp = h2
                 h2.next = None
                 h2 = h2.child
-        while h1 is not None:
+
+        # if h1 is still left, simply append the h1 list to temp.
+        if h1 is not None:
             temp.child = h1
-            temp = h1
-            h1.next = None
-            h1 = h1.child
-        while h2 is not None:
+
+        # or if h2 is still left, append it.
+        if h2 is not None:
             temp.child = h2
-            temp = h2
-            h2.next = None
-            h2 = h2.child
+
+        # return dummy.child as the head of the merged list.
         return dummy.child
 
     @staticmethod
     def flatten(start_node: Node):
+        """
+            Time complexity is O(nm) and space complexity is O(n).
+        """
+
+        # this is a recursive method, and we return from the recursion when we are at the last node in the horizontal
+        # direction.
         if start_node is None or start_node.next is None:
             return start_node
+        # this will return the last merged head from the recursion in O(n) time and O(n) space.
         merged_head = Solution.flatten(start_node.next)
+        # now merge the current head and the last merged head in O(m) time and O(1) space.
         return Solution.merge(start_node, merged_head)
 
     @staticmethod
