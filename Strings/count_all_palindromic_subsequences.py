@@ -29,7 +29,7 @@ def recursive():
 
 def memoized():
     """
-        Time complexity is O(n^2) and space complexity is O(2n).
+        Time complexity is O(n^2) and space complexity is O(n + n^2).
     """
 
     def solve(string, i, j, dp):
@@ -61,7 +61,7 @@ def memoized():
 
 def tabulation():
     """
-        Time complexity is O(n^2) and space complexity is O(n).
+        Time complexity is O(n^2) and space complexity is O(n^2).
     """
     def count(string):
         n = len(string)
@@ -88,8 +88,40 @@ def tabulation():
     print(count("bccb"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n).
+    """
+    def count(string):
+        n = len(string)
+        nxt = {j: 0 for j in range(-1, n + 1)}
+        for i in range(n - 1, -1, -1):
+            curr = {j: 0 for j in range(-1, n + 1)}
+            curr[i] = 1
+            for j in range(n):
+                if i > j:
+                    curr[j] = 0
+                    continue
+                # if there's a match, add 1 to count and solve for f(i + 1, j) and f(i, j - 1)
+                if string[i] == string[j]:
+                    curr[j] = 1 + nxt[j] + curr[j - 1]
+                else:
+                    # if there's no match, solve for f(i + 1, j) and f(i, j - 1) and subtract f(i + 1, j - 1).
+                    curr[j] = nxt[j] + curr[j - 1] - nxt[j - 1]
+            nxt = curr
+        return nxt[n - 1]
+
+    print(count("abcd"))
+    print(count("aab"))
+    print(count("geeksforgeeks"))
+    print(count("103301"))
+    print(count("bccb"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
