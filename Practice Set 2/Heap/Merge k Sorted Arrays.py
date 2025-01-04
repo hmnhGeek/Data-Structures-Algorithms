@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/merge-k-sorted-arrays/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,6 +70,10 @@ class MinHeap:
 class Solution:
     @staticmethod
     def merge_k_sorted_lists(arrays):
+        """
+            Time complexity is O({n + k} * log(k)) and space complexity is O(k).
+        """
+
         k = len(arrays)
         merged = []
 
