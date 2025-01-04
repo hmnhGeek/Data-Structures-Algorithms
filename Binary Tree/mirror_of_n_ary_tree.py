@@ -40,10 +40,21 @@ class Stack:
 class Solution:
     @staticmethod
     def check_mirror(t1, t2):
+        """
+            Time complexity is O(n) and space complexity is O(e).
+        """
+
+        # create a dictionary storing the stacks for each even index.
         d = {i: Stack() for i in t1}
         n = len(t1)
+
+        # push the edges from even indexed source node to odd indexed destination node. This will take O(n) time
+        # and O(e) space.
         for i in range(0, n, 2):
             d[t1[i]].push(t1[i + 1])
+
+        # now loop in the mirror array in O(n) time and since stack stores reverse order for each level, check for
+        # mirror in each level.
         for i in range(0, n, 2):
             s = d[t2[i]]
             if s.top() == t2[i + 1]:
