@@ -66,3 +66,5 @@ class Solution:
 
 print(Solution.check_mirror([1, 2, 1, 3], [1, 3, 1, 2]))
 print(Solution.check_mirror([1, 2, 1, 3], [1, 2, 1, 3]))
+print(Solution.check_mirror([1, 2, 1, 3, 1, 4, 4, 5, 4, 6, 6, 7, 7, 8, 7, 9, 7, 10, 7, 11], [1, 4, 1, 3, 1, 2, 4, 6, 4, 5, 6, 7, 7, 11, 7, 10, 7, 9, 7, 8]))
+print(Solution.check_mirror([1, 2, 1, 3, 1, 4, 3, 5, 3, 6, 3, 7], [1, 4, 1, 3, 1, 2, 3, 6, 3, 5, 3, 7]))
