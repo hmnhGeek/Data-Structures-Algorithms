@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/
+
+
 class Solution:
     @staticmethod
     def get_commons(mtx):
