@@ -1,8 +1,20 @@
+# Problem link - https://www.spoj.com/problems/EKO/
+# Solution - https://www.youtube.com/watch?v=tkoucfh10SI&t=863s
+
+
 class Solution:
     @staticmethod
     def _collect_wood(arr, mid):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # store the collected wood
         collected = 0
+
+        # loop on each tree
         for i in range(len(arr)):
+            # if the ht of the tree is more than saw ht, we can collect the extra wood.
             if arr[i] > mid:
                 collected += (arr[i] - mid)
         return collected
