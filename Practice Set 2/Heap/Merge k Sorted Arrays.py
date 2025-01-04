@@ -63,3 +63,62 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def merge_k_sorted_lists(arrays):
+        k = len(arrays)
+        merged = []
+        if k == 0:
+            return merged
+        min_heap = MinHeap()
+        for i in range(k):
+            if len(arrays[i]) > 0:
+                min_heap.insert((arrays[i][0], i, 0))
+        while not min_heap.is_empty():
+            element, i, j = min_heap.pop()
+            merged.append(element)
+            if 0 <= j + 1 < len(arrays[i]):
+                min_heap.insert((arrays[i][j + 1], i, j + 1))
+        return merged
+
+
+
+print(
+    Solution.merge_k_sorted_lists(
+        [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ]
+    )
+)
+
+print(
+    Solution.merge_k_sorted_lists(
+        [
+            [1, 4, 5],
+            [1, 3, 4],
+            [2, 6]
+        ]
+    )
+)
+
+print(
+    Solution.merge_k_sorted_lists([])
+)
+
+print(
+    Solution.merge_k_sorted_lists([[]])
+)
+
+print(
+    Solution.merge_k_sorted_lists(
+        [
+            [1],
+            [2, 4],
+            [3, 7, 9, 11],
+            [13]
+        ]
+    )
+)
