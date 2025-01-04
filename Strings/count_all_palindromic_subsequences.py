@@ -59,6 +59,37 @@ def memoized():
     print(count("bccb"))
 
 
+def tabulation():
+    """
+        Time complexity is O(n^2) and space complexity is O(n).
+    """
+    def count(string):
+        n = len(string)
+        dp = {i: {j: 0 for j in range(-1, n + 1)} for i in range(n + 1)}
+        for i in dp:
+            dp[i][i] = 1
+        for i in range(n - 1, -1, -1):
+            for j in range(n):
+                if i > j:
+                    dp[i][j] = 0
+                    continue
+                # if there's a match, add 1 to count and solve for f(i + 1, j) and f(i, j - 1)
+                if string[i] == string[j]:
+                    dp[i][j] = 1 + dp[i + 1][j] + dp[i][j - 1]
+                else:
+                    # if there's no match, solve for f(i + 1, j) and f(i, j - 1) and subtract f(i + 1, j - 1).
+                    dp[i][j] = dp[i + 1][j] + dp[i][j - 1] - dp[i + 1][j - 1]
+        return dp[0][n - 1]
+
+    print(count("abcd"))
+    print(count("aab"))
+    print(count("geeksforgeeks"))
+    print(count("103301"))
+    print(count("bccb"))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
