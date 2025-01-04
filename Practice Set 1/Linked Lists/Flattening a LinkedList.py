@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/flattening-a-linked-list/1
+# Solution - https://www.youtube.com/watch?v=ykelywHJWLg
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -86,3 +90,32 @@ head = Solution.flatten(n5)
 Solution.show(head)
 
 
+
+# Example 2
+n5 = Node(5)
+n7 = Node(7)
+n8 = Node(8)
+n30 = Node(30)
+n10 = Node(10)
+n19 = Node(19)
+n22 = Node(22)
+n50 = Node(50)
+n28 = Node(28)
+n35 = Node(35)
+n40 = Node(40)
+n45 = Node(45)
+n20 = Node(20)
+n5.next = n10
+n10.child = n20
+n10.next = n19
+n19.next = n28
+n5.child = n7
+n7.child = n8
+n8.child = n30
+n19.child = n22
+n22.child = n50
+n28.child = n35
+n35.child = n40
+n40.child = n45
+head = Solution.flatten(n5)
+Solution.show(head)
