@@ -69,17 +69,32 @@ class Solution:
     def merge_k_sorted_lists(arrays):
         k = len(arrays)
         merged = []
+
+        # if there are no lists, return blank array.
         if k == 0:
             return merged
+
+        # create a min heap which will store elements from each row, i.e., O(k) space.
         min_heap = MinHeap()
+
+        # push the first element from each row into the min heap in O(k * log(k)) time.
         for i in range(k):
             if len(arrays[i]) > 0:
                 min_heap.insert((arrays[i][0], i, 0))
+
+        # while the min heap is not empty (this will run for all n-elements)
         while not min_heap.is_empty():
+            # get the minimum element in O(log(k)) time.
             element, i, j = min_heap.pop()
+
+            # append the min element into merged array.
             merged.append(element)
+
+            # if the next element is available, push it to min heap in O(log(k)) time.
             if 0 <= j + 1 < len(arrays[i]):
                 min_heap.insert((arrays[i][j + 1], i, j + 1))
+
+        # return merged array
         return merged
 
 
