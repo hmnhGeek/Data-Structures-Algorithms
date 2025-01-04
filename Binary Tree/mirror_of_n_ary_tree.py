@@ -15,7 +15,7 @@ class Stack:
     def push(self, x):
         node = Node(x)
         if self.is_empty():
-            self.head = self.tail = None
+            self.head = self.tail = node
         else:
             node.next = self.head
             self.head = node
@@ -36,3 +36,22 @@ class Stack:
             return
         return self.head.data
 
+
+class Solution:
+    @staticmethod
+    def check_mirror(t1, t2):
+        d = {i: Stack() for i in t1}
+        n = len(t1)
+        for i in range(0, n, 2):
+            d[t1[i]].push(t1[i + 1])
+        for i in range(0, n, 2):
+            s = d[t2[i]]
+            if s.top() == t2[i + 1]:
+                s.pop()
+            else:
+                return False
+        return True
+
+
+print(Solution.check_mirror([1, 2, 1, 3], [1, 3, 1, 2]))
+print(Solution.check_mirror([1, 2, 1, 3], [1, 2, 1, 3]))
