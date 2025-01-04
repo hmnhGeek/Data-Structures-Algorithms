@@ -11,21 +11,36 @@ class KQueues:
         self.k = k
 
     def push(self, x, q):
+        # if the queue asked for does not exist
         if q > self.num_queues or q <= 0:
             return
+
+        # get the index of the queue and then the top pointer of it.
         queue_index = q - 1
         top = self.tops[queue_index]
+
+        # if top pointer is still in the range of k, add the element
         if top in range(self.starts[queue_index], self.ends[queue_index]):
             self.arr[top] = x
             self.tops[queue_index] += 1
         else:
+            # else print overflow.
             print("Overflow!")
 
     def pop(self, q):
+        # if the queue asked for does not exist
+        if q > self.num_queues or q <= 0:
+            return
+
+        # get the actual index of the queue and the top pointer.
         queue_index = q - 1
         top = self.tops[queue_index]
+
+        # since top points to a null location and if top is at the beginning of the queue, there's nothing to pop.
         if top == queue_index * self.k:
             return None
+
+        # else go to the next non-None index and return it.
         top -= 1
         item = self.arr[top]
         self.arr[top] = None
