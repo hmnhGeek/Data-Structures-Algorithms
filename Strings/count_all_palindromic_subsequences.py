@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/count-palindromic-subsequences/1
+# Solution - https://www.youtube.com/watch?v=vlbA8oUxSV0
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
