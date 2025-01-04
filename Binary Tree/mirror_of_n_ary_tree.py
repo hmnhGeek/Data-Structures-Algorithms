@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/check-mirror-in-n-ary-tree1528/1
+# Solution - https://www.youtube.com/watch?v=oH63SpSshm0
+
+
 class Node:
     def __init__(self, data):
         self.data = data
