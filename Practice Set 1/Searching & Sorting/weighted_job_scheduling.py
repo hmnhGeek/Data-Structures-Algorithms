@@ -53,6 +53,58 @@ class RecursiveSolution:
         return RecursiveSolution._solve(jobs, 0, len(jobs))
 
 
+class MemoizedSolution:
+    @staticmethod
+    def _get_jobs(jobs, start_times, end_times, profits):
+        n = len(start_times)
+        for i in range(n):
+            jobs.append(
+                Job(
+                    start_times[i],
+                    end_times[i],
+                    profits[i]
+                )
+            )
+
+    @staticmethod
+    def _get_next_job_index(jobs, low, high, end_time):
+        while low <= high:
+            mid = int(low + (high - low)/2)
+            job = jobs[mid]
+            if job.start_time == end_time:
+                high = mid - 1
+            elif job.start_time < end_time:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return low
+
+    @staticmethod
+    def _solve(jobs, index, n, dp):
+        if index >= n:
+            return 0
+        if dp[index] is not None:
+            return dp[index]
+        next_job_index = MemoizedSolution._get_next_job_index(jobs, index + 1, n - 1, jobs[index].end_time)
+        take = jobs[index].profit + MemoizedSolution._solve(jobs, next_job_index, n, dp)
+        not_take = MemoizedSolution._solve(jobs, index + 1, n, dp)
+        dp[index] = max(take, not_take)
+        return dp[index]
+
+    @staticmethod
+    def schedule(start_times, end_times, profits):
+        """
+            Overall time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+        jobs = []
+        MemoizedSolution._get_jobs(jobs, start_times, end_times, profits)
+        # This will take O(n * log(n)) to sort.
+        jobs.sort(key=lambda x: x.start_time)
+        dp = {i: None for i in range(len(jobs))}
+        # This method is O(n) in time and O(n) in space.
+        return MemoizedSolution._solve(jobs, 0, len(jobs), dp)
+
+
 print(
     RecursiveSolution.schedule(
         [1, 3, 6, 2],
@@ -63,6 +115,23 @@ print(
 
 print(
     RecursiveSolution.schedule(
+        [1, 2, 4, 5],
+        [3, 5, 6, 7],
+        [60, 50, 70, 30]
+    )
+)
+
+print()
+print(
+    MemoizedSolution.schedule(
+        [1, 3, 6, 2],
+        [2, 5, 19, 100],
+        [50, 20, 100, 200]
+    )
+)
+
+print(
+    MemoizedSolution.schedule(
         [1, 2, 4, 5],
         [3, 5, 6, 7],
         [60, 50, 70, 30]
