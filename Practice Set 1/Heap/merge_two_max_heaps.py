@@ -63,3 +63,26 @@ class MaxHeap:
         self.max_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def merge_max_heaps(h1: MaxHeap, h2: MaxHeap):
+        result = MaxHeap()
+        while not h1.is_empty():
+            result.insert(h1.pop())
+        while not h2.is_empty():
+            result.insert(h2.pop())
+        return result
+
+
+# Example 1
+h1 = MaxHeap()
+for i in [10, 5, 6, 2]:
+    h1.insert(i)
+h2 = MaxHeap()
+for i in [12, 7, 9]:
+    h2.insert(i)
+h = Solution.merge_max_heaps(h1, h2)
+while not h.is_empty():
+    print(h.pop(), end=" ")
+print()
