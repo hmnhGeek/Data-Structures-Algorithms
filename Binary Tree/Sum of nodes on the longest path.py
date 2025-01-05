@@ -56,3 +56,14 @@ n1.left = n6
 n5.left = n21
 n5.right = n3
 print(Solution.get_sum(n4))
+
+
+# Example 3
+n10, n5, n15, n3, n7, n20, n1 = Node(10), Node(5), Node(15), Node(3), Node(7), Node(20), Node(1)
+n10.left = n5
+n10.right = n15
+n5.left = n3
+n5.right = n7
+n3.left = n1
+n15.right = n20
+print(Solution.get_sum(n10))
