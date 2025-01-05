@@ -53,3 +53,26 @@ print(
         "MAGIC"
     )
 )
+
+print(
+    Solution.count(
+        [
+            ['S', 'N', 'B', 'S', 'N'],
+            ['B', 'A', 'K', 'E', 'A'],
+            ['B', 'K', 'B', 'B', 'K'],
+            ['S', 'E', 'B', 'S', 'E']
+        ],
+        "SNAKES"
+    )
+)
+
+print(
+    Solution.count(
+        [
+            ['c', 'a', 't'],
+            ['a', 't', 'c'],
+            ['c', 't', 'a']
+        ],
+        "cat"
+    )
+)
