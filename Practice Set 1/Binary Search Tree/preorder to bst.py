@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/preorder-to-postorder4423/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -150,9 +153,15 @@ class Solution:
 
     @staticmethod
     def construct_bst_from_preorder(preorder):
+        """
+            Overall time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         bst = BinarySearchTree()
+        # this will take O(n * log(n)) time
         for i in preorder:
             bst.insert(i)
+        # just to print (optional).
         Solution._print_preorder(bst.root)
         print()
         return bst
