@@ -5,7 +5,7 @@ class Job:
         self.profit = profit
 
 
-class Solution:
+class RecursiveSolution:
     @staticmethod
     def _get_jobs(jobs, start_times, end_times, profits):
         n = len(start_times)
@@ -35,21 +35,26 @@ class Solution:
     def _solve(jobs, index, n):
         if index >= n:
             return 0
-        next_job_index = Solution._get_next_job_index(jobs, index + 1, n - 1, jobs[index].end_time)
-        take = jobs[index].profit + Solution._solve(jobs, next_job_index, n)
-        not_take = Solution._solve(jobs, index + 1, n)
+        next_job_index = RecursiveSolution._get_next_job_index(jobs, index + 1, n - 1, jobs[index].end_time)
+        take = jobs[index].profit + RecursiveSolution._solve(jobs, next_job_index, n)
+        not_take = RecursiveSolution._solve(jobs, index + 1, n)
         return max(take, not_take)
 
     @staticmethod
     def schedule(start_times, end_times, profits):
+        """
+            Overall time complexity is exponential and space complexity is O(n).
+        """
         jobs = []
-        Solution._get_jobs(jobs, start_times, end_times, profits)
+        RecursiveSolution._get_jobs(jobs, start_times, end_times, profits)
+        # This will take O(n * log(n)) to sort.
         jobs.sort(key=lambda x: x.start_time)
-        return Solution._solve(jobs, 0, len(jobs))
+        # This method is exponential in time and O(n) in space.
+        return RecursiveSolution._solve(jobs, 0, len(jobs))
 
 
 print(
-    Solution.schedule(
+    RecursiveSolution.schedule(
         [1, 3, 6, 2],
         [2, 5, 19, 100],
         [50, 20, 100, 200]
@@ -57,7 +62,7 @@ print(
 )
 
 print(
-    Solution.schedule(
+    RecursiveSolution.schedule(
         [1, 2, 4, 5],
         [3, 5, 6, 7],
         [60, 50, 70, 30]
