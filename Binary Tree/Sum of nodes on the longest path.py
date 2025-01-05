@@ -13,24 +13,37 @@ class Result:
 class Solution:
     @staticmethod
     def _solve(root, level, cumulative_sum, result):
+        # if the root node is None, return from the recursion stack.
         if root is None:
             return
 
+        # add the current node into the cumulative sum.
         cumulative_sum += root.data
+
+        # if the max level found till now is same as this level, then take the max cumulative sum for this level.
         if level == result.max_level:
             result.max_sum = max(result.max_sum, cumulative_sum)
+
+        # if the current level is greater than max level, reset the result.
         elif level > result.max_level:
             result.max_sum = cumulative_sum
             result.max_level = level
 
+        # if current level < max level, nothing needs to be done.
+        # now recursively solve for left and right subtrees.
         Solution._solve(root.left, level + 1, cumulative_sum, result)
         Solution._solve(root.right, level + 1, cumulative_sum, result)
 
     @staticmethod
     def get_sum(root: Node):
-        if root is None:
-            return 0
+        """
+            Overall time complexity is O(n) and space complexity is O(n).
+        """
+
+        # define a result object storing the max level and the max sum from the entire tree at that level.
         result = Result(-1, 0)
+
+        # recursively find the max sum and return it.
         Solution._solve(root, 0, 0, result)
         return result.max_sum
 
@@ -67,3 +80,6 @@ n5.right = n7
 n3.left = n1
 n15.right = n20
 print(Solution.get_sum(n10))
+
+# Example 4
+print(Solution.get_sum(None))
