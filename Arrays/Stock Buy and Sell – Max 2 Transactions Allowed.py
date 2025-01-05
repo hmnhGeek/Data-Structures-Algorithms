@@ -101,8 +101,43 @@ def tabulation():
     print(buy_sell([1, 2, 3, 4, 5]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(2*2*n) and space complexity is O(4).
+    """
+    def buy_sell(arr):
+        n = len(arr)
+        nxt = {j: {k: 0 for k in range(3)} for j in [True, False]}
+        for index in range(n - 1, -1, -1):
+            curr = {j: {k: 0 for k in range(3)} for j in [True, False]}
+            for can_buy in [True, False]:
+                for k in range(1, 3):
+                    if can_buy:
+                        curr[can_buy][k] = max(
+                            -arr[index] + nxt[False][k],
+                            nxt[True][k]
+                        )
+                    else:
+                        curr[can_buy][k] = max(
+                            arr[index] + nxt[True][k - 1],
+                            nxt[False][k]
+                        )
+            nxt = curr
+        return nxt[True][2]
+
+    print(buy_sell([10, 22, 5, 75, 65, 80]))
+    print(buy_sell([100, 30, 15, 10, 8, 25, 80]))
+    print(buy_sell([90, 80, 70, 60, 50]))
+    print(buy_sell([10, 30, 50, 60]))
+    print(buy_sell([2, 30, 15, 10, 8, 25, 80]))
+    print(buy_sell([3, 3, 5, 0, 0, 3, 1, 4]))
+    print(buy_sell([1, 2, 3, 4, 5]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
