@@ -131,10 +131,32 @@ class BinarySearchTree:
     def _show(self, start):
         if start:
             self._show(start.left)
-            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
+            print(
+                f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
             self._show(start.right)
 
     def show(self):
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _print_preorder(root: Node):
+        if root:
+            print(root.data, end=" ")
+            Solution._print_preorder(root.left)
+            Solution._print_preorder(root.right)
+
+    @staticmethod
+    def construct_bst_from_preorder(preorder):
+        bst = BinarySearchTree()
+        for i in preorder:
+            bst.insert(i)
+        Solution._print_preorder(bst.root)
+        print()
+        return bst
+
+
+bst1 = Solution.construct_bst_from_preorder([40, 30, 35, 80, 100])
+bst2 = Solution.construct_bst_from_preorder([40, 30, 32, 35, 80, 90, 100, 120])
