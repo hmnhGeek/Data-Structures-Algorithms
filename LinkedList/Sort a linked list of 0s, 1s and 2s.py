@@ -49,8 +49,11 @@ class Solution:
                 two_temp = curr
             curr = curr.next
 
-        zero_temp.next = one_head.next
-        one_temp.next = two_head.next
+        if one_found:
+            zero_temp.next = one_head.next
+            one_temp.next = two_head.next
+        else:
+            zero_temp.next = two_head.next
 
         if zero_found:
             l.head = zero_head.next
@@ -85,3 +88,67 @@ for i in [2, 2, 0, 1]:
 l2.show()
 Solution.sort(l2)
 l2.show()
+
+print()
+l3 = LinkedList()
+for i in [1, 1, 2, 0, 2, 0, 1]:
+    l3.push(i)
+l3.show()
+Solution.sort(l3)
+l3.show()
+
+print()
+l4 = LinkedList()
+for i in [1, 1, 2, 1, 2, 2, 1]:
+    l4.push(i)
+l4.show()
+Solution.sort(l4)
+l4.show()
+
+print()
+l5 = LinkedList()
+for i in [0, 2, 2, 2, 0, 0, 0, 0, 2, 2]:
+    l5.push(i)
+l5.show()
+Solution.sort(l5)
+l5.show()
+
+print()
+l6 = LinkedList()
+for i in [0, 1, 1, 1, 0, 0, 0, 0, 1, 1]:
+    l6.push(i)
+l6.show()
+Solution.sort(l6)
+l6.show()
+
+print()
+l7 = LinkedList()
+for i in [0, 0, 0, 0, 0]:
+    l7.push(i)
+l7.show()
+Solution.sort(l7)
+l7.show()
+
+print()
+l8 = LinkedList()
+for i in [1, 1, 1, 1, 1, 1]:
+    l8.push(i)
+l8.show()
+Solution.sort(l8)
+l8.show()
+
+print()
+l9 = LinkedList()
+for i in [2, 2, 2, 2, 2]:
+    l9.push(i)
+l9.show()
+Solution.sort(l9)
+l9.show()
+
+print()
+l10 = LinkedList()
+for i in []:
+    l10.push(i)
+l10.show()
+Solution.sort(l10)
+l10.show()
