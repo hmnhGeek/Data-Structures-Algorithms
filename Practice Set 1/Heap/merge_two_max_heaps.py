@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/merge-two-binary-max-heap0144/1
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -67,11 +70,22 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def merge_max_heaps(h1: MaxHeap, h2: MaxHeap):
+        """
+            Overall time complexity is O({n + m} * log(n + m)) and space complexity is O(n + m).
+        """
+
+        # This heap will store n + m items.
         result = MaxHeap()
+
+        # this will take O(n * {log(n + m) + log(n)}) time
         while not h1.is_empty():
             result.insert(h1.pop())
+
+        # This will take O(m * {log(n + m) + log(m)}) time
         while not h2.is_empty():
             result.insert(h2.pop())
+
+        # return the merged heap
         return result
 
 
