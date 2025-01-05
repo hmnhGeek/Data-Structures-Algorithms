@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time/
+# Solution - https://www.youtube.com/watch?v=LL0tVxlAeV4&t=14s
+
+
 class Job:
     def __init__(self, start, end, profit):
         self.start_time = start
@@ -153,6 +157,7 @@ class TabulationSolution:
         return dp[0]
 
 
+print("Recursive Approach")
 print(
     RecursiveSolution.schedule(
         [1, 3, 6, 2],
@@ -169,7 +174,7 @@ print(
     )
 )
 
-print()
+print("Memoized Approach")
 print(
     MemoizedSolution.schedule(
         [1, 3, 6, 2],
@@ -186,7 +191,7 @@ print(
     )
 )
 
-print()
+print("Tabulation Approach")
 print(
     TabulationSolution.schedule(
         [1, 3, 6, 2],
