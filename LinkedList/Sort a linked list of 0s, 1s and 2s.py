@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/sort-a-linked-list-of-0s-1s-or-2s/
+# Solution - https://www.youtube.com/watch?v=gRII7LhdJWc&t=1214s
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -27,34 +31,49 @@ class LinkedList:
 class Solution:
     @staticmethod
     def sort(l: LinkedList):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # create head and temp nodes, where head's next will be used to determine the beginning of a sublist.
         zero_head = zero_temp = Node(None)
         one_head = one_temp = Node(None)
         two_head = two_temp = Node(None)
 
+        # variables to check if 0, 1 and 2 have been found or not.
         zero_found = one_found = two_found = False
 
+        # traverse on the list
         curr = l.head
         while curr is not None:
+            # if curr is 0
             if curr.data == 0:
+                # set zero found to true
                 zero_found = True
+                # add this 0 node to zero sublist
                 zero_temp.next = curr
                 zero_temp = curr
             elif curr.data == 1:
                 one_found = True
+                # add this 1 node to zero sublist
                 one_temp.next = curr
                 one_temp = curr
             else:
                 two_found = True
+                # add this 2 node to zero sublist
                 two_temp.next = curr
                 two_temp = curr
             curr = curr.next
 
+        # since 1 acts as a bridge between 0 and 2, we must explicitly check for its presence.
         if one_found:
             zero_temp.next = one_head.next
             one_temp.next = two_head.next
         else:
+            # else directly connect 0 sublist to 2 sublist.
             zero_temp.next = two_head.next
 
+        # decide which sublist's start will act has the new head
         if zero_found:
             l.head = zero_head.next
         elif one_found:
@@ -62,6 +81,7 @@ class Solution:
         else:
             l.head = two_head.next
 
+        # decide which sublist's last node will act as the new tail.
         if two_found:
             l.tail = two_temp
         elif one_found:
@@ -69,6 +89,7 @@ class Solution:
         else:
             l.tail = zero_temp
 
+        # ensure tail points to None.
         if l.tail:
             l.tail.next = None
 
