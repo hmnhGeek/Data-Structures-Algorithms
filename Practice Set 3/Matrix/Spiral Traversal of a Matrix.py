@@ -1,3 +1,6 @@
+# Problem Link - https://www.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/1
+
+
 class Direction:
     RIGHT = "right"
     LEFT = "left"
@@ -8,6 +11,10 @@ class Direction:
 class Solution:
     @staticmethod
     def spiral_traversal(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(1).
+        """
+
         n, m = len(mtx), len(mtx[0])
         direction = Direction.RIGHT
         top, down, left, right = 0, n - 1, 0, m - 1
