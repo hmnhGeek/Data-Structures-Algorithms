@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/shop-in-candy-store1145/1
+# Solution - https://www.youtube.com/watch?v=2Sj6-5JFaAo
+
+
 class Solution:
     @staticmethod
     def find_min_max_costs(arr, k):
