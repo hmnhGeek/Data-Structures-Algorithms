@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/ninja-s-training_3621003?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=AE39gJYuRog&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=8
+
+
 def get_next_activities_indices(j, k):
     result = []
     for i in range(k):
@@ -69,7 +73,7 @@ def recursive():
 
 def memoized():
     """
-        Time complexity is O(nk^2) and space complexity is O(n + nk).
+        Time complexity is O(nk^3) and space complexity is O(n + nk).
     """
 
     def solve(mtx, i, j, k, dp):
@@ -134,7 +138,7 @@ def memoized():
 
 def tabulation():
     """
-        Time complexity is O(nk^2) and space complexity is O(nk).
+        Time complexity is O(nk^3) and space complexity is O(nk).
     """
     def ninjas_training(mtx):
         n, k = len(mtx), len(mtx[0])
@@ -195,7 +199,7 @@ def tabulation():
 
 def space_optimized():
     """
-        Time complexity is O(nk^2) and space complexity is O(k).
+        Time complexity is O(nk^3) and space complexity is O(k).
     """
     def ninjas_training(mtx):
         n, k = len(mtx), len(mtx[0])
