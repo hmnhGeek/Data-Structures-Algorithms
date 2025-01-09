@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/house-robber_839733?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=3WaxQMELSkw&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=7
+
+
 def recursive():
     def solve(arr, index):
         if index < 0:
@@ -87,6 +91,9 @@ def space_optimized():
 class Solution:
     @staticmethod
     def _house_robber(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         n = len(arr)
         prev2 = prev = 0
         for index in range(n):
@@ -99,6 +106,9 @@ class Solution:
 
     @staticmethod
     def house_robber2(arr):
+        """
+            Time complexity is O(2n) and space complexity is O(2n)
+        """
         return max(Solution._house_robber(arr[:-1]), Solution._house_robber(arr[1:]))
 
 
