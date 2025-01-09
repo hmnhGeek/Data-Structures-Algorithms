@@ -1,6 +1,14 @@
+# Problem link - https://www.naukri.com/code360/problems/rotation_7449070
+# Solution - https://www.youtube.com/watch?v=jtSiWTPLwd0&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=8
+
+
 class Solution:
     @staticmethod
     def get_num_rotations(arr):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
+
         # define search space
         low = 0
         high = len(arr) - 1
@@ -45,3 +53,5 @@ class Solution:
 print(Solution.get_num_rotations([3, 4, 5, 1, 2]))
 print(Solution.get_num_rotations([1, 2, 4, 5, 7]))
 print(Solution.get_num_rotations([3, 3, 3, 3, 2, 3, 3]))
+print(Solution.get_num_rotations([1, 2, 3]))
+print(Solution.get_num_rotations([2, 3, 4, 1]))
