@@ -1,22 +1,36 @@
 class Solution:
     @staticmethod
     def _dfs_cycle_detect(graph, node, parent, visited):
+        # mark this node as visited
         visited[node] = True
+
+        # loop on the adjacent nodes
         for adj_node in graph[node]:
+            # if this adjacent node is not yet visited, start a DFS using this node as a source node.
             if not visited[adj_node]:
+                # if a cycle is found, return True.
                 if Solution._dfs_cycle_detect(graph, adj_node, node, visited):
                     return True
+            # if adjacent node is visited and it's not the parent, then there's a cycle, return True.
             elif adj_node != parent:
                 return True
+
+        # else finally return False as no cycle was detected.
         return False
 
     @staticmethod
     def detect_cycle(graph):
+        # create a visited array for DFS
         visited = {i: False for i in graph}
+
+        # loop on the nodes in the graph
         for node in graph:
+            # find a source node for the DFS
             if not visited[node]:
+                # if a cycle is found using this node as a source node, return True.
                 if Solution._dfs_cycle_detect(graph, node, None, visited):
                     return True
+        # else return False.
         return False
 
 
