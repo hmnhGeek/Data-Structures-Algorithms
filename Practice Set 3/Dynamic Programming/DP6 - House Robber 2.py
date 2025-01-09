@@ -63,8 +63,31 @@ def tabulation():
     print(house_robber([1, 5, 2, 1, 6]))
 
 
+def space_optimized():
+    def house_robber(arr):
+        n = len(arr)
+        prev2 = prev = 0
+        for index in range(n):
+            left = arr[index] + prev2
+            right = prev
+            curr = max(left, right)
+            prev2 = prev
+            prev = curr
+        return prev
+
+    print(house_robber([2, 1, 4, 9]))
+    print(house_robber([1, 2, 4]))
+    print(house_robber([1, 2, 3, 5, 4]))
+    print(house_robber([1, 2, 3, 1, 3, 5, 8, 1, 9]))
+    print(house_robber([2, 7, 9, 3, 1]))
+    print(house_robber([1, 2, 3, 1]))
+    print(house_robber([1, 5, 2, 1, 6]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
