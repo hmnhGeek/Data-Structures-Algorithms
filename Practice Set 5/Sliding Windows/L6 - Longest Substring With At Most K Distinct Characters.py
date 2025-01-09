@@ -1,6 +1,6 @@
 class Solution:
     @staticmethod
-    def get_longest_substring(string, k):
+    def get_longest(string, k):
         n = len(string)
         left = right = 0
         d = {i: 0 for i in string}
@@ -18,4 +18,12 @@ class Solution:
         return string[start_index:start_index+longest_length] if start_index != -1 else ""
 
 
-print(Solution.get_longest_substring("aaabbccd", 2))
+print(Solution.get_longest("aaabbccd", 2))
+print(Solution.get_longest("abbbbbbc", 2))
+print(Solution.get_longest("abcddefg", 3))
+print(Solution.get_longest("aaaaaaaa", 3))
+print(Solution.get_longest("abcefg", 1))
+print(Solution.get_longest("aabbcc", 1))
+print(Solution.get_longest("aabbcc", 2))
+print(Solution.get_longest("aabbcc", 3))
+print(Solution.get_longest("aaabbb", 3))
