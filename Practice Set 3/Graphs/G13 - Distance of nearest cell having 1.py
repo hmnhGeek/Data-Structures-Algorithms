@@ -77,3 +77,7 @@ print(
         ]
     )
 )
+print(Solution.find_distance([[0, 1, 1, 0], [1, 1, 0, 0], [0, 0, 1, 1]]))
+print(Solution.find_distance([[1, 0, 1], [1, 1, 0], [1, 0, 0]]))
+print(Solution.find_distance([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
+print(Solution.find_distance([[0, 0, 0], [0, 1, 0], [1, 1, 1]]))
