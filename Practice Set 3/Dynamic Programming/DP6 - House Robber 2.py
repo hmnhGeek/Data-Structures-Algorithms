@@ -84,10 +84,22 @@ def space_optimized():
     print(house_robber([1, 5, 2, 1, 6]))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
+class Solution:
+    @staticmethod
+    def house_robber(arr):
+        n = len(arr)
+        prev2 = prev = 0
+        for index in range(n):
+            left = arr[index] + prev2
+            right = prev
+            curr = max(left, right)
+            prev2 = prev
+            prev = curr
+        return prev
+
+    @staticmethod
+    def house_robber2(arr):
+        return max(Solution.house_robber(arr[:-1]), Solution.house_robber(arr[1:]))
+
+
+print(Solution.house_robber2([2, 3, 2]))
