@@ -21,6 +21,7 @@ class Solution:
 
             # if there are duplicates, and you cannot decide where to move, then shrink the search space.
             if arr[low] == arr[mid] == arr[high]:
+                ans = min(ans, arr[low])
                 low += 1
                 high -= 1
                 continue
@@ -44,3 +45,4 @@ print(Solution.get_min([3, 4, 5, 1, 2]))
 print(Solution.get_min([1, 2, 3, 4]))
 print(Solution.get_min([25, 30, 5, 10, 15, 20]))
 print(Solution.get_min([4, 5, 6, 7, 0, 1, 2]))
+print(Solution.get_min([3, 3, 3, 3, 2, 3, 3]))
