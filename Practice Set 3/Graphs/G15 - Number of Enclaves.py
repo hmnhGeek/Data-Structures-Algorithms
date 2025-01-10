@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/number-of-enclaves/description/
+# Solution - https://www.youtube.com/watch?v=rxKcepXQgU4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=15
+
+
 class Solution:
     @staticmethod
     def _get_neighbours(mtx, i, j, n, m):
@@ -72,4 +76,12 @@ print(
          [0, 0, 0, 1],
          [0, 1, 1, 0]]
     )
+)
+
+print(
+    Solution.get_num_enclaves([[0, 0, 0, 0], [1, 0, 1, 0], [0, 1, 1, 0], [0, 0, 0, 0]])
+)
+
+print(
+    Solution.get_num_enclaves([[0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 0]])
 )
