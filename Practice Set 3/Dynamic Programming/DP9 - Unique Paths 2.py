@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/maze-obstacles_977241?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=TmhpgXScLyY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=10
+
+
 def recursive():
     """
         Time complexity is O(2^{n + m}) and space complexity is O(n + m).
@@ -217,7 +221,7 @@ def tabulation():
 
 def space_optimized():
     """
-        Time complexity is O(nm) and space complexity is O(nm).
+        Time complexity is O(nm) and space complexity is O(m).
     """
     def unique_paths(mtx):
         n, m = len(mtx), len(mtx[0])
