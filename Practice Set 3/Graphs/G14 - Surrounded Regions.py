@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/surrounded-regions/description/
+# Solution - https://www.youtube.com/watch?v=BtdgAys4yMk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=14
+
+
 class Solution:
     @staticmethod
     def _get_neighbours(mtx, i, j, n, m):
@@ -23,8 +27,14 @@ class Solution:
 
     @staticmethod
     def surround_regions(mtx):
+        """
+            Time complexity is O(mn) and space complexity is O(mn).
+        """
+
         n, m = len(mtx), len(mtx[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
+
+        # initiate DFS from all the boundary "O"s.
         for i in range(n):
             if mtx[i][0] == "O":
                 Solution._dfs(mtx, i, 0, n, m, visited)
@@ -37,6 +47,9 @@ class Solution:
         for j in range(m):
             if mtx[n - 1][j] == "O":
                 Solution._dfs(mtx, n - 1, j, n, m, visited)
+
+        # now traverse on the matrix and see if an "O" is found which is not visited, which means that it is a part of
+        # surrounded region; thus switch it to "X".
         for i in range(n):
             for j in range(m):
                 if mtx[i][j] == "O" and not visited[i][j]:
