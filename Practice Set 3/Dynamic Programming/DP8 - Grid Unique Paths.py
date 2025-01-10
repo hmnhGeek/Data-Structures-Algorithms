@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/total-unique-paths_1081470?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=sdE0A2Oxofw&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=9
+
+
 def recursive():
     """
         Time complexity is O(2^{n + m}) and space complexity is O(n + m).
