@@ -1,8 +1,12 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-cost-to-cut-a-board-into-squares/1
+# Solution - https://www.youtube.com/watch?v=9DckVBRzuQU
+
+
 class Solution:
     @staticmethod
     def get_min_cost(costX, costY, n, m):
         """
-            Time complexity is O(n * log(n)) and space complexity is O(1).
+            Time complexity is O(n * log(n) + m *log(m)) and space complexity is O(1).
 
             The idea is to make the most expensive cuts first because at the beginning there will be less number of
             pieces to multiply with the cost.
@@ -51,3 +55,4 @@ class Solution:
 
 
 print(Solution.get_min_cost([4, 1, 2], [2, 1, 3, 1, 4], 4, 6))
+print(Solution.get_min_cost([1, 1, 1], [1, 1, 1], 4, 4))
