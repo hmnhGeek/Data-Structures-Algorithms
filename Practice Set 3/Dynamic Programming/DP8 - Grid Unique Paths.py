@@ -80,9 +80,37 @@ def tabulation():
     print(grid_unique_paths(3, 7))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nm) and space complexity is O(m).
+    """
+    def grid_unique_paths(n, m):
+        prev = {j: 1 for j in range(m)}
+        for i in range(1, n):
+            curr = {j: 0 for j in range(m)}
+            curr[0] = 1
+            for j in range(1, m):
+                left = 0
+                if 0 <= i - 1 < n:
+                    left = prev[j]
+                right = 0
+                if 0 <= j - 1 < m:
+                    right = curr[j - 1]
+                curr[j] = left + right
+            prev = curr
+        return prev[m - 1]
+
+    print(grid_unique_paths(2, 2))
+    print(grid_unique_paths(1, 1))
+    print(grid_unique_paths(3, 2))
+    print(grid_unique_paths(1, 6))
+    print(grid_unique_paths(3, 7))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
 print()
+space_optimized()
