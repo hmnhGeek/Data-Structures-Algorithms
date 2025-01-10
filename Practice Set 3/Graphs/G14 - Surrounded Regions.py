@@ -67,3 +67,7 @@ Solution.surround_regions(
      ['X', 'O', 'X'],
      ['X', 'X', 'X']]
 )
+
+Solution.surround_regions([["X", "X", "X", "X"], ["X", "O", "O", "X"], ["X", "X", "O", "X"], ["X", "O", "X", "X"]])
+
+Solution.surround_regions([["X"]])
