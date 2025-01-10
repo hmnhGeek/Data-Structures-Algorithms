@@ -1,6 +1,15 @@
+# Problem link - https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+# Solution - https://www.youtube.com/watch?v=xtqN4qlgr8s&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=7
+
+
 class Solution:
     @staticmethod
     def _count_less_than_equal_to(string, k):
+        """
+            This method returns all the substrings containing <= k distinct characters.
+
+            Time complexity is O(n) and space complexity is O(1).
+        """
         if k < 0:
             return 0
         left = right = 0
@@ -19,6 +28,10 @@ class Solution:
 
     @staticmethod
     def get_num_substrings(string):
+        """
+            Overall time complexity is O(2n) and space complexity is O(1).
+        """
+
         x = Solution._count_less_than_equal_to(string, 3)
         y = Solution._count_less_than_equal_to(string, 2)
         return x - y
