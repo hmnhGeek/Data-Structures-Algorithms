@@ -36,16 +36,16 @@ class Solution:
 
         # initiate DFS from all the boundary "O"s.
         for i in range(n):
-            if mtx[i][0] == "O":
+            if mtx[i][0] == "O" and not visited[i][0]:
                 Solution._dfs(mtx, i, 0, n, m, visited)
         for i in range(n):
-            if mtx[i][m - 1] == "O":
+            if mtx[i][m - 1] == "O" and not visited[i][m - 1]:
                 Solution._dfs(mtx, i, m - 1, n, m, visited)
         for j in range(m):
-            if mtx[0][j] == "O":
+            if mtx[0][j] == "O" and not visited[0][j]:
                 Solution._dfs(mtx, 0, j, n, m, visited)
         for j in range(m):
-            if mtx[n - 1][j] == "O":
+            if mtx[n - 1][j] == "O" and not visited[n - 1][j]:
                 Solution._dfs(mtx, n - 1, j, n, m, visited)
 
         # now traverse on the matrix and see if an "O" is found which is not visited, which means that it is a part of
