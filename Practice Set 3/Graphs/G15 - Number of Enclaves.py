@@ -23,8 +23,14 @@ class Solution:
 
     @staticmethod
     def get_num_enclaves(mtx):
+        """
+            Time complexity is O(mn) and space complexity is O(nm).
+        """
+
         n, m = len(mtx), len(mtx[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
+
+        # start a DFS from all unvisited 1-nodes on the boundaries
         for i in range(n):
             if not visited[i][0] and mtx[i][0] == 1:
                 Solution._dfs(mtx, i, 0, n, m, visited)
@@ -37,11 +43,15 @@ class Solution:
         for j in range(m):
             if not visited[n - 1][j] and mtx[n - 1][j] == 1:
                 Solution._dfs(mtx, n - 1, j, n, m, visited)
+
+        # after the DFS is completed, count the number of 1s which are not visited, which means they are part of
+        # enclaves.
         count = 0
         for i in range(n):
             for j in range(m):
                 if mtx[i][j] == 1 and not visited[i][j]:
                     count += 1
+        # return the count.
         return count
 
 
