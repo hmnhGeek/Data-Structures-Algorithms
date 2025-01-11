@@ -64,3 +64,33 @@ class MinHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def _get_subarray_sums(arr, subarray_sums):
+        n = len(arr)
+        for i in range(n):
+            _sum = arr[i]
+            subarray_sums.append(_sum)
+            for j in range(i + 1, n):
+                _sum += arr[j]
+                subarray_sums.append(_sum)
+
+    @staticmethod
+    def kth_largest(arr, k):
+        subarray_sums = []
+        Solution._get_subarray_sums(arr, subarray_sums)
+        min_heap = MinHeap()
+        for i in range(k):
+            min_heap.insert(subarray_sums[i])
+        i = k
+        while i < len(subarray_sums):
+            top = min_heap.heap[0]
+            if top < subarray_sums[i]:
+                min_heap.pop()
+                min_heap.insert(subarray_sums[i])
+            i += 1
+        return min_heap.heap[0]
+
+
+print(Solution.kth_largest([20, -5, -1], 3))
+print(Solution.kth_largest([10, -10, 20, -40], 6))
