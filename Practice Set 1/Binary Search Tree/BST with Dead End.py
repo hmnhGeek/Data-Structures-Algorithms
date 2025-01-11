@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -148,21 +151,38 @@ class Solution:
 
     @staticmethod
     def contains_dead_ends(bst: BinarySearchTree):
+        """
+            Overall time complexity is O(n) and space complexity is O(n).
+        """
+
+        # get the inorder of the tree in O(n) time and O(n) space.
         inorder = []
         Solution._get_inorder(bst.root, inorder)
+
+        # if there is only 1 node or no nodes at all in the BST, then there is no dead end inside it.
         n = len(inorder)
         if n == 0 or n == 1:
             return False
 
+        # however, specifically check for the first node
         first_node = inorder[0]
-        if first_node.data == 1 and inorder[1].data == 2:
+
+        # since there can be no duplicate nodes, first node can be a dead end only if it is 1 and the next node is 2.
+        if first_node.left is None and first_node.right is None and first_node.data == 1 and inorder[1].data == 2:
             return True
 
+        # now loop on all the nodes in this inclusive range [1, n - 2].
         for i in range(1, n - 1):
+            # get prev, current and next nodes
             prev, node, next_node = inorder[i - 1], inorder[i], inorder[i + 1]
+
+            # if current node is a leaf node and,
             if node.left is None and node.right is None:
+                # prev + 1 = node and node + 1 = next, then current node is a dead end, return True
                 if prev.data + 1 == node.data == next_node.data - 1:
                     return True
+
+        # last node can never be a dead end, return False finally.
         return False
 
 
