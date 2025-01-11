@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-the-string-in-grid0111/1
+# Solution - https://www.youtube.com/watch?v=omGydjrStOA
+
+
 class Solution:
     @staticmethod
     def _exists(grid, string, i, j, n, m, s, dir_x, dir_y):
@@ -18,6 +22,10 @@ class Solution:
 
     @staticmethod
     def find_string(grid, string):
+        """
+            Time complexity is O(n * m * k) and space complexity is O(1).
+        """
+
         result = []
         dir_x = [-1, 0, 1, 1, 1, 0, -1, -1]
         dir_y = [1, 1, 1, 0, -1, -1, -1, 0]
