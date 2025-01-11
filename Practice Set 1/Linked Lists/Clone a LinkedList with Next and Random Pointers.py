@@ -84,3 +84,16 @@ l.tail.random = l.head.next
 l.show()
 cloned = Solution.clone(l)
 cloned.show()
+print()
+
+# Example 2
+l = LinkedList()
+for i in [7, 13, 11, 10, 1]:
+    l.push(i)
+l.head.next.random = l.head
+l.head.next.next.random = l.tail
+l.head.next.next.next.random = l.head.next.next
+l.tail.random = l.head
+l.show()
+cloned = Solution.clone(l)
+cloned.show()
