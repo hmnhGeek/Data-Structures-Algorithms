@@ -137,3 +137,43 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _get_inorder(root: Node, inorder):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root)
+            Solution._get_inorder(root.right, inorder)
+
+    @staticmethod
+    def contains_dead_ends(bst: BinarySearchTree):
+        inorder = []
+        Solution._get_inorder(bst.root, inorder)
+        n = len(inorder)
+        if n == 0 or n == 1:
+            return False
+
+        first_node = inorder[0]
+        if first_node.data == 1 and inorder[1].data == 2:
+            return True
+
+        for i in range(1, n - 1):
+            prev, node, next_node = inorder[i - 1], inorder[i], inorder[i + 1]
+            if node.left is None and node.right is None:
+                if prev.data + 1 == node.data == next_node.data - 1:
+                    return True
+        return False
+
+
+# Example 1
+bst = BinarySearchTree()
+for i in [8, 5, 9, 2, 7, 1]:
+    bst.insert(i)
+print(Solution.contains_dead_ends(bst))
+
+# Example 2
+bst = BinarySearchTree()
+for i in [8, 7, 10, 2, 9, 13]:
+    bst.insert(i)
+print(Solution.contains_dead_ends(bst))
