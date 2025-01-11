@@ -24,7 +24,63 @@ class LinkedList:
     def show(self):
         curr = self.head
         while curr is not None:
-            print(curr.data, end=" ")
+            print(f"({curr.data}, {curr.random.data if curr.random else None})", end=" ")
             curr = curr.next
         print()
 
+
+class Solution:
+    @staticmethod
+    def _insert_nodes(linked_list: LinkedList):
+        curr = linked_list.head
+        while curr is not None:
+            temp = Node(curr.data)
+            next_curr = curr.next
+            curr.next = temp
+            temp.next = next_curr
+            curr = next_curr
+
+    @staticmethod
+    def _connect_random_pointers(linked_list: LinkedList):
+        curr = linked_list.head
+        while curr is not None:
+            curr_copy = curr.next
+            random_node = curr.random
+            random_copy = random_node.next if random_node else None
+            curr_copy.random = random_copy
+            curr = curr_copy.next
+
+    @staticmethod
+    def _extract_cloned(linked_list: LinkedList):
+        dummy_node = temp = Node(None)
+        curr = linked_list.head
+        while curr is not None:
+            temp.next = curr.next
+            next_temp = curr.next
+            curr.next = next_temp.next
+            temp = next_temp
+            curr = curr.next
+        return dummy_node.next, temp
+
+    @staticmethod
+    def clone(linked_list: LinkedList) -> LinkedList:
+        Solution._insert_nodes(linked_list)
+        Solution._connect_random_pointers(linked_list)
+        head, tail = Solution._extract_cloned(linked_list)
+        cloned_list = LinkedList()
+        cloned_list.head = head
+        cloned_list.tail = tail
+        return cloned_list
+
+
+# Example 1
+l = LinkedList()
+for i in [1, 2, 3, 4, 5]:
+    l.push(i)
+l.head.random = l.head.next.next
+l.head.next.random = l.head
+l.head.next.next.next.random = l.head.next.next
+l.tail.random = l.head.next
+l.show()
+cloned = Solution.clone(l)
+cloned.show()
