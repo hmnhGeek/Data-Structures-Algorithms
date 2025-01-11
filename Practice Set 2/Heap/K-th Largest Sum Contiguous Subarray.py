@@ -108,3 +108,9 @@ class Solution:
 
 print(Solution.kth_largest([20, -5, -1], 3))
 print(Solution.kth_largest([10, -10, 20, -40], 6))
+print(Solution.kth_largest([3, 2, 1], 2))
+print(Solution.kth_largest([2, 6, 4, 1], 3))
+print(Solution.kth_largest([1, -2, 3, -4, 5], 2))
+print(Solution.kth_largest([3, -2, 5], 3))
+print(Solution.kth_largest([4, 1], 2))
+print(Solution.kth_largest([5, 4, -8, 6], 10))
