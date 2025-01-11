@@ -34,6 +34,7 @@ class DoublyLinkedList:
             # and similarly, update the next pointer of this node to point to previous first node.
             node.next = temp
         self.length += 1
+        return node
 
     def pop_back(self):
         if self.is_empty():
@@ -49,8 +50,8 @@ class DoublyLinkedList:
             # update the next_lru's pointers
             next_lru.next = self.tail
             self.tail.prev = next_lru
-        del lru
         self.length -= 1
+        return lru
 
     def move_to_front(self, node):
         # if there is only one node, nothing needs to be done
@@ -83,3 +84,49 @@ class DoublyLinkedList:
         print()
 
 
+class LruCache:
+    def __init__(self, capacity):
+        self.capacity = capacity
+        self.cache = DoublyLinkedList()
+        self.key_node_map = dict()
+
+    def put(self, k, v):
+        if k in self.key_node_map:
+            node = self.key_node_map[k]
+            self.cache.move_to_front(node)
+            node.value = v
+            return
+        if self.cache.length == self.capacity:
+            lru = self.cache.pop_back()
+            print("Cache is full, evicting LRU.")
+            if lru.key in self.key_node_map:
+                del self.key_node_map[lru.key]
+                del lru
+        node = self.cache.put_front(k, v)
+        self.key_node_map[k] = node
+        return
+
+    def get(self, k):
+        if k in self.key_node_map:
+            node = self.key_node_map[k]
+            self.cache.move_to_front(node)
+            return node.value
+        return None
+
+
+# Example 1
+cache = LruCache(2)
+cache.put(1, 2)
+print(cache.get(1))
+print()
+
+# Example 2
+cache = LruCache(2)
+cache.put(1, 2)
+cache.put(2, 3)
+cache.put(1, 5),
+cache.put(4, 5)
+cache.put(6, 7)
+print(cache.get(4))
+cache.put(1, 2)
+print(cache.get(3))
