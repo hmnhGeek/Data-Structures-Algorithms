@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/is-it-a-tree/1
+
+
 class Solution:
     @staticmethod
     def _dfs(graph, node, parent, visited):
@@ -17,6 +20,7 @@ class Solution:
         for node in graph:
             if not visited[node]:
                 num_components += 1
+                # if more than one component has been found, set the status of disconnected to True.
                 if num_components > 1:
                     disconnected[0] = True
                 if Solution._dfs(graph, node, None, visited):
@@ -62,6 +66,27 @@ print(
             2: [0, 1],
             3: [0, 4],
             4: [3]
+        }
+    )
+)
+
+print(
+    Solution.check_if_tree(
+        {
+            0: [1],
+            1: [0, 2, 3],
+            3: [1],
+            2: [1]
+        }
+    )
+)
+
+print(
+    Solution.check_if_tree(
+        {
+            0: [1, 2],
+            1: [0, 2],
+            2: [0, 1]
         }
     )
 )
