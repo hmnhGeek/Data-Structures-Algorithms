@@ -92,6 +92,7 @@ class LruCache:
 
     def put(self, k, v):
         if k in self.key_node_map:
+            print(f"Key {k} already in cache, updating its value to {v}.")
             node = self.key_node_map[k]
             self.cache.move_to_front(node)
             node.value = v
