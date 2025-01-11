@@ -25,8 +25,18 @@ class Solution:
 
     @staticmethod
     def check_if_tree(graph):
+        """
+            Detecting cycle will take O(V + E) time and O(V) space.
+            Detecting multiple components will be done in the above step only.
+
+            Time complexity is thus O(V + E) and space complexity is O(V).
+        """
+
+        # store the disconnected components status in a variable
         is_disconnected = [False]
+        # check if the graph has cycle
         has_cycle = Solution._graph_has_cycle(graph, is_disconnected)
+        # the graph is a tree if it has no cycle and all the nodes are connected (no multiple components)
         if not has_cycle and not is_disconnected[0]:
             return True
         return False
