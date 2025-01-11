@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/lru-cache/1
+# Solution - https://www.youtube.com/watch?v=z9bJUPxzFOw
+
+
 class Node:
     def __init__(self, key, value):
         self.key = key
@@ -126,8 +130,14 @@ class LruCache:
         return
 
     def get(self, k):
+        """
+            Time complexity is O(1) and space complexity is O(1).
+        """
+
+        # if k is present in the map, then we can return the node value
         if k in self.key_node_map:
             node = self.key_node_map[k]
+            # ensure to move the node at front.
             self.cache.move_to_front(node)
             return node.value
         return None
