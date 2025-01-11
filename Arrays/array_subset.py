@@ -31,3 +31,4 @@ class Solution:
 print(Solution.is_subset([11, 7, 1, 13, 21, 3, 7, 3], [11, 3, 7, 1, 7]))
 print(Solution.is_subset([1, 2, 3, 4, 4, 5, 6], [1, 2, 4]))
 print(Solution.is_subset([10, 5, 2, 23, 19], [19, 5, 3]))
+print(Solution.is_subset([2, 1, 8, 6, 4, 9, 3], [3, 4, 7]))
