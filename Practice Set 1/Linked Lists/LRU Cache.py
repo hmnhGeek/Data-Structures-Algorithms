@@ -91,19 +91,37 @@ class LruCache:
         self.key_node_map = dict()
 
     def put(self, k, v):
+        """
+            Time complexity is O(1) and space complexity is O(1).
+        """
+
+        # if key is already present in the cache...
         if k in self.key_node_map:
             print(f"Key {k} already in cache, updating its value to {v}.")
+            # get the concerned node
             node = self.key_node_map[k]
+            # move it to front
             self.cache.move_to_front(node)
+            # and update its value.
             node.value = v
             return
+
+        # From here onwards, we know that k is not present in the cache.
+
+        # now, since a new key is being inserted, let's check if the cache is full or not.
+        # if it is full...
         if self.cache.length == self.capacity:
+            # evict LRU
             lru = self.cache.pop_back()
             print("Cache is full, evicting LRU.")
-            if lru.key in self.key_node_map:
-                del self.key_node_map[lru.key]
-                del lru
+
+            # erase LRU from map as well and delete LRU.
+            del self.key_node_map[lru.key]
+            del lru
+
+        # finally, put the new node in front of the cache
         node = self.cache.put_front(k, v)
+        # and add it into the map as well
         self.key_node_map[k] = node
         return
 
