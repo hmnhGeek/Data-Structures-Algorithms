@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/k-th-largest-sum-contiguous-subarray/
+# Solution - https://www.youtube.com/watch?v=Rb4jGawY0MA&t=367s
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -77,13 +81,23 @@ class Solution:
 
     @staticmethod
     def kth_largest(arr, k):
+        """
+            Time complexity is O(n^2) and space complexity is O(n^2).
+        """
+
+        # in O(n^2) and O(n^2) space, get the subarray sum.
         subarray_sums = []
         Solution._get_subarray_sums(arr, subarray_sums)
+
+        # push first `k` items in the min heap in O(k * log(k)) time and O(k) space.
         min_heap = MinHeap()
         for i in range(k):
             min_heap.insert(subarray_sums[i])
+
+        # start from the kth index, in O(n * log(k))
         i = k
         while i < len(subarray_sums):
+            # if the top < ith element, pop the top and push ith element in O(2 * log(k))
             top = min_heap.heap[0]
             if top < subarray_sums[i]:
                 min_heap.pop()
