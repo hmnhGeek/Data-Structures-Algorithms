@@ -177,3 +177,15 @@ bst = BinarySearchTree()
 for i in [8, 7, 10, 2, 9, 13]:
     bst.insert(i)
 print(Solution.contains_dead_ends(bst))
+
+# Example 3
+bst = BinarySearchTree()
+for i in [10, 6, 12, 2, 8, 11, 15]:
+    bst.insert(i)
+print(Solution.contains_dead_ends(bst))
+
+# Example 4
+bst = BinarySearchTree()
+for i in [7, 4, 8]:
+    bst.insert(i)
+print(Solution.contains_dead_ends(bst))
