@@ -98,3 +98,36 @@ class LinkedList:
         for i in args:
             self.push(i)
 
+
+class Solution:
+    @staticmethod
+    def merge(linked_lists):
+        min_heap = MinHeap()
+        dummy_node = temp = Node(None)
+        k = len(linked_lists)
+        for i in range(k):
+            min_heap.insert(linked_lists[i].head)
+        while not min_heap.is_empty():
+            node = min_heap.pop()
+            next_node = node.next
+            temp.next = node
+            temp = node
+            if next_node is not None:
+                min_heap.insert(next_node)
+        merged_list = LinkedList()
+        merged_list.head = dummy_node.next
+        merged_list.tail = temp
+        return merged_list
+
+
+# Example 1
+l1 = LinkedList()
+l1.build(1, 2, 3)
+l2 = LinkedList()
+l2.build(4, 5)
+l3 = LinkedList()
+l3.build(5, 6)
+l4 = LinkedList()
+l4.build(7, 8)
+merged = Solution.merge([l1, l2, l3, l4])
+merged.show()
