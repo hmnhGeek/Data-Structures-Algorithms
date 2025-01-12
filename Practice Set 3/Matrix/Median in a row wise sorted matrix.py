@@ -67,17 +67,32 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_median(mtx):
+        """
+            Time complexity is
+        """
+
         n, m = len(mtx), len(mtx[0])
+
+        # create a min heap and push first column elements into it in O(n * log(n)) time and O(n) space.
         min_heap = MinHeap()
         for i in range(n):
             min_heap.insert((mtx[i][0], i, 0))
+
+        # get the median position
         median_position = (n*m + 1)//2
         counter = 0
+
+        # while the heap is not empty. This will run for O(nm/2) time.
         while not min_heap.is_empty():
+            # pop the least element in O(log(n)) time
             element, i, j = min_heap.pop()
             counter += 1
+
+            # if counter reaches median position, then return the element.
             if counter == median_position:
                 return element
+
+            # if not, insert the next element from the element's row in O(log(n)) time.
             if 0 <= j + 1 < m:
                 min_heap.insert((mtx[i][j + 1], i, j + 1))
         return -1
