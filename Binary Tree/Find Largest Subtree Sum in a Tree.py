@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/find-largest-subtree-sum-tree/#expected-approach-2-using-bfs-on-time-and-on-space
+# Solution - https://www.youtube.com/watch?v=zm5CykXlxaA
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,16 +11,27 @@ class Node:
 class Solution:
     @staticmethod
     def _get_largest_sum(root: Node, max_tracker):
+        # for null node, return 0 sum
         if root is None:
             return 0
         left_sum = Solution._get_largest_sum(root.left, max_tracker)
         right_sum = Solution._get_largest_sum(root.right, max_tracker)
+
+        # get the subtree sum at this subtree.
         _sum = left_sum + right_sum + root.data
+
+        # update max tracker
         max_tracker[0] = max(max_tracker[0], _sum)
+
+        # return sum to be consistent in the return type of the recursion.
         return _sum
 
     @staticmethod
     def get_largest_sum(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         max_tracker = [-1e6]
         Solution._get_largest_sum(root, max_tracker)
         return max_tracker[0]
