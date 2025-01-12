@@ -52,11 +52,19 @@ class Queue:
         self.head, self.tail = self.tail, self.head
 
 
-# Example 1
-queue = Queue()
-for i in [4, 3, 1, 10, 2, 6]:
-    queue.push(i)
-queue.show()
-queue.reverse()
-queue.show()
-print()
+def test(*args):
+    q = Queue()
+    for i in args:
+        q.push(i)
+    q.show()
+    q.reverse()
+    q.show()
+    print()
+
+
+test(4, 3, 1, 10, 2, 6)
+test(4, 3, 2, 1)
+test(7, 9, 5, 12, 8)
+test(1)
+test()
+test(2, 8)
