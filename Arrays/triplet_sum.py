@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1
+
+
 class QuickSort:
     @staticmethod
     def _get_partition_index(arr, low, high):
@@ -58,3 +61,6 @@ class Solution:
 print(Solution.is_present([1, 4, 45, 6, 10, 8], 13))
 print(Solution.is_present([1, 2, 4, 3, 6, 7], 10))
 print(Solution.is_present([40, 20, 10, 3, 6, 7], 24))
+print(Solution.is_present([-1, 0, 1, 2, -1, -4], 0))
+print(Solution.is_present([0, 1, 1], 0))
+print(Solution.is_present([0, 0, 0], 0))
