@@ -102,18 +102,36 @@ class LinkedList:
 class Solution:
     @staticmethod
     def merge(linked_lists):
+        """
+            Time complexity is O(n * log(k)) and space complexity is O(k).
+        """
+
+        # initialize a min heap and a dummy node variable to get the head of the merged list.
         min_heap = MinHeap()
         dummy_node = temp = Node(None)
+
+        # loop in the k lists and push their heads into the min heap in O(k * log(k)) time.
         k = len(linked_lists)
         for i in range(k):
             min_heap.insert(linked_lists[i].head)
+
+        # while the min heap is not empty. This will run for n times (all the nodes).
         while not min_heap.is_empty():
+            # get the smallest node in O(log(k)) time.
             node = min_heap.pop()
+
+            # store the next node reference.
             next_node = node.next
+
+            # add the node to merged list
             temp.next = node
             temp = node
+
+            # if next node is present, add it to min heap in O(log(k)) time.
             if next_node is not None:
                 min_heap.insert(next_node)
+
+        # finally, create a new merged linked list with head as dummy.next and tail as temp.
         merged_list = LinkedList()
         merged_list.head = dummy_node.next
         merged_list.tail = temp
@@ -130,4 +148,14 @@ l3.build(5, 6)
 l4 = LinkedList()
 l4.build(7, 8)
 merged = Solution.merge([l1, l2, l3, l4])
+merged.show()
+
+# Example 2
+l1 = LinkedList()
+l1.build(1, 3)
+l2 = LinkedList()
+l2.build(4, 5, 6)
+l3 = LinkedList()
+l3.build(8)
+merged = Solution.merge([l1, l2, l3])
 merged.show()
