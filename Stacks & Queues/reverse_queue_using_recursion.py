@@ -38,3 +38,25 @@ class Queue:
             curr = curr.next
         print()
 
+    def _reverse(self, prev, curr):
+        if curr is None:
+            return
+        next_curr = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_curr
+        self._reverse(prev, curr)
+
+    def reverse(self):
+        self._reverse(None, self.head)
+        self.head, self.tail = self.tail, self.head
+
+
+# Example 1
+queue = Queue()
+for i in [4, 3, 1, 10, 2, 6]:
+    queue.push(i)
+queue.show()
+queue.reverse()
+queue.show()
+print()
