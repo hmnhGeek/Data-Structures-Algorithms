@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/queue-reversal/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -48,6 +51,9 @@ class Queue:
         self._reverse(prev, curr)
 
     def reverse(self):
+        """
+            Time complexity is O(n) for traversing the list and O(n) space complexity for the recursion stack.
+        """
         self._reverse(None, self.head)
         self.head, self.tail = self.tail, self.head
 
