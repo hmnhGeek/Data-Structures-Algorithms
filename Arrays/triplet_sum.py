@@ -29,17 +29,28 @@ class QuickSort:
 class Solution:
     @staticmethod
     def is_present(arr, target):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
+
+        # Sort the array in O(n * log(n)) time
         QuickSort.sort(arr)
         n = len(arr)
+
+        # loop in the array till last 3rd element
         for i in range(n - 2):
+            # initiate j and k
             j, k = i + 1, n - 1
             while j < k:
                 _sum = arr[i] + arr[j] + arr[k]
                 if _sum == target:
                     return True
+
+                # if sum > target, we must decrease from right side
                 if _sum > target:
                     k -= 1
                 else:
+                    # else increase from left side.
                     j += 1
         return False
 
