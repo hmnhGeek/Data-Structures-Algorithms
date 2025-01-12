@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/largest-bst/1
+# Solution - https://www.youtube.com/watch?v=X0oXMdtUDwo
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -14,6 +18,10 @@ class Vector:
 class Solution:
     @staticmethod
     def get_largest_size(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         if root is None:
             return Vector(0, -1e6, 1e6)
         
