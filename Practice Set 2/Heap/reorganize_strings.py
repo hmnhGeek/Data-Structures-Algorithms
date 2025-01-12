@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/rearrange-characters-string-no-two-adjacent/
+
+
 from collections import Counter
 
 
@@ -70,23 +73,44 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def reorganize_string(string):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         n = len(string)
         max_heap = MaxHeap()
+
+        # get frequencies in O(n) time.
         d = Counter(string)
+
+        # This will take O(n * log(n)) time
         for k, v in d.items():
             max_heap.insert((v, k))
+
+        # useful variables
         prev = None
         result = ""
+
+        # while the max heap is not empty
         while not max_heap.is_empty():
+            # get the most frequent character in O(log(n)) time.
             freq, character = max_heap.pop()
             result += character
+
+            # if there is a previous character having > 0 frequency, add it back in the heap in O(log(n)) time.
             if prev is not None and prev[0] > 0:
                 max_heap.insert(prev)
+
+            # update prev
             prev = (freq - 1, character)
+
+        # if there is no prev left, return result, or, if prev is None then also.
         if prev and prev[0] == 0:
             return result
         elif prev is None:
             return result
+
+        # else return "" because there is still some character left with freq > 0.
         return ""
 
 
