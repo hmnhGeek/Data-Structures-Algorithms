@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -64,3 +67,30 @@ class MaxHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def reorganize_string(string):
+        n = len(string)
+        max_heap = MaxHeap()
+        d = Counter(string)
+        for k, v in d.items():
+            max_heap.insert((v, k))
+        prev = None
+        result = ""
+        while not max_heap.is_empty():
+            freq, character = max_heap.pop()
+            result += character
+            if prev is not None and prev[0] > 0:
+                max_heap.insert(prev)
+            prev = (freq - 1, character)
+        if prev and prev[0] == 0:
+            return result
+        elif prev is None:
+            return result
+        return ""
+
+
+print(Solution.reorganize_string("aab"))
+print(Solution.reorganize_string("aaab"))
+print(Solution.reorganize_string("address"))
+print(Solution.reorganize_string("mississippi"))
