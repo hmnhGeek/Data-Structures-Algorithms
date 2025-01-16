@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/survival/
+# Solution - https://www.youtube.com/watch?v=Wq4Sn20dHr8
+
+
 from math import ceil
 
 
