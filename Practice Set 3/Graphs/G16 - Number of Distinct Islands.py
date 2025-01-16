@@ -43,6 +43,7 @@ class Solution:
                     # start a DFS from this node with (i, j) as base.
                     Solution._dfs(mtx, i, j, n, m, i, j, island, visited)
                     islands.add(tuple(island))
+        # return the count of islands
         return len(islands)
 
 
