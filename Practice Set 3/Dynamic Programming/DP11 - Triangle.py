@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/minimum-sum-path-triangle/
+# Solution - https://www.youtube.com/watch?v=SrP-PiLSYC0&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=12
+
+
 def recursive():
     """
         Time complexity is O(2^{nm}) and space complexity is O(n + m).
