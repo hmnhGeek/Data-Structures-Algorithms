@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-nth-root-of-m5843/1
+# Solution - https://www.youtube.com/watch?v=rjEJeYCasHs&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=12
+
+
 class Solution:
     @staticmethod
     def _get_flag(x, n, mid):
@@ -12,6 +16,10 @@ class Solution:
 
     @staticmethod
     def nth_root_of_x(x, n):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
+
         # define the search space of binary search
         low, high = 0, x
         while low <= high:
