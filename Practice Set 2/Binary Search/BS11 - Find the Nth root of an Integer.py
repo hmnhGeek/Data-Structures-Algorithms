@@ -12,14 +12,23 @@ class Solution:
 
     @staticmethod
     def nth_root_of_x(x, n):
+        # define the search space of binary search
         low, high = 0, x
         while low <= high:
             mid = int(low + (high - low)/2)
+
+            # get the flag
             flag = Solution._get_flag(x, n, mid)
+
+            # if flag == 2, then mid^n > x, hence reduce high.
             if flag == 2:
                 high = mid - 1
+
+            # if flag == 1, then mid^n == x, hence return mid.
             elif flag == 1:
                 return mid
+
+            # else , mid^n < x, hence increase low.
             else:
                 low = mid + 1
         return -1
