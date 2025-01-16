@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/distinct-islands_630460
+# Solution - https://www.youtube.com/watch?v=7zmgQSJghpo&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=16
+
+
 class Solution:
     @staticmethod
     def _get_neighbours(mtx, i, j, n, m):
@@ -24,13 +28,19 @@ class Solution:
 
     @staticmethod
     def get_distinct_islands(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+
         n, m = len(mtx), len(mtx[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
         islands = set()
         for i in range(n):
             for j in range(m):
+                # if a starting node is found...
                 if mtx[i][j] == 1 and not visited[i][j]:
                     island = []
+                    # start a DFS from this node with (i, j) as base.
                     Solution._dfs(mtx, i, j, n, m, i, j, island, visited)
                     islands.add(tuple(island))
         return len(islands)
