@@ -4,6 +4,14 @@ from math import ceil
 class Solution:
     @staticmethod
     def check(n, s, m):
+        """
+            n – Maximum unit of food you can buy each day.
+            s – Number of days you are required to survive.
+            m – Unit of food required each day to survive.
+
+            Time complexity is O(1) and space complexity is O(1).
+        """
+
         if n < m:
             return -1
         num_sundays = s//7
