@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/minimum-path-sum/description/
+# Solution - https://www.youtube.com/watch?v=_rgTlyky1uQ&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=11
+
+
 def recursive():
     """
         Time complexity is O(2^{n + m}) and space complexity is O(n + m).
