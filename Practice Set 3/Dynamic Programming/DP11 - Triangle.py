@@ -95,7 +95,7 @@ def recursive():
 
 def memoized():
     """
-        Time complexity is O(nm) and space complexity is O(n + m + nm).
+        Time complexity is O(n^3) and space complexity is O(2n + n^2).
     """
     def solve(mtx, i, j, n, dp):
         if i == j == 0:
@@ -190,7 +190,7 @@ def memoized():
 
 def tabulation():
     """
-        Time complexity is O(nm) and space complexity is O(nm).
+        Time complexity is O(n^3) and space complexity is O(n^2).
     """
     def triangle(mtx):
         n = len(mtx)
@@ -283,7 +283,7 @@ def tabulation():
 
 def space_optimized():
     """
-        Time complexity is O(nm) and space complexity is O(m).
+        Time complexity is O(n^3) and space complexity is O(n).
     """
     def triangle(mtx):
         n = len(mtx)
