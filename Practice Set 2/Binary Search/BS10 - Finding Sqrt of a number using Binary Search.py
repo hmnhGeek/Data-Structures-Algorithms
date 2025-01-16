@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/square-root-of-an-integer/
+# Solution - https://www.youtube.com/watch?v=Bsv3FPUX_BA&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=11
+
+
 class Solution:
     @staticmethod
     def find_sqrt(n):
