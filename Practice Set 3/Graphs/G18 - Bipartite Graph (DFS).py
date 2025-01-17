@@ -1,22 +1,36 @@
 class Solution:
     @staticmethod
     def _dfs(graph, node, color, colors):
+        # color this node
         colors[node] = color
+
+        # loop on the adjacent nodes
         for adj_node in graph[node]:
             if colors[adj_node] is None:
+                # if not bipartite, return False
                 if not Solution._dfs(graph, adj_node, 0 if color == 1 else 1, colors):
                     return False
             elif colors[adj_node] == color:
+                # if the color of adjacent node and this node is same, return False
                 return False
+
+        # finally return True
         return True
 
     @staticmethod
     def is_bipartite(graph):
+        # initialize a colors array to store the colors
         colors = {i: None for i in graph}
+
+        # loop on the nodes of the graph
         for node in graph:
+            # and if the node is not yet colored, initiate a DFS with color 0 on it.
             if colors[node] is None:
+                # if inside the DFS, it is detected that this graph is not bipartite, return False.
                 if not Solution._dfs(graph, node, 0, colors):
                     return False
+
+        # else return True.
         return True
 
 
