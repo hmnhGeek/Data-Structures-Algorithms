@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/rose-garden_2248080
+# Solution - https://www.youtube.com/watch?v=TXAuxeYBTdg&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=14
+
+
 class Solution:
     @staticmethod
     def _find_num_formed(arr, mid, k):
@@ -30,6 +34,10 @@ class Solution:
 
     @staticmethod
     def min_days_for_m_bouquets(arr, m, k):
+        """
+            Time complexity is O(n * log(max - min)) and space complexity is O(1).
+        """
+
         n = len(arr)
         # if the required number of flowers is more than n, return -1.
         if m*k > n:
