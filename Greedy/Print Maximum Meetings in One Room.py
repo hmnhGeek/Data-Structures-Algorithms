@@ -44,3 +44,4 @@ class Solution:
 
 print(Solution.print_meetings([1, 3, 0, 5, 8, 5], [2, 4, 6, 7, 9, 9]))
 print(Solution.print_meetings([10, 12, 20], [20, 25, 30]))
+print(Solution.print_meetings([1, 2], [100, 99]))
