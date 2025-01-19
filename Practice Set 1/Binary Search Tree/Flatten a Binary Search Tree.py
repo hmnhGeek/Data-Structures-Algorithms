@@ -192,3 +192,9 @@ for i in [5, 3, 7, 2, 4, 6, 8]:
     t.insert(i)
 t.show()
 Solution.flatten(t)
+
+t2 = BinarySearchTree()
+for i in [8,9,2,6,4,8,9,1]:
+    t2.insert(i)
+t2.show()
+Solution.flatten(t2)
