@@ -112,3 +112,10 @@ def test(*args):
 
 test(1, 2, 3, 4, 5, 3)
 test(4, 3, 2, 1, 4)
+
+# testing queue
+q = Queue()
+for i in range(5):
+    q.push(i)
+while not q.is_empty():
+    print(q.pop())
