@@ -130,17 +130,26 @@ print()
 class OptimalSolution:
     @staticmethod
     def trap_rainwater(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         n = len(arr)
         left_max, right_max, left, right, total_water = 0, 0, 0, n - 1, 0
         while left < right:
+            # if left building <= right building
             if arr[left] <= arr[right]:
+                # and there is boundary on the left
                 if left_max > arr[left]:
+                    # collect water from left bound
                     total_water += (left_max - arr[left])
                 else:
                     left_max = arr[left]
                 left += 1
             else:
+                # if right building > left building
                 if right_max > arr[right]:
+                    # collect water from right bound
                     total_water += (right_max - arr[right])
                 else:
                     right_max = arr[right]
