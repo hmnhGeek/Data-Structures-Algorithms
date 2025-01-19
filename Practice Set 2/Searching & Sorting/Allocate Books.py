@@ -1,14 +1,21 @@
 class Solution:
     @staticmethod
     def _find_num_allocated(arr, mid, k, n):
+        # initially, 0 students allocated and 0 pages assigned.
         students = 0
         pages = 0
+
+        # loop on the array
         for i in range(n):
+            # if adding ith page is still within limits, add the pages
             if pages + arr[i] <= mid:
                 pages += arr[i]
             else:
+                # else increment the student count
                 students += 1
                 pages = arr[i]
+
+        # at end, if there are some pages left, assign it to another student.
         if pages != 0:
             students += 1
             pages = 0
@@ -16,18 +23,27 @@ class Solution:
 
     @staticmethod
     def allocate_books(arr, k):
+        # if students count is negative, 0 or more than the books, return -1.
         if k <= 0 or k > len(arr):
             return -1
         n = len(arr)
+
+        # min max pages must be used to allocate > k and sum(arr) to allocate to 1 student.
         low, high = max(arr), sum(arr)
         while low <= high:
             mid = int(low + (high - low)/2)
+            # in O(n) find the number of students who will get the books if mid-pages are max allowed.
             students_allocated = Solution._find_num_allocated(arr, mid, k, n)
+
+            # if more than k students were allocated, that means page limit was low, hence increase it.
             if students_allocated > k:
                 low = mid + 1
+
+            # if exactly k students were allocated, then pages were enough, lets try to reduce the max limit.
             elif students_allocated == k:
                 high = mid - 1
             else:
+                # else if < k students were allocated, that means limit is too high, decrease it.
                 high = mid - 1
         return low
 
