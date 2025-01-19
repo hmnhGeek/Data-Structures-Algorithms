@@ -1,4 +1,5 @@
 # Problem link - https://www.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1
+# Solution - https://www.youtube.com/watch?v=1_5VuquLbXg
 
 
 class Node:
