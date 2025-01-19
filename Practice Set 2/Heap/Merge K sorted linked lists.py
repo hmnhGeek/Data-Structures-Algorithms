@@ -110,15 +110,34 @@ class Solution:
 
     @staticmethod
     def merge_k_sorted_linked_lists(lists: List[LinkedList]):
+        """
+            Overall time complexity is O(n * log(k)) and space complexity is O(k).
+        """
+
         pq = MinHeap()
+
+        # push the heads of the k sorted lists in O(n * log(k)) time and O(k) space.
         Solution._push_heads(lists, pq)
+
+        # create a dummy node for merged list.
         dummy_node = temp = Node(None)
+
+        # This will run for n nodes, thus O(n * log(k)) time.
         while not pq.is_empty():
+            # pop the current smallest node in O(log(k)) time.
             node = pq.pop()
+
+            # assign temp's next to this node.
             temp.next = node
+
+            # push the node's next into heap in O(log(k)) time.
             if node.next is not None:
                 pq.insert(node.next)
+
+            # break node.next
             node.next = None
+
+            # and update temp
             temp = temp.next
         merged_linked_list = LinkedList()
         merged_linked_list.head = dummy_node.next
@@ -136,4 +155,12 @@ l3.build(5, 6)
 l4 = LinkedList()
 l4.build(7, 8)
 merged = Solution.merge_k_sorted_linked_lists([l1, l2, l3, l4])
+merged.show()
+
+# Example 2
+l1, l2, l3 = LinkedList(), LinkedList(), LinkedList()
+l1.build(1, 3)
+l2.build(4, 5, 6)
+l3.build(8)
+merged = Solution.merge_k_sorted_linked_lists([l1, l2, l3])
 merged.show()
