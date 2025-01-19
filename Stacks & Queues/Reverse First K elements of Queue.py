@@ -60,21 +60,36 @@ class Queue:
         return curr
 
     def reverse(self, k):
+        # if k is negative or 0, return as no reversing can be done.
         if k <= 0:
             return
+
+        # store the kth node as None
         kth_node = None
+
+        # if k >= length of the queue, kth node will become the tail
         if k >= self.length:
             kth_node = self.tail
         else:
+            # else find the kth node in O(k) time.
             kth_node = self._get_kth_node(k)
 
+        # store the reference to the next of kth node and break the link
         temp = kth_node.next
         kth_node.next = None
+
+        # create a temporary queue with first k nodes of the linked list
         temp_queue = Queue()
         temp_queue.head = self.head
         temp_queue.tail = kth_node
+
+        # reverse this temp queue in O(k) time.
         temp_queue._reverse()
+
+        # update the head of this queue with head of the linked list
         self.head = temp_queue.head
+
+        # and connect back the tail and temp reference
         temp_queue.tail.next = temp
 
 
