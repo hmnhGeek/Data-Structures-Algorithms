@@ -44,18 +44,35 @@ class Stack:
 class Solution:
     @staticmethod
     def _get_left_bounds(arr, stack: Stack):
+        """
+            Time complexity is O(n) and space complexity is O(n) but not because of stack because the stack
+            will always hold just one element.
+        """
+
+        # initialize left boundary
         lb = [0]*len(arr)
+
+        # loop in the array
         for i in range(len(arr)):
+            # while the stack is not empty and top element < current element, pop from the stack continuously.
             while not stack.is_empty() and stack.top() < arr[i]:
                 stack.pop()
+
+            # assign the left bound as the top of the stack (which denotes the maximum value at left side of `i`).
             bound = 0 if stack.top() is None else stack.top()
             lb[i] = bound
+
+            # if stack is empty, add the current bar as this would be the maximum on left now.
             if stack.is_empty():
                 stack.push(arr[i])
         return lb
 
     @staticmethod
     def _get_right_bounds(arr, stack: Stack):
+        """
+            Same as left bound method but just from right side.
+        """
+
         rb = [0]*len(arr)
         for i in range(-1, -len(arr) - 1, -1):
             while not stack.is_empty() and stack.top() < arr[i]:
@@ -68,16 +85,32 @@ class Solution:
 
     @staticmethod
     def trap_rainwater(arr):
+        """
+            Overall time complexity is O(n) and space complexity is O(n).
+        """
+
+        # create a stack to find left and right boundaries
         stack = Stack()
+
+        # get the left bound in O(n) time and O(n) space.
         lb = Solution._get_left_bounds(arr, stack)
+        # clear the stack in O(1) time.
         stack.clear()
+
+        # get the right boundaries in O(n) time and space.
         rb = Solution._get_right_bounds(arr, stack)
         stack.clear()
+
+        # now loop on the array
         n = len(arr)
         water_collected = 0
         for i in range(n):
+            # if both bounds are present
             if lb[i] != 0 and rb[i] != 0:
+                # collect the water
                 water_collected += (min(lb[i], rb[i]) - arr[i])
+
+        # return the collected water
         return water_collected
 
 
