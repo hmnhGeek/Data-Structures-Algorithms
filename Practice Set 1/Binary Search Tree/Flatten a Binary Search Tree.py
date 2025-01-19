@@ -138,3 +138,35 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _flatten(root: Node):
+        if root is None:
+            return
+        head = Solution._flatten(root.left)
+        root.left = None
+        if head is None:
+            head = root
+        else:
+            temp = head
+            while temp is not None and temp.right is not None:
+                temp = temp.right
+            temp.right = root
+        root.right = Solution._flatten(root.right)
+        return head
+
+    @staticmethod
+    def flatten(bst: BinarySearchTree):
+        flattened_root = Solution._flatten(bst.root)
+        while flattened_root is not None:
+            print(flattened_root.data, end=" ")
+            flattened_root = flattened_root.right
+        print()
+
+
+t = BinarySearchTree()
+for i in [5, 3, 7, 2, 4, 6, 8]:
+    t.insert(i)
+t.show()
+Solution.flatten(t)
