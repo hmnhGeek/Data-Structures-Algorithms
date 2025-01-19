@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/reverse-first-k-elements-of-queue/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -60,6 +63,10 @@ class Queue:
         return curr
 
     def reverse(self, k):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         # if k is negative or 0, return as no reversing can be done.
         if k <= 0:
             return
