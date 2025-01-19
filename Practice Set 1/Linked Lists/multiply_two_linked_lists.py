@@ -32,4 +32,31 @@ class LinkedList:
             curr = curr.next
         print()
 
+    def get_number(self):
+        num = 0
+        curr = self.head
+        while curr is not None:
+            num = (num * 10) + curr.data
+            curr = curr.next
+        return num
 
+
+class Solution:
+    @staticmethod
+    def multiply(l1: LinkedList, l2: LinkedList):
+        n1 = l1.get_number()
+        n2 = l2.get_number()
+        return (n1 * n2) % (10**9 + 7)
+
+
+# Example 1
+l1, l2 = LinkedList(), LinkedList()
+l1.build(3, 2)
+l2.build(2)
+print(Solution.multiply(l1, l2))
+
+# Example 2
+l1, l2 = LinkedList(), LinkedList()
+l1.build(1, 0, 0)
+l2.build(1, 0)
+print(Solution.multiply(l1, l2))
