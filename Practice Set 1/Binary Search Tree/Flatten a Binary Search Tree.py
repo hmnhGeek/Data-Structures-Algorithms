@@ -142,22 +142,40 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def _flatten(root: Node):
+        # if root node is Null, return from recursion.
         if root is None:
             return
+
+        # get the head of the flattened list from the left subtree
         head = Solution._flatten(root.left)
+
+        # break the root's left link
         root.left = None
+
+        # if left subtree was not present, head would be none, in that case make root as head.
         if head is None:
             head = root
         else:
+            # else traverse to the last node of the flattened list
             temp = head
             while temp is not None and temp.right is not None:
                 temp = temp.right
+            # make temp's right as root
             temp.right = root
+
+        # also, root's right will point to the head of the flattened list from right subtree
         root.right = Solution._flatten(root.right)
+
+        # return the head of the left subtree which would be the head of the entire flattened tree.
         return head
 
     @staticmethod
     def flatten(bst: BinarySearchTree):
+        """
+            Overall time complexity is O(n) and space complexity is O(h).
+        """
+
+        # get the root of the flattened tree in O(n) time and O(h) space.
         flattened_root = Solution._flatten(bst.root)
         while flattened_root is not None:
             print(flattened_root.data, end=" ")
