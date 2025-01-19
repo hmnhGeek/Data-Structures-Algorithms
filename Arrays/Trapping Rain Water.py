@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -50,7 +53,7 @@ class Solution:
         """
 
         # initialize left boundary
-        lb = [0]*len(arr)
+        lb = [0] * len(arr)
 
         # loop in the array
         for i in range(len(arr)):
@@ -73,7 +76,7 @@ class Solution:
             Same as left bound method but just from right side.
         """
 
-        rb = [0]*len(arr)
+        rb = [0] * len(arr)
         for i in range(-1, -len(arr) - 1, -1):
             while not stack.is_empty() and stack.top() < arr[i]:
                 stack.pop()
@@ -118,3 +121,5 @@ print(Solution.trap_rainwater([3, 0, 1, 0, 4, 0, 2]))
 print(Solution.trap_rainwater([3, 0, 2, 0, 4]))
 print(Solution.trap_rainwater([1, 2, 3, 4]))
 print(Solution.trap_rainwater([2, 1, 5, 3, 1, 0, 4]))
+print(Solution.trap_rainwater([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]))
+print(Solution.trap_rainwater([4, 2, 0, 3, 2, 5]))
