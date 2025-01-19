@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -77,10 +80,7 @@ class MinHeap:
                 self.heap[pi], self.heap[min_child_index] = self.heap[min_child_index], self.heap[pi]
             self.min_heapify_up(pi)
 
-    def min_heapify_down(self, start_index):
-        if start_index == 0:
-            return
-        pi = self.get_pi(start_index)
+    def min_heapify_down(self, pi):
         lci, rci = self.get_lci(pi), self.get_rci(pi)
         min_child_index = self.get_min_child_index(lci, rci)
         if min_child_index is not None:
@@ -102,3 +102,38 @@ class MinHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def _push_heads(lists: List[LinkedList], pq: MinHeap):
+        for linked_list in lists:
+            pq.insert(linked_list.head)
+
+    @staticmethod
+    def merge_k_sorted_linked_lists(lists: List[LinkedList]):
+        pq = MinHeap()
+        Solution._push_heads(lists, pq)
+        dummy_node = temp = Node(None)
+        while not pq.is_empty():
+            node = pq.pop()
+            temp.next = node
+            if node.next is not None:
+                pq.insert(node.next)
+            node.next = None
+            temp = temp.next
+        merged_linked_list = LinkedList()
+        merged_linked_list.head = dummy_node.next
+        merged_linked_list.tail = temp
+        return merged_linked_list
+
+
+# Example 1
+l1 = LinkedList()
+l1.build(1, 2, 3)
+l2 = LinkedList()
+l2.build(4, 5)
+l3 = LinkedList()
+l3.build(5, 6)
+l4 = LinkedList()
+l4.build(7, 8)
+merged = Solution.merge_k_sorted_linked_lists([l1, l2, l3, l4])
+merged.show()
