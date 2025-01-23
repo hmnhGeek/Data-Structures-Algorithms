@@ -35,19 +35,27 @@ class Stack:
 class Solution:
     @staticmethod
     def _dfs(graph, node, visited, stack: Stack):
+        # mark the node as visited
         visited[node] = True
         for adj_node in graph[node]:
+            # if not visited, initiate a DFS from adj_node.
             if not visited[adj_node]:
                 Solution._dfs(graph, adj_node, visited, stack)
+        # push the node once its dfs is completed, into the stack.
         stack.push(node)
 
     @staticmethod
     def topological_sort(graph):
+        # create an empty stack and a visited array. The stack will store the toposort.
         stack = Stack()
         visited = {i: False for i in graph}
+
+        # loop in the graph components.
         for node in graph:
             if not visited[node]:
                 Solution._dfs(graph, node, visited, stack)
+
+        # print the toposort.
         while not stack.is_empty():
             print(stack.pop(), end=" ")
         print()
