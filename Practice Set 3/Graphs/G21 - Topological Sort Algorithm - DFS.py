@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/topological-sort/1
+# Solution - https://www.youtube.com/watch?v=5lZ0iJMrUMk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=21
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -46,6 +50,10 @@ class Solution:
 
     @staticmethod
     def topological_sort(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(2V).
+        """
+
         # create an empty stack and a visited array. The stack will store the toposort.
         stack = Stack()
         visited = {i: False for i in graph}
@@ -59,7 +67,6 @@ class Solution:
         while not stack.is_empty():
             print(stack.pop(), end=" ")
         print()
-
 
 
 Solution.topological_sort(
