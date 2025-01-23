@@ -16,16 +16,33 @@ class Solution:
 
     @staticmethod
     def get_least_ship_capacity(arr, days):
+        """
+            Time complexity is O(n * log(sum - max)) and space complexity is O(1).
+        """
+
+        # days must be positive.
+        if days <= 0:
+            return -1
+
+        # minimum capacity of max weight element is required and max could be the sum of all the weights as that would
+        # ship everything in just 1 day.
         low, high = max(arr), sum(arr)
         while low <= high:
             mid = int(low + (high - low)/2)
+            # get the number of days to ship the packages if ship capacity is mid.
             num_days_taken = Solution._get_days_used(arr, mid)
+
+            # if days taken is more than required, we must increase ship's capacity
             if num_days_taken > days:
                 low = mid + 1
+
+            # else, if it takes <= required days, then we can reduce the ship's capacity.
             elif num_days_taken == days:
                 high = mid - 1
             else:
                 high = mid - 1
+
+        # return the minimum ship capacity required.
         return low
 
 
