@@ -1,17 +1,31 @@
 class Solution:
     @staticmethod
     def _get_days_used(arr, mid):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # assume no day is used and ship is empty.
         days_consumed = 0
         capacity_used = 0
+
+        # loop on the packages
         for i in range(len(arr)):
+            # if adding this package still keeps everything within threshold mid, then add this package on the ship.
             if capacity_used + arr[i] <= mid:
                 capacity_used += arr[i]
             else:
+                # else increase the day count
                 days_consumed += 1
+                # and add only this package to the ship now.
                 capacity_used = arr[i]
+
+        # at the end, if the ship has some packages, it would take another day.
         if capacity_used > 0:
             days_consumed += 1
             capacity_used = 0
+
+        # return the consumed days.
         return days_consumed
 
     @staticmethod
