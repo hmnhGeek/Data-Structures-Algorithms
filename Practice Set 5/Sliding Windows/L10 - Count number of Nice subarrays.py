@@ -1,21 +1,39 @@
 class Solution:
     @staticmethod
     def _count_less_than_equal_to(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # if k is negative, return 0.
         if k < 0:
             return 0
 
+        # define window variables
         left = right = 0
         n = len(arr)
+
+        # define tracking and result variables.
         _sum = count = 0
 
+        # while there is ground to cover.
         while right < n:
+            # add 1 if right value is odd, else add 0
             _sum += arr[right] % 2
+
+            # if odd numbers exceed k, continuously shrink from left
             while _sum > k:
                 _sum -= arr[left] % 2
                 left += 1
+
+            # if odd count is with k, update the count.
             if _sum <= k:
                 count += (right - left + 1)
+
+            # increment right index
             right += 1
+
+        # finally, return the count
         return count
 
     @staticmethod
