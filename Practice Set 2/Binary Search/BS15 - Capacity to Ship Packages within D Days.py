@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/capacity-to-ship-packages-within-d-days_1229379
+# Solution - https://www.youtube.com/watch?v=MG-Ac4TAvTY&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=17
+
+
 class Solution:
     @staticmethod
     def _get_days_used(arr, mid):
