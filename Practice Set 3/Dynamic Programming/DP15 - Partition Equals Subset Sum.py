@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/partition-equal-subset-sum/description/
+# Solution - https://www.youtube.com/watch?v=7win3dcgo3k&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=16
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n).
