@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/smallest-divisor-with-the-given-limit_1755882
+# Solution - https://www.youtube.com/watch?v=UvBKTVaG6U8&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=15
+
+
 from math import ceil
 
 
@@ -11,6 +15,10 @@ class Solution:
 
     @staticmethod
     def smallest_divisor(arr, threshold):
+        """
+            Time complexity is O(n * log(max)) and space complexity is O(1).
+        """
+
         # if the count of array elements is more than threshold, then we can never find the answer.
         if threshold < len(arr):
             return -1
