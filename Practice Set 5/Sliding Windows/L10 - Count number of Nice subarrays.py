@@ -38,6 +38,10 @@ class Solution:
 
     @staticmethod
     def get_nice_subarray_count(arr, k):
+        """
+            Overall time complexity is O(2n) and space complexity is O(1).
+        """
+
         return Solution._count_less_than_equal_to(arr, k) - Solution._count_less_than_equal_to(arr, k - 1)
 
 
