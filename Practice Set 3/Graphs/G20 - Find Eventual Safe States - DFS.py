@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/eventual-safe-states/1
+# Solution - https://www.youtube.com/watch?v=uRbJ1OF9aYM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=20
+
+
 class Solution:
     @staticmethod
     def _dfs(graph, node, visited, path_visited, safe_nodes):
@@ -26,6 +30,10 @@ class Solution:
 
     @staticmethod
     def find_safe_states(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(3V).
+        """
+
         # create visited and path visited arrays to detect cycles
         visited = {i: False for i in graph}
         path_visited = {i: False for i in graph}
