@@ -141,6 +141,11 @@ class Solution:
 
     @staticmethod
     def partition_equals_subset_sum(arr):
+        """
+            Time complexity is O(n * (n/2)) and space complexity is O(n/2).
+        """
+
+        # This will take O(n) time.
         _sum = sum(arr)
         if _sum % 2 == 1:
             return False
