@@ -1,6 +1,10 @@
 class Solution:
     @staticmethod
     def get_max_product(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         # store the count of zeros and negative numbers in the array
         zero_count = negative_count = 0
 
