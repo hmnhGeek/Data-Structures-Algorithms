@@ -66,6 +66,40 @@ def memoized():
     print(count([35, 2, 8, 22], 0))
 
 
+def tabulation():
+    """
+        Time complexity is O(n*k) and space complexity is O(nk).
+    """
+    def count(arr, target):
+        n = len(arr)
+        dp = {i: {j: 0 for j in range(target + 1)} for i in range(n)}
+        for i in dp:
+            dp[i][0] = 1
+        if arr[0] in dp[0]:
+            dp[0][arr[0]] = 1
+        for i in range(1, n):
+            for j in range(1, target + 1):
+                left = 0
+                if arr[i] <= j:
+                    left = dp[i - 1][j - arr[i]]
+                right = dp[i - 1][j]
+                dp[i][j] = left + right
+        return dp[n - 1][target]
+
+    print(count([1, 2, 2, 3], 3))
+    print(count([1, 1, 4, 5], 5))
+    print(count([1, 1, 1], 2))
+    print(count([2, 34, 5], 40))
+    print(count([1, 2, 3, 3], 6))
+    print(count([1, 1, 1, 1], 1))
+    print(count([5, 2, 3, 10, 6, 8], 10))
+    print(count([2, 5, 1, 4, 3], 10))
+    print(count([5, 7, 8], 3))
+    print(count([35, 2, 8, 22], 0))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
