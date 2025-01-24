@@ -118,10 +118,38 @@ def space_optimized():
     print(subset_sum([3, 34, 4, 12, 5, 2], 30))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
+class Solution:
+    @staticmethod
+    def _subset_sum(arr, target):
+        n = len(arr)
+        prev = {j: False for j in range(target + 1)}
+        prev[0] = True
+        prev[arr[0]] = True
+        for i in range(1, n):
+            curr = {j: False for j in range(target + 1)}
+            curr[0] = True
+            for j in range(target + 1):
+                left = False
+                if arr[i] <= j:
+                    left = prev[j - arr[i]]
+                right = prev[j]
+                curr[j] = left or right
+            prev = curr
+        return prev[target]
+
+    @staticmethod
+    def min_diff_subset(arr):
+        _sum = sum(arr)
+        min_diff = 1e6
+        for s1 in range(1, _sum//2 + 1):
+            if Solution._subset_sum(arr, _sum - s1):
+                min_diff = min(min_diff, abs((_sum - s1) - s1))
+        return min_diff
+
+
+print(Solution.min_diff_subset([1, 2, 3, 4]))
+print(Solution.min_diff_subset([3, 1, 5, 2, 8]))
+print(Solution.min_diff_subset([8, 6, 5]))
+print(Solution.min_diff_subset([3, 9, 7, 3]))
+print(Solution.min_diff_subset([1, 6, 11, 5]))
+print(Solution.min_diff_subset([1, 5, 11, 5]))
