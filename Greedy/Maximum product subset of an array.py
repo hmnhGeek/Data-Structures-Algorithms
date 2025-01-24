@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/maximum-product-subset-array/
+# Solution - https://www.youtube.com/watch?v=QLUg9v5NJc0
+
+
 class Solution:
     @staticmethod
     def get_max_product(arr):
@@ -51,3 +55,9 @@ class Solution:
 print(Solution.get_max_product([-1, -1, -2, 4, 3]))
 print(Solution.get_max_product([-1, 0]))
 print(Solution.get_max_product([5]))
+print(Solution.get_max_product([2, 3, -2, 4]))
+print(Solution.get_max_product([-2, 0, -1]))
+print(Solution.get_max_product([-3, -3, -6, -1, -5, 2]))
+print(Solution.get_max_product([1, 2, 9, -90, 6, 4]))
+print(Solution.get_max_product([0, 1, 0, -1]))
+print(Solution.get_max_product([2, 4, 9, 8]))
