@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+# Solution - https://www.youtube.com/watch?v=iTBaI90lpDQ&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=23
+
+
 class Node:
     def __init__(self, data):
         self.data = data
