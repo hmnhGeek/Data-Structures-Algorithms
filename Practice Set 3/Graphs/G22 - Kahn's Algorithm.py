@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/topological-sort/1
+# Solution - https://www.youtube.com/watch?v=73sneFXuTEg&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=22
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -41,17 +45,31 @@ class Solution:
 
     @staticmethod
     def topo_sort(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # get the indegrees of the nodes in O(V + E) time and O(V) space.
         indegrees = {i: 0 for i in graph}
         Solution._update_indegrees(graph, indegrees)
+
+        # initialize a queue and push all the indegree = 0 nodes into it.
         queue = Queue()
         for node in indegrees:
             if indegrees[node] == 0:
                 queue.push(node)
+
+        # standard BFS
         while not queue.is_empty():
+            # get the node and print it.
             node = queue.pop()
             print(node, end=" ")
+
+            # loop on the adjacent nodes of this node
             for adj_node in graph[node]:
+                # reduce its indegree
                 indegrees[adj_node] -= 1
+                # if the indegree becomes 0, push the adjacent node in the queue.
                 if indegrees[adj_node] == 0:
                     queue.push(adj_node)
         print()

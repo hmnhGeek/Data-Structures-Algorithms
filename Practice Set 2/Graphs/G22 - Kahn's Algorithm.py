@@ -2,7 +2,6 @@
 # Solution - https://www.youtube.com/watch?v=73sneFXuTEg&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=22
 
 
-
 class Node:
     def __init__(self, data):
         self.data = data
