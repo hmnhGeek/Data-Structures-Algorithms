@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/subarrays-with-at-most-k-distinct-values_1473804
+# Solution - https://www.youtube.com/watch?v=7wYGbV_LsX4&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=11
+
+
 class Solution:
     @staticmethod
     def _count_less_than_equal_to(arr, k):
