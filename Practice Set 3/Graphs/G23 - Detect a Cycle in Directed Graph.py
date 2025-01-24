@@ -35,20 +35,36 @@ class Queue:
 class Solution:
     @staticmethod
     def has_cycle(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # get the indegrees of graph in O(V + E) time and O(V) space.
         indegrees = {i: 0 for i in graph}
         Solution._update_indegrees(graph, indegrees)
+
+        # define a queue and push all indegree = 0 nodes into it.
         queue = Queue()
         for node in graph:
             if indegrees[node] == 0:
                 queue.push(node)
+
+        # define a count variable to store the length of the toposort.
         count = 0
+
+        # standard BFS
         while not queue.is_empty():
+            # pop the node and increment the count of toposort length.
             node = queue.pop()
             count += 1
+
+            # push the adj node into the queue if its indegree becomes 0.
             for adj_node in graph[node]:
                 indegrees[adj_node] -= 1
                 if indegrees[adj_node] == 0:
                     queue.push(adj_node)
+
+        # there's no cycle in the graph if V == length of the toposort, else there is.
         if count == len(graph):
             return False
         return True
