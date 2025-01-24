@@ -29,18 +29,30 @@ class QuickSort:
 class Solution:
     @staticmethod
     def aggressive_cows(arr, k):
+        # edge cases
         if k <= 0 or k > len(arr):
             return -1
+
+        # sort the array in O(n * log(n)) time.
         QuickSort.sort(arr)
+
+        # place all cows together at minimum and max distance of max(arr) at maximum.
         low, high = 0, max(arr)
         while low <= high:
             mid = int(low + (high - low)/2)
+
+            # get the number of cows placed in O(n) time.
             cows_placed = Solution._get_cows_placed(arr, mid)
 
+            # if less cows were placed, we must decrease the max distance between the cows
             if cows_placed < k:
                 high = mid - 1
+
+            # else we must increase the max distance
             else:
                 low = mid + 1
+
+        # return high which represents the max distance at which all k cows can be placed.
         return high
 
     @staticmethod
