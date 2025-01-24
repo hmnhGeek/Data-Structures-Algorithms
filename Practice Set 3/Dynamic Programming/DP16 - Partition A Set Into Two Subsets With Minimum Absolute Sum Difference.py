@@ -139,9 +139,19 @@ class Solution:
 
     @staticmethod
     def min_diff_subset(arr):
+        """
+            Overall time complexity is O(n * sum^2) and space complexity is O(sum).
+        """
+
+        # get the sum of the total array in O(n) time.
         _sum = sum(arr)
+
+        # assume the minimum subset difference to be inf.
         min_diff = 1e6
+
+        # now loop for O(sum//2) time
         for s1 in range(1, _sum//2 + 1):
+            # each subset sum check will take O(n * (_sum - s1)) time and O(_sum - s1) space.
             if Solution._subset_sum(arr, _sum - s1):
                 min_diff = min(min_diff, abs((_sum - s1) - s1))
         return min_diff
