@@ -51,20 +51,44 @@ class Solution:
 
     @staticmethod
     def interleave(queue: Queue):
-        if queue.length % 2 == 1:
-            return queue
+        """
+            Overall time complexity is O(n) and space complexity is O(n) [although the temp queue has O(1) space, but
+            we are modifying the original queue, thus its space should be considered].
+        """
 
+        # if the queue length is odd, nothing can be done, return.
+        if queue.length % 2 == 1:
+            return
+
+        # create a temp queue which will always hold only two elements at a time, and thus it will have a constant
+        # space.
         temp_queue = Queue()
+
+        # place `i` and `j` with i at head of the queue and j at the middle node which can be found in O(n//2) time.
         i, j = queue.head, Solution._get_mid_node(queue)
+
+        # we need to traverse half of the queue, thus store the middle node.
         temp = j
+
+        # while the first half has been traversed by the `i` pointer; this will take O(n//2) time.
         while i != temp.next:
+            # This will take O(1) time because this queue will hold only 2 elements at a time.
             while not temp_queue.is_empty():
                 queue.push(temp_queue.pop())
+
+            # push the ith and jth node's data into the temp queue.
             temp_queue.push(i.data)
             temp_queue.push(j.data)
+
+            # move the pointers
             i = i.next
             j = j.next
+
+            # pop from the original queue.
             queue.pop()
+
+        # now `j` would point to the first node in the interleaved sequence, and so, continuously pop from the queue
+        # until i reaches just before j. This will take O(n//2) time.
         while i.next != j:
             queue.pop()
             i = i.next
