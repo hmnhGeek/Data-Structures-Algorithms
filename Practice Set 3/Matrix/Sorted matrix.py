@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/sorted-matrix2333/1
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -46,9 +49,16 @@ class Solution:
 
     @staticmethod
     def sort_matrix(mtx):
+        """
+            Overall time complexity is O(nm*log(nm)) and space complexity is O(nm).
+        """
+
         n, m = len(mtx), len(mtx[0])
+        # get all the elements of the matrix in O(nm) time and O(nm) space.
         flattened_unsorted = Solution._get_unsorted(mtx, n, m)
+        # sort the elements of the flattened array in O(nm * log(nm)) time.
         QuickSort.sort(flattened_unsorted)
+        # rebuild the sorted matrix in O(nm) time.
         Solution._rebuild(mtx, flattened_unsorted, n, m)
         return mtx
 
