@@ -1,3 +1,6 @@
+# Problem link - https://leetcode.com/problems/remove-nodes-from-linked-list/description/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -45,6 +48,10 @@ class LinkedList:
 class Solution:
     @staticmethod
     def delete(l: LinkedList):
+        """
+            Overall time complexity is O(n) and space complexity is O(n).
+        """
+
         # first reverse the linked list in O(n) time.
         l.reverse()
 
