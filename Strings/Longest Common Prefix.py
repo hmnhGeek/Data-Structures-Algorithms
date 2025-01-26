@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/longest-common-prefix/description/
+# Solution - https://www.youtube.com/watch?v=0sWShKIJoo4
+
+
 class Solution:
     @staticmethod
     def lcp(strings):
