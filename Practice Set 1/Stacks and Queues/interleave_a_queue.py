@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/interleave-first-half-queue-second-half/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -105,6 +108,14 @@ q.show()
 # Example 2
 q = Queue()
 for i in [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]:
+    q.push(i)
+q.show()
+Solution.interleave(q)
+q.show()
+
+# Example 3
+q = Queue()
+for i in [6, 8, 9, 4, 2, 3, 9, 5, 7, 3]:
     q.push(i)
 q.show()
 Solution.interleave(q)
