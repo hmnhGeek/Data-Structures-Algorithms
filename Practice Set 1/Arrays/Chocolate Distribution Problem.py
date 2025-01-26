@@ -33,3 +33,20 @@ class MergeSort:
         MergeSort._sort(arr, mid + 1, high)
         arr[low:high+1] = MergeSort._merge(arr, low, high)
 
+
+class Solution:
+    @staticmethod
+    def chocolate_distribution(arr, k):
+        MergeSort.sort(arr)
+        diff = 1e6
+        n = len(arr)
+        for i in range(n - k + 1):
+            up = arr[i + k - 1]
+            low = arr[i]
+            diff = min(diff, up - low)
+        return diff
+
+
+print(Solution.chocolate_distribution([3, 4, 1, 9, 56, 7, 9, 12], 5))
+print(Solution.chocolate_distribution([7, 3, 2, 4, 9, 12, 56], 3))
+print(Solution.chocolate_distribution([3, 4, 1, 9, 56], 5))
