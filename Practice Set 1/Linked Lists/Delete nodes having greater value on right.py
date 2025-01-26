@@ -45,12 +45,21 @@ class LinkedList:
 class Solution:
     @staticmethod
     def delete(l: LinkedList):
+        # first reverse the linked list in O(n) time.
         l.reverse()
+
+        # start with prev and curr pointers. Note that head, i.e., prev pointer will never be deleted because it is the
+        # node from which the comparison is starting.
         prev, curr = l.head, l.head.next
+
+        # standard O(n) linked list traversal.
         while curr is not None:
+            # if in this reversed list, the next node to prev, i.e., curr is smaller, then delete the curr node because
+            # in the original question, we have to delete node which has something greater on the right.
             if curr.data < prev.data:
                 prev.next = curr.next
                 temp = curr
+                # edge case: if the deleted node is a tail node, update the tail to prev node.
                 if temp == l.tail:
                     l.tail = prev
                 del temp
@@ -58,6 +67,8 @@ class Solution:
             else:
                 prev = curr
             curr = curr.next
+
+        # ensure to revert back to original order in O(n) time.
         l.reverse()
 
 
