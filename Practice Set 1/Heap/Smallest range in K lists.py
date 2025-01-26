@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-smallest-range-containing-elements-from-k-lists/1
+# Solution - https://www.youtube.com/watch?v=0IqFMBatlhU
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,21 +71,45 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_smallest_range(lists):
+        """
+            Time complexity is O(n * log(k)) and space complexity is O(k).
+        """
+
+        # create a min heap
         pq = MinHeap()
+
+        # store -inf as max element and define the entire number line as the min range.
         max_elem = -1e6
         min_range = [-1e6, 1e6]
+
+        # loop on the lists and push the 0th element into the heap in O(k * log(k))
         for i in range(len(lists)):
             pq.insert((lists[i][0], i, 0))
+            # also update the max element
             max_elem = max(max_elem, lists[i][0])
+
+        # while the pq is not empty. This will run for all the nodes.
         while not pq.is_empty():
+            # get the min element
             min_elem, list_idx, index = pq.pop()
+
+            # store the possible range.
             updated_range = [min_elem, max_elem]
+
+            # if the delta is same old range...
             if updated_range[1] - updated_range[0] == min_range[1] - min_range[0]:
+                # but the min element from heap is smaller than min element from global range, then only update the
+                # global range.
                 if min_elem < min_range[0]:
                     min_range = [min_elem, max_elem]
+
+            # else if the delta is smaller than global delta, update the global delta.
             elif updated_range[1] - updated_range[0] < min_range[1] - min_range[0]:
                 min_range = updated_range
+
+            # push the next item if possible, else break.
             if index + 1 < len(lists[list_idx]):
+                # also, update the max element while pushing.
                 max_elem = max(max_elem, lists[list_idx][index + 1])
                 pq.insert((lists[list_idx][index + 1], list_idx, index + 1))
             else:
