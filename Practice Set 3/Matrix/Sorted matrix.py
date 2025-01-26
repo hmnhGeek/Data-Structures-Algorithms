@@ -26,3 +26,67 @@ class QuickSort:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
+class Solution:
+    @staticmethod
+    def _get_unsorted(mtx, n, m):
+        temp = []
+        for i in range(n):
+            for j in range(m):
+                temp.append(mtx[i][j])
+        return temp
+
+    @staticmethod
+    def _rebuild(mtx, sorted_arr, n, m):
+        counter = 0
+        for i in range(n):
+            for j in range(m):
+                mtx[i][j] = sorted_arr[counter]
+                counter += 1
+
+    @staticmethod
+    def sort_matrix(mtx):
+        n, m = len(mtx), len(mtx[0])
+        flattened_unsorted = Solution._get_unsorted(mtx, n, m)
+        QuickSort.sort(flattened_unsorted)
+        Solution._rebuild(mtx, flattened_unsorted, n, m)
+        return mtx
+
+
+print(
+    Solution.sort_matrix(
+        [
+            [10, 20, 30, 40],
+            [15, 25, 35, 45],
+            [27, 29, 37, 48],
+            [32, 33, 39, 50]
+        ]
+    )
+)
+
+print(
+    Solution.sort_matrix(
+        [
+            [1, 5, 3], [2, 8, 7], [4, 6, 9]
+        ]
+    )
+)
+
+print(
+    Solution.sort_matrix(
+        [
+            [5, 4, 7],
+            [1, 3, 8],
+            [2, 9, 6]
+        ]
+    )
+)
+
+print(
+    Solution.sort_matrix(
+        [
+            [5, 4, 7],
+            [1, 3, 8]
+        ]
+    )
+)
