@@ -1,3 +1,7 @@
+# Problem link - https://www.spoj.com/problems/PRATA/
+# Solution - https://www.youtube.com/watch?v=0O91QPfA2xk
+
+
 class Solution:
     @staticmethod
     def _if_possible(ranks, mid, num_required):
