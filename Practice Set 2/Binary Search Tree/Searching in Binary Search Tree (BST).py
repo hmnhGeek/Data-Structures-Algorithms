@@ -1,3 +1,10 @@
+# Problem link - https://www.geeksforgeeks.org/binary-search-tree-set-1-search-and-insertion/
+
+"""
+    The time to find the node inside the BST takes O(log(n)) time and O(log(n)) recursion space.
+"""
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -138,3 +145,19 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+# Example 1
+t = BinarySearchTree()
+for i in [6, 2, 8, 7, 9]:
+    t.insert(i)
+t.show()
+node = t.get_node(t.root, 8)
+print(node.data)
+
+# Example 2
+t = BinarySearchTree()
+for i in [16, 12, 18, 10, 17, 19]:
+    t.insert(i)
+t.show()
+node = t.get_node(t.root, 14)
+print(node.data if node else -1)
