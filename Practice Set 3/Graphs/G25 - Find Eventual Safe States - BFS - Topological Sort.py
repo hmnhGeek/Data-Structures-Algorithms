@@ -31,3 +31,71 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_safe_nodes(graph):
+        reversed, indeg = Solution._get_reversed_graph(graph)
+        queue = Queue()
+        safe_nodes = []
+        for node in indeg:
+            if indeg[node] == 0:
+                queue.push(node)
+        while not queue.is_empty():
+            node = queue.pop()
+            safe_nodes.append(node)
+            for adj_node in reversed[node]:
+                indeg[adj_node] -= 1
+                if indeg[adj_node] == 0:
+                    queue.push(adj_node)
+        return safe_nodes
+
+    @staticmethod
+    def _get_reversed_graph(graph):
+        reversed = {i: [] for i in graph}
+        indeg = {i: 0 for i in graph}
+        for node in graph:
+            for adj_node in graph[node]:
+                reversed[adj_node].append(node)
+                indeg[node] += 1
+        return reversed, indeg
+
+
+
+print(
+    Solution.get_safe_nodes(
+        {
+            0: [1, 2],
+            1: [3],
+            2: [5],
+            3: [0],
+            4: [5],
+            5: [],
+            6: [],
+            7: [1]
+        }
+    )
+)
+
+print(
+    Solution.get_safe_nodes(
+        {
+            0: [1],
+            1: [2],
+            2: [0, 3],
+            3: []
+        }
+    )
+)
+
+print(
+    Solution.get_safe_nodes(
+        {
+            0: [1],
+            1: [3],
+            2: [4],
+            3: [0, 2],
+            4: []
+        }
+    )
+)
