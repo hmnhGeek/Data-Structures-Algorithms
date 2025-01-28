@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/eventual-safe-states/1
+# Solution - https://www.youtube.com/watch?v=2gtg3VsDGyc&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=25
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,12 +39,23 @@ class Queue:
 class Solution:
     @staticmethod
     def get_safe_nodes(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # get the reversed graph and the indegrees dictionary.
         reversed, indeg = Solution._get_reversed_graph(graph)
         queue = Queue()
+
+        # store the safe nodes in this list
         safe_nodes = []
+
+        # push the starting nodes.
         for node in indeg:
             if indeg[node] == 0:
                 queue.push(node)
+
+        # typical topological sort.
         while not queue.is_empty():
             node = queue.pop()
             safe_nodes.append(node)
@@ -52,6 +67,9 @@ class Solution:
 
     @staticmethod
     def _get_reversed_graph(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
         reversed = {i: [] for i in graph}
         indeg = {i: 0 for i in graph}
         for node in graph:
