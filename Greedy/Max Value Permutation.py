@@ -25,3 +25,17 @@ class QuickSort:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
+class Solution:
+    @staticmethod
+    def get_max_value_permutation(arr):
+        QuickSort.sort(arr)
+        val = 0
+        for i in range(len(arr)):
+            val += arr[i] * i
+        return val
+
+
+print(Solution.get_max_value_permutation([5, 3, 2, 4, 1]))
+print(Solution.get_max_value_permutation([1, 2, 3]))
+print(Solution.get_max_value_permutation([7, 7, 7, 7]))
