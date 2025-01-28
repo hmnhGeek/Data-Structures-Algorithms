@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/partitions-with-given-difference_3751628?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=zoilQD1kYSg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=19
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n).
@@ -146,12 +150,21 @@ class Solution:
 
     @staticmethod
     def count_subsets(arr, d):
+        """
+            Time complexity is O(n * d) and space complexity is O(d).
+        """
+
+        # get the overall sum of the array
         s = sum(arr)
+
+        # find s1 and s2
+        s1 = (s + d) // 2
+        s2 = s1 - d
+
+        # find the count of subsets where s1 >= s2 in O(n*s1) time and O(s1) space.
         count = 0
-        for s1 in range(1, s + 1):
-            s2 = s - s1
-            if s1 >= s2 and s1 - s2 == d:
-                count += Solution._subset_sum(arr, s1)
+        if s1 >= s2:
+            count = Solution._subset_sum(arr, s1)
         return count
 
 
