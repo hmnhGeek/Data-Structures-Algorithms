@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/maximize-arrii-of-an-array0026/1
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
