@@ -32,6 +32,9 @@ class QuickSort:
 class Solution:
     @staticmethod
     def get_max_value_permutation(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
         QuickSort.sort(arr)
         val = 0
         for i in range(len(arr)):
