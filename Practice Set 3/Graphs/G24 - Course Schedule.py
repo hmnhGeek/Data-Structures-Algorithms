@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/course-schedule/1
+# Solution - https://www.youtube.com/watch?v=WAOfKpxYHR8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=24
+
+
 class Node:
     def __init__(self, data):
         self.data = data
