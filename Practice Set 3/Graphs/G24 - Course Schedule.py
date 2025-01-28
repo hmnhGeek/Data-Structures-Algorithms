@@ -64,8 +64,17 @@ class Solution:
 
     @staticmethod
     def course_schedule(courses):
+        """
+            Overall time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # form the graph and get the indegrees from the courses list in O(V + E) time and O(V) space.
         graph, indegrees = Solution._get_graph(courses)
+
+        # get the topological sort (if any) in O(V + E) time and O(V) space.
         topo_sort = Solution._get_topological_sort(graph, indegrees)
+
+        # return the course schedule if toposort is possible.
         if len(topo_sort) == len(graph):
             return topo_sort
         return []
