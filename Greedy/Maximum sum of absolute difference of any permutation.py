@@ -1,3 +1,6 @@
+# Problem link - https://www.naukri.com/code360/problems/maximum-sum-of-absolute-difference_1164175
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
