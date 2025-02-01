@@ -31,10 +31,23 @@ class Stack:
         self.length -= 1
         return item
 
+    def __str__(self):
+        result = "["
+        curr = self.head
+        while curr != self.tail:
+            result += f"{curr.data}, "
+            curr = curr.next
+        result += f"{curr.data}]"
+        return result
+
 
 class TopologicalSort:
     @staticmethod
     def get_topo_sort(graph):
         visited = {i: False for i in graph}
+        stack = Stack()
+        # result = []
         # for node in graph:
-        #     if not vis
+        #     if not visited[node]:
+        #         # TopologicalSort._dfs(graph, node, stack)
+        # # while not stack.is_empty():
