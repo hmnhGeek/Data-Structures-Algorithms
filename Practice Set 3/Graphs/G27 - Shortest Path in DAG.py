@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1
+# Solution - https://www.youtube.com/watch?v=ZUFQfFaU-8U&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=27
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -64,11 +68,21 @@ class TopologicalSort:
 class Solution:
     @staticmethod
     def get_shortest_paths(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
+        # This will take O(V + E) time and O(V) space
         toposort = TopologicalSort.get_topo_sort(graph)
+
+        # O(V) space.
         distances = {i: 1e6 for i in graph}
         distances[toposort[0]] = 0
+
+        # loop on the toposort in O(V) time.
         for i in range(len(toposort)):
             node = toposort[i]
+            # update the distances.
             for adj in graph[node]:
                 adj_node, wt = adj
                 if distances[adj_node] > wt + distances[node]:
