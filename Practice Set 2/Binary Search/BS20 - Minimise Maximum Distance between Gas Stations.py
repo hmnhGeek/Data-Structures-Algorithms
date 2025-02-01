@@ -54,10 +54,11 @@ class LinearSolution:
         return minimum_max_distance
 
 
+print("Linear Search Solution")
 print(LinearSolution.minimize_the_max_distance([1,2,3,4,5,6,7], 6))
 print(LinearSolution.minimize_the_max_distance([1, 2, 3, 4, 5], 4))
 print(LinearSolution.minimize_the_max_distance(list(range(1, 11)), 1))
-
+print()
 
 class Slot:
     def __init__(self, length, index):
@@ -131,3 +132,32 @@ class MinHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def _push_initial_state(pq: MinHeap, arr, n):
+        for i in range(n - 1):
+            pq.insert(Slot(arr[i + 1] - arr[i], i))
+
+    @staticmethod
+    def minimize_the_max_distance(arr, k):
+        if k <= 0:
+            return -1
+        n = len(arr)
+        gas_stations_in_slots = [0] * (n - 1)
+        pq = MinHeap()
+        Solution._push_initial_state(pq, arr, n)
+        for i in range(k):
+            slot = pq.pop()
+            max_slot, max_slot_index = slot.length, slot.index
+            gas_stations_in_slots[max_slot_index] += 1
+            original_length = max_slot * gas_stations_in_slots[max_slot_index]
+            new_length = original_length/(gas_stations_in_slots[max_slot_index] + 1)
+            pq.insert(Slot(new_length, max_slot_index))
+        return pq.heap[0].length
+
+
+print("Max Heap Solution")
+print(Solution.minimize_the_max_distance([1,2,3,4,5,6,7], 6))
+print(Solution.minimize_the_max_distance([1, 2, 3, 4, 5], 4))
+print(Solution.minimize_the_max_distance(list(range(1, 11)), 1))
+print()
