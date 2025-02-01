@@ -43,11 +43,18 @@ class Stack:
 
 class TopologicalSort:
     @staticmethod
+    def _dfs(graph, node, visited, stack):
+        visited[node] = True
+        for adj_node in graph[node]:
+            if not visited[adj_node]:
+                TopologicalSort._dfs(graph, adj_node, visited, stack)
+        stack.push(node)
+
+    @staticmethod
     def get_topo_sort(graph):
         visited = {i: False for i in graph}
         stack = Stack()
-        # result = []
-        # for node in graph:
-        #     if not visited[node]:
-        #         # TopologicalSort._dfs(graph, node, stack)
-        # # while not stack.is_empty():
+        for node in graph:
+            if not visited[node]:
+                TopologicalSort._dfs(graph, node, visited, stack)
+        return stack
