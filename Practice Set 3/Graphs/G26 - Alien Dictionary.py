@@ -58,3 +58,31 @@ class TopologicalSort:
             if not visited[node]:
                 TopologicalSort._dfs(graph, node, visited, stack)
         return stack
+
+
+class Solution:
+    _alphabets = "abcdefghijklmnopqrstuvwxyz"
+
+    @staticmethod
+    def _get_graph(dictionary, k):
+        graph = {i: [] for i in Solution._alphabets[:k]}
+        for i in range(len(dictionary) - 1):
+            s1, s2 = dictionary[i], dictionary[i + 1]
+            length = min(len(s1), len(s2))
+            for j in range(length):
+                if s1[j] != s2[j]:
+                    graph[s1[j]].append(s2[j])
+                    break
+        return graph
+
+    @staticmethod
+    def get_alien_dictionary(dictionary, k):
+        graph = Solution._get_graph(dictionary, k)
+        print(TopologicalSort.get_topo_sort(graph))
+
+
+Solution.get_alien_dictionary(["baa","abcd","abca","cab","cad"], 4)
+Solution.get_alien_dictionary(["caa","aaa","aab"], 3)
+Solution.get_alien_dictionary(["dhhid" "dahi" "cedg" "fg" "gdah" "i" "gbdei" "hbgf" "e" "ddde"], 9)
+Solution.get_alien_dictionary(["abc","bat","ade"], 5)
+Solution.get_alien_dictionary(["a", "aa", "aaa"], 1)
