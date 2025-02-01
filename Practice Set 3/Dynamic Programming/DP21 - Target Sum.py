@@ -96,10 +96,38 @@ def space_optimized():
     print(target_sum([1, 2, 3, 1], 3))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
+class Solution:
+    @staticmethod
+    def _subset_sum(arr, target):
+        n = len(arr)
+        prev = {j: 0 for j in range(target + 1)}
+        prev[0] = 1
+        for j in prev:
+            if arr[0] == j:
+                prev[j] = 1
+        for i in range(1, n):
+            curr = {j: 0 for j in range(target + 1)}
+            curr[0] = 1
+            for j in range(target + 1):
+                left = 0
+                if arr[i] <= j:
+                    left = prev[j - arr[i]]
+                right = prev[j]
+                curr[j] = left + right
+            prev = curr
+        return prev[target]
+
+    @staticmethod
+    def target_sum(arr, d):
+        numerator = sum(arr) + d
+        if numerator % 2 == 1:
+            return -1
+        target = numerator // 2
+        return Solution._subset_sum(arr, target)
+
+
+print(Solution.target_sum([1, 1, 1, 1, 1], 3))
+print(Solution.target_sum([1, 2, 3, 1], 3))
+print(Solution.target_sum([1, 2, 3], 2))
+print(Solution.target_sum([1, 1], 0))
+print(Solution.target_sum([1], 1))
