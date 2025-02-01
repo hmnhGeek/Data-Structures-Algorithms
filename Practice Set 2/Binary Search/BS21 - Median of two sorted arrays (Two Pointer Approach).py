@@ -77,6 +77,11 @@ class Solution:
         return Solution._odd_sized_median(arr1, arr2, n1, n2, (n + 1)//2)
 
 
-print(Solution.get_median([15, 16, 17], [10]))
-print(Solution.get_median([2, 3, 4], [1, 3]))
 print(Solution.get_median([1, 3, 4, 7, 10, 12], [2, 3, 6, 15]))
+print(Solution.get_median([2, 3, 4], [1, 3]))
+print(Solution.get_median([-5, 3, 6, 12, 15], [-12, -10, -6, -3, 4, 10]))
+print(Solution.get_median([1, 12, 15, 26, 38], [2, 13, 17, 30, 45, 60]))
+print(Solution.get_median([], [2, 4, 5, 6]))
+print(Solution.get_median([1, 3], [2]))
+print(Solution.get_median([1, 2], [3, 4]))
+print(Solution.get_median([2, 4, 6], [1, 3, 5]))
