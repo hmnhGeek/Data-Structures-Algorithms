@@ -25,3 +25,30 @@ class QuickSort:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
+class Solution:
+    @staticmethod
+    def solve(arr):
+        QuickSort.sort(arr)
+        temp = []
+        i, j = 0, len(arr) - 1
+        while i <= j:
+            if i == j:
+                temp.append(arr[i])
+            else:
+                temp.append(arr[i])
+                temp.append(arr[j])
+            i += 1
+            j -= 1
+        _sum = 0
+        for i in range(len(temp) - 1):
+            _sum += abs(temp[i + 1] - temp[i])
+        _sum += abs(temp[0] - temp[-1])
+        return _sum
+
+
+print(Solution.solve([1, 2, 4, 8]))
+print(Solution.solve([1, 2, 8, 3]))
+print(Solution.solve([1, 2, 3, 4, 5]))
+print(Solution.solve([3, 4, 2, 9, 1, 5]))
+print(Solution.solve([1, 3]))
