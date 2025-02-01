@@ -46,6 +46,32 @@ def memoized():
     print(target_sum([1, 2, 3, 1], 3))
 
 
+def tabulation():
+    """
+        Time complexity is O(nk) and space complexity is O(nk).
+    """
+    def target_sum(arr, target):
+        n = len(arr)
+        dp = {i: {j: 0 for j in range(target + 1)} for i in range(n)}
+        for i in dp:
+            dp[i][0] = 1
+        for j in dp[0]:
+            if arr[0] == j:
+                dp[0][j] = 1
+        for i in range(1, n):
+            for j in range(target + 1):
+                left = 0
+                if arr[i] <= j:
+                    left = dp[i - 1][j - arr[i]]
+                right = dp[i - 1][j]
+                dp[i][j] = left + right
+        return dp[n - 1][target]
+
+    print(target_sum([1, 2, 3, 1], 3))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
