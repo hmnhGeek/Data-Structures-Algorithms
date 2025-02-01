@@ -37,7 +37,8 @@ class TopologicalSort:
     def _get_indegrees(graph):
         indegrees = {i: 0 for i in graph}
         for node in graph:
-            for adj_node in graph[node]:
+            for adj in graph[node]:
+                adj_node, wt = adj
                 indegrees[adj_node] += 1
         return indegrees
 
@@ -52,9 +53,61 @@ class TopologicalSort:
         while not queue.is_empty():
             node = queue.pop()
             toposort.append(node)
-            for adj_node in graph[node]:
+            for adj in graph[node]:
+                adj_node, wt = adj
                 indegrees[adj_node] -= 1
                 if indegrees[adj_node] == 0:
                     queue.push(adj_node)
         return toposort
 
+
+class Solution:
+    @staticmethod
+    def get_shortest_paths(graph):
+        toposort = TopologicalSort.get_topo_sort(graph)
+        distances = {i: 1e6 for i in graph}
+        distances[toposort[0]] = 0
+        for i in range(len(toposort)):
+            node = toposort[i]
+            for adj in graph[node]:
+                adj_node, wt = adj
+                if distances[adj_node] > wt + distances[node]:
+                    distances[adj_node] = wt + distances[node]
+        return distances.values()
+
+
+print(
+    Solution.get_shortest_paths(
+        {
+            0: [[1, 2]],
+            1: [[3, 1]],
+            2: [[3, 3]],
+            3: [],
+            4: [[0, 3], [2, 1]],
+            5: [[4, 1]],
+            6: [[4, 2], [5, 3]]
+        }
+    )
+)
+
+print(
+    Solution.get_shortest_paths(
+        {
+            0: [[1, 2], [2, 1]],
+            1: [],
+            2: []
+        }
+    )
+)
+
+print(
+    Solution.get_shortest_paths(
+        {
+            0: [[2, 4]],
+            1: [[0, 3], [2, 2], [3, 5]],
+            2: [[4, 2], [3, -3]],
+            3: [],
+            4: [[3, 2]]
+        }
+    )
+)
