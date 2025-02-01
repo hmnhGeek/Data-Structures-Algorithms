@@ -58,7 +58,10 @@ print("Linear Search Solution")
 print(LinearSolution.minimize_the_max_distance([1,2,3,4,5,6,7], 6))
 print(LinearSolution.minimize_the_max_distance([1, 2, 3, 4, 5], 4))
 print(LinearSolution.minimize_the_max_distance(list(range(1, 11)), 1))
+print(LinearSolution.minimize_the_max_distance([3, 6, 12, 19, 33, 44, 67, 72, 89, 95], 2))
+print(LinearSolution.minimize_the_max_distance([1, 13, 17, 23], 5))
 print()
+
 
 class Slot:
     def __init__(self, length, index):
@@ -160,4 +163,6 @@ print("Max Heap Solution")
 print(Solution.minimize_the_max_distance([1,2,3,4,5,6,7], 6))
 print(Solution.minimize_the_max_distance([1, 2, 3, 4, 5], 4))
 print(Solution.minimize_the_max_distance(list(range(1, 11)), 1))
+print(Solution.minimize_the_max_distance([3, 6, 12, 19, 33, 44, 67, 72, 89, 95], 2))
+print(Solution.minimize_the_max_distance([1, 13, 17, 23], 5))
 print()
