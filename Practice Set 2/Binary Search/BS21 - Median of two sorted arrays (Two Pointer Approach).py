@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
+# Solution - https://www.youtube.com/watch?v=C2rRzz-JDk8&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
+
+
 class Solution:
     @staticmethod
     def _even_sized_median(arr1, arr2, n1, n2, m):
@@ -70,6 +74,10 @@ class Solution:
 
     @staticmethod
     def get_median(arr1, arr2):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         n1, n2 = len(arr1), len(arr2)
         n = n1 + n2
         if n % 2 == 0:
