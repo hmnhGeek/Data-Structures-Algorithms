@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/alien-dictionary/1
+# Solution - https://www.youtube.com/watch?v=U3N_je7tWAs&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=26
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -77,7 +81,14 @@ class Solution:
 
     @staticmethod
     def get_alien_dictionary(dictionary, k):
+        """
+            Time complexity is O(V + E + mn) and space complexity is O(V + E).
+        """
+
+        # This will take O(mn) time and O(V + E) space where m is the number of words and n is the max length of a
+        # word from dictionary.
         graph = Solution._get_graph(dictionary, k)
+        # This will take O(V + E) time and O(V) space.
         print(TopologicalSort.get_topo_sort(graph))
 
 
