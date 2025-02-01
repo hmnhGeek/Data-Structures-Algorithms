@@ -29,7 +29,14 @@ class QuickSort:
 class Solution:
     @staticmethod
     def solve(arr):
+        """
+            Overall time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
+        # This will take O(n * log(n)) time.
         QuickSort.sort(arr)
+
+        # construct the temp array. This will take O(n) space.
         temp = []
         i, j = 0, len(arr) - 1
         while i <= j:
@@ -40,6 +47,8 @@ class Solution:
                 temp.append(arr[j])
             i += 1
             j -= 1
+
+        # find the sum in O(n) time.
         _sum = 0
         for i in range(len(temp) - 1):
             _sum += abs(temp[i + 1] - temp[i])
