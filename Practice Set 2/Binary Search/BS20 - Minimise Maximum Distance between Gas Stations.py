@@ -138,24 +138,53 @@ class MinHeap:
 class Solution:
     @staticmethod
     def _push_initial_state(pq: MinHeap, arr, n):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
         for i in range(n - 1):
             pq.insert(Slot(arr[i + 1] - arr[i], i))
 
     @staticmethod
     def minimize_the_max_distance(arr, k):
+        """
+            Time complexity is O({n + k} * log(n)) time and O(n) space.
+        """
+
+        # edge case.
         if k <= 0:
             return -1
+
+        # store the length of array for ease of access.
         n = len(arr)
+
+        # define a slots array denoting the number of gas stations placed in each slot. This will take O(n) space.
         gas_stations_in_slots = [0] * (n - 1)
+
+        # define a max heap and push the slots into it in O(n * log(n)) time and O(n) space.
         pq = MinHeap()
         Solution._push_initial_state(pq, arr, n)
+
+        # loop on the gas stations in k iterations.
         for i in range(k):
+            # pop the max length slot in O(log(n)) time.
             slot = pq.pop()
+
+            # get the length and index of the max slot.
             max_slot, max_slot_index = slot.length, slot.index
+
+            # place the gas station at this slot.
             gas_stations_in_slots[max_slot_index] += 1
+
+            # get the original length of the slot
             original_length = max_slot * gas_stations_in_slots[max_slot_index]
+
+            # get the new length of the slot.
             new_length = original_length/(gas_stations_in_slots[max_slot_index] + 1)
+
+            # insert back into the max heap in O(log(n)) time.
             pq.insert(Slot(new_length, max_slot_index))
+
+        # return the max distance in O(1) time.
         return pq.heap[0].length
 
 
