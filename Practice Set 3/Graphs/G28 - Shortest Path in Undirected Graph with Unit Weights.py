@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1
+# Solution - https://www.youtube.com/watch?v=C4gxoTaI71U&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=28
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,10 @@ class Queue:
 class Solution:
     @staticmethod
     def get_shortest_path(graph, source):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         # edge case
         if source not in graph:
             return -1
