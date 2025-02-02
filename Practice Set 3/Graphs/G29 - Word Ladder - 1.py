@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/word-ladder/1
+# Solution - https://www.youtube.com/watch?v=tRPda0rcf8E&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=29
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,10 +39,13 @@ class Queue:
 class Solution:
     @staticmethod
     def word_ladder(word_list, start_word, end_word):
+        """
+            Time complexity is O(n * word_length * 26) and space complexity is O(n).
+        """
+
         h = set(word_list)
         queue = Queue()
         queue.push((start_word, 1))
-        result = 0
         if start_word in h:
             h.remove(start_word)
         while not queue.is_empty():
@@ -53,7 +60,7 @@ class Solution:
                     if new_word in h:
                         queue.push((new_word, level + 1))
                         h.remove(new_word)
-        return result
+        return 0
 
 
 print(Solution.word_ladder(["des","der","dfr","dgt","dfs"], "der", "dfs"))
