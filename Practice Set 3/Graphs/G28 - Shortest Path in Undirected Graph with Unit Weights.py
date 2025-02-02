@@ -35,18 +35,30 @@ class Queue:
 class Solution:
     @staticmethod
     def get_shortest_path(graph, source):
+        # edge case
         if source not in graph:
             return -1
+
+        # define a queue and maintain a distances dictionary.
         queue = Queue()
         distances = {i: 1e6 for i in graph}
+
+        # set the distance of the source node as 0 and push it to the queue.
         distances[source] = 0
         queue.push((source, distances[source]))
+
+        # standard BFS
         while not queue.is_empty():
+            # get the front node and its distance from the source node.
             node, distance = queue.pop()
+
+            # loop on the adjacent nodes and update the distance of the adjacent node if required.
             for adj_node in graph[node]:
                 if distances[adj_node] > 1 + distance:
                     distances[adj_node] = 1 + distance
                     queue.push((adj_node, distances[adj_node]))
+
+        # return the distances of all the nodes from the source node.
         return list(distances.values())
 
 
