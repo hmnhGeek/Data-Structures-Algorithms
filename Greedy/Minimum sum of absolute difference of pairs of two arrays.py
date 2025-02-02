@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/minimum-sum-absolute-difference-pairs-two-arrays/
+
+
 class Solution:
     @staticmethod
     def solve(a1, a2):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
+
         if len(a1) != len(a2):
             return 1e6
         a1.sort()
