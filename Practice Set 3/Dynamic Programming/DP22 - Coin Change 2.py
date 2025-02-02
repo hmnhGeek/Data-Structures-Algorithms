@@ -26,4 +26,38 @@ def recursive():
     print(coin_change_2([2, 5, 3, 6], 10))
 
 
+def memoized():
+    """
+        Time complexity is O(nk) and space complexity is O(n + nk).
+    """
+
+    def solve(arr, i, j, dp):
+        if j == 0:
+            return 1
+        if i == 0:
+            return 1 if j % arr[0] == 0 else 0
+        if dp[i][j] is not None:
+            return dp[i][j]
+        left = 0
+        if arr[i] <= j:
+            left = solve(arr, i, j - arr[i], dp)
+        right = solve(arr, i - 1, j, dp)
+        dp[i][j] = left + right
+        return dp[i][j]
+
+    def coin_change_2(arr, target):
+        n = len(arr)
+        dp = {i: {j: None for j in range(target + 1)} for i in range(n)}
+        return solve(arr, n - 1, target, dp)
+
+    print(coin_change_2([1, 2, 3], 4))
+    print(coin_change_2([5, 3, 2], 1))
+    print(coin_change_2([1, 2, 5], 5))
+    print(coin_change_2([2], 3))
+    print(coin_change_2([10], 10))
+    print(coin_change_2([2, 5, 3, 6], 10))
+
+
 recursive()
+print()
+memoized()
