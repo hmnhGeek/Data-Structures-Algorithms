@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/row-with-maximum-1-s_1112656
+# Solution - https://www.youtube.com/watch?v=SCz-1TtYxDI&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=25
+
+
 class Solution:
     @staticmethod
     def _count_of_one(arr, low, high):
@@ -11,6 +15,10 @@ class Solution:
 
     @staticmethod
     def max_1_row(mtx):
+        """
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+        """
+
         n, m = len(mtx), len(mtx[0])
         max_1s, index = 0, -1
         for i in range(n):
