@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+# Solution - https://www.youtube.com/watch?v=V6H1qAeB-l4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=32
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,9 @@ class Queue:
 class Solution:
     @staticmethod
     def get_shortest_path(graph, source):
+        """
+            Time complexity is O(E * log(V)) and space complexity is O(V).
+        """
         if source not in graph:
             return -1
         queue = Queue()
