@@ -1,6 +1,14 @@
+# Problem link - https://www.naukri.com/code360/problems/maximum-consecutive-ones_3843993
+# Solution - https://www.youtube.com/watch?v=3E4JBHSLpYk&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=4
+
+
 class Solution:
     @staticmethod
     def max_consecutive_1s(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         # edge case
         if k < 0:
             return []
