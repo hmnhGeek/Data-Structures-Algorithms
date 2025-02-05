@@ -27,7 +27,7 @@ def recursive():
 
 def memoized():
     """
-        Time complexity is exponential and space complexity is O(n).
+        Time complexity is O(n^2) and space complexity is O(n + 2n).
     """
     def solve(arr, i, j, dp):
         if j == 0:
@@ -56,7 +56,37 @@ def memoized():
     print(rod_cut([3], 1))
 
 
+def tabulation():
+    """
+        Time complexity is O(n^2) and space complexity is O(n^2).
+    """
+    def rod_cut(costs, rod_length):
+        n = len(costs)
+        dp = {i: {j: -1e6 for j in range(rod_length + 1)} for i in range(n)}
+        for i in dp:
+            dp[i][0] = 0
+        for j in dp[0]:
+            dp[0][j] = j * costs[0]
+        for i in range(1, n):
+            for j in range(rod_length + 1):
+                left = -1e6
+                if i + 1 <= j:
+                    left = costs[i] + dp[i][j - i - 1]
+                right = dp[i - 1][j]
+                dp[i][j] = max(left, right)
+        return dp[n - 1][rod_length]
+
+    print(rod_cut([2, 5, 7, 8, 10], 5))
+    print(rod_cut([3, 5, 8, 9, 10, 17, 17, 20], 8))
+    print(rod_cut([3, 5, 6, 7, 10, 12], 6))
+    print(rod_cut([1, 10, 3, 1, 3, 1, 5, 9], 8))
+    print(rod_cut([1, 5, 8, 9, 10, 17, 17, 20], 8))
+    print(rod_cut([3], 1))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
 print()
