@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/program-for-shortest-job-first-or-sjf-cpu-scheduling-set-1-non-preemptive/
+# Solution - https://www.youtube.com/watch?v=9PDUOx4MtKo
+
+
 from typing import List
 
 
