@@ -25,5 +25,38 @@ def recursive():
     print(rod_cut([3], 1))
 
 
+def memoized():
+    """
+        Time complexity is exponential and space complexity is O(n).
+    """
+    def solve(arr, i, j, dp):
+        if j == 0:
+            return 0
+        if i == 0:
+            return j * arr[0]
+        if dp[i][j] is not None:
+            return dp[i][j]
+        left = -1e6
+        if i + 1 <= j:
+            left = arr[i] + solve(arr, i, j - i - 1, dp)
+        right = solve(arr, i - 1, j, dp)
+        dp[i][j] = max(left, right)
+        return dp[i][j]
+
+    def rod_cut(costs, rod_length):
+        n = len(costs)
+        dp = {i: {j: None for j in range(rod_length + 1)} for i in range(n)}
+        return solve(costs, n - 1, rod_length, dp)
+
+    print(rod_cut([2, 5, 7, 8, 10], 5))
+    print(rod_cut([3, 5, 8, 9, 10, 17, 17, 20], 8))
+    print(rod_cut([3, 5, 6, 7, 10, 12], 6))
+    print(rod_cut([1, 10, 3, 1, 3, 1, 5, 9], 8))
+    print(rod_cut([1, 5, 8, 9, 10, 17, 17, 20], 8))
+    print(rod_cut([3], 1))
+
+
 recursive()
+print()
+memoized()
 print()
