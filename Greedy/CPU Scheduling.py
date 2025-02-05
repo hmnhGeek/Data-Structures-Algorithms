@@ -50,18 +50,30 @@ class Queue:
 class Solution:
     @staticmethod
     def schedule(processes: List[Process]):
+        # Sort the processes by their arrival time in O(n * log(n)).
         processes.sort(key=lambda x: x.start_time)
+
+        # get the CPU queue ready and start executing the first process.
         queue = Queue()
         queue.push(processes[0])
+
+        # create a ready queue and push all the processes from 1 till n in O(n) time.
         ready_queue = Queue()
         for i in range(1, len(processes)):
             process = processes[i]
             ready_queue.push(process)
+
+        # create tracking and result variables.
         wait_time = 0
         result = []
+
+        # while CPU is working...
         while not queue.is_empty():
+            # get the process and append it to the result.
             process = queue.pop()
             result.append(process)
+
+            # update the wait time
             wait_time += process.burst_time
             next_processes = []
             while not ready_queue.is_empty() and ready_queue.front().start_time <= wait_time:
