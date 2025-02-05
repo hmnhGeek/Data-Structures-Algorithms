@@ -1,6 +1,13 @@
+# Problem link - https://leetcode.com/problems/search-a-2d-matrix/
+# Solution - https://www.youtube.com/watch?v=JXU4Akft7yk&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=26
+
+
 class Solution:
     @staticmethod
     def search(mtx, x):
+        """
+            Time complexity is O(log(nm)) and space complexity is O(1).
+        """
         n, m = len(mtx), len(mtx[0])
         low, high = 0, n*m - 1
         while low <= high:
