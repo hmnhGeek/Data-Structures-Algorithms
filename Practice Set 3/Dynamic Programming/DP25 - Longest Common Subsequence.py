@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-common-subsequence_624879?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=NPZn9jBrX8U&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=26
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n1 + n2).
