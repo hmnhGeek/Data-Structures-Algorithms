@@ -29,10 +29,13 @@ class LinkedList:
             curr = curr.next
         return None
 
-    def swap(self, n1, n2):
-        temp = n1.data
-        n1.data = n2.data
-        n2.data = temp
+    def move_back(self, node):
+        temp = node.data
+        curr = node
+        while curr.next is not None:
+            curr.data = curr.next.data
+            curr = curr.next
+        curr.data = temp
 
     def pop_front(self):
         if self.is_empty():
@@ -52,15 +55,23 @@ class Solution:
         queue = LinkedList()
         page_faults = 0
         n = len(arr)
+
+        # loop on the pages
         for i in range(n):
+            # extract the node with value arr[i]...
             node = queue.get_node(arr[i])
+
+            # now check if queue has capacity or not...
             if len(queue) < cap:
+                # if it has capacity and the node extracted is None
                 if node is None:
+                    # there's a page fault, push the arr[i] element.
                     queue.push(arr[i])
                     page_faults += 1
                 else:
+                    # else
                     tail = queue.tail
-                    queue.swap(node, tail)
+                    queue.move_back(node)
             elif node is None:
                 queue.pop_front()
                 queue.push(arr[i])
@@ -68,8 +79,10 @@ class Solution:
             else:
                 node = queue.get_node(arr[i])
                 tail = queue.tail
-                queue.swap(node, tail)
+                queue.move_back(node)
         return page_faults
 
 
 print(Solution.get_page_faults([5, 0, 1, 3, 2, 4, 1, 0, 5], 4))
+print(Solution.get_page_faults([1, 2, 1, 4, 2, 3, 5], 3))
+print(Solution.get_page_faults([5, 0, 1, 3, 2], 3))
