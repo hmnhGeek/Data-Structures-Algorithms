@@ -70,7 +70,7 @@ class Solution:
     @staticmethod
     def get_shortest_path(graph, source):
         """
-            Time complexity is O(V + E) and space complexity is O(V).
+            Time complexity is O(E * log(V)) and space complexity is O(V).
         """
 
         if source not in graph:
