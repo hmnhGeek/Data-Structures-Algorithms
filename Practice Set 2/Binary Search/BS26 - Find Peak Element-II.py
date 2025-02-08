@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/find-peak-element-2d-array/
+# Solution - https://www.youtube.com/watch?v=nGGp5XBzC4g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=28
+
+
 class Solution:
     @staticmethod
     def find_peak(mtx):
+        """
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+        """
+
         n, m = len(mtx), len(mtx[0])
         low, high = 0, m - 1
         while low <= high:
