@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/shortest-path-in-weighted-undirected-graph/1
+# Solution - https://www.youtube.com/watch?v=rp1SMw7HSO8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=35
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,10 @@ class Queue:
 class Solution:
     @staticmethod
     def get_shortest_path(graph, source, destination):
+        """
+            Time complexity is O(E * log(V)) and space complexity is O(V).
+        """
+
         if source not in graph or destination not in graph:
             return
         distances = {i: 1e6 for i in graph}
