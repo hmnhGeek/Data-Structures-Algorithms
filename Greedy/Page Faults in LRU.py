@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/page-faults-in-lru5603/1
+# Explanation Video - https://www.youtube.com/watch?v=dYIoWkCvd6A
+
+
 class Node:
     def __init__(self, data):
         self.data = data
