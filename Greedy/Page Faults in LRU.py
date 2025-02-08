@@ -52,6 +52,13 @@ class LinkedList:
 class Solution:
     @staticmethod
     def get_page_faults(arr, cap):
+        """
+            Time complexity is O(n * c), why c and not `n`? Because moving back in the queue only takes a traversal of
+            the queue, which will be of `c` length.
+
+            Space complexity is O(c).
+        """
+
         queue = LinkedList()
         page_faults = 0
         n = len(arr)
@@ -69,16 +76,15 @@ class Solution:
                     queue.push(arr[i])
                     page_faults += 1
                 else:
-                    # else
-                    tail = queue.tail
+                    # else, make this node most recently used, thus moving it to last.
                     queue.move_back(node)
             elif node is None:
+                # if this node is found and queue is full, pop the LRU and push this node to back as MRU.
                 queue.pop_front()
                 queue.push(arr[i])
                 page_faults += 1
             else:
-                node = queue.get_node(arr[i])
-                tail = queue.tail
+                # else, make this node most recently used, thus moving it to last.
                 queue.move_back(node)
         return page_faults
 
