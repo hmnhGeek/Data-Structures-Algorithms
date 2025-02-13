@@ -1,3 +1,10 @@
+# Problem link and solution - https://www.youtube.com/watch?v=6zhGS79oQ4k&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=3
+
+"""
+    All these operations will take O(log(n)) time and O(1) space.
+"""
+
+
 class Solution:
     @staticmethod
     def get_lower_bound(arr, x):
@@ -42,6 +49,11 @@ class Solution:
                 high = mid - 1
         return arr[high] if high in range(len(arr)) else -1
 
+    @staticmethod
+    def get_ceil(arr, x):
+        ans = Solution.get_lower_bound(arr, x)
+        return arr[ans] if ans in range(len(arr)) else -1
+
 
 print("Lower Bound")
 print(Solution.get_lower_bound([3, 5, 8, 15, 19], 5))
@@ -69,3 +81,10 @@ print("Floor Value")
 print(Solution.get_floor([10, 20, 30, 40, 50], 25))
 print(Solution.get_floor([10, 20, 30, 40, 50], 30))
 print(Solution.get_floor([10, 25, 30, 40, 50], 35))
+
+print()
+
+print("Ceil Value")
+print(Solution.get_ceil([10, 20, 30, 40, 50], 25))
+print(Solution.get_ceil([10, 20, 30, 40, 50], 30))
+print(Solution.get_ceil([10, 25, 30, 40, 50], 35))
