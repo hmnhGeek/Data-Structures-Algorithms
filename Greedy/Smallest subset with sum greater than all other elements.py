@@ -29,15 +29,29 @@ class QuickSort:
 class Solution:
     @staticmethod
     def solve(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
+
+        # This will take O(n * log(n)) time.
         QuickSort.sort(arr)
+
+        # store total and subset sums.
         total_sum = sum(arr)
         subset_sum = 0
-        subset_length = 0
+
+        # point `i` to the last element.
         i = len(arr) - 1
+
+        # while the subset sum <= total sum
         while subset_sum <= total_sum:
+            # update these variables
             total_sum -= arr[i]
             subset_sum += arr[i]
+            # decrement `i`
             i -= 1
+
+        # return the length of the subset which will be taken from the end.
         return len(arr) - 1 - i
 
 
