@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/path-with-minimum-effort/1
+# Solution - https://www.youtube.com/watch?v=0ytpZyiZFhA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=37
+
+
 class Solution:
     @staticmethod
     def _get_neighbours(mtx, i, j, n, m, visited):
@@ -156,6 +160,10 @@ class OptimalSolution:
 
     @staticmethod
     def get_min_effort(mtx):
+        """
+            Time complexity is O(m*n*log(mn)) and space complexity is O(mn).
+        """
+
         n, m = len(mtx), len(mtx[0])
         pq = MinHeap()
         distances = [[1e6 for _ in range(m)] for _ in range(n)]
