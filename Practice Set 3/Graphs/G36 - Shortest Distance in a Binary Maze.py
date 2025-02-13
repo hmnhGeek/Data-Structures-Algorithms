@@ -79,21 +79,36 @@ class Solution:
     @staticmethod
     def shortest_distance(mtx, source, destination):
         """
-            Overall time complexity is O(m*n) and space complexity is O(m*n).
+            Overall time complexity is O(m*n*log(mn)) and space complexity is O(m*n).
         """
+
+        # get the dimensions of the matrix
         n, m = len(mtx), len(mtx[0])
+
+        # initialize the distance of the source node as 0.
         distances = [[1e6 for _ in range(m)] for _ in range(n)]
         distances[source[0]][source[1]] = 0
+
+        # create a priority queue and push the source node into it.
         pq = MinHeap()
         pq.insert(Node(0, *source))
+
+        # typical Dijkstra, this will store mn nodes and run for mn times.
         while not pq.is_empty():
+            # pop the current node in O(log(mn)) time.
             node = pq.pop()
+
+            # get the neighbours in O(1) time.
             neighbours = Solution._get_neighbours(mtx, node.i, node.j, n, m)
+
+            # loop on all the neighbours and update the distances accordingly.
             for neighbour in neighbours:
                 x, y = neighbour
                 if distances[x][y] > node.d + 1:
                     distances[x][y] = node.d + 1
                     pq.insert(Node(distances[x][y], x, y))
+
+        # return the min distance of the destination.
         return distances[destination[0]][destination[1]]
 
     @staticmethod
