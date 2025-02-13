@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/description/
+# Solution - https://www.youtube.com/watch?v=xPBLEj41rFU&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=30
+
+
 def recursive():
     def solve(s1, i, s2, j):
         if i == 0 or j == 0:
@@ -117,6 +121,9 @@ class Solution:
 
     @staticmethod
     def min_insertions(s):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
         n = len(s)
         lps_length = Solution._lcs(s, s[-1:-len(s)-1:-1])
         return n - lps_length
