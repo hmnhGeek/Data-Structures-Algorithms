@@ -17,20 +17,37 @@ class Solution:
         if i == 0 and j == 0:
             min_effort[0] = min(min_effort[0], max_path_effort)
             return
+
+        # mark the current cell as path visited.
         visited[i][j] = True
+
+        # get the neighbours in constant time.
         neighbours = Solution._get_neighbours(mtx, i, j, n, m, visited)
+
+        # loop on the neighbours
         for neighbour in neighbours:
             x, y = neighbour[0], neighbour[1]
+            # recursively find the max path effort
             Solution._solve(mtx, x, y, max(max_path_effort, abs(mtx[i][j] - mtx[x][y])), min_effort, visited, n, m)
+
+        # while returning, unmark the cell from path visited.
         visited[i][j] = False
         return
 
     @staticmethod
     def get_min_effort(mtx):
         n, m = len(mtx), len(mtx[0])
+
+        # This will take O(mn) space.
         visited = [[False for _ in range(m)] for _ in range(n)]
+
+        # store the global min effort as reference.
         min_effort = [1e6,]
+
+        # start traversals from the last cell.
         Solution._solve(mtx, n - 1, m - 1, -1e6, min_effort, visited, n, m)
+
+        # return the min effort.
         return min_effort[0]
 
 
