@@ -34,7 +34,7 @@ class MinHeap:
         if rci is None:
             return lci
         min_child_index = lci
-        if self.heap[rci].d < self.heap[min_child_index]:
+        if self.heap[rci].d < self.heap[min_child_index].d:
             min_child_index = rci
         return min_child_index
 
@@ -70,3 +70,112 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def shortest_distance(mtx, source, destination):
+        n, m = len(mtx), len(mtx[0])
+        distances = [[1e6 for _ in range(m)] for _ in range(n)]
+        distances[source[0]][source[1]] = 0
+        pq = MinHeap()
+        pq.insert(Node(0, *source))
+        while not pq.is_empty():
+            node = pq.pop()
+            neighbours = Solution._get_neighbours(mtx, node.i, node.j, n, m)
+            for neighbour in neighbours:
+                x, y = neighbour
+                if distances[x][y] > node.d + 1:
+                    distances[x][y] = node.d + 1
+                    pq.insert(Node(distances[x][y], x, y))
+        return distances[destination[0]][destination[1]]
+
+    @staticmethod
+    def _get_neighbours(mtx, i, j, n, m):
+        neighbours = []
+        if 0 <= i - 1 < n and mtx[i - 1][j] == 1:
+            neighbours.append((i - 1, j))
+        if 0 <= j + 1 < m and mtx[i][j + 1] == 1:
+            neighbours.append((i, j + 1))
+        if 0 <= i + 1 < n and mtx[i + 1][j] == 1:
+            neighbours.append((i + 1, j))
+        if 0 <= j - 1 < m and mtx[i][j - 1] == 1:
+            neighbours.append((i, j - 1))
+        return neighbours
+
+
+print(
+    Solution.shortest_distance(
+        [
+            [1, 1, 1, 1],
+            [1, 1, 0, 1],
+            [1, 1, 1, 1],
+            [1, 1, 0, 0],
+            [1, 0, 0, 0]
+        ],
+        (0, 1),
+        (2, 2)
+    )
+)
+
+print(
+    Solution.shortest_distance(
+        [
+            [1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 0],
+            [1, 0, 1, 0, 1]
+        ],
+        (0, 0),
+        (3, 4)
+    )
+)
+
+print(
+    Solution.shortest_distance(
+        [[1, 0, 1, 1, 1, 1, 0, 1, 1, 1],
+         [1, 0, 1, 0, 1, 1, 1, 0, 1, 1],
+         [1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+         [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+         [1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
+         [1, 0, 1, 1, 1, 1, 0, 1, 0, 0],
+         [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+         [1, 0, 1, 1, 1, 1, 0, 1, 1, 1],
+         [1, 1, 0, 0, 0, 0, 1, 0, 0, 1]],
+        (0, 0),
+        (3, 4)
+    )
+)
+
+print(
+    Solution.shortest_distance(
+        [
+            [1, 1, 1, 1],
+            [0, 1, 1, 0],
+            [0, 0, 1, 1]
+        ],
+        (0, 0),
+        (2, 3)
+    )
+)
+
+print(
+    Solution.shortest_distance(
+        [
+            [1, 1],
+            [0, 1]
+        ],
+        (0, 0),
+        (1, 1)
+    )
+)
+
+print(
+    Solution.shortest_distance(
+        [
+            [1, 0],
+            [0, 1]
+        ],
+        (0, 0),
+        (1, 1)
+    )
+)
