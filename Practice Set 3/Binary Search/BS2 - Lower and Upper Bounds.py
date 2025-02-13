@@ -1,6 +1,9 @@
 class Solution:
     @staticmethod
     def get_lower_bound(arr, x):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         low, high = 0, len(arr) - 1
         while low <= high:
             mid = int(low + (high - low)/2)
@@ -12,6 +15,9 @@ class Solution:
 
     @staticmethod
     def get_upper_bound(arr, x):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         low, high = 0, len(arr) - 1
         while low <= high:
             mid = int(low + (high - low)/2)
