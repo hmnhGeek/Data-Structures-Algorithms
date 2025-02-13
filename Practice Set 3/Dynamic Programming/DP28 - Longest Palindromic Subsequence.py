@@ -115,6 +115,29 @@ class Solution:
         return prev[n2]
 
     @staticmethod
+    def __lcs_str(s1, s2):
+        n1, n2 = len(s1), len(s2)
+        dp = {i: {j: 0 for j in range(n2 + 1)} for i in range(n1 + 1)}
+        for i in range(1, n1 + 1):
+            for j in range(1, n2 + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    dp[i][j] = 1 + dp[i - 1][j - 1]
+                else:
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+        result = ""
+        i, j = n1, n2
+        while i > 0 and j > 0:
+            if s1[i - 1] == s2[j - 1]:
+                result += s1[i - 1]
+                i -= 1
+                j -= 1
+            elif dp[i - 1][j] > dp[i][j - 1]:
+                i -= 1
+            else:
+                j -= 1
+        return result[-1:-len(result)-1:-1]
+
+    @staticmethod
     def lps_length(s):
         """
             Time complexity is O(n^2) and space complexity is O(n).
@@ -122,8 +145,16 @@ class Solution:
         rev_s = s[-1:-len(s)-1:-1]
         return Solution.__lcs(s, rev_s)
 
+    @staticmethod
+    def lps_string(s):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
+        rev_s = s[-1:-len(s) - 1:-1]
+        return Solution.__lcs_str(s, rev_s)
+
 
 print(Solution.lps_length("bbbab"))
 print(Solution.lps_length("bbabcbcab"))
-# print(Solution.lps_string("bbbab"))
-# print(Solution.lps_string("bbabcbcab"))
+print(Solution.lps_string("bbbab"))
+print(Solution.lps_string("bbabcbcab"))
