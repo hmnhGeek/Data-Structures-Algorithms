@@ -25,3 +25,21 @@ class QuickSort:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
+class Solution:
+    @staticmethod
+    def solve(arr):
+        QuickSort.sort(arr)
+        total_sum = sum(arr)
+        subset_sum = 0
+        subset_length = 0
+        i = len(arr) - 1
+        while subset_sum <= total_sum:
+            total_sum -= arr[i]
+            subset_sum += arr[i]
+            i -= 1
+        return len(arr) - 1 - i
+
+
+print(Solution.solve([3, 1, 7, 1]))
+print(Solution.solve([1, 2, 1]))
