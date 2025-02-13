@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/smallest-subset-sum-greater-elements/
+# Solution - https://www.youtube.com/watch?v=YrdVt9TC6gA
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -57,3 +61,7 @@ class Solution:
 
 print(Solution.solve([3, 1, 7, 1]))
 print(Solution.solve([1, 2, 1]))
+print(Solution.solve([1, 2]))
+print(Solution.solve([1, 1]))
+print(Solution.solve([15, 5, 11, 13, 17, 10, 20]))
+print(Solution.solve([1, 2, 3, 4, 4, 3, 2, 1]))
