@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/first-and-last-position-of-an-element-in-sorted-array_1082549
+# Solution - https://www.youtube.com/watch?v=hjR1IYVx9lY&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=4
+
+
 class Solution:
     @staticmethod
     def _get_first_occurrence(arr, x):
@@ -27,6 +31,10 @@ class Solution:
 
     @staticmethod
     def get_occurrences(arr, x):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
+
         lb = Solution._get_first_occurrence(arr, x)
         rb = Solution._get_last_occurrence(arr, x)
         return lb, rb
