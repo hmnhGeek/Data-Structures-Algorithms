@@ -1,20 +1,36 @@
 class Solution:
     @staticmethod
     def get_longest(s, k):
+        # define window variables
         n = len(s)
         left = right = 0
+
+        # define result variables
         longest_length = 0
         start_index = -1
+
+        # define a tracking dictionary
         d = {i: 0 for i in s}
+
+        # while there is ground to cover...
         while right < n:
+            # increment right index count
             d[s[right]] += 1
+
+            # if more than k distinct characters are present, shrink one unit from left.
             if sum(1 for v in d.values() if v > 0) > k:
                 d[s[left]] -= 1
                 left += 1
+
+            # else update the result variables
             if sum(1 for v in d.values() if v > 0) <= k:
                 longest_length = max(longest_length, right - left + 1)
                 start_index = left
+
+            # increment right index
             right += 1
+
+        # return the substring.
         return s[start_index:start_index+longest_length] if start_index != -1 else ""
 
 
