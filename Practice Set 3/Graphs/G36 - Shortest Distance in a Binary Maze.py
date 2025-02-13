@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/shortest-path-in-a-binary-maze-1655453161/1
+# Solution - https://www.youtube.com/watch?v=U5Mw4eyUmw4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=36
+
+
 class Node:
     def __init__(self, distance, i, j):
         self.i = i
@@ -74,6 +78,9 @@ class MinHeap:
 class Solution:
     @staticmethod
     def shortest_distance(mtx, source, destination):
+        """
+            Overall time complexity is O(m*n) and space complexity is O(m*n).
+        """
         n, m = len(mtx), len(mtx[0])
         distances = [[1e6 for _ in range(m)] for _ in range(n)]
         distances[source[0]][source[1]] = 0
