@@ -35,17 +35,33 @@ class Queue:
 class Solution:
     @staticmethod
     def get_min(start, arr, end):
-        queue = Queue()
+        """
+            Time complexity is O(10**5 * n) and space complexity is O(10**5), where n is the size of array.
+        """
+
+        # define distances for all 10**5 nodes and mark source node distance as 0.
         distances = {i: 1e6 for i in range(10**5)}
         distances[start] = 0
+
+        # define a queue and push the start node.
+        queue = Queue()
         queue.push((distances[start], start))
+
         while not queue.is_empty():
             distance, node = queue.pop()
+
+            # we could wait for the queue to get empty, but since the operations are large, we can return as soon
+            # as we find the end node.
             if node == end:
                 return distance
+
             for item in arr:
+                # get the next node
                 adj_node = node * item
                 adj_node = adj_node % 10**5
+
+                # and if the distance of the next node is larger than distance + 1, update the variable and push the
+                # next node into the queue.
                 if distances[adj_node] > distance + 1:
                     distances[adj_node] = distance + 1
                     queue.push((distance + 1, adj_node))
