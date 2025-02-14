@@ -1,20 +1,31 @@
 class Solution:
     @staticmethod
     def search(arr, x):
+        # define the search space.
         low, high = 0, len(arr) - 1
+
+        # binary search...
         while low <= high:
             mid = int(low + (high - low)/2)
+
+            # if mid element is x, return mid.
             if arr[mid] == x:
                 return mid
+
+            # if left part is sorted
             if arr[low] <= arr[mid]:
                 if arr[low] <= x <= arr[mid]:
                     high = mid - 1
                 else:
                     low = mid + 1
+
+            # if right part is sorted and x could be in right part
             elif arr[mid] <= x <= arr[high]:
                 low = mid + 1
             else:
                 high = mid - 1
+
+        # if the element is not found, return -1.
         return -1
 
 
