@@ -1,6 +1,14 @@
+# Problem link - https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+# Solution - https://www.youtube.com/watch?v=xtqN4qlgr8s&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=7
+
+
 class Solution:
     @staticmethod
     def get_num_substrings(string):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         # define tracking variables
         d = {"a": 0, "b": 0, "c": 0}
 
