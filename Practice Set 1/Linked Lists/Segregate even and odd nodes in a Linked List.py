@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/segregate-even-and-odd-nodes-in-a-linked-list5035/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -29,6 +32,10 @@ class LinkedList:
         print()
 
     def segregate(self):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         odd = ot = Node(None)
         even = ev = Node(None)
         curr = self.head
