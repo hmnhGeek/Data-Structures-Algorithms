@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1
+# Solution - https://www.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1
+
 class MergeSort:
     @staticmethod
     def sort(arr):
@@ -37,6 +40,10 @@ class MergeSort:
 class Solution:
     @staticmethod
     def distribute(arr, m):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n) due to merge sort.
+        """
+
         MergeSort.sort(arr)
         i, j = 0, m - 1
         diff = 1e6
