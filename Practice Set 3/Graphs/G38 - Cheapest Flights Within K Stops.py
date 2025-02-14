@@ -74,6 +74,14 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_cheapest_flight(graph, source, destination, k):
+        """
+            We should use a normal queue in this problem because the stops will increment by 1 everytime. So there is
+            no need for a min heap. It will only add a log(V) factor to the complexity.
+
+            Time complexity with O(E) in case of queue and O(E * log(V)) in min heap approach.
+            Space complexity will be O(V) in both the cases.
+        """
+
         if source not in graph or destination not in graph:
             return
         pq = MinHeap()
@@ -85,7 +93,9 @@ class Solution:
             distance, node, stops_till_now = x.d, x.n, x.s
             for adj in graph[node]:
                 adj_node, wt = adj
-                if distances[adj_node] > distance + wt and stops_till_now + 1 <= k + 1:
+                # if the adjacent node can be reached with a better distance and still be within stops limit, then
+                # update the result variables.
+                if distances[adj_node] > distance + wt and stops_till_now <= k:
                     distances[adj_node] = distance + wt
                     pq.insert(Node(distances[adj_node], adj_node, stops_till_now + 1))
         return distances[destination]
