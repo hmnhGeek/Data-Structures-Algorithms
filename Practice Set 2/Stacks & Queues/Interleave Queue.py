@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/interleave-first-half-queue-second-half/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -86,17 +89,30 @@ class Stack:
 class Solution:
     @staticmethod
     def interleave(q: Queue):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         stack = Stack()
+
+        # get the mid of the queue in O(n) time.
         mid = q.get_mid()
+
+        # push the mid-node in stack
         stack.push(mid)
+
+        # now start traversing the half of the queue in O(n) time.
         curr = q.head
         while curr != mid:
+            # pop node from stack and push curr in between
             node = stack.pop()
             stack.push(curr)
             stack.push(node)
             if node.next is not None:
                 stack.push(node.next)
             curr = curr.next
+
+        # populate the queue in correct order in O(n) time.
         while not q.is_empty():
             q.pop()
         while not stack.is_empty():
