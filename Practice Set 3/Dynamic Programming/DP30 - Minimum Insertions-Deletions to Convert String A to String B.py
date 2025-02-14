@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/can-you-make_4244510?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=yMnH0jrir0Q&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=31
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n + m).
@@ -119,6 +123,9 @@ class Solution:
 
     @staticmethod
     def min_ops(s1, s2):
+        """
+            Time complexity is O(nm) and space complexity is O(m).
+        """
         lcs = Solution.__lcs(s1, s2)
         return len(s1) + len(s2) - 2*lcs
 
