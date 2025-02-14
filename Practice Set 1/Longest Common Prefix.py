@@ -1,6 +1,10 @@
+# Problem link - https://leetcode.com/problems/longest-common-prefix/description/
+
+
 class Solution:
     @staticmethod
     def lcp(arr):
+        # Time complexity is O(min(arr) * n) and space complexity is O(1).
         smallest_string = min(arr, key=len)
         ans = ""
         for i in range(len(smallest_string)):
