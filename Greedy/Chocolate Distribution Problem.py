@@ -33,3 +33,20 @@ class MergeSort:
             j += 1
         return merged
 
+
+class Solution:
+    @staticmethod
+    def distribute(arr, m):
+        MergeSort.sort(arr)
+        i, j = 0, m - 1
+        diff = 1e6
+        while j < len(arr):
+            diff = min(diff, arr[j] - arr[i])
+            i += 1
+            j += 1
+        return diff
+
+
+print(Solution.distribute([3, 4, 1, 9, 56, 7, 9, 12], 5))
+print(Solution.distribute([7, 3, 2, 4, 9, 12, 56], 3))
+print(Solution.distribute([3, 4, 1, 9, 56], 5))
