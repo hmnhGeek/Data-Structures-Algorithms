@@ -1,5 +1,5 @@
 class Node:
-    def __int__(self, d, n, s):
+    def __init__(self, d, n, s):
         self.d = d
         self.n = n
         self.s = s
@@ -34,7 +34,7 @@ class MinHeap:
         if rci is None:
             return lci
         min_child_index = lci
-        if self.heap[rci].d < self.heap[min_child_index].d:
+        if self.heap[rci].s < self.heap[min_child_index].s:
             min_child_index = rci
         return min_child_index
 
@@ -45,7 +45,7 @@ class MinHeap:
         lci, rci = self.get_lci(pi), self.get_rci(pi)
         min_child_index = self.get_min_child_index(lci, rci)
         if min_child_index is not None:
-            if self.heap[pi].d > self.heap[min_child_index].d:
+            if self.heap[pi].s > self.heap[min_child_index].s:
                 self.heap[pi], self.heap[min_child_index] = self.heap[min_child_index], self.heap[pi]
             self.min_heapify_up(pi)
 
@@ -53,7 +53,7 @@ class MinHeap:
         lci, rci = self.get_lci(pi), self.get_rci(pi)
         min_child_index = self.get_min_child_index(lci, rci)
         if min_child_index is not None:
-            if self.heap[pi].d > self.heap[min_child_index].d:
+            if self.heap[pi].s > self.heap[min_child_index].s:
                 self.heap[pi], self.heap[min_child_index] = self.heap[min_child_index], self.heap[pi]
             self.min_heapify_down(min_child_index)
 
@@ -70,3 +70,65 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_cheapest_flight(graph, source, destination, k):
+        if source not in graph or destination not in graph:
+            return
+        pq = MinHeap()
+        distances = {i: 1e6 for i in graph}
+        distances[source] = 0
+        pq.insert(Node(0, source, 0))
+        while not pq.is_empty():
+            x = pq.pop()
+            distance, node, stops_till_now = x.d, x.n, x.s
+            for adj in graph[node]:
+                adj_node, wt = adj
+                if distances[adj_node] > distance + wt and stops_till_now + 1 <= k + 1:
+                    distances[adj_node] = distance + wt
+                    pq.insert(Node(distances[adj_node], adj_node, stops_till_now + 1))
+        return distances[destination]
+
+
+print(
+    Solution.get_cheapest_flight(
+        {
+            0: [[1, 5], [3, 2]],
+            1: [[2, 5], [4, 1]],
+            2: [],
+            3: [[1, 2]],
+            4: [[2, 1]]
+        },
+        0,
+        2,
+        2
+    )
+)
+
+print(
+    Solution.get_cheapest_flight(
+        {
+            0: [[1, 100]],
+            1: [[2, 100], [3, 600]],
+            2: [[0, 100], [3, 200]],
+            3: []
+        },
+        0,
+        3,
+        1
+    )
+)
+
+print(
+    Solution.get_cheapest_flight(
+        {
+            0: [[1, 100], [2, 500]],
+            1: [[2, 100]],
+            2: []
+        },
+        0,
+        2,
+        0
+    )
+)
