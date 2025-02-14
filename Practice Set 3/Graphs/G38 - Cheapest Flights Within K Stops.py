@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/cheapest-flights-within-k-stops/1
+# Solution - https://www.youtube.com/watch?v=9XybHVqTHcQ&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=38
+
+
 class Node:
     def __init__(self, d, n, s):
         self.d = d
