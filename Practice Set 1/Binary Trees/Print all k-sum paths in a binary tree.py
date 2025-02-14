@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/print-k-sum-paths-binary-tree/
+# Solution - https://www.youtube.com/watch?v=_Ng486jJu80
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -22,6 +26,10 @@ class Solution:
 
     @staticmethod
     def print_k_path(root: Node, k):
+        """
+            Time complexity is O(n*h^2) and space complexity is O(h).
+        """
+
         Solution._print(root, [], k)
 
 
