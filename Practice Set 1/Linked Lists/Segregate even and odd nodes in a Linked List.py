@@ -28,4 +28,27 @@ class LinkedList:
             curr = curr.next
         print()
 
+    def segregate(self):
+        odd = ot = Node(None)
+        even = ev = Node(None)
+        curr = self.head
+        while curr is not None:
+            if curr.data % 2 == 0:
+                ev.next = curr
+                ev = curr
+            else:
+                ot.next = curr
+                ot = curr
+            curr = curr.next
+        ev.next = odd.next
+        self.head = even.next
+        self.tail = ot
+        ot.next = None
 
+
+l = LinkedList()
+for i in [17, 15, 8, 9, 2, 4, 6]:
+    l.push(i)
+l.show()
+l.segregate()
+l.show()
