@@ -1,3 +1,6 @@
+# Problem link - https://www.spoj.com/problems/EKO/
+
+
 class Solution:
     @staticmethod
     def _collect(arr, mid):
