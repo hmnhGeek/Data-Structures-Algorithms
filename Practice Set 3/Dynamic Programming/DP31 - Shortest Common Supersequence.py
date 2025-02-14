@@ -78,8 +78,40 @@ def tabulation():
     print(lcs("ABC", "CBA"))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
+class Solution:
+    @staticmethod
+    def print_shortest_common_supersequence(s1, s2):
+        n1, n2 = len(s1), len(s2)
+        dp = {i: {j: 0 for j in range(n2 + 1)} for i in range(n1 + 1)}
+        for i in range(1, n1 + 1):
+            for j in range(1, n2 + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    dp[i][j] = 1 + dp[i - 1][j - 1]
+                else:
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+        result = ""
+        i, j = n1, n2
+        while i > 0 and j > 0:
+            if s1[i - 1] == s2[j - 1]:
+                result += s1[i - 1]
+                i -= 1
+                j -= 1
+            elif dp[i - 1][j] > dp[i][j - 1]:
+                result += s1[i - 1]
+                i -= 1
+            else:
+                result += s2[j - 1]
+                j -= 1
+        while i > 0:
+            result += s1[i - 1]
+            i -= 1
+        while j > 0:
+            result += s2[j - 1]
+            j -= 1
+        return result[-1:-len(result)-1:-1]
+
+
+print(Solution.print_shortest_common_supersequence("brute", "groot"))
+print(Solution.print_shortest_common_supersequence("bleed", "blue"))
+print(Solution.print_shortest_common_supersequence("coding", "ninjas"))
+print(Solution.print_shortest_common_supersequence("blinding", "lights"))
