@@ -52,3 +52,19 @@ for i in [17, 15, 8, 9, 2, 4, 6]:
 l.show()
 l.segregate()
 l.show()
+
+print()
+l = LinkedList()
+for i in [1, 3, 5, 7]:
+    l.push(i)
+l.show()
+l.segregate()
+l.show()
+
+print()
+l = LinkedList()
+for i in [2,1,4,8,6,8,93,94,0]:
+    l.push(i)
+l.show()
+l.segregate()
+l.show()
