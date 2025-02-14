@@ -81,6 +81,10 @@ def tabulation():
 class Solution:
     @staticmethod
     def print_shortest_common_supersequence(s1, s2):
+        """
+            Time complexity is O(nm + n + m) and space complexity is O(nm).
+        """
+
         n1, n2 = len(s1), len(s2)
         dp = {i: {j: 0 for j in range(n2 + 1)} for i in range(n1 + 1)}
         for i in range(1, n1 + 1):
