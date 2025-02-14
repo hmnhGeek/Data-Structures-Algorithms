@@ -1,6 +1,7 @@
 # Problem link - https://www.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1
 # Solution - https://www.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1
 
+
 class MergeSort:
     @staticmethod
     def sort(arr):

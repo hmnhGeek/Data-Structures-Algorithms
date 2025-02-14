@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1
+# Solution - https://www.geeksforgeeks.org/problems/chocolate-distribution-problem3825/1
+
+
 class Solution:
     @staticmethod
     def distribute(arr, m):
