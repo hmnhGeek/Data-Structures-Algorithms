@@ -45,9 +45,16 @@ class Solution:
 
     @staticmethod
     def sort_matrix(mtx):
+        """
+            Overall time complexity is O(nm * log(nm)) and space complexity is O(nm).
+        """
+
         n, m = len(mtx), len(mtx[0])
+        # This takes O(nm) time and O(nm) space.
         flattened = Solution._get_flattened(mtx, n, m)
+        # This takes O(nm * log(nm)) time
         QuickSort.sort(flattened)
+        # Another O(nm) time and O(nm) space
         Solution._rebuild(mtx, flattened, n, m)
         for i in range(n):
             print(mtx[i])
