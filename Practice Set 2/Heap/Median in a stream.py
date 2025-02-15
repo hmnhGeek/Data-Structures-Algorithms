@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/1
+# Solution - https://www.youtube.com/watch?v=jnj87BSi9Is
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -149,6 +153,10 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def median_finder(stream):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         # create max and min heap and a result variable to store the medians.
         min_heap, max_heap = MinHeap(), MaxHeap()
         result = []
