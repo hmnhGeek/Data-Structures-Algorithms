@@ -6,17 +6,17 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -66,6 +66,11 @@ class MinHeap:
     def __len__(self):
         return len(self.heap)
 
+    def top(self):
+        if self.is_empty():
+            return None
+        return self.heap[0]
+
 
 class MaxHeap:
     def __init__(self):
@@ -75,17 +80,17 @@ class MaxHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_max_child_index(self, lci, rci):
@@ -135,3 +140,40 @@ class MaxHeap:
     def __len__(self):
         return len(self.heap)
 
+    def top(self):
+        if self.is_empty():
+            return None
+        return self.heap[0]
+
+
+class Solution:
+    @staticmethod
+    def median_finder(stream):
+        min_heap, max_heap = MinHeap(), MaxHeap()
+        result = []
+        for i in range(len(stream)):
+            elem = stream[i]
+            if max_heap.is_empty():
+                max_heap.insert(elem)
+            elif max_heap.top() <= elem:
+                min_heap.insert(elem)
+            else:
+                max_heap.insert(elem)
+            if len(max_heap) - len(min_heap) == 0:
+                pass
+            elif len(max_heap) - len(min_heap) == 1:
+                pass
+            elif len(max_heap) - len(min_heap) > 1:
+                min_heap.insert(max_heap.pop())
+            else:
+                max_heap.insert(min_heap.pop())
+            if (len(max_heap) + len(min_heap)) % 2 == 0:
+                result.append((max_heap.top() + min_heap.top()) / 2)
+            else:
+                result.append(max_heap.top())
+        return result
+
+
+print(Solution.median_finder([5, 15, 1, 3, 7]))
+print(Solution.median_finder([5, 10, 15]))
+print(Solution.median_finder([2, 1, 7, 8, 5, 8, 4]))
