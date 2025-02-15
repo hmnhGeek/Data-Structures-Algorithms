@@ -149,26 +149,46 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def median_finder(stream):
+        # create max and min heap and a result variable to store the medians.
         min_heap, max_heap = MinHeap(), MaxHeap()
         result = []
+
+        # loop in the stream in n iterations.
         for i in range(len(stream)):
             elem = stream[i]
+
+            # if max heap (left heap) is empty, simply push into max heap
             if max_heap.is_empty():
                 max_heap.insert(elem)
+
+            # else if max heap top <= elem, we can push to the min heap (right heap)
             elif max_heap.top() <= elem:
                 min_heap.insert(elem)
+
+            # else, we must push to left heap.
             else:
                 max_heap.insert(elem)
+
+            # now if the heaps have same size or the left heap is just 1 unit larger than right, do nothing, everything
+            # is fine.
             if len(max_heap) - len(min_heap) == 0:
                 pass
             elif len(max_heap) - len(min_heap) == 1:
                 pass
+
+            # however, if left heap has excess of 1 size difference than right heap, push the top of left to right heap.
             elif len(max_heap) - len(min_heap) > 1:
                 min_heap.insert(max_heap.pop())
+
+            # or if left heap < right heap, move one element from right to left.
             else:
                 max_heap.insert(min_heap.pop())
+
+            # now, finally, if there are even no. of elements, take avg for median.
             if (len(max_heap) + len(min_heap)) % 2 == 0:
                 result.append((max_heap.top() + min_heap.top()) / 2)
+
+            # else, max heap (left heap)'s top will always be the median.
             else:
                 result.append(max_heap.top())
         return result
