@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/nth-node-from-end-of-linked-list/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +38,10 @@ class LinkedList:
         return result
 
     def get(self, index):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         if index not in range(self.length):
             raise IndexError("List index out of bounds.")
         counter = 0
@@ -45,6 +52,10 @@ class LinkedList:
         return curr
 
     def kth_from_end(self, k):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         n = self.length
         from_front_idx = n - k
         return self.get(from_front_idx)
