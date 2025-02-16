@@ -37,3 +37,21 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Utility:
+    @staticmethod
+    def is_complete_tree(root: TreeNode):
+        queue = Queue()
+        queue.push(root)
+        found_null = False
+        while not queue.is_empty():
+            node = queue.pop()
+            if node is None:
+                found_null = True
+            else:
+                if found_null:
+                    return False
+                queue.push(node.left)
+                queue.push(node.right)
+        return True
+
