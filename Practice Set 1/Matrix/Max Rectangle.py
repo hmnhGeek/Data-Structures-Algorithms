@@ -65,3 +65,54 @@ print(Histogram.find_max_area_in_histogram([60, 20, 50, 40, 10, 50, 60]))
 print(Histogram.find_max_area_in_histogram([2, 1, 5, 6, 2, 3]))
 print(Histogram.find_max_area_in_histogram([2, 4]))
 print()
+
+
+class Solution:
+    @staticmethod
+    def max_rectangle_in_matrix(mtx):
+        n, m = len(mtx), len(mtx[0])
+        prev = [0] * m
+        max_area = 0
+        for i in range(n):
+            histogram = [mtx[i][j] + prev[j] if mtx[i][j] != 0 else 0 for j in range(m)]
+            area = Histogram.find_max_area_in_histogram(histogram)
+            prev = histogram
+            max_area = max(max_area, area)
+        return max_area
+
+
+print("Max Rectangle Area Calculation in a Matrix")
+print(
+    Solution.max_rectangle_in_matrix(
+        [
+            [0, 1, 1, 0],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 0, 0]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle_in_matrix(
+        [
+            [1, 0, 1, 0, 0],
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 1, 0]
+        ]
+    )
+)
+
+print(Solution.max_rectangle_in_matrix([[0]]))
+print(Solution.max_rectangle_in_matrix([[1]]))
+
+print(
+    Solution.max_rectangle_in_matrix(
+        [
+            [0, 1, 1],
+            [1, 1, 1],
+            [0, 1, 1]
+        ]
+    )
+)
