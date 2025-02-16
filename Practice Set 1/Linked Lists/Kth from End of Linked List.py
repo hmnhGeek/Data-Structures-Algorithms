@@ -34,3 +34,26 @@ class LinkedList:
         result += f"{self.tail.data}]"
         return result
 
+    def get(self, index):
+        if index not in range(self.length):
+            raise IndexError("List index out of bounds.")
+        counter = 0
+        curr = self.head
+        while counter != index:
+            curr = curr.next
+            counter += 1
+        return curr
+
+    def kth_from_end(self, k):
+        n = self.length
+        from_front_idx = n - k
+        return self.get(from_front_idx)
+
+
+l1 = LinkedList()
+l1.build(1, 2, 3, 4, 5, 6, 7, 8, 9)
+print(l1, l1.kth_from_end(2).data)
+
+l2 = LinkedList()
+l2.build(10, 5, 100, 5)
+print(l2, l2.kth_from_end(3).data)
