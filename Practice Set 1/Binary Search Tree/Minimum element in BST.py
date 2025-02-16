@@ -138,3 +138,28 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def get_min(bst: BinarySearchTree) -> int:
+        return bst.get_leftmost_leaf(bst.root).data
+
+
+t1 = BinarySearchTree()
+for i in [5, 4, 6, 3, 7, 1]:
+    t1.insert(i)
+t1.show()
+print(Solution.get_min(t1))
+print()
+t2 = BinarySearchTree()
+for i in [10, 5, 20, 2]:
+    t2.insert(i)
+t2.show()
+print(Solution.get_min(t2))
+print()
+t3 = BinarySearchTree()
+for i in [10, 10, 11]:
+    t3.insert(i)
+t3.show()
+print(Solution.get_min(t3))
+print()
