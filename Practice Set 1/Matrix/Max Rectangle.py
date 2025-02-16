@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -40,6 +43,9 @@ class Stack:
 class Histogram:
     @staticmethod
     def find_max_area_in_histogram(histogram):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         stack = Stack()
         max_area = 0
         for i in range(len(histogram)):
@@ -70,6 +76,10 @@ print()
 class Solution:
     @staticmethod
     def max_rectangle_in_matrix(mtx):
+        """
+            Time complexity is O(n * m) and space complexity is O(m).
+        """
+
         n, m = len(mtx), len(mtx[0])
         prev = [0] * m
         max_area = 0
