@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time/
+# Solution - https://www.youtube.com/watch?v=LL0tVxlAeV4&t=14s
+
+
 class Job:
     def __init__(self, s, e, p):
         self.start_time = s
