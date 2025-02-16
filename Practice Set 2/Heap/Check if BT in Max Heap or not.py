@@ -1,3 +1,8 @@
+# Problem link - https://www.geeksforgeeks.org/problems/is-binary-tree-heap/1
+# Solution (Complete Binary Tree check) - https://www.youtube.com/watch?v=08e5EBHoXxE
+# Solution - https://www.youtube.com/watch?v=c8J-NkNgMeo
+
+
 class TreeNode:
     def __init__(self, data):
         self.data = data
