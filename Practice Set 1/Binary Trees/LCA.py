@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-binary-tree/1
+# Solution - https://www.youtube.com/watch?v=_-QHfMDde90
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +11,10 @@ class Node:
 class Solution:
     @staticmethod
     def get_lca(root: Node, x, y):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
+
         # if a null node is reached, return null.
         if root is None:
             return
