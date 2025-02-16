@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/smallest-subarray-with-sum-greater-than-x5651/1
+
+
 class Solution:
     @staticmethod
     def find_smallest_subarray_with_sum_gt_k(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         # define window variables
         left = right = 0
         n = len(arr)
