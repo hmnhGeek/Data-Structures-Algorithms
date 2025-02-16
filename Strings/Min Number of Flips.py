@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/problems/min-number-of-flips3210/1
+# Solution - https://www.youtube.com/watch?v=F0E7k6X_kt8
+
+
 class Solution:
     @staticmethod
     def get_min_flips(string):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         n = len(string)
         c1, c2 = 0, 0
         for i in range(n):
