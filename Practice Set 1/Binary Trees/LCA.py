@@ -7,20 +7,34 @@ class Node:
 class Solution:
     @staticmethod
     def get_lca(root: Node, x, y):
+        # if a null node is reached, return null.
         if root is None:
             return
+
+        # if root's data is either x or y, check no further, just return x or y.
         if root.data == x:
             return x
         if root.data == y:
             return y
+
+        # recursively call this method for left and right subtrees.
         left = Solution.get_lca(root.left, x, y)
         right = Solution.get_lca(root.right, x, y)
+
+        # if both subtrees return None, the two nodes were not found in the subtrees, thus return None.
         if left is None and right is None:
             return
+
+        # if left subtree did not have the nodes, return None.
         if left is None:
             return right
+
+        # if right subtree did not have the nodes, return None.
         if right is None:
             return left
+
+        # since both of them returned non-None, both the nodes have been found and therefore, this root node is their
+        # LCA; return it.
         return root.data
 
 
