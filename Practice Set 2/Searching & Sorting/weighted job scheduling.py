@@ -8,12 +8,18 @@ class Job:
 class RecursiveSolution:
     @staticmethod
     def schedule(start_times, end_times, profits):
+        """
+            Time complexity is exponential and space complexity is O(n).
+        """
         jobs = [Job(start_times[i], end_times[i], profits[i]) for i in range(len(start_times))]
         jobs.sort(key=lambda x: x.start_time)
         return RecursiveSolution._get_max_profit(jobs, 0, len(jobs))
 
     @staticmethod
     def _get_max_profit(jobs, i, n):
+        """
+            Time complexity is exponential and space complexity is O(n).
+        """
         if i >= n:
             return 0
         left = jobs[i].profit + RecursiveSolution._get_max_profit(jobs, RecursiveSolution._get_next_job(jobs, i, n), n)
@@ -22,6 +28,9 @@ class RecursiveSolution:
 
     @staticmethod
     def _get_next_job(jobs, i, n):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         low, high = i + 1, n - 1
         while low <= high:
             mid = int(low + (high - low)/2)
