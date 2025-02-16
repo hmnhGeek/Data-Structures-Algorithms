@@ -41,16 +41,32 @@ class Queue:
 class Utility:
     @staticmethod
     def is_complete_tree(root: TreeNode):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
+        # push the root node into the queue.
         queue = Queue()
         queue.push(root)
+
+        # store if a null node has been found or not yet.
         found_null = False
+
+        # typical BFS.
         while not queue.is_empty():
+            # pop the current node from the queue.
             node = queue.pop()
+
+            # if the node is null, set null found to be true.
             if node is None:
                 found_null = True
             else:
+                # if the popped node is not null, but a null node has been found previously, then the tree is not a
+                # complete binary tree.
                 if found_null:
                     return False
+
+                # else push left and right children, even if they are null.
                 queue.push(node.left)
                 queue.push(node.right)
         return True
@@ -59,18 +75,29 @@ class Utility:
 class Solution:
     @staticmethod
     def _check_max_heap_property(root: TreeNode) -> bool:
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
+
+        # null node should return True.
         if root is None:
             return True
 
+        # check if root node is greater or equal to it children nodes.
         if root.left and root.data < root.left.data:
             return False
         if root.right and root.data < root.right.data:
             return False
 
+        # recursively check for left and right subtrees.
         return Solution._check_max_heap_property(root.left) and Solution._check_max_heap_property(root.right)
 
     @staticmethod
     def validate_if_max_heap(root: TreeNode) -> bool:
+        """
+            Overall time complexity is O(n) and space complexity is O(n + h).
+        """
+
         complete = Utility.is_complete_tree(root)
         if not complete:
             return False
