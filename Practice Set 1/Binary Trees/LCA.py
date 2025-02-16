@@ -39,3 +39,16 @@ print(Solution.get_lca(one, 7, 8))
 print(Solution.get_lca(one, 4, 8))
 print(Solution.get_lca(one, None, 2))
 print(Solution.get_lca(one, 6, 3))
+
+# Example 2
+z, o, t, th, f, fi, s, sv, e = [Node(i) for i in range(9)]
+th.left = fi
+th.right = o
+fi.left = s
+fi.right = t
+o.left = z
+o.right = e
+t.left = sv
+t.right = f
+print(Solution.get_lca(th, 5, 1))
+print(Solution.get_lca(th, 5, 4))
