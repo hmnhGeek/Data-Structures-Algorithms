@@ -1,6 +1,11 @@
+# Problem link - https://www.geeksforgeeks.org/problems/circular-tour-1587115620/1
+# Solution - https://www.youtube.com/watch?v=_gJ3to4RyeQ&t=5632s
+
+
 class Solution:
     @staticmethod
     def circular_tour(gas, cost):
+        # Time complexity is O(N) and space is O(1).
         n = len(gas)
         deficit = balance = start = 0
         for i in range(n):
