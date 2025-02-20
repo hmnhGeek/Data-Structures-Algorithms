@@ -1,3 +1,7 @@
+# Problem link - https://www.spoj.com/problems/DEFKIN/
+# Solution - https://www.youtube.com/watch?v=fk1yIirivEo
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
