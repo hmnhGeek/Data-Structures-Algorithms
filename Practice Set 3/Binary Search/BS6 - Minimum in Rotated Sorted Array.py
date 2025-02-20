@@ -1,6 +1,14 @@
+# Problem link - https://www.naukri.com/code360/problems/rotated-array_1093219
+# Solution - https://www.youtube.com/watch?v=nhEMDKMB44g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=7
+
+
 class Solution:
     @staticmethod
     def get_min(arr):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
+
         # define the search space.
         low, high = 0, len(arr) - 1
 
