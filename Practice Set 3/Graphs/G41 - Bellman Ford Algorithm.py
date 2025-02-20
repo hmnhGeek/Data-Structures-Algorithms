@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1
+# Solution - https://www.youtube.com/watch?v=0vVofAhAYjc&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=41
+
+
 class Solution:
     @staticmethod
     def _get_edges(graph):
@@ -10,12 +14,19 @@ class Solution:
 
     @staticmethod
     def get_shortest_distances(graph, source):
+        """
+            Time complexity is O(VE) and space complexity is O(V + E).
+        """
+
         if source not in graph:
             return
         distances = {i: 1e6 for i in graph}
         distances[source] = 0
+        # This will take O(V + E) time and O(E) space.
         edges = Solution._get_edges(graph)
         n = len(graph)
+
+        # This will take O(V * E) time.
         for i in range(n - 1):
             for edge in edges:
                 src, dst, wt = edge
