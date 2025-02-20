@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/edit-distance_630420?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=fJaKO8FbDdo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=34
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n1 + n2).
@@ -105,6 +109,7 @@ def space_optimized():
         prev = {j: 1e6 for j in range(n2 + 1)}
         for j in prev:
             prev[j] = j
+        prev[0] = 0
         for i in range(1, n1 + 1):
             curr = {j: 1e6 for j in range(n2 + 1)}
             curr[0] = i
