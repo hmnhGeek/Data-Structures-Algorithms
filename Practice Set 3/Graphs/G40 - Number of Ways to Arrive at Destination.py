@@ -31,3 +31,63 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_num_ways(graph, source, destination):
+        if source not in graph or destination not in graph:
+            return -1
+        distances = {i: 1e6 for i in graph}
+        distances[source] = 0
+        parents = {i: [] for i in graph}
+        parents[source] = [source, ]
+        queue = Queue()
+        queue.push((source, 0))
+
+        while not queue.is_empty():
+            node, distance = queue.pop()
+            for adj in graph[node]:
+                adj_node, wt = adj
+                if distance + wt < distances[adj_node]:
+                    distances[adj_node] = distance + wt
+                    parents[adj_node] = [node, ]
+                    queue.push((adj_node, distance + wt))
+                elif distance + wt == distances[adj_node]:
+                    if node not in parents[adj_node]:
+                        parents[adj_node].append(node)
+                    queue.push((adj_node, distance + wt))
+
+        return parents
+
+
+print(
+    Solution.get_num_ways(
+        {
+            0: [[1, 2], [4, 5], [6, 7]],
+            1: [[0, 2], [2, 3], [3, 3]],
+            2: [[1, 3], [5, 1]],
+            3: [[1, 3], [6, 3], [5, 1]],
+            4: [[0, 5], [6, 2]],
+            5: [[2, 1], [3, 1], [6, 1]],
+            6: [[0, 7], [3, 3], [4, 2], [5, 1]]
+        },
+        0,
+        6
+    )
+)
+
+print(
+    Solution.get_num_ways(
+        {
+            0: [[1, 1], [2, 2], [5, 8]],
+            1: [[0, 1], [2, 3], [3, 3]],
+            2: [[1, 3], [0, 2], [5, 6]],
+            3: [[1, 3], [4, 2]],
+            4: [[3, 2], [5, 2]],
+            5: [[2, 6], [4, 2], [0, 8]]
+        },
+        0,
+        5
+    )
+)
+
