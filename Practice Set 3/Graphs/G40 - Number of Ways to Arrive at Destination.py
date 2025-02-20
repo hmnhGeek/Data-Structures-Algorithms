@@ -57,7 +57,21 @@ class Solution:
                         parents[adj_node].append(node)
                     queue.push((adj_node, distance + wt))
 
-        return parents
+        result = set()
+        Solution._populate_paths(parents, destination, [destination, ], result)
+        return result
+
+    @staticmethod
+    def _populate_paths(parents, destination, path, result):
+        prev = parents[destination]
+        if len(prev) == 1 and prev[0] == destination:
+            return
+        for p in prev:
+            path.append(p)
+            Solution._populate_paths(parents, p, path, result)
+            if tuple(path) not in result:
+                result.add(tuple(path[-1:-len(path)-1:-1]))
+            path = [destination, ]
 
 
 print(
