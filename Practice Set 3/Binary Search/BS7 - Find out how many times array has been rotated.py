@@ -1,6 +1,14 @@
+# Problem link - https://www.naukri.com/code360/problems/rotation_7449070
+# Solution - https://www.youtube.com/watch?v=jtSiWTPLwd0&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=8
+
+
 class Solution:
     @staticmethod
     def get_rotation_index(arr):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
+
         # define a search space.
         low, high = 0, len(arr) - 1
 
