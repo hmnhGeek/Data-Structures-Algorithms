@@ -12,10 +12,18 @@ class Solution:
 
     @staticmethod
     def floyd_warshall(graph):
+        """
+            Overall time complexity is O(V^3) and space complexity is O(V^2).
+        """
+
         n = len(graph)
+
+        # Time complexity is O(V + E) and space complexity is O(V^2).
         distances = Solution.get_adjacency_mtx(graph)
         for i in range(n):
             distances[i][i] = 0
+
+        # Time complexity is O(V^3)
         for k in range(n):
             for i in range(n):
                 for j in range(n):
