@@ -1,11 +1,19 @@
 class Solution:
     @staticmethod
     def best_time(arr):
-        profit = 0
+        # store the first day's price as min cost price for now.
         min_amt = arr[0]
+
+        # assume the profit to be 0.
+        profit = 0
+
+        # loop from the second index till n - 1 index
         for i in range(1, len(arr)):
+            # update the max profit
             profit = max(profit, arr[i] - min_amt)
+            # also update the min cost price, to ensure that we always buy at min price.
             min_amt = min(min_amt, arr[i])
+        # return the max profit.
         return profit
     
 
