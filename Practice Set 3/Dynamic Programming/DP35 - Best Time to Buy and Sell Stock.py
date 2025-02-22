@@ -1,6 +1,14 @@
+# Problem link - https://www.naukri.com/code360/problems/stocks-are-profitable_893405?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=excAOvwF_Wk&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=36
+
+
 class Solution:
     @staticmethod
     def best_time(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         # store the first day's price as min cost price for now.
         min_amt = arr[0]
 
