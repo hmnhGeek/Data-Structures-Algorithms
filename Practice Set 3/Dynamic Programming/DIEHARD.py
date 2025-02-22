@@ -1,3 +1,7 @@
+# Problem link - https://www.spoj.com/problems/DIEHARD/
+# Solution - https://www.youtube.com/watch?v=KrXzcYTDn2s
+
+
 def get_next(i):
     d = {
         1: [3, 2],
