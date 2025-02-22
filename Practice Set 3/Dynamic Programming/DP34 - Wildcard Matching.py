@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/wildcard-matching/description/
+# Solution - https://www.youtube.com/watch?v=ZmlQ3vgAOMo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=35
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(m + n).
