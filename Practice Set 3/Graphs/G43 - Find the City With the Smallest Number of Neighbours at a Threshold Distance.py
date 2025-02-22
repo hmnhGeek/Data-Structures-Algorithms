@@ -12,14 +12,25 @@ class Solution:
 
     @staticmethod
     def find_city(edges, threshold, n):
+        """
+            Time complexity is O(V^3) and space complexity is O(V^2).
+        """
+
+        # in O(V + E) time and O(V^2) space, get the adjacency matrix.
         adj_mtx = Solution._get_adj_mtx(edges, n)
+
+        # apply Floyd Warshall in O(V^3) time.
         for k in range(n):
             for u in range(n):
                 for v in range(n):
                     adj_mtx[u][v] = min(adj_mtx[u][v], adj_mtx[u][k] + adj_mtx[k][v])
+
+        # detect negative weight
         for i in range(n):
             if adj_mtx[i][i] < 0:
                 return -1
+
+        # find the city in O(V^2) time.
         num_cities, city = n, -1
         for i in range(n):
             count = 0
