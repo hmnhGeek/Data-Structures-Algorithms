@@ -67,15 +67,29 @@ class MinHeap:
 class Solution:
     @staticmethod
     def min_cost(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
+        # create a min heap and push all the elements from the array into it in O(n * log(n)) time and O(n) space.
         pq = MinHeap()
         for i in arr:
             pq.insert(i)
+
+        # initialize a cost variable to store the total cost of connecting the ropes.
         cost = 0
+
+        # while there are more than 1 ropes in the heap to connect. This shall run of `n` times.
         while not pq.is_empty() and len(pq.heap) > 1:
+            # get the two shortest ropes and add their cost.
             a, b = pq.pop(), pq.pop()
             cost += a + b
+
+            # if the heap still has some ropes left, push back the connected rope into it in log(n) time.
             if not pq.is_empty():
                 pq.insert(a + b)
+
+        # return the final minimum cost of connecting all the ropes.
         return cost
 
 
