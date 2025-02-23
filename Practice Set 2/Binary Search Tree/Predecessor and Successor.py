@@ -1,3 +1,11 @@
+# Problem link - https://www.geeksforgeeks.org/problems/predecessor-and-successor/1
+
+
+"""
+    Time complexity is O(log(n)) and space complexity is O(log(n)).
+"""
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -139,3 +147,18 @@ class BinarySearchTree:
         print()
 
 
+# Example 1
+l = [8, 1, 9, 4, 10, 3]
+t = BinarySearchTree()
+for i in l:
+    t.insert(i)
+print(t.get_predecessor(t.root).data, t.get_successor(t.root).data)
+
+# Example 2
+l = [10, 2, 11, 1, 5, 3, 6, 4]
+t = BinarySearchTree()
+for i in l:
+    t.insert(i)
+print(t.get_predecessor(t.root.right).data)
+succ = t.get_successor(t.root.right)
+print(succ.data if succ else None)
