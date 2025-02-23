@@ -63,3 +63,22 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def min_cost(arr):
+        pq = MinHeap()
+        for i in arr:
+            pq.insert(i)
+        cost = 0
+        while not pq.is_empty() and len(pq.heap) > 1:
+            a, b = pq.pop(), pq.pop()
+            cost += a + b
+            if not pq.is_empty():
+                pq.insert(a + b)
+        return cost
+
+
+print(Solution.min_cost([4, 3, 2, 6]))
+print(Solution.min_cost([4, 2, 7, 6, 9]))
+print(Solution.min_cost([10]))
