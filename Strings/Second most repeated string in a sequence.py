@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/second-most-repeated-string-in-a-sequence0534/1
+
+
 from collections import Counter
 
 
