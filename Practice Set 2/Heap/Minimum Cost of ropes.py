@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
