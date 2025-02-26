@@ -21,6 +21,7 @@ class Solution:
             elif arr[mid] > b:
                 arr[mid], arr[high] = arr[high], arr[mid]
                 high -= 1
+
             else:
                 # else if element is between [a, b], only increment mid and do nothing.
                 mid += 1
@@ -31,3 +32,7 @@ class Solution:
 
 Solution.three_way_partitioning([1, 2, 3, 3, 4], 1, 2)
 Solution.three_way_partitioning([1, 4, 3, 6, 2, 1], 1, 3)
+Solution.three_way_partitioning([6, 3, 2, 1, 5], 3, 4)
+Solution.three_way_partitioning([1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32], 14, 20)
+Solution.three_way_partitioning([1, 14, 5, 20, 4, 2, 54, 20, 87, 98, 3, 1, 32], 20, 20)
+Solution.three_way_partitioning([3, 5, 2, 7, 6, 4, 2, 8, 8, 9, 0], 4, 7)
