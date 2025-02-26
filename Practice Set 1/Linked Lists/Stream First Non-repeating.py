@@ -1,10 +1,10 @@
 class Node:
     def __init__(self, data):
         self.data = data
-        self.prev = self.next = None
+        self.next = None
 
 
-class Deque:
+class Queue:
     def __init__(self):
         self.head = self.tail = None
         self.length = 0
@@ -18,7 +18,6 @@ class Deque:
             self.head = self.tail = node
         else:
             self.tail.next = node
-            node.prev = self.tail
             self.tail = node
         self.length += 1
 
@@ -41,17 +40,20 @@ class Deque:
 class Solution:
     @staticmethod
     def first_non_repeating(string):
+        # create a frequency map of string in O(n) space.
         freq = {i: 0 for i in string}
-        deque = Deque()
+
+        # create a Deque
+        queue = Queue()
         n = len(string)
         result = ""
         for i in range(n):
             freq[string[i]] += 1
             if freq[string[i]] == 1:
-                deque.push(string[i])
-            while deque.front() in freq and freq[deque.front()] > 1:
-                deque.pop()
-            result += deque.front()
+                queue.push(string[i])
+            while queue.front() in freq and freq[queue.front()] > 1:
+                queue.pop()
+            result += queue.front()
         return result
 
 
