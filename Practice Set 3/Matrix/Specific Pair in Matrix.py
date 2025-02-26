@@ -1,6 +1,6 @@
 class Solution:
     @staticmethod
-    def specific_pair(mtx):
+    def find_specific_pair(mtx):
         n, m = len(mtx), len(mtx[0])
         max_mtx = [[None for _ in range(m)] for _ in range(n)]
         max_mtx[n - 1][m - 1] = mtx[n - 1][m - 1]
@@ -22,12 +22,43 @@ class Solution:
         print(max_diff)
 
 
-Solution.specific_pair(
+Solution.find_specific_pair(
     [
         [1, 2, -1, -4, -20],
         [-8, -3, 4, 2, 1],
         [3, 8, 6, 1, 3],
         [-4, -1, 1, 7, -6],
         [0, -4, 10, -5, 1]
+    ]
+)
+
+Solution.find_specific_pair(
+    [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+)
+
+Solution.find_specific_pair(
+    [
+        [-1, -2, -3],
+        [-4, -5, -6],
+        [-7, -8, -9]
+    ]
+)
+
+Solution.find_specific_pair(
+    [
+        [1, 5],
+        [4, 2]
+    ]
+)
+
+Solution.find_specific_pair(
+    [
+        [-1, 5, -3],
+        [-14, -5, -2],
+        [-7, 8, -9]
     ]
 )
