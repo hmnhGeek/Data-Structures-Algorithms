@@ -40,19 +40,33 @@ class Queue:
 class Solution:
     @staticmethod
     def first_non_repeating(string):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         # create a frequency map of string in O(n) space.
         freq = {i: 0 for i in string}
 
-        # create a Deque
+        # create a queue class
         queue = Queue()
         n = len(string)
+
+        # store the result in `result`.
         result = ""
+
+        # loop on the string in O(n) time.
         for i in range(n):
             freq[string[i]] += 1
+
+            # if the frequency of the current character is 1, push it to queue.
             if freq[string[i]] == 1:
                 queue.push(string[i])
-            while queue.front() in freq and freq[queue.front()] > 1:
+
+            # while queue is not empty and frequency of the front character > 1, pop from the queue continuously.
+            while not queue.is_empty() and freq[queue.front()] > 1:
                 queue.pop()
+
+            # add the front value from the queue into the result.
             result += queue.front()
         return result
 
