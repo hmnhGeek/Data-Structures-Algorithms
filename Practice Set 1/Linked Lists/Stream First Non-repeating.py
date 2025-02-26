@@ -32,4 +32,33 @@ class Deque:
         self.length -= 1
         return item
 
+    def front(self):
+        if self.is_empty():
+            return "#"
+        return self.head.data
 
+
+class Solution:
+    @staticmethod
+    def first_non_repeating(string):
+        freq = {i: 0 for i in string}
+        deque = Deque()
+        n = len(string)
+        result = ""
+        for i in range(n):
+            freq[string[i]] += 1
+            if freq[string[i]] == 1:
+                deque.push(string[i])
+            while deque.front() in freq and freq[deque.front()] > 1:
+                deque.pop()
+            result += deque.front()
+        return result
+
+
+print(Solution.first_non_repeating("abcbbac"))
+print(Solution.first_non_repeating("zz"))
+print(Solution.first_non_repeating("aabc"))
+print(Solution.first_non_repeating("geeksforgeeksandgeeksquizfor"))
+print(Solution.first_non_repeating("aabcbc"))
+print(Solution.first_non_repeating("abadbc"))
+print(Solution.first_non_repeating("abcabc"))
