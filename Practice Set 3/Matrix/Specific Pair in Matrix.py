@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/find-a-specific-pair-in-matrix/
+# Solution - https://www.youtube.com/watch?v=aUhR_T5J9is&t=1771s
+
+
 class Solution:
     @staticmethod
     def find_specific_pair(mtx):
