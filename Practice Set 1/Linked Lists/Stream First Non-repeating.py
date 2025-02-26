@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream1216/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
