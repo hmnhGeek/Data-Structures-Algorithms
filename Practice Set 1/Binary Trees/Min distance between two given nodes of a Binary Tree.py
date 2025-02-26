@@ -34,11 +34,20 @@ class Solution:
         
     @staticmethod
     def get_min_distance(root: Node, node1, node2):
+        """
+            Overall time complexity is O(n) and overall space complexity is O(n).
+        """
+
+        # Get LCA in O(n) time and O(n) space.
         lca = Solution._lca(root, node1, node2)
+
+        # get the distance of node1 and node2 from LCA in O(n) time and O(n) space.
         d1 = [1e6]
         d2 = [1e6]
         Solution._get_distance(lca, node1, 0, d1)
         Solution._get_distance(lca, node2, 0, d2)
+
+        # return the minimum distance.
         return d1[0] + d2[0]
     
 
