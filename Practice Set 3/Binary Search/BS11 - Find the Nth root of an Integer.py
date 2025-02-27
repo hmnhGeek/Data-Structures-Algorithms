@@ -12,16 +12,34 @@ class Solution:
 
     @staticmethod
     def nth_root_of_x(x, n):
+        """
+            Time complexity is O(n * log(x)) and space complexity is O(1).
+        """
+
+        # if either of x or n are negative, then the answer is not possible, return -1.
         if x < 0 or n < 0:
             return -1
+
+        # define a search space.
         low, high = 0, x
+
+        # typical binary search
         while low <= high:
+            # get mid-value
             mid = int(low + (high - low)/2)
+
+            # get the flag value in O(n) time.
             flag = Solution._get_flag(x, mid, n)
+
+            # if flag is 2, this means the mid^n > x.
             if flag == 2:
                 high = mid - 1
+
+            # if flag == 1, then mid^n = x, return mid.
             elif flag == 1:
                 return mid
+
+            # else, increment low.
             else:
                 low = mid + 1
         return -1
