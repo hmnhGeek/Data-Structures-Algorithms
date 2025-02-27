@@ -1,6 +1,14 @@
+# Problem link - https://leetcode.com/problems/count-number-of-nice-subarrays/
+# Solution - https://www.youtube.com/watch?v=j_QOv9OT9Og&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=10
+
+
 class Solution:
     @staticmethod
     def _get_count_less_than_equal_to(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         if k < 0:
             return 0
         left = right = 0
@@ -19,6 +27,9 @@ class Solution:
 
     @staticmethod
     def get_nice_subarray_count(arr, k):
+        """
+            Overall time complexity is O(2n) and space complexity is O(1).
+        """
         return Solution._get_count_less_than_equal_to(arr, k) - Solution._get_count_less_than_equal_to(arr, k - 1)
 
 
