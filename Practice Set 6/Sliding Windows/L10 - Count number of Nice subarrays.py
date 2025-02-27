@@ -9,20 +9,36 @@ class Solution:
             Time complexity is O(n) and space complexity is O(1).
         """
 
+        # edge case
         if k < 0:
             return 0
+
+        # define window variables
         left = right = 0
         n = len(arr)
+
+        # store the count of odd numbers and the count of subarray where odd-count <= k.
         count_odds = 0
         count = 0
+
+        # while there is ground to cover...
         while right < n:
+            # increment the count of odd numbers accordingly.
             count_odds += arr[right] % 2
+
+            # while the count of odd numbers > k, shrink continuously from left.
             while count_odds > k:
                 count_odds -= arr[left] % 2
                 left += 1
+
+            # if the count of odd numbers <= k, increment the count of subarray.
             if count_odds <= k:
                 count += (right - left + 1)
+
+            # increment right index.
             right += 1
+
+        # return the count.
         return count
 
     @staticmethod
