@@ -6,7 +6,7 @@ class Solution:
     @staticmethod
     def gergovia(arr):
         """
-            Time complexity is O(n) and space complexity is O(n).
+            Time complexity is O(n) and space complexity is O(n) for buyers and sellers.
         """
 
         # separate out buy and sell stores with their indices in O(n) time and O(n) space.
