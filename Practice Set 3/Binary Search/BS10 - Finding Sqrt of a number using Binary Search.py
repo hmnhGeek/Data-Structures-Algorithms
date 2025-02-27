@@ -14,3 +14,7 @@ class Solution:
 
 
 print(Solution.sqrt(35))
+print(Solution.sqrt(100))
+print(Solution.sqrt(20))
+print(Solution.sqrt(0))
+print(Solution.sqrt(625))
