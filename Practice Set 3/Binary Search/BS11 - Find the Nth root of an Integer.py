@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/nth-root-of-m_1062679
+# Solution - https://www.youtube.com/watch?v=rjEJeYCasHs&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=12
+
+
 class Solution:
     @staticmethod
     def _get_flag(x, mid, n):
