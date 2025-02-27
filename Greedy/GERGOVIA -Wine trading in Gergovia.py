@@ -1,6 +1,14 @@
+# Problem link - https://www.spoj.com/problems/GERGOVIA/
+# Solution - https://www.youtube.com/watch?v=PJdOUDWYstY
+
+
 class Solution:
     @staticmethod
     def gergovia(arr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         buy, sell = [], []
         for i in range(len(arr)):
             if arr[i] >= 0:
