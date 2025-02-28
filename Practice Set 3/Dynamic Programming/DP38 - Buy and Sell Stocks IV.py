@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/maximum-profit-by-buying-and-selling-a-share-at-most-k-times/
+# Solution - https://www.youtube.com/watch?v=IV1dHbk5CDc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=40
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
