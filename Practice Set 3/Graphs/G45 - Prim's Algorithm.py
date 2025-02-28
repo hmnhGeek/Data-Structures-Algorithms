@@ -69,23 +69,42 @@ class Solution:
     def get_mst(graph, source):
         if source not in graph:
             return
+
+        # define a min heap and push source node with distance 0 and parent -1.
         pq = MinHeap()
-        visited = {i: False for i in graph}
         pq.insert((0, source, -1))
+
+        # define a visited dictionary.
+        visited = {i: False for i in graph}
+
+        # create MST variables
         mst = []
         mst_wt = 0
+
+        # typical Prim's logic
         while not pq.is_empty():
+            # pop the least distance node
             wt, node, parent = pq.pop()
+
+            # if the node is already visited, nothing needs to be done for it.
             if visited[node]:
                 continue
+
+            # visit the node.
             visited[node] = True
+
+            # if it is the source node, do nothing, else, add the wt to mst and the edge to mst.
             if parent != -1:
                 mst_wt += wt
                 mst.append((parent, node))
+
+            # push the non visited adjacent nodes into the priority queue.
             for adj in graph[node]:
                 adj_node, edge_wt = adj
                 if not visited[adj_node]:
                     pq.insert((edge_wt, adj_node, node))
+
+        # return the MST
         return mst, mst_wt
 
 
