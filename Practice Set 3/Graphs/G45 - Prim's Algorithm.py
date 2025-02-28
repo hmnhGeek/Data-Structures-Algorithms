@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+# Solution - https://www.youtube.com/watch?v=mJcZjjKzeqk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=45
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,6 +71,10 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_mst(graph, source):
+        """
+            Time complexity is O(E log(E)) and space complexity is O(V + E).
+        """
+
         if source not in graph:
             return
 
