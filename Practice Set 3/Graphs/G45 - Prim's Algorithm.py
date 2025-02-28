@@ -3,7 +3,7 @@ class MinHeap:
         self.heap = []
 
     def is_empty(self):
-        return len(self.heap)
+        return len(self.heap) == 0
 
     def get_lci(self, pi):
         lci = 2*pi + 1
@@ -62,3 +62,65 @@ class MinHeap:
         del self.heap[-1]
         self.min_heapify_down(0)
         return item
+
+
+class Solution:
+    @staticmethod
+    def get_mst(graph, source):
+        if source not in graph:
+            return
+        pq = MinHeap()
+        visited = {i: False for i in graph}
+        pq.insert((0, source, -1))
+        mst = []
+        mst_wt = 0
+        while not pq.is_empty():
+            wt, node, parent = pq.pop()
+            if visited[node]:
+                continue
+            visited[node] = True
+            if parent != -1:
+                mst_wt += wt
+                mst.append((parent, node))
+            for adj in graph[node]:
+                adj_node, edge_wt = adj
+                if not visited[adj_node]:
+                    pq.insert((edge_wt, adj_node, node))
+        return mst, mst_wt
+
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 2], [2, 1]],
+            1: [[0, 2], [2, 1]],
+            2: [[0, 1], [1, 1], [4, 2], [3, 2]],
+            3: [[2, 2], [4, 1]],
+            4: [[2, 2], [3, 1]]
+        },
+        0
+    )
+)
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 5], [2, 1]],
+            1: [[0, 5], [2, 3]],
+            2: [[0, 1], [1, 3]]
+        },
+        0
+    )
+)
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 1], [2, 3], [3, 4]],
+            1: [[0, 1], [2, 2]],
+            2: [[1, 2], [0, 3], [3, 5]],
+            3: [[0, 4], [2, 5]]
+        },
+        0
+    )
+)
