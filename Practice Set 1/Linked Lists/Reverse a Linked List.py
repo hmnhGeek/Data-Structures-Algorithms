@@ -37,10 +37,25 @@ class LinkedList:
             curr = next_curr
         self.head, self.tail = self.tail, self.head
 
+    def _reverse(self, prev, curr):
+        if curr is None:
+            self.head, self.tail = self.tail, self.head
+            return
+        next_curr = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_curr
+        return self._reverse(prev, curr)
+
+    def recursive_reverse(self):
+        self._reverse(None, self.head)
+
 
 l = LinkedList()
 for i in [1,2,4,8,9,6]:
     l.push(i)
 l.show()
 l.iterative_reverse()
+l.show()
+l.recursive_reverse()
 l.show()
