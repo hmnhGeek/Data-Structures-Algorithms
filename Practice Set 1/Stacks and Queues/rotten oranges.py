@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/rotten-oranges2536/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -64,6 +67,10 @@ class Solution:
 
     @staticmethod
     def rotten_oranges(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+
         # get the dimensions of the matrix
         n, m = len(mtx), len(mtx[0])
 
