@@ -81,4 +81,5 @@ def example2():
         print(-1)
 
 
+example1()
 example2()
