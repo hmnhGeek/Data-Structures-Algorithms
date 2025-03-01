@@ -28,9 +28,19 @@ class LinkedList:
             curr = curr.next
         print()
 
+    def iterative_reverse(self):
+        prev, curr = None, self.head
+        while curr is not None:
+            next_curr = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_curr
+        self.head, self.tail = self.tail, self.head
+
 
 l = LinkedList()
-l.push(1)
-l.push(2)
-l.push(3)
+for i in [1,2,4,8,9,6]:
+    l.push(i)
+l.show()
+l.iterative_reverse()
 l.show()
