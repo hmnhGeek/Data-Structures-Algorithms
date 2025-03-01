@@ -138,3 +138,29 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _get_inorder(root, inorder):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._get_inorder(root.right, inorder)
+
+    @staticmethod
+    def _get_preorder(root, preorder):
+        if root:
+            preorder.append(root)
+            Solution._get_preorder(root.left, preorder)
+            Solution._get_preorder(root.right, preorder)
+
+    @staticmethod
+    def convert_to_min_heap(bst: BinarySearchTree):
+        inorder = []
+        Solution._get_inorder(bst.root, inorder)
+        preorder = []
+        Solution._get_preorder(bst.root, preorder)
+        n = len(inorder)
+        for i in range(n):
+            preorder[i].data = inorder[i]
+
