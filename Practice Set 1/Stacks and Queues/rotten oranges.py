@@ -91,3 +91,21 @@ print(Solution.rotten_oranges([[2, 2, 0, 1]]))
 
 print(Solution.rotten_oranges([[2, 2, 2],
                                [0, 2, 0]]))
+
+print(Solution.rotten_oranges([[0, 2]]))
+
+print(Solution.rotten_oranges(
+    [
+        [2, 1, 1],
+        [0, 1, 1],
+        [1, 0, 1]
+    ]
+))
+
+print(Solution.rotten_oranges(
+    [
+        [2, 1, 1],
+        [1, 1, 0],
+        [0, 1, 1]
+    ]
+))
