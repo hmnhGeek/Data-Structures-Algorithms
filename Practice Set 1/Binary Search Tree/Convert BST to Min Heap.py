@@ -156,11 +156,28 @@ class Solution:
 
     @staticmethod
     def convert_to_min_heap(bst: BinarySearchTree):
+        """
+            Overall time complexity is O(n) and space complexity is O(n).
+        """
+
+        # time complexity to get inorder is O(n) and space complexity is O(n).
         inorder = []
         Solution._get_inorder(bst.root, inorder)
+
+        # time complexity to get preorder is O(n) and space complexity is O(n).
         preorder = []
         Solution._get_preorder(bst.root, preorder)
+
+        # this will take additional O(n) and O(n) space.
         n = len(inorder)
         for i in range(n):
             preorder[i].data = inorder[i]
 
+
+# Example 1
+t1 = BinarySearchTree()
+for i in [4, 2, 6, 1, 3, 5, 7]:
+    t1.insert(i)
+t1.show()
+Solution.convert_to_min_heap(t1)
+t1.show()
