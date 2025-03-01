@@ -1,3 +1,5 @@
+# Problem link - https://www.geeksforgeeks.org/reverse-a-linked-list/
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -29,6 +31,9 @@ class LinkedList:
         print()
 
     def iterative_reverse(self):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         prev, curr = None, self.head
         while curr is not None:
             next_curr = curr.next
@@ -38,6 +43,9 @@ class LinkedList:
         self.head, self.tail = self.tail, self.head
 
     def _reverse(self, prev, curr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         if curr is None:
             self.head, self.tail = self.tail, self.head
             return
