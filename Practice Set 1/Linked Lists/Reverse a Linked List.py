@@ -51,9 +51,27 @@ class LinkedList:
         self._reverse(None, self.head)
 
 
+# Example 1
 l = LinkedList()
 for i in [1,2,4,8,9,6]:
     l.push(i)
+l.show()
+l.iterative_reverse()
+l.show()
+l.recursive_reverse()
+l.show()
+
+# Example 2
+l = LinkedList()
+l.push(1)
+l.show()
+l.iterative_reverse()
+l.show()
+l.recursive_reverse()
+l.show()
+
+# Example 3
+l = LinkedList()
 l.show()
 l.iterative_reverse()
 l.show()
