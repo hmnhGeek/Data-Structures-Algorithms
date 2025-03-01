@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/kth-ancestor-in-a-tree/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +10,10 @@ class Node:
 class Solution:
     @staticmethod
     def get_kth_ancestor(root: Node, node, k):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
+
         # store the kth ancestor in a list of 1 size, assuming initially that no kth ancestor exists.
         kth = [-1]
 
