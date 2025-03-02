@@ -7,16 +7,24 @@ class Node:
 class Solution:
     @staticmethod
     def _check(root: Node, low, high):
+        # a null node is always a BST.
         if root is None:
             return True
+
+        # if the root node does not lie in the low, high range, return False.
         if not (low < root.data < high):
             return False
+
+        # recursively check for left and right subtrees.
         left = Solution._check(root.left, low, root.data)
         right = Solution._check(root.right, root.data, high)
+
+        # return true only if both subtrees return true.
         return left and right
 
     @staticmethod
     def is_bst(root: Node):
+        # pass the root node of the tree with range -inf to inf.
         return Solution._check(root, -1e6, 1e6)
 
 
