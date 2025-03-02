@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-swaps-required-to-bring-all-elements-less-than-or-equal-to-k-together4847/1
+# Solution - https://www.youtube.com/watch?v=0Hkh1cjnBNA
+
+
 class Solution:
     @staticmethod
     def min_swaps(arr, k):
