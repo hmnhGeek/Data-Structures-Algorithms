@@ -5,6 +5,10 @@
 class Solution:
     @staticmethod
     def min_swaps(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         # in O(n) time get the fixed window size required to solve this problem.
         n = len(arr)
         window_size = Solution._get_fixed_window_size(arr, k, n)
