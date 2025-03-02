@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/smallest-factorial-number5929/1
+
+
 from math import floor
 
 
