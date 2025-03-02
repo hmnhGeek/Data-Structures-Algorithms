@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-swaps-for-bracket-balancing2704/1
+# Solution - https://www.youtube.com/watch?v=WhMbbnHZpis
+
+
 class Solution:
     @staticmethod
     def min_swaps(string):
@@ -37,3 +41,6 @@ class Solution:
 print(Solution.min_swaps("[]][]["))
 print(Solution.min_swaps("[][]"))
 print(Solution.min_swaps("[[[][][]]]"))
+print(Solution.min_swaps("]["))
+print(Solution.min_swaps("[]][]["))
+print(Solution.min_swaps("]][["))
