@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/check-for-bst/1
+# Solution - https://www.youtube.com/watch?v=f-sj7I5oXEI
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -24,6 +28,10 @@ class Solution:
 
     @staticmethod
     def is_bst(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         # pass the root node of the tree with range -inf to inf.
         return Solution._check(root, -1e6, 1e6)
 
