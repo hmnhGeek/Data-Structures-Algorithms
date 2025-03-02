@@ -12,6 +12,8 @@ class Solution:
 
     @staticmethod
     def get_smallest(n):
+        if n == 0:
+            return 0
         low, high = 1, 10**4
         while low <= high:
             mid = int(low + (high - low)/2)
@@ -27,3 +29,6 @@ class Solution:
 
 print(Solution.get_smallest(6))
 print(Solution.get_smallest(1))
+print(Solution.get_smallest(2))
+print(Solution.get_smallest(3))
+print(Solution.get_smallest(0))
