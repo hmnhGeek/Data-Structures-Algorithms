@@ -37,17 +37,36 @@ class Solution:
 
     @staticmethod
     def get_mst(graph):
+        """
+            Time complexity is O(V + 2E + E*log(E)) and space complexity is O(V + E).
+        """
+
+        # get the edges of the graph in O(V + E) time and O(E) space.
         edges = Solution._get_edges(graph)
+
+        # sort the edges in O(E * log(E)) time.
         edges.sort(key=lambda x: x[0])
+
+        # create a disjoint set of O(V) space.
         disjoint_set = DisjointSet([i for i in graph])
+
+        # create MST variables.
         mst = []
         mst_wt = 0
+
+        # loop in the edges of the graph in O(E) time.
         for edge in edges:
             wt, node1, node2 = edge
+
+            # if the nodes are already connected, do nothing.
             if disjoint_set.in_same_component(node1, node2):
                 continue
+
+            # else, append them in mst
             mst.append((node1, node2))
             mst_wt += wt
+
+            # and then union them in O(1) time.
             disjoint_set.union(node1, node2)
         return mst, mst_wt
 
