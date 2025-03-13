@@ -30,7 +30,7 @@ def recursive():
 
 def memoized():
     """
-        Time complexity is O(n) and space complexity is O(n).
+        Time complexity is O(n) and space complexity is O(3n).
     """
     def solve(arr, index, can_buy, n, dp):
         if index >= n:
@@ -63,6 +63,37 @@ def memoized():
     print(buy_sell([3, 1, 6, 1, 2, 4]))
 
 
+def tabulation():
+    """
+        Time complexity is O(n) and space complexity is O(2n).
+    """
+    def buy_sell(arr):
+        n = len(arr)
+        dp = {i: {j: 0 for j in [True, False]} for i in range(n + 2)}
+        for index in range(n - 1, -1, -1):
+            for can_buy in [True, False]:
+                if can_buy:
+                    dp[index][can_buy] = max(
+                        -arr[index] + dp[index + 1][not can_buy],
+                        dp[index + 1][can_buy]
+                    )
+                else:
+                    dp[index][can_buy] = max(
+                        arr[index] + dp[index + 2][not can_buy],
+                        dp[index + 1][can_buy]
+                    )
+        return dp[0][True]
+
+    print(buy_sell([4, 9, 0, 4, 10]))
+    print(buy_sell([1, 2, 3, 4]))
+    print(buy_sell([5, 4, 3]))
+    print(buy_sell([1, 2, 3, 0, 2]))
+    print(buy_sell([1]))
+    print(buy_sell([3, 1, 6, 1, 2, 4]))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
