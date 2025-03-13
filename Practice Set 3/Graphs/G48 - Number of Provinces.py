@@ -31,3 +31,57 @@ class DisjointSet:
             if i == self.parents[i]:
                 count += 1
         return count
+
+
+class Solution:
+    @staticmethod
+    def num_provinces(adj_mtx):
+        n = len(adj_mtx)
+        disjoint_set = DisjointSet([i for i in range(n)])
+        for i in range(n):
+            for j in range(n):
+                if i != j and adj_mtx[i][j] == 1:
+                    disjoint_set.union(i, j)
+        return disjoint_set.num_components()
+
+
+print(
+    Solution.num_provinces(
+        [
+            [0, 1, 0, 0, 0, 0, 0],
+            [1, 0, 1, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 1, 0]
+        ]
+    )
+)
+
+print(
+    Solution.num_provinces(
+        [
+            [1, 0, 1],
+            [0, 1, 0],
+            [1, 0, 1]
+        ]
+    )
+)
+
+print(
+    Solution.num_provinces(
+        [
+            [1, 1],
+            [1, 1]
+        ]
+    )
+)
+
+print(Solution.num_provinces([[1, 0, 0], [0, 1, 0], [0, 0, 1]]))
+print(Solution.num_provinces(
+    [[1, 1, 1, 0],
+     [1, 1, 1, 0],
+     [1, 1, 1, 0],
+     [0, 0, 0, 1]]
+))
