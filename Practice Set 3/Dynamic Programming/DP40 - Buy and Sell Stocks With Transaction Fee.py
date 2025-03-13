@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/maximum-profit-after-buying-and-selling-the-stocks-with-transaction-fees/
+# Solution - https://www.youtube.com/watch?v=k4eK-vEmnKg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=41
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
