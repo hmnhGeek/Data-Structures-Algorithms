@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/rose-garden_2248080
+# Solution - https://www.youtube.com/watch?v=TXAuxeYBTdg&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=14
+
+
 class Solution:
     @staticmethod
     def _find_formed_bouquets_count(arr, mid, k):
