@@ -16,18 +16,32 @@ class Solution:
 
     @staticmethod
     def min_days_for_m_bouquets(arr, m, k):
+        # if more than length of arr flowers are needed, return -1.
         if m * k > len(arr):
             return -1
+
+        # define a search space.
         low, high = 1, max(arr)
+
+        # typical binary search.
         while low <= high:
+            # get the mid-day.
             mid = int(low + (high - low)/2)
+
+            # find the number of bouquets formed at mid-day.
             bouquets_formed = Solution._find_formed_bouquets_count(arr, mid, k)
+
+            # if less than required bouquets are formed, increase the day.
             if bouquets_formed < m:
                 low = mid + 1
+
+            # else if >= required bouquets are formed, try searching for lower day.
             elif bouquets_formed == m:
                 high = mid - 1
             else:
                 high = mid - 1
+
+        # return low, which points to the minimum day.
         return low
 
 
