@@ -1,6 +1,12 @@
 class Solution:
     @staticmethod
     def _get_count_less_than(arr, k):
+        """
+            Time complexity is O(n) and space is O(n).
+
+            This method returns the count of subarrays with distinct integers count <= k.
+        """
+
         if k < 0:
             return 0
 
@@ -22,6 +28,9 @@ class Solution:
 
     @staticmethod
     def get_subarray_count(arr, k):
+        """
+            Time complexity is O(2n) and space complexity is O(n).
+        """
         return Solution._get_count_less_than(arr, k) - Solution._get_count_less_than(arr, k - 1)
 
 
@@ -32,4 +41,3 @@ print(Solution.get_subarray_count([2, 1, 2, 1, 6], 2))
 print(Solution.get_subarray_count([1, 2, 3, 4, 5], 1))
 print(Solution.get_subarray_count([2, 1, 3, 2, 4], 2))
 print(Solution.get_subarray_count([1, 2, 3, 4, 5], 4))
-
