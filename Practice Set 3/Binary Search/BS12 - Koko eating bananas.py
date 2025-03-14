@@ -4,6 +4,7 @@ from math import ceil
 class Solution:
     @staticmethod
     def _hours_taken(arr, mid):
+        # get the hours in O(n) time.
         hours = 0
         for i in range(len(arr)):
             hours += ceil(arr[i]/mid)
@@ -11,6 +12,10 @@ class Solution:
 
     @staticmethod
     def koko(arr, h):
+        """
+            Time complexity is O(n * log(max(arr))) and space complexity is O(1).
+        """
+
         # define the search space.
         low, high = 1, max(arr)
 
