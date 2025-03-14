@@ -4,18 +4,31 @@ class Solution:
         bouquets = 0
         flowers_used = 0
         n = len(arr)
+
         for i in range(n):
+            # if at ith-day, the blooming threshold is more than mid, then set flowers used as 0 and continue for the
+            # next day, as we have found a discontinuity.
             if arr[i] > mid:
                 flowers_used = 0
                 continue
+
+            # else, increment the flower count.
             flowers_used += 1
+
+            # if flower count matches k, increment bouquets and reset flower count.
             if flowers_used == k:
                 bouquets += 1
                 flowers_used = 0
+
+        # return the count of bouquets formed.
         return bouquets
 
     @staticmethod
     def min_days_for_m_bouquets(arr, m, k):
+        """
+            Time complexity is O(n * log(max(arr))) and space complexity is O(1).
+        """
+
         # if more than length of arr flowers are needed, return -1.
         if m * k > len(arr):
             return -1
