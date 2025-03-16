@@ -63,3 +63,83 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_kth_element(mtx, k):
+        n, m = len(mtx), len(mtx[0])
+        if k not in range(1, n * m + 1):
+            return -1
+        pq = MinHeap()
+        for i in range(n):
+            pq.insert((mtx[i][0], i, 0))
+        counter = 0
+        while not pq.is_empty():
+            elem, x, y = pq.pop()
+            counter += 1
+            if counter == k:
+                return elem
+            if 0 <= y + 1 < m:
+                pq.insert((mtx[x][y + 1], x, y + 1))
+        return -1
+
+
+print(
+    Solution.get_kth_element(
+        [
+            [16, 28, 60, 64],
+            [22, 41, 63, 91],
+            [27, 50, 87, 93],
+            [36, 78, 87, 94]
+        ],
+        3
+    )
+)
+
+print(
+    Solution.get_kth_element(
+        [
+            [16, 28, 60, 64],
+            [22, 41, 63, 91],
+            [27, 50, 87, 93],
+            [36, 78, 87, 94]
+        ],
+        100
+    )
+)
+
+print(
+    Solution.get_kth_element(
+        [
+            [16, 28, 60, 64],
+            [22, 41, 63, 91],
+            [27, 50, 87, 93],
+            [36, 78, 87, 94]
+        ],
+        -10
+    )
+)
+
+print(
+    Solution.get_kth_element(
+        [
+            [10, 20, 30, 40],
+            [15, 25, 35, 45],
+            [24, 29, 37, 48],
+            [32, 33, 39, 50]
+        ],
+        7
+    )
+)
+
+print(
+    Solution.get_kth_element(
+        [
+            [10, 20, 30, 40],
+            [15, 25, 35, 45],
+            [24, 29, 37, 48],
+            [32, 33, 39, 50]
+        ],
+        15
+    )
+)
