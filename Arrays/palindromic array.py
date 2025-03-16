@@ -11,6 +11,10 @@ class Solution:
 
     @staticmethod
     def solve(arr):
+        """
+            Time complexity is O(n * m) and space complexity is O(m) where `m` is the average length of the numbers in
+            the n-sized array.
+        """
         for i in arr:
             if not Solution._is_palindrome(str(i)):
                 return False
