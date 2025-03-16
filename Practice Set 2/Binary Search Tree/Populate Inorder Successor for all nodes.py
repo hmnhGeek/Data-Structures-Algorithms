@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -149,11 +152,20 @@ class Solution:
 
     @staticmethod
     def get_inorder_successors(arr):
+        """
+            Time complexity is O(n) and space complexity is O(log(n)).
+        """
+
+        # construct the BST from level order array `arr`.
         bst = BinarySearchTree()
         for i in arr:
             bst.insert(i)
+
+        # get the inorder in O(n) time and O(log(n)) space.
         inorder = []
         Solution._get_inorder(bst.root, inorder)
+
+        # print the successors.
         for i in range(len(inorder) - 1):
             print(f"({inorder[i]}, {inorder[i + 1]})")
         print(f"({inorder[-1]}, None)")
