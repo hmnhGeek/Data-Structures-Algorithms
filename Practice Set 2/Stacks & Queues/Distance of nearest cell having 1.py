@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1
+# Solution - https://www.youtube.com/watch?v=edXdVwkYHF8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=13
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -48,6 +52,10 @@ class Solution:
 
     @staticmethod
     def get_nearest_1s(mtx):
+        """
+            Overall time complexity is O(mn) and space is O(mn).
+        """
+
         n, m = len(mtx), len(mtx[0])
         queue = Queue()
         distances = [[1e6 for _ in range(m)] for _ in range(n)]
