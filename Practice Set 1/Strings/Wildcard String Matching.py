@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/wildcard-pattern-matching_701650?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=ZmlQ3vgAOMo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=35
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n1 + n2).
