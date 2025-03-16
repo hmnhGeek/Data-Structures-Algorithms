@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/palindromic-array-1587115620/1
+# Solution - https://www.youtube.com/watch?v=VWHq0ifuIUs
+
+
 class Solution:
     @staticmethod
     def _is_palindrome(s):
