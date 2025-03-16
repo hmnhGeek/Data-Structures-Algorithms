@@ -63,3 +63,15 @@ class MaxHeap:
         self.max_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def convert_to_max_heap(arr):
+        h = MaxHeap()
+        for i in arr:
+            h.insert(i)
+        return h.heap
+
+
+print(Solution.convert_to_max_heap([3, 5, 9, 6, 8, 20, 10, 12, 18, 9]))
+print(Solution.convert_to_max_heap([3, 4, 8, 11, 13]))
