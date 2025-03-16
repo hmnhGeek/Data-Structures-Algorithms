@@ -67,6 +67,10 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_kth_element(mtx, k):
+        """
+            Time complexity is O({n + k} * log(n)) time and O(n) space.
+        """
+
         # get the dimensions of the matrix
         n, m = len(mtx), len(mtx[0])
 
