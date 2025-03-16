@@ -1,10 +1,20 @@
 class Solution:
     @staticmethod
     def allocate_books(arr, k):
+        """
+            Time complexity is O(n * log(sum - max)) and space complexity is O(1).
+        """
+
+        if k > len(arr):
+            return -1
+
+        # define the search space.
         low, high = max(arr), sum(arr)
         while low <= high:
             mid = int(low + (high - low)/2)
             students_allocated = Solution._allocate(arr, mid)
+
+            # if more students could be allocated, then increase the page count so that we lower down to k.
             if students_allocated > k:
                 low = mid + 1
             elif students_allocated == k:
