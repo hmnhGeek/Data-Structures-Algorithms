@@ -67,9 +67,18 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def convert_to_max_heap(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
+        # declare a max heap of size O(n).
         h = MaxHeap()
+
+        # loop in the array and insert each item in O(n * log(n)) time.
         for i in arr:
             h.insert(i)
+
+        # return the max heap.
         return h.heap
 
 
