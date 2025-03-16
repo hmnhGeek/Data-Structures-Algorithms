@@ -57,6 +57,10 @@ class LinkedList:
             self.push(i)
 
     def reverse_in_parts(self, k):
+        # To reverse in parts, the idea is to separate k units of linked list,
+        # reverse it, and join it back in the original list. This whole operation
+        # would also take O(N) time. Space complexity is O(k).
+
         if k <= 0:
             return
         if k >= self.length:
@@ -65,19 +69,33 @@ class LinkedList:
         curr = self.head
         temp = None
         while curr is not None:
+            # get the kth node in O(k) time.
             kth_node = self.get_kth_node(curr, k)
+
+            # store the pointer to next current
             next_curr = kth_node.next
+
+            # break the list at kth node.
             kth_node.next = None
+
+            # create a sublist from curr to kth node and reverse it in O(k) time and O(k) space.
             sublist = LinkedList()
             sublist.head = curr
             sublist.tail = kth_node
             sublist.reverse()
+
+            # if there was no previously reversed list, this first reversed list will have the new head.
             if temp is None:
                 self.head = kth_node
             else:
+                # else point the tail of previously reversed sublist's to current sublist's head.
                 temp.next = sublist.head
+
+            # update temp and curr.
             temp = curr
             curr = next_curr
+
+        # update the tail of the whole list.
         self.tail = temp
 
 
