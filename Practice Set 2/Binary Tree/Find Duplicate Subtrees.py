@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/duplicate-subtree-in-binary-tree/1
+# Solution - https://www.youtube.com/watch?v=m0dG99f5ct4
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -20,6 +24,8 @@ class Solution:
 
     @staticmethod
     def get_duplicates(root: Node):
+        # Time complexity is O(N^2) because we are visiting every node again and again for each subtree
+        # Space complexity is O(N).
         result = set()
         mp = dict()
         Solution._find(root, result, mp)
