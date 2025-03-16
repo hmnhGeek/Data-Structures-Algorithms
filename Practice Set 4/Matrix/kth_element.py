@@ -67,18 +67,34 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_kth_element(mtx, k):
+        # get the dimensions of the matrix
         n, m = len(mtx), len(mtx[0])
+
+        # edge case
         if k not in range(1, n * m + 1):
             return -1
+
+        # initialize a priority queue
         pq = MinHeap()
+
+        # push the first column into the matrix in O(n * log(n))
         for i in range(n):
             pq.insert((mtx[i][0], i, 0))
+
+        # initialize a counter variable to track `k`.
         counter = 0
+
+        # while the pq is not empty. This will run for k-iterations.
         while not pq.is_empty():
+            # get the element from heap in O(log(n)) time.
             elem, x, y = pq.pop()
             counter += 1
+
+            # if counter has become `k`, return the element.
             if counter == k:
                 return elem
+
+            # push the next element in O(log(n)) time.
             if 0 <= y + 1 < m:
                 pq.insert((mtx[x][y + 1], x, y + 1))
         return -1
