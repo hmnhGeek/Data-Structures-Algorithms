@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/reverse-list-in-k-groups_983644
+# Solution - https://www.youtube.com/watch?v=lIar1skcQYI
+
+
 class Node:
     def __init__(self, data):
         self.data = data
