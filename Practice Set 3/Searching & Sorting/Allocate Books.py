@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1
+# Solution - https://www.youtube.com/watch?v=Z0hwjftStI4&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=19
+
+
 class Solution:
     @staticmethod
     def allocate_books(arr, k):
