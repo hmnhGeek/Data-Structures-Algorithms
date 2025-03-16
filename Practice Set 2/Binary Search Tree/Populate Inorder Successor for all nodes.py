@@ -138,3 +138,27 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _get_inorder(start, inorder):
+        if start:
+            Solution._get_inorder(start.left, inorder)
+            inorder.append(start.data)
+            Solution._get_inorder(start.right, inorder)
+
+    @staticmethod
+    def get_inorder_successors(arr):
+        bst = BinarySearchTree()
+        for i in arr:
+            bst.insert(i)
+        inorder = []
+        Solution._get_inorder(bst.root, inorder)
+        for i in range(len(inorder) - 1):
+            print(f"({inorder[i]}, {inorder[i + 1]})")
+        print(f"({inorder[-1]}, None)")
+        print()
+
+
+Solution.get_inorder_successors([10, 8, 12, 3])
+Solution.get_inorder_successors([1, 2, 3])
