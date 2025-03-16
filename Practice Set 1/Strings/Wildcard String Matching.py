@@ -109,8 +109,45 @@ def tabulation():
     print(match("**", ""))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n1 * n2) and space complexity is O(n2).
+    """
+    def match(string, pattern):
+        n1, n2 = len(string), len(pattern)
+        prev = {j: False for j in range(n2 + 1)}
+        prev[0] = True
+        for i in range(1, n1 + 1):
+            curr = {j: False for j in range(n2 + 1)}
+            all_stars = True
+            for k in range(i, 0, -1):
+                if string[k - 1] != "*":
+                    all_stars = False
+            curr[0] = all_stars
+            for j in range(1, n2 + 1):
+                if string[i - 1] == pattern[j - 1] or string[i - 1] == "?":
+                    curr[j] = prev[j - 1]
+                elif string[i - 1] == "*":
+                    curr[j] = prev[j] or curr[j - 1]
+                else:
+                    curr[j] = False
+            prev = curr
+        return prev[n2]
+
+    print(match("?ay", "ray"))
+    print(match("ab*cd", "abdefcd"))
+    print(match("ab?d", "abcc"))
+    print(match("ba*a?", "baaabab"))
+    print(match("a", "aa"))
+    print(match("*", "aa"))
+    print(match("?a", "cb"))
+    print(match("**", ""))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
