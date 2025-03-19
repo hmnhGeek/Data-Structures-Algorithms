@@ -37,16 +37,29 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def num_ops(edges, n):
+        # create a disjoint sets with the given nodes in O(n) space.
         disjoint_set = DisjointSet([i for i in range(n)])
+
+        # store the count of extra edges.
         extra_edges = 0
+
+        # loop in the edges list and start joining the nodes in the disjoint set in O(E) time.
         for edge in edges:
+            # if the connecting nodes are already in same component, just increase the extra edge count.
             if disjoint_set.in_same_component(edge[0], edge[1]):
                 extra_edges += 1
                 continue
+            # else union them
             disjoint_set.union(edge[0], edge[1])
+
+        # minimum number of edges required to connect the components is num_components - 1.
         num_components = disjoint_set.num_components()
+
+        # if we have enough extra edges, then return this minimum amount.
         if extra_edges >= num_components - 1:
             return num_components - 1
+
+        # else return -1.
         return -1
 
 
