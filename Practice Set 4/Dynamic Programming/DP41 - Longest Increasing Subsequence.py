@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-increasing-subsequence_630459?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=ekcwMsSIzVc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=43&t=1270s
+
+
 def get_val_at(arr, index, n):
     if index not in range(n):
         return 1e6
