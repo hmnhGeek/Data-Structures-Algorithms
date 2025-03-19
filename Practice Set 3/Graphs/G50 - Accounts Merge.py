@@ -29,23 +29,24 @@ class DisjointSet:
 
 class Solution:
     @staticmethod
-    def accounts_merge(mtx):
-        n = len(mtx)
-        email_to_node = {}
-        disjoint_set = DisjointSet([i for i in range(n)])
+    def _construct_email_to_node_mapping(disjoint_set, email_to_node, mtx, n):
         for i in range(n):
             for j in range(1, len(mtx[i])):
                 if mtx[i][j] not in email_to_node:
                     email_to_node[mtx[i][j]] = i
                 else:
                     disjoint_set.union(email_to_node[mtx[i][j]], i)
-        result = {i: set() for i in range(n)}
-        final_result = []
+
+    @staticmethod
+    def _construct_result(disjoint_set, result, email_to_node, mtx, n):
         for i in range(n):
             for j in range(1, len(mtx[i])):
                 node = email_to_node[mtx[i][j]]
                 ulp = disjoint_set.find_ultimate_parent(node)
                 result[ulp].add(mtx[i][j])
+
+    @staticmethod
+    def _construct_final_result(final_result, result, mtx):
         for i in result:
             if len(result[i]) > 0:
                 name = mtx[i][0]
@@ -53,6 +54,17 @@ class Solution:
                 emails.sort()
                 row = [name] + emails
                 final_result.append(row)
+
+    @staticmethod
+    def accounts_merge(mtx):
+        n = len(mtx)
+        email_to_node = {}
+        disjoint_set = DisjointSet([i for i in range(n)])
+        Solution._construct_email_to_node_mapping(disjoint_set, email_to_node, mtx, n)
+        result = {i: set() for i in range(n)}
+        Solution._construct_result(disjoint_set, result, email_to_node, mtx, n)
+        final_result = []
+        Solution._construct_final_result(final_result, result, mtx)
         return final_result
 
 
