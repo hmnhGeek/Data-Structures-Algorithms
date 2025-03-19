@@ -33,3 +33,23 @@ class DisjointSet:
                 count += 1
         return count
 
+
+class Solution:
+    @staticmethod
+    def num_ops(edges, n):
+        disjoint_set = DisjointSet([i for i in range(n)])
+        extra_edges = 0
+        for edge in edges:
+            if disjoint_set.in_same_component(edge[0], edge[1]):
+                extra_edges += 1
+                continue
+            disjoint_set.union(edge[0], edge[1])
+        num_components = disjoint_set.num_components()
+        if extra_edges >= num_components - 1:
+            return num_components - 1
+        return -1
+
+
+print(Solution.num_ops([[0, 1], [0, 2], [1, 2]], 4))
+print(Solution.num_ops([[0, 1], [0, 2], [0, 3], [1, 2], [1, 3]], 6))
+print(Solution.num_ops([[0, 1], [0, 2], [0, 3], [1, 2]], 6))
