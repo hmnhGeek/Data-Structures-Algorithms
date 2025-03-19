@@ -57,12 +57,24 @@ class Solution:
 
     @staticmethod
     def accounts_merge(mtx):
+        """
+            Time complexity is O(nm * log(m)) and space complexity is O(nm).
+        """
+
         n = len(mtx)
-        email_to_node = {}
+
+        # construct a disjoint set of size O(n).
         disjoint_set = DisjointSet([i for i in range(n)])
+
+        # construct a mapping of email to name node in O(n*m) time and O(n*m) space.
+        email_to_node = {}
         Solution._construct_email_to_node_mapping(disjoint_set, email_to_node, mtx, n)
+
+        # construct result set in O(nm) time and O(nm) space.
         result = {i: set() for i in range(n)}
         Solution._construct_result(disjoint_set, result, email_to_node, mtx, n)
+
+        # construct the final DSU result in O(nm) time and O(nm*log(m)) space.
         final_result = []
         Solution._construct_final_result(final_result, result, mtx)
         return final_result
