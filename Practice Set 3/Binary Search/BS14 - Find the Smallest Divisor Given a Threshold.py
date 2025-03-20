@@ -12,16 +12,29 @@ class Solution:
     @staticmethod
     def smallest_divisor(arr, threshold):
         n = len(arr)
+
+        # if the threshold is less than n, then the answer is not possible because each element would contribute 1 as a
+        # quotient at least.
         if threshold < n:
             return -1
+
+        # define the range
         low, high = 1, max(arr)
         while low <= high:
             mid = int(low + (high - low)/2)
+
+            # find the sum of ceiled quotients in O(n) time.
             value = Solution._divide(arr, mid, n)
+
+            # if value <= threshold, we can try for even smaller divisor.
             if value <= threshold:
                 high = mid - 1
             else:
+                # else we must increase the divisor to decrease the sum of quotient in order to make it smaller than the
+                # threshold value.
                 low = mid + 1
+
+        # low will point to the correct answer.
         return low
 
 
