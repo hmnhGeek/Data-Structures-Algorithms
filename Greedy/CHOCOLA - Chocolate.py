@@ -1,6 +1,16 @@
+# Problem link - https://www.spoj.com/problems/CHOCOLA/
+# Solution - https://www.youtube.com/watch?v=9DckVBRzuQU
+
+
 class Solution:
     @staticmethod
     def chocola(m, arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n + m).
+
+            The idea is to use higher costs first because initially the pieces counts will be small.
+        """
+
         # get the cuts costs on horizontal axis
         x = arr[:m - 1]
 
