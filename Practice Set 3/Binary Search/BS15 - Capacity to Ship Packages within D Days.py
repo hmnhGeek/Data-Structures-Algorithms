@@ -17,16 +17,26 @@ class Solution:
 
     @staticmethod
     def get_least_ship_capacity(arr, k):
+        # if the required number of days <= 0, return -1.
         if k <= 0:
             return -1
+
+        # define the search space.
         low, high = max(arr), sum(arr)
         while low <= high:
             mid = int(low + (high - low)/2)
+
+            # count the number of days taken by the ship of capacity `mid` to ship all the packages in O(n) time.
             days = Solution._find_days(arr, mid)
+
+            # if the days taken <= k, we can try for even lower capacity ship.
             if days <= k:
                 high = mid - 1
             else:
+                # else we must increase the ship capacity.
                 low = mid + 1
+
+        # low points to the correct answer.
         return low
 
 
