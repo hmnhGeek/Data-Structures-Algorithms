@@ -1,16 +1,23 @@
 class Solution:
     @staticmethod
     def get_kth_missing(arr, k):
+        # edge case
         if k <= 0:
             return -1
+
+        # define the search space
         low = 0
         high = len(arr) - 1
         while low <= high:
             mid = int(low + (high - low)/2)
+
+            # if missing < k, we must move to right to accommodate more missing numbers, else we move left.
             if arr[mid] - mid - 1 >= k:
                 high = mid - 1
             else:
                 low = mid + 1
+
+        # return k + low, which points to the kth missing number.
         return k + low
 
 
