@@ -2,17 +2,32 @@ class Solution:
     @staticmethod
     def get_max_points(arr, k):
         n = len(arr)
+
+        # if the k value is out of scope, return -1
         if k not in range(1, n + 1):
             return -1
+
+        # else initialize i and j
         i, j = k - 1, n
+
+        # initialize sums
         max_sum, t = sum(arr[:k]), sum(arr[:k])
+
+        # while cards from front can be picked.
         while i >= 0:
+            # remove the ith card
             t -= arr[i]
+
+            # add the jth card
             t += arr[j - 1]
+
+            # update the max points obtained.
             if max_sum < t:
                 max_sum = t
             i -= 1
             j -= 1
+
+        # return the max points obtained.
         return max_sum
 
 
