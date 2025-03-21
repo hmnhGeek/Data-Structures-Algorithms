@@ -15,15 +15,25 @@ def compare(x, y):
 class Solution:
     @staticmethod
     def longest_string_chain(strings):
+        # sort the strings array by length in O(n log(n)) time.
         strings.sort(key=len)
+
         n = len(strings)
+
+        # store dp and parents dictionary in O(n) space.
         dp = {i: 1 for i in range(n)}
         parents = {i: i for i in range(n)}
+
+        # loop on i and j in O(n^2) time
         for i in range(n):
             for prev in range(i):
+                # assuming strings[i] to be larger, we are taking another O(l) time to check if chain is possible or
+                # not, where l is the length of strings[i].
                 if compare(strings[i], strings[prev]):
                     dp[i] = 1 + dp[prev]
                     parents[i] = prev
+
+        # back track to get the longest chain.
         start_index = max(dp, key=dp.get)
         result = []
         while start_index != parents[start_index]:
