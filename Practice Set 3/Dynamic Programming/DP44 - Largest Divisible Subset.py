@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/divisible-set_3754960?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=gDuZwBW9VvM&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=45
+
+
 def is_divisible(arr, index1, index2):
     if index2 >= len(arr) or index1 >= len(arr):
         return True
@@ -115,6 +119,9 @@ def space_optimized():
 class Solution:
     @staticmethod
     def print_lds(arr):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
         n = len(arr)
         dp = {i: 1 for i in range(n)}
         parents = {i: i for i in range(n)}
