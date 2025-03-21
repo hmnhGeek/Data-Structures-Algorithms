@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/problems/maximum-point-you-can-obtain-from-cards/0
+# Solution - https://www.youtube.com/watch?v=pBWCOCS636U&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=2
+
+
 class Solution:
     @staticmethod
     def get_max_points(arr, k):
+        """
+            Time complexity is O(k) and space complexity is O(1).
+        """
+
         n = len(arr)
 
         # if the k value is out of scope, return -1
