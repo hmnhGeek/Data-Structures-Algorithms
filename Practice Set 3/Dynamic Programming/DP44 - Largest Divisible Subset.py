@@ -112,6 +112,26 @@ def space_optimized():
     print(largest_divisible_subset([2, 4, 3, 8]))
 
 
+class Solution:
+    @staticmethod
+    def print_lds(arr):
+        n = len(arr)
+        dp = {i: 1 for i in range(n)}
+        parents = {i: i for i in range(n)}
+        for i in range(n):
+            for prev in range(i):
+                if is_divisible(arr, prev, i):
+                    dp[i] = 1 + dp[prev]
+                    parents[i] = prev
+        start_index = max(dp, key=dp.get)
+        result = []
+        while parents[start_index] != start_index:
+            result.append(arr[start_index])
+            start_index = parents[start_index]
+        result.append(arr[start_index])
+        return result
+
+
 recursive()
 print()
 memoized()
@@ -119,3 +139,10 @@ print()
 tabulation()
 print()
 space_optimized()
+print("Printing the LDS")
+print(Solution.print_lds([1, 16, 7, 8, 4]))
+print(Solution.print_lds([1, 2, 5]))
+print(Solution.print_lds([3, 3, 3]))
+print(Solution.print_lds([1, 2, 4, 8]))
+print(Solution.print_lds([1, 2, 3]))
+print(Solution.print_lds([2, 4, 3, 8]))
