@@ -1,4 +1,5 @@
-from collections import Counter
+# Problem link - https://www.geeksforgeeks.org/find-the-length-of-the-longest-possible-word-chain/
+# Solution - https://www.youtube.com/watch?v=YY8iBaYcc4g&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=46
 
 
 def compare(x, y):
@@ -15,6 +16,10 @@ def compare(x, y):
 class Solution:
     @staticmethod
     def longest_string_chain(strings):
+        """
+            Overall time complexity is O(n^2 * l) and space complexity is O(n).
+        """
+
         # sort the strings array by length in O(n log(n)) time.
         strings.sort(key=len)
 
