@@ -58,6 +58,34 @@ def memoized():
     print(largest_divisible_subset([2, 4, 3, 8]))
 
 
+def tabulation():
+    """
+        Time complexity is O(n^2) and space complexity is O(n^2).
+    """
+    def largest_divisible_subset(arr):
+        n = len(arr)
+        dp = {i: {j: -1e6 for j in range(1, n + 1)} for i in range(n)}
+        for j in dp[0]:
+            dp[0][j] = is_divisible(arr, 0, j)
+        for i in range(1, n):
+            for j in range(1, n + 1):
+                left = -1e6
+                if is_divisible(arr, i, j):
+                    left = 1 + dp[i - 1][i]
+                right = dp[i - 1][j]
+                dp[i][j] = max(left, right)
+        return dp[n - 1][n]
+
+    print(largest_divisible_subset([1, 16, 7, 8, 4]))
+    print(largest_divisible_subset([1, 2, 5]))
+    print(largest_divisible_subset([3, 3, 3]))
+    print(largest_divisible_subset([1, 2, 4, 8]))
+    print(largest_divisible_subset([1, 2, 3]))
+    print(largest_divisible_subset([2, 4, 3, 8]))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
