@@ -84,8 +84,38 @@ def tabulation():
     print(largest_divisible_subset([2, 4, 3, 8]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n).
+    """
+    def largest_divisible_subset(arr):
+        n = len(arr)
+        prev = {j: -1e6 for j in range(1, n + 1)}
+        for j in prev:
+            prev[j] = is_divisible(arr, 0, j)
+        for i in range(1, n):
+            curr = {j: -1e6 for j in range(1, n + 1)}
+            for j in range(1, n + 1):
+                left = -1e6
+                if is_divisible(arr, i, j):
+                    left = 1 + prev[i]
+                right = prev[j]
+                curr[j] = max(left, right)
+            prev = curr
+        return prev[n]
+
+    print(largest_divisible_subset([1, 16, 7, 8, 4]))
+    print(largest_divisible_subset([1, 2, 5]))
+    print(largest_divisible_subset([3, 3, 3]))
+    print(largest_divisible_subset([1, 2, 4, 8]))
+    print(largest_divisible_subset([1, 2, 3]))
+    print(largest_divisible_subset([2, 4, 3, 8]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
