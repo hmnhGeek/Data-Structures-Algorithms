@@ -21,6 +21,17 @@ class LinkedList:
             self.tail = node
         self.length += 1
 
+    def build(self, *args):
+        for i in args:
+            self.push(i)
+
+    def show(self):
+        curr = self.head
+        while curr is not None:
+            print(curr.data, end=" ")
+            curr = curr.next
+        print()
+
     def pop(self):
         if self.is_empty():
             return
@@ -31,3 +42,20 @@ class LinkedList:
         self.length -= 1
         return item
 
+    def has_loop(self):
+        slow, fast = self.head, self.head.next
+        while slow and fast and fast.next:
+            if slow == fast:
+                return True
+            slow = slow.next
+            fast = fast.next.next
+        return False
+
+
+# Example 1
+l = LinkedList()
+l.build(1, 3, 4)
+l.show()
+print(l.has_loop())
+l.tail.next = l.head.next
+print(l.has_loop())
