@@ -25,3 +25,17 @@ class QuickSort:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
+class Solution:
+    @staticmethod
+    def get_median(arr):
+        QuickSort.sort(arr)
+        n = len(arr)
+        if n % 2 == 1:
+            return arr[(n - 1)//2]
+        return (arr[n//2] + arr[n//2 - 1])/2
+
+
+print(Solution.get_median([90, 100, 78, 89, 67]))
+print(Solution.get_median([56, 67, 30, 79]))
+print(Solution.get_median([1, 2]))
