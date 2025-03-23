@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -196,3 +199,26 @@ bst3 = BinarySearchTree()
 for i in [2, 1, 3]:
     bst3.insert(i)
 print(Solution.get_lca(bst3, 1, 3))
+
+# Example 4
+t1 = BinarySearchTree()
+for i in [5, 4, 6, 3, 7, 8]:
+    t1.insert(i)
+print(Solution.get_lca(t1, 7, 8))
+print(Solution.get_lca(t1, 7, 3))
+print(Solution.get_lca(t1, 4, 4))
+
+# Example 5
+t2 = BinarySearchTree()
+for i in [2, 1, 3]:
+    t2.insert(i)
+print(Solution.get_lca(t2, 1, 3))
+print(Solution.get_lca(t2, 1, 7))
+print(Solution.get_lca(t2, 9, 7))
+
+# Example 6
+t3 = BinarySearchTree()
+for i in [6, 2, 8, 0, 4, 7, 9, 3, 5]:
+    t3.insert(i)
+print(Solution.get_lca(t3, 2, 8))
+print(Solution.get_lca(t3, 2, 4))
