@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/function-to-find-number-of-customers-who-could-not-get-a-computer/
+
+
 class Solution:
     @staticmethod
     def get_no_computer_customers(num_computers, customers):
+        """
+            Overall time complexity is O(n) and space is O(1).
+        """
+
         # store the number of computers available.
         available_computers = num_computers
 
