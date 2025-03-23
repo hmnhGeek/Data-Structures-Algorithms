@@ -59,3 +59,20 @@ l.show()
 print(l.has_loop())
 l.tail.next = l.head.next
 print(l.has_loop())
+print()
+
+# Example 2
+l = LinkedList()
+l.build(1, 8, 3, 4)
+l.show()
+print(l.has_loop())
+print()
+
+# Example 3
+l = LinkedList()
+l.build(1, 2, 3, 4)
+l.show()
+print(l.has_loop())
+l.tail.next = l.head
+print(l.has_loop())
+print()
