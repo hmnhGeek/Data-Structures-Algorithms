@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/
+
+
 class Solution:
     @staticmethod
     def get_commons(mtx):
+        """
+            Time complexity is O(m * n) and space complexity is O(m).
+        """
+
         n, m = len(mtx), len(mtx[0])
         if n == 1:
             return mtx[0]
