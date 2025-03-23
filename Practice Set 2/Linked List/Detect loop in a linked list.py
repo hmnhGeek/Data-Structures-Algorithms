@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/detect-loop-in-linked-list/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -43,6 +46,11 @@ class LinkedList:
         return item
 
     def has_loop(self):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+
+            This is Floyd Cycle Detection Algorithm.
+        """
         slow, fast = self.head, self.head.next
         while slow and fast and fast.next:
             if slow == fast:
