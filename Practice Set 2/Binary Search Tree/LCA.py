@@ -138,3 +138,32 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _lca(root, x, y):
+        if root is None:
+            return None
+        if root.data == x or root.data == y:
+            return root.data
+        left = Solution._lca(root.left, x, y)
+        right = Solution._lca(root.right, x, y)
+        if left is None and right is None:
+            return None
+        if left is None:
+            return right
+        if right is None:
+            return left
+        return root.data
+
+    @staticmethod
+    def get_lca(bst: BinarySearchTree, x, y):
+        lca = Solution._lca(bst.root, x, y)
+        return lca
+
+
+# Example 1
+bst1 = BinarySearchTree()
+for i in [5, 4, 6, 3, 7, 8]:
+    bst1.insert(i)
+print(Solution.get_lca(bst1, 7, 8))
