@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1
+# Solution - https://www.youtube.com/watch?v=-uc7OCrjp8g
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -40,6 +44,10 @@ class Deque:
 class Solution:
     @staticmethod
     def first_negative(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(k).
+        """
+
         # edge cases
         if k <= 0 or k > len(arr):
             return -1
