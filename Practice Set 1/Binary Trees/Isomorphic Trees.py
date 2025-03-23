@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/check-if-tree-is-isomorphic/1
+# Solution - https://www.youtube.com/watch?v=9Eo42meRcrY
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +11,10 @@ class Node:
 class Solution:
     @staticmethod
     def is_isomorphic(root1: Node, root2: Node):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
+
         # if both the trees are empty, then they are isomorphic
         if root1 is None and root2 is None:
             return True
