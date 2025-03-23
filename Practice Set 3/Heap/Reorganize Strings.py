@@ -70,20 +70,38 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def reorganize_string(string):
+        # create a max heap
         h = MaxHeap()
+
+        # in O(n * log(n)) time and O(n) space, push the frequencies of the characters into the max heap.
         d = dict(Counter(string))
         for k, v in d.items():
             h.insert((v, k))
+
+        # create a prev and result variable.
         prev = None
         result = ""
+
+        # while the max heap is not empty (this will run for n-times).
         while not h.is_empty():
+            # pop the most frequent character in O(log(n)) time.
             freq, character = h.pop()
+
+            # append this character to the result.
             result += character
+
+            # if there is any previous character, push it to the heap in O(log(n)) time.
             if prev and prev[0] > 0:
                 h.insert((prev[0], prev[1]))
+
+            # update the previous character with current popped character but with -1 frequency added.
             prev = (freq - 1, character)
+
+        # if there is some previous character having frequency > 0, then this rearrangement is not possible.
         if prev and prev[0] > 0:
             return ""
+
+        # return the final result.
         return result
 
 
