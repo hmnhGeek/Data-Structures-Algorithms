@@ -142,22 +142,39 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def _lca(root, x, y):
+        # if a null node is encountered, return nothing
         if root is None:
             return None
+
+        # if the root's data matches with either x or y, return root's data.
         if root.data == x or root.data == y:
             return root.data
+
+        # recursively check for LCA in left and right subtrees.
         left = Solution._lca(root.left, x, y)
         right = Solution._lca(root.right, x, y)
+
+        # if x and y are not found in the subtrees of root, return nothing.
         if left is None and right is None:
             return None
+
+        # if x or y or both are found in right subtree, return right.
         if left is None:
             return right
+
+        # if x or y or both are found in left subtree, return left.
         if right is None:
             return left
+
+        # if x and y are found in both subtrees, return root's data as root will be the LCA.
         return root.data
 
     @staticmethod
     def get_lca(bst: BinarySearchTree, x, y):
+        """
+            Time complexity is O(n) and space complexity is O(log(n)).
+        """
+
         lca = Solution._lca(bst.root, x, y)
         return lca
 
