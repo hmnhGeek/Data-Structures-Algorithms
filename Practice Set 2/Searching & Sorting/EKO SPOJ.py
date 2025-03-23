@@ -1,3 +1,6 @@
+# Problem link - https://www.spoj.com/problems/EKO/
+
+
 class Solution:
     @staticmethod
     def _wood_collected(arr, mid):
@@ -10,6 +13,10 @@ class Solution:
 
     @staticmethod
     def eko(arr, k):
+        """
+            Time complexity is O(n * log(max(arr))) and space complexity O(1).
+        """
+
         if k < 0:
             return -1
 
