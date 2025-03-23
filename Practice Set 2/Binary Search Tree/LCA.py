@@ -167,3 +167,15 @@ bst1 = BinarySearchTree()
 for i in [5, 4, 6, 3, 7, 8]:
     bst1.insert(i)
 print(Solution.get_lca(bst1, 7, 8))
+
+# Example 2
+bst2 = BinarySearchTree()
+for i in [20, 8, 22, 4, 12, 10, 14]:
+    bst2.insert(i)
+print(Solution.get_lca(bst2, 8, 14))
+
+# Example 3
+bst3 = BinarySearchTree()
+for i in [2, 1, 3]:
+    bst3.insert(i)
+print(Solution.get_lca(bst3, 1, 3))
