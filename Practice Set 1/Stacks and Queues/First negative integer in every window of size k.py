@@ -40,27 +40,52 @@ class Deque:
 class Solution:
     @staticmethod
     def first_negative(arr, k):
+        # edge cases
         if k <= 0 or k > len(arr):
             return -1
+
+        # create a deque
         dq = Deque()
+
+        # define i and j pointing to the 0th index.
         i = j = 0
+
+        # define a result variable.
         result = []
+
+        # while we don't achieve the first window in O(k) time.
         while j - i + 1 != k + 1:
+            # push negative numbers into the deque in O(1) time.
             if arr[j] < 0:
                 dq.push_back(arr[j])
             j += 1
+
+        # after the first window is achieved, push the front element from deque into the result variable.
         result.append(dq.front())
+
+        # bring `j` back to 1 unit, because in previous loop we ran till `k + 1` size.
         j -= 1
         n = len(arr)
+
+        # loop in the remaining windows in apx n iterations.
         while 1:
+            # if the front element of the window is negative, pop front from deque in O(1) time.
             if arr[i] < 0:
                 dq.pop_front()
+
+            # increment to the next window.
             i += 1
             j += 1
+
+            # if `j` is out of bounds, return the answer.
             if j >= n:
                 return result
+
+            # else, if j element is negative, push to deque.
             if arr[j] < 0:
                 dq.push_back(arr[j])
+
+            # and append the first negative from deque.
             result.append(dq.front())
 
 
