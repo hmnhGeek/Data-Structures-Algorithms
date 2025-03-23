@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-the-median0527/1
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -29,6 +32,9 @@ class QuickSort:
 class Solution:
     @staticmethod
     def get_median(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
         QuickSort.sort(arr)
         n = len(arr)
         if n % 2 == 1:
