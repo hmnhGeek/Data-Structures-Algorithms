@@ -1,3 +1,7 @@
+# Problem link - https://www.spoj.com/problems/ARRANGE/
+# Solution - https://www.youtube.com/watch?v=j4AAeH5CPmk
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
