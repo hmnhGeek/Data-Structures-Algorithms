@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1
+# Solution - https://www.youtube.com/watch?v=Z0hwjftStI4&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=19
+
+
 class Solution:
     @staticmethod
     def _get_count(arr, mid):
@@ -17,6 +21,10 @@ class Solution:
 
     @staticmethod
     def allocate(arr, k):
+        """
+            Time complexity is O(n * log(sum - max)) and space complexity is O(1).
+        """
+
         n = len(arr)
 
         # if the number of books < required students, return -1
