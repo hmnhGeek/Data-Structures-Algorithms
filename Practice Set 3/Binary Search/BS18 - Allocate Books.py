@@ -18,16 +18,27 @@ class Solution:
     @staticmethod
     def allocate(arr, k):
         n = len(arr)
+
+        # if the number of books < required students, return -1
         if n < k:
             return -1
+
+        # define a search space.
         low, high = max(arr), sum(arr)
         while low <= high:
             mid = int(low + (high - low)/2)
+
+            # find the number of students whom the books have been allocated in O(n) time with mid number of pages.
             students = Solution._get_count(arr, mid)
+
+            # if number of students allocated <= required students, let's try to decrease the number of pages.
             if students <= k:
                 high = mid - 1
             else:
+                # if number of students allocated > required students, let's try to increase the number of pages.
                 low = mid + 1
+
+        # low represents the correct number of minimum pages.
         return low
 
 
