@@ -31,16 +31,25 @@ class Solution:
     def arrange(arr):
         ones = 0
         n = len(arr)
+
+        # count the number of ones as ones need to be placed in front regardless.
         for i in range(n):
             if arr[i] == 1:
                 ones += 1
+
+        # sort the array in descending order in O(n * log(n)) time.
         QuickSort.sort(arr)
         arr.reverse()
+
+        # in the result place all the ones at front.
         result = [1]*ones
+
+        # if there are only two elements remaining and they are 3 and 2, place them as 2 and 3.
         if n - ones == 2 and arr[0] == 3 and arr[1] == 2:
             result.append(2)
             result.append(3)
         else:
+            # else place everything other than 1s in descending order.
             for i in range(n - ones):
                 result.append(arr[i])
         return result
