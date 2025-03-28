@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-bitonic-sequence_1062688?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=y4vN0WNdrlg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=47
+
+
 class Solution:
     @staticmethod
     def _longest_increasing_subsequence(arr, dp, parents, n):
@@ -34,6 +38,10 @@ class Solution:
 
     @staticmethod
     def longest_bitonic_subsequence(arr):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
+
         n = len(arr)
 
         # create dp1 and dp2 to store the lengths of LIS. These will take O(n) space.
