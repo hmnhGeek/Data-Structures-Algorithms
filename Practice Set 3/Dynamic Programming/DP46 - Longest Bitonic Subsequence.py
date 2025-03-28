@@ -16,6 +16,23 @@ class Solution:
                     parents[i] = nxt
 
     @staticmethod
+    def _get_increasing_part(left, parents1, arr, start_index):
+        while parents1[start_index] != start_index:
+            left.append(arr[start_index])
+            start_index = parents1[start_index]
+        left.append(arr[start_index])
+        left.reverse()
+
+    @staticmethod
+    def _get_decreasing_part(right, parents2, arr, start_index):
+        if start_index != parents2[start_index]:
+            start_index = parents2[start_index]
+            while parents2[start_index] != start_index:
+                right.append(arr[start_index])
+                start_index = parents2[start_index]
+            right.append(arr[start_index])
+
+    @staticmethod
     def longest_bitonic_subsequence(arr):
         n = len(arr)
         dp1 = {i: 1 for i in range(n)}
@@ -27,18 +44,9 @@ class Solution:
         dp = {i: dp1[i] + dp2[i] - 1 for i in range(n)}
         start_index = max(dp, key=dp.get)
         left, right = [], []
-        while parents1[start_index] != start_index:
-            left.append(arr[start_index])
-            start_index = parents1[start_index]
-        left.append(arr[start_index])
-        left.reverse()
+        Solution._get_increasing_part(left, parents1, arr, start_index)
         start_index = max(dp, key=dp.get)
-        if start_index != parents2[start_index]:
-            start_index = parents2[start_index]
-            while parents2[start_index] != start_index:
-                right.append(arr[start_index])
-                start_index = parents2[start_index]
-            right.append(arr[start_index])
+        Solution._get_decreasing_part(right, parents2, arr, start_index)
         return left + right
 
 
