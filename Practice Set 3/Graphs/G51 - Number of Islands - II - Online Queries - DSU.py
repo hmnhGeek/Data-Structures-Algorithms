@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/number-of-islands/1
+# Solution - https://www.youtube.com/watch?v=Rn6B-Q4SNyA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=51
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.sizes = {i: 1 for i in nodes}
@@ -55,12 +59,17 @@ class Solution:
     def _get_components_count(ds, mtx, n, m):
         count = 0
         for node in ds.parents:
+            # increment the count of components only for those nodes which have value 1.
             if node == ds.parents[node] and mtx[node // m][node % m] == 1:
                 count += 1
         return count
 
     @staticmethod
     def num_islands_2(n, m, queries):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+
         # create a disjoint set of size O(nm)
         ds = DisjointSet([i for i in range(n * m)])
 
