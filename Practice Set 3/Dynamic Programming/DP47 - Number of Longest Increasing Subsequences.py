@@ -1,6 +1,14 @@
+# Problem link - https://www.naukri.com/code360/problems/number-of-longest-increasing-subsequence_3751627?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=cKVl1TFdNXg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=48
+
+
 class Solution:
     @staticmethod
     def num_lis(arr):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
+
         n = len(arr)
         dp = {i: 1 for i in range(n)}
         count = {i: 1 for i in range(n)}
