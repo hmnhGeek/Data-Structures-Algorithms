@@ -7,11 +7,16 @@ class Solution:
         for i in range(n):
             for prev in range(i):
                 if arr[prev] < arr[i]:
+                    # if there is a longer increasing subsequence, then update the dp and set counts of `i` to the
+                    # number of subsequences coming from `prev`.
                     if dp[i] < 1 + dp[prev]:
                         dp[i] = 1 + dp[prev]
                         count[i] = count[prev]
                     elif dp[i] == 1 + dp[prev]:
+                        # if we get again the LIS length, then sum up counts `i` with counts of `prev`.
                         count[i] += count[prev]
+
+        # get LIS length and count of LIS.
         lis_length = max(dp.values())
         num_of_lis = 0
         for i in range(n):
