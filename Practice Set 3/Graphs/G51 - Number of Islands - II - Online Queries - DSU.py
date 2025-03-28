@@ -35,3 +35,65 @@ class DisjointSet:
             if i == self.parents[i]:
                 count += 1
         return count
+
+
+class Solution:
+    @staticmethod
+    def _get_neighbours(mtx, x, y, n, m):
+        neighbours = []
+        if 0 <= x - 1 < n and mtx[x - 1][y] == 1:
+            neighbours.append((x - 1, y))
+        if 0 <= y + 1 < m and mtx[x][y + 1] == 1:
+            neighbours.append((x, y + 1))
+        if 0 <= x + 1 < n and mtx[x + 1][y] == 1:
+            neighbours.append((x + 1, y))
+        if 0 <= y - 1 < m and mtx[x][y - 1] == 1:
+            neighbours.append((x, y - 1))
+        return neighbours
+
+    @staticmethod
+    def _get_components_count(ds, mtx, n, m):
+        count = 0
+        for node in ds.parents:
+            if node == ds.parents[node] and mtx[node // m][node % m] == 1:
+                count += 1
+        return count
+
+    @staticmethod
+    def num_islands_2(n, m, queries):
+        ds = DisjointSet([i for i in range(n * m)])
+        mtx = [[0 for j in range(m)] for i in range(n)]
+        result = []
+        for q in queries:
+            x, y = q
+            mtx[x][y] = 1
+            node = x * m + y
+            neighbours = Solution._get_neighbours(mtx, x, y, n, m)
+            for neighbour in neighbours:
+                x0, y0 = neighbour
+                adj_node = x0 * m + y0
+                if not ds.in_same_component(node, adj_node):
+                    ds.union(node, adj_node)
+            result.append(Solution._get_components_count(ds, mtx, n, m))
+        return result
+
+
+print(Solution.num_islands_2(4, 5, [(1, 1), (0, 1), (3, 3), (3, 4)]))
+print(Solution.num_islands_2(4, 5, [(0, 0), (1, 1), (2, 2), (3, 3)]))
+print(Solution.num_islands_2(3, 3, [(0, 1), (0, 1), (1, 2), (2, 1)]))
+print(Solution.num_islands_2(2, 2, [(0, 0), (1, 1)]))
+print(Solution.num_islands_2(1, 1, [(0, 0)]))
+print(Solution.num_islands_2(4, 5, [
+    (0, 0),
+    (0, 0),
+    (1, 1),
+    (1, 0),
+    (0, 1),
+    (0, 3),
+    (1, 3),
+    (0, 4),
+    (3, 2),
+    (2, 2),
+    (1, 2),
+    (0, 2)
+]))
