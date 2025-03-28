@@ -61,20 +61,37 @@ class Solution:
 
     @staticmethod
     def num_islands_2(n, m, queries):
+        # create a disjoint set of size O(nm)
         ds = DisjointSet([i for i in range(n * m)])
+
+        # define a matrix to mark the islands in size O(nm).
         mtx = [[0 for j in range(m)] for i in range(n)]
+
+        # define a query result.
         result = []
+
+        # loop on the queries.
         for q in queries:
             x, y = q
+
+            # mark this island and get the node representation of this cell.
             mtx[x][y] = 1
             node = x * m + y
+
+            # find the neighbours of this node in O(1) time.
             neighbours = Solution._get_neighbours(mtx, x, y, n, m)
             for neighbour in neighbours:
                 x0, y0 = neighbour
                 adj_node = x0 * m + y0
+
+                # if the adjacent node is not in same component, union them in constant time.
                 if not ds.in_same_component(node, adj_node):
                     ds.union(node, adj_node)
+
+            # append the count of components in the result variable.
             result.append(Solution._get_components_count(ds, mtx, n, m))
+
+        # return the result.
         return result
 
 
