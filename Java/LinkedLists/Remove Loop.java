@@ -96,6 +96,12 @@ class LinkedList<T> {
         }
         return false;
     }
+
+    public void removeLoop() {
+        if (hasLoop()) {
+            getTail().setNext(null);
+        }
+    }
 }
 
 class Solution {
@@ -104,6 +110,10 @@ class Solution {
         LinkedList<Integer> linkedList = new LinkedList<>();
         list.forEach(linkedList::push);
         System.out.println(linkedList);
+        System.out.println(linkedList.hasLoop());
+        linkedList.getTail().setNext(linkedList.getHead().getNext().getNext());
+        System.out.println(linkedList.hasLoop());
+        linkedList.removeLoop();
         System.out.println(linkedList.hasLoop());
     }
 }
