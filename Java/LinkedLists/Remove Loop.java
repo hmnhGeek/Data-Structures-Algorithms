@@ -83,6 +83,19 @@ class LinkedList<T> {
         result.append(String.format(", %s]", getTail().getData()));
         return result.toString();
     }
+
+    public boolean hasLoop() {
+        Node<T> slow = getHead();
+        Node<T> fast = getHead();
+        while (slow != null && fast != null && fast.getNext() != null) {
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+            if(slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 class Solution {
@@ -91,5 +104,6 @@ class Solution {
         LinkedList<Integer> linkedList = new LinkedList<>();
         list.forEach(linkedList::push);
         System.out.println(linkedList);
+        System.out.println(linkedList.hasLoop());
     }
 }
