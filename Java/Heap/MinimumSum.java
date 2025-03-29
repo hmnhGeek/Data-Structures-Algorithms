@@ -106,6 +106,10 @@ class Solution {
     }
 
     public static Integer getMinSum(List<Integer> arr) {
+        /*
+        * Time complexity is O(n * log(n)) and space complexity is O(n).
+        * */
+
         // create a min heap and push all the elements into it in O(n * log(n)) time and O(n) space.
         MinHeap minHeap = new MinHeap();
         arr.forEach(minHeap::insert);
