@@ -104,16 +104,27 @@ class Solution {
     }
 
     public static Integer getMinSum(List<Integer> arr) {
+        // create a min heap and push all the elements into it in O(n * log(n)) time and O(n) space.
         MinHeap minHeap = new MinHeap();
         arr.forEach(minHeap::insert);
-        Integer num1 = 0;
-        Integer num2 = 0;
+
+        // initialize two variables to store the numbers formed after the min heap operations.
+        int num1 = 0;
+        int num2 = 0;
+
+        // while the min heap is not empty. This will run for `n` times.
         while (!minHeap.isEmpty()) {
+            // add LSB to the number 1. This will take O(log(n)) time.
             num1 = (num1 * 10) + minHeap.pop();
+
+            // if min heap is still not empty...
             if (!minHeap.isEmpty()) {
+                // add LSB to the number 2. This will take O(log(n)) time.
                 num2 = (num2 * 10) + minHeap.pop();
             }
         }
+
+        // finally return the sum.
         return num1 + num2;
     }
 }
