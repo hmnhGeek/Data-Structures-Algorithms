@@ -10,6 +10,7 @@ enum Direction {
 
 class Solution {
     public static void main(String[] args) {
+        // Example 1
         List<List<Integer>> matrix = Arrays.asList(
                 Arrays.asList(1, 2, 3, 4),
                 Arrays.asList(5, 6, 7, 8),
@@ -17,6 +18,21 @@ class Solution {
                 Arrays.asList(13, 14, 15, 16)
         );
         spiralTraversal(matrix);
+
+        // Example 2
+        List<List<Integer>> matrix1 = Arrays.asList(
+                Arrays.asList(1, 2, 3, 4, 5, 6),
+                Arrays.asList(7, 8, 9, 10, 11, 12),
+                Arrays.asList(13, 14, 15, 16, 17, 18)
+        );
+        spiralTraversal(matrix1);
+
+        // Example 3
+        List<List<Integer>> matrix2 = Arrays.asList(
+                Arrays.asList(32, 44, 27, 23),
+                Arrays.asList(54, 28, 50, 62)
+        );
+        spiralTraversal(matrix2);
     }
 
     private static void spiralTraversal(List<List<Integer>> matrix) {
