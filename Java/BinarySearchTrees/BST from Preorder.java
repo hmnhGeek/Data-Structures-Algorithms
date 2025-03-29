@@ -290,6 +290,22 @@ class Solution {
         // Example 1
         BinarySearchTree<Integer> binarySearchTree1 = constructBst(Arrays.asList(10, 5, 1, 7, 40, 50));
         binarySearchTree1.show();
+
+        // Example 2
+        BinarySearchTree<Integer> binarySearchTree2 = constructBst(Arrays.asList(1, 2));
+        binarySearchTree2.show();
+
+        // Example 3
+        BinarySearchTree<Integer> binarySearchTree3 = constructBst(Arrays.asList(2, 1));
+        binarySearchTree3.show();
+
+        // Example 4
+        BinarySearchTree<Integer> binarySearchTree4 = constructBst(Arrays.asList(22, 12, 8, 20, 30, 25, 40));
+        binarySearchTree4.show();
+
+        // Example 5
+        BinarySearchTree<Integer> binarySearchTree5 = constructBst(Arrays.asList(100, 20, 10, 30, 200, 150, 300));
+        binarySearchTree5.show();
     }
 
     private static <T extends Comparable<T>> BinarySearchTree<T> constructBst(List<T> preorder) {
