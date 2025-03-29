@@ -133,12 +133,22 @@ class Solution {
     }
 
     public static <T> List<T> getLevelOrderTraversal(Node<T> root) {
+        // initialize a queue to hold the `n` nodes, thus taking O(n) space.
         Queue<Node<T>> queue = new Queue<>();
+
+        // push the root node first
         queue.push(root);
+
+        // define a result list
         List<T> result = new ArrayList<>();
+
+        // standard BFS condition...
         while (!queue.isEmpty()) {
+            // pop the first node and add it's data to the list.
             Node<T> node = queue.pop();
             result.add(node.getData());
+
+            // push the left and then the right child of this node into the queue.
             if (node.getLeft() != null) {
                 queue.push(node.getLeft());
             }
@@ -146,6 +156,8 @@ class Solution {
                 queue.push(node.getRight());
             }
         }
+
+        // finally return the level order traversal.
         return result;
     }
 }
