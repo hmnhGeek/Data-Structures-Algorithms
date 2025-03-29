@@ -105,6 +105,31 @@ class Solution {
         node1.setRight(node3);
         System.out.println(getLevelOrderTraversal(node1));
 
+        // Example 2
+        Node<Integer> n10 = new Node<>(10);
+        Node<Integer> n20 = new Node<>(20);
+        Node<Integer> n30 = new Node<>(30);
+        Node<Integer> n40 = new Node<>(40);
+        Node<Integer> n50 = new Node<>(50);
+        n10.setLeft(n20);
+        n10.setRight(n30);
+        n20.setLeft(n40);
+        n20.setRight(n50);
+        System.out.println(getLevelOrderTraversal(n10));
+
+        // Example 3
+        Node<Integer> n1 = new Node<>(1);
+        Node<Integer> n2 = new Node<>(2);
+        Node<Integer> n3 = new Node<>(3);
+        Node<Integer> n4 = new Node<>(4);
+        Node<Integer> n5 = new Node<>(5);
+        Node<Integer> n6 = new Node<>(6);
+        n1.setLeft(n3);
+        n1.setRight(n2);
+        n2.setRight(n4);
+        n4.setLeft(n6);
+        n4.setRight(n5);
+        System.out.println(getLevelOrderTraversal(n1));
     }
 
     public static <T> List<T> getLevelOrderTraversal(Node<T> root) {
