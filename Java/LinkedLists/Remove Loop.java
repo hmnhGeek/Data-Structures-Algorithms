@@ -102,10 +102,15 @@ class LinkedList<T> {
             getTail().setNext(null);
         }
     }
+
+    public void build(T... args) {
+        Arrays.stream(args).toList().forEach(this::push);
+    }
 }
 
 class Solution {
     public static void main(String[] args) {
+        // Example 1
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 10, -19);
         LinkedList<Integer> linkedList = new LinkedList<>();
         list.forEach(linkedList::push);
@@ -115,5 +120,31 @@ class Solution {
         System.out.println(linkedList.hasLoop());
         linkedList.removeLoop();
         System.out.println(linkedList.hasLoop());
+
+        // Example 2
+        LinkedList<Integer> linkedList1 = new LinkedList<>();
+        linkedList1.build(1, 3, 4);
+        System.out.println(linkedList1);
+        linkedList1.getTail().setNext(linkedList1.getHead().getNext());
+        System.out.println(linkedList1.hasLoop());
+        linkedList1.removeLoop();
+        System.out.println(linkedList1.hasLoop());
+
+        // Example 3
+        LinkedList<Integer> linkedList2 = new LinkedList<>();
+        linkedList2.build(1, 8, 3, 4);
+        System.out.println(linkedList2);
+        System.out.println(linkedList2.hasLoop());
+        linkedList2.removeLoop();
+        System.out.println(linkedList2.hasLoop());
+
+        // Example 4
+        LinkedList<Integer> linkedList3 = new LinkedList<>();
+        linkedList3.build(1, 2, 3, 4);
+        linkedList3.getTail().setNext(linkedList3.getHead());
+        System.out.println(linkedList3);
+        System.out.println(linkedList3.hasLoop());
+        linkedList3.removeLoop();
+        System.out.println(linkedList3.hasLoop());
     }
 }
