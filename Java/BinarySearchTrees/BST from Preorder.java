@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/#naive-one-by-one-insert
+
+
 package BinarySearchTrees;
 
 
@@ -309,7 +312,13 @@ class Solution {
     }
 
     private static <T extends Comparable<T>> BinarySearchTree<T> constructBst(List<T> preorder) {
+        /*
+        * Overall time complexity is O(n * log(n)) and space complexity is O(n).
+        * */
+
         BinarySearchTree<T> binarySearchTree = new BinarySearchTree<T>();
+
+        // This step will take O(n * log(n)) time and O(n) space for the BST.
         preorder.forEach(binarySearchTree::insert);
         return binarySearchTree;
     }
