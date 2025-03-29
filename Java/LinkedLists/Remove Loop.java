@@ -1,6 +1,8 @@
+// Problem link - https://www.geeksforgeeks.org/problems/remove-loop-in-linked-list/1
+
+
 package LinkedLists;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -85,6 +87,9 @@ class LinkedList<T> {
     }
 
     public boolean hasLoop() {
+        /*
+        * Time complexity is O(n) and space complexity is O(1).
+        * */
         Node<T> slow = getHead();
         Node<T> fast = getHead();
         while (slow != null && fast != null && fast.getNext() != null) {
@@ -98,6 +103,9 @@ class LinkedList<T> {
     }
 
     public void removeLoop() {
+        /*
+        * Time and space complexities are O(1).
+        * */
         if (hasLoop()) {
             getTail().setNext(null);
         }
