@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/level-order-traversal/1
+
+
 package BinaryTrees;
 
 import java.util.ArrayList;
@@ -133,6 +136,10 @@ class Solution {
     }
 
     public static <T> List<T> getLevelOrderTraversal(Node<T> root) {
+        /*
+        * Time complexity is O(n) and space complexity is O(n).
+        * */
+
         // initialize a queue to hold the `n` nodes, thus taking O(n) space.
         Queue<Node<T>> queue = new Queue<>();
 
