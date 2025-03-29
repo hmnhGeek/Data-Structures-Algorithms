@@ -1,6 +1,9 @@
 package BinarySearchTrees;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 class Node<T> {
     private T data;
     private Integer size;
@@ -279,5 +282,19 @@ class BinarySearchTree<T extends Comparable<T>> {
     public void show() {
         _show(getRoot());
         System.out.println();
+    }
+}
+
+class Solution {
+    public static void main(String[] args) {
+        // Example 1
+        BinarySearchTree<Integer> binarySearchTree1 = constructBst(Arrays.asList(10, 5, 1, 7, 40, 50));
+        binarySearchTree1.show();
+    }
+
+    private static <T extends Comparable<T>> BinarySearchTree<T> constructBst(List<T> preorder) {
+        BinarySearchTree<T> binarySearchTree = new BinarySearchTree<T>();
+        preorder.forEach(binarySearchTree::insert);
+        return binarySearchTree;
     }
 }
