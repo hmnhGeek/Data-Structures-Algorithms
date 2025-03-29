@@ -97,6 +97,13 @@ class Node<T> {
 
 class Solution {
     public static void main(String[] args) {
+        // Example 1
+        Node<Integer> node1 = new Node<>(1);
+        Node<Integer> node2 = new Node<>(2);
+        Node<Integer> node3 = new Node<>(3);
+        node1.setLeft(node2);
+        node1.setRight(node3);
+        System.out.println(getLevelOrderTraversal(node1));
 
     }
 
