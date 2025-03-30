@@ -114,6 +114,29 @@ class Solution {
         m2.setRight(m5);
 
         System.out.println(areAnagrams(n1, m1));
+
+        // Example 2
+        Node<Integer> one = new Node<>(1);
+        Node<Integer> two = new Node<>(2);
+        Node<Integer> three = new Node<>(3);
+        Node<Integer> four = new Node<>(4);
+        Node<Integer> five = new Node<>(5);
+        one.setLeft(two);
+        two.setLeft(five);
+        one.setRight(three);
+        two.setRight(four);
+
+        Node<Integer> one1 = new Node<>(1);
+        Node<Integer> two1 = new Node<>(2);
+        Node<Integer> three1 = new Node<>(3);
+        Node<Integer> four1 = new Node<>(4);
+        Node<Integer> five1 = new Node<>(5);
+        one1.setLeft(two1);
+        two1.setLeft(five1);
+        one1.setRight(four1);
+        two1.setRight(three1);
+
+        System.out.println(areAnagrams(one, one1));
     }
 
     private static <T> boolean areAnagrams(Node<T> root1, Node<T> root2) {
