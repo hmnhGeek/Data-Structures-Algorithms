@@ -52,12 +52,11 @@ class Solution {
             // if the characters don't match, increment the count but keep `j` at its place.
             if (s1.charAt(i) != s2.charAt(j)) {
                 count += 1;
-                i -= 1;
             }
             else {
-                i -= 1;
                 j -= 1;
             }
+            i -= 1;
         }
 
         // return the count of swaps needed.
