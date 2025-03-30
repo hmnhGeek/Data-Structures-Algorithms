@@ -58,3 +58,98 @@ class Queue<T> {
         return item;
     }
 }
+
+class Node<T> {
+    private T data;
+    private Node<T> left;
+    private Node<T> right;
+
+    public Node(T data) {
+        this.data = data;
+        this.left = this.right = null;
+    }
+
+    public Node<T> getLeft() {
+        return left;
+    }
+
+    public void setLeft(Node<T> left) {
+        this.left = left;
+    }
+
+    public Node<T> getRight() {
+        return right;
+    }
+
+    public void setRight(Node<T> right) {
+        this.right = right;
+    }
+
+    public T getData() {
+        return data;
+    }
+}
+
+class Solution {
+    public static void main(String[] args) {
+        // Example 1
+        Node<Integer> n1 = new Node<>(1);
+        Node<Integer> n2 = new Node<>(2);
+        Node<Integer> n3 = new Node<>(3);
+        Node<Integer> n4 = new Node<>(4);
+        Node<Integer> n5 = new Node<>(5);
+        n1.setLeft(n3);
+        n1.setRight(n2);
+        n2.setLeft(n5);
+        n2.setRight(n4);
+
+        Node<Integer> m1 = new Node<>(1);
+        Node<Integer> m2 = new Node<>(2);
+        Node<Integer> m3 = new Node<>(3);
+        Node<Integer> m4 = new Node<>(4);
+        Node<Integer> m5 = new Node<>(5);
+        m1.setLeft(m2);
+        m1.setRight(m3);
+        m2.setLeft(m4);
+        m2.setRight(m5);
+
+        System.out.println(areAnagrams(n1, m1));
+    }
+
+    private static <T> boolean areAnagrams(Node<T> root1, Node<T> root2) {
+        Queue<Node<T>> queue1 = new Queue<>();
+        Queue<Node<T>> queue2 = new Queue<>();
+
+        queue1.push(root1);
+        queue2.push(root2);
+
+        while (!queue1.isEmpty() && !queue2.isEmpty()) {
+            Node<T> node1 = queue1.pop();
+            Node<T> node2 = queue2.pop();
+
+            if (!node1.getData().equals(node2.getData())) {
+                return false;
+            }
+
+            if (
+                    (node1.getLeft() == null && node2.getRight() != null) ||
+                    (node1.getLeft() != null && node2.getRight() == null) ||
+                    (node1.getRight() == null && node2.getLeft() != null) ||
+                    (node1.getRight() != null && node2.getLeft() == null)
+            ) {
+                return false;
+            }
+
+            if (node1.getLeft() != null && node2.getRight() != null) {
+                queue1.push(node1.getLeft());
+                queue2.push(node2.getRight());
+            }
+            if (node1.getRight() != null && node1.getLeft() != null) {
+                queue1.push(node1.getRight());
+                queue2.push(node2.getLeft());
+            }
+        }
+        return true;
+    }
+}
+
