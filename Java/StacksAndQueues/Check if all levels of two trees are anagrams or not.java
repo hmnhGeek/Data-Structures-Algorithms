@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/check-if-all-levels-of-two-trees-are-anagrams-or-not/
+
+
 package StacksAndQueues;
 
 class QueueNode<T> {
@@ -140,6 +143,10 @@ class Solution {
     }
 
     private static <T> boolean areAnagrams(Node<T> root1, Node<T> root2) {
+        /*
+        * Time complexity is O(n) and space complexity O(n).
+        * */
+
         // define two queues and store the root nodes into it.
         Queue<Node<T>> queue1 = new Queue<>();
         Queue<Node<T>> queue2 = new Queue<>();
