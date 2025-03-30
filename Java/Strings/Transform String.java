@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/transform-one-string-to-another-using-minimum-number-of-given-operation/
+// Solution - https://www.youtube.com/watch?v=mv5eeYHOYiI
+
 package Strings;
 
 import java.util.HashMap;
@@ -14,9 +17,9 @@ class Solution {
      * @return A frequency map of the string.
      */
     private static HashMap<Character, Integer> counter(String s) {
-        /*
-        * Time complexity is O(n) and space complexity is O(n).
-        * */
+        /**
+         * Time complexity is O(26) and space complexity is O(26).
+         */
 
         HashMap<Character, Integer> frequencyMap = new HashMap<>();
         for (char c : s.toCharArray()) {
@@ -26,6 +29,10 @@ class Solution {
     }
 
     private static Integer stepsToTransform(String s1, String s2) {
+        /**
+         * Time complexity is O(n) and space complexity is O(26).
+         */
+
         // check if both the strings are permutations of each other or not.
         HashMap<Character, Integer> map1 = counter(s1);
         HashMap<Character, Integer> map2 = counter(s2);
