@@ -140,20 +140,26 @@ class Solution {
     }
 
     private static <T> boolean areAnagrams(Node<T> root1, Node<T> root2) {
+        // define two queues and store the root nodes into it.
         Queue<Node<T>> queue1 = new Queue<>();
         Queue<Node<T>> queue2 = new Queue<>();
 
+        // push the root nodes into the queues.
         queue1.push(root1);
         queue2.push(root2);
 
+        // while both queues have some elements.
         while (!queue1.isEmpty() && !queue2.isEmpty()) {
+            // pop the nodes from the queue.
             Node<T> node1 = queue1.pop();
             Node<T> node2 = queue2.pop();
 
+            // if the popped nodes data are not equal, then return false.
             if (!node1.getData().equals(node2.getData())) {
                 return false;
             }
 
+            // if either of left or right nodes are null (while the other is not), return false.
             if (
                     (node1.getLeft() == null && node2.getRight() != null) ||
                     (node1.getLeft() != null && node2.getRight() == null) ||
@@ -163,15 +169,20 @@ class Solution {
                 return false;
             }
 
+            // if node.left is present and node.right is present, push them to queues.
             if (node1.getLeft() != null && node2.getRight() != null) {
                 queue1.push(node1.getLeft());
                 queue2.push(node2.getRight());
             }
+
+            // if node.right is present and node.left is present, push them to queues.
             if (node1.getRight() != null && node1.getLeft() != null) {
                 queue1.push(node1.getRight());
                 queue2.push(node2.getLeft());
             }
         }
+
+        // return true if the queues got empty.
         return true;
     }
 }
