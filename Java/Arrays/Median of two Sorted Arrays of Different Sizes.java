@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/median-of-two-sorted-arrays/description/
+// Solution - https://www.youtube.com/watch?v=F9c7LpRZWVQ
+
 package Arrays;
 
 import java.util.Arrays;
@@ -14,6 +17,10 @@ class Solution {
     }
 
     private static Double getMedian(List<Integer> arr1, List<Integer> arr2) {
+        /*
+        * Overall time complexity is O(log(min(len(a1), len(a2)))) and space complexity is O(1).
+        * */
+
         int n1 = arr1.size();
         int n2 = arr2.size();
 
