@@ -48,6 +48,38 @@ class Solution {
                         Arrays.asList(50.0, 10.0, 40.0, 70.0)
                 )
         );
+
+        System.out.println(
+                getMaxProfitHelper(
+                        Arrays.asList(1, 3, 6, 2),
+                        Arrays.asList(2, 5, 19, 100),
+                        Arrays.asList(50.0, 20.0, 100.0, 200.0)
+                )
+        );
+
+        System.out.println(
+                getMaxProfitHelper(
+                        Arrays.asList(1, 2, 4, 5),
+                        Arrays.asList(3, 5, 6, 7),
+                        Arrays.asList(60.0, 50.0, 70.0, 30.0)
+                )
+        );
+
+        System.out.println(
+                getMaxProfitHelper(
+                        Arrays.asList(1, 2, 3, 4, 6),
+                        Arrays.asList(3, 5, 10, 6, 9),
+                        Arrays.asList(20.0, 20.0, 100.0, 70.0, 60.0)
+                )
+        );
+
+        System.out.println(
+                getMaxProfitHelper(
+                        Arrays.asList(1, 1, 1),
+                        Arrays.asList(2, 3, 4),
+                        Arrays.asList(5.0, 6.0, 4.0)
+                )
+        );
     }
 
     private static Double getMaxProfitHelper(List<Integer> startTimes, List<Integer> endTimes, List<Double> profits) {
