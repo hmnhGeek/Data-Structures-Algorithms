@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/
+// Solution - https://www.youtube.com/watch?v=LL0tVxlAeV4
+
 package StacksAndQueues;
 
 import java.util.*;
@@ -42,7 +45,7 @@ class Job {
 class Solution {
     public static void main(String[] args) {
         System.out.println(
-                getMaxProfitHelper(
+                getMaxProfit(
                         Arrays.asList(1, 2, 3, 3),
                         Arrays.asList(3, 4, 5, 6),
                         Arrays.asList(50.0, 10.0, 40.0, 70.0)
@@ -50,7 +53,7 @@ class Solution {
         );
 
         System.out.println(
-                getMaxProfitHelper(
+                getMaxProfit(
                         Arrays.asList(1, 3, 6, 2),
                         Arrays.asList(2, 5, 19, 100),
                         Arrays.asList(50.0, 20.0, 100.0, 200.0)
@@ -58,7 +61,7 @@ class Solution {
         );
 
         System.out.println(
-                getMaxProfitHelper(
+                getMaxProfit(
                         Arrays.asList(1, 2, 4, 5),
                         Arrays.asList(3, 5, 6, 7),
                         Arrays.asList(60.0, 50.0, 70.0, 30.0)
@@ -66,7 +69,7 @@ class Solution {
         );
 
         System.out.println(
-                getMaxProfitHelper(
+                getMaxProfit(
                         Arrays.asList(1, 2, 3, 4, 6),
                         Arrays.asList(3, 5, 10, 6, 9),
                         Arrays.asList(20.0, 20.0, 100.0, 70.0, 60.0)
@@ -74,7 +77,7 @@ class Solution {
         );
 
         System.out.println(
-                getMaxProfitHelper(
+                getMaxProfit(
                         Arrays.asList(1, 1, 1),
                         Arrays.asList(2, 3, 4),
                         Arrays.asList(5.0, 6.0, 4.0)
@@ -82,7 +85,11 @@ class Solution {
         );
     }
 
-    private static Double getMaxProfitHelper(List<Integer> startTimes, List<Integer> endTimes, List<Double> profits) {
+    private static Double getMaxProfit(List<Integer> startTimes, List<Integer> endTimes, List<Double> profits) {
+        /*
+        * Overall time complexity is O(n * log(n)) and space complexity is O(n).
+        * */
+
         // construct an array of Jobs and then sort them based on their start times in O(n * log(n)) time and O(n) space.
         List<Job> jobs = new ArrayList<>();
         for (int i = 0; i < startTimes.size(); i += 1) {
@@ -101,7 +108,7 @@ class Solution {
         // put the base case in dp.
         dp.put(n, 0.0);
 
-        // since i : 0 --> n - 1, we do it the reverse way here.
+        // since i : 0 --> n - 1, we do it the reverse way here. This will take another O(n * log(n)) time.
         for (int i = n - 1; i >= 0; i--) {
             // get the next valid job's index in O(log(n)) and space complexity is O(1).
             Integer nextJobIndex = getNextJobIndex(jobs, i, n);
