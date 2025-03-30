@@ -83,24 +83,43 @@ class Solution {
     }
 
     private static Double getMaxProfitHelper(List<Integer> startTimes, List<Integer> endTimes, List<Double> profits) {
+        // construct an array of Jobs and then sort them based on their start times in O(n * log(n)) time and O(n) space.
         List<Job> jobs = new ArrayList<>();
         for (int i = 0; i < startTimes.size(); i += 1) {
             jobs.add(new Job(startTimes.get(i), endTimes.get(i), profits.get(i)));
         }
         jobs.sort(Comparator.comparing(Job::getStartTime));
+
+        // return the max profit starting from the 0th job.
         return getMaxProfit(jobs, 0, jobs.size());
     }
 
     private static Double getMaxProfit(List<Job> jobs, Integer i, Integer n) {
+        // base case of recursion.
         if (i >= n) {
             return 0.0;
         }
+
+        // get the next valid job's index in O(log(n)) and space complexity is O(1).
         Integer nextJobIndex = getNextJobIndex(jobs, i, n);
+
+        // add the job's profit if considered.
         double left = jobs.get(i).getProfit() + getMaxProfit(jobs, nextJobIndex, n);
+
+        // simply move to the next job if this job is not considered.
         double right = getMaxProfit(jobs, i + 1, n);
+
+        // return the max profit.
         return Math.max(left, right);
     }
 
+    /**
+     *
+     * @param jobs List of jobs.
+     * @param index Current job's index which is considered for profit.
+     * @param n Length of the jobs array.
+     * @return The index of the next valid job that can be considered for profit.
+     */
     private static Integer getNextJobIndex(List<Job> jobs, Integer index, Integer n) {
         int low = index + 1;
         int high = n - 1;
@@ -109,14 +128,20 @@ class Solution {
         while (low <= high) {
             int mid = low + (high - low)/2;
             Job nextPossibleJob = jobs.get(mid);
+
+            // if the mid-job's start time < current job's end time, then we must search to the right.
             if (nextPossibleJob.getStartTime() < currentJob.getEndTime()) {
                 low = mid + 1;
             } else if (nextPossibleJob.getStartTime() > currentJob.getEndTime()) {
+                // if opposite, then we must search for even earlier job.
                 high = mid - 1;
             } else {
+                // if equal, then also we must search for even earlier job.
                 high = mid - 1;
             }
         }
+
+        // low points to the correct answer.
         return low;
     }
 }
