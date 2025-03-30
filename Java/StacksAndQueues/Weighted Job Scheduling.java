@@ -90,8 +90,13 @@ class Solution {
         }
         jobs.sort(Comparator.comparing(Job::getStartTime));
 
+        HashMap<Integer, Double> dp = new HashMap<>();
+        for (int i = 0; i < jobs.size(); i += 1) {
+            dp.put(i, null);
+        }
+
         // return the max profit starting from the 0th job.
-        return getMaxProfit(jobs, 0, jobs.size());
+        return getMaxProfitMemoized(jobs, 0, jobs.size(), dp);
     }
 
     private static Double getMaxProfit(List<Job> jobs, Integer i, Integer n) {
@@ -111,6 +116,30 @@ class Solution {
 
         // return the max profit.
         return Math.max(left, right);
+    }
+
+    private static Double getMaxProfitMemoized(List<Job> jobs, Integer i, Integer n, HashMap<Integer, Double> dp) {
+        // base case of recursion.
+        if (i >= n) {
+            return 0.0;
+        }
+
+        if (dp.get(i) != null) {
+            return dp.get(i);
+        }
+
+        // get the next valid job's index in O(log(n)) and space complexity is O(1).
+        Integer nextJobIndex = getNextJobIndex(jobs, i, n);
+
+        // add the job's profit if considered.
+        double left = jobs.get(i).getProfit() + getMaxProfitMemoized(jobs, nextJobIndex, n, dp);
+
+        // simply move to the next job if this job is not considered.
+        double right = getMaxProfitMemoized(jobs, i + 1, n, dp);
+
+        // return the max profit.
+        dp.put(i, Math.max(left, right));
+        return dp.get(i);
     }
 
     /**
