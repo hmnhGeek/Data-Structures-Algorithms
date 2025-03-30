@@ -92,11 +92,16 @@ class Solution {
 
         int n = jobs.size();
 
+        // define a dp hash map of size O(n + 1).
         HashMap<Integer, Double> dp = new HashMap<>();
         for (int i = 0; i <= n; i += 1) {
             dp.put(i, null);
         }
+
+        // put the base case in dp.
         dp.put(n, 0.0);
+
+        // since i : 0 --> n - 1, we do it the reverse way here.
         for (int i = n - 1; i >= 0; i--) {
             // get the next valid job's index in O(log(n)) and space complexity is O(1).
             Integer nextJobIndex = getNextJobIndex(jobs, i, n);
@@ -113,25 +118,6 @@ class Solution {
 
         // return the max profit starting from the 0th job.
         return dp.get(0);
-    }
-
-    private static Double getMaxProfit(List<Job> jobs, Integer i, Integer n) {
-        // base case of recursion.
-        if (i >= n) {
-            return 0.0;
-        }
-
-        // get the next valid job's index in O(log(n)) and space complexity is O(1).
-        Integer nextJobIndex = getNextJobIndex(jobs, i, n);
-
-        // add the job's profit if considered.
-        double left = jobs.get(i).getProfit() + getMaxProfit(jobs, nextJobIndex, n);
-
-        // simply move to the next job if this job is not considered.
-        double right = getMaxProfit(jobs, i + 1, n);
-
-        // return the max profit.
-        return Math.max(left, right);
     }
 
     /**
