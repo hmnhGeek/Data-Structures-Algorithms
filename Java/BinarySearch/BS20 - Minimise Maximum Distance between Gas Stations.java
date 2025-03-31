@@ -200,20 +200,40 @@ class MaxHeap<T extends Comparable<T>> {
 
 class BetterSolution {
     public static Double getMinimizedMaxDistance(List<Integer> arr, Integer k) {
+        // define a max heap which will store slots.
         MaxHeap<Slot> maxHeap = new MaxHeap<>();
+
+        // create a slots array and initially all the slots will have 0 gas stations placed. This will take O(n) time
+        // and O(n) space.
         List<Slot> slots = new ArrayList<>();
         for (int i = 0; i < arr.size() - 1; i += 1) {
             slots.add(new Slot((double) (arr.get(i + 1) - arr.get(i)), 0));
         }
+
+        // insert all the slots into the max heap in O(n * log(n)) time and O(n) space.
         slots.forEach(maxHeap::insert);
+
+        // now loop in the gas stations in k iterations.
         for (int i = 0; i < k; i += 1) {
+            // pop the maximum length slot in O(log(n)) time.
             Slot maxSlot = maxHeap.pop();
+
+            // get the length and gas stations placed from this slot.
             double length = maxSlot.getLength();
             int gasStationsPlaced = maxSlot.getGasStationsPlaced();
+
+            // get the initial length of the slot.
             double slotLength = length * (gasStationsPlaced + 1);
+
+            // get the new length of the slot, (1.0 is for the new gas station and the other 1.0 is for updating the
+            // length).
             double newSlotLength = slotLength/(gasStationsPlaced + 1.0 + 1.0);
+
+            // in O(log(n)) place this new slot back into the max heap with +1 gas station placed in this slot.
             maxHeap.insert(new Slot(newSlotLength, gasStationsPlaced + 1));
         }
+
+        // return the maximum length (which now represents the minimized maximum distance between the gas stations).
         Slot minimizedMaxSlot = maxHeap.pop();
         return minimizedMaxSlot.getLength();
     }
@@ -222,6 +242,7 @@ class BetterSolution {
 
 class Solution {
     public static void main(String[] args) {
+        System.out.println("Linear solution.");
         System.out.println(LinearSolution.getMinimizedMaxDistance(Arrays.asList(1, 13, 17, 23), 5));
         System.out.println(LinearSolution.getMinimizedMaxDistance(Arrays.asList(1,2,3,4,5,6,7), 6));
         System.out.println(LinearSolution.getMinimizedMaxDistance(Arrays.asList(1, 2, 3, 4, 5), 4));
@@ -229,7 +250,7 @@ class Solution {
         System.out.println(LinearSolution.getMinimizedMaxDistance(Arrays.asList(3, 6, 12, 19, 33, 44, 67, 72, 89, 95), 2));
         System.out.println(LinearSolution.getMinimizedMaxDistance(Arrays.asList(1, 13, 17, 23), 5));
 
-        System.out.println();
+        System.out.println("Better solution using max heap.");
         System.out.println(BetterSolution.getMinimizedMaxDistance(Arrays.asList(1, 13, 17, 23), 5));
         System.out.println(BetterSolution.getMinimizedMaxDistance(Arrays.asList(1,2,3,4,5,6,7), 6));
         System.out.println(BetterSolution.getMinimizedMaxDistance(Arrays.asList(1, 2, 3, 4, 5), 4));
