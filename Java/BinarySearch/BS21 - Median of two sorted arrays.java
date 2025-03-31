@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
+// Solution - https://www.youtube.com/watch?v=C2rRzz-JDk8&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
+
 package BinarySearch;
 
 import java.util.ArrayList;
@@ -119,7 +122,6 @@ class BetterSolutionBS21 {
         return -1.0;
     }
 }
-
 
 class Main {
     public static void main(String[] args) {
