@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/minimize-max-distance-to-gas-station/1
+// Solution - https://www.youtube.com/watch?v=kMSBvlZ-_HA&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=21
+
+
 package BinarySearch;
 
 import java.util.*;
@@ -200,6 +204,10 @@ class MaxHeap<T extends Comparable<T>> {
 
 class BetterSolution {
     public static Double getMinimizedMaxDistance(List<Integer> arr, Integer k) {
+        /**
+         * Time complexity is O({n + k} * log(n)) and space complexity is O(n).
+         */
+
         // define a max heap which will store slots.
         MaxHeap<Slot> maxHeap = new MaxHeap<>();
 
