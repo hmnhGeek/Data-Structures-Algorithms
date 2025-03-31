@@ -1,8 +1,6 @@
 package BinarySearch;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -64,6 +62,142 @@ class LinearSolution {
         return maxSlotLength;
     }
 }
+
+
+class Slot implements Comparable<Slot> {
+    private Double length;
+    private Integer gasStationsPlaced;
+
+    public Slot(Double length, Integer gasStationsPlaced) {
+        this.length = length;
+        this.gasStationsPlaced = gasStationsPlaced;
+    }
+
+    public Double getLength() {
+        return length;
+    }
+
+    public void setLength(Double length) {
+        this.length = length;
+    }
+
+    public Integer getGasStationsPlaced() {
+        return gasStationsPlaced;
+    }
+
+    public void setGasStationsPlaced(Integer gasStationsPlaced) {
+        this.gasStationsPlaced = gasStationsPlaced;
+    }
+
+
+    @Override
+    public int compareTo(Slot o) {
+        if (this.length - o.getLength() < 0) {
+            return -1;
+        } else if (this.length - o.getLength()  == 0) {
+            return 0;
+        } else {
+            return  1;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Slot length = %s, Gas stations placed = %d", getLength(), getGasStationsPlaced());
+    }
+}
+
+class MaxHeap<T extends Comparable<T>> {
+    private List<T> heap;
+
+    public MaxHeap() {
+        this.heap = new ArrayList<>();
+    }
+
+    public boolean isEmpty() {
+        return heap.isEmpty();
+    }
+
+    public Integer getLci(int pi) {
+        int lci = 2*pi + 1;
+        return 0 <= lci && lci < heap.size() ? lci : null;
+    }
+
+    public Integer getRci(int pi) {
+        int rci = 2*pi + 2;
+        return 0 <= rci && rci < heap.size() ? rci : null;
+    }
+
+    public Integer getPi(int ci) {
+        if (ci == 0) {
+            return null;
+        }
+        int pi = (ci - 1)/2;
+        return 0 <= pi && pi < heap.size() ? pi : null;
+    }
+
+    public Integer getMaxChildIndex(Integer lci, Integer rci) {
+        if (lci == null && rci == null) {
+            return null;
+        }
+        if (lci == null) {
+            return rci;
+        }
+        if (rci == null) {
+            return lci;
+        }
+        Integer maxChildIndex = lci;
+        if (heap.get(rci).compareTo(heap.get(maxChildIndex)) > 0) {
+            maxChildIndex = rci;
+        }
+        return maxChildIndex;
+    }
+
+    public void maxHeapifyUp(Integer startIndex) {
+        if (startIndex.equals(0)) {
+            return;
+        }
+        Integer pi = getPi(startIndex);
+        Integer lci = getLci(pi);
+        Integer rci = getRci(pi);
+        Integer maxChildIndex = getMaxChildIndex(lci, rci);
+        if (maxChildIndex != null) {
+            if (heap.get(pi).compareTo(heap.get(maxChildIndex)) < 0) {
+                Collections.swap(heap, pi, maxChildIndex);
+            }
+            maxHeapifyUp(pi);
+        }
+    }
+
+    public void maxHeapifyDown(Integer pi) {
+        Integer lci = getLci(pi);
+        Integer rci = getRci(pi);
+        Integer maxChildIndex = getMaxChildIndex(lci, rci);
+        if (maxChildIndex != null) {
+            if (heap.get(pi).compareTo(heap.get(maxChildIndex)) < 0) {
+                Collections.swap(heap, pi, maxChildIndex);
+            }
+            maxHeapifyDown(maxChildIndex);
+        }
+    }
+
+    public void insert(T x) {
+        heap.add(x);
+        maxHeapifyUp(heap.size() - 1);
+    }
+
+    public T pop() {
+        if (isEmpty()) {
+            return null;
+        }
+        T item = heap.getFirst();
+        Collections.swap(heap, 0, heap.size() - 1);
+        heap.removeLast();
+        maxHeapifyDown(0);
+        return item;
+    }
+}
+
 
 class Solution {
     public static void main(String[] args) {
