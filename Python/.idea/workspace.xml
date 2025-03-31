@@ -1,0 +1,1065 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="18288626-2613-4ab4-8323-b3a872be03cb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Arrays/2 Sum Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/Common in 3 Sorted Arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/Longest Consecutive Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/Maximum Product Subarray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/Rearrange Array Elements by Sign.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/Stock Buy and Sell – Max 2 Transactions Allowed.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/Subarray with 0 sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/Trapping Rain Water.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/array_subset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/best_time_to_buy_and_sell_stock.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/check_palindromic_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/chocolate_distribution_problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/dutch_national_flag_algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/factorial_of_large_number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/find_the_duplicate_number_leetcode_287.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/inversion_count.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/kadane_algo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/kth_smallest_largest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/majority_element_n_by_k.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/max_min_in_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/median_of_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/median_of_two_sorted_arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/merge_overlapping_intervals.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/merge_two_sorted_arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/min_jumps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/min_swaps_and_k_together.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/minimize_the_heights_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/move_all_negatives_to_left.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/next_permutation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/palindromic array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/rotate_right_by_one.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/smallest_sub_array_size_sum_grt_than_x.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/three_way_partitioning.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/triplet_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Arrays/union_and_intersection_of_two_arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Backtracking/all_subsets_with_sum_k.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/balancing_a_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/brothers_from_different_roots.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/bst_from_preorder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/bt_to_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/check_if_bt_is_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/count_bst_nodes_in_range.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/dead_end_nodes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/delete_node_from_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/flatten_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/inorder_successor_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/kth_largest_element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/kth_largest_in_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/largest_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/lowest_common_anscestor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/median_in_a_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/merge_two_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/min_max_from_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/predecessor_and_successor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/replace_element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search Tree/searching_in_a_bsr.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS10 - Finding Sqrt of a number using Binary Search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS11 - Find the Nth root of an Integer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS12 - Koko Eating Bananas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS13 - Minimum days to make M bouquets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS14 - Find the Smallest Divisor Given a Threshold.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS15 - Capacity to Ship Packages within D Days.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS16 - Kth Missing Positive Number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS17 - Aggressive Cows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS18 - Allocate Books.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS19 - Painter's Partition Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS2 - Implement Lower and Upper Bounds.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS20 - Minimise Maximum Distance between Gas Stations.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS21 - Median of two sorted arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS22 - Kth Element in Two Sorted Arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS23 - Row with maximum number of 1s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS24 - Search in a 2D Matrix - I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS25 - Search in a 2D Matrix - II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS26 - Find Peak Element-II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS27 - Median in a Row Wise Sorted Matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS3 - First and last occurrence of an element in a sorted array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS4 - Search Element in Rotated Sorted Array - I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS5 - Search Element in Rotated Sorted Array II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS6 - Minimum in a rotated sorted array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS7 - Find out how many times array has been rotated.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS8 - Single Element in Sorted Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Search/BS9 - Peak Element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/Check if a given graph is tree or not.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/Construct a Binary Tree from Preorder and Inorder Traversal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/Find Largest Subtree Sum in a Tree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/Leaves at same level or not.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/Maximum sum of nodes in Binary tree such that no two are adjacent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/Print all K Sum paths in a Binary tree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/Sum of nodes on the longest path.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/all_k_sum_paths.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/binary_tree_from_parenthesis_representation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/bottom_view_of_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/boundary_traversal_of_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/check_balanced_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/check_if_sum_tree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/convert_to_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/diagonal_traversal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/diameter_of_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/duplicate_subtrees.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/height_of_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/inorder_traversal_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/is_bt_a_max_heap_another_approach.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/isomorphic_binary_trees.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/kth_ancestor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/left_view_of_a_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/level_order_traversal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/lowest_common_ancestor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/max_depth_of_a_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/min_dist_between_nodes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/min_swaps_to_convert_to_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/mirror_of_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/mirror_of_n_ary_tree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/non_adjacent_max_sum_in_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/postorder_traversal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/preorder_traversal_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/reverse_level_order_traversal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/right_view_of_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/top_view_of_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/transform_to_sum_tree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Binary Tree/zig_zag_traversal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Grids/cherry_pick_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Grids/grid_unique_paths.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Grids/min_path_sum_grid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Grids/min_sum_path.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Grids/triangle_path_min_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Grids/variable_starting_ending_max_path_sum_in_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Rectangles/largest_rectangle_in_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Rectangles/square_submatrices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Stocks/best_time_to_buy_and_sell.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Stocks/buy_and_sell_stocks_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Stocks/buy_and_sell_stocks_3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Stocks/buy_and_sell_stocks_4.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Stocks/buy_and_sell_stocks_with_cooldown.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Stocks/buy_and_sell_stocks_with_txn_fee.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/distinct_subsequences.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/edit_distance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/longest_common_subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/longest_common_subsequence_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/longest_common_substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/longest_palindromic_subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/min_insertions_to_make_palindrome.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/min_ops_to_convert_a_to_b.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/shortest_common_supersequence_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Strings/wildcard_matching.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/01_knapsack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/coin_change.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/get_number_of_lis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/largest_divisible_subset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/longest_bitonic_sequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/longest_increasing_subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/longest_string_chain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/minimum_coins.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/num_subsets_with_target_k.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/partition_equals_subset_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/partition_with_min_diff.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/partitions_with_given_difference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/printing_longest_increasing_subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/rod_cutting_problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/subset_sum_equals_k.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/target_sum_with_signs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/DP on Subsequences and Subsets/unlimited_knapsack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/Partition DP/burst_balloons.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/Partition DP/evaluate_boolean_expression.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/Partition DP/matrix_chain_multiplication.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/Partition DP/min_cost_to_cut_the_stick.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/Partition DP/palindrome_partitioning_ii.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/Partition DP/partition_for_max_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/double_helix_spoj.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/frog_jump.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/largest_common_subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/max_sum_non_adj_tree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/maze_obstacle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/ninja_training.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/stickler_thief.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Dynamic Programming/word_break.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Geometric Algorithms/Weiszfeld Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G11 - cycle_detection_undirected_graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G12 - cycle_detection_unidrected_graph_dfs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G14 - Surround Regions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G15 - Number of Enclaves.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G16 - number_of_distinct_islands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G17 - Bipartite Graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G18 - Bipartite Graph (DFS).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G19 - Detect Cycle in Directed Graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G20 - Eventual Safe Nodes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G21 - Topological Sort (DFS).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G22 - Topological Sort (Kahn's Algorithm).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G23 - Cycle Detection in Directed Graph using Topological Sorting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G24 - Course Schedule.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G25 - Eventual Safe Nodes (Kahn's Algorithm).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/G26 - Alien Dictionary.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/account_merge_dsu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/alien_language.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/articulation_point.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/bellman_ford.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/bfs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/bridges_in_a_graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/cheapest_flights_with_k_stops.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/city_with_smallest_neigh_under_threshold.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/detect_safe_nodes_using_topo_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/dfs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/dijkstra_algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/dijkstra_shortest_path.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/disjoint_set.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/disjoint_set_by_size.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/flood_fill.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/floyd_warshall.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/kruskal_algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/making_large_island_dsu.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/min_multiplications_to_reach_end.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/most_stones_removed.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/nearest_distance_to_1_01_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/num_islands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/num_provinces.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/number_of_islands_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/number_of_provinces_using_disjoint_set.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/number_of_shortest_paths.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/operations_to_connect_network_components.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/path_with_min_effort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/prim.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/rat_in_a_maze.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/remove_islands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/rotten_oranges.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/safe_nodes_using_dfs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/shortest_distance_in_a_binary_maze.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/shortest_path_dag_topo_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/shortest_path_undirected_graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/strongly_connected_components_kosaraju_algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/word_ladder_1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Graphs/word_ladder_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/ARRANGE - Arranging Amplifiers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Buy Maximum Stocks if i stocks can be bought on i-th day.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/CHOCOLA - Chocolate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/CPU Scheduling.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Check if it is possible to survive on Island.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Chocolate Distribution Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Choose and Swap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/DIEHARD.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Defense of a Kingdom.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Find the Minimum &amp; Maximum amount to buy all N candies.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Fractional Knapsack Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/GERGOVIA -Wine trading in Gergovia.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Greedy Approximate Algorithm for K Centers Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Huffman Encoding.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Job Sequencing Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Max Value Permutation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Maximize array sum after K negations.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Maximum product subset of an array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Maximum sum of absolute difference of any permutation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Minimum Cost to cut a board into squares.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Minimum number of platforms required in a railway station.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Minimum sum of absolute difference of pairs of two arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/N Meetings in One Room.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Page Faults in LRU.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Print Maximum Meetings in One Room.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Smallest subset with sum greater than all other elements.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/Water Connection Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/assigning_cookies.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/lemonade_change.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Greedy/shortest_job_first.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/K-th Largest Sum Contiguous Subarray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/Smallest range in K lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/bst_to_min_heap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/game_with_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/heap_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/heaps_from_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/is_bt_a_heap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/k_largest_elements.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/kth_smallest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/median_in_a_stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/merge_k_sorted_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/merge_max_heaps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/merge_sorted_linked_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/min_cost_of_ropes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/min_heap_to_max_heap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/min_range_in_sorted_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/min_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/reorg_strings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/reorganize_strings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Heap/sliding_window_maximum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/LinkedList.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/Reverse Doubly Linked List in Parts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/Rotate a doubly linked list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/Sort a linked list of 0s, 1s and 2s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/Sort a nearly sorted doubly linked list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/add_1_to_linked_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/add_two_numbers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/check_if_circular.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/check_if_palindrome.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/clone_ll_with_next_and_random_pointers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/delete_from_circular_linked_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/delete_loop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/delete_nodes_having_greater_values_on_right.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/detect_loop.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/find_pairs_in_doubly_linked_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/first_non_repeating_character_in_a_stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/intersection_of_two_sorted_linked_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/intersection_point_of_two_linked_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/kth_from_end.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/last_node_to_front.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/linked_list_usage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/lru_cache.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/merge_k_sorted_linked_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/merge_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/middle_in_a_linked_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/multiply_two_linked_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/remove_duplicates_from_sorted_linked_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/remove_duplicates_from_unsorted_linked_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/reverse.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/reverse_doubly_linked_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/reverse_in_parts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/separate_odd_even_nodes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/split_circular_linked_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LinkedList/triplets_in_dll_target_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/Max Rectangle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/commons_in_all_rows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/kth_element_in_matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/median_in_a_row_wise_sorted_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/rotate_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/rows_with_max_1s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/search_in_a_2D_matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/sort_matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/specific_pair_max_matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Matrix/spiral_traversal_of_a_matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Arrays/Chocolate Distribution Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Arrays/Kadane's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Arrays/Median of an Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Arrays/Minimum swaps and K together.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Arrays/Smallest subarray with sum greater than x.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Arrays/Three Way Partitioning.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/1 - BST from Preorder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/2 - Populate Inorder Successor for all nodes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/3 - LCA.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/4 - Construct BST from Preorder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/5 - Balance a BST.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/6 - Merge two BSTs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/BST with Dead End.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/Convert BST to Min Heap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/Count Nodes in BST within a given range.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/Flatten a Binary Search Tree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/Largest BST.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/Median in a BST.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/Minimum element in BST.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/Replace every element with the least greater element on its right.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/brothers_from_different_root.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/kth_smallest_in_bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search Tree/preorder to bst.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS10 - Finding Sqrt of a number using Binary Search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS11 - Find the Nth root of an Integer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS12 - Koko Eating Bananas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS13 - Minimum days to make M bouquets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS14 - Find the Smallest Divisor Given a Threshold.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS15 - Capacity to Ship Packages within D Days.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS16 - Kth Missing Positive Number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS17 - Aggressive Cows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS18 - Allocate Books.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS19 - Painter's Partition Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS2 - Implement Lower Bound and Upper Bound.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS20 - Minimise Maximum Distance between Gas Stations (Max Heap Approach).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS20 - Minimise Maximum Distance between Gas Stations.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS21 - Median of two sorted arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS22 - K-th element of two sorted arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS23 - Row with maximum number of 1s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS24 - Search in a 2D Matrix - I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS25 - Search in a 2D Matrix - II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS26 - Find Peak Element-II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS27 - Median in a Row Wise Sorted Matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS3 - First and Last Occurrences in Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS4 - Search Element in Rotated Sorted Array - I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS5 - Search Element in Rotated Sorted Array II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS6 - Minimum in Rotated Sorted Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS7 - Find out how many times array has been rotated.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS8 - Single Element in Sorted Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Search/BS9 - Find Peak Element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Trees/Isomorphic Trees.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Trees/LCA.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Trees/Min distance between two given nodes of a Binary Tree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Trees/Print all k-sum paths in a binary tree.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Trees/bt_to_dll.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Trees/check_if_balanced.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Trees/find_duplicate_subtrees.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Trees/kth ancestor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Binary Trees/traversals_in_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP 54. Partition Array for Maximum Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP10 - Minimum Sum Path.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP11 - Triangle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP12 - Max Falling Path Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP13 - Cherry Pickup II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP14 - Subset Sum Equals k.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP15 - Partition Sum Equals Target.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP16 - Partition with minimum difference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP17 - Count Subsets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP18 - Count Partitions with given difference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP19 - 01 Knapsack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP2 - climb_stairs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP20 - Minimum Coins.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP21 - Target Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP22 - Coint Change 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP23 - Unbounded Knapsack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP24 - Rod Cutting Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP25 - Longest Common Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP26 - Printing the Longest Common Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP27 - Longest Common Substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP28 - Longest Palindromic Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP29 - Minimum Insertions to make string palindrome.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP3 - frog_jump.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP30 - Minimum operations to convert string A to string B.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP31 - Shortest Common Supersequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP32 - Distinct Subsequences.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP33 - Edit Distance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP34 - Wildcard Matching.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP35 - Best Time to Buy and Sell Stocks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP36 - Best Time to Buy and Sell Stocks 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP38 - Best Time to Buy and Sell Stocks 4.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP39 - Buy and Sell Stocks with Cooldown.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP4 - k_frog_jump.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP40 - Buy and Sell Stocks with Transaction Fee.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP41 - Longest Increasing Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP42 - Printing Longest Increasing Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP44 - Largest Divisible Subset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP45 - Longest String Chain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP46 - Longest Bitonic Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP47 - Number of Longest Increasing Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP48 - Matrix Chain Multiplication.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP5 - house_robber.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP50 - Minimum Cost to Cut the Stick.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP51 - Burst Balloons.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP52 - Evaluate Boolean Expression to True.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP53 - Palindrome Partitioning.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP6 - house_robber2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP7 - ninja_training.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP8 - grid_unique_paths.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Dynamic Programming/DP9 - Unique Paths II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G10 - rotten_oranges.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G13 - distance_nearest_1_0.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G27 - DAG Shortest Path - Toposort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G28 - Shortest Path in Undirected Graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G29 - Word Ladder I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G30 - Word Ladder II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G32 - Dijkstra Algorithm (Priority Queue).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G33 - Printing the Shortest Path.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G36 - Shortest Distance in a Binary Maze.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G37 - Path with Minimum Effort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G38 - Cheapest Flight with k Stops.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G39 - Minimum Multiplications to Reach End.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G40 - Number of ways to arrive at destination.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G41 - Bellman Ford ALgorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G42 - Floyd Warshall Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G43 - City With the Smallest Number of Neighbours at a Threshold Distance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G45 - Prim's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G46 - Disjoint Set.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G47 - Kruskal's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G48 - Number of Provinces.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G49 - Number of Operations to Make Network Connected.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G50 - Accounts Merge DSU.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G51 - Number of Islands - II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G52 - Make a Large Island - DSU.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G53 - Most Stones Removed with Same Row or Column - DSU.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G54 - Kosaraju Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G55 - Bridges in Graph - Using Tarjan's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Graphs/G56 - Articulation Point.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/Minimum Cost of ropes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/Smallest range in K lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/bst_to_min_heap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/heap_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/is_bt_a_max_heap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/k_largest_elements.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/kth_smallest_element_in_unsorted_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/max_heap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/median_in_a_stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/merge_k_sorted_linked_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/merge_two_max_heaps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/min_heap_to_max_heap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/rearrange_characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Heap/reorganize_strings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/Clone a LinkedList with Next and Random Pointers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/Delete nodes having greater value on right.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/Flattening a LinkedList.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/Kth from End of Linked List.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/LRU Cache.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/Reverse a Linked List.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/Segregate even and odd nodes in a Linked List.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/Stream First Non-repeating.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/merge k sorted linked lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/multiply_two_linked_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Linked Lists/reverse_in_parts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Longest Common Prefix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/Max Rectangle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/common_in_all_rows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/kth_element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/median_in_a_row_wise_sorted_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/rotate_90deg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/rows_with_max_1s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/search_in_a_2d_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/sort_matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/specific_pair_in_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Matrix/spiral_traversal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/Aggressive Cows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/Allocate Books.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/Arithmetic Number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/EKO SPOJ.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/Smallest factorial number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/first_and_last_occurence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/kth_element_in_2_sorted_arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/paratha_spoj.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/search_in_rotated_sorted_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Searching &amp; Sorting/weighted_job_scheduling.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L10 - Count number of Nice subarrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L11 - Subarray with k different integers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L12 - Minimum Window Substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L2 - Maximum points from cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L3 - Longest Substring Without Repeating Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L4 - Max Consecutive Ones III.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L5 - Fruit Into Baskets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L6 - Longest Substring With At Most K Distinct Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L7 - Number of Substrings Containing All Three Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L8 - Longest Repeating Character Replacement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Sliding Window/L9 - Binary Subarrays With Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Stacks and Queues/First negative integer in every window of size k.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Stacks and Queues/circular_tour.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Stacks and Queues/interleave_a_queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Stacks and Queues/max_area_in_histogram.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Stacks and Queues/reverse_a_stack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Stacks and Queues/rotten oranges.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Stacks and Queues/sort_a_stack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Strings/Function to find Number of customers who could not get a computer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 1/Strings/Wildcard String Matching.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Arrays/Chocolate Distribution Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Arrays/kadane's algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search Tree/Check for BST.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search Tree/Deletion of a node.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search Tree/LCA.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search Tree/Populate Inorder Successor for all nodes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search Tree/Predecessor and Successor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search Tree/Searching in Binary Search Tree (BST).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS10 - Finding Sqrt of a number using Binary Search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS11 - Find the Nth root of an Integer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS12 - Koko Eating Bananas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS13 - Minimum days to make M bouquets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS14 - Find the Smallest Divisor Given a Threshold.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS15 - Capacity to Ship Packages within D Days.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS16 - Kth Missing Positive Number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS17 - Aggressive Cows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS18 - Allocate Books.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS19 - Painter's Partition Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS2 - Implement Lower Bound and Upper Bound - Search Insert Position - Floor and Ceil.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS20 - Minimise Maximum Distance between Gas Stations.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS21 - Median of two Sorted Arrays of Different Sizes (Binary Search Approach).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS21 - Median of two sorted arrays (Two Pointer Approach).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS22 - K-th element of two sorted arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS23 - Row with maximum number of 1s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS24 - Search in a 2D Matrix - I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS25 - Search in a 2D Matrix - II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS26 - Find Peak Element-II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS27 - Median in a Row Wise Sorted Matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS3 - First and Last Occurrences in Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS4 - Search Element in Rotated Sorted Array - I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS5 - Search Element in Rotated Sorted Array II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS6 - Minimum in Rotated Sorted Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS7 - Find out how many times array has been rotated.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS8 - Single Element in a Sorted Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Search/BS9 - Find Peak Element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Binary Tree/Find Duplicate Subtrees.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP10 - Minimum Path Sum in Grid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP11 - Triangle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP12 - Maximum Falling Path Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP13 - Cherry Pickup II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP14 - Subset Sum Equals to Target.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP15 - Partition Equal Subset Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP16 - Partition A Set Into Two Subsets With Minimum Absolute Sum Difference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP17 - Counts Subsets with Sum K.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP18 - Count Partitions With Given Difference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP19 - 01 Knapsack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP2 - Climbing Stairs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP20 - Minimum Coins.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP21 - Target Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP22 - Coin Change 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP23 - Unbounded Knapsack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP24 - Rod Cutting Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP25 - Longest Common Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP26 - Print Longest Common Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP27 - Longest Common Substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP28 - Longest Palindromic Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP29 - Minimum Insertions to Make String Palindrome.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP3 - Frog Jump.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP30 - Minimum Insertions and Deletions to Convert String A to String B.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP31 - Shortest Common Supersequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP32 - Distinct Subsequences.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP33 - Edit Distance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP34 - Wildcard Matching.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP35 - Best Time to Buy and Sell Stock.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP36 - Buy and Sell Stock - II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP37 - Buy and Sell Stocks III.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP38 - Buy and Stock Sell IV.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP39 - Buy and Sell Stocks With Cooldown.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP4 - Frog Jump with K-steps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP40 - Buy and Sell Stocks With Transaction Fee.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP41 - Longest Increasing Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP42 - Printing the LIS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP44 - Longest Divisible Subset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP45 - Longest String Chain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP46 - Longest Bitonic Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP47 - Number of Longest Increasing Subsequences.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP48 - Matrix Chain Multiplication.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP5 - Maximum Sum of Non-Adjacent Elements.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP50 - Minimum Cost to Cut the Stick.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP51 - Burst Balloons.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP52 - Evaluate Boolean Expression to True.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP53 - Palindrome Partitioning - II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP54 - Partition Array for Maximum Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP55 - Maximum Rectangular Area.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP56 - Count Square Submatrices with All Ones.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP6 - House Robber 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP7 - Ninja's Training.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP8 - Grid Unique Paths.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Dynamic Programming/DP9 - Unique Paths 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G10 - Rotten Oranges.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G11 - Detect Cycle in Undirected Graph using BFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G12 - Detect Cycle in Undirected Graph using DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G13 - Distance of nearest cell having 1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G14 - Surrounded Regions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G15 - Number of Enclaves.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G16 - Number of Distinct Islands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G17 - Bipartite Graph using BFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G18 - Bipartite Graph using DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G19 - Detect cycle in a directed graph using DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G20 - Find Eventual Safe States - DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G21 - Topological Sorting using DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G22 - Kahn's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G23 - Detect a Cycle in Directed Graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G24 - Course Schedule.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G25 - Find Eventual Safe States - BFS - Topological Sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G26 - Alien Dictionary.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G27 - Shortest Path in Directed Acyclic Graph - Topological Sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G28 - Shortest Path in Undirected Graph with Unit Weights.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G29 - World Ladder - I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G30 - Word Ladder 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G32 - Dijkstra's Algorithm - Using Priority Queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G33 - Dijkstra's Algorithm - Using Queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G35 - Print Shortest Path - Dijkstra's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G36 - Shortest Distance in a Binary Maze.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G37 - Path With Minimum Effort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G38 - Cheapest Flights Within K Stops.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G39 - Minimum Multiplications to Reach End.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G40 - Number of Ways to Arrive at Destination.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G41 - Bellman Ford Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G42 - Floyd Warshall Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G43 - Find the City With the Smallest Number of Neighbours at a Threshold Distance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G45 - Prim's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G46 - Disjoint Set.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G47 - Kruskal's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G48 - Number of Provinces.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G49 - Number of Operations to Make Network Connected.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G5 - BFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G50 - Accounts Merge.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G51 - Number of Islands 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G52 - Making a Large Island.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G53 - Most Stones Removed with Same Row or Column.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G54 - Strongly Connected Components - Kosaraju's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G55 - Bridges in a Graph - Tarjan's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G56 - Articulation Point in Graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G6 - DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G7 - Number of provinces.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G8 - Number of Islands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Graphs/G9 - Flood Fill.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Heap/Check if BT in Max Heap or not.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Heap/Convert Min Heap to Max Heap.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Heap/K-th Largest Sum Contiguous Subarray.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Heap/Median in a stream.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Heap/Merge K sorted linked lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Heap/Merge k Sorted Arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Heap/Minimum Cost of ropes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Heap/reorganize_strings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Linked List/Detect loop in a linked list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Linked List/reverse_in_parts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/Common elements in all rows of a given matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/Search in 2D Matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/kth_element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/max_rectangle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/median_in_row_wise_sorted_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/rotate_90deg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/row_with_max_1s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/sorted_matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/specific_pair_in_mtx.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Matrix/spiral_traversal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Searching &amp; Sorting/Allocate Books.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Searching &amp; Sorting/EKO SPOJ.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Searching &amp; Sorting/weighted job scheduling.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L10 - Count number of Nice subarrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L11 - Subarray with k different integers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L12 - Minimum Window Substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L2 - Maximum Points You Can Obtain from Cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L3 - Longest Substring Without Repeating Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L4 - Max Consecutive Ones III.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L5 - Fruit Into Baskets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L6 - Longest Substring With At Most K Distinct Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L7 - Number of Substrings Containing All Three Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L8 - Longest Repeating Character Replacement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Sliding Windows/L9 - Binary Subarrays With Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Stacks &amp; Queues/Distance of nearest cell having 1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 2/Stacks &amp; Queues/Interleave Queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS10 - Finding Sqrt of a number using Binary Search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS11 - Find the Nth root of an Integer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS12 - Koko eating bananas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS13 - Minimum days to make M bouquets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS14 - Find the Smallest Divisor Given a Threshold.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS15 - Capacity to Ship Packages within D Days.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS16 - Kth Missing Positive Number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS17 - Aggressive Cows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS18 - Allocate Books.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS19 - Painter's Partition and Split Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS2 - Lower and Upper Bounds.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS3 - First and last occurrences in array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS4 - Search Element in Rotated Sorted Array - I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS5 - Search Element in Rotated Sorted Array II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS6 - Minimum in Rotated Sorted Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS7 - Find out how many times array has been rotated.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS8 - Single Element in Sorted Array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Binary Search/BS9 - Find Peak Element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP10 - Minimum Path Sum in Grid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP11 - Triangle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP12 - Maximum Falling Path Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP13 - Cherry Pickup II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP14 - Subset Sum Equals to Target.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP15 - Partition Equals Subset Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP16 - Partition A Set Into Two Subsets With Minimum Absolute Sum Difference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP17 - Counts Subsets with Sum K.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP18 - Count Partitions With Given Difference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP19 - 01 Knapsack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP2 - Climbing Stairs.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP20 - Minimum Coins.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP21 - Target Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP22 - Coin Change 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP23 - Unbounded Knapsack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP24 - Rod Cutting Problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP25 - Longest Common Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP26 - Print Longest Common Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP27 - Longest Common Substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP28 - Longest Palindromic Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP29 - Minimum Insertions to Make String Palindrome.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP3 - Frog Jump.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP30 - Minimum Insertions-Deletions to Convert String A to String B.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP31 - Shortest Common Supersequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP32 - Distinct Subsequences.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP33 - Edit Distance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP34 - Wildcard Matching.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP35 - Best Time to Buy and Sell Stock.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP36 - Buy and Sell Stock - II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP38 - Buy and Sell Stocks IV.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP39 - Buy and Sell Stocks With Cooldown.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP4 - Frog Jump with k distance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP40 - Buy and Sell Stocks With Transaction Fee.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP41 - Longest Increasing Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP42 - Printing the Longest Increasing Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP44 - Largest Divisible Subset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP45 - Longest String Chain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP46 - Longest Bitonic Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP47 - Number of Longest Increasing Subsequences.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP5 - Maximum Sum of Non-Adjacent Elements.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP6 - House Robber 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP7 - Ninja's Training.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP8 - Grid Unique Paths.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Dynamic Programming/DP9 - Unique Paths 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G10 - Rotten Oranges.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G11 - Detect a Cycle in an Undirected Graph using BFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G12 - Detect a Cycle in an Undirected Graph using DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G13 - Distance of nearest cell having 1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G14 - Surrounded Regions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G15 - Number of Enclaves.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G16 - Number of Distinct Islands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G17 - Bipartite Graph (BFS).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G18 - Bipartite Graph (DFS).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G19 - Detect cycle in a directed graph using DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G20 - Find Eventual Safe States - DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G21 - Topological Sort Algorithm - DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G22 - Kahn's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G23 - Detect a Cycle in Directed Graph.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G24 - Course Schedule.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G25 - Find Eventual Safe States - BFS - Topological Sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G26 - Alien Dictionary.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G27 - Shortest Path in DAG.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G28 - Shortest Path in Undirected Graph with Unit Weights.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G29 - Word Ladder - 1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G30 - Word Ladder 2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G32 - Dijkstra's Algorithm - Using Priority Queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G34 - Dijkstra's Algorithm (Queue).py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G35 - Print the shortest path.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G36 - Shortest Distance in a Binary Maze.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G37 - Path With Minimum Effort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G38 - Cheapest Flights Within K Stops.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G39 - Minimum Multiplications to Reach End.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G40 - Number of Ways to Arrive at Destination.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G41 - Bellman Ford Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G42 - Floyd Warshall Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G43 - Find the City With the Smallest Number of Neighbours at a Threshold Distance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G45 - Prim's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G46a - Disjoint Set - Union by Rank.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G46b - Disjoint Set - Union by Size.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G47 - Kruskal's Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G48 - Number of Provinces.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G49 - Number of Operations to Make Network Connected - DSU.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G5 - BFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G50 - Accounts Merge.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G51 - Number of Islands - II - Online Queries - DSU.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G52 - Making a Large Island - DSU.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G6 - DFS.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G7 - Number of Provinces.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G8 - Number of Islands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Graphs/G9 - Flood Fill Algorithm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Heap/Reorganize Strings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/Common elements in all rows of a given matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/Median in a row wise sorted matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/Rotate a matrix 90 degrees clockwise.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/Sorted matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/Specific Pair in Matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/Spiral Traversal of a Matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/kth_element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/rotate_90deg.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/rows with max 1s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Matrix/search an element in matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Searching &amp; Sorting/Allocate Books.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L10 - Count number of Nice subarrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L11 - Subarray with k different integers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L12 - Minimum Window Substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L2 - Maximum Points You Can Obtain from Cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L3 - Longest Substring Without Repeating Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L4 - Max Consecutive Ones III.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L5 - Fruits into Baskets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L6 - Longest Substring With At Most K Distinct Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L7 - Number of Substrings Containing All Three Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L8 - Longest Repeating Character Replacement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 3/Sliding Windows/L9 - Binary Subarrays With Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Dynamic Programming/DP41 - Longest Increasing Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Dynamic Programming/DP42 - Printing the Longest Increasing Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Matrix/Common elements in all rows of a given matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Matrix/Sorted Matrix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Matrix/kth_element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L10 - Count number of Nice subarrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L11 - Subarray with k different integers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L12 - Minimum Window Substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L2 - Maximum Points You Can Obtain from Cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L3 - Longest Substring Without Repeating Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L4 - Max Consecutive Ones III.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L5 - Fruit Into Baskets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L6 - Longest Substring With At Most K Distinct Character.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L7 - Number of Substrings Containing All Three Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L8 - Longest Repeating Character Replacement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 4/Sliding Window/L9 - Binary Subarrays With Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L10 - Count number of Nice subarrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L11 - Subarray with k different integers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L12 - Minimum Window Substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L2 -  Maximum Points You Can Obtain from Cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L3 - Longest Substring Without Repeating Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L4 - Max Consecutive Ones III.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L5 - Fruit Into Baskets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L6 - Longest Substring With At Most K Distinct Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L7 - Number of Substrings Containing All Three Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L8 - Longest Repeating Character Replacement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 5/Sliding Windows/L9 - Binary Subarrays With Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L10 - Count number of Nice subarrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L11 - Subarray with k different integers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L12 - Minimum Window Substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L2 - Maximum Points You Can Obtain from Cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L3 - Longest Substring Without Repeating Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L4 - Max Consecutive Ones III.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L5 - Fruit Into Baskets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L6 - Longest Substring With At Most K Distinct Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L7 - Number of Substrings Containing All Three Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L8 - Longest Repeating Character Replacement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 6/Sliding Windows/L9 - Binary Subarrays With Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 7/Sliding Windows/L2 - Maximum Points You Can Obtain from Cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Practice Set 7/Sliding Windows/L3 - Longest Substring Without Repeating Characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/Arithmetic Number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/EKOSPOJ.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/Searching in an array where adjacent differ by at most k.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/Smallest factorial number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/Triplets with Smaller Sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/aggressive_cows.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/allocate_books.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/binary_search_sorted_arrays_median.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/bishu_and_soldiers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/count_inversions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/count_squares.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/double_helix_spoj.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/find all conflicting appointments.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/find_pair_with_given_difference.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/find_peak_element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/first_and_last_occurrence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/floor_of_an_elem_in_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/four_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/koko_eating_bananas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/kth_element_from_2_sorted_arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/kth_missing_number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/kth_smallest_number_again.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/largest_sub_array_sum_minimized.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/longest_increasing_subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/lower_and_upper_bounds.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/majority_element_moores_voting_algo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/median_in_two_sorted_arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/merge_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/merge_two_sorted_arrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/min_days_for_bouquets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/min_in_a_rotated_sorted_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/min_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/min_swaps_to_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/missing_number.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/paratha_spoj.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/pivot_element_in_rotated_sorted_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/product_array_puzzle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/quick_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/row_having_max_1s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/search_in_a_2d_mtx_I.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/search_in_matrix_II.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/search_in_rotated_sorted_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/search_in_rotated_sorted_array_with_duplicates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/ship_capacity_for_d_days.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/single_element_in_sorted_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/smallest_divisor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/sort_by_set_bit_count.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/square_root.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/stickler's_thief.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/weighted_job_scheduling.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Searching and Sorting/zero_sum_subarrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/binary_subarray_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/fruits_into_baskets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/longest_repeating_character_replacement.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/longest_substring_with_atmost_k__distinct_characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/longest_substring_with_unique_characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/max_consecutive_ones.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/max_points_from_cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/minimum_window_substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/nice_subarrays.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/num_substrings_with_3_characters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Sliding Windows/subarrays_with_k_distinct_integers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Special Algorithms/count_conflicting_intervals.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Special Algorithms/dutch_national_flag_linked_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Special Algorithms/logarithmic_power_calculator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Special Algorithms/trailing_zeroes_in_factorial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Special Algorithms/trap_rainwater.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Special Algorithms/triplet_sum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/Count the Reversals.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/Reverse First K elements of Queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/all_levels_anagram_bt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/arithmetic_expression_evaluation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/balanced_paranthesis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/celebrity_problem.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/circular_queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/circular_tour.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/custom_queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/evaluate_postfix_expression.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/first_negative_in_k_window.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/insert_at_bottom_of_stack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/interleave_in_queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/k-queues.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/k-stacks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/merge_overlapping_intervals.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/next_greater_element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/next_smaller_element.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/queue_using_stacks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/redundant_brackets.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/reverse_a_stack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/reverse_queue_using_recursion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/rotten_oranges.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/sliding_window_maximum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/sliding_window_maximum_and_minimum.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/special_stack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/stack.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/stack_permutation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/stack_using_queue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/stacks_using_dequeue.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/two_stacks_in_an_array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Stacks &amp; Queues/valid_substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Check if a string is a valid shuffle of two distinct strings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Convert a sentence into its equivalent mobile numeric keypad sequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Count of number of given string in 2D character array.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/DP - Longest Repeating Subsequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Find the String in Grid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Longest Common Prefix.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Min Number of Flips.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Minimum Adjacent Swaps for Bracket Balancing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Roman Number into Integer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Second most repeated string in a sequence.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/Split the binary string into substrings with equal number of 0s and 1s.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/all_subsequences_of_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/balanced_parenthesis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/check_if_strings_are_rotated.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/count_all_palindromic_subsequences.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/count_and_say.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/customers_with_no_computer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/edit_distance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/group_anagrams.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/isomorphic_strings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/longest_palindromic_substring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/min_chars_in_front_to_make_palindrome.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/min_ops_to_convert_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/next_permutation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/permutations_of_a_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/rearrange_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/recursive_sentence_printing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/recursively_remove_adjacent_duplicates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/restore_ips.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/reverse_palindrome_and_duplicate_checks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/smallest_conatining_all_from_another_string.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/smallest_distinct_window_size.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/wildcard_string_matching.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Strings/word_wrap.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "hmnhGeek"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/hmnhGeek/Data-Structures-Algorithms.git",
+    "accountId": "865def29-1664-4012-8c93-5191a48c5b8d"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2v59hHcha5jAmko19b5OiJarlkj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/DSA/Python"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="18288626-2613-4ab4-8323-b3a872be03cb" name="Changes" comment="" />
+      <created>1743424186283</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743424186283</updated>
+    </task>
+    <servers />
+  </component>
+</project>
