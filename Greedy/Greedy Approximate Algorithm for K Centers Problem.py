@@ -1,4 +1,5 @@
-from typing import List
+# Problem link - https://www.geeksforgeeks.org/greedy-approximate-algorithm-for-k-centers-problem/
+# Solution - https://www.youtube.com/watch?v=dpYZojRuJEI
 
 
 class Point:
