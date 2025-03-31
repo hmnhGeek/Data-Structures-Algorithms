@@ -1,5 +1,6 @@
 // Problem link - https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
-// Solution - https://www.youtube.com/watch?v=C2rRzz-JDk8&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
+// Solution - https://www.youtube.com/watch?v=C2rRzz-JDk8&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=22
+// Solution 2 - https://www.youtube.com/watch?v=F9c7LpRZWVQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
 
 package BinarySearch;
 
@@ -125,24 +126,42 @@ class BetterSolutionBS21 {
 
 class OptimalSolution {
     public static Double getMedian(List<Integer> a, List<Integer> b) {
+        /**
+         * Time complexity is O(log(min(a, b))) and space complexity is O(1).
+         */
+
+        // always perform the binary search on the smaller array.
         if (b.size() < a.size()) {
             return getMedian(b, a);
         }
+
+        // initialize the important variables.
         int n = a.size() + b.size();
         int low = 0, high = a.size();
         int left = (n + 1)/2;
+
+        // typical binary search
         while (low <= high) {
+            // if mid1 number of elements are being picked from the smaller array, then...
             int mid1 = (low + (high - low)/2);
+
+            // mid2 number of elements will be picked from the larger array.
             int mid2 = left - mid1;
+
+            // get the values of l1, l2, r1 and r2.
             int l1 = 0 <= mid1 - 1 && mid1 - 1 < a.size() ? a.get(mid1 - 1) : Integer.MIN_VALUE;
             int l2 = 0 <= mid2 - 1 && mid2 - 1 < b.size() ? b.get(mid2 - 1) : Integer.MIN_VALUE;
             int r1 = 0 <= mid1 && mid1 < a.size() ? a.get(mid1) : Integer.MAX_VALUE;
             int r2 = 0 <= mid2 && mid2 < b.size() ? b.get(mid2) : Integer.MAX_VALUE;
+
+            // if l1 > r2, we have included more than required elements from the smaller array.
             if (l1 > r2) {
                 high = mid1 - 1;
             } else if (l2 > r1) {
+                // else if l2 > r1, we have included more than required elements from the larger array.
                 low = mid1 + 1;
             } else {
+                // if all the conditions have been satisfied, then return the median.
                 if (n % 2 == 0) {
                     return (Math.max(l1, l2) + Math.min(r1, r2)) / 2.0;
                 }
