@@ -2,17 +2,7 @@
 # Solution - https://www.youtube.com/watch?v=dpYZojRuJEI
 
 
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-
 class Solution:
-    @staticmethod
-    def get_euclidean_distance(p: Point, q: Point):
-        return ((q.x - p.x) ** 2 + (q.y - p.y) ** 2) ** 0.5
-
     @staticmethod
     def k_centers_problem(weights, k: int):
         n = len(weights)  # Number of cities
