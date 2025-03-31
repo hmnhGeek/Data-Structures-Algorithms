@@ -198,6 +198,27 @@ class MaxHeap<T extends Comparable<T>> {
     }
 }
 
+class BetterSolution {
+    public static Double getMinimizedMaxDistance(List<Integer> arr, Integer k) {
+        MaxHeap<Slot> maxHeap = new MaxHeap<>();
+        List<Slot> slots = new ArrayList<>();
+        for (int i = 0; i < arr.size() - 1; i += 1) {
+            slots.add(new Slot((double) (arr.get(i + 1) - arr.get(i)), 0));
+        }
+        slots.forEach(maxHeap::insert);
+        for (int i = 0; i < k; i += 1) {
+            Slot maxSlot = maxHeap.pop();
+            double length = maxSlot.getLength();
+            int gasStationsPlaced = maxSlot.getGasStationsPlaced();
+            double slotLength = length * (gasStationsPlaced + 1);
+            double newSlotLength = slotLength/(gasStationsPlaced + 1.0 + 1.0);
+            maxHeap.insert(new Slot(newSlotLength, gasStationsPlaced + 1));
+        }
+        Slot minimizedMaxSlot = maxHeap.pop();
+        return minimizedMaxSlot.getLength();
+    }
+}
+
 
 class Solution {
     public static void main(String[] args) {
@@ -207,5 +228,13 @@ class Solution {
         System.out.println(LinearSolution.getMinimizedMaxDistance(IntStream.range(1, 11).boxed().toList(), 1));
         System.out.println(LinearSolution.getMinimizedMaxDistance(Arrays.asList(3, 6, 12, 19, 33, 44, 67, 72, 89, 95), 2));
         System.out.println(LinearSolution.getMinimizedMaxDistance(Arrays.asList(1, 13, 17, 23), 5));
+
+        System.out.println();
+        System.out.println(BetterSolution.getMinimizedMaxDistance(Arrays.asList(1, 13, 17, 23), 5));
+        System.out.println(BetterSolution.getMinimizedMaxDistance(Arrays.asList(1,2,3,4,5,6,7), 6));
+        System.out.println(BetterSolution.getMinimizedMaxDistance(Arrays.asList(1, 2, 3, 4, 5), 4));
+        System.out.println(BetterSolution.getMinimizedMaxDistance(IntStream.range(1, 11).boxed().toList(), 1));
+        System.out.println(BetterSolution.getMinimizedMaxDistance(Arrays.asList(3, 6, 12, 19, 33, 44, 67, 72, 89, 95), 2));
+        System.out.println(BetterSolution.getMinimizedMaxDistance(Arrays.asList(1, 13, 17, 23), 5));
     }
 }
