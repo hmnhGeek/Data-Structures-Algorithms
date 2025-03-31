@@ -29,6 +29,11 @@ class NaiveSolution {
     }
 
     public static Double getMedian(List<Integer> a, List<Integer> b) {
+        /**
+         * Time complexity is O(n) and space complexity is O(n).
+         */
+
+        // This will take O(n) time and O(n) space.
         List<Integer> mergedArray = getMergedArray(a, b);
         int n = mergedArray.size();
         if (n % 2 == 1) {
