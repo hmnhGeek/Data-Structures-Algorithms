@@ -18,12 +18,25 @@ class Utility {
 
 class LinearSolution {
     public static Double getMinimizedMaxDistance(List<Integer> arr, Integer k) {
+        /**
+         * Time complexity is O(nk) and space complexity is O(n).
+         */
+
         int n = arr.size();
+        
+        // get the list of slots in O(n) time and O(n) space.
         List<Integer> slots = Utility.getList(n - 1, 0);
+        
+        // loop on the `k` gas stations that needs to be placed in k iterations.
         for (int i = 0; i < k; i += 1) {
+            // store the max slot length and index based on the current state of the slots.
             int maxSlotIndex = -1;
             double maxSlotLength = 0.0;
+            
+            // loop on the existing gas stations in `n - 1` iterations.
             for (int j = 0; j < n - 1; j += 1) {
+                // compute the slot length of each slot and update the max slot length and index. Basically, this inner
+                // loop is trying to find the maximum slot where the next gas station can be placed.
                 int left = arr.get(j);
                 int right = arr.get(j + 1);
                 double slotLength = (right - left)/((double) slots.get(j) + 1.0);
@@ -32,8 +45,13 @@ class LinearSolution {
                     maxSlotIndex = j;
                 }
             }
+
+            // once the largest slot is found, put the next gas station there.
             slots.set(maxSlotIndex, slots.get(maxSlotIndex) + 1);
         }
+
+        // finally, again find the max slot length which would point to the minimized maximum length between any two gas
+        // stations. This is our final answer and this takes O(n) time.
         double maxSlotLength = 0;
         for (int j = 0; j < n - 1; j += 1) {
             int left = arr.get(j);
