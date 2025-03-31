@@ -45,25 +45,42 @@ class NaiveSolution {
 
 class BetterSolutionBS21 {
     private static Double computeMedian(Integer prevElement, List<Integer> a, List<Integer> b, Integer n, Integer i, Integer j) {
+        // if the length of the merged array is odd, simply return the current element as the median.
         if (n % 2 == 1) {
             int x = i < a.size() ? a.get(i) : Integer.MAX_VALUE;
             int y = j < b.size() ? b.get(j) : Integer.MAX_VALUE;
             return (double) Math.min(x, y);
         } else {
+            // if the merged array length is even, first get the current element.
             int x = i < a.size() ? a.get(i) : Integer.MAX_VALUE;
             int y = j < b.size() ? b.get(j) : Integer.MAX_VALUE;
             int current = Math.min(x, y);
+
+            // then take the average of current element and the previous element and return it as median.
             return ((prevElement != null ? prevElement : 0) + current) / 2.0;
         }
     }
 
     public static Double getMedian(List<Integer> a, List<Integer> b) {
+        /**
+         * Overall time complexity is O(n) and space complexity is O(1).
+         */
+
+        // define pointer indices
         int i = 0, j = 0;
+
+        // define the total size of the hypothetical merged array.
         int n = a.size() + b.size();
+
+        // define the upper limit of the counter (the variable which will be used to break the while loops).
         int medianIndex = n/2;
         int counter = 0;
+
+        // store the prevElement while traversing. This will be useful when the length of the array is even.
         Integer prevElement = null;
-        while (i < a.size() && j < b.size() && counter != medianIndex) {
+
+        // Typical merged array code from merge sort; but we will not actually merge.
+        while (i < a.size() && j < b.size()) {
             if (a.get(i) <= b.get(j)) {
                 prevElement = a.get(i);
                 i += 1;
@@ -71,11 +88,16 @@ class BetterSolutionBS21 {
                 prevElement = b.get(j);
                 j += 1;
             }
+
+            // if the counter value reaches the medianIndex.
             counter += 1;
             if (counter == medianIndex) {
+                // compute the median and return in O(1) time.
                 return computeMedian(prevElement, a, b, n, i, j);
             }
         }
+
+        // same logic when `j` is exhausted.
         while (i < a.size()) {
             prevElement = a.get(i);
             i += 1;
@@ -84,6 +106,8 @@ class BetterSolutionBS21 {
                 return computeMedian(prevElement, a, b, n, i, j);
             }
         }
+
+        // same logic when `i` is exhausted.
         while (j < b.size()) {
             prevElement = b.get(j);
             j += 1;
