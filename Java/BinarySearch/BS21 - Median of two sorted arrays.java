@@ -43,14 +43,76 @@ class NaiveSolution {
     }
 }
 
+class BetterSolutionBS21 {
+    private static Double computeMedian(Integer prevElement, List<Integer> a, List<Integer> b, Integer n, Integer i, Integer j) {
+        if (n % 2 == 1) {
+            int x = i < a.size() ? a.get(i) : Integer.MAX_VALUE;
+            int y = j < b.size() ? b.get(j) : Integer.MAX_VALUE;
+            return (double) Math.min(x, y);
+        } else {
+            int x = i < a.size() ? a.get(i) : Integer.MAX_VALUE;
+            int y = j < b.size() ? b.get(j) : Integer.MAX_VALUE;
+            int current = Math.min(x, y);
+            return ((prevElement != null ? prevElement : 0) + current) / 2.0;
+        }
+    }
+
+    public static Double getMedian(List<Integer> a, List<Integer> b) {
+        int i = 0, j = 0;
+        int n = a.size() + b.size();
+        int medianIndex = n/2;
+        int counter = 0;
+        Integer prevElement = null;
+        while (i < a.size() && j < b.size() && counter != medianIndex) {
+            if (a.get(i) <= b.get(j)) {
+                prevElement = a.get(i);
+                i += 1;
+            } else {
+                prevElement = b.get(j);
+                j += 1;
+            }
+            counter += 1;
+            if (counter == medianIndex) {
+                return computeMedian(prevElement, a, b, n, i, j);
+            }
+        }
+        while (i < a.size()) {
+            prevElement = a.get(i);
+            i += 1;
+            counter += 1;
+            if (counter == medianIndex) {
+                return computeMedian(prevElement, a, b, n, i, j);
+            }
+        }
+        while (j < b.size()) {
+            prevElement = b.get(j);
+            j += 1;
+            counter += 1;
+            if (counter == medianIndex) {
+                return computeMedian(prevElement, a, b, n, i, j);
+            }
+        }
+        return -1.0;
+    }
+}
+
 
 class Main {
     public static void main(String[] args) {
+        System.out.println("Naive Solution.");
         System.out.println(NaiveSolution.getMedian(Arrays.asList(-5, 3, 6, 12, 15), Arrays.asList(-12, -10, -6, -3, 4, 10)));
         System.out.println(NaiveSolution.getMedian(Arrays.asList(1, 12, 15, 26, 38), Arrays.asList(2, 13, 17, 30, 45, 60)));
         System.out.println(NaiveSolution.getMedian(List.of(), Arrays.asList(2, 4, 5, 6)));
         System.out.println(NaiveSolution.getMedian(Arrays.asList(2, 3, 5, 8), Arrays.asList(10, 12, 14, 16, 18, 20)));
         System.out.println(NaiveSolution.getMedian(Arrays.asList(1, 3), List.of(2)));
         System.out.println(NaiveSolution.getMedian(Arrays.asList(1, 2), Arrays.asList(3, 4)));
+
+        System.out.println("Better Solution.");
+        System.out.println(BetterSolutionBS21.getMedian(Arrays.asList(-5, 3, 6, 12, 15), Arrays.asList(-12, -10, -6, -3, 4, 10)));
+        System.out.println(BetterSolutionBS21.getMedian(Arrays.asList(1, 12, 15, 26, 38), Arrays.asList(2, 13, 17, 30, 45, 60)));
+        System.out.println(BetterSolutionBS21.getMedian(List.of(), Arrays.asList(2, 4, 5, 6)));
+        System.out.println(BetterSolutionBS21.getMedian(Arrays.asList(2, 3, 5, 8), Arrays.asList(10, 12, 14, 16, 18, 20)));
+        System.out.println(BetterSolutionBS21.getMedian(Arrays.asList(1, 3), List.of(2)));
+        System.out.println(BetterSolutionBS21.getMedian(Arrays.asList(1, 2), Arrays.asList(3, 4)));
     }
 }
