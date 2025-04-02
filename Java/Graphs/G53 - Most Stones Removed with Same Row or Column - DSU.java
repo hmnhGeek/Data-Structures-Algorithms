@@ -103,6 +103,17 @@ class Solution {
                 new Coordinate(2, 2)
         );
         System.out.println(removeStones(coordinates1));
+
+        // Example 3
+        List<Coordinate> coordinates3 = Arrays.asList(
+                new Coordinate(0, 0),
+                new Coordinate(0, 2),
+                new Coordinate(1, 3),
+                new Coordinate(3, 0),
+                new Coordinate(3, 2),
+                new Coordinate(4, 3)
+        );
+        System.out.println(removeStones(coordinates3));
     }
 
     private static Integer removeStones(List<Coordinate> coordinates) {
@@ -119,57 +130,20 @@ class Solution {
             nodes.add(maxRow + 1 + j);
         }
         DisjointSet<Integer> disjointSet = new DisjointSet<>(nodes);
+        HashMap<Integer, Integer> stoneNodes = new HashMap<>();
 
-        HashMap<Integer, List<Integer>> rowToCol = new HashMap<>();
-        for (int i = 0; i <= maxRow; i += 1) {
-            rowToCol.put(i, new ArrayList<>());
+        for (Coordinate coordinate : coordinates) {
+            disjointSet.union(coordinate.x, coordinate.y + maxRow + 1);
+            stoneNodes.put(coordinate.x, 1);
+            stoneNodes.put(coordinate.y + maxRow + 1, 1);
         }
 
-        HashMap<Integer, List<Integer>> colToRow = new HashMap<>();
-        for (int j = 0; j <= maxCol; j += 1) {
-            colToRow.put(j + maxRow + 1, new ArrayList<>());
-        }
-
-        for (int i = 0; i <= maxRow; i += 1) {
-            for (Coordinate coordinate : coordinates) {
-                if (coordinate.x == i) {
-                    rowToCol.get(i).add(maxRow + 1 + coordinate.y);
-                }
+        int numComponents = 0;
+        for (Integer node : stoneNodes.keySet()) {
+            if (disjointSet.findUltimateParent(node).equals(node)) {
+                numComponents += 1;
             }
         }
-
-        for (int j = 0; j <= maxCol; j += 1) {
-            for (Coordinate coordinate : coordinates) {
-                if (coordinate.y == j) {
-                    colToRow.get(j + maxRow + 1).add(coordinate.x);
-                }
-            }
-        }
-
-        for (Map.Entry<Integer, List<Integer>> entry : rowToCol.entrySet()) {
-            Integer node1 = entry.getKey();
-            if (entry.getValue().size() > 1) {
-                for (Integer node2 : entry.getValue()) {
-                    disjointSet.union(node1, node2);
-                }
-            }
-        }
-
-        for (Map.Entry<Integer, List<Integer>> entry : colToRow.entrySet()) {
-            Integer node1 = entry.getKey();
-            if (entry.getValue().size() > 1) {
-                for (Integer node2 : entry.getValue()) {
-                    disjointSet.union(node1, node2);
-                }
-            }
-        }
-
-        int numStonesRemoved = 0;
-        for (Integer node : disjointSet.getParents().keySet()) {
-            if (disjointSet.getParents().get(node).equals(node) && disjointSet.getSizes().get(node) > 1) {
-                numStonesRemoved += (disjointSet.getSizes().get(node) - 1);
-            }
-        }
-        return numStonesRemoved;
+        return coordinates.size() - numComponents;
     }
 }
