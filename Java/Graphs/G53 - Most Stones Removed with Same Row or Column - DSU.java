@@ -1,6 +1,9 @@
+// Problem link - https://www.geeksforgeeks.org/problems/maximum-stone-removal-1662179442/1
+// Solution - https://www.youtube.com/watch?v=OwMNX8SPavM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
+
+
 package Graphs;
 
-import javax.swing.text.html.parser.Entity;
 import java.util.*;
 
 class DisjointSet<T> {
@@ -157,6 +160,10 @@ class Solution {
     }
 
     private static Integer removeStones(List<Coordinate> coordinates) {
+        /**
+         * Time complexity is O(r + c + n) and space complexity is O(r + c).
+         */
+
         // get the dimensions max row and column indices of the matrix in O(n) time.
         int maxRow = 0, maxCol = 0;
         for (Coordinate coordinate : coordinates) {
@@ -192,7 +199,7 @@ class Solution {
         // now count the number of components for the stone nodes.
         int numComponents = 0;
 
-        // loop only on the stone nodes.
+        // loop only on the stone nodes in O(r + c) time.
         for (Integer node : stoneNodes.keySet()) {
             if (disjointSet.findUltimateParent(node).equals(node)) {
                 numComponents += 1;
