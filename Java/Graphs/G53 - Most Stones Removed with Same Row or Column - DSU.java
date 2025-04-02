@@ -157,33 +157,49 @@ class Solution {
     }
 
     private static Integer removeStones(List<Coordinate> coordinates) {
+        // get the dimensions max row and column indices of the matrix in O(n) time.
         int maxRow = 0, maxCol = 0;
         for (Coordinate coordinate : coordinates) {
             maxRow = Math.max(maxRow, coordinate.x);
             maxCol = Math.max(maxCol, coordinate.y);
         }
+
+        // create a list of these nodes in O(r + c) time and O(r + c) space.
         List<Integer> nodes = new ArrayList<>();
         for (int i = 0; i <= maxRow; i += 1) {
             nodes.add(i);
         }
         for (int j = 0; j <= maxCol; j += 1) {
+            // we are storing columns incrementally everywhere.
             nodes.add(maxRow + 1 + j);
         }
+
+        // create a disjoint set of size O(r + c).
         DisjointSet<Integer> disjointSet = new DisjointSet<>(nodes);
+
+        // store all the rows and columns (nodes) where a stone is present.
         HashMap<Integer, Integer> stoneNodes = new HashMap<>();
 
+        // union the row and column nodes in O(n) time
         for (Coordinate coordinate : coordinates) {
             disjointSet.union(coordinate.x, coordinate.y + maxRow + 1);
+
+            // also update the stone rows and columns
             stoneNodes.put(coordinate.x, 1);
             stoneNodes.put(coordinate.y + maxRow + 1, 1);
         }
 
+        // now count the number of components for the stone nodes.
         int numComponents = 0;
+
+        // loop only on the stone nodes.
         for (Integer node : stoneNodes.keySet()) {
             if (disjointSet.findUltimateParent(node).equals(node)) {
                 numComponents += 1;
             }
         }
+
+        // use this formula to compute the number of stones removed.
         return coordinates.size() - numComponents;
     }
 }
