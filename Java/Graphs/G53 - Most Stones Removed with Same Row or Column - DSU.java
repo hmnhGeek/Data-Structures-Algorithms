@@ -1,5 +1,7 @@
 package Graphs;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,10 +10,12 @@ class DisjointSet<T> {
     private HashMap<T, T> parents;
 
     public DisjointSet(List<T> nodes) {
-        nodes.forEach(x -> {
-            sizes.put(x, 1);
-            parents.put(x, x);
-        });
+        this.sizes = new HashMap<>();
+        this.parents = new HashMap<>();
+        for (T node : nodes) {
+            this.sizes.put(node, 1);
+            this.parents.put(node, node);
+        }
     }
 
     public HashMap<T, Integer> getSizes() {
@@ -66,5 +70,59 @@ class DisjointSet<T> {
             }
         }
         return count;
+    }
+}
+
+class Coordinate {
+    public Integer x;
+    public Integer y;
+
+    public Coordinate(Integer x, Integer y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Solution {
+    public static void main(String[] args) {
+        // Example 1
+        List<Coordinate> coordinates = Arrays.asList(
+                new Coordinate(0, 0),
+                new Coordinate(0, 1),
+                new Coordinate(1, 0),
+                new Coordinate(1, 2),
+                new Coordinate(2, 1),
+                new Coordinate(2, 2)
+        );
+        System.out.println(removeStones(coordinates));
+    }
+
+    private static Integer removeStones(List<Coordinate> coordinates) {
+        int maxRow = 0, maxCol = 0;
+        for (Coordinate coordinate : coordinates) {
+            maxRow = Math.max(maxRow, coordinate.x);
+            maxCol = Math.max(maxCol, coordinate.y);
+        }
+        List<Integer> nodes = new ArrayList<>();
+        for (int i = 0; i <= maxRow; i += 1) {
+            nodes.add(i);
+        }
+        for (int j = 0; j <= maxCol; j += 1) {
+            nodes.add(maxRow + 1 + j);
+        }
+        DisjointSet<Integer> disjointSet = new DisjointSet<>(nodes);
+        for (Coordinate coordinate : coordinates) {
+            Integer node1 = coordinate.x;
+            Integer node2 = coordinate.y + maxRow + 1;
+            disjointSet.union(node1, node2);
+        }
+
+        int numStonesRemoved = 0;
+        for (Integer ultimateParent : disjointSet.getParents().keySet()) {
+            if (disjointSet.getParents().get(ultimateParent).equals(ultimateParent) && disjointSet.getSizes().get(ultimateParent) > 1) {
+                numStonesRemoved += (disjointSet.getSizes().get(ultimateParent) - 1);
+            }
+        }
+        return numStonesRemoved;
     }
 }
