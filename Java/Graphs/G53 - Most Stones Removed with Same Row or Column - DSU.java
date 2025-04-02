@@ -114,6 +114,46 @@ class Solution {
                 new Coordinate(4, 3)
         );
         System.out.println(removeStones(coordinates3));
+
+        // Example 4
+        List<Coordinate> coordinates4 = Arrays.asList(
+                new Coordinate(0, 0),
+                new Coordinate(1, 1),
+                new Coordinate(2, 2),
+                new Coordinate(2, 3),
+                new Coordinate(2, 4),
+                new Coordinate(3, 2)
+        );
+        System.out.println(removeStones(coordinates4));
+
+        // Example 5
+        List<Coordinate> coordinates5 = Arrays.asList(
+                new Coordinate(0, 0),
+                new Coordinate(0, 1),
+                new Coordinate(1, 0),
+                new Coordinate(1, 2),
+                new Coordinate(2, 1),
+                new Coordinate(2, 2)
+        );
+        System.out.println(removeStones(coordinates5));
+
+        // Example 6
+        List<Coordinate> coordinates6 = Arrays.asList(
+                new Coordinate(0, 0),
+                new Coordinate(0, 1),
+                new Coordinate(1, 0)
+        );
+        System.out.println(removeStones(coordinates6));
+
+        // Example 7
+        List<Coordinate> coordinates7 = Arrays.asList(
+                new Coordinate(2, 0),
+                new Coordinate(2, 1),
+                new Coordinate(3, 1),
+                new Coordinate(3, 2),
+                new Coordinate(5, 5)
+        );
+        System.out.println(removeStones(coordinates7));
     }
 
     private static Integer removeStones(List<Coordinate> coordinates) {
