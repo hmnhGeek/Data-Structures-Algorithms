@@ -132,3 +132,33 @@ class Utils {
         return reversedGraph;
     }
 }
+
+class StronglyConnectedComponentsFinder {
+    private static <T> void getComponent(Map<T, List<T>> graph, T node, List<T> componentNodes, Map<T, Boolean> visited) {
+        if (!visited.get(node)) {
+            visited.put(node, true);
+            componentNodes.add(node);
+        }
+        for (T adjNode : graph.get(node)) {
+            if (!visited.get(adjNode)) {
+                StronglyConnectedComponentsFinder.getComponent(graph, adjNode, componentNodes, visited);
+            }
+        }
+    }
+
+    public static <T> List<List<T>> findStronglyConnectedComponents(Map<T, List<T>> graph) {
+        Stack<T> stack = Utils.sortByReach(graph);
+        Map<T, List<T>> reversedGraph = Utils.reverseGraph(graph);
+        Map<T, Boolean> visited = new HashMap<>();
+        List<List<T>> result = new ArrayList<>();
+        while (!stack.isEmpty()) {
+            T node = stack.pop();
+            if (!visited.get(node)) {
+                List<T> component = new ArrayList<>();
+                StronglyConnectedComponentsFinder.getComponent(reversedGraph, node, component, visited);
+                result.add(component);
+            }
+        }
+        return result;
+    }
+}
