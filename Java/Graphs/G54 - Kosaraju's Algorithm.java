@@ -2,6 +2,7 @@ package Graphs;
 
 import jdk.jshell.execution.Util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,5 +113,22 @@ class Utils {
             }
         }
         return stack;
+    }
+
+    public static <T> Map<T, List<T>> reverseGraph(Map<T, List<T>> graph) {
+        Map<T, List<T>> reversedGraph = new HashMap<>();
+        for (T node : graph.keySet()) {
+            reversedGraph.put(node, new ArrayList<>());
+        }
+        for (T node : graph.keySet()) {
+            for (T adjNode : graph.get(node)) {
+                List<T> adjacentNodes = reversedGraph.get(adjNode);
+                if (!adjacentNodes.contains(node)) {
+                    adjacentNodes.add(node);
+                }
+                reversedGraph.put(adjNode, adjacentNodes);
+            }
+        }
+        return reversedGraph;
     }
 }
