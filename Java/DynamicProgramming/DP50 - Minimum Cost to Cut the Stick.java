@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
+// Solution - https://www.youtube.com/watch?v=xwomavsC86c&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=51
+
+
 package DynamicProgramming;
 
 import java.util.*;
