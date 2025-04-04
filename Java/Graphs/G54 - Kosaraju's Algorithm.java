@@ -1,5 +1,11 @@
 package Graphs;
 
+import jdk.jshell.execution.Util;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 class Node<T> {
     private T data;
     private Node<T> next;
@@ -80,5 +86,31 @@ class Stack<T> {
         setHead(getHead().getNext());
         setLength(getLength() - 1);
         return item;
+    }
+}
+
+class Utils {
+    private static <T> void dfs(Map<T, List<T>> graph, T node, Stack<T> stack, Map<T, Boolean> visited) {
+        visited.put(node, true);
+        for (T adjNode : graph.get(node)) {
+            if (!visited.get(adjNode)) {
+                Utils.dfs(graph, adjNode, stack, visited);
+            }
+        }
+        stack.push(node);
+    }
+
+    public static <T> Stack<T> sortByReach(Map<T, List<T>> graph) {
+        Stack<T> stack = new Stack<>();
+        Map<T, Boolean> visited = new HashMap<>();
+        for (T node : graph.keySet()) {
+            visited.put(node, false);
+        }
+        for (T node : graph.keySet()) {
+            if (!visited.get(node)) {
+                Utils.dfs(graph, node, stack, visited);
+            }
+        }
+        return stack;
     }
 }
