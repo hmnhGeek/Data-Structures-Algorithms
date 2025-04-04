@@ -2,10 +2,7 @@ package Graphs;
 
 import jdk.jshell.execution.Util;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class Node<T> {
     private T data;
@@ -73,8 +70,8 @@ class Stack<T> {
             setHead(node);
             setTail(node);
         } else {
-            getTail().setNext(node);
-            setTail(node);
+            node.setNext(getHead());
+            setHead(node);
         }
         setLength(getLength() + 1);
     }
@@ -150,6 +147,9 @@ class StronglyConnectedComponentsFinder {
         Stack<T> stack = Utils.sortByReach(graph);
         Map<T, List<T>> reversedGraph = Utils.reverseGraph(graph);
         Map<T, Boolean> visited = new HashMap<>();
+        for (T node : graph.keySet()) {
+            visited.put(node, false);
+        }
         List<List<T>> result = new ArrayList<>();
         while (!stack.isEmpty()) {
             T node = stack.pop();
@@ -160,5 +160,21 @@ class StronglyConnectedComponentsFinder {
             }
         }
         return result;
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        // Example 1
+        Map<Integer, List<Integer>> graph1 = new HashMap<>();
+        graph1.put(0, List.of(1));
+        graph1.put(1, List.of(2));
+        graph1.put(2, List.of(0, 3));
+        graph1.put(3, List.of(4));
+        graph1.put(4, List.of(5, 7));
+        graph1.put(5, List.of(6));
+        graph1.put(6, List.of(4, 7));
+        graph1.put(7, List.of());
+        System.out.println(StronglyConnectedComponentsFinder.findStronglyConnectedComponents(graph1));
     }
 }
