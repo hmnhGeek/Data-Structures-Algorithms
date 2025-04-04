@@ -89,36 +89,52 @@ class Stack<T> {
 
 class Utils {
     private static <T> void dfs(Map<T, List<T>> graph, T node, Stack<T> stack, Map<T, Boolean> visited) {
+        // visit the node
         visited.put(node, true);
+
+        // loop on the adjacent nodes of this node and if not visited, start a DFS on that adjacent node.
         for (T adjNode : graph.get(node)) {
             if (!visited.get(adjNode)) {
                 Utils.dfs(graph, adjNode, stack, visited);
             }
         }
+
+        // push the node in the stack; typical code for toposort.
         stack.push(node);
     }
 
     public static <T> Stack<T> sortByReach(Map<T, List<T>> graph) {
+        // initialize a stack which will take O(V) space.
         Stack<T> stack = new Stack<>();
+
+        // initialize a visited map which will take O(V) space.
         Map<T, Boolean> visited = new HashMap<>();
         for (T node : graph.keySet()) {
             visited.put(node, false);
         }
+
+        // for unvisited nodes, do a DFS in O(V + E) time and update the stack.
         for (T node : graph.keySet()) {
             if (!visited.get(node)) {
                 Utils.dfs(graph, node, stack, visited);
             }
         }
+
+        // return the stack.
         return stack;
     }
 
     public static <T> Map<T, List<T>> reverseGraph(Map<T, List<T>> graph) {
+        // create an empty reversedGraph with same nodes as in graph. This will take O(V + E) space.
         Map<T, List<T>> reversedGraph = new HashMap<>();
         for (T node : graph.keySet()) {
             reversedGraph.put(node, new ArrayList<>());
         }
+
+        // loop in the nodes of the given graph in O(V + E) time.
         for (T node : graph.keySet()) {
             for (T adjNode : graph.get(node)) {
+                // add the reverse edge in the reversed graph, i.e., from adjNode --> node.
                 List<T> adjacentNodes = reversedGraph.get(adjNode);
                 if (!adjacentNodes.contains(node)) {
                     adjacentNodes.add(node);
@@ -126,16 +142,21 @@ class Utils {
                 reversedGraph.put(adjNode, adjacentNodes);
             }
         }
+
+        // return the reversed graph.
         return reversedGraph;
     }
 }
 
 class StronglyConnectedComponentsFinder {
     private static <T> void getComponent(Map<T, List<T>> graph, T node, List<T> componentNodes, Map<T, Boolean> visited) {
+        // mark the node as visited and add it to the component list.
         if (!visited.get(node)) {
             visited.put(node, true);
             componentNodes.add(node);
         }
+
+        // loop on the adjacent nodes of this node and start a DFS on them if they are not visited.
         for (T adjNode : graph.get(node)) {
             if (!visited.get(adjNode)) {
                 StronglyConnectedComponentsFinder.getComponent(graph, adjNode, componentNodes, visited);
@@ -144,21 +165,40 @@ class StronglyConnectedComponentsFinder {
     }
 
     public static <T> List<List<T>> findStronglyConnectedComponents(Map<T, List<T>> graph) {
+        // perform a topological sort in O(V + E) time and O(V) space.
         Stack<T> stack = Utils.sortByReach(graph);
+
+        // get the reversed graph in O(V + E) time and O(V + E) space.
         Map<T, List<T>> reversedGraph = Utils.reverseGraph(graph);
+
+        // create a visited hash map in O(V) time.
         Map<T, Boolean> visited = new HashMap<>();
         for (T node : graph.keySet()) {
             visited.put(node, false);
         }
+
+        // store the strongly connected components in this list.
         List<List<T>> result = new ArrayList<>();
+
+        // now while the stack is not empty; this will run for V iterations.
         while (!stack.isEmpty()) {
+            // pop the current node.
             T node = stack.pop();
+
+            // if the current node is not visited, initiate a DFS on the reversed graph from this node.
             if (!visited.get(node)) {
+                // while doing the DFS, collect the nodes in component array that belong to this strongly connected component.
                 List<T> component = new ArrayList<>();
+
+                // This is a typical DFS, thus takes O(V + E) time and O(V) space.
                 StronglyConnectedComponentsFinder.getComponent(reversedGraph, node, component, visited);
+
+                // add this SCC in the final list.
                 result.add(component);
             }
         }
+
+        // return the final list of SCCs.
         return result;
     }
 }
