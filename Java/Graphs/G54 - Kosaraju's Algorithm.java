@@ -176,5 +176,32 @@ class Main {
         graph1.put(6, List.of(4, 7));
         graph1.put(7, List.of());
         System.out.println(StronglyConnectedComponentsFinder.findStronglyConnectedComponents(graph1));
+
+        // Example 2
+        Map<Integer, List<Integer>> graph2 = new HashMap<>();
+        graph2.put(0, List.of(2, 3));
+        graph2.put(1, List.of(0));
+        graph2.put(2, List.of(1));
+        graph2.put(3, List.of(4));
+        graph2.put(4, List.of());
+        System.out.println(StronglyConnectedComponentsFinder.findStronglyConnectedComponents(graph2));
+
+        // Example 3
+        Map<Integer, List<Integer>> graph3 = new HashMap<>();
+        graph3.put(0, List.of(1));
+        graph3.put(1, List.of(2));
+        graph3.put(2, List.of(0));
+        System.out.println(StronglyConnectedComponentsFinder.findStronglyConnectedComponents(graph3));
+
+        // Example 4
+        Map<Integer, List<Integer>> graph4 = new HashMap<>();
+        graph4.put(1, List.of(2));
+        graph4.put(2, List.of(3, 4));
+        graph4.put(3, List.of(4, 6));
+        graph4.put(4, List.of(1, 5));
+        graph4.put(5, List.of(6));
+        graph4.put(6, List.of(7));
+        graph4.put(7, List.of(5));
+        System.out.println(StronglyConnectedComponentsFinder.findStronglyConnectedComponents(graph4));
     }
 }
