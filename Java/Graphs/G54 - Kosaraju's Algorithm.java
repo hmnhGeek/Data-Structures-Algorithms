@@ -1,6 +1,8 @@
-package Graphs;
+// Problem link - https://www.geeksforgeeks.org/strongly-connected-components/
+// Solution - https://www.youtube.com/watch?v=R6uoSjZ2imo&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
 
-import jdk.jshell.execution.Util;
+
+package Graphs;
 
 import java.util.*;
 
@@ -89,6 +91,10 @@ class Stack<T> {
 
 class Utils {
     private static <T> void dfs(Map<T, List<T>> graph, T node, Stack<T> stack, Map<T, Boolean> visited) {
+        /**
+         * Time complexity is O(V + E) and space complexity is O(V).
+         */
+
         // visit the node
         visited.put(node, true);
 
@@ -104,6 +110,9 @@ class Utils {
     }
 
     public static <T> Stack<T> sortByReach(Map<T, List<T>> graph) {
+        /**
+         * Time complexity is O(V + E) and space complexity is O(V).
+         */
         // initialize a stack which will take O(V) space.
         Stack<T> stack = new Stack<>();
 
@@ -125,6 +134,10 @@ class Utils {
     }
 
     public static <T> Map<T, List<T>> reverseGraph(Map<T, List<T>> graph) {
+        /**
+         * Time complexity is O(V + E) and space complexity is O(V + E).
+         */
+
         // create an empty reversedGraph with same nodes as in graph. This will take O(V + E) space.
         Map<T, List<T>> reversedGraph = new HashMap<>();
         for (T node : graph.keySet()) {
@@ -150,6 +163,10 @@ class Utils {
 
 class StronglyConnectedComponentsFinder {
     private static <T> void getComponent(Map<T, List<T>> graph, T node, List<T> componentNodes, Map<T, Boolean> visited) {
+        /**
+         * Time complexity is O(V + E) and space complexity is O(V).
+         */
+
         // mark the node as visited and add it to the component list.
         if (!visited.get(node)) {
             visited.put(node, true);
@@ -165,6 +182,10 @@ class StronglyConnectedComponentsFinder {
     }
 
     public static <T> List<List<T>> findStronglyConnectedComponents(Map<T, List<T>> graph) {
+        /**
+         * Time complexity is O(V + E) and space complexity is O(V + E).
+         */
+
         // perform a topological sort in O(V + E) time and O(V) space.
         Stack<T> stack = Utils.sortByReach(graph);
 
