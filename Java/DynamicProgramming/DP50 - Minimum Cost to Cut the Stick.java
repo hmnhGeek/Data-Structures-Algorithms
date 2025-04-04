@@ -1,8 +1,6 @@
 package DynamicProgramming;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 class QuickSort {
@@ -63,6 +61,45 @@ class DP50Recursive {
     }
 }
 
+class DP50Memoized {
+    /**
+     * Time complexity is O(n^3) and space complexity is O(n + n^2).
+     */
+
+    private static Integer solve(List<Integer> arr, Integer i, Integer j, Map<Integer, Map<Integer, Integer>> dp) {
+        if (i > j) {
+            return 0;
+        }
+        if (dp.get(i).get(j) != null) {
+            return dp.get(i).get(j);
+        }
+        int minCost = Integer.MAX_VALUE;
+        for (int k = i; k <= j; k += 1) {
+            int cost = arr.get(j + 1) - arr.get(i - 1) + solve(arr, i, k - 1, dp) + solve(arr, k + 1, j, dp);
+            minCost = Math.min(cost, minCost);
+        }
+        Map<Integer, Integer> v = dp.get(i);
+        v.put(j, minCost);
+        dp.put(i, v);
+        return dp.get(i).get(j);
+    }
+
+    public static Integer getMinCostToCutRod(List<Integer> arr, Integer length) {
+        int n = arr.size();
+        QuickSort.sort(arr);
+        Map<Integer, Map<Integer, Integer>> dp = new HashMap<>();
+        for (int i = 1; i <= n; i += 1) {
+            Map<Integer, Integer> v = new HashMap<>();
+            for (int j = 1; j <= n; j += 1) {
+                v.put(j, null);
+            }
+            dp.put(i, v);
+        }
+        List<Integer> rod = Stream.of(List.of(0), arr, List.of(length)).flatMap(List::stream).toList();
+        return DP50Memoized.solve(rod, 1, n, dp);
+    }
+}
+
 class Solution {
     public static void main(String[] args) {
         System.out.println("Recursive Solution");
@@ -72,5 +109,13 @@ class Solution {
         System.out.println(DP50Recursive.getMinCostToCutRod(Arrays.asList(1, 3, 4, 7), 10));
         System.out.println(DP50Recursive.getMinCostToCutRod(Arrays.asList(1, 3), 10));
         System.out.println(DP50Recursive.getMinCostToCutRod(Arrays.asList(5, 6, 1, 4, 2), 9));
+
+        System.out.println("Memoized Solution");
+        System.out.println(DP50Memoized.getMinCostToCutRod(Arrays.asList(1, 3, 4, 5), 7));
+        System.out.println(DP50Memoized.getMinCostToCutRod(Arrays.asList(1, 3), 4));
+        System.out.println(DP50Memoized.getMinCostToCutRod(Arrays.asList(1, 3, 4), 5));
+        System.out.println(DP50Memoized.getMinCostToCutRod(Arrays.asList(1, 3, 4, 7), 10));
+        System.out.println(DP50Memoized.getMinCostToCutRod(Arrays.asList(1, 3), 10));
+        System.out.println(DP50Memoized.getMinCostToCutRod(Arrays.asList(5, 6, 1, 4, 2), 9));
     }
 }
