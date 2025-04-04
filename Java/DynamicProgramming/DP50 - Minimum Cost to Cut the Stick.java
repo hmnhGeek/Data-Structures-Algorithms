@@ -100,6 +100,44 @@ class DP50Memoized {
     }
 }
 
+class DP50Tabulation {
+    /**
+     * Time complexity is O(n^3) and space complexity is O(n^2).
+     */
+
+    public static Integer getMinCostToCutRod(List<Integer> arr, Integer length) {
+        int n = arr.size();
+        QuickSort.sort(arr);
+
+        // using n + 1 and 0 in range because we have added 0 and stick_size to the cuts array.
+        Map<Integer, Map<Integer, Integer>> dp = new HashMap<>();
+        for (int i = 0; i <= n + 1; i += 1) {
+            Map<Integer, Integer> v = new HashMap<>();
+            for (int j = 0; j <= n; j += 1) {
+                v.put(j, 0);
+            }
+            dp.put(i, v);
+        }
+        List<Integer> rod = Stream.of(List.of(0), arr, List.of(length)).flatMap(List::stream).toList();
+        for (int i = n; i >= 1; i -= 1) {
+            for (int j = 1; j <= n; j += 1) {
+                if (i > j) {
+                    continue;
+                }
+                int minCost = Integer.MAX_VALUE;
+                for (int k = i; k <= j; k += 1) {
+                    int cost = rod.get(j + 1) - rod.get(i - 1) + dp.get(i).get(k - 1) + dp.get(k + 1).get(j);
+                    minCost = Math.min(cost, minCost);
+                }
+                Map<Integer, Integer> v = dp.get(i);
+                v.put(j, minCost);
+                dp.put(i, v);
+            }
+        }
+        return dp.get(1).get(n);
+    }
+}
+
 class Solution {
     public static void main(String[] args) {
         System.out.println("Recursive Solution");
@@ -117,5 +155,13 @@ class Solution {
         System.out.println(DP50Memoized.getMinCostToCutRod(Arrays.asList(1, 3, 4, 7), 10));
         System.out.println(DP50Memoized.getMinCostToCutRod(Arrays.asList(1, 3), 10));
         System.out.println(DP50Memoized.getMinCostToCutRod(Arrays.asList(5, 6, 1, 4, 2), 9));
+
+        System.out.println("Tabulation Solution");
+        System.out.println(DP50Tabulation.getMinCostToCutRod(Arrays.asList(1, 3, 4, 5), 7));
+        System.out.println(DP50Tabulation.getMinCostToCutRod(Arrays.asList(1, 3), 4));
+        System.out.println(DP50Tabulation.getMinCostToCutRod(Arrays.asList(1, 3, 4), 5));
+        System.out.println(DP50Tabulation.getMinCostToCutRod(Arrays.asList(1, 3, 4, 7), 10));
+        System.out.println(DP50Tabulation.getMinCostToCutRod(Arrays.asList(1, 3), 10));
+        System.out.println(DP50Tabulation.getMinCostToCutRod(Arrays.asList(5, 6, 1, 4, 2), 9));
     }
 }
