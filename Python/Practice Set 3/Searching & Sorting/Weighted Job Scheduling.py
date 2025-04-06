@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/weighted-job-scheduling-log-n-time/
+# Solution - https://www.youtube.com/watch?v=LL0tVxlAeV4&t=14s
+
+
 from typing import List
 
 
@@ -9,6 +13,9 @@ class Job:
 
 
 class RecursiveSolution:
+    """
+        Time complexity is exponential and space complexity is O(n).
+    """
     @staticmethod
     def _find_next_possible_job_index(jobs: List[Job], index: int, n: int) -> int:
         end_time_of_current_job = jobs[index].end_time
@@ -38,6 +45,9 @@ class RecursiveSolution:
 
 
 class MemoizedSolution:
+    """
+        Time complexity is O(n + n*log(n)) and space complexity is O(2n).
+    """
     @staticmethod
     def _find_next_possible_job_index(jobs: List[Job], index: int, n: int) -> int:
         end_time_of_current_job = jobs[index].end_time
@@ -71,6 +81,9 @@ class MemoizedSolution:
 
 
 class TabulationSolution:
+    """
+        Time complexity is O(n * log(n)) and space complexity is O(n).
+    """
     @staticmethod
     def _find_next_possible_job_index(jobs: List[Job], index: int, n: int) -> int:
         end_time_of_current_job = jobs[index].end_time
