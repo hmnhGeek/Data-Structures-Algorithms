@@ -48,35 +48,46 @@ print(
     )
 )
 
-# print(
-#     RecursiveSolution.schedule(
-#         [1, 2, 4, 5],
-#         [3, 5, 6, 7],
-#         [60, 50, 70, 30]
-#     )
-# )
-#
-#
-# print(
-#     RecursiveSolution.schedule(
-#         [1, 2, 3, 3],
-#         [3, 4, 5, 6],
-#         [50, 10, 40, 70]
-#     )
-# )
-#
-# print(
-#     RecursiveSolution.schedule(
-#         [1, 2, 3, 4, 6],
-#         [3, 5, 10, 6, 9],
-#         [20, 20, 100, 70, 60]
-#     )
-# )
-#
-# print(
-#     RecursiveSolution.schedule(
-#         [1, 1, 1],
-#         [2, 3, 4],
-#         [5, 6, 4]
-#     )
-# )
+print(
+    RecursiveSolution.schedule(
+        [
+            Job(1, 3, 60),
+            Job(2, 5, 50),
+            Job(4, 6, 70),
+            Job(5, 7, 30)
+        ]
+    )
+)
+
+print(
+    RecursiveSolution.schedule(
+        [
+            Job(1, 3, 50),
+            Job(2, 4, 10),
+            Job(3, 5, 40),
+            Job(3, 6, 70)
+        ]
+    )
+)
+
+print(
+    RecursiveSolution.schedule(
+        [
+            Job(1, 3, 20),
+            Job(2, 5, 20),
+            Job(3, 10, 100),
+            Job(4, 6, 70),
+            Job(6, 9, 60)
+        ]
+    )
+)
+
+print(
+    RecursiveSolution.schedule(
+        [
+            Job(1, 2, 5),
+            Job(1, 3, 6),
+            Job(1, 4, 4)
+        ]
+    )
+)
