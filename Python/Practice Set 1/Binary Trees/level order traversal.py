@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/level-order-traversal/1
+
+
 class QueueNode:
     def __init__(self, data):
         self.data = data
@@ -73,3 +76,20 @@ twty.right = sixty
 ten.right = thrty
 thrty.right = svnty
 print(Solution.get_level_order_traversal(ten))
+
+# Example 3
+n1, n2, n3, n4, n5 = Node(10), Node(20), Node(30), Node(40), Node(50)
+n1.left = n2
+n1.right = n3
+n2.left = n4
+n2.right = n5
+print(Solution.get_level_order_traversal(n1))
+
+# Example 4
+n1, n2, n3, n4, n5, n6 = Node(1), Node(2), Node(3), Node(4), Node(5), Node(6)
+n1.left = n3
+n1.right = n2
+n2.right = n4
+n4.left = n6
+n4.right = n5
+print(Solution.get_level_order_traversal(n1))
