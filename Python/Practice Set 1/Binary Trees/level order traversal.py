@@ -44,21 +44,34 @@ class Node:
 class Solution:
     @staticmethod
     def get_level_order_traversal(root: Node):
+        # Time complexity is O(n) and space complexity is O(n) for the queue.
+
         level_order_traversal = {}
         if root is None:
             return level_order_traversal
+
+        # push the root node with level as 0 to the queue
         queue = Queue()
         queue.push((root, 0))
+
+        # until the queue gets empty, which will happen only after all the nodes are traversed...
         while not queue.is_empty():
+            # pop the current node
             node, level = queue.pop()
+
+            # add the node into result set at level = `level`.
             if level not in level_order_traversal:
                 level_order_traversal[level] = [node.data,]
             else:
                 level_order_traversal[level].append(node.data)
+
+            # push the left and right children of the popped node to the queue with next level
             if node.left is not None:
                 queue.push((node.left, level + 1))
             if node.right is not None:
                 queue.push((node.right, level + 1))
+
+        # return the result set.
         return level_order_traversal
     
 
