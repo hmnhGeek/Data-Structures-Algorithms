@@ -1,0 +1,51 @@
+class Direction:
+    RIGHT = "right"
+    DOWN = "down"
+    LEFT = "left"
+    UP = "up"
+
+
+class Solution:
+    @staticmethod
+    def spiral_traversal(mtx):
+        n, m = len(mtx), len(mtx[0])
+        left, right = 0, m - 1
+        top, down = 0, n - 1
+        direction = Direction.RIGHT
+
+        while left <= right and top <= down:
+            if direction == Direction.RIGHT:
+                for i in range(left, right + 1):
+                    print(mtx[top][i], end=" ")
+                top += 1
+                direction = Direction.DOWN
+            elif direction == Direction.DOWN:
+                for i in range(top, down + 1):
+                    print(mtx[i][right], end=" ")
+                right -= 1
+                direction = Direction.LEFT
+            elif direction == Direction.LEFT:
+                for i in range(right, left - 1, -1):
+                    print(mtx[down][i], end=" ")
+                down -= 1
+                direction = Direction.UP
+            elif direction == Direction.UP:
+                for i in range(down, top - 1, -1):
+                    print(mtx[i][left], end=" ")
+                left += 1
+                direction = Direction.RIGHT
+        print()
+
+
+Solution.spiral_traversal(
+    [
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11, 12],
+        [13, 14, 15, 16]
+    ]
+)
+
+Solution.spiral_traversal([[1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12], [13, 14, 15, 16, 17, 18]])
+
+Solution.spiral_traversal([[32, 44, 27, 23], [54, 28, 50, 62]])
