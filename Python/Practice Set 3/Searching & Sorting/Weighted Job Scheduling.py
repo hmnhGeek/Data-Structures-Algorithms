@@ -70,6 +70,32 @@ class MemoizedSolution:
         return MemoizedSolution._find_max_profit(jobs, 0, n, dp)
 
 
+class TabulationSolution:
+    @staticmethod
+    def _find_next_possible_job_index(jobs: List[Job], index: int, n: int) -> int:
+        end_time_of_current_job = jobs[index].end_time
+        low, high = index + 1, n - 1
+        while low <= high:
+            mid = int(low + (high - low)/2)
+            if jobs[mid].start_time >= end_time_of_current_job:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return low
+
+    @staticmethod
+    def schedule(jobs: List[Job]) -> int:
+        jobs.sort(key=lambda x: x.start_time)
+        n = len(jobs)
+        dp = {i: 0 for i in range(n + 2)}
+        for index in range(n - 1, -1, -1):
+            next_possible_job_index = TabulationSolution._find_next_possible_job_index(jobs, index, n)
+            left = jobs[index].profit + dp[next_possible_job_index]
+            right = dp[index + 1]
+            dp[index] = max(left, right)
+        return dp[0]
+
+
 print("Recursive Solution")
 print(
     RecursiveSolution.schedule(
@@ -175,6 +201,64 @@ print(
 
 print(
     MemoizedSolution.schedule(
+        [
+            Job(1, 2, 5),
+            Job(1, 3, 6),
+            Job(1, 4, 4)
+        ]
+    )
+)
+
+
+print()
+print("Tabulation Solution")
+print(
+    TabulationSolution.schedule(
+        [
+            Job(1, 2, 50),
+            Job(3, 5, 20),
+            Job(6, 19, 100),
+            Job(2, 100, 200)
+        ]
+    )
+)
+
+print(
+    TabulationSolution.schedule(
+        [
+            Job(1, 3, 60),
+            Job(2, 5, 50),
+            Job(4, 6, 70),
+            Job(5, 7, 30)
+        ]
+    )
+)
+
+print(
+    TabulationSolution.schedule(
+        [
+            Job(1, 3, 50),
+            Job(2, 4, 10),
+            Job(3, 5, 40),
+            Job(3, 6, 70)
+        ]
+    )
+)
+
+print(
+    TabulationSolution.schedule(
+        [
+            Job(1, 3, 20),
+            Job(2, 5, 20),
+            Job(3, 10, 100),
+            Job(4, 6, 70),
+            Job(6, 9, 60)
+        ]
+    )
+)
+
+print(
+    TabulationSolution.schedule(
         [
             Job(1, 2, 5),
             Job(1, 3, 6),
