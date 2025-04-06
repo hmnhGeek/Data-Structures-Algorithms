@@ -41,6 +41,9 @@ class LinkedList:
                 return True
         return False
 
+    def remove_loop(self):
+        self.tail.next = None
+
 
 # Example 1
 l1 = LinkedList()
@@ -48,4 +51,6 @@ l1.build(1, 2, 3, 4, 5)
 l1.show()
 print(l1.has_loop())
 l1.tail.next = l1.head.next
+print(l1.has_loop())
+l1.remove_loop()
 print(l1.has_loop())
