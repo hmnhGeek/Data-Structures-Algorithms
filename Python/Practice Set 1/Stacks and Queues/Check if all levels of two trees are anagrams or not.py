@@ -94,3 +94,19 @@ m1.right = m3
 m2.left = m4
 m2.right = m5
 print(Solution.are_anagrams(n1, m1))
+
+
+# Example 2
+one, two, three, four, five = Node(1), Node(2), Node(3), Node(4), Node(5)
+one.left = two
+two.left = five
+one.right = three
+two.right = four
+
+one1, two1, three1, four1, five1 = Node(1), Node(2), Node(3), Node(4), Node(5)
+one1.left = two1
+two1.left = five1
+one1.right = four1
+two1.right = three1
+
+print(Solution.are_anagrams(one, one1))
