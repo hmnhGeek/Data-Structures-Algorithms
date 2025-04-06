@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/remove-loop-in-linked-list/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -33,6 +36,9 @@ class LinkedList:
             self.push(i)
 
     def has_loop(self):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         slow = fast = self.head
         while slow and fast and fast.next:
             slow = slow.next
@@ -42,6 +48,9 @@ class LinkedList:
         return False
 
     def remove_loop(self):
+        """
+            Time complexity is O(1) and space complexity is O(1).
+        """
         self.tail.next = None
 
 
@@ -54,3 +63,13 @@ l1.tail.next = l1.head.next
 print(l1.has_loop())
 l1.remove_loop()
 print(l1.has_loop())
+
+# Example 2
+l2 = LinkedList()
+l2.build(1, 2, 3, 4, 10, -19)
+l2.show()
+print(l2.has_loop())
+l2.tail.next = l2.head.next.next
+print(l2.has_loop())
+l2.remove_loop()
+print(l2.has_loop())
