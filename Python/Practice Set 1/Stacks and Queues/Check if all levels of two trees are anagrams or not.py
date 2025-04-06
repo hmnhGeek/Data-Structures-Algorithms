@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/check-if-all-levels-of-two-trees-are-anagrams-or-not/
+
+
 class QueueNode:
     def __init__(self, data):
         self.data = data
@@ -41,6 +44,10 @@ class Node:
 class Solution:
     @staticmethod
     def are_anagrams(root1: Node, root2: Node) -> bool:
+        """
+            Time complexity is O(n + m) and space complexity is O(n + m).
+        """
+
         # if both the nodes are none, return true.
         if root1 is None and root2 is None:
             return True
