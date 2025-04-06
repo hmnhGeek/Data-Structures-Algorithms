@@ -41,43 +41,52 @@ class Node:
 class Solution:
     @staticmethod
     def are_anagrams(root1: Node, root2: Node) -> bool:
+        # if both the nodes are none, return true.
         if root1 is None and root2 is None:
             return True
+
+        # if either one of them is none, while the other is not, return false.
         if root1 is None:
             return False
         if root2 is None:
             return False
+
+        # initialize two queues and push root nodes of both the trees into them.
         queue1 = Queue()
         queue2 = Queue()
         queue1.push(root1)
         queue2.push(root2)
+
+        # while both the queues have elements in them
         while not queue1.is_empty() and not queue2.is_empty():
+            # get the nodes
             node1, node2 = queue1.pop(), queue2.pop()
+
+            # if their data don't match, return false.
             if node1.data != node2.data:
                 return False
 
+            # if node1's left and node2's right exist, push them to the queues.
             if node1.left and node2.right:
-                if node1.left.data == node2.right.data:
-                    queue1.push(node1.left)
-                    queue2.push(node2.right)
-                else:
-                    return False
+                queue1.push(node1.left)
+                queue2.push(node2.right)
+
+            # if either one of them is none, while the other is not, return false.
             elif node1.left:
                 return False
             elif node2.right:
                 return False
 
+            # same cases as above but for other pointers of nodes 1 and 2.
             if node1.right and node2.left:
-                if node1.right.data == node2.left.data:
-                    queue1.push(node1.right)
-                    queue2.push(node2.left)
-                else:
-                    return False
+                queue1.push(node1.right)
+                queue2.push(node2.left)
             elif node1.right:
                 return False
             elif node2.left:
                 return False
 
+        # if both the queues got empty, return true, else false.
         return queue1.is_empty() and queue2.is_empty()
 
 
