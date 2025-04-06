@@ -31,3 +31,45 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = self.right = None
+        
+
+class Solution:
+    @staticmethod
+    def get_level_order_traversal(root: Node):
+        level_order_traversal = {}
+        if root is None:
+            return level_order_traversal
+        queue = Queue()
+        queue.push((root, 0))
+        while not queue.is_empty():
+            node, level = queue.pop()
+            if level not in level_order_traversal:
+                level_order_traversal[level] = [node.data,]
+            else:
+                level_order_traversal[level].append(node.data)
+            if node.left is not None:
+                queue.push((node.left, level + 1))
+            if node.right is not None:
+                queue.push((node.right, level + 1))
+        return level_order_traversal
+    
+
+# Example 1
+one, two, three = Node(1), Node(2), Node(3)
+one.left = three
+one.right = two
+print(Solution.get_level_order_traversal(one))
+
+# Example 2
+ten, twty, thrty, fourty, sixty, svnty = Node(10), Node(20), Node(30), Node(40), Node(60), Node(70)
+ten.left = twty
+twty.left = fourty
+twty.right = sixty
+ten.right = thrty
+thrty.right = svnty
+print(Solution.get_level_order_traversal(ten))
