@@ -138,3 +138,14 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def bst_from_preorder(preorder):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+        bst = BinarySearchTree()
+        for i in preorder:
+            bst.insert(i)
+        return bst
