@@ -67,18 +67,31 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_min_sum(arr):
+        # push all the elements from array into the min heap in O(n * log(n)) time and O(n) space.
         min_heap = MinHeap()
         for i in arr:
             min_heap.insert(i)
 
+        # initialize two numbers with 0 values.
         n1, n2 = 0, 0
+
+        # while the min heap is not empty. This will run for n times.
         while not min_heap.is_empty():
+            # get the first element in x.
             x = min_heap.pop()
+            # update n1.
             n1 = (n1 * 10 + x)
+
+            # if heap is still not empty
             if not min_heap.is_empty():
+                # get the second element in y and update n2.
                 y = min_heap.pop()
                 n2 = (n2 * 10 + y)
+
+        # return the final sum.
         return n1 + n2
 
 
 print(Solution.get_min_sum([6, 8, 4, 5, 2, 3]))
+print(Solution.get_min_sum([5, 3, 0, 7, 4]))
+print(Solution.get_min_sum([9, 4]))
