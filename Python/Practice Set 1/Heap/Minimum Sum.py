@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-sum4058/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,6 +70,10 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_min_sum(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         # push all the elements from array into the min heap in O(n * log(n)) time and O(n) space.
         min_heap = MinHeap()
         for i in arr:
