@@ -70,16 +70,31 @@ class Solution:
 
     @staticmethod
     def get_strongly_connected_components(graph):
+        # get a stack with the topological sort of the original graph. This will take O(V + E) time and O(V) space.
         stack = Solution._get_topological_sort(graph)
+
+        # reverse the graph so that SCCs are isolated. This will take O(V + E) time and O(V + E) space.
         reversed_graph = Solution._get_reversed_graph(graph)
+
+        # store the SCCs in a variable
         strongly_connected_components = []
+
+        # create a visited array of size O(V).
         visited = {i: False for i in graph}
+
+        # while the stack is not empty...
         while not stack.is_empty():
+            # get the top node.
             node = stack.pop()
+
+            # and if that node is not visited yet, start a DFS from it.
             if not visited[node]:
+                # also populate the component and finally add it to SCCs list.
                 component = []
                 Solution._dfs(reversed_graph, node, visited, component)
                 strongly_connected_components.append(component)
+
+        # return the SCCs.
         return strongly_connected_components
 
 
