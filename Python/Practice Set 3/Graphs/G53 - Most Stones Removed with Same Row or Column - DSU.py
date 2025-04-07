@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/maximum-stone-removal-1662179442/1
+# Solution - https://www.youtube.com/watch?v=OwMNX8SPavM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.ranks = {i: 0 for i in nodes}
@@ -29,6 +33,10 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def remove_stones(stones):
+        """
+            Time complexity is O(m + n) and space complexity is O(m + n).
+        """
+
         # get the max row and max column indices using a for loop in O(n) time.
         max_row, max_col = -1e6, -1e6
         for stone in stones:
@@ -40,7 +48,7 @@ class Solution:
         disjoint_set = DisjointSet(nodes)
 
         # create a set to store the rows and columns (or nodes in terms of disjoint set) which have at least one
-        # stone in them.
+        # stone in them. This will take O(n) space only.
         nodes_having_stones = set()
 
         # now loop on all the stones in O(n) time.
