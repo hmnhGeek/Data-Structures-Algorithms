@@ -33,3 +33,33 @@ class MergeSort:
             j += 1
         return merged
 
+
+def recursive():
+    """
+        Time complexity is exponential and space complexity is O(n).
+    """
+
+    def solve(arr, i, j):
+        if i > j:
+            return 0
+        min_cost = 1e6
+        for k in range(i, j + 1):
+            cost = (arr[j + 1] - arr[i - 1]) + solve(arr, i, k - 1) + solve(arr, k + 1, j)
+            min_cost = min(min_cost, cost)
+        return min_cost
+
+    def min_cost_to_cut_stick(cuts, length):
+        n = len(cuts)
+        rod = [0] + cuts + [length]
+        MergeSort.sort(rod)
+        return solve(rod, 1, n)
+
+    print(min_cost_to_cut_stick([1, 3, 4, 5], 7))
+    print(min_cost_to_cut_stick([1, 3], 4))
+    print(min_cost_to_cut_stick([1, 3, 4], 5))
+    print(min_cost_to_cut_stick([1, 3, 4, 7], 10))
+    print(min_cost_to_cut_stick([1, 3], 10))
+    print(min_cost_to_cut_stick([5, 6, 1, 4, 2], 9))
+
+
+recursive()
