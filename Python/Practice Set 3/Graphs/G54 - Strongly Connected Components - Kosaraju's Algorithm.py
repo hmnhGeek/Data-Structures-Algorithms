@@ -29,3 +29,107 @@ class Stack:
         self.head = self.head.next
         del node
         self.length -= 1
+        return item
+
+
+class Solution:
+    @staticmethod
+    def _dfs1(graph, node, visited, stack):
+        visited[node] = True
+        for adj_node in graph[node]:
+            if not visited[adj_node]:
+                Solution._dfs1(graph, adj_node, visited, stack)
+        stack.push(node)
+
+    @staticmethod
+    def _get_topological_sort(graph):
+        stack = Stack()
+        visited = {i: False for i in graph}
+        for node in graph:
+            if not visited[node]:
+                Solution._dfs1(graph, node, visited, stack)
+        return stack
+
+    @staticmethod
+    def _get_reversed_graph(graph):
+        reversed_graph = {i: [] for i in graph}
+        for node in graph:
+            for adj_node in graph[node]:
+                if node not in reversed_graph[adj_node]:
+                    reversed_graph[adj_node].append(node)
+        return reversed_graph
+
+    @staticmethod
+    def _dfs(graph, node, visited, component):
+        visited[node] = True
+        if node not in component:
+            component.append(node)
+        for adj_node in graph[node]:
+            if not visited[adj_node]:
+                Solution._dfs(graph, adj_node, visited, component)
+
+    @staticmethod
+    def get_strongly_connected_components(graph):
+        stack = Solution._get_topological_sort(graph)
+        reversed_graph = Solution._get_reversed_graph(graph)
+        strongly_connected_components = []
+        visited = {i: False for i in graph}
+        while not stack.is_empty():
+            node = stack.pop()
+            if not visited[node]:
+                component = []
+                Solution._dfs(reversed_graph, node, visited, component)
+                strongly_connected_components.append(component)
+        return strongly_connected_components
+
+
+print(
+    Solution.get_strongly_connected_components(
+        {
+            0: [1],
+            1: [2],
+            2: [0, 3],
+            3: [4],
+            4: [5, 7],
+            5: [6],
+            6: [4, 7],
+            7: []
+        }
+    )
+)
+
+print(
+    Solution.get_strongly_connected_components(
+        {
+            0: [2, 3],
+            1: [0],
+            2: [1],
+            3: [4],
+            4: []
+        }
+    )
+)
+
+print(
+    Solution.get_strongly_connected_components(
+        {
+            0: [1],
+            1: [2],
+            2: [0]
+        }
+    )
+)
+
+print(
+    Solution.get_strongly_connected_components(
+        {
+            1: [2],
+            2: [3, 4],
+            3: [4, 6],
+            4: [1, 5],
+            5: [6],
+            6: [7],
+            7: [5]
+        }
+    )
+)
