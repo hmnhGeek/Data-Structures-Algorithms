@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/strongly-connected-components/
+# Solution - https://www.youtube.com/watch?v=R6uoSjZ2imo&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,9 @@ class Stack:
 class Solution:
     @staticmethod
     def _dfs1(graph, node, visited, stack):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
         visited[node] = True
         for adj_node in graph[node]:
             if not visited[adj_node]:
@@ -43,6 +50,9 @@ class Solution:
 
     @staticmethod
     def _get_topological_sort(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
         stack = Stack()
         visited = {i: False for i in graph}
         for node in graph:
@@ -52,6 +62,9 @@ class Solution:
 
     @staticmethod
     def _get_reversed_graph(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V + E).
+        """
         reversed_graph = {i: [] for i in graph}
         for node in graph:
             for adj_node in graph[node]:
@@ -61,6 +74,9 @@ class Solution:
 
     @staticmethod
     def _dfs(graph, node, visited, component):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
         visited[node] = True
         if node not in component:
             component.append(node)
@@ -70,6 +86,10 @@ class Solution:
 
     @staticmethod
     def get_strongly_connected_components(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V + E).
+        """
+
         # get a stack with the topological sort of the original graph. This will take O(V + E) time and O(V) space.
         stack = Solution._get_topological_sort(graph)
 
