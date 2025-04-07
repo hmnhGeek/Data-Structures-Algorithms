@@ -62,4 +62,38 @@ def recursive():
     print(min_cost_to_cut_stick([5, 6, 1, 4, 2], 9))
 
 
+def memoized():
+    """
+        Time complexity is O(n^3) and space complexity is O(n + n^2).
+    """
+
+    def solve(arr, i, j, dp):
+        if i > j:
+            return 0
+        if dp[i][j] is not None:
+            return dp[i][j]
+        min_cost = 1e6
+        for k in range(i, j + 1):
+            cost = (arr[j + 1] - arr[i - 1]) + solve(arr, i, k - 1, dp) + solve(arr, k + 1, j, dp)
+            min_cost = min(min_cost, cost)
+        dp[i][j] = min_cost
+        return dp[i][j]
+
+    def min_cost_to_cut_stick(cuts, length):
+        n = len(cuts)
+        rod = [0] + cuts + [length]
+        MergeSort.sort(rod)
+        dp = {i: {j: None for j in range(1, n + 1)} for i in range(1, n + 1)}
+        return solve(rod, 1, n, dp)
+
+    print(min_cost_to_cut_stick([1, 3, 4, 5], 7))
+    print(min_cost_to_cut_stick([1, 3], 4))
+    print(min_cost_to_cut_stick([1, 3, 4], 5))
+    print(min_cost_to_cut_stick([1, 3, 4, 7], 10))
+    print(min_cost_to_cut_stick([1, 3], 10))
+    print(min_cost_to_cut_stick([5, 6, 1, 4, 2], 9))
+
+
 recursive()
+print()
+memoized()
