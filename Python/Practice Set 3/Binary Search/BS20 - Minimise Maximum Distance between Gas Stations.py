@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimize-max-distance-to-gas-station/1
+# Solution - https://www.youtube.com/watch?v=kMSBvlZ-_HA&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=21
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -67,6 +71,10 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def place_gas_stations(arr, k):
+        """
+            Time complexity is O({n + k} * log(n)) and space complexity is O(n).
+        """
+
         n = len(arr)
 
         # create a slots array to track the number of gas stations placed in each one of them. Note that we cannot place
