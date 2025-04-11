@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
+# Solution - https://www.youtube.com/watch?v=F9c7LpRZWVQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
+
+
 class Solution:
     @staticmethod
     def get_median(arr1, arr2):
+        """
+            Time complexity is O(log(min(n1, n2))) and space complexity is O(1).
+        """
+
         n1, n2 = len(arr1), len(arr2)
 
         # always perform binary search on the shorter array.
