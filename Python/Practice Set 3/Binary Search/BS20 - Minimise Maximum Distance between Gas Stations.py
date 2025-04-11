@@ -68,16 +68,35 @@ class Solution:
     @staticmethod
     def place_gas_stations(arr, k):
         n = len(arr)
+
+        # create a slots array to track the number of gas stations placed in each one of them. Note that we cannot place
+        # gas stations outside the array bounds as that would not minimize the distances between the existing gas
+        # stations.
         slots = [0]*(n - 1)
+
+        # initialize a max heap and push the slot lengths inside it in O(n * log(n)) time and O(n) space.
         max_heap = MaxHeap()
         for i in range(n - 1):
             max_heap.insert((arr[i + 1] - arr[i], i))
+
+        # now loop on the k-gas stations
         for i in range(k):
+            # get the largest slot and its index in O(log(n)) time.
             updated_slot_length, index = max_heap.pop()
+
+            # get the initial length of the slot at this index
             initial_length = (slots[index] + 1) * updated_slot_length
+
+            # get the new length by placing this gas station in this slot.
             new_length = initial_length/(slots[index] + 1 + 1)
+
+            # increase the number of gas stations placed in this slot.
             slots[index] += 1
+
+            # insert back this slot into the heap in O(log(n)) time.
             max_heap.insert((new_length, index))
+
+        # return the max minimum length in O(log(n)) time.
         max_min_length, _ = max_heap.pop()
         return max_min_length
 
