@@ -63,3 +63,27 @@ class MaxHeap:
         self.max_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def place_gas_stations(arr, k):
+        n = len(arr)
+        slots = [0]*(n - 1)
+        max_heap = MaxHeap()
+        for i in range(n - 1):
+            max_heap.insert((arr[i + 1] - arr[i], i))
+        for i in range(k):
+            updated_slot_length, index = max_heap.pop()
+            initial_length = (slots[index] + 1) * updated_slot_length
+            new_length = initial_length/(slots[index] + 1 + 1)
+            slots[index] += 1
+            max_heap.insert((new_length, index))
+        max_min_length, _ = max_heap.pop()
+        return max_min_length
+
+
+print(Solution.place_gas_stations([1,2,3,4,5,6,7], 6))
+print(Solution.place_gas_stations([1, 2, 3, 4, 5], 4))
+print(Solution.place_gas_stations(list(range(1, 11)), 1))
+print(Solution.place_gas_stations([3, 6, 12, 19, 33, 44, 67, 72, 89, 95], 2))
+print(Solution.place_gas_stations([1, 13, 17, 23], 5))
