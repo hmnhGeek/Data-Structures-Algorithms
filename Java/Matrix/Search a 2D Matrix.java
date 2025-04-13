@@ -43,6 +43,25 @@ class Problem2 {
                 Arrays.asList(23, 30, 34, 60)
         );
         System.out.println(isPresentInMatrix(matrix1, 3));
+
+        // Example 2
+        System.out.println(isPresentInMatrix(matrix1, 13));
+
+        // Example 3
+        List<List<Integer>> matrix2 = Arrays.asList(
+                Arrays.asList(1, 2, 3, 4),
+                Arrays.asList(5, 6, 7, 8),
+                Arrays.asList(9, 10, 11, 12)
+        );
+        System.out.println(isPresentInMatrix(matrix2, 8));
+
+        // Example 4
+        List<List<Integer>> matrix3 = Arrays.asList(
+                Arrays.asList(1, 2, 4),
+                Arrays.asList(6, 7, 8),
+                Arrays.asList(9, 10, 34)
+        );
+        System.out.println(isPresentInMatrix(matrix3, 78));
     }
 
     public static Cell isPresentInMatrix(List<List<Integer>> matrix, Integer element) {
