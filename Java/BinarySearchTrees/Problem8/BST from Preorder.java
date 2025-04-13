@@ -1,7 +1,7 @@
 // Problem link - https://www.geeksforgeeks.org/construct-bst-from-given-preorder-traversa/#naive-one-by-one-insert
 
 
-package BinarySearchTrees;
+package BinarySearchTrees.Problem8;
 
 
 import java.util.Arrays;
