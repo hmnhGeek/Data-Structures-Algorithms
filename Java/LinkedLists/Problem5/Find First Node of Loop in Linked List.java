@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/find-first-node-of-loop-in-a-linked-list/#expected-approach-using-floyds-loop-detection-algorithm-on-time-and-o1-space
+// Solution - https://www.youtube.com/watch?v=2Kd0KKmmHFc
+
 package LinkedLists.Problem5;
 
 
@@ -76,6 +79,10 @@ class Solution {
     }
 
     public static <T> Node<T> getLoopStartNode(LinkedList<T> linkedList) {
+        /**
+         * Time complexity is O(n) and space complexity is O(1).
+         */
+
         Node<T> slow = linkedList.getHead(), fast = linkedList.getHead();
         while (slow != null && fast != null && fast.getNext() != null) {
             slow = slow.getNext();
