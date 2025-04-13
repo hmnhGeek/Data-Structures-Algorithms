@@ -1,7 +1,7 @@
 // Problem link - https://leetcode.com/problems/maximum-profit-in-job-scheduling/description/
 // Solution - https://www.youtube.com/watch?v=LL0tVxlAeV4
 
-package SearchingAndSorting;
+package SearchingAndSorting.Problem27;
 
 import java.util.*;
 
