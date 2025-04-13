@@ -100,6 +100,8 @@ class MinHeap<T extends Comparable<T>> {
 class Solution {
     public static void main(String[] args) {
         useMinHeap(2,1,6,8,4,9,3,2,8,9);
+        useMinHeap(4, 10, 3, 5, 1);
+        useMinHeap(1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17);
     }
 
     @SafeVarargs
