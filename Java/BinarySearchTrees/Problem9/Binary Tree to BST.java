@@ -58,6 +58,36 @@ class Solution {
         System.out.println(getInorder(n1));
         convertToBst(n1);
         System.out.println(getInorder(n1));
+
+        // Example 2
+        Node<Integer> two = new Node<>(2);
+        Node<Integer> three = new Node<>(3);
+        Node<Integer> five = new Node<>(5);
+        Node<Integer> six = new Node<>(6);
+        Node<Integer> nine = new Node<>(9);
+        Node<Integer> ten = new Node<>(10);
+        five.setLeft(six);
+        five.setRight(ten);
+        six.setLeft(two);
+        six.setRight(three);
+        ten.setRight(nine);
+        System.out.println(getInorder(five));
+        convertToBst(five);
+        System.out.println(getInorder(five));
+
+        // Example 3
+        Node<Integer> n10 = new Node<>(10);
+        Node<Integer> n30 = new Node<>(30);
+        Node<Integer> n15 = new Node<>(15);
+        Node<Integer> n20 = new Node<>(20);
+        Node<Integer> n5 = new Node<>(5);
+        n10.setLeft(n30);
+        n10.setRight(n15);
+        n30.setLeft(n20);
+        n15.setRight(n5);
+        System.out.println(getInorder(n10));
+        convertToBst(n10);
+        System.out.println(getInorder(n10));
     }
 
     public static <T extends Comparable<T>> void convertToBst(Node<T> root) {
