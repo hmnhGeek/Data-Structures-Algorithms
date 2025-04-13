@@ -1,7 +1,7 @@
 // Problem link - https://www.geeksforgeeks.org/check-if-all-levels-of-two-trees-are-anagrams-or-not/
 
 
-package StacksAndQueues;
+package StacksAndQueues.Problem34;
 
 class QueueNode<T> {
     private T data;
