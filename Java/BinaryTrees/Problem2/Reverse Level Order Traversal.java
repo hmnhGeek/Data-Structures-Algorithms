@@ -110,6 +110,17 @@ class Solution {
         n1.setRight(n2);
         System.out.println(getReverseOrderTraversal(n1));
 
+        // Example 2
+        Node<Integer> n10 = new Node<>(10);
+        Node<Integer> n20 = new Node<>(20);
+        Node<Integer> n30 = new Node<>(30);
+        Node<Integer> n40 = new Node<>(40);
+        Node<Integer> n60 = new Node<>(60);
+        n10.setLeft(n20);
+        n10.setRight(n30);
+        n20.setLeft(n40);
+        n20.setRight(n60);
+        System.out.println(getReverseOrderTraversal(n10));
     }
 
     public static <T> List<T> getReverseOrderTraversal(Node<T> root) {
