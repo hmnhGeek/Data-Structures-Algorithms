@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/program-to-reverse-an-array/
+
 package Arrays;
 
 
@@ -14,9 +16,16 @@ class Question1 {
     }
 
     public static List<Integer> reverseArray(List<Integer> array) {
+        /**
+         * Time complexity is O(n) and space complexity is O(1).
+         */
+
         int n = array.size();
         int i = 0, j = n - 1;
+
+        // while the pointers `i` and `j` follow relative order...
         while (i < j) {
+            // swap the indices
             Collections.swap(array, i, j);
             i += 1;
             j -= 1;
