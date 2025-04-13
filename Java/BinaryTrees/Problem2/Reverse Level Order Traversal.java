@@ -124,12 +124,22 @@ class Solution {
     }
 
     public static <T> List<T> getReverseOrderTraversal(Node<T> root) {
+        // define a blank queue and push root node into it.
         Queue<Node<T>> queue = new Queue<>();
         queue.push(root);
+
+        // define a result list.
         List<T> result = new ArrayList<>();
+
+        // typical BFS...
         while (!queue.isEmpty()) {
             Node<T> node = queue.pop();
+
+            // add the popped node's data into the result list.
             result.add(node.getData());
+
+            // add right node first, then left node into the queue.
+            // We check right first because in the reversed order we want to see left child first.
             if (node.getRight() != null) {
                 queue.push(node.getRight());
             }
@@ -137,6 +147,8 @@ class Solution {
                 queue.push(node.getLeft());
             }
         }
+
+        // return the reversed result for the final answer in O(n) time.
         return result.reversed();
     }
 }
