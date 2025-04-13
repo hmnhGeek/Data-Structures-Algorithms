@@ -1,7 +1,7 @@
 // Problem link - https://www.geeksforgeeks.org/problems/level-order-traversal/1
 
 
-package BinaryTrees;
+package BinaryTrees.Problem1;
 
 import java.util.ArrayList;
 import java.util.List;
