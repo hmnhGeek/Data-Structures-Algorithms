@@ -58,16 +58,28 @@ class Solution {
     }
 
     public static <T extends Comparable<T>> void convertToBst(Node<T> root) {
+        /**
+         * Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
+
+        // get the inorder of this binary tree in O(n) time and O(n) space.
         List<T> inorder = getInorder(root);
+
+        // sort the inorder list in O(n * log(n)) time.
         inorder.sort(Comparator.naturalOrder());
+
+        // begin the BST construction in O(n) time and O(n) space.
         finalizeConstruction(root, inorder, Arrays.asList(0));
     }
 
     private static <T extends Comparable<T>> void finalizeConstruction(Node<T> root, List<T> sortedInorder, List<Integer> i) {
         if (root != null) {
             finalizeConstruction(root.getLeft(), sortedInorder, i);
+
+            // update the root's data with ith pointer in sorted inorder list.
             root.setData(sortedInorder.get(i.getFirst()));
             i.set(0, i.getFirst() + 1);
+
             finalizeConstruction(root.getRight(), sortedInorder, i);
         }
     }
