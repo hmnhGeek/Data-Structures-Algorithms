@@ -99,12 +99,18 @@ class MinHeap<T extends Comparable<T>> {
 
 class Solution {
     public static void main(String[] args) {
-        MinHeap<Integer> minHeap = new MinHeap<>();
-        List<Integer> arr1 = Arrays.asList(12, 8, 4, 6, 93, 24);
+        useMinHeap(2,1,6,8,4,9,3,2,8,9);
+    }
+
+    @SafeVarargs
+    public static <T extends Comparable<T>> void useMinHeap(T... args) {
+        MinHeap<T> minHeap = new MinHeap<>();
+        List<T> arr1 = Arrays.asList(args);
         arr1.forEach(minHeap::insert);
         while (!minHeap.isEmpty()) {
-            System.out.printf("%d ", minHeap.pop());
+            System.out.printf("%s ", minHeap.pop());
         }
         System.out.println();
     }
+
 }
