@@ -1,6 +1,6 @@
 // Problem link - https://www.geeksforgeeks.org/problems/minimum-sum4058/1
 
-package Heap;
+package Heap.Problem18;
 
 import java.util.ArrayList;
 import java.util.Arrays;
