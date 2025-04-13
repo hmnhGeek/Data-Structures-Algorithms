@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/sum-minimum-maximum-elements-subarrays-size-k/
+// Solution - https://www.youtube.com/watch?v=CZQGRp93K4k
+
 package StacksAndQueues.Problem35;
 
 
@@ -145,6 +148,9 @@ class Solution {
     }
 
     private static List<Integer> getSlidingWindowMaximum(List<Integer> array, Integer k) {
+        /**
+         * Time complexity is O(n) and space complexity is O(n).
+         */
         Deque<Integer> dq = new Deque<>();
         List<Integer> result = new ArrayList<>();
         int n = array.size();
@@ -171,6 +177,9 @@ class Solution {
     }
 
     private static List<Integer> getSlidingWindowMinimum(List<Integer> array, Integer k) {
+        /**
+         * Same logic as above, only the popBack() condition changes.
+         */
         Deque<Integer> dq = new Deque<>();
         List<Integer> result = new ArrayList<>();
         int n = array.size();
