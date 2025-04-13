@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/problems/arithmetic-number2815/1
+
 package SearchingAndSorting.Problem28;
 
 class Solution {
@@ -8,6 +10,10 @@ class Solution {
     }
 
     private static boolean arithmeticNumber(Integer a, Integer b, Integer c) {
+        /**
+         * Time complexity is O(1) and space complexity is O(1).
+         */
+
         double lhs = (double) (b - a) /c;
         return lhs == (int) lhs;
     }
