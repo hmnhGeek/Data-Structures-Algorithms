@@ -65,19 +65,30 @@ class Problem2 {
     }
 
     public static Cell isPresentInMatrix(List<List<Integer>> matrix, Integer element) {
+        // define the dimensions of the matrix
         int n = matrix.size(), m = matrix.getFirst().size();
+
+        // define the search space of the binary search.
         int low = 0, high = n*m - 1;
         while (low <= high) {
             int mid = (low + (high - low)/2);
+
+            // get the cell index using mid.
             int i = mid/m, j = mid%m;
+
+            // if the element at this cell is same as requested element.
             if (matrix.get(i).get(j).equals(element)) {
                 return new Cell(i, j);
             } else if (matrix.get(i).get(j) > element) {
+                // if mtx[i][j] > element, we must search on left.
                 high = mid - 1;
             } else {
+                // else search on right.
                 low = mid + 1;
             }
         }
+
+        // else the element is not found.
         return new Cell(-1, -1);
     }
 }
