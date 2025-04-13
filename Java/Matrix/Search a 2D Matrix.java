@@ -1,3 +1,5 @@
+// Problem link - https://leetcode.com/problems/search-a-2d-matrix/description/
+
 package Matrix;
 
 import java.util.Arrays;
@@ -65,6 +67,10 @@ class Problem2 {
     }
 
     public static Cell isPresentInMatrix(List<List<Integer>> matrix, Integer element) {
+        /**
+         * Time complexity is O(log(n) + log(m)) and space complexity is O(1).
+         */
+
         // define the dimensions of the matrix
         int n = matrix.size(), m = matrix.getFirst().size();
 
