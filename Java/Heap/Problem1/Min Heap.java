@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/building-heap-from-array/
+
 package Heap.Problem1;
 
 
@@ -106,6 +108,9 @@ class Solution {
 
     @SafeVarargs
     public static <T extends Comparable<T>> void useMinHeap(T... args) {
+        /**
+         * Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         MinHeap<T> minHeap = new MinHeap<>();
         List<T> arr1 = Arrays.asList(args);
         arr1.forEach(minHeap::insert);
