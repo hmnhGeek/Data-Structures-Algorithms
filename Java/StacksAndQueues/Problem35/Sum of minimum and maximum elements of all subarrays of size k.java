@@ -1,7 +1,12 @@
 package StacksAndQueues.Problem35;
 
 
-class Node<T> {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+class Node<T extends Comparable<T>> {
     private T data;
     private Node<T> prev;
     private Node<T> next;
@@ -33,7 +38,7 @@ class Node<T> {
 }
 
 
-class Deque<T> {
+class Deque<T extends Comparable<T>> {
     private Node<T> head;
     private Node<T> tail;
     private Integer length;
@@ -64,6 +69,12 @@ class Deque<T> {
         if (isEmpty()) {
             return null;
         }
+        if (this.length == 1) {
+            T item = this.head.getData();
+            this.head = this.tail = null;
+            this.length = 0;
+            return item;
+        }
         T item = this.head.getData();
         Node<T> nextHead = this.head.getNext();
         nextHead.setPrev(null);
@@ -71,5 +82,97 @@ class Deque<T> {
         this.head = nextHead;
         this.length -= 1;
         return item;
+    }
+
+    public T getFront() {
+        if (isEmpty()) {
+            return null;
+        }
+        return this.head.getData();
+    }
+
+    public T getBack() {
+        if (isEmpty()) {
+            return null;
+        }
+        return this.tail.getData();
+    }
+
+    public T popBack() {
+        if (isEmpty()) {
+            return null;
+        }
+        if (this.length == 1) {
+            T item = this.head.getData();
+            this.head = this.tail = null;
+            this.length = 0;
+            return item;
+        }
+        T item = this.tail.getData();
+        Node<T> prevNode = this.tail.getPrev();
+        prevNode.setNext(null);
+        this.tail.setPrev(null);
+        this.length -= 1;
+        this.tail = prevNode;
+        return item;
+    }
+}
+
+
+class Solution {
+    public static void main(String[] args) {
+        // Example 1
+        System.out.println(getSum(Arrays.asList(2, 5, -1, 7, -3, -1, -2), 4));
+        System.out.println(getSum(Arrays.asList(1, 2, 3, 4, 5), 3));
+        System.out.println(getSum(Arrays.asList(2, 4, 7, 3, 8, 1), 4));
+    }
+
+    public static Integer getSum(List<Integer> array, Integer k) {
+        List<Integer> maxes = getSlidingWindowMaximum(array, k);
+        List<Integer> minis = getSlidingWindowMinimum(array, k);
+        int n = maxes.size();
+        int sum = 0;
+        for (int i = 0; i < n; i += 1) {
+            sum += (array.get(maxes.get(i)) + array.get(minis.get(i)));
+        }
+        return sum;
+    }
+
+    private static List<Integer> getSlidingWindowMaximum(List<Integer> array, Integer k) {
+        Deque<Integer> dq = new Deque<>();
+        List<Integer> result = new ArrayList<>();
+        int n = array.size();
+        for (int i = 0; i < n; i += 1) {
+            if (!dq.isEmpty() && dq.getFront().equals(i - k)) {
+                dq.popFront();
+            }
+            while (!dq.isEmpty() && array.get(dq.getBack()) < array.get(i)) {
+                dq.popBack();
+            }
+            dq.pushBack(i);
+            if (i >= k - 1) {
+                result.add(dq.getFront());
+            }
+        }
+        return result;
+    }
+
+    private static List<Integer> getSlidingWindowMinimum(List<Integer> array, Integer k) {
+        Deque<Integer> dq = new Deque<>();
+        List<Integer> result = new ArrayList<>();
+        int n = array.size();
+        for (int i = 0; i < n; i += 1) {
+            if (!dq.isEmpty() && dq.getFront().equals(i - k)) {
+                dq.popFront();
+            }
+            while (!dq.isEmpty() && array.get(dq.getBack()) >= array.get(i)) {
+                dq.popBack();
+            }
+            dq.pushBack(i);
+            if (i >= k - 1) {
+                result.add(dq.getFront());
+            }
+        }
+        return result;
     }
 }
