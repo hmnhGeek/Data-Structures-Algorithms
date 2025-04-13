@@ -1,7 +1,7 @@
 // Problem link - https://www.geeksforgeeks.org/problems/remove-loop-in-linked-list/1
 
 
-package LinkedLists;
+package LinkedLists.Problem4;
 
 import java.util.Arrays;
 import java.util.List;
