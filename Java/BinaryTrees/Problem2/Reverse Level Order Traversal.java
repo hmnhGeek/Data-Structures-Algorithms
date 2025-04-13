@@ -1,6 +1,9 @@
 package BinaryTrees.Problem2;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 class QueueNode<T> {
     private T data;
     private QueueNode<T> next;
@@ -65,14 +68,64 @@ class Queue<T> {
 }
 
 
+class Node<T> {
+    private T data;
+    private Node<T> left;
+    private Node<T> right;
+
+    public Node(T data) {
+        this.data = data;
+        this.left = this.right = null;
+    }
+
+    public Node<T> getLeft() {
+        return left;
+    }
+
+    public void setLeft(Node<T> left) {
+        this.left = left;
+    }
+
+    public Node<T> getRight() {
+        return right;
+    }
+
+    public void setRight(Node<T> right) {
+        this.right = right;
+    }
+
+    public T getData() {
+        return data;
+    }
+}
+
+
 class Solution {
     public static void main(String[] args) {
-        Queue<Integer> queue = new Queue<>();
-        for (int i = 0; i < 6; i += 1) {
-            queue.push(i);
-        }
+        // Example 1
+        Node<Integer> n1 = new Node<>(1);
+        Node<Integer> n2 = new Node<>(2);
+        Node<Integer> n3 = new Node<>(3);
+        n1.setLeft(n3);
+        n1.setRight(n2);
+        System.out.println(getReverseOrderTraversal(n1));
+
+    }
+
+    public static <T> List<T> getReverseOrderTraversal(Node<T> root) {
+        Queue<Node<T>> queue = new Queue<>();
+        queue.push(root);
+        List<T> result = new ArrayList<>();
         while (!queue.isEmpty()) {
-            System.out.println(queue.pop());
+            Node<T> node = queue.pop();
+            result.add(node.getData());
+            if (node.getRight() != null) {
+                queue.push(node.getRight());
+            }
+            if (node.getLeft() != null) {
+                queue.push(node.getLeft());
+            }
         }
+        return result.reversed();
     }
 }
