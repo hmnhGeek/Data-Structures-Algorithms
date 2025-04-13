@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/problems/reverse-level-order-traversal/1
+
 package BinaryTrees.Problem2;
 
 
@@ -124,6 +126,10 @@ class Solution {
     }
 
     public static <T> List<T> getReverseOrderTraversal(Node<T> root) {
+        /**
+         * Time complexity is O(n) and space complexity is O(n).
+         */
+
         // define a blank queue and push root node into it.
         Queue<Node<T>> queue = new Queue<>();
         queue.push(root);
