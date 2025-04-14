@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/critical-connections-in-a-network/description/
+// Solution - https://www.youtube.com/watch?v=qrAub5z8FeA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=55
+
+
 package Graphs;
 
 
@@ -59,6 +63,10 @@ class SolutionG55 {
     }
 
     private static <T> List<List<T>> getBridges(Map<T, List<T>> graph) {
+        /*
+         Time complexity is O(V + E) and space complexity is O(V).
+         */
+
         // reset the global timer to 1.
         timer = 1;
 
