@@ -1,6 +1,5 @@
-// Problem link - https://leetcode.com/problems/critical-connections-in-a-network/description/
-// Solution - https://www.youtube.com/watch?v=qrAub5z8FeA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=55
-
+// Problem link - https://www.naukri.com/code360/library/articulation-points-in-a-graph#:~:text=An%20articulation%20point%20in%20a,also%20known%20as%20cut%20vertices.
+// Solution - https://www.youtube.com/watch?v=64KK9K4RpKE
 
 package Graphs;
 
@@ -37,6 +36,7 @@ class SolutionG56 {
         // increment the global timer.
         timer += 1;
 
+        // store the child count.
         int childCount = 0;
 
         // loop on the adjacent nodes of this node
@@ -52,8 +52,8 @@ class SolutionG56 {
                 // just now.
                 low.put(node, Math.min(low.get(node), low.get(adjNode)));
 
-                // if low time of adjacent node is more than low time of node, then it means we cannot reach this
-                // adjacent node except via node. Thus, this edge is a bridge.
+                // if low time of adjacent node is more than or equal to the insertion time of node, then it means we cannot reach this
+                // adjacent node except via node. Thus, this node is an articulation point.
                 if (low.get(adjNode) >= tin.get(node) && parent != null) {
                     articulationPoints.put(node, true);
                 }
@@ -63,6 +63,9 @@ class SolutionG56 {
                 low.put(node, Math.min(low.get(node), tin.get(adjNode)));
             }
         }
+
+        // if there are more than 1 child of this node, and it was the first node, then this node is also an articulation
+        // point.
         if (childCount > 1 && parent == null) {
             articulationPoints.put(node, true);
         }
