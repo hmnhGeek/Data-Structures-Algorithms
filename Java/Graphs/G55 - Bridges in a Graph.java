@@ -71,5 +71,41 @@ class SolutionG55 {
         graph1.put(11, Arrays.asList(10, 12));
         graph1.put(12, Arrays.asList(10, 11));
         System.out.println(getBridges(graph1));
+
+        // Example 2
+        Map<Integer, List<Integer>> graph2 = new HashMap<>();
+        graph2.put(0, Arrays.asList(1, 2));
+        graph2.put(1, Arrays.asList(0, 2, 3));
+        graph2.put(2, Arrays.asList(1, 0));
+        graph2.put(3, Arrays.asList(1));
+        System.out.println(getBridges(graph2));
+
+        // Example 3
+        Map<Integer, List<Integer>> graph3 = new HashMap<>();
+        graph3.put(0, Arrays.asList(1, 2, 3));
+        graph3.put(1, Arrays.asList(0, 2));
+        graph3.put(2, Arrays.asList(1, 0));
+        graph3.put(3, Arrays.asList(0, 4));
+        graph3.put(4, Arrays.asList(3));
+        System.out.println(getBridges(graph3));
+
+        // Example 4
+        Map<Integer, List<Integer>> graph4 = new HashMap<>();
+        graph4.put(0, Arrays.asList(1, 2));
+        graph4.put(1, Arrays.asList(0, 2, 6, 4, 3));
+        graph4.put(2, Arrays.asList(0, 1));
+        graph4.put(3, Arrays.asList(1, 5));
+        graph4.put(4, Arrays.asList(1, 5));
+        graph4.put(5, Arrays.asList(3, 4));
+        graph4.put(6, Arrays.asList(1));
+        System.out.println(getBridges(graph4));
+
+        // Example 5
+        Map<Integer, List<Integer>> graph5 = new HashMap<>();
+        graph5.put(0, Arrays.asList(1));
+        graph5.put(1, Arrays.asList(0, 2));
+        graph5.put(2, Arrays.asList(1, 3));
+        graph5.put(3, Arrays.asList(2));
+        System.out.println(getBridges(graph5));
     }
 }
