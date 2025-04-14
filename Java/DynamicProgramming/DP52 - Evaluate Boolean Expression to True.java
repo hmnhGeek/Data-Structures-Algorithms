@@ -2,6 +2,7 @@ package DynamicProgramming;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 class RecursiveSolutionDP52 {
@@ -21,7 +22,7 @@ class RecursiveSolutionDP52 {
             }
         }
         int numWays = 0;
-        for (int index = i + 1; index <= j - 1; index += 1) {
+        for (int index = i + 1; index <= j - 1; index += 2) {
             Integer leftTrue = solve(expression, i, index - 1, true);
             Integer leftFalse = solve(expression, i, index - 1, false);
             Integer rightTrue = solve(expression, index + 1, j, true);
@@ -85,7 +86,7 @@ class MemoizedSolutionDP52 {
             return dp.get(i).get(j).get(evaluateTo);
         }
         int numWays = 0;
-        for (int index = i + 1; index <= j - 1; index += 1) {
+        for (int index = i + 1; index <= j - 1; index += 2) {
             Integer leftTrue = solve(expression, i, index - 1, true, dp);
             Integer leftFalse = solve(expression, i, index - 1, false, dp);
             Integer rightTrue = solve(expression, index + 1, j, true, dp);
@@ -133,6 +134,85 @@ class MemoizedSolutionDP52 {
             dp.put(i, submap);
         }
         return solve(expression, 0, n - 1, true, dp);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getNumWaysToEvaluateTo("F|T^F"));
+        System.out.println(getNumWaysToEvaluateTo("T|T&F"));
+        System.out.println(getNumWaysToEvaluateTo("T^T^F"));
+        System.out.println(getNumWaysToEvaluateTo("T|T&F^T"));
+        System.out.println(getNumWaysToEvaluateTo("T^F|F"));
+    }
+}
+
+
+class TabulationSolutionDP52 {
+    /**
+     * Time complexity is O(n^3) and space complexity is O(n^2).
+     */
+    public static Integer getNumWaysToEvaluateTo(String expression) {
+        int n = expression.length();
+        Map<Integer, Map<Integer, Map<Boolean, Integer>>> dp = new HashMap<>();
+        for (int i = 0; i <= n - 1; i += 1) {
+            Map<Integer, Map<Boolean, Integer>> submap = new HashMap<>();
+            for (int j = 0; j <= n - 1; j += 1) {
+                Map<Boolean, Integer> submap2 = new HashMap<>();
+                if (i == j) {
+                    submap2.put(true, expression.charAt(i) == 'T' ? 1 : 0);
+                    submap2.put(false, expression.charAt(i) == 'F' ? 1 : 0);
+                } else {
+                    submap2.put(true, 0);
+                    submap2.put(false, 0);
+                }
+                submap.put(j, submap2);
+            }
+            dp.put(i, submap);
+        }
+
+        for (int i = n - 1; i >= 0; i -= 1) {
+            for (int j = 0; j <= n - 1; j += 1) {
+                if (i >= j) {
+                    // equal to also because it is already defined in the base case.
+                    continue;
+                }
+                for (Boolean evaluateTo : List.of(true, false)) {
+                    int numWays = 0;
+                    for (int index = i + 1; index <= j - 1; index += 1) {
+                        Integer leftTrue = dp.get(i).get(index - 1).get(true);
+                        Integer leftFalse = dp.get(i).get(index - 1).get(false);
+                        Integer rightTrue = dp.get(index + 1).get(j).get(true);
+                        Integer rightFalse = dp.get(index + 1).get(j).get(false);
+                        char operator = expression.charAt(index);
+                        if (operator == '&') {
+                            if (evaluateTo.equals(true)) {
+                                numWays += (leftTrue * rightTrue);
+                            } else {
+                                numWays += (leftTrue * rightFalse + rightTrue * leftFalse + leftFalse * rightFalse);
+                            }
+                        } else if (operator == '|') {
+                            if (evaluateTo.equals(true)) {
+                                numWays += (leftTrue * rightFalse + rightTrue * leftFalse + leftTrue * rightTrue);
+                            } else {
+                                numWays += (leftFalse * rightFalse);
+                            }
+                        } else {
+                            if (evaluateTo.equals(true)) {
+                                numWays += (leftTrue * rightFalse + rightTrue * leftFalse);
+                            } else {
+                                numWays += (leftTrue * rightTrue + leftFalse * rightFalse);
+                            }
+                        }
+                    }
+                    Map<Integer, Map<Boolean, Integer>> submap = dp.get(i);
+                    Map<Boolean, Integer> submap2 = submap.get(j);
+                    submap2.put(evaluateTo, numWays);
+                    submap.put(j, submap2);
+                    dp.put(i, submap);
+                }
+            }
+        }
+
+        return dp.get(0).get(n - 1).get(true);
     }
 
     public static void main(String[] args) {
