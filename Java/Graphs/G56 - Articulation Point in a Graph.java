@@ -54,7 +54,7 @@ class SolutionG56 {
 
                 // if low time of adjacent node is more than low time of node, then it means we cannot reach this
                 // adjacent node except via node. Thus, this edge is a bridge.
-                if (low.get(adjNode) >= low.get(node) && parent != null) {
+                if (low.get(adjNode) >= tin.get(node) && parent != null) {
                     articulationPoints.put(node, true);
                 }
                 childCount += 1;
