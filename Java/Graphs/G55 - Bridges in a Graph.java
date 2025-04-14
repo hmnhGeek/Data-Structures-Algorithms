@@ -23,35 +23,64 @@ class SolutionG55 {
     }
 
     private static <T> void dfs(Map<T, List<T>> graph, T node, T parent, Map<T, Integer> tin, Map<T, Integer> low, Map<T, Boolean> visited, List<List<T>> bridges) {
+        // mark the node as visited.
         visited.put(node, true);
+
+        // update the insertion and lower time with timer value.
         tin.put(node, timer);
         low.put(node, timer);
+
+        // increment the global timer.
         timer += 1;
+
+        // loop on the adjacent nodes of this node
         for (T adjNode : graph.get(node)) {
+            // if the adjacent node itself is the parent node, nothing needs to be done.
             if (parent == adjNode) continue;
+
+            // if the adjacent node is not visited, start a DFS on it.
             if (!visited.get(adjNode)) {
                 dfs(graph, adjNode, node, tin, low, visited, bridges);
+
+                // after backtracking, update the low time of this node with the low time of the adjacent node update
+                // just now.
                 low.put(node, Math.min(low.get(node), low.get(adjNode)));
+
+                // if low time of adjacent node is more than low time of node, then it means we cannot reach this
+                // adjacent node except via node. Thus, this edge is a bridge.
                 if (low.get(node) < low.get(adjNode)) {
                     bridges.add(List.of(node, adjNode));
                 }
             } else {
+                // if the adjacent node is already visited, simply update the low time of the node.
                 low.put(node, Math.min(low.get(node), low.get(adjNode)));
             }
         }
     }
 
     private static <T> List<List<T>> getBridges(Map<T, List<T>> graph) {
+        // reset the global timer to 1.
         timer = 1;
+
+        // get the visited map in O(V + E) time.
         Map<T, Boolean> visited = getNewVisitedMap(graph);
+
+        // define the tin and low times for the graph nodes in O(V + E) time.
         Map<T, Integer> tin = getTimerMap(graph);
         Map<T, Integer> low = getTimerMap(graph);
+
+        // define the bridges list.
         List<List<T>> bridges = new ArrayList<>();
+
+        // loop on the graph nodes
         for (T node : graph.keySet()) {
+            // and if the node is not visited, start a DFS from it. It will take O(V + E) time.
             if (!visited.get(node)) {
                 dfs(graph, node, null, tin, low, visited, bridges);
             }
         }
+
+        // return the bridges
         return bridges;
     }
 
