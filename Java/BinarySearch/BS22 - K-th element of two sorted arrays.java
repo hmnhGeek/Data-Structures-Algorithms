@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/k-th-element-of-2-sorted-array_1164159
+// Solution - https://www.youtube.com/watch?v=D1oDwWCq50g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=24
+
+
 package BinarySearch;
 
 
@@ -6,6 +10,10 @@ import java.util.List;
 
 class SolutionBS22 {
     private static Integer getKthElement(List<Integer> arr1, List<Integer> arr2, Integer k) {
+        /*
+            Time complexity is O(log(min(a1, a2))) and space complexity is O(1).
+         */
+
         int n1 = arr1.size(), n2 = arr2.size();
         if (n1 > n2) {
             return getKthElement(arr2, arr1, k);
