@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/find-the-row-with-maximum-number-1s/
+// Solution - https://www.youtube.com/watch?v=SCz-1TtYxDI&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=25
+
 package BinarySearch;
 
 
@@ -6,6 +9,10 @@ import java.util.List;
 
 class SolutionBS23 {
     public static Integer getRowIndexWithMax1s(List<List<Integer>> matrix) {
+        /*
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+         */
+
         // get the dimensions of the matrix.
         int n = matrix.size(), m = matrix.getFirst().size();
 
