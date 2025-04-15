@@ -34,5 +34,8 @@ class SolutionBS22 {
 
     public static void main(String[] args) {
         System.out.println(SolutionBS22.getKthElement(Arrays.asList(2, 3, 6, 7, 9), Arrays.asList(1, 4, 8, 10), 4));
+        System.out.println(SolutionBS22.getKthElement(Arrays.asList(2, 3, 45), Arrays.asList(4, 6, 7, 8), 4));
+        System.out.println(SolutionBS22.getKthElement(Arrays.asList(1, 2, 3, 5, 6), Arrays.asList(4, 7, 8, 9, 100), 6));
+        System.out.println(SolutionBS22.getKthElement(Arrays.asList(100, 112, 256, 349, 770), Arrays.asList(72, 86, 113, 119, 265, 445, 892), 7));
     }
 }
