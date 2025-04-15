@@ -6,16 +6,26 @@ import java.util.List;
 
 class SolutionBS23 {
     public static Integer getRowIndexWithMax1s(List<List<Integer>> matrix) {
+        // get the dimensions of the matrix.
         int n = matrix.size(), m = matrix.getFirst().size();
+
+        // store the count of ones and the resultant index at which the maximum ones are found.
         int maxCountOf1 = 0;
         int resultantIndex = -1;
+
+        // loop in the matrix rows in n-iterations.
         for (int i = 0; i < n; i += 1) {
+            // get the count of 1s in each row in O(log(m)) time.
             int onesCount = getOnesCountBinarySearch(matrix, i, m);
+
+            // update the resultant variable only if the count of 1s in this row > max ones count.
             if (onesCount > maxCountOf1) {
                 maxCountOf1 = onesCount;
                 resultantIndex = i;
             }
         }
+
+        // return the resultant index.
         return resultantIndex;
     }
 
