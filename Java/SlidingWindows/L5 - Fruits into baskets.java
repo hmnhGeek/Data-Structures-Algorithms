@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/fruit-into-baskets/
+// Solution - https://www.youtube.com/watch?v=e3bs0uA1NhQ&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=5
+
 package SlidingWindows;
 
 
@@ -15,6 +18,10 @@ class SolutionL5 {
     }
 
     private static <T> List<T> getMaxFruitsCollected(List<T> trees, Integer numBasketsAllowed) {
+        /*
+            Time complexity is O(n) and space complexity is O(n) for the baskets map.
+         */
+
         // get the window variables
         int n = trees.size();
         int left = 0, right = 0;
