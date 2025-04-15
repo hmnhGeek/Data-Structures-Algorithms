@@ -10,10 +10,14 @@ class SolutionBS22 {
         if (n1 > n2) {
             return getKthElement(arr2, arr1, k);
         }
+
+        // if k < n1, do we need to pick all from arr1? No, we can therefore make high = min(k, n1).
         int high = Math.min(k, n1);
+
+        // if k > n2, then even if we pick all elements from arr2, we would still need elements from arr1. How many from
+        // arr1? k - n2. But what if k < n2? In that case we can pick all elements from arr2 and 0 from arr1. Hence, low
+        // will be max(k - n2, 0).
         int low = Math.max(k - n2, 0);
-        int left = k;
-        int n = n1 + n2;
         while (low <= high) {
             int mid1 = low + (high - low)/2;
             int mid2 = k - mid1;
