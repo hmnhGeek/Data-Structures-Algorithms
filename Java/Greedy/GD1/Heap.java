@@ -11,17 +11,17 @@ interface Heap<T extends Comparable<T>> {
     }
 
     default Integer getLci(Integer pi) {
-        int lci = 2*pi + 1;
+        Integer lci = 2*pi + 1;
         return 0 <= lci && lci < getHeap().size() ? lci : null;
     }
 
     default Integer getRci(Integer pi) {
-        int rci = 2*pi + 2;
+        Integer rci = 2*pi + 2;
         return 0 <= rci && rci < getHeap().size() ? rci : null;
     }
 
     default Integer getPi(Integer ci) {
-        int pi = (ci - 1)/2;
+        Integer pi = (ci - 1)/2;
         return 0 <= pi && pi < getHeap().size() ? pi : null;
     }
 

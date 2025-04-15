@@ -1,6 +1,7 @@
 package Greedy.GD1;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -38,7 +39,7 @@ class MinHeap<T extends Comparable<T>> implements Heap<T> {
     public void heapifyUp(Integer startIndex) {
         if (startIndex.equals(0)) return;
         int pi = getPi(startIndex);
-        int lci = getLci(pi), rci = getRci(pi);
+        Integer lci = getLci(pi), rci = getRci(pi);
         Integer minChildIndex = getChildIndex(lci, rci);
         if (minChildIndex != null) {
             if (getHeap().get(pi).compareTo(getHeap().get(minChildIndex)) > 0) {
@@ -50,7 +51,7 @@ class MinHeap<T extends Comparable<T>> implements Heap<T> {
 
     @Override
     public void heapifyDown(Integer pi) {
-        int lci = getLci(pi), rci = getRci(pi);
+        Integer lci = getLci(pi), rci = getRci(pi);
         Integer minChildIndex = getChildIndex(lci, rci);
         if (minChildIndex != null) {
             if (getHeap().get(pi).compareTo(getHeap().get(minChildIndex)) > 0) {
@@ -62,8 +63,19 @@ class MinHeap<T extends Comparable<T>> implements Heap<T> {
 }
 
 class SolutionGD1 {
+    public static void main(String[] args) {
+        System.out.println(getMinCostToConnectRopes(Arrays.asList(4, 3, 2, 6)));
+    }
+
     public static Integer getMinCostToConnectRopes(List<Integer> ropes) {
         MinHeap<Integer> minHeap = new MinHeap<>();
         ropes.forEach(minHeap::insert);
+        Integer cost = 0;
+        while (minHeap.getHeap().size() != 1) {
+            Integer firstRope = minHeap.pop(), secondRope = minHeap.pop();
+            cost += (firstRope + secondRope);
+            minHeap.insert(firstRope + secondRope);
+        }
+        return cost;
     }
 }
