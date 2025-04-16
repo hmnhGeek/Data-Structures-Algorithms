@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/critical-connections-in-a-network/description/
+# Solution - https://www.youtube.com/watch?v=qrAub5z8FeA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=55
+
+
 class Solution:
     _timer = 1
 
@@ -33,6 +37,10 @@ class Solution:
 
     @staticmethod
     def get_bridges(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         Solution._timer = 1
 
         # create tracking variables
