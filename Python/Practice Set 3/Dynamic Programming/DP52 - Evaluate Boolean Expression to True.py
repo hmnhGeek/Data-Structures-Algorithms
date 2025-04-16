@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/problem-name-boolean-evaluation_1214650?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=MM7fXopgyjw&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=53
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
