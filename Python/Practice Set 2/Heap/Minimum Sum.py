@@ -64,3 +64,22 @@ class MinHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def get_min_sum(arr):
+        min_heap = MinHeap()
+        for i in arr:
+            min_heap.insert(i)
+        n1, n2 = 0, 0
+        while not min_heap.is_empty():
+            x = min_heap.pop()
+            n1 = (n1*10 + x)
+            if not min_heap.is_empty():
+                y = min_heap.pop()
+                n2 = (n2*10 + y)
+        return n1 + n2
+
+
+print(Solution.get_min_sum([6, 8, 4, 5, 2, 3]))
+print(Solution.get_min_sum([5, 3, 0, 7, 4]))
+print(Solution.get_min_sum([9, 4]))
