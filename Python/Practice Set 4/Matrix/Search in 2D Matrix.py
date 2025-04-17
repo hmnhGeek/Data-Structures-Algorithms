@@ -9,12 +9,20 @@ class Solution:
         """
 
         n, m = len(mtx), len(mtx[0])
+
+        # since the matrix is sorted in raster fashion, define low and high accordingly.
         low, high = 0, n*m - 1
         while low <= high:
             mid = int(low + (high - low)/2)
+
+            # get mid-row and col
             i, j = mid//m, mid%m
+
+            # if target is found, return the coordinate
             if mtx[i][j] == element:
                 return i, j
+
+            # if target is lower than mid, search in left half, else search in right half.
             elif mtx[i][j] > element:
                 high = mid - 1
             else:
