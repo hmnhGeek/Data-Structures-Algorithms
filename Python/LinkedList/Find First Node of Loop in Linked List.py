@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/find-first-node-of-loop-in-a-linked-list/#expected-approach-using-floyds-loop-detection-algorithm-on-time-and-o1-space
+# Solution - https://www.youtube.com/watch?v=2Kd0KKmmHFc
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -51,6 +54,10 @@ class LinkedList:
 class Solution:
     @staticmethod
     def find_first_node_of_loop(linked_list: LinkedList) -> Node | None:
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         slow = fast = linked_list.head
         while slow and fast and fast.next:
             slow = slow.next
@@ -68,6 +75,8 @@ class Solution:
 l = LinkedList()
 l.build(1, 3, 2, 4, 5)
 print(l)
+node1 = Solution.find_first_node_of_loop(l)
+print(node1.data if node1 else None)
 l.tail.next = l.head.next
-node = Solution.find_first_node_of_loop(l)
-print(node.data if node else None)
+node2 = Solution.find_first_node_of_loop(l)
+print(node2.data if node2 else None)
