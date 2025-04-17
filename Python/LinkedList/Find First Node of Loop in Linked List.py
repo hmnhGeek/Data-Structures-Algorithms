@@ -39,7 +39,6 @@ class LinkedList:
             return "[]"
         if self.length == 1:
             return f"[{self.head.data}]"
-
         result = f"[{self.head.data}, "
         curr = self.head.next
         while curr and curr != self.tail:
@@ -48,3 +47,27 @@ class LinkedList:
         result += f"{self.tail.data}]"
         return result
 
+
+class Solution:
+    @staticmethod
+    def find_first_node_of_loop(linked_list: LinkedList) -> Node | None:
+        slow = fast = linked_list.head
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                slow = linked_list.head
+                while slow != fast:
+                    slow = slow.next
+                    fast = fast.next
+                return slow
+        return None
+
+
+# Example 1
+l = LinkedList()
+l.build(1, 3, 2, 4, 5)
+print(l)
+l.tail.next = l.head.next
+node = Solution.find_first_node_of_loop(l)
+print(node.data if node else None)
