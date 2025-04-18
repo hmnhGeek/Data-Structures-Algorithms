@@ -53,3 +53,17 @@ class Solution:
                 queue.push(node.left)
         return level_order[-1:-len(level_order)-1:-1]
 
+
+# Example 1
+one, two, three = TreeNode(1), TreeNode(2), TreeNode(3)
+one.left = two
+one.right = three
+print(Solution.reverse_level_order(one))
+
+# Example 2
+ten, twenty, thirty, fourty, sixty = TreeNode(10), TreeNode(20), TreeNode(30), TreeNode(40), TreeNode(60)
+ten.left = twenty
+twenty.left = fourty
+ten.right = thirty
+twenty.right = sixty
+print(Solution.reverse_level_order(ten))
