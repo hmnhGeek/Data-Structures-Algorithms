@@ -37,3 +37,19 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def reverse_level_order(root: TreeNode):
+        queue = Queue()
+        queue.push(root)
+        level_order = []
+        while not queue.is_empty():
+            node = queue.pop()
+            level_order.append(node.data)
+            if node.right is not None:
+                queue.push(node.right)
+            if node.left is not None:
+                queue.push(node.left)
+        return level_order[-1:-len(level_order)-1:-1]
+
