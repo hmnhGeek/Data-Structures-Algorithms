@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/reverse-level-order-traversal/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -41,6 +44,10 @@ class Queue:
 class Solution:
     @staticmethod
     def reverse_level_order(root: TreeNode):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         # define a queue and push the root node into it.
         queue = Queue()
         queue.push(root)
