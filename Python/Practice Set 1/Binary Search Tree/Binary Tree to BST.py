@@ -19,10 +19,19 @@ class Solution:
 
     @staticmethod
     def convert_to_bst(root: Node):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
+        # get the nodes of the tree in inorder fashion in O(n) time and O(n) space.
         inorder = []
         Solution._get_inorder(root, inorder)
+
+        # sort the inorder nodes data in O(n * log(n)) time.
         sorted_inorder = [i.data for i in inorder]
         sorted_inorder.sort()
+
+        # now assign the inorder nodes with data from sorted inorder list in O(n) time.
         for i in range(len(inorder)):
             inorder[i].data = sorted_inorder[i]
 
