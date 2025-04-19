@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/problems/isomorphic-strings-1587115620/1
+# Solution - https://www.youtube.com/watch?v=1UNjU3YMUCs
+
+
 class Solution:
     @staticmethod
     def are_isomorphic(s1, s2):
+        """
+            Time complexity is O(n) and space complexity is O(26).
+        """
+
         # if the length of the strings are not same, return false.
         if len(s1) != len(s2):
             return False
