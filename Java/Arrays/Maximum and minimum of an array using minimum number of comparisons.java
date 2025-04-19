@@ -18,6 +18,8 @@ class Solution2 {
             min = Math.min(min, arr.get(i));
             max = Math.max(max, arr.get(i));
         }
+
+        // return the result
         Map<String, Integer> map = new HashMap<>();
         map.put("min", min);
         map.put("max", max);
