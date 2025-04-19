@@ -152,3 +152,14 @@ class SlidingWindowUtils:
         return result
 
 
+class Solution:
+    @staticmethod
+    def solve(arr, k):
+        maxi = SlidingWindowUtils.get_max(arr, k)
+        mini = SlidingWindowUtils.get_min(arr, k)
+        return sum(maxi) + sum(mini)
+
+
+print(Solution.solve([2, 5, -1, 7, -3, -1, -2], 4))
+print(Solution.solve([1, 2, 3, 4, 5], 3))
+print(Solution.solve([2, 4, 7, 3, 8, 1], 4))
