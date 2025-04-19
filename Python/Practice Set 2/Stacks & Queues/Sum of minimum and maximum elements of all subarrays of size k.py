@@ -25,7 +25,8 @@ class Deque:
         item = self.head.data
         node = self.head
         self.head = self.head.next
-        self.head.prev = None
+        if self.head:
+            self.head.prev = None
         del node
         self.length -= 1
         return item
@@ -36,7 +37,8 @@ class Deque:
         item = self.tail.data
         node = self.tail
         self.tail = self.tail.prev
-        self.tail.next = None
+        if self.tail:
+            self.tail.next = None
         del node
         self.length -= 1
         return item
@@ -46,3 +48,36 @@ class Deque:
             return
         return self.head.data
 
+    def back(self):
+        if self.length == 0:
+            return
+        return self.tail.data
+
+
+class SlidingWindowUtils:
+    @staticmethod
+    def get_max(arr, k):
+        if k <= 0:
+            return
+        n = len(arr)
+        deque = Deque()
+        result = []
+        for i in range(k):
+            elem = arr[i]
+            while deque.length != 0 and deque.back() < elem:
+                deque.pop_back()
+            deque.push(elem)
+        result.append(deque.front())
+        for i in range(k, n):
+            if arr[i - k] == deque.front():
+                deque.pop_front()
+            elem = arr[i]
+            while deque.length != 0 and deque.back() < elem:
+                deque.pop_back()
+            deque.push(elem)
+            result.append(deque.front())
+        return result
+
+
+print(SlidingWindowUtils.get_max([1, 3, -1, -3, 5, 3, 2, 1, 6], 3))
+print(SlidingWindowUtils.get_max([2, 5, -1, 7, -3, -1, -2], 4))
