@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/sum-minimum-maximum-elements-subarrays-size-k/
+# Solution - https://www.youtube.com/watch?v=CZQGRp93K4k
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -155,6 +159,9 @@ class SlidingWindowUtils:
 class Solution:
     @staticmethod
     def solve(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         maxi = SlidingWindowUtils.get_max(arr, k)
         mini = SlidingWindowUtils.get_min(arr, k)
         return sum(maxi) + sum(mini)
