@@ -1,6 +1,6 @@
 package Strings.GameWithString;
 
-public class HeapElement implements Comparable {
+public class HeapElement implements Comparable<HeapElement> {
     private Integer count;
     private Character character;
 
@@ -26,8 +26,7 @@ public class HeapElement implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        HeapElement heapElement = (HeapElement) o;
-        return this.count.compareTo(heapElement.getCount());
+    public int compareTo(HeapElement o) {
+        return this.count.compareTo(o.getCount());
     }
 }
