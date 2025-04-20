@@ -106,20 +106,37 @@ class HeapElement<T extends Comparable<T>> implements Comparable<HeapElement<T>>
 
 class Solution {
     public static Integer getMedianFromMatrix(List<List<Integer>> matrix) {
+        // get the dimensions of the matrix.
         Integer n = matrix.size(), m = matrix.getFirst().size();
+
+        // get the median index
         Integer medianIndex = (n * m)/2;
+
+        // define a new min heap which will store O(nm/2) elements.
         MinHeap<HeapElement<Integer>> minHeap = new MinHeap<>();
+
+        // in O(n * log(n * log(n)) time, insert the first column into the min heap.
         for (int i = 0; i < n; i += 1) {
             minHeap.insert(new HeapElement<>(matrix.get(i).getFirst(), i, 0));
         }
+
+        // define a counter which will keep track of the median index (when to stop).
         Integer counter = 0;
+
+        // while the counter has not reached the median element. This will run for O(nm/2) time.
         while (counter != medianIndex) {
+            // get the smallest element in O(log(n)) time & increment the counter value.
             HeapElement<Integer> element = minHeap.pop();
             counter += 1;
+
+            // if the next element to the popped element is available, then push it into the min heap in
+            // O(log(n)) time.
             if (0 <= element.getColIndex() + 1 && element.getColIndex() + 1 < m) {
                 minHeap.insert(new HeapElement<>(matrix.get(element.getRowIndex()).get(element.getColIndex() + 1) , element.getRowIndex(), element.getColIndex() + 1));
             }
         }
+
+        // the top of heap will point to the median, return it in O(log(n)) time.
         return minHeap.pop().getValue();
     }
 
