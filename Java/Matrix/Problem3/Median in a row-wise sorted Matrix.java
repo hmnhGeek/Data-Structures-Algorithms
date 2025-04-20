@@ -110,7 +110,7 @@ class HeapElement<T extends Comparable<T>> implements Comparable<HeapElement<T>>
 class Solution {
     public static Integer getMedianFromMatrix(List<List<Integer>> matrix) {
         /*
-            Time complexity is O(nm * log(n)) and space complexity is O(nm).
+            Time complexity is O(nm * log(n)) and space complexity is O(n).
          */
 
         // get the dimensions of the matrix.
@@ -119,7 +119,7 @@ class Solution {
         // get the median index
         Integer medianIndex = (n * m)/2;
 
-        // define a new min heap which will store O(nm/2) elements.
+        // define a new min heap which will store O(n) elements.
         MinHeap<HeapElement<Integer>> minHeap = new MinHeap<>();
 
         // in O(n * log(n * log(n)) time, insert the first column into the min heap.
