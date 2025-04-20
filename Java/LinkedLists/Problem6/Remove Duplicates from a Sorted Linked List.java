@@ -77,6 +77,7 @@ class LinkedList<T> {
         Node<T> temp = this.head;
         while (curr != null) {
             while (curr.getData().equals(temp.getData())) {
+                if (curr != temp) length -= 1;
                 temp = temp.getNext();
                 if (temp == null) {
                     this.tail = curr;
@@ -98,5 +99,12 @@ class Solution {
         System.out.println(l1);
         l1.removeDuplicates();
         System.out.println(l1);
+
+        // Example 2
+        LinkedList<Integer> l2 = new LinkedList<>();
+        l2.build(2, 2, 2, 2);
+        System.out.println(l2);
+        l2.removeDuplicates();
+        System.out.println(l2);
     }
 }
