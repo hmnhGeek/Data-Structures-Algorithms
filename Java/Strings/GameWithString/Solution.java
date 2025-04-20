@@ -13,23 +13,47 @@ public class Solution {
     }
 
     public static Integer gameWithString(String string, Integer k) {
+        // if `k` is not in bounds, return null.
         if (k < 0 || k > string.length()) return null;
+
+        // create a max heap
         MaxHeap<HeapElement> maxHeap = new MaxHeap<>();
+
+        // create a frequency map for the characters of the string in O(n) time.
         Map<Character, Integer> d = counter(string);
+
+        // insert the frequencies into the max heap.
         for (Map.Entry<Character, Integer> entry : d.entrySet()) {
             maxHeap.insert(new HeapElement(entry.getKey(), entry.getValue()));
         }
+
+        // reduce `k` counts...
         while (k != 0) {
+            // pop the current element in O(log(n)) time.
             HeapElement element = maxHeap.pop();
+
+            // decrement `k`.
             k -= 1;
+
+            // reduce the count of this max frequency character and insert back into the max heap.
             element.setCount(element.getCount() - 1);
+
+            // this will take O(log(n)) time.
             maxHeap.insert(element);
         }
+
+        // initialize a sum variable
         Integer sum = 0;
+
+        // completely empty the max heap in n iterations...
         while (!maxHeap.isEmpty()) {
+            // pop the element in O(log(n)) time.
             HeapElement heapElement = maxHeap.pop();
+            // update the sum
             sum += (heapElement.getCount() * heapElement.getCount());
         }
+
+        // return the sum.
         return sum;
     }
 
