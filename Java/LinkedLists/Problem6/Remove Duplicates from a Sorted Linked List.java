@@ -71,14 +71,32 @@ class LinkedList<T> {
         result.append(this.tail.getData()).append("]");
         return result.toString();
     }
+
+    public void removeDuplicates() {
+        Node<T> curr = this.head;
+        Node<T> temp = this.head;
+        while (curr != null) {
+            while (curr.getData().equals(temp.getData())) {
+                temp = temp.getNext();
+                if (temp == null) {
+                    this.tail = curr;
+                    break;
+                }
+            }
+            curr.setNext(temp);
+            curr = temp;
+        }
+    }
 }
 
 
 class Solution {
     public static void main(String[] args) {
         // Example 1
-        LinkedList<Integer> l = new LinkedList<>();
-        l.build(1, 2, 3, 4, 5);
-        System.out.println(l);
+        LinkedList<Integer> l1 = new LinkedList<>();
+        l1.build(2, 2, 2, 4, 6, 6);
+        System.out.println(l1);
+        l1.removeDuplicates();
+        System.out.println(l1);
     }
 }
