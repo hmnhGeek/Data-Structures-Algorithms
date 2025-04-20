@@ -1,3 +1,6 @@
+// https://www.geeksforgeeks.org/problems/game-with-string4100/1
+
+
 package Strings.GameWithString;
 
 import java.util.HashMap;
@@ -13,6 +16,10 @@ public class Solution {
     }
 
     public static Integer gameWithString(String string, Integer k) {
+        /*
+            Time complexity is O({n + k} * log(n)) and space complexity is O(n).
+         */
+
         // if `k` is not in bounds, return null.
         if (k < 0 || k > string.length()) return null;
 
