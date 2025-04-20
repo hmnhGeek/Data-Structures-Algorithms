@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
+
+
 package Matrix.Problem3;
 
 
@@ -106,6 +109,10 @@ class HeapElement<T extends Comparable<T>> implements Comparable<HeapElement<T>>
 
 class Solution {
     public static Integer getMedianFromMatrix(List<List<Integer>> matrix) {
+        /*
+            Time complexity is O(nm * log(n)) and space complexity is O(nm).
+         */
+
         // get the dimensions of the matrix.
         Integer n = matrix.size(), m = matrix.getFirst().size();
 
