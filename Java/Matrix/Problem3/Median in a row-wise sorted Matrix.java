@@ -116,7 +116,7 @@ class Solution {
         while (counter != medianIndex) {
             HeapElement<Integer> element = minHeap.pop();
             counter += 1;
-            if (0 <= element.getColIndex() + 1 && element.getColIndex() < m) {
+            if (0 <= element.getColIndex() + 1 && element.getColIndex() + 1 < m) {
                 minHeap.insert(new HeapElement<>(matrix.get(element.getRowIndex()).get(element.getColIndex() + 1) , element.getRowIndex(), element.getColIndex() + 1));
             }
         }
@@ -131,6 +131,28 @@ class Solution {
                                 Arrays.asList(1, 3, 5),
                                 Arrays.asList(2, 6, 9),
                                 Arrays.asList(3, 6, 9)
+                        )
+                )
+        );
+
+        // Example 2
+        System.out.println(
+                getMedianFromMatrix(
+                        Arrays.asList(
+                                Arrays.asList(1),
+                                Arrays.asList(2),
+                                Arrays.asList(3)
+                        )
+                )
+        );
+
+        // Example 3
+        System.out.println(
+                getMedianFromMatrix(
+                        Arrays.asList(
+                                Arrays.asList(3),
+                                Arrays.asList(5),
+                                Arrays.asList(8)
                         )
                 )
         );
