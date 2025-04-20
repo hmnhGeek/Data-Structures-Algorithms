@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1
+
+
 package LinkedLists.Problem6;
 
 class Node<T> {
@@ -73,17 +76,30 @@ class LinkedList<T> {
     }
 
     public void removeDuplicates() {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
+
+        // make two pointers, initially pointing to head of the linked list.
         Node<T> curr = this.head;
         Node<T> temp = this.head;
+
+        // traverse the linked list
         while (curr != null) {
+            // if the curr and temp nodes have same data, move temp to next.
             while (curr.getData().equals(temp.getData())) {
+                // also, if curr and temp are different nodes, reduce the length of the linked list.
                 if (curr != temp) length -= 1;
                 temp = temp.getNext();
+
+                // if temp reaches null, then it means curr would be the last node and no further iteration is needed.
                 if (temp == null) {
                     this.tail = curr;
                     break;
                 }
             }
+
+            // update curr.next and move curr to temp.
             curr.setNext(temp);
             curr = temp;
         }
@@ -106,5 +122,12 @@ class Solution {
         System.out.println(l2);
         l2.removeDuplicates();
         System.out.println(l2);
+
+        // Example 3
+        LinkedList<Integer> l3 = new LinkedList<>();
+        l3.build(1, 6, 7, 9, 0, 0, 0, 0);
+        System.out.println(l3);
+        l3.removeDuplicates();
+        System.out.println(l3);
     }
 }
