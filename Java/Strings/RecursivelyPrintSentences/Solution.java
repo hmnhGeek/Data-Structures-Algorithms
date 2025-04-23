@@ -38,5 +38,24 @@ public class Solution {
                 Arrays.asList("have", "are"),
                 Arrays.asList("sleep", "eat", "drink")
         ));
+        formSentences(
+                Arrays.asList(
+                        Arrays.asList("you", "we"),
+                        Arrays.asList("have", "are")
+                )
+        );
+        formSentences(
+                Arrays.asList(
+                        Arrays.asList("I", "You"),
+                        Arrays.asList("Do", "do not like"),
+                        Arrays.asList("walking", "eating")
+                )
+        );
+        formSentences(
+                Arrays.asList(
+                        Arrays.asList("work", "live"),
+                        Arrays.asList("easy", "happily")
+                )
+        );
     }
 }
