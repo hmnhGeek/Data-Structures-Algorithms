@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/recursively-print-all-sentences-that-can-be-formed-from-list-of-word-lists/
+
 package Strings.RecursivelyPrintSentences;
 
 import java.util.ArrayList;
@@ -22,6 +24,9 @@ public class Solution {
     }
 
     public static List<String> createSentences(List<List<String>> words) {
+        /*
+            Time complexity is O(n^m) and space complexity is O(m).
+         */
         List<String> sentence = new ArrayList<>();
         List<String> sentences = new ArrayList<>();
         createSentences(words, 0, sentence, sentences);
