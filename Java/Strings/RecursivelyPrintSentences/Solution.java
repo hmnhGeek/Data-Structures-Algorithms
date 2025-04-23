@@ -6,13 +6,17 @@ import java.util.List;
 
 public class Solution {
     private static void createSentences(List<List<String>> words, Integer i, List<String> sentence, List<String> sentences) {
+        // base case
         if (i.equals(words.size())) {
             sentences.add(String.join(" ", sentence));
             return;
         }
         for (int j = 0; j < words.get(i).size(); j += 1) {
+            // add the current word to sentence list.
             sentence.add(words.get(i).get(j));
+            // recursively check words from next row.
             createSentences(words, i + 1, sentence, sentences);
+            // while backtracking, remove the added word.
             sentence.removeLast();
         }
     }
@@ -24,6 +28,10 @@ public class Solution {
         return sentences;
     }
 
+    /**
+     * A utility method to print sentences correctly.
+     * @param words
+     */
     public static void formSentences(List<List<String>> words) {
         List<String> sentences = createSentences(words);
         for (String sentence : sentences) {
