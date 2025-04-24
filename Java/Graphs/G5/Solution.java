@@ -7,21 +7,34 @@ import java.util.Map;
 
 public class Solution {
     public static <T> List<T> bfs(Map<T, List<T>> graph, T startNode) {
+        // if the starting node is not present in the graph, return null.
         if (!graph.containsKey(startNode)) return null;
+
+        // create a visited map. It will take O(V) space.
         Map<T, Boolean> visited = new HashMap<>();
         for (T node : graph.keySet()) {
             visited.put(node, false);
         }
 
+        // create a queue and push the starting node inside it.
         Queue<T> queue = new Queue<>();
         queue.push(startNode);
+
+        // mark the starting node as visited now.
         visited.put(startNode, true);
+
+        // create a result list.
         List<T> result = new ArrayList<>();
 
+        // typical BFS, this will run in O(V + E) time.
         while (!queue.isEmpty()) {
+            // pop the current node and add it to the result list.
             T node = queue.pop();
             result.add(node);
+
+            // loop on the adjacent nodes of this node in O(E) time.
             for (T adjNode : graph.get(node)) {
+                // if the adjacent node is not yet visited, then mark it visited and push it to the queue.
                 if (!visited.get(adjNode)) {
                     queue.push(adjNode);
                     visited.put(adjNode, true);
@@ -29,6 +42,7 @@ public class Solution {
             }
         }
 
+        // finally, return the result.
         return result;
     }
 
