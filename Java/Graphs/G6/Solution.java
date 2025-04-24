@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
+// Solution - https://www.youtube.com/watch?v=Qzf1a--rhp8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=6
+
 package Graphs.G6;
 
 import java.util.ArrayList;
@@ -21,6 +24,10 @@ public class Solution {
     }
 
     public static <T> List<T> dfs(Map<T, List<T>> graph) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
+
         // create a blank visited map of size O(V).
         Map<T, Boolean> visited = new HashMap<>();
         for (T node : graph.keySet()) {
