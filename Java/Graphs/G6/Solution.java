@@ -7,9 +7,13 @@ import java.util.Map;
 
 public class Solution {
     private static <T> void dfs(Map<T, List<T>> graph, T node, Map<T, Boolean> visited, List<T> result) {
+        // mark the node as visited and push the node to result list.
         visited.put(node, true);
         result.add(node);
+
+        // loop on the adjacent nodes of this graph
         for (T adjNode : graph.get(node)) {
+            // if the adjacent node is not visited yet, recursively call DFS on it.
             if (!visited.get(adjNode)) {
                 dfs(graph, adjNode, visited, result);
             }
@@ -17,14 +21,18 @@ public class Solution {
     }
 
     public static <T> List<T> dfs(Map<T, List<T>> graph) {
+        // create a blank visited map of size O(V).
         Map<T, Boolean> visited = new HashMap<>();
         for (T node : graph.keySet()) {
             visited.put(node, false);
         }
 
+        // create a result list.
         List<T> result = new ArrayList<>();
 
+        // loop on the graph nodes
         for (T node : graph.keySet()) {
+            // if the node is not visited, initiate a DFS from it in O(V + E) time.
             if (!visited.get(node)) {
                 dfs(graph, node, visited, result);
             }
