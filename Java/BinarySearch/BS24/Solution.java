@@ -1,3 +1,6 @@
+// Problem link - https://www.naukri.com/code360/problems/search-in-a-2d-matrix_980531
+// Solution - https://www.youtube.com/watch?v=JXU4Akft7yk&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=26
+
 package BinarySearch.BS24;
 
 import java.util.Arrays;
@@ -20,6 +23,10 @@ class Cell {
 
 public class Solution {
     public static Cell search(List<List<Integer>> matrix, Integer element) {
+        /*
+            Time complexity is O(log(m * n)) and space complexity is O(1).
+         */
+
         // dimensions of the matrix
         Integer n = matrix.size(), m = matrix.getFirst().size();
 
