@@ -23,5 +23,16 @@ public class Main {
         System.out.println(MemoizedSolution.palindromePartitioning("ababbbabbababa"));
         System.out.println(MemoizedSolution.palindromePartitioning("bababcbadcede"));
         System.out.println();
+
+        System.out.println(TabulationSolution.palindromePartitioning("aaccb"));
+        System.out.println(TabulationSolution.palindromePartitioning("ababa"));
+        System.out.println(TabulationSolution.palindromePartitioning("aababa"));
+        System.out.println(TabulationSolution.palindromePartitioning("aab"));
+        System.out.println(TabulationSolution.palindromePartitioning("a"));
+        System.out.println(TabulationSolution.palindromePartitioning("ab"));
+        System.out.println(TabulationSolution.palindromePartitioning("geek"));
+        System.out.println(TabulationSolution.palindromePartitioning("ababbbabbababa"));
+        System.out.println(TabulationSolution.palindromePartitioning("bababcbadcede"));
+        System.out.println();
     }
 }
