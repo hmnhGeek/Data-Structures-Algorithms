@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/find-the-longest-substring-with-k-unique-characters-in-a-given-string/
+// Solution - https://www.youtube.com/watch?v=teM9ZsVRQyc&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=6
+
 package SlidingWindows.L6;
 
 import java.util.HashMap;
@@ -15,6 +18,10 @@ public class Solution {
     }
 
     public static String getLongestSubstring(String string, Integer k) {
+        /*
+            Time complexity is O(26 * n) and space complexity is O(26).
+         */
+
         // define window variables
         int n = string.length();
         int left = 0, right = 0;
