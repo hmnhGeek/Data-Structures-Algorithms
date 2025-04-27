@@ -20,11 +20,20 @@ class Cell {
 
 public class Solution {
     public static Cell search(List<List<Integer>> matrix, Integer element) {
+        // dimensions of the matrix
         Integer n = matrix.size(), m = matrix.getFirst().size();
+
+        // binary search range
         Integer low = 0, high = n*m - 1;
+
+        // typical binary search
         while (low <= high) {
             int mid = (low + (high - low)/2);
+
+            // get mid-cell
             int x = mid/m, y = mid%m;
+
+            // perform simple binary search
             if (matrix.get(x).get(y).equals(element)) {
                 return new Cell(x, y);
             } else if (matrix.get(x).get(y) > element) {
@@ -33,6 +42,8 @@ public class Solution {
                 low = mid + 1;
             }
         }
+
+        // if not found, return (-1, -1).
         return new Cell(-1, -1);
     }
 
