@@ -43,5 +43,13 @@ public class Solution {
 
     public static void main(String[] args) {
         System.out.println(getLongestSubstring("aaabbccd", 2));
+        System.out.println(getLongestSubstring("abbbbbbc", 2));
+        System.out.println(getLongestSubstring("abcddefg", 3));
+        System.out.println(getLongestSubstring("aaaaaaaa", 3));
+        System.out.println(getLongestSubstring("abcefg", 1));
+        System.out.println(getLongestSubstring("aabbcc", 1));
+        System.out.println(getLongestSubstring("aabbcc", 2));
+        System.out.println(getLongestSubstring("aabbcc", 3));
+        System.out.println(getLongestSubstring("aaabbb", 3));
     }
 }
