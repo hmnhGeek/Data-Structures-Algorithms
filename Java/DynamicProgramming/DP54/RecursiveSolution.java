@@ -16,6 +16,9 @@ public class RecursiveSolution {
     }
 
     public static Integer maxSumPartition(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is exponential and space complexity is O(n).
+         */
         int n = arr.size();
         return solve(arr, 0, k, n);
     }
