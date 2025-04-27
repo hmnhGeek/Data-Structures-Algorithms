@@ -46,5 +46,35 @@ public class Solution {
                         ), 23
                 )
         );
+
+        System.out.println(
+                search(
+                        Arrays.asList(
+                                Arrays.asList(1, 3, 5, 7),
+                                Arrays.asList(10, 11, 16, 20),
+                                Arrays.asList(23, 30, 34, 60)
+                        ), 3
+                )
+        );
+
+        System.out.println(
+                search(
+                        Arrays.asList(
+                                Arrays.asList(1, 3, 5, 7),
+                                Arrays.asList(10, 11, 16, 20),
+                                Arrays.asList(23, 30, 34, 60)
+                        ), 13
+                )
+        );
+
+        System.out.println(
+                search(
+                        Arrays.asList(
+                                Arrays.asList(1, 2, 3, 4),
+                                Arrays.asList(5, 6, 7, 8),
+                                Arrays.asList(9, 10, 11, 12)
+                        ), 8
+                )
+        );
     }
 }
