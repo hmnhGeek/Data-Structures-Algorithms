@@ -11,5 +11,17 @@ public class Main {
         System.out.println(RecursiveSolution.palindromePartitioning("geek"));
         System.out.println(RecursiveSolution.palindromePartitioning("ababbbabbababa"));
         System.out.println(RecursiveSolution.palindromePartitioning("bababcbadcede"));
+        System.out.println();
+
+        System.out.println(MemoizedSolution.palindromePartitioning("aaccb"));
+        System.out.println(MemoizedSolution.palindromePartitioning("ababa"));
+        System.out.println(MemoizedSolution.palindromePartitioning("aababa"));
+        System.out.println(MemoizedSolution.palindromePartitioning("aab"));
+        System.out.println(MemoizedSolution.palindromePartitioning("a"));
+        System.out.println(MemoizedSolution.palindromePartitioning("ab"));
+        System.out.println(MemoizedSolution.palindromePartitioning("geek"));
+        System.out.println(MemoizedSolution.palindromePartitioning("ababbbabbababa"));
+        System.out.println(MemoizedSolution.palindromePartitioning("bababcbadcede"));
+        System.out.println();
     }
 }
