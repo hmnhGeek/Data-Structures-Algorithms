@@ -1,3 +1,6 @@
+// Problem link - https://www.naukri.com/code360/problems/palindrome-partitioning_873266?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=_H8V5hJUGd0&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=54
+
 package DynamicProgramming.DP53;
 
 public class Main {
