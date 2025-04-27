@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/partition-array-for-maximum-sum/description/
+// Solution - https://www.youtube.com/watch?v=PhWWJmaKfMc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=55
+
 package DynamicProgramming.DP54;
 
 import java.util.Arrays;
