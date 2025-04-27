@@ -15,29 +15,42 @@ public class Solution {
     }
 
     public static String getLongestSubstring(String string, Integer k) {
+        // define window variables
         int n = string.length();
+        int left = 0, right = 0;
+
+        // define tracking variable
         Map<Character, Integer> d = new HashMap<>();
         for (Character c : string.toCharArray()) {
             d.put(c, 0);
         }
-        int left = 0, right = 0;
 
+        // define result variables
         int longestLength = 0;
         int startIndex = -1;
 
+        // while there is ground to cover...
         while (right < n) {
+            // increment the right indexed value
             d.put(string.charAt(right), d.get(string.charAt(right)) + 1);
+
+            // if the unique characters > k, then shrink from left but just 1 unit.
             if (getDistinctCharactersCount(d) > k) {
                 d.put(string.charAt(left), d.get(string.charAt(left)) - 1);
                 left += 1;
             }
+
+            // else update the resulting variables.
             if (getDistinctCharactersCount(d) <= k) {
                 startIndex = left;
                 longestLength = Math.max(longestLength, right - left + 1);
             }
+
+            // increment right index
             right += 1;
         }
 
+        // return the substring.
         return startIndex != -1 ? string.substring(startIndex, startIndex + longestLength) : "";
     }
 
