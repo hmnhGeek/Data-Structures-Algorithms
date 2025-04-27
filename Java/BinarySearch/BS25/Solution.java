@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/search-a-2d-matrix-ii/
+// Solution - https://www.youtube.com/watch?v=9ZbB397jU4k&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=27
+
 package BinarySearch.BS25;
 
 import java.util.List;
@@ -19,6 +22,10 @@ class Cell {
 
 public class Solution {
     public static Cell search(List<List<Integer>> matrix, Integer element) {
+        /*
+            Time complexity is O(m + n) and space complexity is O(1).
+         */
+
         int n = matrix.size(), m = matrix.getFirst().size();
         int row = 0, col = m - 1;
         while (row < n && col >= 0) {
