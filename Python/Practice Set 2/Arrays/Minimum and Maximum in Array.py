@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/maximum-and-minimum-in-an-array/
+
+
 class Solution:
     @staticmethod
     def get_min_max(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         mini, maxi = 1e6, -1e6
         for i in range(len(arr)):
             if arr[i] > maxi:
