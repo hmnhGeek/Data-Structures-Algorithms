@@ -38,3 +38,24 @@ class LinkedList:
         result += f"{self.tail.data}]"
         return result
 
+    def remove_duplicates(self):
+        if self.length == 0 or self.length == 1:
+            return
+        curr = self.head
+        temp = self.head.next
+        while curr is not None:
+            while temp and temp.data == curr.data:
+                temp = temp.next
+            curr.next = temp
+            if temp is None:
+                self.tail = curr
+            curr = temp
+            if temp is not None:
+                temp = temp.next
+
+
+l1 = LinkedList()
+l1.build(2, 2, 4, 5)
+print(l1)
+l1.remove_duplicates()
+print(l1)
