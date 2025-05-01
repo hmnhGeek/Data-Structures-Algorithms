@@ -67,19 +67,35 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_median(mtx):
+        # get the dimensions of the matrix
         n, m = len(mtx), len(mtx[0])
+
+        # define a min heap and push the first column into it in O(n * log(n)) time and O(n) space.
         min_heap = MinHeap()
         for i in range(n):
             min_heap.insert((mtx[i][0], i, 0))
+
+        # get the median position and initiate a counter to track when we reached the median.
         median_index = (n*m + 1)//2
         counter = 0
+
+        # now while the counter is not at median position, do the following. This will run for n*m/2 iterations.
         while counter != median_index:
+            # pop the element from the heap in O(log(n)) time.
             elem, i, j = min_heap.pop()
+
+            # increment the counter.
             counter += 1
+
+            # if the counter has reached median index, return the median element.
             if counter == median_index:
                 return elem
+
+            # else push the next element from the popped row into the heap in O(log(n)) time.
             if 0 <= j + 1 < m:
                 min_heap.insert((mtx[i][j + 1], i, j + 1))
+
+        # return -1 as a dummy.
         return -1
 
 
