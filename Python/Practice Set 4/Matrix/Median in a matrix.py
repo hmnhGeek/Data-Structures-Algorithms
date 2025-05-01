@@ -84,3 +84,5 @@ class Solution:
 
 
 print(Solution.get_median([[1, 3, 5], [2, 6, 9], [3, 6, 9]]))
+print(Solution.get_median([[1], [2], [3]]))
+print(Solution.get_median([[3], [5], [8]]))
