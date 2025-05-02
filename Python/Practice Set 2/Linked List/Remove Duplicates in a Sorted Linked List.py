@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/remove-duplicate-element-from-sorted-linked-list/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -39,18 +42,37 @@ class LinkedList:
         return result
 
     def remove_duplicates(self):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # if there is none, or only 1 element in the list, do nothing.
         if self.length == 0 or self.length == 1:
             return
+
+        # point curr and temp.
         curr = self.head
         temp = self.head.next
+
+        # traverse the linked list
         while curr is not None:
+            # while temp's data matches with curr's data, skip temp and move to next.
+            # also reduce the length of the linked list, as you've removed one element.
             while temp and temp.data == curr.data:
                 temp = temp.next
                 self.length -= 1
+
+            # point curr's next to temp (non-matching)
             curr.next = temp
+
+            # if temp has become None, then curr should be the tail.
             if temp is None:
                 self.tail = curr
+
+            # update curr
             curr = temp
+
+            # get to the next temp value.
             if temp is not None:
                 temp = temp.next
 
