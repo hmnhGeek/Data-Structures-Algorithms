@@ -7,6 +7,10 @@ from math import log, ceil, floor
 class Solution:
     @staticmethod
     def _get_trailing_zeros_count(mid):
+        """
+            Time complexity is O(log5(n)) and space complexity is O(1).
+        """
+
         up_limit = ceil(log(mid, 5))
         trailing_zeros = 0
         for i in range(1, up_limit + 1):
