@@ -6,7 +6,7 @@ class Solution:
     def _get_trailing_zeros_count(mid):
         up_limit = ceil(log(mid, 5))
         trailing_zeros = 0
-        for i in range(1, up_limit):
+        for i in range(1, up_limit + 1):
             trailing_zeros += floor(mid/5**i)
         return trailing_zeros
 
@@ -24,7 +24,7 @@ class Solution:
                 high = mid - 1
             else:
                 low = mid + 1
-        return high
+        return low
 
 
 print(Solution.get_smallest_factorial_number(1))
