@@ -138,3 +138,36 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _get_inorder(root: Node, inorder):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._get_inorder(root.right, inorder)
+
+    @staticmethod
+    def _balanced_insert(bst: BinarySearchTree, inorder, low, high):
+        if low > high:
+            return
+        mid = int(low + (high - low)/2)
+        bst.insert(inorder[mid])
+        Solution._balanced_insert(bst, inorder, low, mid - 1)
+        Solution._balanced_insert(bst, inorder, mid + 1, high)
+
+    @staticmethod
+    def get_balanced_bt(bst: BinarySearchTree) -> BinarySearchTree:
+        balanced_bst = BinarySearchTree()
+        inorder = []
+        Solution._get_inorder(bst.root, inorder)
+        Solution._balanced_insert(balanced_bst, inorder, 0, len(inorder) - 1)
+        return balanced_bst
+
+
+bst1 = BinarySearchTree()
+for i in [30, 20, 10]:
+    bst1.insert(i)
+bst1.show()
+bbst1 = Solution.get_balanced_bt(bst1)
+bbst1.show()
