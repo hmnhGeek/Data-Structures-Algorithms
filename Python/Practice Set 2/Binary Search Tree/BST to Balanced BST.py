@@ -171,3 +171,10 @@ for i in [30, 20, 10]:
 bst1.show()
 bbst1 = Solution.get_balanced_bt(bst1)
 bbst1.show()
+
+bst2 = BinarySearchTree()
+for i in [4, 3, 5, 2, 6, 1, 7]:
+    bst2.insert(i)
+bst2.show()
+bbst2 = Solution.get_balanced_bt(bst2)
+bbst2.show()
