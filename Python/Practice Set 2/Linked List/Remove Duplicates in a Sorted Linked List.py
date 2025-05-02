@@ -46,6 +46,7 @@ class LinkedList:
         while curr is not None:
             while temp and temp.data == curr.data:
                 temp = temp.next
+                self.length -= 1
             curr.next = temp
             if temp is None:
                 self.tail = curr
@@ -59,3 +60,15 @@ l1.build(2, 2, 4, 5)
 print(l1)
 l1.remove_duplicates()
 print(l1)
+
+l2 = LinkedList()
+l2.build(2, 2, 2, 2)
+print(l2)
+l2.remove_duplicates()
+print(l2)
+
+l3 = LinkedList()
+l3.build(0, 0, 0, 0, 1, 1, 2, 3, 6, 7)
+print(l3)
+l3.remove_duplicates()
+print(l3)
