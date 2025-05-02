@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/smallest-factorial-number5929/1
+
+
 from math import log, ceil, floor
 
 
@@ -12,6 +15,10 @@ class Solution:
 
     @staticmethod
     def get_smallest_factorial_number(num_trailing_zeros):
+        """
+            Time complexity is O(log2(n) * log5(n)) and space complexity is O(1).
+        """
+
         if num_trailing_zeros < 0:
             return -1
         low, high = 1, 10**4
