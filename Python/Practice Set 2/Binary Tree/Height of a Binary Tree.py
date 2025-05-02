@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/height-of-binary-tree/1
+# Solution - https://www.youtube.com/watch?v=eD3tmO66aBA
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +10,9 @@ class Node:
 class Solution:
     @staticmethod
     def get_height(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
         if root is None:
             return 0
         return 1 + max(Solution.get_height(root.left), Solution.get_height(root.right))
