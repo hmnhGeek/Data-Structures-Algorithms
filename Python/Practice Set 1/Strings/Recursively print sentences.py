@@ -4,9 +4,11 @@ class Solution:
     @staticmethod
     def _solve(words, i, sentence, sentences, n):
         if i >= n:
+            # add the sentence to the final list.
             sentences.append(" ".join(sentence))
             return
         for j in range(len(words[i])):
+            # add the word to the current sentence in the recursion.
             Solution._solve(words, i + 1, sentence + [words[i][j]], sentences, n)
 
     @staticmethod
