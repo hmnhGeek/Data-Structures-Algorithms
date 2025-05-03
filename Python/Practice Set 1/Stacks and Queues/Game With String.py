@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/game-with-string4100/1
+
+
 from collections import Counter
 
 
@@ -70,6 +73,10 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def game_with_string(string, k):
+        """
+            Time complexity is O(n * log(n)) time and space complexity is O(n).
+        """
+
         # store the frequencies of the characters in the max heap. In worst case, this will take
         # O(n * log(n)) time and O(n) space if all the n characters are distinct.
         d = dict(Counter(string))
