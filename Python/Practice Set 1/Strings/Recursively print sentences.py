@@ -24,3 +24,25 @@ Solution.get_sentences(
         ["sleep", "eat", "drink"]
     ]
 )
+
+Solution.get_sentences(
+    [
+        ["you", "we"],
+        ["have", "are"]
+    ]
+)
+
+Solution.get_sentences(
+    [
+        ["I", "you"],
+        ["do", "do not like"],
+        ["walking", "eating"]
+    ]
+)
+
+Solution.get_sentences(
+    [
+        ["work", "live"],
+        ["easy", "happily"]
+    ]
+)
