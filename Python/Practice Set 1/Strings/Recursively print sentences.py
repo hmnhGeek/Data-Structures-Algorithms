@@ -1,3 +1,5 @@
+# Problem link - https://www.geeksforgeeks.org/recursively-print-all-sentences-that-can-be-formed-from-list-of-word-lists/
+
 class Solution:
     @staticmethod
     def _solve(words, i, sentence, sentences, n):
@@ -9,6 +11,10 @@ class Solution:
 
     @staticmethod
     def get_sentences(words):
+        """
+            Time complexity is O(n ^ m) and space complexity is O(m).
+        """
+
         sentences = []
         n = len(words)
         Solution._solve(words, 0, [], sentences, n)
