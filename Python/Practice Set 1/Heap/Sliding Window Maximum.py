@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/#better-approach-1-using-maxheap-n-log-n-time-and-on-space
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -67,15 +70,29 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def get_sliding_window_maximum(arr, k):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         n = len(arr)
+
+        # edge case
         if k <= 0 or k > n:
             return
+
+        # define a max heap which can store at max `n` elements.
         max_heap = MaxHeap()
         result = []
+
         for i in range(n):
+            # Push current value with negative sign to simulate max heap
             max_heap.insert((arr[i], i))
+
+            # Remove elements outside the window
             while max_heap.heap[0][1] <= i - k:
                 max_heap.pop()
+
+            # Append current max to result once the first window is completed
             if i >= k - 1:
                 result.append(max_heap.heap[0][0])
         return result
@@ -83,3 +100,5 @@ class Solution:
 
 print(Solution.get_sliding_window_maximum([1, 2, 3, 1, 4, 5, 2, 3, 6], 3))
 print(Solution.get_sliding_window_maximum([5, 1, 3, 4, 2, 6], 1))
+print(Solution.get_sliding_window_maximum([1, 3, 2, 1, 7, 3], 3))
+print(Solution.get_sliding_window_maximum([1, 3, -1, -3, 5, 3, 6, 7], 3))
