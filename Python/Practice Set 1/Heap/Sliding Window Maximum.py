@@ -63,3 +63,22 @@ class MaxHeap:
         self.max_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_sliding_window_maximum(arr, k):
+        n = len(arr)
+        if k <= 0 or k > n:
+            return
+        max_heap = MaxHeap()
+        result = []
+        for i in range(n):
+            max_heap.insert((arr[i], i))
+            if max_heap.heap[0][1] <= i - k:
+                max_heap.pop()
+            if i >= k - 1:
+                result.append(max_heap.heap[0][0])
+        return result
+
+
+print(Solution.get_sliding_window_maximum([1, 2, 3, 1, 4, 5, 2, 3, 6], 3))
