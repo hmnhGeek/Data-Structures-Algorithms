@@ -70,19 +70,38 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def game_with_string(string, k):
+        # store the frequencies of the characters in the max heap. In worst case, this will take
+        # O(n * log(n)) time and O(n) space if all the n characters are distinct.
         d = dict(Counter(string))
         max_heap = MaxHeap()
         for i in d:
             max_heap.insert((d[i], i))
+
+        # define a result variable to store the final answer.
         result = 0
+
+        # define a counter variable to track `k`.
         counter = 0
+
+        # while the counter does not match with `k`. This will take O(k * log(n)) time.
         while counter != k:
+            # pop from the max heap in O(log(n)) time.
             count, character = max_heap.pop()
+
+            # increment the counter.
             counter += 1
-            max_heap.insert((count - 1, character))
+
+            # if count value is 1, then this character will be last seen now, no need to push it again. Else, push
+            # in O(log(n)) time.
+            if count > 1:
+                max_heap.insert((count - 1, character))
+
+        # while the max heap is not empty, update the result. This will take O(n * log(n)) time.
         while not max_heap.is_empty():
             count, _ = max_heap.pop()
             result += count**2
+
+        # return the result.
         return result
 
 
