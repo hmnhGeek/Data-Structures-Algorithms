@@ -74,7 +74,7 @@ class Solution:
         result = []
         for i in range(n):
             max_heap.insert((arr[i], i))
-            if max_heap.heap[0][1] <= i - k:
+            while max_heap.heap[0][1] <= i - k:
                 max_heap.pop()
             if i >= k - 1:
                 result.append(max_heap.heap[0][0])
@@ -82,3 +82,4 @@ class Solution:
 
 
 print(Solution.get_sliding_window_maximum([1, 2, 3, 1, 4, 5, 2, 3, 6], 3))
+print(Solution.get_sliding_window_maximum([5, 1, 3, 4, 2, 6], 1))
