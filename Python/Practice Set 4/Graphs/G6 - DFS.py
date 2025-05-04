@@ -13,6 +13,10 @@ class Solution:
 
     @staticmethod
     def dfs(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         # create a blank visited map of size O(V).
         visited = {i: False for i in graph}
 
