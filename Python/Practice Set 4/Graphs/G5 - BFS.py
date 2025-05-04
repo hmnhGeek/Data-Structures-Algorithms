@@ -35,14 +35,22 @@ class Queue:
 class Solution:
     @staticmethod
     def _bfs(graph, start_node, visited):
+        # edge case
         if start_node not in graph:
             return
+
+        # initialize a queue and push the start node into it and mark it as visited.
         queue = Queue()
         queue.push(start_node)
         visited[start_node] = True
+
+        # standard BFS...
         while not queue.is_empty():
+            # pop the node and print it.
             node = queue.pop()
             print(node, end=" ")
+
+            # push the next non-visited adjacent node into queue.
             for adj_node in graph[node]:
                 if not visited[adj_node]:
                     queue.push(adj_node)
@@ -50,9 +58,13 @@ class Solution:
 
     @staticmethod
     def bfs(graph):
+        # create a visited array
         visited = {i: False for i in graph}
+
+        # traverse for each component in the graph
         for node in graph:
             if not visited[node]:
+                # start bfs from the first node of the component.
                 Solution._bfs(graph, node, visited)
         print()
 
