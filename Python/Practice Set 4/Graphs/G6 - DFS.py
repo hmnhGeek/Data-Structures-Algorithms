@@ -1,16 +1,24 @@
 class Solution:
     @staticmethod
     def _dfs(graph, node, visited):
+        # mark the node as visited and push the node to result list.
         visited[node] = True
         print(node, end=" ")
+
+        # loop on the adjacent nodes of this graph
         for adj_node in graph[node]:
+            # if the adjacent node is not visited yet, recursively call DFS on it.
             if not visited[adj_node]:
                 Solution._dfs(graph, adj_node, visited)
 
     @staticmethod
     def dfs(graph):
+        # create a blank visited map of size O(V).
         visited = {i: False for i in graph}
+
+        # loop on the graph nodes
         for node in graph:
+            # if the node is not visited, initiate a DFS from it in O(V + E) time.
             if not visited[node]:
                 Solution._dfs(graph, node, visited)
         print()
