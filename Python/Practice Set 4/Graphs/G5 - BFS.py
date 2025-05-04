@@ -31,3 +31,39 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def _bfs(graph, start_node, visited):
+        if start_node not in graph:
+            return
+        queue = Queue()
+        queue.push(start_node)
+        visited[start_node] = True
+        while not queue.is_empty():
+            node = queue.pop()
+            print(node, end=" ")
+            for adj_node in graph[node]:
+                if not visited[adj_node]:
+                    queue.push(adj_node)
+                    visited[adj_node] = True
+
+    @staticmethod
+    def bfs(graph):
+        visited = {i: False for i in graph}
+        for node in graph:
+            if not visited[node]:
+                Solution._bfs(graph, node, visited)
+
+
+graph1 = {
+    1: [2, 6],
+    2: [1, 3, 4],
+    3: [2],
+    4: [2, 5],
+    5: [4, 7],
+    6: [1, 7, 8],
+    7: [5, 6],
+    8: [6]
+}
+Solution.bfs(graph1)
