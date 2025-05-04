@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/find-the-row-with-maximum-number-1s/
+# Solution - https://www.youtube.com/watch?v=SCz-1TtYxDI&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=25
+
+
 class Solution:
     @staticmethod
     def _ones_count(mtx, i, m):
@@ -12,6 +16,10 @@ class Solution:
 
     @staticmethod
     def get_row_with_maximum_1s(mtx):
+        """
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+        """
+
         # get the dimensions of the matrix.
         n, m = len(mtx), len(mtx[0])
 
