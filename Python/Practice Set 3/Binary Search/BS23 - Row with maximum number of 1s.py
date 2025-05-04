@@ -12,14 +12,24 @@ class Solution:
 
     @staticmethod
     def get_row_with_maximum_1s(mtx):
+        # get the dimensions of the matrix.
         n, m = len(mtx), len(mtx[0])
+
+        # store the count of ones and the resultant index at which the maximum ones are found.
         max1s = 0
         max1s_row_index = -1
+
+        # loop in the matrix rows in n-iterations.
         for i in range(n):
+            # get the count of 1s in each row in O(log(m)) time.
             one_count = Solution._ones_count(mtx, i, m)
+
+            # update the resultant variable only if the count of 1s in this row > max ones count.
             if one_count > max1s:
                 max1s_row_index = i
                 max1s = one_count
+
+        # return the resultant index.
         return max1s_row_index
 
 
