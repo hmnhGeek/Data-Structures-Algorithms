@@ -54,6 +54,7 @@ class Solution:
         for node in graph:
             if not visited[node]:
                 Solution._bfs(graph, node, visited)
+        print()
 
 
 graph1 = {
@@ -67,3 +68,21 @@ graph1 = {
     8: [6]
 }
 Solution.bfs(graph1)
+
+graph2 = {
+    0: [1, 2, 3],
+    1: [0],
+    2: [0, 4],
+    3: [0],
+    4: [2]
+}
+Solution.bfs(graph2)
+
+graph3 = {
+    0: [1, 2],
+    1: [0, 2],
+    2: [1, 0, 3, 4],
+    3: [2],
+    4: [2]
+}
+Solution.bfs(graph3)
