@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/k-th-element-of-2-sorted-array_1164159
+# Solution - https://www.youtube.com/watch?v=D1oDwWCq50g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=24
+
+
 class Solution:
     @staticmethod
     def find_kth_element(arr1, arr2, k):
