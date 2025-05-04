@@ -1,0 +1,29 @@
+class Solution:
+    @staticmethod
+    def _dfs(graph, node, visited):
+        visited[node] = True
+        print(node, end=" ")
+        for adj_node in graph[node]:
+            if not visited[adj_node]:
+                Solution._dfs(graph, adj_node, visited)
+
+    @staticmethod
+    def dfs(graph):
+        visited = {i: False for i in graph}
+        for node in graph:
+            if not visited[node]:
+                Solution._dfs(graph, node, visited)
+        print()
+
+
+graph1 = {
+    1: [2, 3],
+    2: [1, 5, 6],
+    3: [1, 4, 7],
+    4: [3, 8],
+    5: [2],
+    6: [2],
+    7: [3, 8],
+    8: [4, 7]
+}
+Solution.dfs(graph1)
