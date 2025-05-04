@@ -31,3 +31,45 @@ matrix1 = [
     [0, 1, 1, 1, 1]
 ]
 print(Solution.get_row_with_maximum_1s(matrix1))
+
+matrix2 = [
+    [1, 1, 1],
+    [0, 0, 1],
+    [0, 0, 0]
+]
+print(Solution.get_row_with_maximum_1s(matrix2))
+
+matrix3 = [
+    [1, 1],
+    [1, 1]
+]
+print(Solution.get_row_with_maximum_1s(matrix3))
+
+matrix4 = [
+    [0, 0, 0],
+    [0, 1, 1]
+]
+print(Solution.get_row_with_maximum_1s(matrix4))
+
+matrix5 = [
+    [0, 0],
+    [1, 1],
+    [0, 0]
+]
+print(Solution.get_row_with_maximum_1s(matrix5))
+
+matrix6 = [
+    [0, 1, 1, 1],
+    [0, 0, 1, 1],
+    [1, 1, 1, 1],
+    [0, 0, 0, 0]
+]
+print(Solution.get_row_with_maximum_1s(matrix6))
+
+matrix7 = [
+    [0, 0, 1, 1],
+    [0, 1, 1, 1],
+    [0, 0, 1, 1],
+    [0, 0, 0, 0]
+]
+print(Solution.get_row_with_maximum_1s(matrix7))
