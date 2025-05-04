@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1
+# Solution - https://www.youtube.com/watch?v=-tgVpUgsQ5k&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -58,6 +62,10 @@ class Solution:
 
     @staticmethod
     def bfs(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         # create a visited array
         visited = {i: False for i in graph}
 
