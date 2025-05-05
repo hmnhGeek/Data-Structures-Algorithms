@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/find-the-longest-substring-with-k-unique-characters-in-a-given-string/
+# Solution - https://www.youtube.com/watch?v=teM9ZsVRQyc&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=6
+
+
 class Solution:
     @staticmethod
     def get_longest_substring(string, k):
+        """
+            Time complexity is O(26n) and space complexity is O(26).
+        """
+
         # edge case
         if k <= 0:
             return
