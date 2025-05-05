@@ -8,7 +8,6 @@ class Solution:
         """
             Time complexity is O(log(nm)) and space complexity is O(1).
         """
-
         n, m = len(mtx), len(mtx[0])
         low, high = 0, n*m - 1
         while low <= high:
