@@ -1,6 +1,14 @@
+# Problem link - https://leetcode.com/problems/fruit-into-baskets/
+# Solution - https://www.youtube.com/watch?v=e3bs0uA1NhQ&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=5
+
+
 class Solution:
     @staticmethod
     def fruits_into_baskets(arr, k=2):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         # define window variables
         n = len(arr)
         left = right = 0
