@@ -1,6 +1,14 @@
+# Problem link - https://leetcode.com/problems/search-a-2d-matrix-ii/
+# Solution - https://www.youtube.com/watch?v=9ZbB397jU4k&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=27
+
+
 class Solution:
     @staticmethod
     def search(mtx, target):
+        """
+            Time complexity is O(n + m) and space complexity is O(1).
+        """
+
         n, m = len(mtx), len(mtx[0])
         low, high = 0, m - 1
         while 0 <= low < n and 0 <= high < m:
