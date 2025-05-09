@@ -1,5 +1,15 @@
 def is_palindrome(string):
-    return string == string[-1:-len(string)-1:-1]
+    if len(string) == 0 or len(string) == 1:
+        return True
+    n = len(string)
+    i, j = 0, n - 1
+    while i <= j:
+        if string[i] == string[j]:
+            i += 1
+            j -= 1
+        else:
+            return False
+    return True
 
 
 def recursive():
