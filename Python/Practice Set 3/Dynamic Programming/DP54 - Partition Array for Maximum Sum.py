@@ -56,6 +56,33 @@ def memoized():
     print(partition([1], 1))
 
 
+def tabulation():
+    """
+        Time complexity is O(n*k) and space complexity is O(n).
+    """
+    def partition(arr, k):
+        n = len(arr)
+        dp = {i: -1e6 for i in range(n + 1)}
+        dp[n] = 0
+        for i in range(n - 1, -1, -1):
+            max_cost = -1e6
+            length = 0
+            max_value = -1e6
+            for j in range(i, min(n, i + k)):
+                length += 1
+                max_value = max(max_value, arr[j])
+                cost = max_value * length + dp[j + 1]
+                max_cost = max(max_cost, cost)
+            dp[i] = max_cost
+        return dp[0]
+
+    print(partition([1, 15, 7, 9, 2, 5, 10], 3))
+    print(partition([1, 4, 1, 5, 7, 3, 6, 1, 9, 9, 3], 4))
+    print(partition([1], 1))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
