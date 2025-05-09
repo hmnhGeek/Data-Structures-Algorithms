@@ -68,6 +68,37 @@ def memoized():
     print(get_min_partitions_count("bababcbadcede"))
 
 
+def tabulation():
+    """
+        Time complexity is O(n^2 * m) and space complexity is O(n*m).
+    """
+    def get_min_partitions_count(string):
+        n = len(string)
+        dp = {i: 1e6 for i in range(n + 1)}
+        dp[n] = 0
+        for i in range(n - 1, -1, -1):
+            min_cost = 1e6
+            for j in range(i, n):
+                substring = string[i:j + 1]
+                if is_palindrome(substring):
+                    cost = 1 + dp[j + 1]
+                    min_cost = min(min_cost, cost)
+            dp[i] = min_cost
+        return dp[0] - 1
+
+    print(get_min_partitions_count("aaccb"))
+    print(get_min_partitions_count("ababa"))
+    print(get_min_partitions_count("aababa"))
+    print(get_min_partitions_count("aab"))
+    print(get_min_partitions_count("a"))
+    print(get_min_partitions_count("ab"))
+    print(get_min_partitions_count("geek"))
+    print(get_min_partitions_count("ababbbabbababa"))
+    print(get_min_partitions_count("bababcbadcede"))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
