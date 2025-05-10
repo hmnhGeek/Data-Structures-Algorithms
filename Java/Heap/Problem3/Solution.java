@@ -1,5 +1,9 @@
 package Heap.Problem3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 class HeapObject implements Comparable<HeapObject> {
     private Integer element;
     private Integer index;
@@ -24,4 +28,25 @@ class HeapObject implements Comparable<HeapObject> {
 }
 
 public class Solution {
+    private static List<Integer> getSlidingWindowMaximum(List<Integer> arr, Integer k) {
+        if (k <= 0 || k > arr.size()) return null;
+        MaxHeap<HeapObject> maxHeap = new MaxHeap<>();
+        List<Integer> result = new ArrayList<>();
+        int n = arr.size();
+        for (int i = 0; i < n; i += 1) {
+            maxHeap.insert(new HeapObject(arr.get(i), i));
+            while (maxHeap.getHeap().getFirst().getIndex() <= i - k) {
+                maxHeap.pop();
+            }
+            if (i >= k - 1) {
+                result.add(maxHeap.getHeap().getFirst().getElement());
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        // Example 1
+        System.out.println(getSlidingWindowMaximum(Arrays.asList(1, 2, 3, 1, 4, 5, 2, 3, 6), 3));
+    }
 }
