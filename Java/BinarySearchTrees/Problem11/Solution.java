@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/merge-two-balanced-binary-search-trees/
+
 package BinarySearchTrees.Problem11;
 
 import java.util.ArrayList;
@@ -11,18 +13,25 @@ public class Solution {
          */
 
         // Example 1
-        BinarySearchTree<Integer> bst1 = new BinarySearchTree<>();
-        for (Integer i : Arrays.asList(100, 50, 300, 20, 70)) {
-            bst1.insert(i);
-        }
-        BinarySearchTree<Integer> bst2 = new BinarySearchTree<>();
-        for (Integer i : Arrays.asList(80, 40, 120)) {
-            bst2.insert(i);
-        }
-
+        BinarySearchTree<Integer> bst1 = constructBstFromArray(Arrays.asList(100, 50, 300, 20, 70));
+        BinarySearchTree<Integer> bst2 = constructBstFromArray(Arrays.asList(80, 40, 120));
         // This will take O(n + m) time and O(n + m) space.
         BinarySearchTree<Integer> bst = mergeBSTs(bst1, bst2);
         bst.show();
+
+        // Example 2
+        BinarySearchTree<Integer> bst3 = constructBstFromArray(Arrays.asList(3, 1, 5));
+        BinarySearchTree<Integer> bst4 = constructBstFromArray(Arrays.asList(4, 2, 6));
+        BinarySearchTree<Integer> bst34 = mergeBSTs(bst3, bst4);
+        bst34.show();
+    }
+
+    private static <T extends Comparable<T>> BinarySearchTree<T> constructBstFromArray(List<T> arr) {
+        BinarySearchTree<T> bst = new BinarySearchTree<>();
+        for (T i : arr) {
+            bst.insert(i);
+        }
+        return bst;
     }
 
     public static <T extends Comparable<T>> BinarySearchTree<T> mergeBSTs(BinarySearchTree<T> bst1, BinarySearchTree<T> bst2) {
