@@ -1,11 +1,17 @@
 package BinaryTrees.Problem4;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Solution {
-    private static <T> Integer getHeight(Node<T> root) {
+    private static <T> Integer getHeight(Node<T> root, List<Integer> diameter) {
         if (root == null) {
             return 0;
         }
-        return 1 + Math.max(getHeight(root.getLeft()), getHeight(root.getRight()));
+        Integer leftHeight = getHeight(root.getLeft(), diameter);
+        Integer rightHeight = getHeight(root.getRight(), diameter);
+        diameter.set(0, Math.max(diameter.getFirst(), 1 + leftHeight + rightHeight));
+        return 1 + Math.max(leftHeight, rightHeight);
     }
 
     public static <T> Integer getDiameter(Node<T> root) {
@@ -13,7 +19,9 @@ public class Solution {
             Time complexity is O(n) and space complexity is O(h).
          */
         // The formula for diameter of a binary tree. This will take in total O(n) time & O(h) space.
-        return 1 + getHeight(root.getLeft()) + getHeight(root.getRight());
+        List<Integer> diameter = Arrays.asList(0);
+        getHeight(root, diameter);
+        return diameter.getFirst();
     }
 
     public static void main(String[] args) {
