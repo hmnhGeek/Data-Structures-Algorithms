@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/#better-approach-1-using-maxheap-n-log-n-time-and-on-space
+
+
 package Heap.Problem3;
 
 import java.util.ArrayList;
@@ -29,15 +32,28 @@ class HeapObject implements Comparable<HeapObject> {
 
 public class Solution {
     private static List<Integer> getSlidingWindowMaximum(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
+
+        // edge case
         if (k <= 0 || k > arr.size()) return null;
+
+        // define a max heap which can store at max `n` elements.
         MaxHeap<HeapObject> maxHeap = new MaxHeap<>();
         List<Integer> result = new ArrayList<>();
         int n = arr.size();
+
         for (int i = 0; i < n; i += 1) {
+            // push the current element into the max heap
             maxHeap.insert(new HeapObject(arr.get(i), i));
+
+            // Remove elements outside the window
             while (maxHeap.getHeap().getFirst().getIndex() <= i - k) {
                 maxHeap.pop();
             }
+
+            // Append current max to result once the first window is completed
             if (i >= k - 1) {
                 result.add(maxHeap.getHeap().getFirst().getElement());
             }
