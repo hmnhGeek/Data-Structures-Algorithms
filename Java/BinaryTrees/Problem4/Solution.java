@@ -40,5 +40,23 @@ public class Solution {
         System.out.println(getDiameter(n5));
 
         // Example 3
+        Node<Integer> node1 = new Node<>(1);
+        Node<Integer> node2 = new Node<>(2);
+        Node<Integer> node3 = new Node<>(3);
+        Node<Integer> node4 = new Node<>(4);
+        Node<Integer> node5 = new Node<>(5);
+        Node<Integer> node6 = new Node<>(6);
+        Node<Integer> node7 = new Node<>(7);
+        Node<Integer> node8 = new Node<>(8);
+        Node<Integer> node9 = new Node<>(9);
+        node1.setLeft(node2);
+        node1.setRight(node3);
+        node3.setLeft(node4);
+        node3.setRight(node7);
+        node4.setLeft(node5);
+        node7.setRight(node8);
+        node5.setLeft(node6);
+        node8.setRight(node9);
+        System.out.println(getDiameter(node1));
     }
 }
