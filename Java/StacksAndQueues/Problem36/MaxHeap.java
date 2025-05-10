@@ -1,10 +1,15 @@
 package StacksAndQueues.Problem36;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class MaxHeap<T extends Comparable<T>> implements Heap<T> {
     private List<T> heap;
+
+    public MaxHeap() {
+        this.heap = new ArrayList<>();
+    }
 
     @Override
     public List<T> getHeap() {
