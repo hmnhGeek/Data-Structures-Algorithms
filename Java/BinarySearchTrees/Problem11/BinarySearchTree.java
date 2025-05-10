@@ -9,6 +9,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
         this.diameter = 0;
     }
 
+    public Node<T> getRoot() {
+        return root;
+    }
+
+    public Integer getDiameter() {
+        return diameter;
+    }
+
     private void recalcAugmentation(Node<T> parent) {
         this.diameter = 0;
         while (parent != null) {
@@ -78,7 +86,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (node.getLeft() == null && node.getRight() == null) {
             Node<T> parent = node.getParent();
             if (parent != null) {
-                if (parent.getLeft().equals(node)) {
+                if (parent.getLeft() == node) {
                     parent.setLeft(null);
                 } else {
                     parent.setRight(null);
@@ -165,6 +173,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             stringBuilder.append(String.format(" size = %d,", start.getSize()));
             stringBuilder.append(String.format(" height = %d,", start.getHeight()));
             stringBuilder.append(String.format(" diameter = %d", start.getDiameter()));
+            System.out.println(stringBuilder);
             show(start.getRight());
         }
     }
