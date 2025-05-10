@@ -33,7 +33,7 @@ public class LinkedList<T> {
         if (this.length == 1) return String.format("[%s]", this.head.getData());
         StringBuilder stringBuilder = new StringBuilder(String.format("[%s, ", this.head.getData()));
         Node<T> curr = this.head.getNext();
-        while (curr.getNext() != this.tail) {
+        while (curr != this.tail) {
             stringBuilder.append(String.format("%s, ", curr.getData()));
             curr = curr.getNext();
         }
