@@ -24,6 +24,12 @@ public class Solution {
         BinarySearchTree<Integer> bst4 = constructBstFromArray(Arrays.asList(4, 2, 6));
         BinarySearchTree<Integer> bst34 = mergeBSTs(bst3, bst4);
         bst34.show();
+
+        // Example 3
+        BinarySearchTree<Integer> bst5 = constructBstFromArray(Arrays.asList(5, 3, 0));
+        BinarySearchTree<Integer> bst6 = constructBstFromArray(Arrays.asList(8, 2, 1, 10));
+        BinarySearchTree<Integer> bst56 = mergeBSTs(bst5, bst6);
+        bst56.show();
     }
 
     private static <T extends Comparable<T>> BinarySearchTree<T> constructBstFromArray(List<T> arr) {
