@@ -1,5 +1,8 @@
 package LinkedLists.Problem7;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedList<T> {
     private Node<T> head;
     private Node<T> tail;
@@ -39,5 +42,32 @@ public class LinkedList<T> {
         }
         stringBuilder.append(String.format("%s]", this.tail.getData()));
         return stringBuilder.toString();
+    }
+
+    public void removeDuplicates() {
+        if (this.length == 0 || this.length == 1) return;
+        Set<T> set = new HashSet<>();
+        Node<T> curr = this.head;
+        Node<T> dummyNode = new Node<>(null);
+        Node<T> prev = dummyNode;
+        while (curr != null) {
+            Node<T> nextCurr = curr.getNext();
+
+            if (!set.contains(curr.getData())) {
+                prev.setNext(curr);
+                prev = curr;
+                set.add(curr.getData());
+                curr.setNext(null);
+            } else  {
+                this.length -= 1;
+            }
+            curr = nextCurr;
+        }
+        this.head = dummyNode.getNext();
+        Node<T> node = this.head;
+        while (node.getNext() != null) {
+            node = node.getNext();
+        }
+        this.tail = node;
     }
 }
