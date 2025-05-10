@@ -10,17 +10,26 @@ public class Solution {
         }
         Integer leftHeight = getHeight(root.getLeft(), diameter);
         Integer rightHeight = getHeight(root.getRight(), diameter);
+
+        // update the diameter
         diameter.set(0, Math.max(diameter.getFirst(), 1 + leftHeight + rightHeight));
+
+        // return the height
         return 1 + Math.max(leftHeight, rightHeight);
     }
 
     public static <T> Integer getDiameter(Node<T> root) {
         /*
-            Time complexity is O(n) and space complexity is O(h).
+            Time complexity is O(n) and space complexity is O(n).
          */
-        // The formula for diameter of a binary tree. This will take in total O(n) time & O(h) space.
+
+        // Store the maximum length path in an array of size 1.
         List<Integer> diameter = Arrays.asList(0);
+
+        // update the maximum length path, which would be the diameter.
         getHeight(root, diameter);
+
+        // return the diameter.
         return diameter.getFirst();
     }
 
