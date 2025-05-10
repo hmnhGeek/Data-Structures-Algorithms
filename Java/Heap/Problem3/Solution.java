@@ -46,7 +46,9 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        // Example 1
         System.out.println(getSlidingWindowMaximum(Arrays.asList(1, 2, 3, 1, 4, 5, 2, 3, 6), 3));
+        System.out.println(getSlidingWindowMaximum(Arrays.asList(5, 1, 3, 4, 2, 6), 1));
+        System.out.println(getSlidingWindowMaximum(Arrays.asList(1, 3, 2, 1, 7, 3), 3));
+        System.out.println(getSlidingWindowMaximum(Arrays.asList(1, 3, -1, -3, 5, 3, 6, 7), 3));
     }
 }

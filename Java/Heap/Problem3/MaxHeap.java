@@ -18,7 +18,7 @@ public class MaxHeap<T extends Comparable<T>> implements Heap<T> {
 
     @Override
     public Integer getChildIndex(Integer lci, Integer rci) {
-        if (lci == null || rci == null) {
+        if (lci == null && rci == null) {
             return null;
         }
         if (lci == null) {

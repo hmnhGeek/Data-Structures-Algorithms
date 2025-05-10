@@ -11,18 +11,18 @@ public interface Heap<T extends Comparable<T>> {
 
     default Integer getLci(Integer pi) {
         Integer lci = 2*pi + 1;
-        return 0 <= lci && lci < getHeap().size() ? lci : 0;
+        return 0 <= lci && lci < getHeap().size() ? lci : null;
     }
 
     default Integer getRci(Integer pi) {
         Integer rci = 2*pi + 2;
-        return 0 <= rci && rci < getHeap().size() ? rci : 0;
+        return 0 <= rci && rci < getHeap().size() ? rci : null;
     }
 
     default Integer getPi(Integer ci) {
         if (ci.equals(0)) return null;
         Integer pi = (ci - 1)/2;
-        return 0 <= pi && pi < getHeap().size() ? pi : 0;
+        return 0 <= pi && pi < getHeap().size() ? pi : null;
     }
 
     default void insert(T x) {
