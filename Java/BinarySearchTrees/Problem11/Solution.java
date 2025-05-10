@@ -6,6 +6,10 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
+        /*
+            Time complexity is O(n + m) and space complexity is O(n + m).
+         */
+
         // Example 1
         BinarySearchTree<Integer> bst1 = new BinarySearchTree<>();
         for (Integer i : Arrays.asList(100, 50, 300, 20, 70)) {
@@ -15,14 +19,21 @@ public class Solution {
         for (Integer i : Arrays.asList(80, 40, 120)) {
             bst2.insert(i);
         }
+
+        // This will take O(n + m) time and O(n + m) space.
         BinarySearchTree<Integer> bst = mergeBSTs(bst1, bst2);
         bst.show();
     }
 
     public static <T extends Comparable<T>> BinarySearchTree<T> mergeBSTs(BinarySearchTree<T> bst1, BinarySearchTree<T> bst2) {
+        // This will take O(n + m) time and O(n + m) space.
         List<T> inorder1 = getInorder(bst1);
         List<T> inorder2 = getInorder(bst2);
+
+        // this will take O(n + m) time and O(n + m) space.
         List<T> inorder = mergeSortedArrays(inorder1, inorder2);
+
+        // This will take O(n + m) time and O(n + m) space.
         BinarySearchTree<T> result = new BinarySearchTree<>();
         balancedInsert(result, inorder, 0, inorder.size() - 1);
         return result;
