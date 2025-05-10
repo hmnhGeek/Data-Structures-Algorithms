@@ -1,3 +1,5 @@
+// Problem link - https://www.naukri.com/code360/problems/remove-duplicates-from-unsorted-linked-list_1069331
+
 package LinkedLists.Problem7;
 
 import java.util.HashSet;
@@ -45,6 +47,10 @@ public class LinkedList<T> {
     }
 
     public void removeDuplicates() {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
+
         // edge cases
         if (this.length == 0 || this.length == 1) return;
 
