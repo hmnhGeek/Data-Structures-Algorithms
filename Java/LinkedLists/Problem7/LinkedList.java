@@ -45,29 +45,45 @@ public class LinkedList<T> {
     }
 
     public void removeDuplicates() {
+        // edge cases
         if (this.length == 0 || this.length == 1) return;
+
+        // create a hash set to store visited data nodes.
         Set<T> set = new HashSet<>();
+
+        // important pointers
         Node<T> curr = this.head;
         Node<T> dummyNode = new Node<>(null);
         Node<T> prev = dummyNode;
+
+        // traverse the linked list in O(n) time.
         while (curr != null) {
+            // store the pointer to the next curr node.
             Node<T> nextCurr = curr.getNext();
 
+            // if the current data point is first visited
             if (!set.contains(curr.getData())) {
+                // link it with prev node
                 prev.setNext(curr);
                 prev = curr;
+
+                // add this data point into the set
                 set.add(curr.getData());
+
+                // de-link curr from the original list.
                 curr.setNext(null);
             } else  {
+                // since the data point is already present in the set, we are not adding it,
+                // simply reduce the length.
                 this.length -= 1;
             }
+
+            // move to the next curr.
             curr = nextCurr;
         }
+
+        // update head and tail pointers.
         this.head = dummyNode.getNext();
-        Node<T> node = this.head;
-        while (node.getNext() != null) {
-            node = node.getNext();
-        }
-        this.tail = node;
+        this.tail = prev;
     }
 }
