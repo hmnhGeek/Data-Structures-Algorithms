@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/kth-smallest-element5635/1
+
+
 package Arrays.Problem3;
 
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ class ResultObject<T extends Comparable<T>> {
 public class Solution {
     public static void main(String[] args) {
         System.out.println(getKths(new ArrayList<>(Arrays.asList(7, 10, 4, 3, 20, 15)), 3));
+        System.out.println(getKths(new ArrayList<>(Arrays.asList(2, 3, 1, 20, 15)), 4));
     }
 
     private static <T extends Comparable<T>> T getKthSmallest(List<T> arr, Integer k) {
@@ -37,6 +41,9 @@ public class Solution {
     }
 
     public static <T extends Comparable<T>> ResultObject<T> getKths(List<T> arr, Integer k) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         T kthSmallest = getKthSmallest(arr, k);
         T kthLargest = getKthLargest(arr, k);
         return new ResultObject<>(kthSmallest, kthLargest);
