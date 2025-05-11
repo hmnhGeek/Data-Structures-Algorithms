@@ -41,5 +41,7 @@ public class Solution {
         System.out.println(allocateBooks(Arrays.asList(12, 34, 67, 90), 2));
         System.out.println(allocateBooks(Arrays.asList(15, 17, 20), 5));
         System.out.println(allocateBooks(Arrays.asList(22, 23, 67), 1));
+        System.out.println(allocateBooks(Arrays.asList(25, 46, 28, 49, 24), 4));
+        System.out.println(allocateBooks(Arrays.asList(15, 17, 20), 2));
     }
 }
