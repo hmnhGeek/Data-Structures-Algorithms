@@ -63,14 +63,26 @@ public class Solution {
         if (0 <= x - 1 && x - 1 < n && !visited.get(x - 1).get(y) && matrix.get(x - 1).get(y) == 1) {
             result.add(List.of(x - 1, y));
         }
+        if (0 <= x - 1 && x - 1 < n && 0 <= y + 1 && y + 1 < m && !visited.get(x - 1).get(y + 1) && matrix.get(x - 1).get(y + 1) == 1) {
+            result.add(List.of(x - 1, y + 1));
+        }
         if (0 <= y + 1 && y + 1 < m && !visited.get(x).get(y + 1) && matrix.get(x).get(y + 1) == 1) {
             result.add(List.of(x, y + 1));
+        }
+        if (0 <= y + 1 && y + 1 < m && 0 <= x + 1 && x + 1 < n && !visited.get(x + 1).get(y + 1) && matrix.get(x + 1).get(y + 1) == 1) {
+            result.add(List.of(x + 1, y + 1));
         }
         if (0 <= x + 1 && x + 1 < n && !visited.get(x + 1).get(y) && matrix.get(x + 1).get(y) == 1) {
             result.add(List.of(x + 1, y));
         }
+        if (0 <= x + 1 && x + 1 < n && 0 <= y - 1 && y - 1 < m && !visited.get(x + 1).get(y - 1) && matrix.get(x + 1).get(y - 1) == 1) {
+            result.add(List.of(x + 1, y - 1));
+        }
         if (0 <= y - 1 && y - 1 < m && !visited.get(x).get(y - 1) && matrix.get(x).get(y - 1) == 1) {
             result.add(List.of(x, y - 1));
+        }
+        if (0 <= y - 1 && y - 1 < m && 0 <= x - 1 && x - 1 < n && !visited.get(x - 1).get(y - 1) && matrix.get(x - 1).get(y - 1) == 1) {
+            result.add(List.of(x - 1, y - 1));
         }
         return result;
     }
