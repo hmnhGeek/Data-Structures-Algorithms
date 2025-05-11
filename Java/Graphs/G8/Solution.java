@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/find-the-number-of-islands/1
+// Solution - https://www.youtube.com/watch?v=muncqlKJrH0&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=8
+
 package Graphs.G8;
 
 import java.util.ArrayList;
@@ -25,6 +28,9 @@ class QueueElement {
 
 public class Solution {
     public static Integer getNumberOfIslands(List<List<Integer>> matrix) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
         int n = matrix.size(), m = matrix.getFirst().size();
         Integer numComponents = 0;
         List<List<Boolean>> visited = new ArrayList<>();
