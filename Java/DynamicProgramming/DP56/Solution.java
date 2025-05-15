@@ -1,3 +1,6 @@
+// Problem link - https://www.naukri.com/code360/problems/count-square-submatrices-with-all-ones_3751502?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=auS1fynpnjo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=57
+
 package DynamicProgramming.DP56;
 
 import java.util.ArrayList;
@@ -7,6 +10,10 @@ public class Solution {
 
     // Function to count the number of square submatrices filled with 1s
     public static Integer countSquareSubMatrices(List<List<Integer>> matrix) {
+        /*
+            Time complexity is O(mn) and space complexity is O(mn).
+         */
+
         int n = matrix.size(), m = matrix.getFirst().size();
 
         // Initialize the DP matrix with first row and first column values handled
