@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/
+// Solution - https://www.youtube.com/watch?v=tOylVCugy9k&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=56
+
 package DynamicProgramming.DP55;
 
 import java.util.List;
@@ -10,6 +13,10 @@ public class Utils {
     }
 
     public static Integer getMaxAreaInHistogram(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(n) for the stack.
+         */
+
         // create required variables.
         Stack<Integer> stack = new Stack<>();
         int n = arr.size();

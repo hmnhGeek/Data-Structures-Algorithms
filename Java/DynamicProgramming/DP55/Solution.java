@@ -46,11 +46,19 @@ public class Solution {
     }
 
     public static Integer maxAreaRectangle(List<List<Integer>> matrix) {
+        /*
+            Time complexity is O(nm) and space complexity is O(m).
+         */
+
         Integer maxArea = 0;
         int n = matrix.size(), m = matrix.getFirst().size();
+
+        // create a previous row. It will take O(m) extra space.
         List<Integer> prevRow = new ArrayList<>(Collections.nCopies(m, 0));
         for (int i = 0; i < n; i += 1) {
             List<Integer> currRow = matrix.get(i);
+
+            // create a histogram with another O(m) space and update the max area.
             List<Integer> histogram = new ArrayList<>();
             for (int j = 0; j < m; j += 1) {
                 if (currRow.get(j).equals(0)) {
@@ -59,8 +67,12 @@ public class Solution {
                     histogram.add(currRow.get(j) + prevRow.get(j));
                 }
             }
+
+            // get the max area in O(m) time and O(m) space.
             Integer area = Utils.getMaxAreaInHistogram(histogram);
             maxArea = Math.max(maxArea, area);
+
+            // remember to update previous row.
             prevRow = histogram;
         }
         return maxArea;
