@@ -137,3 +137,47 @@ class BinarySearchTree:
     def show(self):
         self._show(self.root)
         print()
+
+
+class Solution:
+    @staticmethod
+    def get_inorder(root, inorder):
+        if root:
+            Solution.get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution.get_inorder(root.right, inorder)
+
+    @staticmethod
+    def _get_merged_inorder(left, right):
+        merged = []
+        i, j = 0, 0
+
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                merged.append(left[i])
+                i += 1
+            else:
+                merged.append(right[j])
+                j += 1
+
+        while i < len(left):
+            merged.append(left[i])
+            i += 1
+
+        while j < len(right):
+            merged.append(right[j])
+            j += 1
+
+        return merged
+
+    @staticmethod
+    def merge_bsts(bst1: BinarySearchTree, bst2: BinarySearchTree) -> BinarySearchTree:
+        bst = BinarySearchTree()
+
+        inorder1 = []
+        Solution.get_inorder(bst1.root, inorder1)
+
+        inorder2 = []
+        Solution.get_inorder(bst2.root, inorder2)
+
+        inorder = Solution._get_merged_inorder(inorder1, inorder2)
