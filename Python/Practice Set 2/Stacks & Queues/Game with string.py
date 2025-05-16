@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -63,3 +66,30 @@ class MaxHeap:
         self.max_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def game_with_string(string, k):
+        if k < 0 or k > len(string):
+            return -1
+
+        n = len(string)
+        d = dict(Counter(string))
+        max_heap = MaxHeap()
+        for key, val in d.items():
+            max_heap.insert((val, key))
+        counter = 0
+        while counter != k:
+            freq, character = max_heap.pop()
+            counter += 1
+            if freq - 1 >= 0:
+                max_heap.insert((freq - 1, character))
+        result = 0
+        while not max_heap.is_empty():
+            freq, _ = max_heap.pop()
+            result += freq**2
+        return result
+
+
+print(Solution.game_with_string("abccc", 1))
+print(Solution.game_with_string("aabcbcbcabcc", 3))
