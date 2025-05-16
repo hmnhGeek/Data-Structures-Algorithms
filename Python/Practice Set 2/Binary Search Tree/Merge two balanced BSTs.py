@@ -213,6 +213,9 @@ class Solution:
 
 
 def construct_bst_from_array(arr):
+    """
+        Time complexity is O(n) and space complexity is O(n).
+    """
     bst = BinarySearchTree()
     for x in arr:
         bst.insert(x)
