@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/game-with-string4100/1
+
+
 from collections import Counter
 
 
@@ -70,20 +73,31 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def game_with_string(string, k):
+        """
+            Time complexity is O({n + k} * log(n)) and space complexity is O(n).
+        """
+
+        # edge case
         if k < 0 or k > len(string):
             return -1
 
-        n = len(string)
+        # push frequencies of characters into the max heap in O(n * log(n)) time and O(n) space.
         d = dict(Counter(string))
         max_heap = MaxHeap()
         for key, val in d.items():
             max_heap.insert((val, key))
+
+        # initialize a counter to track k-removals.
         counter = 0
+
+        # This loop will run for k times, i.e., O(k * log(n)) time.
         while counter != k:
             freq, character = max_heap.pop()
             counter += 1
             if freq - 1 >= 0:
                 max_heap.insert((freq - 1, character))
+
+        # calculate the result value in O(n * log(n)) time.
         result = 0
         while not max_heap.is_empty():
             freq, _ = max_heap.pop()
