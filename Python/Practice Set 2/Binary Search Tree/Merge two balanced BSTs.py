@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/merge-two-balanced-binary-search-trees/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -142,6 +145,7 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def get_inorder(root, inorder):
+        # Perform inorder traversal and collect node values in the 'inorder' list
         if root:
             Solution.get_inorder(root.left, inorder)
             inorder.append(root.data)
@@ -149,9 +153,11 @@ class Solution:
 
     @staticmethod
     def _get_merged_inorder(left, right):
+        # Merge two sorted inorder traversal lists into one sorted list
         merged = []
         i, j = 0, 0
 
+        # Merge elements from both lists in sorted order
         while i < len(left) and j < len(right):
             if left[i] <= right[j]:
                 merged.append(left[i])
@@ -160,10 +166,12 @@ class Solution:
                 merged.append(right[j])
                 j += 1
 
+        # Append any remaining elements from the left list
         while i < len(left):
             merged.append(left[i])
             i += 1
 
+        # Append any remaining elements from the right list
         while j < len(right):
             merged.append(right[j])
             j += 1
@@ -172,20 +180,30 @@ class Solution:
 
     @staticmethod
     def merge_bsts(bst1: BinarySearchTree, bst2: BinarySearchTree) -> BinarySearchTree:
+        """
+            Time complexity is O(n + m) and space complexity is O(n + m).
+        """
+
+        # Merge two BSTs into a balanced BST
         bst = BinarySearchTree()
 
+        # Get inorder traversal of both BSTs
         inorder1 = []
         Solution.get_inorder(bst1.root, inorder1)
 
         inorder2 = []
         Solution.get_inorder(bst2.root, inorder2)
 
+        # Merge the two inorder lists into a single sorted list
         inorder = Solution._get_merged_inorder(inorder1, inorder2)
+
+        # Build a balanced BST from the merged sorted list
         Solution._balanced_insert(bst, inorder, 0, len(inorder) - 1)
         return bst
 
     @staticmethod
     def _balanced_insert(bst, inorder, low, high):
+        # Recursively insert elements to form a balanced BST from sorted inorder list
         if low > high:
             return
         mid = int(low + (high - low)/2)
