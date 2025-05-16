@@ -181,3 +181,44 @@ class Solution:
         Solution.get_inorder(bst2.root, inorder2)
 
         inorder = Solution._get_merged_inorder(inorder1, inorder2)
+        Solution._balanced_insert(bst, inorder, 0, len(inorder) - 1)
+        return bst
+
+    @staticmethod
+    def _balanced_insert(bst, inorder, low, high):
+        if low > high:
+            return
+        mid = int(low + (high - low)/2)
+        bst.insert(inorder[mid])
+        Solution._balanced_insert(bst, inorder, low, mid - 1)
+        Solution._balanced_insert(bst, inorder, mid + 1, high)
+
+
+def construct_bst_from_array(arr):
+    bst = BinarySearchTree()
+    for x in arr:
+        bst.insert(x)
+    return bst
+
+
+# Example 1
+bst1 = construct_bst_from_array([100, 50, 300, 20, 70])
+bst2 = construct_bst_from_array([80, 40, 120])
+# This will take O(n + m) time and O(n + m) space.
+bst = Solution.merge_bsts(bst1, bst2)
+print("Merged BST for Example 1:")
+bst.show()
+
+# Example 2
+bst3 = construct_bst_from_array([3, 1, 5])
+bst4 = construct_bst_from_array([4, 2, 6])
+bst34 = Solution.merge_bsts(bst3, bst4)
+print("Merged BST for Example 2:")
+bst34.show()
+
+# Example 3
+bst5 = construct_bst_from_array([5, 3, 0])
+bst6 = construct_bst_from_array([8, 2, 1, 10])
+bst56 = Solution.merge_bsts(bst5, bst6)
+print("Merged BST for Example 3:")
+bst56.show()
