@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/diameter-of-binary-tree/1
+# Solution - https://www.youtube.com/watch?v=Rezetez59Nk
+
 class Node:
     def __init__(self, data):
         self.data = data
