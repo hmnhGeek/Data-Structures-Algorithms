@@ -7,17 +7,33 @@ class Node:
 class Solution:
     @staticmethod
     def get_diameter(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
+        # store the diameter value in a list
         d = [-1e6]
+
+        # update the diameter
         Solution._get_diameter(root, d)
+
+        # return the diameter.
         return d[0]
 
     @staticmethod
     def _get_diameter(root, d):
+        # if root is None, return a 0.
         if root is None:
             return 0
+
+        # get left and right heights of the binary tree at root node.
         left_ht = Solution._get_diameter(root.left, d)
         right_ht = Solution._get_diameter(root.right, d)
+
+        # update the diameter that is being passed from reference.
         d[0] = max(d[0], left_ht + right_ht + 1)
+
+        # return the height of the binary tree at this root node.
         return 1 + max(left_ht, right_ht)
 
 
