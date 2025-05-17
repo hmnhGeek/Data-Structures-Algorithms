@@ -67,17 +67,24 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def sliding_window_maximum(arr, k):
+        # edge case
         if k <= 0 or k > len(arr):
             return -1
 
+        # define a max heap which can store at max `n` elements.
         max_heap = MaxHeap()
         result = []
         n = len(arr)
 
         for i in range(n):
+            # push the current element into the max heap
             max_heap.insert((arr[i], i))
+
+            # Remove elements outside the window
             while max_heap.heap[0][1] <= i - k:
                 max_heap.pop()
+
+            # Append current max to result once the first window is completed
             if i >= k - 1:
                 result.append(max_heap.heap[0][0])
         return result
