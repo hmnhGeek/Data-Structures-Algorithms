@@ -25,3 +25,15 @@ class QuickSort:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
+class Solution:
+    @staticmethod
+    def get_kth_smallest(arr, k):
+        if k <= 0 or k > len(arr):
+            return -1
+        QuickSort.sort(arr)
+        return arr[k - 1]
+
+
+print(Solution.get_kth_smallest([7, 10, 4, 3, 20, 15], 3))
+print(Solution.get_kth_smallest([2, 3, 1, 20, 15], 4))
