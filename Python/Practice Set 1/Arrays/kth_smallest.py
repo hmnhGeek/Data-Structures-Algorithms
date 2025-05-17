@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/kth-smallest-element5635/1
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -29,6 +32,10 @@ class QuickSort:
 class Solution:
     @staticmethod
     def get_kth_smallest(arr, k):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
+
         if k <= 0 or k > len(arr):
             return -1
         QuickSort.sort(arr)
