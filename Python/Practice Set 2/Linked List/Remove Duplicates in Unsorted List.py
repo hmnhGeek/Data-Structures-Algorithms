@@ -29,10 +29,29 @@ class LinkedList:
             return f"[{self.head.data}]"
         result = "["
         curr = self.head
-        while curr.next != self.tail:
+        while curr != self.tail:
             result += f"{curr.data}, "
             curr = curr.next
         result += f"{self.tail.data}]"
         return result
 
+    def remove_duplicates(self):
+        mp = set()
+        prev, curr = None, self.head
+        while curr is not None:
+            if curr.data not in mp:
+                mp.add(curr.data)
+                prev = curr
+                curr = curr.next
+            else:
+                prev.next = curr.next
+                curr = curr.next
+                self.length -= 1
+        self.tail = prev
 
+
+l1 = LinkedList()
+l1.build(5, 2, 2, 4)
+print(l1)
+l1.remove_duplicates()
+print(l1)
