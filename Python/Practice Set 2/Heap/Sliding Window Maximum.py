@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/#better-approach-1-using-maxheap-n-log-n-time-and-on-space
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -67,6 +70,10 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def sliding_window_maximum(arr, k):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         # edge case
         if k <= 0 or k > len(arr):
             return -1
