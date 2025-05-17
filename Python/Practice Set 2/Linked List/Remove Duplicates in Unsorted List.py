@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -36,6 +39,10 @@ class LinkedList:
         return result
 
     def remove_duplicates(self):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         mp = set()
         prev, curr = None, self.head
         while curr is not None:
