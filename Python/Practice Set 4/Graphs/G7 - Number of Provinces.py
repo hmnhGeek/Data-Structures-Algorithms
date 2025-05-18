@@ -14,6 +14,7 @@ class Solution:
 
     @staticmethod
     def _dfs(graph, node, visited):
+        # mark the node as visited and perform dfs on adjacent nodes.
         visited[node] = True
         for adj_node in graph[node]:
             if not visited[adj_node]:
@@ -21,13 +22,23 @@ class Solution:
 
     @staticmethod
     def find_num_provinces(mtx):
+        # get the graph from the matrix in O(V^2) time and O(V + E) space.
         graph = Solution._get_graph(mtx)
+
+        # define a visited array of size V to use in DFS.
         visited = {i: False for i in range(len(mtx))}
+
+        # get the number of provinces in this variable.
         num_components = 0
+
+        # loop on the nodes of the graph
         for node in graph:
+            # if this node is not yet visited, this is a new component
             if not visited[node]:
                 num_components += 1
                 Solution._dfs(graph, node, visited)
+
+        # return the number of provinces.
         return num_components
 
 
