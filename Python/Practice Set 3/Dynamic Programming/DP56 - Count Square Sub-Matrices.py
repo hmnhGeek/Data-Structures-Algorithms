@@ -1,6 +1,13 @@
+# Problem link - https://www.naukri.com/code360/problems/count-square-submatrices-with-all-ones_3751502?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=auS1fynpnjo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=57
+
+
 class Solution:
     @staticmethod
     def count_squares(mtx):
+        """
+            Time complexity is O(nm) and space complexity O(mn).
+        """
         n, m = len(mtx), len(mtx[0])
         dp = [[0 for _ in range(m)] for _ in range(n)]
         for j in range(m):
