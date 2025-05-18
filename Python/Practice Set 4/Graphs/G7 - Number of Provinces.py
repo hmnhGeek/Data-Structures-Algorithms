@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/number-of-provinces/1
+# Solution - https://www.youtube.com/watch?v=ACzkVtewUYA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=7
+
+
 class Solution:
     @staticmethod
     def _get_graph(mtx):
@@ -22,6 +26,10 @@ class Solution:
 
     @staticmethod
     def find_num_provinces(mtx):
+        """
+            Time complexity is O(V + E + V^2) and space complexity is O(V + E).
+        """
+
         # get the graph from the matrix in O(V^2) time and O(V + E) space.
         graph = Solution._get_graph(mtx)
 
