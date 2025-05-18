@@ -31,14 +31,25 @@ class Solution:
 
     @staticmethod
     def get_number_of_islands(mtx):
+        # get the dimensions of the matrix.
         n, m = len(mtx), len(mtx[0])
+
+        # create a visited matrix
         visited = [[False for _ in range(m)] for _ in range(n)]
+
+        # num_islands variable set to 0.
         num_components = 0
+
+        # loop in the matrix now.
         for i in range(n):
             for j in range(m):
+                # if the cell is 1 and not visited, a new component has been found.
                 if not visited[i][j] and mtx[i][j] == 1:
                     num_components += 1
+                    # start a DFS.
                     Solution._dfs(mtx, i, j, visited, n, m)
+
+        # return the number of islands
         return num_components
 
 
