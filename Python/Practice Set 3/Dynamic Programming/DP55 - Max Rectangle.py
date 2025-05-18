@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/maximum-size-rectangle-binary-sub-matrix-1s/
+# Solution - https://www.youtube.com/watch?v=tOylVCugy9k&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=56
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -40,6 +44,10 @@ class Stack:
 class Solution:
     @staticmethod
     def _max_area_in_histogram(histogram):
+        """
+            Time complexity is O(n) and space complexity is O(n) for the stack.
+        """
+
         # create required variables.
         stack = Stack()
         n = len(histogram)
@@ -74,6 +82,10 @@ class Solution:
 
     @staticmethod
     def max_area_in_mtx(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(m).
+        """
+
         n, m = len(mtx), len(mtx[0])
 
         # create a previous row. It will take O(m) extra space.
