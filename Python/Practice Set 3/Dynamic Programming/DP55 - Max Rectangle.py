@@ -58,3 +58,48 @@ class Solution:
             max_area = max(max_area, area)
         return max_area
 
+    @staticmethod
+    def max_area_in_mtx(mtx):
+        n, m = len(mtx), len(mtx[0])
+        prev_row = [0] * m
+        max_area = 0
+        for i in range(n):
+            histogram = [mtx[i][j] + prev_row[j] if mtx[i][j] == 1 else 0 for j in range(m)]
+            area = Solution._max_area_in_histogram(histogram)
+            max_area = max(max_area, area)
+            prev_row = histogram
+        return max_area
+
+
+print("Testing max area in a matrix")
+print(
+    Solution.max_area_in_mtx(
+        [
+            [0, 1, 1, 0],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 0, 0]
+        ]
+    )
+)
+
+print(
+    Solution.max_area_in_mtx(
+        [
+            [0, 1, 1],
+            [1, 1, 1],
+            [0, 1, 1]
+        ]
+    )
+)
+
+print(
+    Solution.max_area_in_mtx(
+        [
+            [1, 0, 1, 0, 0],
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 1, 0]
+        ]
+    )
+)
