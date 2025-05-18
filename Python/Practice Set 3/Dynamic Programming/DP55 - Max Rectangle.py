@@ -71,6 +71,15 @@ class Solution:
         return max_area
 
 
+print("Testing the histogram class")
+print(Solution._max_area_in_histogram([3, 1, 5, 6, 2, 3]))
+print(Solution._max_area_in_histogram([2, 1, 5, 6, 2, 3]))
+print(Solution._max_area_in_histogram([2, 4]))
+print(Solution._max_area_in_histogram([60, 20, 50, 40, 10, 50, 60]))
+print(Solution._max_area_in_histogram([3, 5, 1, 7, 5, 9]))
+print()
+
+
 print("Testing max area in a matrix")
 print(
     Solution.max_area_in_mtx(
