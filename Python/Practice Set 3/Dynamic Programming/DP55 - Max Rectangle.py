@@ -36,3 +36,25 @@ class Stack:
             return -1
         return self.head.data
 
+
+class Solution:
+    @staticmethod
+    def _max_area_in_histogram(histogram):
+        stack = Stack()
+        n = len(histogram)
+        max_area = 0
+        for i in range(n):
+            while not stack.is_empty() and histogram[stack.top()] > histogram[i]:
+                bar = histogram[stack.pop()]
+                rb = i
+                lb = stack.top()
+                area = bar * (rb - lb - 1)
+                max_area = max(max_area, area)
+            stack.push(i)
+        while not stack.is_empty():
+            bar = histogram[stack.pop()]
+            lb = stack.top()
+            area = bar * (n - lb - 1)
+            max_area = max(max_area, area)
+        return max_area
+
