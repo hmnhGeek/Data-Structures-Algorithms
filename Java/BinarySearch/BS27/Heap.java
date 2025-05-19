@@ -1,5 +1,6 @@
 package BinarySearch.BS27;
 
+import java.util.Collections;
 import java.util.List;
 
 public interface Heap<T extends Comparable<T>> {
@@ -26,5 +27,19 @@ public interface Heap<T extends Comparable<T>> {
         if (ci.equals(0)) return null;
         Integer pi = (ci - 1)/2;
         return 0 <= pi && pi < getHeap().size() ? pi : null;
+    }
+
+    default void insert(T x) {
+        getHeap().add(x);
+        heapifyUp(getHeap().size() - 1);
+    }
+
+    default T pop() {
+        if (isEmpty()) return null;
+        T item = getHeap().getFirst();
+        Collections.swap(getHeap(), 0, getHeap().size() - 1);
+        getHeap().removeLast();
+        heapifyDown(0);
+        return item;
     }
 }
