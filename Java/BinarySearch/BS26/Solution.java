@@ -15,6 +15,34 @@ public class Solution {
                         )
                 )
         );
+
+        System.out.println(
+                findPeak(
+                        Arrays.asList(
+                                Arrays.asList(1, 4),
+                                Arrays.asList(3, 2)
+                        )
+                )
+        );
+
+        System.out.println(
+                findPeak(
+                        Arrays.asList(
+                                Arrays.asList(10, 20, 15),
+                                Arrays.asList(21, 30, 14),
+                                Arrays.asList(7, 16, 32)
+                        )
+                )
+        );
+
+        System.out.println(
+                findPeak(
+                        Arrays.asList(
+                                Arrays.asList(10, 7),
+                                Arrays.asList(11, 17)
+                        )
+                )
+        );
     }
 
     public static Integer findPeak(List<List<Integer>> mtx) {
