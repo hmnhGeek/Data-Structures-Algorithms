@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/find-peak-element-2d-array/
+// Solution - https://www.youtube.com/watch?v=nGGp5XBzC4g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=28
+
 package BinarySearch.BS26;
 
 import java.util.Arrays;
@@ -46,11 +49,24 @@ public class Solution {
     }
 
     public static Integer findPeak(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+         */
+
+        // get matrix size
         int n = mtx.size(), m = mtx.getFirst().size();
+
+        // define search space on columns
         int low = 0, high = m - 1;
+
+        // typical binary search...
         while (low <= high) {
             int mid = (low + (high - low)/2);
+
+            // get the maximum element in the column in O(n) time.
             int maxElementIndex = getMaxElementIndex(mtx, mid, n);
+
+            // reduce the search space.
             if (maxElementIndex == 0) {
                 if (mid == 0) {
                     if (mtx.get(maxElementIndex).get(mid + 1) > mtx.get(maxElementIndex).get(mid)) {
