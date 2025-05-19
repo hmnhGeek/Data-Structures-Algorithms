@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
+
+
 package BinarySearch.BS27;
 
 import java.util.Arrays;
@@ -5,6 +8,10 @@ import java.util.List;
 
 public class Solution {
     public static Integer getMedianFromMatrix(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(nm * log(n)) and space complexity is O(n).
+         */
+
         // get the dimensions of the matrix.
         int n = mtx.size(), m = mtx.getFirst().size();
 
