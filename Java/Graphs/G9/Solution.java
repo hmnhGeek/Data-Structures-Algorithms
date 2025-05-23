@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/flood-fill/description/
+// Solution - https://www.youtube.com/watch?v=C-2_uSRli8o&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=9
+
 package Graphs.G9;
 
 import java.util.ArrayList;
@@ -6,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static void floodFill(List<List<Integer>> matrix, Integer startRowIdx, Integer startColIdx, Integer newColor) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
 
         // get the dimensions of the matrix
         int n = matrix.size(), m = matrix.getFirst().size();
