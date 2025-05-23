@@ -111,5 +111,21 @@ public class Solution {
                 ),
                 0, 0, 0
         );
+
+        floodFill(
+                Arrays.asList(
+                        Arrays.asList(0, 0, 0),
+                        Arrays.asList(0, 1, 1)
+                ),
+                1, 1, 1
+        );
+
+        floodFill(
+                Arrays.asList(
+                        Arrays.asList(2, 2, 2),
+                        Arrays.asList(2, 2, 2)
+                ),
+                0, 0, 1
+        );
     }
 }
