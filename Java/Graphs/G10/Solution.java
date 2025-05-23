@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/rotting-oranges/description/
+// Solution - https://www.youtube.com/watch?v=yf3oUhkvqA0&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=10
+
 package Graphs.G10;
 
 import java.util.ArrayList;
@@ -26,6 +29,9 @@ class Element {
 
 public class Solution {
     public static int rot(List<List<Integer>> matrix) {
+        /*
+            T: O(mn) and S: O(mn) for queue.
+         */
         int n = matrix.size(), m = matrix.getFirst().size();
         List<Coordinate> rottenOranges = getRottenOranges(matrix, n, m);
         Queue<Element> queue = new Queue<>();
