@@ -9,8 +9,6 @@ public class Solution {
         int n = matrix.size(), m = matrix.getFirst().size();
         if (startRowIdx < 0 || startColIdx < 0 || startRowIdx >= n || startColIdx >= m) return;
         int originalColor = matrix.get(startRowIdx).get(startColIdx);
-        List<List<Boolean>> visited = new ArrayList<>();
-        getBlankVisitedMatrix(visited, n, m);
         dfs(matrix, startRowIdx, startColIdx, originalColor, newColor, n, m);
         System.out.println(matrix);
     }
@@ -39,16 +37,6 @@ public class Solution {
             neighbours.add(Arrays.asList(i, j - 1));
         }
         return neighbours;
-    }
-
-    private static void getBlankVisitedMatrix(List<List<Boolean>> visited, int n, int m) {
-        for (int i = 0; i < n; i += 1) {
-            List<Boolean> row = new ArrayList<>();
-            for (int j = 0; j < m; j += 1) {
-                row.add(false);
-            }
-            visited.add(row);
-        }
     }
 
     public static void main(String[] args) {
