@@ -54,6 +54,7 @@ public class Solution {
             }
         }
 
+        // if any fresh orange is still left, return -1.
         for (int i = 0; i < n; i += 1) {
             for (int j = 0; j < m; j += 1) {
                 if (matrix.get(i).get(j) == 1) {
