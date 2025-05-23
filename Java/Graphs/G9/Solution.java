@@ -48,5 +48,30 @@ public class Solution {
                 ),
                 1, 2, 2
         );
+
+        floodFill(
+                Arrays.asList(
+                        Arrays.asList(0, 1, 0),
+                        Arrays.asList(0, 1, 0)
+                ),
+                0, 1, 0
+        );
+
+        floodFill(
+                Arrays.asList(
+                        Arrays.asList(1, 1, 1),
+                        Arrays.asList(1, 1, 0),
+                        Arrays.asList(1, 0, 1)
+                ),
+                1, 1, 2
+        );
+
+        floodFill(
+                Arrays.asList(
+                        Arrays.asList(0, 0, 0),
+                        Arrays.asList(0, 0, 0)
+                ),
+                0, 0, 0
+        );
     }
 }
