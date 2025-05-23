@@ -6,19 +6,36 @@ import java.util.List;
 
 public class Solution {
     public static void floodFill(List<List<Integer>> matrix, Integer startRowIdx, Integer startColIdx, Integer newColor) {
+
+        // get the dimensions of the matrix
         int n = matrix.size(), m = matrix.getFirst().size();
+
+        // edge case scenario
         if (startRowIdx < 0 || startColIdx < 0 || startRowIdx >= n || startColIdx >= m) return;
+
+        // store the original color for reference.
         int originalColor = matrix.get(startRowIdx).get(startColIdx);
+
+        // get a blank visited array in O(nm) time and space.
         List<List<Boolean>> visited = new ArrayList<>();
         getBlankVisitedMatrix(visited, n, m);
+
+        // initiate a DFS in O(nm) time.
         dfs(matrix, startRowIdx, startColIdx, originalColor, newColor, visited, n, m);
+
+        // print the modified matrix.
         System.out.println(matrix);
     }
 
     private static void dfs(List<List<Integer>> matrix, Integer startRowIdx, Integer startColIdx, int originalColor, Integer newColor, List<List<Boolean>> visited, int n, int m) {
+        // apply the new color and mark the node as visited.
         matrix.get(startRowIdx).set(startColIdx, newColor);
         visited.get(startRowIdx).set(startColIdx, true);
+
+        // get the neighbours in O(1) time.
         List<List<Integer>> neighbours = getNeighbours(matrix, startRowIdx, startColIdx, originalColor, n, m);
+
+        // perform DFS on the neighbours.
         for (List<Integer> neighbour : neighbours) {
             int x = neighbour.getFirst(), y = neighbour.getLast();
             if (!visited.get(x).get(y)) {
