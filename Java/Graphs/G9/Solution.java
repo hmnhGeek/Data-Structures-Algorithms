@@ -9,16 +9,21 @@ public class Solution {
         int n = matrix.size(), m = matrix.getFirst().size();
         if (startRowIdx < 0 || startColIdx < 0 || startRowIdx >= n || startColIdx >= m) return;
         int originalColor = matrix.get(startRowIdx).get(startColIdx);
-        dfs(matrix, startRowIdx, startColIdx, originalColor, newColor, n, m);
+        List<List<Boolean>> visited = new ArrayList<>();
+        getBlankVisitedMatrix(visited, n, m);
+        dfs(matrix, startRowIdx, startColIdx, originalColor, newColor, visited, n, m);
         System.out.println(matrix);
     }
 
-    private static void dfs(List<List<Integer>> matrix, Integer startRowIdx, Integer startColIdx, int originalColor, Integer newColor, int n, int m) {
+    private static void dfs(List<List<Integer>> matrix, Integer startRowIdx, Integer startColIdx, int originalColor, Integer newColor, List<List<Boolean>> visited, int n, int m) {
         matrix.get(startRowIdx).set(startColIdx, newColor);
+        visited.get(startRowIdx).set(startColIdx, true);
         List<List<Integer>> neighbours = getNeighbours(matrix, startRowIdx, startColIdx, originalColor, n, m);
         for (List<Integer> neighbour : neighbours) {
             int x = neighbour.getFirst(), y = neighbour.getLast();
-            dfs(matrix, x, y, originalColor, newColor, n, m);
+            if (!visited.get(x).get(y)) {
+                dfs(matrix, x, y, originalColor, newColor, visited, n, m);
+            }
         }
     }
 
@@ -39,6 +44,15 @@ public class Solution {
         return neighbours;
     }
 
+    private static void getBlankVisitedMatrix(List<List<Boolean>> visited, int n, int m) {
+        for (int i = 0; i < n; i += 1) {
+            List<Boolean> row = new ArrayList<>();
+            for (int j = 0; j < m; j += 1) {
+                row.add(false);
+            }
+            visited.add(row);
+        }
+    }
 
     public static void main(String[] args) {
         floodFill(
