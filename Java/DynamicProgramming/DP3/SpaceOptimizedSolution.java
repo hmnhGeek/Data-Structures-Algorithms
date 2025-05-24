@@ -5,26 +5,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TabulationSolution {
+public class SpaceOptimizedSolution {
     public static Integer frogJump(List<Integer> arr) {
         /*
-            Time complexity is O(n) and space complexity is O(n).
+            Time complexity is O(n) and space complexity is O(1).
          */
         int n = arr.size();
-        Map<Integer, Integer> dp = new HashMap<>();
-        for (int i = 0; i < n; i += 1) {
-            dp.put(i, Integer.MAX_VALUE);
-        }
-        dp.put(0, 0);
+        int prev1 = 0, prev2 = 0;
         for (int i = 1; i < n; i += 1) {
-            int left = dp.get(i - 1) + Math.abs(arr.get(i) - arr.get(i - 1));
+            int left = prev1 + Math.abs(arr.get(i) - arr.get(i - 1));
             int right = Integer.MAX_VALUE;
             if (i - 2 >= 0) {
-                right = dp.get(i - 2) + Math.abs(arr.get(i) - arr.get(i - 2));
+                right = prev2 + Math.abs(arr.get(i) - arr.get(i - 2));
             }
-            dp.put(i, Math.min(left, right));
+            int curr = Math.min(left, right);
+            prev2 = prev1;
+            prev1 = curr;
         }
-        return dp.get(n - 1);
+        return prev1;
     }
 
     public static void main(String[] args) {
