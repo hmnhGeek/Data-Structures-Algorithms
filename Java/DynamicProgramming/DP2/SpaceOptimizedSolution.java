@@ -1,7 +1,8 @@
-package DynamicProgramming.DP2;
+// Problem link - https://www.naukri.com/code360/problems/count-ways-to-reach-nth-stairs_798650?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=mLfjzJsN8us&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=3
 
-import java.util.HashMap;
-import java.util.Map;
+
+package DynamicProgramming.DP2;
 
 public class SpaceOptimizedSolution {
     public static int climbingStairs(Integer n) {
