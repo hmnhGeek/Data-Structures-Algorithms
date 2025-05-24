@@ -10,7 +10,7 @@ public class MemoizedSolution {
          */
         List<Integer> dp = new ArrayList<>();
         for (int i = 0; i <= n; i += 1) {
-            dp.add(i, null);
+            dp.add(null);
         }
         return solve(n, dp);
     }
