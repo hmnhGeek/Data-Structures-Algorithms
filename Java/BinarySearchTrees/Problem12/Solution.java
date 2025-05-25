@@ -15,6 +15,9 @@ public class Solution {
 
         BinarySearchTree<Integer> binarySearchTree2 = buildBst(Arrays.asList(9, 10));
         System.out.println(getKthLargest(binarySearchTree2, 1));
+
+        BinarySearchTree<Integer> binarySearchTree3 = buildBst(Arrays.asList(6, 2, 7, 3, 4, 9));
+        System.out.println(getKthLargest(binarySearchTree3, 5));
     }
 
     private static List<Integer> getInorder(BinarySearchTree<Integer> binarySearchTree) {
