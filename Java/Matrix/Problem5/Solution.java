@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/sorted-matrix2333/1
+
+
 package Matrix.Problem5;
 
 import java.util.ArrayList;
@@ -14,11 +17,28 @@ public class Solution {
                         Arrays.asList(32,33,39,50)
                 )
         );
+
+        sortMatrix(
+                Arrays.asList(
+                        Arrays.asList(1, 5, 3),
+                        Arrays.asList(2, 8, 7),
+                        Arrays.asList(4, 6, 9)
+                )
+        );
     }
 
     public static void sortMatrix(List<List<Integer>> matrix) {
+        /*
+            Time complexity is O(n^2 * log(n)) and space complexity is O(n^2).
+         */
+
+        // This takes O(n^2) time and O(n^2) space.
         List<Integer> array = flatten(matrix);
+
+        // This takes O(n^2 * log(n)) time.
         QuickSort.sort(array);
+
+        // This takes another O(n^2) time.
         buildBackMatrix(matrix, array);
         System.out.println(matrix);
     }
