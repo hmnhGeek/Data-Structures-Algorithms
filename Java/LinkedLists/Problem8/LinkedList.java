@@ -36,6 +36,22 @@ public class LinkedList<T> {
         this.length = 0;
     }
 
+    public Node<T> getHead() {
+        return head;
+    }
+
+    public Node<T> getTail() {
+        return tail;
+    }
+
+    public void setHead(Node<T> head) {
+        this.head = head;
+    }
+
+    public void setTail(Node<T> tail) {
+        this.tail = tail;
+    }
+
     public boolean isEmpty() {
         return this.length.equals(0);
     }
