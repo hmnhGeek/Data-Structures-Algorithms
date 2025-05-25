@@ -25,5 +25,9 @@ public class Solution {
 
     public static void main(String[] args) {
         dnfSort(Arrays.asList(0, 1, 2, 0, 1, 2));
+        dnfSort(Arrays.asList(0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1));
+        dnfSort(Arrays.asList(2, 1, 2, 0, 1, 2));
+        dnfSort(Arrays.asList(0, 1, 0));
+        dnfSort(Arrays.asList(1, 1, 2, 2, 1));
     }
 }
