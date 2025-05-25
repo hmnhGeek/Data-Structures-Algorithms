@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1
+// Solution - https://www.youtube.com/watch?v=tp8JIuCXBaU
+
+
 package Arrays.Problem4;
 
 import java.util.Arrays;
@@ -6,6 +10,10 @@ import java.util.List;
 
 public class Solution {
     public static void dnfSort(List<Integer> arr) {
+        /*
+            Overall time complexity is O(n) and space complexity is O(1).
+         */
+
         int n = arr.size();
 
         // initialize low, mid and high pointers
