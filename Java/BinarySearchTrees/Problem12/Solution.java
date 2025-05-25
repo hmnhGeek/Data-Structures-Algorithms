@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
+
+
 package BinarySearchTrees.Problem12;
 
 import java.util.ArrayList;
@@ -30,6 +33,9 @@ public class Solution {
     }
 
     public static Integer getKthLargest(BinarySearchTree<Integer> binarySearchTree, int k) {
+        /*
+            Time complexity is O(n) and space complexity is O(log(n)).
+         */
         List<Integer> inorder = getInorder(binarySearchTree);
         return inorder.get(inorder.size() - k);
     }
