@@ -50,6 +50,10 @@ public class DoublyLinkedList<T> {
         return this.length.equals(0);
     }
 
+    public Node<T> getHead() {
+        return this.head;
+    }
+
     public Node<T> push(T x) {
         Node<T> node = new Node<>(x);
         if (isEmpty()) {
@@ -64,6 +68,13 @@ public class DoublyLinkedList<T> {
     }
 
     public void deleteNode(Node<T> node) {
+        if (this.length == 0) return;
+        if (this.length == 1) {
+            this.head = this.tail = null;
+            this.length = 0;
+            return;
+        }
+
         Node<T> prevNode = node.getPrev();
         Node<T> nextNode = node.getNext();
 
