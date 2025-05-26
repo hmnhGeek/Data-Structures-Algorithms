@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream1216/1
+// Solution - https://www.youtube.com/watch?v=KnWqCfIfHX0
+
+
 package StacksAndQueues.Problem37;
 
 import java.util.HashMap;
@@ -5,6 +9,10 @@ import java.util.Map;
 
 public class Solution {
     public static String streamFirstNonRepeating(String string) {
+        /*
+            Time complexity is O(n) and space complexity is O(26).
+         */
+
         // These will take O(26) space.
         Map<Character, Node<Character>> addressMap = getDefaultAddressMap();
         Map<Character, Boolean> repeatedMap = getDefaultRepeatedMap();
