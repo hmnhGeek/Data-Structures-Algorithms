@@ -45,9 +45,6 @@ public class Solution {
         if (root == null) {
             return null;
         }
-        if (root.getLeft() == null && root.getRight() == null) {
-            return new Node<>(root.getData());
-        }
         Node<T> leftNode = getMirror(root.getLeft());
         Node<T> rightNode = getMirror(root.getRight());
         Node<T> newRoot = new Node<>(root.getData());
@@ -98,5 +95,29 @@ public class Solution {
         System.out.println(getInorder(n21));
         Node<Integer> mirror2 = getMirror(n21);
         System.out.println(getInorder(mirror2));
+
+        // Example 3
+        Node<Integer> five = new Node<>(5);
+        Node<Integer> three = new Node<>(3);
+        Node<Integer> six = new Node<>(6);
+        Node<Integer> two = new Node<>(2);
+        Node<Integer> four = new Node<>(4);
+        Node<Integer> eight = new Node<>(8);
+        Node<Integer> ten = new Node<>(10);
+        Node<Integer> eleven = new Node<>(11);
+        Node<Integer> twelve = new Node<>(12);
+        Node<Integer> thirteen = new Node<>(13);
+        five.setLeft(three);
+        five.setRight(six);
+        three.setLeft(two);
+        three.setRight(four);
+        six.setLeft(eight);
+        six.setRight(ten);
+        eight.setLeft(eleven);
+        eight.setRight(twelve);
+        twelve.setLeft(thirteen);
+        System.out.println(Solution.getInorder(five));
+        Node<Integer> mirror3 = Solution.getMirror(five);
+        System.out.println(Solution.getInorder(mirror3));
     }
 }
