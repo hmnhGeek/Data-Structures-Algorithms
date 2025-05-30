@@ -42,6 +42,9 @@ class Node<T> {
 
 public class Solution {
     public static <T> Node<T> getMirror(Node<T> root) {
+        if (root == null) {
+            return null;
+        }
         if (root.getLeft() == null && root.getRight() == null) {
             return new Node<>(root.getData());
         }
@@ -82,5 +85,18 @@ public class Solution {
         Node<Integer> mirror = getMirror(n5);
         System.out.println(getInorder(mirror));
 
+        // Example 2
+        Node<Integer> n21 = new Node<>(2);
+        Node<Integer> n1 = new Node<>(1);
+        Node<Integer> n8 = new Node<>(8);
+        Node<Integer> n12 = new Node<>(12);
+        Node<Integer> n9 = new Node<>(9);
+        n21.setLeft(n1);
+        n21.setRight(n8);
+        n1.setLeft(n12);
+        n8.setRight(n9);
+        System.out.println(getInorder(n21));
+        Node<Integer> mirror2 = getMirror(n21);
+        System.out.println(getInorder(mirror2));
     }
 }
