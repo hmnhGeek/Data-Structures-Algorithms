@@ -1,3 +1,7 @@
+// Problem link - https://www.spoj.com/problems/PRATA/
+// Solution - https://www.youtube.com/watch?v=-Nx1h54KzUQ
+
+
 package SearchingAndSorting.Problem31;
 
 import java.util.Arrays;
@@ -5,7 +9,11 @@ import java.util.List;
 
 public class Solution {
     public static Integer minTimeToCook(Integer p, List<Integer> cooks) {
-        // search space for time.
+        /*
+            Time complexity is O(L * log(p)) and space complexity is O(1).
+         */
+
+        // search space for time, of the order O(p^2).
         int low = 0, high = 100000000;
 
         // typical binary search
