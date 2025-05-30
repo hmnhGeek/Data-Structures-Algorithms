@@ -1,5 +1,7 @@
-package BinaryTrees.Problem5;
+// Problem link - https://www.geeksforgeeks.org/create-a-mirror-tree-from-the-given-binary-tree/
 
+
+package BinaryTrees.Problem5;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,9 @@ class Node<T> {
 
 public class Solution {
     public static <T> Node<T> getMirror(Node<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         if (root == null) {
             return null;
         }
