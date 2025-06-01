@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/rotting-oranges/description/
+# Solution - https://www.youtube.com/watch?v=yf3oUhkvqA0&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=10
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,10 @@ class Queue:
 class Solution:
     @staticmethod
     def rotten_oranges(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+
         # get the initial rotten oranges in O(nm) time and O(nm) space in worst case.
         initial_rotten, n, m = Solution.get_rotten_oranges(mtx)
 
