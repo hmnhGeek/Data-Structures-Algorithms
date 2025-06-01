@@ -35,26 +35,46 @@ class Queue:
 class Solution:
     @staticmethod
     def rotten_oranges(mtx):
+        # get the initial rotten oranges in O(nm) time and O(nm) space in worst case.
         initial_rotten, n, m = Solution.get_rotten_oranges(mtx)
+
+        # visited matrix occupying O(nm) space.
         visited = [[False for _ in range(m)] for _ in range(n)]
+
+        # store the result variable denoting the total time taken to rot all the oranges.
         time_taken = 0
+
+        # initialize a queue and push the rotten oranges into it. Also mark them visited as you go.
         queue = Queue()
         for o in initial_rotten:
             visited[o[0]][o[1]] = True
             queue.push((*o, 0))
+
+        # typical BFS...
         while not queue.is_empty():
+            # get the rotten orange from the queue.
             i, j, t0 = queue.pop()
+
+            # update the time taken.
             time_taken = max(time_taken, t0)
+
+            # get the fresh neighbour oranges.
             neighbours = Solution._get_neighbours(mtx, i, j, n, m, visited)
+
+            # push these fresh oranges into the queue after rotting them.
             for neighbour in neighbours:
                 x, y = neighbour
                 visited[x][y] = True
                 mtx[x][y] = 2
                 queue.push((x, y, t0 + 1))
+
+        # check if even a single fresh orange is still present.
         for i in range(n):
             for j in range(m):
                 if mtx[i][j] == 1:
                     return -1
+
+        # return the minimum time taken to rot all the oranges.
         return time_taken
 
     @staticmethod
