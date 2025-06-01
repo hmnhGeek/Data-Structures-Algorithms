@@ -1,8 +1,13 @@
 class Solution:
     @staticmethod
     def _dfs(mtx, i, j, original_color, new_color, n, m):
+        # update the color of the (i, j) cell.
         mtx[i][j] = new_color
+
+        # get the neighbours of the cell
         neighbours = Solution._get_neighbours(mtx, i, j, n, m, new_color)
+
+        # perform DFS on the adjacent cells if they satisfy original color validation.
         for neighbour in neighbours:
             x, y = neighbour
             if mtx[x][y] == original_color:
@@ -10,13 +15,22 @@ class Solution:
 
     @staticmethod
     def flood_fill(mtx, new_color, src_x, src_y):
+        # get the dimensions of the matrix.
         n = len(mtx)
         m = len(mtx[0])
+
+        # check if the source cell is not in the matrix.
         if not (0 <= src_x < n and 0 <= src_y < m):
             return
+
+        # store the original color for DFS reference.
         original_color = mtx[src_x][src_y]
+
+        # start the DFS from the source cell. In worst case it will traverse all the cells and so it is O(mn) operation.
         if mtx[src_x][src_y] == original_color and mtx[src_x][src_y] != new_color:
             Solution._dfs(mtx, src_x, src_y, original_color, new_color, n, m)
+
+        # print the matrix.
         for i in range(n):
             print(mtx[i])
         print()
