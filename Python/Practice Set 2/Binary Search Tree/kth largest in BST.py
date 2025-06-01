@@ -138,3 +138,36 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def get_kth_largest(bst: BinarySearchTree, k: int) -> int:
+        inorder = []
+        Solution._get_inorder(bst.root, inorder)
+        return inorder[len(inorder) - k]
+
+    @staticmethod
+    def _get_inorder(root, inorder):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._get_inorder(root.right, inorder)
+
+
+# Example 1
+bst = BinarySearchTree()
+for i in [4, 2, 9]:
+    bst.insert(i)
+print(Solution.get_kth_largest(bst, 2))
+
+# Example 2
+bst = BinarySearchTree()
+for i in [9, 10]:
+    bst.insert(i)
+print(Solution.get_kth_largest(bst, 1))
+
+# Example 3
+bst = BinarySearchTree()
+for i in [6, 2, 7, 3, 4, 9]:
+    bst.insert(i)
+print(Solution.get_kth_largest(bst, 5))
