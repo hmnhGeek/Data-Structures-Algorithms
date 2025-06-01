@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/flood-fill-algorithm1856/1
+# Solution - https://www.youtube.com/watch?v=C-2_uSRli8o&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=9
+
+
 class Solution:
     @staticmethod
     def _dfs(mtx, i, j, original_color, new_color, n, m):
@@ -15,6 +19,10 @@ class Solution:
 
     @staticmethod
     def flood_fill(mtx, new_color, src_x, src_y):
+        """
+            Time complexity is O(mn) and space complexity is O(mn).
+        """
+
         # get the dimensions of the matrix.
         n = len(mtx)
         m = len(mtx[0])
