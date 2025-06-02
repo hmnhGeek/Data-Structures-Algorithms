@@ -1,6 +1,18 @@
+# Problem link - https://www.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1
+
+
 class Solution:
     @staticmethod
     def dnf_sort(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        """
+            The idea is that all elements from 0 to low - 1 will be 0s.
+            All elements from mid to high - 1 will be 1s.
+            All elements from high till end will be 2s.
+        """
         n = len(arr)
         low, mid, high = 0, 0, n - 1
         while mid <= high:
