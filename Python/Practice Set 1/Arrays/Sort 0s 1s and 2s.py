@@ -36,3 +36,18 @@ print(a1)
 a2 = [0, 1, 1, 0, 1, 2, 1, 2, 0, 0, 0, 1]
 Solution.dnf_sort(a2)
 print(a2)
+
+# Example 3
+a3 = [0, 1, 0]
+Solution.dnf_sort(a3)
+print(a3)
+
+# Example 4
+a4 = [1, 1, 2, 2, 1]
+Solution.dnf_sort(a4)
+print(a4)
+
+# Example 5
+a5 = [2, 2, 2, 2]
+Solution.dnf_sort(a5)
+print(a5)
