@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/sorted-matrix2333/1
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -29,6 +32,9 @@ class QuickSort:
 class Solution:
     @staticmethod
     def sort_matrix(mtx):
+        """
+            Time complexity is O(nm * log(nm)) and space complexity is O(nm).
+        """
         n, m = len(mtx), len(mtx[0])
         arr = Solution._flatten(mtx, n, m)
         QuickSort.sort(arr)
