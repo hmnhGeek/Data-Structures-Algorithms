@@ -26,6 +26,60 @@ class QuickSort:
         return j
 
 
-a = [2, 6, 8, 0, 9, 9, 7]
-QuickSort.sort(a)
-print(a)
+class Solution:
+    @staticmethod
+    def sort_matrix(mtx):
+        n, m = len(mtx), len(mtx[0])
+        arr = Solution._flatten(mtx, n, m)
+        QuickSort.sort(arr)
+        Solution._build_back(mtx, arr, n, m)
+        for i in range(n):
+            print(mtx[i])
+        print()
+
+    @staticmethod
+    def _flatten(mtx, n, m):
+        arr = []
+        for i in range(n):
+            for j in range(m):
+                arr.append(mtx[i][j])
+        return arr
+
+    @staticmethod
+    def _build_back(mtx, arr, n, m):
+        counter = 0
+        for i in range(n):
+            for j in range(m):
+                mtx[i][j] = arr[counter]
+                counter += 1
+
+
+Solution.sort_matrix(
+    [
+        [10, 20, 30, 40],
+        [15, 25, 35, 45],
+        [27, 29, 37, 48],
+        [32, 33, 39, 50]
+    ]
+)
+
+Solution.sort_matrix(
+    [
+        [1, 5, 3], [2, 8, 7], [4, 6, 9]
+    ]
+)
+
+Solution.sort_matrix(
+    [
+        [5, 4, 7],
+        [1, 3, 8],
+        [2, 9, 6]
+    ]
+)
+
+Solution.sort_matrix(
+    [
+        [5, 4, 7],
+        [1, 3, 8]
+    ]
+)
