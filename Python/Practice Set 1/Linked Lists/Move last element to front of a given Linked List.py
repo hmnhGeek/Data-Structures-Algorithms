@@ -38,3 +38,22 @@ class LinkedList:
         result += f"{self.tail.data}]"
         return result
 
+    def move_tail_to_front(self):
+        if self.length == 0 or self.length == 1:
+            return
+        prev, curr = None, self.head
+        while curr != self.tail:
+            prev = curr
+            curr = curr.next
+        prev.next = None
+        self.tail = prev
+        curr.next = self.head
+        self.head = curr
+
+
+# Example 1
+l1 = LinkedList()
+l1.build(2, 5, 6, 2, 1)
+print(l1)
+l1.move_tail_to_front()
+print(l1)
