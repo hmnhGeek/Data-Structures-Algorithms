@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/create-a-mirror-tree-from-the-given-binary-tree/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +10,9 @@ class Node:
 class Solution:
     @staticmethod
     def get_mirror(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         if root is None:
             return
         left = Solution.get_mirror(root.left)
@@ -38,3 +44,13 @@ n3.right = n4
 print(Solution.get_inorder(n5))
 mirror1 = Solution.get_mirror(n5)
 print(Solution.get_inorder(mirror1))
+
+# Example 2
+n12, n1, n2, n8, n9 = Node(12), Node(1), Node(2), Node(8), Node(9)
+n2.left = n1
+n1.left = n12
+n2.right = n8
+n8.right = n9
+print(Solution.get_inorder(n2))
+mirror2 = Solution.get_mirror(n2)
+print(Solution.get_inorder(mirror2))
