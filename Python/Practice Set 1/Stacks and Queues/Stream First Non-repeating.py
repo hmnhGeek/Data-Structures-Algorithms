@@ -29,7 +29,7 @@ class DoublyLinkedList:
         return self.head.data
 
     def remove(self, node: Node):
-        is_tail, is_head = False, False
+        is_tail, is_head = node == self.tail, node == self.head
         prev = node.prev
         next_node = node.next
         if prev:
@@ -64,6 +64,7 @@ class Solution:
                 continue
             elif address[i] is not None:
                 repeated[i] = True
+                n = address[i]
                 dll.remove(address[i])
             else:
                 node = dll.push(i)
@@ -75,3 +76,4 @@ class Solution:
 print(Solution.find_first_non_repeating("aabc"))
 print(Solution.find_first_non_repeating("zz"))
 print(Solution.find_first_non_repeating("bb"))
+print(Solution.find_first_non_repeating("abcbbac"))
