@@ -62,3 +62,24 @@ class MinHeap:
         del self.heap[-1]
         self.min_heapify_down(0)
         return item
+
+
+class Solution:
+    @staticmethod
+    def get_k_largest(arr, k):
+        min_heap = MinHeap()
+        for i in range(k):
+            min_heap.insert(arr[i])
+        i = k
+        while i < len(arr):
+            element = arr[i]
+            if element > min_heap.heap[0]:
+                min_heap.pop()
+                min_heap.insert(element)
+            i += 1
+        return min_heap.heap
+
+
+print(Solution.get_k_largest([12, 5, 787, 1, 23], 2))
+print(Solution.get_k_largest([1, 23, 12, 9, 30, 2, 50], 3))
+print(Solution.get_k_largest([12, 23], 1))
