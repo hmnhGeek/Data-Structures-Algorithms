@@ -21,6 +21,7 @@ class DoublyLinkedList:
             node.prev = self.tail
             self.tail = node
         self.length += 1
+        return node
 
     def front(self):
         if self.is_empty():
@@ -42,3 +43,35 @@ class DoublyLinkedList:
         if is_tail:
             self.tail = prev
 
+
+class Solution:
+    @staticmethod
+    def get_dict(default):
+        alphabets = "abcdefghijklmnopqrstuvwxyz"
+        d = {}
+        for i in alphabets:
+            d[i] = default
+        return d
+
+    @staticmethod
+    def find_first_non_repeating(string):
+        address = Solution.get_dict(None)
+        repeated = Solution.get_dict(False)
+        dll = DoublyLinkedList()
+        result = ""
+        for i in string:
+            if repeated[i]:
+                continue
+            elif address[i] is not None:
+                repeated[i] = True
+                dll.remove(address[i])
+            else:
+                node = dll.push(i)
+                address[i] = node
+            result += dll.front()
+        return result
+
+
+print(Solution.find_first_non_repeating("aabc"))
+print(Solution.find_first_non_repeating("zz"))
+print(Solution.find_first_non_repeating("bb"))
