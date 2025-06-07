@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/first-non-repeating-character-in-a-stream1216/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -55,16 +58,22 @@ class Solution:
 
     @staticmethod
     def find_first_non_repeating(string):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # these will take O(1) space.
         address = Solution.get_dict(None)
         repeated = Solution.get_dict(False)
         dll = DoublyLinkedList()
         result = ""
+
+        # loop in the string in O(n)
         for i in string:
             if repeated[i]:
                 continue
             elif address[i] is not None:
                 repeated[i] = True
-                n = address[i]
                 dll.remove(address[i])
             else:
                 node = dll.push(i)
