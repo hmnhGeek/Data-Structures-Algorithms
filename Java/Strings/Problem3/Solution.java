@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
+
 package Strings.Problem3;
 
 import java.util.ArrayList;
@@ -7,6 +9,9 @@ import java.util.Map;
 
 public class Solution {
     public static List<Character> getDuplicates(String string) {
+        /*
+            Time complexity is O(n) and space complexity is O(26).
+         */
         List<Character> result = new ArrayList<>();
         Map<Character, Integer> counter = new HashMap<>();
         for (Character character : string.toCharArray()) {
