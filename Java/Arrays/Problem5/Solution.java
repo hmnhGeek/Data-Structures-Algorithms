@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/move-negative-numbers-beginning-positive-end-constant-extra-space/
+
 package Arrays.Problem5;
 
 import java.util.Arrays;
@@ -6,6 +8,9 @@ import java.util.List;
 
 public class Solution {
     public static void moveNegatives(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         int n = arr.size();
         int i = 0;
 
