@@ -31,6 +31,9 @@ public class Utility {
     }
 
     public static Integer maxRectangle(List<List<Integer>> matrix) {
+        /*
+            Time complexity is O(nm) and space complexity is O(m).
+         */
         int n = matrix.size(), m = matrix.getFirst().size();
         Integer maxArea = 0;
         List<Integer> prevRow = new ArrayList<>();
