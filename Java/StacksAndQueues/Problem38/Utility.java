@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/next-smaller-element/
+
 package StacksAndQueues.Problem38;
 
 import java.util.ArrayList;
@@ -5,6 +7,9 @@ import java.util.List;
 
 public class Utility {
     public static <T extends Comparable<T>> List<T> getNextSmaller(List<T> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         int n = arr.size();
         int i = n - 1;
         Stack<T> stack = new Stack<>();
