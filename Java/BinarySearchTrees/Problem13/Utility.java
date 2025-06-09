@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Utility {
     public static <T extends Comparable<T>> T getKthSmallest(BinarySearchTree<T> binarySearchTree, Integer k) {
+        /*
+            Time complexity is O(n) and space complexity is O(log(n)).
+         */
         List<T> inorder = new ArrayList<>();
         populateInorder(binarySearchTree.getRoot(), inorder);
         if (0 <= k - 1 && k - 1 < inorder.size()) {
