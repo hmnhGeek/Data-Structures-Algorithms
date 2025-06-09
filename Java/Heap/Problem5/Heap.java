@@ -9,6 +9,10 @@ public interface Heap<T extends Comparable<T>> {
     void heapifyUp(Integer startIndex);
     void heapifyDown(Integer pi);
 
+    default boolean isEmpty() {
+        return getHeap().isEmpty();
+    }
+
     default Integer getLci(Integer pi) {
         Integer lci = 2*pi + 1;
         return 0 <= lci && lci < getHeap().size() ? lci : null;
