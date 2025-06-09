@@ -81,6 +81,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
         this.diameter = 0;
     }
 
+    public Node<T> getRoot() {
+        return root;
+    }
+
+    public void setRoot(Node<T> root) {
+        this.root = root;
+    }
+
+    public Integer getDiameter() {
+        return diameter;
+    }
+
+    public void setDiameter(Integer diameter) {
+        this.diameter = diameter;
+    }
+
     public void recalcAugmentation(Node<T> parent) {
         this.diameter = 0;
         while (parent != null) {
