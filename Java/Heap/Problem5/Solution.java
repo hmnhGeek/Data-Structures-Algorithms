@@ -7,6 +7,7 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(kSmallest(Arrays.asList(7, 10, 4, 3, 20, 15), 3));
         System.out.println(kSmallest(Arrays.asList(7, 10, 4, 3, 20, 15), 4));
+        System.out.println(kSmallest(Arrays.asList(4, 2, 68, 99, 3, 4), 5));
     }
 
     public static Integer kSmallest(List<Integer> arr, Integer k) {
