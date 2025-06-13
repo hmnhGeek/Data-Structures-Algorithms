@@ -1,3 +1,5 @@
+// Problem link - https://www.techiedelight.com/inorder-tree-traversal-iterative-recursive/
+
 package BinaryTrees.Problem6;
 
 import java.util.ArrayList;
@@ -40,6 +42,9 @@ class TreeNode<T> {
 
 public class Solution {
     public static <T> List<T> getInorderIterative(TreeNode<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Stack<TreeNode<T>> stack = new Stack<>();
         TreeNode<T> curr = root;
         List<T> result = new ArrayList<>();
@@ -60,6 +65,9 @@ public class Solution {
     }
 
     public static <T> void getInorder(TreeNode<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         if (root != null) {
             getInorder(root.getLeft());
             System.out.println(root.getData());
@@ -86,5 +94,16 @@ public class Solution {
         n5.setRight(n8);
         System.out.println(getInorderIterative(n1));
         getInorder(n1);
+
+        // Example 2
+        TreeNode<Character> a = new TreeNode<>('a');
+        TreeNode<Character> b = new TreeNode<>('b');
+        TreeNode<Character> c = new TreeNode<>('c');
+        TreeNode<Character> d = new TreeNode<>('d');
+        a.setLeft(b);
+        a.setRight(c);
+        c.setLeft(d);
+        System.out.println(getInorderIterative(a));
+        getInorder(a);
     }
 }
