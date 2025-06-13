@@ -1,7 +1,12 @@
+// Problem link - https://www.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1
+
 package LinkedLists.Problem9;
 
 public class Solution {
     public static void addOne(LinkedList<Integer> linkedList) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         linkedList.reverse();
         int carry = 1;
         Node<Integer> curr = linkedList.getHead();
