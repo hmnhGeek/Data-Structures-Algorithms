@@ -59,6 +59,14 @@ public class Solution {
         return result;
     }
 
+    public static <T> void getInorder(TreeNode<T> root) {
+        if (root != null) {
+            getInorder(root.getLeft());
+            System.out.println(root.getData());
+            getInorder(root.getRight());
+        }
+    }
+
     public static void main(String[] args) {
         // Example 1
         TreeNode<Integer> n1 = new TreeNode<>(1);
@@ -77,5 +85,6 @@ public class Solution {
         n5.setLeft(n7);
         n5.setRight(n8);
         System.out.println(getInorderIterative(n1));
+        getInorder(n1);
     }
 }
