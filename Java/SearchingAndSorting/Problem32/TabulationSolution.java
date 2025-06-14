@@ -53,6 +53,8 @@ public class TabulationSolution {
                 dp.get(i).put(j, Math.max(left, right));
             }
         }
+
+        // return the result.
         return Math.max(dp.get(0).get(0), dp.get(1).get(0));
     }
 
