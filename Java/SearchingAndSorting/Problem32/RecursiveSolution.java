@@ -1,3 +1,5 @@
+// Problem link - https://www.spoj.com/problems/ANARC05B/
+
 package SearchingAndSorting.Problem32;
 
 import java.util.Arrays;
@@ -17,15 +19,26 @@ public class RecursiveSolution {
     }
 
     private static Integer solve(List<List<Integer>> matrix, int i, int j, Integer n, Integer m) {
+        // base case
         if (i == 0 && j == n) return 0;
         if (i == 1 && j == m) return 0;
+
+        // get the current element
         Integer element = matrix.get(i).get(j);
+
+        // check if the same element exist in the other array using binary search.
         Integer j0 = getIndexInOtherArray(matrix, getComplementary(i), element);
+
+        // left recursion would be to continue on the same path.
         Integer left = element + solve(matrix, i, j + 1, n, m);
+
+        // the other option is to switch to the other array.
         Integer right = Integer.MIN_VALUE;
         if (j0 != -1) {
             right = element + solve(matrix, getComplementary(i), j0 + 1, n, m);
         }
+
+        // return the max path sum.
         return Math.max(left, right);
     }
 
