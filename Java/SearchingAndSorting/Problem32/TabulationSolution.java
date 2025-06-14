@@ -25,6 +25,8 @@ public class TabulationSolution {
         }
         dp.get(0).put(n, 0);
         dp.get(1).put(m, 0);
+
+        // This O(2N) loop will run for the case when we assume to start from row = 0 (first array).
         for (int i = 0; i < 2; i += 1) {
             for (int j = matrix.get(i).size() - 1; j >= 0; j -= 1) {
                 Integer element = matrix.get(i).get(j);
@@ -37,6 +39,8 @@ public class TabulationSolution {
                 dp.get(i).put(j, Math.max(left, right));
             }
         }
+
+        // This O(2N) loop will run for the case when we assume to start from row = 1 (second array).
         for (int i = 1; i >= 0; i -= 1) {
             for (int j = matrix.get(i).size() - 1; j >= 0; j -= 1) {
                 Integer element = matrix.get(i).get(j);
