@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 public class MemoizedSolution {
+    /*
+        # The recursion stack will take O(path length + space of dp array) space, i.e., O(N + 2N) = O(N)
+        # (assuming same length of both the arrays in worst case). The time complexity would
+        # be O(N * log(N)) where in at each cell we have two options, but because of overlapping sub-problems, we can
+        # reduce this from 2^N to N.
+     */
     public static Integer doubleHelix(List<Integer> a, List<Integer> b) {
         List<List<Integer>> matrix = List.of(a, b);
         Integer n = a.size(), m = b.size();

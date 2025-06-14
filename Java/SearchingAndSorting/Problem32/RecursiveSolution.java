@@ -4,6 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RecursiveSolution {
+    /*
+        # The recursion stack will take O(path length) space, i.e., O(N + 2N) = O(N) (2N for arr). The time
+        # complexity would be O({2^N} * log(N)) where in at each cell we have two options, either to continue on same
+        # row, or switch and at each cell we also do a binary search to check if the same value exist in the other
+        # row or not.
+     */
     public static Integer doubleHelix(List<Integer> a, List<Integer> b) {
         List<List<Integer>> matrix = List.of(a, b);
         Integer n = a.size(), m = b.size();

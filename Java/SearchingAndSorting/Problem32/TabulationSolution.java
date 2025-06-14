@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public class TabulationSolution {
+    /*
+        # The time complexity still remains O(N * log(N)) but space complexity reduces to just O(2N) = O(N) with no
+        # recursion calls.
+     */
     public static Integer doubleHelix(List<Integer> a, List<Integer> b) {
         List<List<Integer>> matrix = List.of(a, b);
         Integer n = a.size(), m = b.size();
