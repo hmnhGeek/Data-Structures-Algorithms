@@ -34,14 +34,24 @@ public class MemoizedSolution {
         if (dp.get(i).get(j) != null) {
             return dp.get(i).get(j);
         }
+
+        // get the current element
         Integer element = matrix.get(i).get(j);
+
+        // check if the same element exist in the other array using binary search.
         Integer j0 = getIndexInOtherArray(matrix, getComplementary(i), element);
+
+        // left recursion would be to continue on the same path.
         Integer left = element + solve(matrix, i, j + 1, n, m, dp);
+
+        // the other option is to switch to the other array.
         Integer right = Integer.MIN_VALUE;
         if (j0 != -1) {
             right = element + solve(matrix, getComplementary(i), j0 + 1, n, m, dp);
         }
         dp.get(i).put(j, Math.max(left, right));
+
+        // return the max path sum.
         return dp.get(i).get(j);
     }
 
