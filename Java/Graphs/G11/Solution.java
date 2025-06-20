@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/detect-cycle-undirected-graph/
+// Solution - https://www.youtube.com/watch?v=BPlrALf1LDU&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=11
+
 package Graphs.G11;
 
 import java.util.HashMap;
@@ -42,6 +45,9 @@ public class Solution {
     }
 
     public static <T> Boolean hasCycle(Map<T, List<T>> graph, T startNode) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
         Queue<Element<T>> queue = new Queue<>();
         Map<T, Boolean> visited = getVisited(graph);
         queue.push(new Element<>(startNode, null));
