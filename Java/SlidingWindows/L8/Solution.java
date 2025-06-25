@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/longest-repeating-character-replacement/1
+// Solution - https://www.youtube.com/watch?v=_eNhaDCr6P0&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=8
+
 package SlidingWindows.L8;
 
 import java.util.Collections;
