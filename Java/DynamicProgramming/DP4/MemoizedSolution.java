@@ -1,3 +1,6 @@
+// Problem link - https://atcoder.jp/contests/dp/tasks/dp_b
+// Solution - https://www.youtube.com/watch?v=Kmh3rhyEtB8&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=5
+
 package DynamicProgramming.DP4;
 
 import java.util.HashMap;
