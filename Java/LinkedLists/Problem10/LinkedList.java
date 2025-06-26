@@ -33,6 +33,14 @@ public class LinkedList<T> {
     private Node<T> tail;
     private Integer length;
 
+    public Node<T> getHead() {
+        return head;
+    }
+
+    public Node<T> getTail() {
+        return tail;
+    }
+
     public LinkedList() {
         this.head = this.tail = null;
         this.length = 0;
