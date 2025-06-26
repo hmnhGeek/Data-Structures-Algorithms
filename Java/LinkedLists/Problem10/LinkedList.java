@@ -80,4 +80,18 @@ public class LinkedList<T> {
             push(arg);
         }
     }
+
+    public void reverse() {
+        if (isEmpty() || this.length.equals(1)) return;
+        Node<T> prev = null, curr = this.head;
+        while (curr != null) {
+            Node<T> nextCurr = curr.getNext();
+            curr.setNext(prev);
+            prev = curr;
+            curr = nextCurr;
+        }
+        Node<T> currTail = this.tail;
+        this.tail = this.head;
+        this.head = currTail;
+    }
 }
