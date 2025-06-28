@@ -57,6 +57,7 @@ public class Solution {
         n5.setLeft(n7);
         n5.setRight(n8);
         System.out.println(getPreorderRecursively(n1));
+        System.out.println(getPreorderIteratively(n1));
     }
 
     public static <T> List<T> getPreorderRecursively(Node<T> root) {
@@ -71,5 +72,22 @@ public class Solution {
             getPreorderRecursively(start.getLeft(), preorder);
             getPreorderRecursively(start.getRight(), preorder);
         }
+    }
+
+    public static <T> List<T> getPreorderIteratively(Node<T> root) {
+        Stack<Node<T>> stack = new Stack<>();
+        stack.push(root);
+        List<T> result = new ArrayList<>();
+        while (!stack.isEmpty()) {
+            Node<T> node = stack.pop();
+            result.add(node.getData());
+            if (node.getRight() != null) {
+                stack.push(node.getRight());
+            }
+            if (node.getLeft() != null) {
+                stack.push(node.getLeft());
+            }
+        }
+        return result;
     }
 }

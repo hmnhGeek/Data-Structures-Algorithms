@@ -31,7 +31,7 @@ public class Stack<T> {
     private StackNode<T> tail;
     private Integer length;
 
-    public Stack(T data) {
+    public Stack() {
         this.head = this.tail = null;
         this.length = 0;
     }
@@ -43,7 +43,7 @@ public class Stack<T> {
     public void push(T x) {
         StackNode<T> node = new StackNode<>(x);
         if (isEmpty()) {
-            this.head = this.tail = null;
+            this.head = this.tail = node;
         } else {
             node.setNext(this.head);
             this.head = node;
