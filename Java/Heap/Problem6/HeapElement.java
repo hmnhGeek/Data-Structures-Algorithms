@@ -1,6 +1,6 @@
 package Heap.Problem6;
 
-public class HeapElement<T extends Comparable<T>> implements Comparable<T> {
+public class HeapElement<T extends Comparable<T>> implements Comparable<HeapElement<T>> {
     private T data;
     private Integer rowIndex;
     private Integer colIndex;
@@ -36,7 +36,7 @@ public class HeapElement<T extends Comparable<T>> implements Comparable<T> {
     }
 
     @Override
-    public int compareTo(T o) {
-        return this.data.compareTo(o);
+    public int compareTo(HeapElement<T> o) {
+        return this.data.compareTo(o.getData());
     }
 }
