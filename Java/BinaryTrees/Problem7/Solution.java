@@ -1,3 +1,5 @@
+// Problem link - https://www.techiedelight.com/preorder-tree-traversal-iterative-recursive/
+
 package BinaryTrees.Problem7;
 
 import java.util.ArrayList;
@@ -75,6 +77,7 @@ public class Solution {
     }
 
     public static <T> List<T> getPreorderIteratively(Node<T> root) {
+        if (root == null) return new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
         stack.push(root);
         List<T> result = new ArrayList<>();
