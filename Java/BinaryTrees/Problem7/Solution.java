@@ -63,6 +63,9 @@ public class Solution {
     }
 
     public static <T> List<T> getPreorderRecursively(Node<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n) for the recursion stack.
+         */
         List<T> preorder = new ArrayList<>();
         getPreorderRecursively(root, preorder);
         return preorder;
@@ -77,6 +80,9 @@ public class Solution {
     }
 
     public static <T> List<T> getPreorderIteratively(Node<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n) for the stack.
+         */
         if (root == null) return new ArrayList<>();
         Stack<Node<T>> stack = new Stack<>();
         stack.push(root);
