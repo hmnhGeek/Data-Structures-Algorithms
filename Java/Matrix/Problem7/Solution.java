@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/find-a-specific-pair-in-matrix/
+// Solution - https://www.youtube.com/watch?v=aUhR_T5J9is
+
 package Matrix.Problem7;
 
 import java.util.ArrayList;
@@ -5,6 +8,10 @@ import java.util.List;
 
 public class Solution {
     public static Integer findSpecificPair(List<List<Integer>> matrix) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
+
         int n = matrix.size(), m = matrix.getFirst().size();
         List<List<Integer>> maxMatrix = getMaxMatrix(matrix, n, m);
         for (int i = n - 2; i >= 0; i -= 1) {
@@ -65,5 +72,16 @@ public class Solution {
         );
 
         System.out.println(Solution.findSpecificPair(matrix));
+
+        List<List<Integer>> matrix2 = List.of(
+                List.of(7, -8, 9, 11, 2, -6),
+                List.of(1, 2, 0, 9, -11, 6),
+                List.of(9, 10, 23, -6, 7, 2),
+                List.of(9, -13, 20, 17, 6, 3),
+                List.of(0, 2, 16, 0, -2, 8),
+                List.of(-1, 2, 7, 12, 13, -3)
+        );
+
+        System.out.println(Solution.findSpecificPair(matrix2));
     }
 }
