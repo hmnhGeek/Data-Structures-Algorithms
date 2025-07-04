@@ -1,6 +1,14 @@
+# Problem link - https://leetcode.com/problems/longest-repeating-character-replacement/description/
+# Solution - https://www.youtube.com/watch?v=_eNhaDCr6P0&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=8
+
+
 class Solution:
     @staticmethod
     def longest_repeating_character_replacement(string, k):
+        """
+            Time complexity is O(n) and space complexity is O(26).
+        """
+
         n = len(string)
         left = right = 0
         d = {i: 0 for i in string}
