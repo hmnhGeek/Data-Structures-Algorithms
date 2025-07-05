@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+# Solution - https://www.youtube.com/watch?v=zQ3zgFypzX4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=12
+
+
 class Solution:
     @staticmethod
     def dfs(graph, node, parent, visited):
@@ -14,6 +18,9 @@ class Solution:
 
     @staticmethod
     def detect_cycle(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
         visited = {i: False for i in graph}
         for node in graph:
             if not visited[node]:
