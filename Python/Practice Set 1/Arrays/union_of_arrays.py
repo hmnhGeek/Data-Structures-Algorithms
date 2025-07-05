@@ -1,6 +1,11 @@
+# Problem link - https://www.geeksforgeeks.org/problems/union-of-two-arrays3538/1
+
 class Solution:
     @staticmethod
     def union(arr1, arr2):
+        """
+            Time complexity is O(n + m) and space complexity is O(n + m).
+        """
         set1 = set(arr1)
         set2 = set(arr2)
         intersection = set1.intersection(set2)
