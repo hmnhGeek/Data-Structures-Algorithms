@@ -35,22 +35,40 @@ class Queue:
 class Solution:
     @staticmethod
     def detect_cycle(graph):
+        # get the source node from the graph
         source = list(graph.keys())[0]
-        if source not in graph:
-            return
+
+        # get the visited array
         visited = {i: False for i in graph}
+
+        # push the source node with parent None into the queue.
         queue = Queue()
         queue.push((source, None))
+
+        # mark the source node as visited.
         visited[source] = True
+
+        # typical BFS
         while not queue.is_empty():
+            # get the current node and its parent.
             node, parent = queue.pop()
+
+            # loop in the adjacent nodes...
             for adj_node in graph[node]:
+                # if its parent node, continue, nothing needs to be done.
                 if adj_node == parent:
                     continue
+
+                # else if the adjacent node is not visited, push it into the queue.
                 elif not visited[adj_node]:
+                    visited[adj_node] = True
                     queue.push((adj_node, node))
+
                 else:
+                    # else if it's not parent, and it is already visited, then there's a cycle.
                     return True
+
+        # if queue gets empty, there is no cycle, return False.
         return False
 
 
