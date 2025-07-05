@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/detect-cycle-undirected-graph/
+# Solution - https://www.youtube.com/watch?v=BPlrALf1LDU&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=11
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,10 @@ class Queue:
 class Solution:
     @staticmethod
     def detect_cycle(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         # get the source node from the graph
         source = list(graph.keys())[0]
 
