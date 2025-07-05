@@ -31,3 +31,98 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def detect_cycle(graph):
+        source = list(graph.keys())[0]
+        if source not in graph:
+            return
+        visited = {i: False for i in graph}
+        queue = Queue()
+        queue.push((source, None))
+        visited[source] = True
+        while not queue.is_empty():
+            node, parent = queue.pop()
+            for adj_node in graph[node]:
+                if adj_node == parent:
+                    continue
+                elif not visited[adj_node]:
+                    queue.push((adj_node, node))
+                else:
+                    return True
+        return False
+
+
+print(
+    Solution.detect_cycle(
+        {
+            1: [2, 3],
+            2: [1, 5],
+            3: [1, 4, 6],
+            4: [3],
+            5: [2, 7],
+            6: [3, 7],
+            7: [5, 6]
+        }
+    )
+)
+
+print(
+    Solution.detect_cycle(
+        {
+            1: [2, 3],
+            2: [1, 5],
+            3: [1, 4, 6],
+            4: [3],
+            5: [2, 7],
+            6: [3],
+            7: [5]
+        }
+    )
+)
+
+print(
+    Solution.detect_cycle(
+        {
+            0: [1, 2],
+            1: [0, 2],
+            2: [0, 1, 3],
+            3: [2]
+        }
+    )
+)
+
+print(
+    Solution.detect_cycle(
+        {
+            0: [1],
+            1: [0, 2],
+            2: [1, 3],
+            3: [2]
+        }
+    )
+)
+
+print(
+    Solution.detect_cycle(
+        {
+            0: [],
+            1: [2],
+            2: [1, 3],
+            3: [2]
+        }
+    )
+)
+
+print(
+    Solution.detect_cycle(
+        {
+            0: [1],
+            1: [0, 2, 4],
+            2: [1, 3],
+            3: [2, 4],
+            4: [1, 3]
+        }
+    )
+)
