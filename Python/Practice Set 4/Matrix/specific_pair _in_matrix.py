@@ -1,13 +1,23 @@
 class Solution:
     @staticmethod
     def find_specific_pair(mtx):
+        # get the dimensions of the matrix.
         n, m = len(mtx), len(mtx[0])
+
+        # define a max matrix and set the value of right-bottom most cell as mtx value of that cell.
+        # This will take O(nm) space.
         max_mtx = [[None for _ in range(m)] for _ in range(n)]
         max_mtx[n - 1][m - 1] = mtx[n - 1][m - 1]
+
+        # populate the last column of the max matrix in O(n) time.
         for i in range(n - 2, -1, -1):
             max_mtx[i][m - 1] = max(max_mtx[i + 1][m - 1], mtx[i][m - 1])
+
+        # populate the last row of the max matrix in O(m) time.
         for j in range(m - 2, -1, -1):
             max_mtx[n - 1][j] = max(max_mtx[n - 1][j + 1], mtx[n - 1][j])
+
+        # populate the rest of the max matrix in O(nm) time.
         for i in range(n - 2, -1, -1):
             for j in range(m - 2, -1, -1):
                 max_mtx[i][j] = max(
@@ -15,6 +25,8 @@ class Solution:
                     max_mtx[i][j + 1],
                     mtx[i][j]
                 )
+
+        # get the max difference in another O(nm) time.
         result = -1e6
         for i in range(n - 1):
             for j in range(m - 1):
