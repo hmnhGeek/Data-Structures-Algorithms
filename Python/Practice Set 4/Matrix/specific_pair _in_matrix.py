@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/find-a-specific-pair-in-matrix/
+# Solution - https://www.youtube.com/watch?v=aUhR_T5J9is&t=1771s
+
+
 class Solution:
     @staticmethod
     def find_specific_pair(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+
         # get the dimensions of the matrix.
         n, m = len(mtx), len(mtx[0])
 
