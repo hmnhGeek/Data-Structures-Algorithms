@@ -114,14 +114,14 @@ class BinarySearchTree:
         predecessor.data, node.data = node.data, predecessor.data
         return self._delete(predecessor)
 
-    def get_node(self, start, node):
-        if start is None or node is None:
+    def get_node(self, start, x):
+        if start is None or x is None:
             return
-        if start.data == node.data:
+        if start.data == x:
             return start
-        if node.data > start.data:
-            return self.get_node(start.right, node)
-        return self.get_node(start.left, node)
+        if x > start.data:
+            return self.get_node(start.right, x)
+        return self.get_node(start.left, x)
 
     def delete(self, x):
         node = self.get_node(self.root, x)
@@ -137,3 +137,40 @@ class BinarySearchTree:
     def show(self):
         self._show(self.root)
         print()
+
+
+class Solution:
+    @staticmethod
+    def inorder(root, counter, bst2, x):
+        if root:
+            Solution.inorder(root.left, counter, bst2, x)
+            a = root.data
+            if bst2.get_node(bst2.root, x - a) is not None:
+                counter[0] += 1
+            Solution.inorder(root.right, counter, bst2, x)
+
+    @staticmethod
+    def find_count(bst1, bst2, x):
+        counter = [0]
+        Solution.inorder(bst1.root, counter, bst2, x)
+        return counter[0]
+
+
+# Example 1
+bst1 = BinarySearchTree()
+for i in [5, 3, 7, 2, 4, 6, 8]:
+    bst1.insert(i)
+bst2 = BinarySearchTree()
+for i in [10, 6, 15, 3, 8, 11, 18]:
+    bst2.insert(i)
+print(Solution.find_count(bst1, bst2, 16))
+
+
+# Example 2
+bst1 = BinarySearchTree()
+for i in [1, 3, 2]:
+    bst1.insert(i)
+bst2 = BinarySearchTree()
+for i in [3, 2, 4, 1]:
+    bst2.insert(i)
+print(Solution.find_count(bst1, bst2, 4))
