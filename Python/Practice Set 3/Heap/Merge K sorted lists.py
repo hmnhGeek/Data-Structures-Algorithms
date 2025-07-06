@@ -68,16 +68,29 @@ class Solution:
     @staticmethod
     def merge_k_sorted_lists(matrix):
         k = len(matrix)
+
+        # create a min heap which will store elements from each row, i.e., O(k) space.
         pq = MinHeap()
+
+        # push the first element from each row into the min heap in O(k * log(k)) time.
         for i in range(k):
             if len(matrix[i]) != 0:
                 pq.insert((matrix[i][0], i, 0))
         result = []
+
+        # while the min heap is not empty (this will run for all n-elements)
         while not pq.is_empty():
+            # get the minimum element in O(log(k)) time.
             element, i, j = pq.pop()
+
+            # append the min element into merged array.
             result.append(element)
+
+            # if the next element is available, push it to min heap in O(log(k)) time.
             if 0 <= j + 1 < len(matrix[i]):
                 pq.insert((matrix[i][j + 1], i, j + 1))
+
+        # return merged array
         return result
 
 
