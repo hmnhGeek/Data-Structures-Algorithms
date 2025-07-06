@@ -2,7 +2,7 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.left = self.right = self.parent = None
-        self.size = self.height = self.d = 1
+        self.size = self.ht = self.d = 1
 
 
 class BinarySearchTree:
@@ -127,3 +127,13 @@ class BinarySearchTree:
         node = self.get_node(self.root, x)
         if node is not None:
             return self._delete(node)
+
+    def _show(self, start):
+        if start:
+            self._show(start.left)
+            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.ht}, d = {start.d}")
+            self._show(start.right)
+
+    def show(self):
+        self._show(self.root)
+        print()
