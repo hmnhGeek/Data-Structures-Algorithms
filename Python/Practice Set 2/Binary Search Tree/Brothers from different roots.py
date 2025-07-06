@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/brothers-from-different-root/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -151,6 +154,9 @@ class Solution:
 
     @staticmethod
     def find_count(bst1, bst2, x):
+        """
+            Time complexity is O(n * log(m)) and space complexity is O(n + log(m))
+        """
         counter = [0]
         Solution.inorder(bst1.root, counter, bst2, x)
         return counter[0]
