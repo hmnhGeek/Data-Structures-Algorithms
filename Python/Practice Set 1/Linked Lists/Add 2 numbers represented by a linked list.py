@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/add-two-numbers-represented-by-linked-lists/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -53,11 +56,22 @@ class LinkedList:
 class Solution:
     @staticmethod
     def add(l1: LinkedList, l2: LinkedList):
+        """
+            Overall time complexity is O(n + m) and space complexity is O(max(n, m)).
+        """
+
+        # Time complexity is O(n + m) for this operation.
         l1.reverse()
         l2.reverse()
+
+        # create a result linked list in which addition digits will be pushed.
         result = LinkedList()
+
+        # create tracking variables.
         carry = 0
         curr1, curr2 = l1.head, l2.head
+
+        # This is a O(min(n, m)) operation
         while curr1 is not None and curr2 is not None:
             _sum = curr1.data + curr2.data + carry
             digit = _sum % 10
@@ -98,5 +112,13 @@ l1 = LinkedList()
 l1.build(0, 0, 6, 3)
 l2 = LinkedList()
 l2.build(0, 7)
+l3 = Solution.add(l1, l2)
+print(l3)
+
+# Example 3
+l1 = LinkedList()
+l1.build(9, 9)
+l2 = LinkedList()
+l2.build(9, 9, 9)
 l3 = Solution.add(l1, l2)
 print(l3)
