@@ -1,3 +1,6 @@
+# Problem link - https://www.techiedelight.com/preorder-tree-traversal-iterative-recursive/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -48,12 +51,18 @@ class Solution:
 
     @staticmethod
     def recursive(root):
+        """
+            Time and space complexity both are O(n).
+        """
         preorder = []
         Solution._preorder(root, preorder)
         return preorder
     
     @staticmethod
     def iterative(root):
+        """
+            Time and space complexity both are O(n).
+        """
         stack = Stack()
         stack.push(root)
         result = []
