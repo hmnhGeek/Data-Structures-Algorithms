@@ -47,7 +47,49 @@ class Solution:
             Solution._preorder(root.right, preorder)
 
     @staticmethod
-    def preorder_recursive(root):
+    def recursive(root):
         preorder = []
         Solution._preorder(root, preorder)
         return preorder
+    
+    @staticmethod
+    def iterative(root):
+        stack = Stack()
+        stack.push(root)
+        result = []
+        while not stack.is_empty():
+            node = stack.pop()
+            result.append(node.data)
+            if node.right is not None:
+                stack.push(node.right)
+            if node.left is not None:
+                stack.push(node.left)
+        return result
+    
+
+# Example 1
+n1, n2, n3, n4, n5, n6, n7, n8 = Node(1), Node(2), Node(3), Node(4), Node(5), Node(6), Node(7), Node(8)
+n1.left = n2
+n2.left = n4
+n3.left = n5
+n5.left = n7
+n1.right = n3
+n3.right = n6
+n5.right = n8
+print(Solution.recursive(n1))
+print()
+print(Solution.iterative(n1))
+
+print()
+print()
+
+# Example 2
+n1, n2, n3, n4, n5, n6 = Node(1), Node(2), Node(3), Node(4), Node(5), Node(6)
+n1.left = n2
+n2.left = n4
+n1.right = n3
+n2.right = n5
+n3.right = n6
+print(Solution.recursive(n1))
+print()
+print(Solution.iterative(n1))
