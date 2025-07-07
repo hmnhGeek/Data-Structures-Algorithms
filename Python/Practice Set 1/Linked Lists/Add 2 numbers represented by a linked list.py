@@ -50,7 +50,53 @@ class LinkedList:
         self.head, self.tail = self.tail, self.head
 
 
-l = LinkedList()
-# l.build()
-l.reverse()
-print(l)
+class Solution:
+    @staticmethod
+    def add(l1: LinkedList, l2: LinkedList):
+        l1.reverse()
+        l2.reverse()
+        result = LinkedList()
+        carry = 0
+        curr1, curr2 = l1.head, l2.head
+        while curr1 is not None and curr2 is not None:
+            _sum = curr1.data + curr2.data + carry
+            digit = _sum % 10
+            carry = _sum // 10
+            result.push(digit)
+            curr1 = curr1.next
+            curr2 = curr2.next
+        while curr1 is not None:
+            _sum = curr1.data + carry
+            digit = _sum % 10
+            carry = _sum // 10
+            result.push(digit)
+            curr1 = curr1.next
+        while curr2 is not None:
+            _sum = curr2.data + carry
+            digit = _sum % 10
+            carry = _sum // 10
+            result.push(digit)
+            curr2 = curr2.next
+        while carry != 0:
+            digit = carry % 10
+            carry = carry // 10
+            result.push(digit)
+        result.reverse()
+        return result
+
+
+# Example 1
+l1 = LinkedList()
+l1.build(4, 5)
+l2 = LinkedList()
+l2.build(3, 4, 5)
+l3 = Solution.add(l1, l2)
+print(l3)
+
+# Example 2
+l1 = LinkedList()
+l1.build(0, 0, 6, 3)
+l2 = LinkedList()
+l2.build(0, 7)
+l3 = Solution.add(l1, l2)
+print(l3)
