@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one2614/1
+
 package Arrays.Problem7;
 
 import java.util.Arrays;
@@ -17,16 +19,29 @@ public class Solution {
     }
 
     public static <T> void rotateArray(List<T> array) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
+
+        // Store the last item for future reference.
         T lastItem = array.getLast();
+
+        // start iterating from the second item in the list.
         int i = 1;
         int n = array.size();
+
+        // store the 0th indexed item
         T prev = array.getFirst();
+
+        // run for `n - 1` iterations.
         while (i < n) {
             T currItem = array.get(i);
             array.set(i, prev);
             prev = currItem;
             i += 1;
         }
+
+        // update the first item with the last item.
         array.set(0, lastItem);
     }
 }
