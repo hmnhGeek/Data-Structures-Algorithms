@@ -1,8 +1,10 @@
+// Problem link - https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+// Solution - https://www.youtube.com/watch?v=AseUmwVNaoY
+
 package SearchingAndSorting.Problem34;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 
@@ -19,6 +21,9 @@ public class Solution {
     }
 
     private static Integer mergeSort(List<Integer> arr) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         InversionCounter counter = new InversionCounter();
         mergeSort(arr, 0, arr.size() - 1, counter);
         return counter.count;
