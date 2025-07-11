@@ -14,6 +14,8 @@ class InversionCounter {
 public class Solution {
     public static void main(String[] args) {
         System.out.println(mergeSort(new ArrayList<>(Arrays.asList(2, 4, 1, 3, 5))));
+        System.out.println(mergeSort(new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6))));
+        System.out.println(mergeSort(new ArrayList<>(Arrays.asList(10, 10, 10))));
     }
 
     private static Integer mergeSort(List<Integer> arr) {
