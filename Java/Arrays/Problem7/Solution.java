@@ -23,6 +23,8 @@ public class Solution {
             Time complexity is O(n) and space complexity is O(1).
          */
 
+        if (array.isEmpty()) return;
+
         // Store the last item for future reference.
         T lastItem = array.getLast();
 
