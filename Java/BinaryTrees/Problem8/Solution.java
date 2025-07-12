@@ -1,3 +1,5 @@
+// Problem link - https://www.techiedelight.com/postorder-tree-traversal-iterative-recursive/
+
 package BinaryTrees.Problem8;
 
 
@@ -62,6 +64,9 @@ public class Solution {
     }
 
     public static <T> List<T> getPostorderRecursively(Node<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         List<T> postorder = new ArrayList<>();
         getPostorderRecursively(root, postorder);
         return postorder;
@@ -76,6 +81,10 @@ public class Solution {
     }
 
     public static <T> List<T> getPostorderIteratively(Node<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
+
         Stack<Node<T>> stack = new Stack<>();
         stack.push(root);
         List<T> result = new ArrayList<>();
