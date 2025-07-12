@@ -38,6 +38,18 @@ public class LinkedList<T> {
         this.length = 0;
     }
 
+    public Node<T> getHead() {
+        return head;
+    }
+
+    public Node<T> getTail() {
+        return tail;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
     public boolean isEmpty() {
         return this.length.equals(0);
     }
