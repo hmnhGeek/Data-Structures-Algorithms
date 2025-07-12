@@ -47,11 +47,15 @@ public class Solution {
         return postorder;
     }
 
-    public static <T> void getPostorderRecursively(Node<T> root, List<T> postorder) {
+    private static <T> void getPostorderRecursively(Node<T> root, List<T> postorder) {
         if (root != null) {
             getPostorderRecursively(root.getLeft(), postorder);
             getPostorderRecursively(root.getRight(), postorder);
             postorder.add(root.getData());
         }
+    }
+
+    public static <T> List<T> getPostorderIteratively(Node<T> root) {
+
     }
 }
