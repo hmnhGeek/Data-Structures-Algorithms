@@ -209,6 +209,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return;
     }
 
+    public void delete(T x) {
+        Node<T> node = getNode(this.root, x);
+        if (node != null) {
+            delete(node);
+        }
+    }
+
     public Node<T> getNode(Node<T> start, T x) {
         if (start == null || x == null) return null;
         if (start.getData() == x) {
