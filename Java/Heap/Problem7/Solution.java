@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/problems/merge-two-binary-max-heap0144/1
+
 package Heap.Problem7;
 
 import java.util.Arrays;
@@ -21,6 +23,9 @@ public class Solution {
     }
 
     public static <T extends Comparable<T>> void mergeHeaps(MaxHeap<T> h1, MaxHeap<T> h2) {
+        /*
+            Time complexity is O(m * (log(m) + log(n))) and space complexity is O(1).
+         */
         while (!h2.isEmpty()) {
             h1.insert(h2.pop());
         }
