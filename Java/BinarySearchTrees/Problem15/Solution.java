@@ -1,3 +1,5 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/find-median-bst-time-o1-space/
+
 package BinarySearchTrees.Problem15;
 
 import java.util.ArrayList;
@@ -8,6 +10,9 @@ public class Solution {
     public static void main(String[] args) {
         BinarySearchTree<Integer> bst1 = buildTree(Arrays.asList(6, 3, 8, 1, 4, 7, 9));
         System.out.println(getMedian(bst1));
+
+        BinarySearchTree<Integer> bst2 = buildTree(Arrays.asList(20, 8, 22, 4, 12, 10, 14));
+        System.out.println(getMedian(bst2));
     }
 
     private static <T extends Comparable<T>> BinarySearchTree<T> buildTree(List<T> arr) {
@@ -17,6 +22,9 @@ public class Solution {
     }
 
     public static Integer getMedian(BinarySearchTree<Integer> binarySearchTree) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         List<Integer> inorder = new ArrayList<>();
         getInorder(binarySearchTree.getRoot(), inorder);
         int n = inorder.size();
