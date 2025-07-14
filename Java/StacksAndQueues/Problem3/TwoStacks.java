@@ -17,6 +17,7 @@ public class TwoStacks<T> {
     }
 
     public void push1(T x) {
+        // Time complexity is O(1) and space complexity is O(1).
         stacks.set(i, x);
         if (i + 2 < stacks.size()) {
             i += 2;
@@ -31,6 +32,7 @@ public class TwoStacks<T> {
     }
 
     public void push2(T x) {
+        // Time complexity is O(1) and space complexity is O(1).
         stacks.set(j, x);
         if (j + 2 < stacks.size()) {
             j += 2;
@@ -45,6 +47,7 @@ public class TwoStacks<T> {
     }
 
     public T pop1() {
+        // Time complexity is O(1) and space complexity is O(1).
         if (i == 0) return null;
         T item = stacks.get(i - 2);
         i -= 2;
@@ -53,6 +56,7 @@ public class TwoStacks<T> {
     }
 
     public T pop2() {
+        // Time complexity is O(1) and space complexity is O(1).
         if (j == 1) return null;
         T item = stacks.get(j - 2);
         j -= 2;
