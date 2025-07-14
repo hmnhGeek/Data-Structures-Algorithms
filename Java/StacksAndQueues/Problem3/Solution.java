@@ -9,5 +9,13 @@ public class Solution {
         System.out.println(stacks.pop1());
         System.out.println(stacks.pop2());
         System.out.println(stacks.pop2());
+
+        TwoStacks<Integer> stacks1 = new TwoStacks<>();
+        stacks1.push1(1);
+        stacks1.push2(2);
+        System.out.println(stacks1.pop1());
+        stacks1.push1(3);
+        System.out.println(stacks1.pop1());
+        System.out.println(stacks1.pop1());
     }
 }
