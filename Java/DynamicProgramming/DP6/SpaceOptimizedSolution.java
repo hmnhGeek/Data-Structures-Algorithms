@@ -4,23 +4,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TabulationSolution {
+public class SpaceOptimizedSolution {
     /*
-        Time complexity is O(n) and space complexity is O(1).
+        Time complexity is O(n) and space complexity is O(n).
      */
     private static Integer houseRobber(List<Integer> arr) {
-        Map<Integer, Integer> dp = new HashMap<>();
+        int prev2 = 0, prev = 0;
         for (int i = 0; i < arr.size(); i += 1) {
-            dp.put(i, null);
+            Integer left = arr.get(i) + prev2;
+            Integer right = prev;
+            int curr = Math.max(left, right);
+            prev2 = prev;
+            prev = curr;
         }
-        dp.put(-2, 0);
-        dp.put(-1, 0);
-        for (int i = 0; i < arr.size(); i += 1) {
-            Integer left = arr.get(i) + dp.get(i - 2);
-            Integer right = dp.get(i - 1);
-            dp.put(i, Math.max(left, right));
-        }
-        return dp.get(arr.size() - 1);
+        return prev;
     }
 
     public static Integer houseRobber2(List<Integer> arr) {
