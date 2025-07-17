@@ -3,6 +3,9 @@ package DynamicProgramming.DP6;
 import java.util.List;
 
 public class RecursiveSolution {
+    /*
+        Time complexity is O(2^n) and space complexity is O(n).
+     */
     private static Integer houseRobber(List<Integer> arr) {
         return solve(arr, arr.size() - 1);
     }

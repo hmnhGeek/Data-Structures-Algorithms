@@ -8,5 +8,10 @@ public class Solution {
         System.out.println(RecursiveSolution.houseRobber2(Arrays.asList(1,2,3,1)));
         System.out.println(RecursiveSolution.houseRobber2(Arrays.asList(1, 2, 3)));
         System.out.println(RecursiveSolution.houseRobber2(Arrays.asList(2,9,8,3,6)));
+        System.out.println();
+        System.out.println(MemoizedSolution.houseRobber2(Arrays.asList(2, 3, 2)));
+        System.out.println(MemoizedSolution.houseRobber2(Arrays.asList(1,2,3,1)));
+        System.out.println(MemoizedSolution.houseRobber2(Arrays.asList(1, 2, 3)));
+        System.out.println(MemoizedSolution.houseRobber2(Arrays.asList(2,9,8,3,6)));
     }
 }
