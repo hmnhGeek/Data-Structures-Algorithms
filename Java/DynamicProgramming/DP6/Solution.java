@@ -1,0 +1,12 @@
+package DynamicProgramming.DP6;
+
+import java.util.Arrays;
+
+public class Solution {
+    public static void main(String[] args) {
+        System.out.println(RecursiveSolution.houseRobber2(Arrays.asList(2, 3, 2)));
+        System.out.println(RecursiveSolution.houseRobber2(Arrays.asList(1,2,3,1)));
+        System.out.println(RecursiveSolution.houseRobber2(Arrays.asList(1, 2, 3)));
+        System.out.println(RecursiveSolution.houseRobber2(Arrays.asList(2,9,8,3,6)));
+    }
+}
