@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1
+// Solution - https://www.youtube.com/watch?v=edXdVwkYHF8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=13
+
+
 package Graphs.G13;
 
 import java.util.ArrayList;
@@ -36,6 +40,10 @@ public class Solution {
     }
 
     public static List<List<Integer>> getDistanceOfNearestOnes(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
+
         // get visited and distance matrices in O(nm) time and O(nm) space.
         List<List<Boolean>> visited = getVisited(mtx);
         List<List<Integer>> distances = getDistances(mtx);
