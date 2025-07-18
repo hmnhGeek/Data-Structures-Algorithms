@@ -15,13 +15,36 @@ public class Solution {
                         )
                 )
         );
+        System.out.println(
+                getDistanceOfNearestOnes(
+                        Arrays.asList(
+                                Arrays.asList(1, 0, 1),
+                                Arrays.asList(1, 1, 0),
+                                Arrays.asList(1, 0, 0)
+                        )
+                )
+        );
+        System.out.println(
+                getDistanceOfNearestOnes(
+                        Arrays.asList(
+                                Arrays.asList(0, 0, 0, 1),
+                                Arrays.asList(0, 0, 1, 1),
+                                Arrays.asList(0, 1, 1, 0)
+                        )
+                )
+        );
     }
 
     public static List<List<Integer>> getDistanceOfNearestOnes(List<List<Integer>> mtx) {
+        // get visited and distance matrices in O(nm) time and O(nm) space.
         List<List<Boolean>> visited = getVisited(mtx);
         List<List<Integer>> distances = getDistances(mtx);
+
+        // initialize a queue to perform BFS.
         Queue<List<Integer>> queue = new Queue<>();
         int n = mtx.size(), m = mtx.getFirst().size();
+
+        // push the 1s into queue with distance 0 and mark them as visited.
         for (int i = 0; i < n; i += 1) {
             for (int j = 0; j < m; j += 1) {
                 if (mtx.get(i).get(j).equals(1)) {
@@ -30,6 +53,8 @@ public class Solution {
                 }
             }
         }
+
+        // typical BFS
         while (!queue.isEmpty()) {
             List<Integer> cell = queue.pop();
             int i = cell.getFirst(), j = cell.get(1);
@@ -42,7 +67,11 @@ public class Solution {
                                     distances.get(i).get(j)
                             )
                     );
+
+            // get the unvisited neighbour cells.
             List<List<Integer>> neighbours = getNeighbours(mtx, i, j, n, m, visited);
+
+            // push them into queue and mark them as visited.
             for (List<Integer> neighbour : neighbours) {
                 visited.get(neighbour.getFirst()).set(neighbour.getLast(), true);
                 queue.push(List.of(neighbour.getFirst(), neighbour.getLast(), cell.getLast() + 1));
