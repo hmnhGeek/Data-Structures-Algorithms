@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/given-matrix-o-x-replace-o-x-surrounded-x/
+// Solution - https://www.youtube.com/watch?v=BtdgAys4yMk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=14
+
+
 package Graphs.G14;
 
 import java.util.ArrayList;
@@ -14,9 +18,37 @@ public class Solution {
         );
         surroundRegions(m1);
         System.out.println(m1);
+
+        List<List<Character>> m2 = Arrays.asList(Arrays.asList('X'));
+        surroundRegions(m2);
+        System.out.println(m2);
+
+        List<List<Character>> m3 = Arrays.asList(
+                Arrays.asList('X', 'O', 'X', 'X', 'X', 'X'),
+                Arrays.asList('X', 'O', 'X', 'X', 'O', 'X'),
+                Arrays.asList('X', 'X', 'X', 'O', 'O', 'X'),
+                Arrays.asList('O', 'X', 'X', 'X', 'X', 'X'),
+                Arrays.asList('X', 'X', 'X', 'O', 'X', 'O'),
+                Arrays.asList('O', 'O', 'X', 'O', 'O', 'O')
+        );
+        surroundRegions(m3);
+        System.out.println(m3);
+
+        List<List<Character>> m4 = Arrays.asList(
+                Arrays.asList('X', 'X', 'X', 'X'),
+                Arrays.asList('X', 'O', 'X', 'X'),
+                Arrays.asList('X', 'O', 'O', 'X'),
+                Arrays.asList('X', 'O', 'X', 'X'),
+                Arrays.asList('X', 'X', 'O', 'O')
+        );
+        surroundRegions(m4);
+        System.out.println(m4);
     }
 
     public static void surroundRegions(List<List<Character>> mtx) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         List<List<Boolean>> visited = getVisited(n, m);
         for (int j = 0; j < m - 1; j += 1) {
