@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/first-and-last-position-of-an-element-in-sorted-array_1082549
+// Solution - https://www.youtube.com/watch?v=hjR1IYVx9lY&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=4
+
+
 package BinarySearch.BS3;
 
 import java.util.Arrays;
