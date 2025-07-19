@@ -16,6 +16,11 @@ public class Solution {
         System.out.println(getUpperBound(Arrays.asList(1, 4, 7, 8, 10), 7));
         System.out.println(getUpperBound(Arrays.asList(1, 2, 5, 6, 10), 10));
         System.out.println(getUpperBound(Arrays.asList(1, 5, 5, 7, 7, 9, 10), 5));
+        System.out.println("Insert Position");
+        System.out.println(getInsertPosition(Arrays.asList(1, 2, 2, 4, 7), 6));
+        System.out.println(getInsertPosition(Arrays.asList(1, 2, 4, 7), 9));
+        System.out.println(getInsertPosition(Arrays.asList(2, 5, 7), 1));
+        System.out.println(getInsertPosition(Arrays.asList(1, 2, 4, 7), 2));
     }
 
     public static <T extends Comparable<T>> Integer getLowerBound(List<T> arr, T n) {
@@ -48,5 +53,12 @@ public class Solution {
             }
         }
         return low;
+    }
+
+    public static <T extends Comparable<T>> Integer getInsertPosition(List<T> arr, T n) {
+        /*
+            Time complexity is O(log(arr.size())) and space complexity is O(1).
+         */
+        return getLowerBound(arr, n);
     }
 }
