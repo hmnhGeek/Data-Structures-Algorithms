@@ -3,7 +3,7 @@
 // Problem link - https://www.naukri.com/code360/problems/algorithm-to-find-best-insert-position-in-sorted-array_839813
 // Solution - https://www.youtube.com/watch?v=6zhGS79oQ4k&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=3
 
-package BinarySearch.BS1;
+package BinarySearch.BS2;
 
 import java.util.Arrays;
 import java.util.List;
