@@ -1,6 +1,13 @@
+# Problem link - https://leetcode.com/problems/surrounded-regions/description/
+# Solution - https://www.youtube.com/watch?v=BtdgAys4yMk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=14
+
+
 class Solution:
     @staticmethod
     def surround_regions(mtx):
+        """
+            Time complexity is O(mn) and space complexity is O(mn).
+        """
         n, m = len(mtx), len(mtx[0])
         for j in range(m - 1):
             if mtx[0][j] == 'O':
