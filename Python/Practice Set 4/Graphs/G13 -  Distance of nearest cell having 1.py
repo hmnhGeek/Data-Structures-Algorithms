@@ -43,10 +43,17 @@ class Solution:
             Time complexity is O(mn) and space complexity is O(mn).
         """
         n, m = len(matrix), len(matrix[0])
+
+        # O(mn) space.
         visited = [[False for _ in range(m)] for _ in range(n)]
         distances = [[1e6 for _ in range(m)] for _ in range(n)]
         queue = Queue()
+
+        # populate the distances with 0 and mark the visited with true for all the 1s. This will take O(nm) time and
+        # O(1) space.
         Solution.populate_queue(matrix, n, m, visited, distances, queue)
+
+        # Typical BFS
         while not queue.is_empty():
             i, j, d = queue.pop()
             neighbours = Solution._get_valid_neighbours(matrix, i, j, n, m, visited)
