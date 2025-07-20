@@ -63,7 +63,6 @@ class Solution:
                     mtx[i][j] = 'O'
 
 
-
 Solution.surround_regions(
     [['X', 'X', 'X', 'X'],
      ['X', 'O', 'X', 'X'],
