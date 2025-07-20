@@ -31,3 +31,58 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def find_distance(matrix):
+        n, m = len(matrix), len(matrix[0])
+        visited = [[False for _ in range(m)] for _ in range(n)]
+        distances = [[1e6 for _ in range(m)] for _ in range(n)]
+        queue = Queue()
+        Solution.populate_queue(matrix, n, m, visited, distances, queue)
+        while not queue.is_empty():
+            i, j, d = queue.pop()
+            neighbours = Solution._get_valid_neighbours(matrix, i, j, n, m, visited)
+            for neighbour in neighbours:
+                x, y = neighbour
+                distances[x][y] = min(distances[x][y], d + 1)
+                visited[x][y] = True
+                queue.push((x, y, distances[x][y]))
+        return distances
+
+    @staticmethod
+    def populate_queue(matrix, n, m, visited, distances, queue):
+        for i in range(n):
+            for j in range(m):
+                if matrix[i][j] == 1:
+                    visited[i][j] = True
+                    distances[i][j] = 0
+                    queue.push((i, j, 0))
+
+    @staticmethod
+    def _get_valid_neighbours(matrix, i, j, n, m, visited):
+        result = []
+        if n > i - 1 >= 0 == matrix[i - 1][j] and not visited[i - 1][j]:
+            result.append((i - 1, j))
+        if m > j + 1 >= 0 == matrix[i][j + 1] and not visited[i][j + 1]:
+            result.append((i, j + 1))
+        if n > i + 1 >= 0 == matrix[i + 1][j] and not visited[i + 1][j]:
+            result.append((i + 1, j))
+        if m > j - 1 >= 0 == matrix[i][j - 1] and not visited[i][j - 1]:
+            result.append((i, j - 1))
+        return result
+
+
+print(
+    Solution.find_distance(
+        [
+            [0, 0, 0],
+            [0, 1, 0],
+            [1, 0, 1]
+        ]
+    )
+)
+print(Solution.find_distance([[0, 1, 1, 0], [1, 1, 0, 0], [0, 0, 1, 1]]))
+print(Solution.find_distance([[1, 0, 1], [1, 1, 0], [1, 0, 0]]))
+print(Solution.find_distance([[0, 0, 0], [0, 1, 0], [0, 0, 0]]))
+print(Solution.find_distance([[0, 0, 0], [0, 1, 0], [1, 1, 1]]))
