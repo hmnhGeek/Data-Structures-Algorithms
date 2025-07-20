@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/distance-of-nearest-cell-having-1-1587115620/1
+# Solution - https://www.youtube.com/watch?v=edXdVwkYHF8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=13
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,9 @@ class Queue:
 class Solution:
     @staticmethod
     def find_distance(matrix):
+        """
+            Time complexity is O(mn) and space complexity is O(mn).
+        """
         n, m = len(matrix), len(matrix[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
         distances = [[1e6 for _ in range(m)] for _ in range(n)]
