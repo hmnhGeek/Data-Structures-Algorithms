@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/ninja-s-training_3621003?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=AE39gJYuRog&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=8
+
+
 def get_next_index(m, j):
     result = []
     for i in range(m):
@@ -137,7 +141,7 @@ def memoized():
 
 def tabulation():
     """
-        Time complexity is O(mn) and space complexity is O(mn).
+        Time complexity is O(n * m^4) and space complexity is O(mn).
     """
     def ninjas_training(mtx):
         num_days, num_activities = len(mtx), len(mtx[0])
@@ -200,7 +204,7 @@ def tabulation():
 
 def space_optimized():
     """
-        Time complexity is O(mn) and space complexity is O(m).
+        Time complexity is O(n * m^4) and space complexity is O(m).
     """
     def ninjas_training(mtx):
         num_days, num_activities = len(mtx), len(mtx[0])
