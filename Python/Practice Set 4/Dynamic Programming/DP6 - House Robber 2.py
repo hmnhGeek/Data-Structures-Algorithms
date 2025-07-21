@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/house-robber_839733?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=3WaxQMELSkw&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=7
+
+
 def recursive():
     """
         Time complexity is O(2^n) and space complexity is O(n).
