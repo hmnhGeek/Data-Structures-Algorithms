@@ -87,8 +87,37 @@ def tabulation():
     print(house_robber2([1, 3, 2, 0]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n) and space complexity is O(1).
+    """
+    def house_robber(arr):
+        n = len(arr)
+        prev2 = prev = 0
+        for i in range(n):
+            left = arr[i] + prev2
+            right = prev
+            curr = max(left, right)
+            prev2 = prev
+            prev = curr
+        return prev
+
+    def house_robber2(arr):
+        x = house_robber(arr[:-1])
+        y = house_robber(arr[1:])
+        return max(x, y)
+
+    print(house_robber2([2, 3, 2]))
+    print(house_robber2([1, 3, 2, 1]))
+    print(house_robber2([1, 5, 1, 2, 6]))
+    print(house_robber2([2, 3, 5]))
+    print(house_robber2([1, 3, 2, 0]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
