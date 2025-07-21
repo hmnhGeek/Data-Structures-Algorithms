@@ -198,8 +198,75 @@ def tabulation():
     )
 
 
+def space_optimized():
+    """
+        Time complexity is O(mn) and space complexity is O(m).
+    """
+    def ninjas_training(mtx):
+        num_days, num_activities = len(mtx), len(mtx[0])
+        max_points_overall = -1e6
+        for activity in range(num_activities):
+            prev = {j: -1e6 for j in range(num_activities)}
+            for first_activity in range(num_activities):
+                prev[first_activity] = mtx[0][first_activity]
+            for day in range(1, num_days):
+                curr = {j: -1e6 for j in range(num_activities)}
+                for prev_day_activity in range(num_activities):
+                    next_possible_activities = get_next_index(num_activities, prev_day_activity)
+                    max_points = -1e6
+                    for next_activity in next_possible_activities:
+                        points_obtained = mtx[day][prev_day_activity] + prev[next_activity]
+                        max_points = max(max_points, points_obtained)
+                    curr[prev_day_activity] = max_points
+                prev = curr
+            points_obtained = prev[activity]
+            max_points_overall = max(max_points_overall, points_obtained)
+        return max_points_overall
+
+    print(
+        ninjas_training(
+            [
+                [1, 2, 5],
+                [3, 1, 1],
+                [3, 3, 3]
+            ]
+        )
+    )
+
+    print(
+        ninjas_training(
+            [
+                [10, 50, 1],
+                [5, 100, 11]
+            ]
+        )
+    )
+
+    print(
+        ninjas_training(
+            [
+                [10, 40, 70],
+                [20, 50, 80],
+                [30, 60, 90]
+            ]
+        )
+    )
+
+    print(
+        ninjas_training(
+            [
+                [18, 11, 19],
+                [4, 13, 7],
+                [1, 8, 13]
+            ]
+        )
+    )
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
