@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/find-peak-element-2d-array/
+# Solution - https://www.youtube.com/watch?v=nGGp5XBzC4g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=28
+
+
 class Solution:
     @staticmethod
     def _get_max_elem(mtx, mid, n):
