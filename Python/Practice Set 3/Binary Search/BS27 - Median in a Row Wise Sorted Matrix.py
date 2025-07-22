@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/median-of-a-row-wise-sorted-matrix_1115473
+# Solution - https://www.youtube.com/watch?v=Q9wXgdxJq48&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=29
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -92,6 +96,9 @@ class HeapElement:
 class Solution:
     @staticmethod
     def get_median(mtx):
+        """
+            Time complexity is O(n * m * log(n)) and space complexity is O(n * m).
+        """
         n, m = len(mtx), len(mtx[0])
         median_index = (n*m//2) + 1
         counter = 0
