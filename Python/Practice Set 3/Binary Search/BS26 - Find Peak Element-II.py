@@ -1,6 +1,9 @@
 class Solution:
     @staticmethod
     def _get_max_elem(mtx, mid, n):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         max_elem, max_elem_index = -1e6, -1
         for i in range(n):
             if mtx[i][mid] > max_elem:
@@ -10,6 +13,9 @@ class Solution:
 
     @staticmethod
     def find_peak(mtx):
+        """
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+        """
         n, m = len(mtx), len(mtx[0])
         low, high = 0, m - 1
         while low <= high:
