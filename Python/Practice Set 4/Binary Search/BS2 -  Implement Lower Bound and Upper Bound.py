@@ -27,6 +27,17 @@ class Solution:
                 low = mid + 1
         return low if low in range(len(arr)) else -1
 
+    @staticmethod
+    def get_insert_position(arr, x):
+        return Solution.get_lower_bound(arr, x)
+
+    @staticmethod
+    def get_ceil(arr, x):
+        index = Solution.get_lower_bound(arr, x)
+        if index in range(len(arr)):
+            return arr[index]
+        return None
+
 
 print("Lower Bound")
 print(Solution.get_lower_bound([3, 5, 8, 15, 19], 5))
@@ -45,4 +56,9 @@ print(Solution.get_upper_bound([3, 5, 8, 15, 19], 800))
 print(Solution.get_upper_bound([3, 5, 8, 15, 19], 2))
 print(Solution.get_upper_bound([1, 2, 2, 3, 3, 5], 0))
 print(Solution.get_upper_bound([1, 2, 2, 3, 3, 5], -10))
+print()
+print("Ceil Value")
+print(Solution.get_ceil([10, 20, 30, 40, 50], 25))
+print(Solution.get_ceil([10, 20, 30, 40, 50], 30))
+print(Solution.get_ceil([10, 25, 30, 40, 50], 35))
 print()
