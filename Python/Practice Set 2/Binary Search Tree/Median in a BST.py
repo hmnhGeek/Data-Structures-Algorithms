@@ -137,3 +137,32 @@ class BinarySearchTree:
     def show(self):
         self._show(self.root)
         print()
+
+
+class Solution:
+    @staticmethod
+    def get_median(bst: BinarySearchTree):
+        inorder = []
+        Solution._get_inorder(bst.root, inorder)
+        n = len(inorder)
+        if n % 2 == 1:
+            return inorder[n//2]
+        return (inorder[n//2] + inorder[n//2 + 1])/2
+
+    @staticmethod
+    def _get_inorder(root, inorder):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._get_inorder(root.right, inorder)
+
+
+t = BinarySearchTree()
+for i in [6, 3, 8, 1, 4, 7, 9]:
+    t.insert(i)
+print(Solution.get_median(t))
+
+t = BinarySearchTree()
+for i in [20, 8, 22, 4, 12, 10, 14]:
+    t.insert(i)
+print(Solution.get_median(t))
