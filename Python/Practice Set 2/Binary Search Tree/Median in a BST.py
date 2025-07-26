@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/find-median-bst-time-o1-space/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -142,6 +145,10 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def get_median(bst: BinarySearchTree):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         inorder = []
         Solution._get_inorder(bst.root, inorder)
         n = len(inorder)
