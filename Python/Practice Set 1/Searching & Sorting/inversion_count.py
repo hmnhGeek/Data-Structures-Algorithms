@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+# Solution - https://www.youtube.com/watch?v=AseUmwVNaoY&t=1034s
+
+
 class Solution:
     @staticmethod
     def get_inversion_count(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
         count = [0]
         Solution._merge_sort(arr, 0, len(arr) - 1, count)
         return count[0]
