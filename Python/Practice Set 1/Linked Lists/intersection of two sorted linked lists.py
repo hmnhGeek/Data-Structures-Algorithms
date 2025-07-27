@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/intersection-of-two-sorted-linked-lists/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -37,6 +40,44 @@ class LinkedList:
         return result
 
 
-l = LinkedList()
-l.build(1, 2)
-print(l)
+class Solution:
+    @staticmethod
+    def find_intersection(l1: LinkedList, l2: LinkedList) -> LinkedList:
+        """
+            Time complexity is O(n + m) and space complexity is O(n + m).
+        """
+        l3 = LinkedList()
+        curr1 = l1.head
+        curr2 = l2.head
+        while curr1 is not None and curr2 is not None:
+            if curr1.data == curr2.data:
+                l3.push(curr1.data)
+                curr1 = curr1.next
+                curr2 = curr2.next
+            elif curr1.data < curr2.data:
+                curr1 = curr1.next
+            else:
+                curr2 = curr2.next
+        return l3
+
+
+l1 = LinkedList()
+l1.build(1, 2, 3, 4, 6)
+l2 = LinkedList()
+l2.build(2, 4, 6, 8)
+l3 = Solution.find_intersection(l1, l2)
+print(l3)
+
+l1 = LinkedList()
+l1.build(10, 20, 40, 50)
+l2 = LinkedList()
+l2.build(40)
+l3 = Solution.find_intersection(l1, l2)
+print(l3)
+
+l1 = LinkedList()
+l1.build(10, 20, 40, 50)
+l2 = LinkedList()
+l2.build(100)
+l3 = Solution.find_intersection(l1, l2)
+print(l3)
