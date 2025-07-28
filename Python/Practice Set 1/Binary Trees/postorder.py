@@ -54,3 +54,16 @@ class Solution:
         result = result[-1:-len(result)-1:-1]
         return result
 
+    @staticmethod
+    def _postorder(root: Node, postorder):
+        if root:
+            Solution._postorder(root.left, postorder)
+            Solution._postorder(root.right, postorder)
+            postorder.append(root.data)
+
+    @staticmethod
+    def postorder_recursive(root: Node):
+        postorder = []
+        Solution._postorder(root, postorder)
+        return postorder
+
