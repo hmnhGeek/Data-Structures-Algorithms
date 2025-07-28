@@ -32,3 +32,25 @@ class Stack:
         return item
 
 
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.left = self.right = None
+
+
+class Solution:
+    @staticmethod
+    def postorder_iterative(root: Node):
+        stack = Stack()
+        stack.push(root)
+        result = []
+        while not stack.is_empty():
+            node = stack.pop()
+            result.append(node.data)
+            if node.left is not None:
+                stack.push(node.left)
+            if node.right is not None:
+                stack.push(node.right)
+        result = result[-1:-len(result)-1:-1]
+        return result
+
