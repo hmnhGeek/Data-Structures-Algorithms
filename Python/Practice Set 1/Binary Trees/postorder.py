@@ -67,3 +67,22 @@ class Solution:
         Solution._postorder(root, postorder)
         return postorder
 
+
+# Example 1
+n1 = Node(1)
+n2 = Node(2)
+n3 = Node(3)
+n4 = Node(4)
+n5 = Node(5)
+n6 = Node(6)
+n7 = Node(7)
+n8 = Node(8)
+n1.left = n2
+n2.left = n4
+n5.left = n7
+n3.left = n5
+n1.right = n3
+n3.right = n6
+n5.right = n8
+print(Solution.postorder_recursive(n1))
+print(Solution.postorder_iterative(n1))
