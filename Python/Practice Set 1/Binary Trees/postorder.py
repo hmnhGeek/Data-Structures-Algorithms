@@ -1,3 +1,6 @@
+# Problem link - https://www.techiedelight.com/postorder-tree-traversal-iterative-recursive/
+
+
 class StackNode:
     def __init__(self, data):
         self.data = data
@@ -41,6 +44,9 @@ class Node:
 class Solution:
     @staticmethod
     def postorder_iterative(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         stack = Stack()
         stack.push(root)
         result = []
@@ -63,6 +69,9 @@ class Solution:
 
     @staticmethod
     def postorder_recursive(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         postorder = []
         Solution._postorder(root, postorder)
         return postorder
