@@ -1,3 +1,5 @@
+# Problem link - https://www.geeksforgeeks.org/problems/implement-two-stacks-in-an-array/1
+
 class TwoStacks:
     def __init__(self):
         self.stacks = [None, None]
@@ -39,5 +41,21 @@ s.push1(2)
 s.push1(3)
 s.push2(4)
 print(s.pop1())
+print(s.pop2())
+print(s.pop2())
+
+s = TwoStacks()
+s.push1(1)
+s.push2(2)
+print(s.pop1())
+s.push1(3)
+print(s.pop1())
+print(s.pop1())
+
+s = TwoStacks()
+s.push1(2)
+s.push1(3)
+s.push1(4)
+print(s.pop2())
 print(s.pop2())
 print(s.pop2())
