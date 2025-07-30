@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/binary-subarray-with-sum/0
+// Solution - https://www.youtube.com/watch?v=XnMdNUkX6VM&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=9
+
+
 package SlidingWindows.L9;
 
 import java.util.Arrays;
@@ -25,6 +29,12 @@ public class Solution {
     }
 
     public static Integer binarySubarraysCount(List<Integer> arr, Integer sum) {
+        /*
+            The idea is that in a binary array, the sum == k can be found out using the formula:
+                f(sum = k) = f(sum <= k) - f(sum <= k-1)
+
+            Overall time complexity is O(2n) and space complexity is O(1).
+         */
         return sumLessThanEqualTo(arr, sum) - sumLessThanEqualTo(arr, sum - 1);
     }
 
