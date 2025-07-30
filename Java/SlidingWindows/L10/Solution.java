@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/count-number-of-nice-subarrays/
+// Solution - https://www.youtube.com/watch?v=j_QOv9OT9Og&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=10
+
+
 package SlidingWindows.L10;
 
 import java.util.Arrays;
@@ -22,6 +26,9 @@ public class Solution {
     }
 
     public static Integer getCountNiceSubArrays(List<Integer> arr, Integer sum) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         return countLessThanEqualTo(arr, sum) - countLessThanEqualTo(arr, sum - 1);
     }
 
