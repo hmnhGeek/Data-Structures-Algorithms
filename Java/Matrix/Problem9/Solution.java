@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/kth-element-in-matrix/1
+
+
 package Matrix.Problem9;
 
 import Matrix.Problem9.Heap.MinHeap;
@@ -8,12 +11,20 @@ import java.util.List;
 
 public class Solution {
     public static <T extends Comparable<T>> T getMin(List<List<T>> mtx, Integer k) {
+        /*
+            Time complexity is O({n + k} * log(n)) and space complexity is O(n).
+         */
+
         MinHeap<HeapElement<T>> minHeap = new MinHeap<>();
         int n = mtx.size(), m = mtx.getFirst().size();
+
+        // n * log(n)
         for (int i = 0; i < n; i += 1) {
             minHeap.insert(new HeapElement<>(mtx.get(i).getFirst(), i, 0));
         }
         int counter = 0;
+
+        // k * log(n)
         while (!minHeap.isEmpty()) {
             HeapElement<T> heapElement = minHeap.pop();
             counter += 1;
