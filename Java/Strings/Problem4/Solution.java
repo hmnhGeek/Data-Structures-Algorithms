@@ -1,7 +1,14 @@
+// Problem link - https://www.programiz.com/java-programming/examples/check-valid-shuffle-of-strings
+// Solution - https://www.youtube.com/watch?v=qN_vwYtvFUM
+
+
 package Strings.Problem4;
 
 public class Solution {
     public static boolean isValidShuffle(String s1, String s2, String s) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         int n1 = s1.length(), n2 = s2.length(), n = s.length();
         if (n1 + n2 != n) return false;
         int i = 0, j = 0, k = 0;
