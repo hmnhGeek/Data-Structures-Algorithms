@@ -1,8 +1,11 @@
+// Problem link - https://www.geeksforgeeks.org/problems/left-view-of-binary-tree/1
+// Solution - https://www.youtube.com/watch?v=KV4mRzTjlAk
+
+
 package BinaryTrees.Problem9;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 class TreeNode<T> {
     private T data;
@@ -69,8 +72,21 @@ public class Solution {
         node2.setRight(node5);
         node5.setLeft(node6);
         node3.setRight(node7);
-
         System.out.println(getLeftView(root));
+
+        TreeNode<Integer> root1 = new TreeNode<>(1);
+
+        TreeNode<Integer> node21 = new TreeNode<>(2);
+        TreeNode<Integer> node31 = new TreeNode<>(3);
+        TreeNode<Integer> node41 = new TreeNode<>(4);
+        TreeNode<Integer> node51 = new TreeNode<>(5);
+
+        // Connecting nodes as per the tree diagram
+        root1.setLeft(node21);
+        root1.setRight(node31);
+        node31.setLeft(node41);
+        node41.setRight(node51);
+        System.out.println(getLeftView(root1));
     }
 
     public static <T> List<T> getLeftView(TreeNode<T> root) {
