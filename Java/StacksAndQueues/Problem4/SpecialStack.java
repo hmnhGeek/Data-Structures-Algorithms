@@ -42,4 +42,20 @@ public class SpecialStack<T> {
         }
         return item;
     }
+
+    public T getMiddle() {
+        if (getDeque().getLength().equals(0)) return null;
+        return getDeque().getHead().getData();
+    }
+
+    public T popMiddle() {
+        if (getDeque().getLength().equals(0)) return null;
+        T item = getDeque().getHead().getData();
+        getDeque().popFront();
+        if (getDeque().getLength().compareTo(getStack().getLength()) < 0) {
+            T t = getStack().pop();
+            getDeque().pushFront(t);
+        }
+        return item;
+    }
 }
