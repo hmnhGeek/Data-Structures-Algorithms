@@ -100,6 +100,12 @@ public class Deque<T> {
     public T popFront() {
         if (this.length.equals(0)) return null;
         T item = getHead().getData();
+        if (getLength().equals(1)) {
+            setHead(null);
+            setTail(null);
+            setLength(0);
+            return item;
+        }
         setHead(getHead().getNext());
         getHead().setPrev(null);
         setLength(getLength() - 1);
@@ -109,6 +115,12 @@ public class Deque<T> {
     public T popBack() {
         if (getLength().equals(0)) return null;
         T item = getTail().getData();
+        if (getLength().equals(1)) {
+            setHead(null);
+            setTail(null);
+            setLength(0);
+            return item;
+        }
         setTail(getTail().getPrev());
         getTail().setNext(null);
         setLength(getLength() - 1);
