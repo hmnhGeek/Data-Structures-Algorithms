@@ -39,6 +39,7 @@ public interface Heap<T extends Comparable<T>> {
         T item = getHeap().getFirst();
         Collections.swap(getHeap(), 0, getHeap().size() - 1);
         getHeap().removeLast();
+        heapifyDown(0);
         return item;
     }
 }
