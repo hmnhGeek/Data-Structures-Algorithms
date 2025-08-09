@@ -39,5 +39,7 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(findInRotatedSortedArray(Arrays.asList(3, 1, 2, 3, 3, 3, 3), 3));
         System.out.println(findInRotatedSortedArray(Arrays.asList(3, 1, 2, 3, 3, 3, 3), 4));
+        System.out.println(findInRotatedSortedArray(Arrays.asList(2,5,6,0,0,1,2), 0));
+        System.out.println(findInRotatedSortedArray(Arrays.asList(2,5,6,0,0,1,2), 3));
     }
 }
