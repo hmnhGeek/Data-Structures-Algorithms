@@ -1,5 +1,5 @@
-// Problem link - https://leetcode.com/problems/search-in-rotated-sorted-array/description/
-// Solution - https://www.youtube.com/watch?v=5qGrJbHhqFs&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=5
+// Problem link - https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/
+// Solution - https://www.youtube.com/watch?v=w2G2W8l__pc&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=6
 
 
 package BinarySearch.BS5;
