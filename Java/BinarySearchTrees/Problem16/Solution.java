@@ -41,5 +41,39 @@ public class Solution {
         node1.setLeft(node2);
         node1.setRight(node3);
         System.out.println(getCountOfNodesInRange(node1, 23, 95));
+
+        // Example 3
+        root = new Node(10);
+        n5 = new Node(5);
+        Node n15 = new Node(15);
+        Node n3 = new Node(3);
+        Node n7 = new Node(7);
+        Node n18 = new Node(18);
+        root.setLeft(n5);
+        root.setRight(n15);
+        n5.setLeft(n3);
+        n5.setRight(n7);
+        n15.setRight(n18);
+        System.out.println(getCountOfNodesInRange(root, 7, 15));
+
+        // Example 4
+        root = new Node(10);
+        n5 = new Node(5);
+        n15 = new Node(15);
+        n3 = new Node(3);
+        n7 = new Node(7);
+        Node n13 = new Node(13);
+        n18 = new Node(18);
+        n1 = new Node(1);
+        Node n6 = new Node(6);
+        root.setLeft(n5);
+        root.setRight(n15);
+        n5.setLeft(n3);
+        n5.setRight(n7);
+        n3.setLeft(n1);
+        n7.setLeft(n6);
+        n15.setLeft(n13);
+        n15.setRight(n18);
+        System.out.println(getCountOfNodesInRange(root, 6, 10));
     }
 }
