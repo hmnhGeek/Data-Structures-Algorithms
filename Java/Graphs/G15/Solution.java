@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/number-of-enclaves/1
+// Solution - https://www.youtube.com/watch?v=rxKcepXQgU4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=15
+
+
 package Graphs.G15;
 
 import java.util.ArrayList;
@@ -68,6 +72,10 @@ public class Solution {
     }
 
     public static Integer getCountOfEnclaves(List<List<Integer>> graph) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
+
         int n = graph.size(), m = graph.getFirst().size();
 
         for (int j = 0; j < m - 1; j += 1) {
