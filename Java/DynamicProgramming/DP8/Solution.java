@@ -6,5 +6,10 @@ public class Solution {
         System.out.println(RecursiveSolution.getUniquePathsCount(3, 2));
         System.out.println(RecursiveSolution.getUniquePathsCount(2, 2));
         System.out.println(RecursiveSolution.getUniquePathsCount(2, 3));
+        System.out.println();
+        System.out.println(MemoizedSolution.getUniquePathsCount(3, 7));
+        System.out.println(MemoizedSolution.getUniquePathsCount(3, 2));
+        System.out.println(MemoizedSolution.getUniquePathsCount(2, 2));
+        System.out.println(MemoizedSolution.getUniquePathsCount(2, 3));
     }
 }
