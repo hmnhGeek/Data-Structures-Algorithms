@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/count-possible-paths-top-left-bottom-right-nxm-matrix/
+// Solution - https://www.youtube.com/watch?v=sdE0A2Oxofw&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=9
+
+
 package DynamicProgramming.DP8;
 
 public class Solution {
