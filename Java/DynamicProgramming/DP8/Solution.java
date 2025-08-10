@@ -16,5 +16,10 @@ public class Solution {
         System.out.println(TabulationSolution.getUniquePathsCount(3, 2));
         System.out.println(TabulationSolution.getUniquePathsCount(2, 2));
         System.out.println(TabulationSolution.getUniquePathsCount(2, 3));
+        System.out.println();
+        System.out.println(SpaceOptimizedSolution.getUniquePathsCount(3, 7));
+        System.out.println(SpaceOptimizedSolution.getUniquePathsCount(3, 2));
+        System.out.println(SpaceOptimizedSolution.getUniquePathsCount(2, 2));
+        System.out.println(SpaceOptimizedSolution.getUniquePathsCount(2, 3));
     }
 }
