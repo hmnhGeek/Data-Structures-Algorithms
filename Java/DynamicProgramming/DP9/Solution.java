@@ -6,6 +6,7 @@ public class Solution {
     public static void main(String[] args) {
         recursive();
         memoized();
+        tabulation();
     }
 
     private static void recursive() {
@@ -100,6 +101,58 @@ public class Solution {
 
         System.out.println(
                 MemoizedSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, 0, -1, 0, -1),
+                                Arrays.asList(0, 0, 0, -1, 0),
+                                Arrays.asList(-1, 0, 0, -1, 0),
+                                Arrays.asList(0, 0, 0, 0, 0)
+                        )
+                )
+        );
+
+        System.out.println();
+    }
+
+    private static void tabulation() {
+        System.out.println(
+                TabulationSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, 0, 0),
+                                Arrays.asList(0, -1, 0),
+                                Arrays.asList(0, 0, 0)
+                        )
+                )
+        );
+
+        System.out.println(
+                TabulationSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, -1),
+                                Arrays.asList(0, 0)
+                        )
+                )
+        );
+
+        System.out.println(
+                TabulationSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, 0),
+                                Arrays.asList(0, 0)
+                        )
+                )
+        );
+
+        System.out.println(
+                TabulationSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, -1),
+                                Arrays.asList(-1, 0)
+                        )
+                )
+        );
+
+        System.out.println(
+                TabulationSolution.getPathCount(
                         Arrays.asList(
                                 Arrays.asList(0, 0, -1, 0, -1),
                                 Arrays.asList(0, 0, 0, -1, 0),
