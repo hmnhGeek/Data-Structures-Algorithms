@@ -7,6 +7,7 @@ public class Solution {
         recursive();
         memoized();
         tabulation();
+        spaceOptimized();
     }
 
     private static void recursive() {
@@ -153,6 +154,58 @@ public class Solution {
 
         System.out.println(
                 TabulationSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, 0, -1, 0, -1),
+                                Arrays.asList(0, 0, 0, -1, 0),
+                                Arrays.asList(-1, 0, 0, -1, 0),
+                                Arrays.asList(0, 0, 0, 0, 0)
+                        )
+                )
+        );
+
+        System.out.println();
+    }
+
+    private static void spaceOptimized() {
+        System.out.println(
+                SpaceOptimizedSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, 0, 0),
+                                Arrays.asList(0, -1, 0),
+                                Arrays.asList(0, 0, 0)
+                        )
+                )
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, -1),
+                                Arrays.asList(0, 0)
+                        )
+                )
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, 0),
+                                Arrays.asList(0, 0)
+                        )
+                )
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getPathCount(
+                        Arrays.asList(
+                                Arrays.asList(0, -1),
+                                Arrays.asList(-1, 0)
+                        )
+                )
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getPathCount(
                         Arrays.asList(
                                 Arrays.asList(0, 0, -1, 0, -1),
                                 Arrays.asList(0, 0, 0, -1, 0),
