@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1
+// Solution - https://www.youtube.com/watch?v=7zmgQSJghpo&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=17
+
+
 package Graphs.G16;
 
 import java.util.*;
@@ -14,9 +18,33 @@ public class Solution {
                         )
                 )
         );
+
+        System.out.println(
+                getDistinctIslandsCount(
+                        Arrays.asList(
+                                Arrays.asList(1, 1, 0, 1, 1),
+                                Arrays.asList(1, 0, 0, 0, 0),
+                                Arrays.asList(0, 0, 0, 0, 1),
+                                Arrays.asList(1, 1, 0, 1, 1)
+                        )
+                )
+        );
+
+        System.out.println(
+                getDistinctIslandsCount(
+                        Arrays.asList(
+                                Arrays.asList(1, 1, 0),
+                                Arrays.asList(0, 0, 1),
+                                Arrays.asList(0, 0, 1)
+                        )
+                )
+        );
     }
 
     public static Integer getDistinctIslandsCount(List<List<Integer>> graph) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
         int n = graph.size(), m = graph.getFirst().size();
         List<List<Boolean>> visited = getBlankVisitedArray(graph, n, m);
         Set<List<List<Integer>>> distinctIslands = new HashSet<>();
