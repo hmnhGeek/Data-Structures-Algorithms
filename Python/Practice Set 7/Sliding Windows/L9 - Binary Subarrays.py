@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/binary-subarrays-with-sum/
+# Solution - https://www.youtube.com/watch?v=XnMdNUkX6VM&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=9
+
+
 class Solution:
     @staticmethod
     def get_less_than_equal_to_count(arr, k):
@@ -18,6 +22,7 @@ class Solution:
 
     @staticmethod
     def bin_subarray_count(arr, k):
+        # Time complexity is O(n) and space complexity is O(1).
         return Solution.get_less_than_equal_to_count(arr, k) - Solution.get_less_than_equal_to_count(arr, k - 1)
 
 
