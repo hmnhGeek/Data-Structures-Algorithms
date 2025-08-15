@@ -80,19 +80,36 @@ class Solution:
 
     @staticmethod
     def find_kth_largest(arr, k):
-        n = len(arr)
+        """
+            Time complexity is O(n^2 * log(k)) and space complexity is O(n).
+        """
+
         pq = MinHeap()
+
+        # The prefix sums array occupies O(n) space only and its computation takes O(n^2) time.
         prefix_sums = Solution._get_prefix_sums(arr)
+
+        # loop for n^2 times on prefix sums to generate all the subarray sums
         for i in range(len(prefix_sums) - 1):
             for j in range(i + 1, len(prefix_sums)):
                 _sum = prefix_sums[j] - prefix_sums[i]
+
+                # get the top of the heap in O(1) time.
                 top = Solution.get_heap_top(pq)
+
+                # if there is space in heap, simply insert the sum and move to next iteration.
+                # This will take O(log(k)) time.
                 if len(pq) < k:
                     pq.insert(_sum)
                     continue
+
+                # now, only replace the top element with this one if top element is smaller than the current
+                # sum. Again, this will take O(2 * log(k)) time.
                 if _sum > top:
                     pq.pop()
                     pq.insert(_sum)
+
+        # The kth largest will be on the top of the heap.
         return Solution.get_heap_top(pq)
 
     @staticmethod
