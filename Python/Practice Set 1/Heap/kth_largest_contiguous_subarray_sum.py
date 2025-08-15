@@ -19,7 +19,7 @@ class MinHeap:
     def get_pi(self, ci):
         if ci == 0:
             return None
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(self.__len__()) else None
 
     def get_min_child_index(self, lci, rci):
@@ -66,13 +66,34 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+    def top(self):
+        if self.is_empty():
+            return
+        return self.heap[0]
+
 
 class Solution:
     @staticmethod
-    def find_kth_largest(arr):
+    def get_heap_top(pq: MinHeap):
+        top = pq.top()
+        return top if top else -1e6
+
+    @staticmethod
+    def find_kth_largest(arr, k):
         n = len(arr)
         pq = MinHeap()
         prefix_sums = Solution._get_prefix_sums(arr)
+        for i in range(len(prefix_sums) - 1):
+            for j in range(i + 1, len(prefix_sums)):
+                _sum = prefix_sums[j] - prefix_sums[i]
+                top = Solution.get_heap_top(pq)
+                if len(pq) < k:
+                    pq.insert(_sum)
+                    continue
+                if _sum > top:
+                    pq.pop()
+                    pq.insert(_sum)
+        return Solution.get_heap_top(pq)
 
     @staticmethod
     def _get_prefix_sums(arr):
@@ -81,3 +102,8 @@ class Solution:
             result.append(result[-1] + i)
         return result
 
+
+print(Solution.find_kth_largest([20, -5, -1], 3))
+print(Solution.find_kth_largest([10, -10, 20, -40], 6))
+print(Solution.find_kth_largest([3, 2, 1], 2))
+print(Solution.find_kth_largest([2, 6, 4, 1], 3))
