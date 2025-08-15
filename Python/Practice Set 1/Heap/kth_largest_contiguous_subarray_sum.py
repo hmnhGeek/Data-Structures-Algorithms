@@ -66,3 +66,18 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def find_kth_largest(arr):
+        n = len(arr)
+        pq = MinHeap()
+        prefix_sums = Solution._get_prefix_sums(arr)
+
+    @staticmethod
+    def _get_prefix_sums(arr):
+        result = [0]
+        for i in arr:
+            result.append(result[-1] + i)
+        return result
+
