@@ -1,3 +1,8 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/k-th-largest-sum-contiguous-subarray/
+# Solution - https://www.youtube.com/watch?v=lTmaCCOlQ90
+# Prefix sums - https://www.youtube.com/watch?v=PhgtNY_-CiY
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
