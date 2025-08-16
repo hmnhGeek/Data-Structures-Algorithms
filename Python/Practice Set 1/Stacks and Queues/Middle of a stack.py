@@ -33,7 +33,7 @@ class Stack:
 class Node:
     def __init__(self, data):
         self.data = data
-        self.left = self.right = None
+        self.prev = self.next = None
 
 
 class Deque:
@@ -72,6 +72,8 @@ class Deque:
         if self.head is not None:
             self.head.prev = None
         self.length -= 1
+        if self.length == 0:
+            self.head = self.tail = None
         return item
 
     def pop_back(self):
@@ -81,5 +83,51 @@ class Deque:
         self.tail = self.tail.prev
         if self.tail is not None:
             self.tail.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.head = self.tail = None
         return item
 
+
+class CustomStack:
+    def __init__(self):
+        self.stack = Stack()
+        self.deque = Deque()
+
+    def push(self, x):
+        self.deque.push_back(x)
+        if self.deque.length - self.stack.length > 1:
+            item = self.deque.pop_front()
+            self.stack.push(item)
+
+    def pop(self):
+        if self.deque.is_empty():
+            return
+        item = self.deque.pop_back()
+        if self.stack.length > self.deque.length:
+            temp = self.stack.pop()
+            self.deque.push_front(temp)
+        return item
+
+    def get_middle(self):
+        if self.deque.is_empty():
+            return
+        item = self.deque.head.data
+        return item
+
+    def pop_middle(self):
+        if self.deque.is_empty():
+            return
+        item = self.deque.pop_front()
+        if self.stack.length > self.deque.length:
+            temp = self.stack.pop()
+            self.deque.push_front(temp)
+        return item
+
+
+stack1 = CustomStack()
+stack1.push(1)
+stack1.push(2)
+print(stack1.get_middle())
+print(stack1.pop())
+print(stack1.pop_middle())
