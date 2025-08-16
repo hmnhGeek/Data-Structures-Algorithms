@@ -1,3 +1,9 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/design-a-stack-with-find-middle-operation/
+
+"""
+    All operations in CustomStack() takes O(1) time and O(1) space.
+"""
+
 class StackNode:
     def __init__(self, data):
         self.data = data
@@ -124,10 +130,42 @@ class CustomStack:
             self.deque.push_front(temp)
         return item
 
+    def __str__(self):
+        if self.deque.is_empty():
+            return "[]"
+        result = "["
+        curr = self.stack.head
+        temp = []
+        while curr is not None:
+            temp.append(curr.data)
+            curr = curr.next
+        for i in range(-1, -len(temp) - 1, -1):
+            result += f"{temp[i]}, "
+        curr = self.deque.head
+        while curr != self.deque.tail:
+            result += f"{curr.data}, "
+            curr = curr.next
+        result += f"{curr.data}]"
+        return result
 
+# Example 1
 stack1 = CustomStack()
 stack1.push(1)
 stack1.push(2)
 print(stack1.get_middle())
 print(stack1.pop())
 print(stack1.pop_middle())
+
+# Example 2
+s2 = CustomStack()
+for i in [1, 2, 3, 4, 5]:
+    s2.push(i)
+print(s2.pop_middle())
+print(s2)
+
+# Example 3
+s3 = CustomStack()
+for i in [5, 6, 7, 8]:
+    s3.push(i)
+print(s3.pop_middle())
+print(s3)
