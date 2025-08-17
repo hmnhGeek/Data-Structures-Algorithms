@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/1
+# Solution - https://www.youtube.com/watch?v=0DYoPz2Tpt4
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -25,16 +29,27 @@ class LinkedList:
         for i in args:
             self.push(i)
 
+    def intersect_with(self, node: Node):
+        self.tail.next = node
+        while self.tail.next is not None:
+            self.tail = self.tail.next
+            self.length += 1
+
 
 class Solution:
     @staticmethod
     def find_intersection_point(l1: LinkedList, l2: LinkedList):
+        """
+            Time complexity is O(n + m) and space complexity is O(1).
+        """
         tracker = {"i": 0, "j": 1}
         i = l1.head
         j = l2.head
         while i != j:
             i = i.next
             j = j.next
+            if i is None and j is None:
+                return None
             if i is None:
                 if tracker["i"] == 0:
                     i = l2.head
@@ -60,3 +75,37 @@ l2.build(5, 6, 1)
 l2.tail.next = l1.head.next.next
 l2.tail = l1.tail
 print(Solution.find_intersection_point(l1, l2))
+print()
+
+# Example 2
+l1 = LinkedList()
+l1.build(4, 4, 4)
+l2 = LinkedList()
+l2.build(4, 4, 4)
+l2.intersect_with(l1.head.next)
+print(Solution.find_intersection_point(l1, l2))
+print()
+
+# Example 3
+l1 = LinkedList()
+l1.build(3, 2, 4)
+l2 = LinkedList()
+l2.build(1, 9, 1)
+l2.intersect_with(l1.head.next)
+print(Solution.find_intersection_point(l1, l2))
+print()
+
+# Example 4
+l1 = LinkedList()
+l1.build(2, 6, 4)
+l2 = LinkedList()
+l2.build(1, 5)
+l2.intersect_with(None)
+print(Solution.find_intersection_point(l1, l2))
+print()
+
+# Example 5
+l1 = LinkedList()
+l1.build(2, 6, 4)
+print(Solution.find_intersection_point(l1, l1))
+print()
