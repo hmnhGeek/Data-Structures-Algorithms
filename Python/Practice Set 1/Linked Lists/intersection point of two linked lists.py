@@ -25,3 +25,38 @@ class LinkedList:
         for i in args:
             self.push(i)
 
+
+class Solution:
+    @staticmethod
+    def find_intersection_point(l1: LinkedList, l2: LinkedList):
+        tracker = {"i": 0, "j": 1}
+        i = l1.head
+        j = l2.head
+        while i != j:
+            i = i.next
+            j = j.next
+            if i is None:
+                if tracker["i"] == 0:
+                    i = l2.head
+                    tracker["i"] = 1
+                else:
+                    i = l1.head
+                    tracker["i"] = 0
+            if j is None:
+                if tracker["j"] == 0:
+                    j = l2.head
+                    tracker["j"] = 1
+                else:
+                    j = l1.head
+                    tracker["j"] = 0
+        return i.data if i is not None else -1
+
+
+# Example 1
+l1 = LinkedList()
+l1.build(4, 1, 8, 4, 5)
+l2 = LinkedList()
+l2.build(5, 6, 1)
+l2.tail.next = l1.head.next.next
+l2.tail = l1.tail
+print(Solution.find_intersection_point(l1, l2))
