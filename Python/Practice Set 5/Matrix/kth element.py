@@ -6,17 +6,17 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         return lci if lci in range(len(self.heap)) else None
 
     def get_rci(self, pi):
-        rci = 2*pi + 2
+        rci = 2 * pi + 2
         return rci if rci in range(len(self.heap)) else None
 
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         return pi if pi in range(len(self.heap)) else None
 
     def get_min_child_index(self, lci, rci):
@@ -63,3 +63,47 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class HeapElement:
+    def __init__(self, data, i, j):
+        self.data = data
+        self.i = i
+        self.j = j
+
+    def __lt__(self, other):
+        return self.data < other.data
+
+    def __gt__(self, other):
+        return self.data > other.data
+
+
+class Solution:
+    @staticmethod
+    def get_kth_element(mtx, k):
+        pq = MinHeap()
+        n, m = len(mtx), len(mtx[0])
+        counter = 0
+
+        for i in range(n):
+            pq.insert(HeapElement(mtx[i][0], i, 0))
+
+        while not pq.is_empty():
+            heap_element = pq.pop()
+            counter += 1
+            if counter == k:
+                return heap_element.data
+            if 0 <= heap_element.j + 1 < m:
+                pq.insert(HeapElement(mtx[heap_element.i][heap_element.j + 1], heap_element.i, heap_element.j + 1))
+
+        return -1
+
+
+print(
+    Solution.get_kth_element(
+        [[16, 28, 60, 64],
+         [22, 41, 63, 91],
+         [27, 50, 87, 93],
+         [36, 78, 87, 94]],
+        3
+    )
+)
