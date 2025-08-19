@@ -1,7 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1
+# Solution - https://www.youtube.com/watch?v=HCL4_bOd3-4
+
+
 class Solution:
     @staticmethod
     def kadane(arr):
         """
+            Time complexity is O(n) and space complexity is O(1).
+
             Find the maximum sum subarray using Kadane's algorithm and also return the subarray.
 
             This version keeps track of start and end indices of the maximum subarray
