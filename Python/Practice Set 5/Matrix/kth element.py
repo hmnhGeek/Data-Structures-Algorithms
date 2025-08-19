@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/kth-element-in-matrix/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -80,13 +83,19 @@ class HeapElement:
 class Solution:
     @staticmethod
     def get_kth_element(mtx, k):
+        """
+            Overall time complexity is O({n + k} * log(n)) time and overall space complexity is O(n).
+        """
+
         pq = MinHeap()
         n, m = len(mtx), len(mtx[0])
         counter = 0
 
+        # This will take O(n * log(n)) time and O(n) space.
         for i in range(n):
             pq.insert(HeapElement(mtx[i][0], i, 0))
 
+        # This should run for k-iterations.
         while not pq.is_empty():
             heap_element = pq.pop()
             counter += 1
@@ -105,5 +114,14 @@ print(
          [27, 50, 87, 93],
          [36, 78, 87, 94]],
         3
+    )
+)
+
+print(
+    Solution.get_kth_element(
+        [[10, 20, 30, 40],
+         [15, 25, 35, 45],
+         [24, 29, 37, 48],
+         [32, 33, 39, 50]], 7
     )
 )
