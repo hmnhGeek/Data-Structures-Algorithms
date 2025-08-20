@@ -71,8 +71,36 @@ def tabulation():
     print(get_paths(2, 3))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nm) and space complexity is O(m).
+    """
+
+    def get_paths(n, m):
+        prev = {j: 0 for j in range(-1, m)}
+        for i in range(n):
+            curr = {j: 0 for j in range(-1, m)}
+            if i == 0:
+                curr[0] = 1
+            for j in range(m):
+                if i == 0 and j == 0:
+                    continue
+                up = prev[j]
+                down = curr[j - 1]
+                curr[j] = up + down
+            prev = curr
+        return prev[m - 1]
+
+    print(get_paths(3, 7))
+    print(get_paths(3, 2))
+    print(get_paths(2, 2))
+    print(get_paths(2, 3))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
