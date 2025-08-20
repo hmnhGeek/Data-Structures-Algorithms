@@ -48,6 +48,31 @@ def memoized():
     print(get_paths(2, 3))
 
 
+def tabulation():
+    """
+        Time complexity is O(nm) and space complexity is O(nm).
+    """
+
+    def get_paths(n, m):
+        dp = {i: {j: 0 for j in range(-1, m)} for i in range(-1, n)}
+        dp[0][0] = 1
+        for i in range(n):
+            for j in range(m):
+                if i == 0 and j == 0:
+                    continue
+                up = dp[i - 1][j]
+                down = dp[i][j - 1]
+                dp[i][j] = up + down
+        return dp[n - 1][m - 1]
+
+    print(get_paths(3, 7))
+    print(get_paths(3, 2))
+    print(get_paths(2, 2))
+    print(get_paths(2, 3))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
