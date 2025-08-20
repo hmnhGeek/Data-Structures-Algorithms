@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/problems/number-of-enclaves/1
+# Solution - https://www.youtube.com/watch?v=rxKcepXQgU4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=15
+
+
 class Solution:
     @staticmethod
     def get_number_of_enclaves(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+
         n, m = len(mtx), len(mtx[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
         for j in range(m - 1):
@@ -52,6 +60,29 @@ print(
             [1, 0, 1, 0],
             [0, 1, 1, 0],
             [0, 0, 0, 0]
+        ]
+    )
+)
+
+print(
+    Solution.get_number_of_enclaves(
+        [
+            [0, 1, 1, 0],
+            [0, 0, 1, 0],
+            [0, 0, 1, 0],
+            [0, 0, 0, 0]
+        ]
+    )
+)
+
+print(
+    Solution.get_number_of_enclaves(
+        [
+            [0, 0, 0, 1],
+            [0, 1, 1, 0],
+            [0, 1, 1, 0],
+            [0, 0, 0, 1],
+            [0, 1, 1, 0]
         ]
     )
 )
