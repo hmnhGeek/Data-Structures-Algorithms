@@ -140,7 +140,79 @@ def memoized():
     )
 
 
+def tabulation():
+    def unique_paths(mtx):
+        """
+            Time complexity is O(mn) and space complexity is O(mn).
+        """
+
+        n, m = len(mtx), len(mtx[0])
+        if mtx[0][0] == -1 or mtx[n - 1][m - 1] == -1:
+            return 0
+        dp = {i: {j: 0 for j in range(-1, m)} for i in range(-1, n)}
+        dp[0][0] = 1
+        for i in range(n):
+            for j in range(m):
+                if i == 0 and j == 0:
+                    continue
+                if mtx[i][j] == -1:
+                    continue
+                up = dp[i - 1][j]
+                left = dp[i][j - 1]
+                dp[i][j] = up + left
+        return dp[n - 1][m - 1]
+
+    print(
+        unique_paths(
+            [
+                [0, 0, 0],
+                [0, -1, 0],
+                [0, 0, 0]
+            ]
+        )
+    )
+
+    print(
+        unique_paths(
+            [
+                [0, 0],
+                [0, 0]
+            ]
+        )
+    )
+
+    print(
+        unique_paths(
+            [
+                [0, -1],
+                [-1, 0]
+            ]
+        )
+    )
+
+    print(
+        unique_paths(
+            [
+                [0, -1],
+                [0, 0]
+            ]
+        )
+    )
+
+    print(
+        unique_paths(
+            [
+                [0, 0, -1, 0, -1],
+                [0, 0, 0, -1, 0],
+                [-1, 0, 0, -1, 0],
+                [0, 0, 0, 0, 0]
+            ]
+        )
+    )
+
+
 recursive()
 print()
 memoized()
 print()
+tabulation()
