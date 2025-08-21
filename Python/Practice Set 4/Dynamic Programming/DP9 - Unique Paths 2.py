@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/maze-obstacles_977241?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=TmhpgXScLyY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=10
+
+
 def recursive():
     def unique_paths(mtx):
         """
