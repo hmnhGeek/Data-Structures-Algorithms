@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/distinct-islands_630460
+# Solution - https://www.youtube.com/watch?v=7zmgQSJghpo&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=16
+
+
 class Solution:
     @staticmethod
     def _dfs(mtx, i, j, n, m, visited, island, bx, by):
@@ -11,6 +15,10 @@ class Solution:
 
     @staticmethod
     def get_distinct_islands(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+
         n, m = len(mtx), len(mtx[0])
         visited = [[False for _ in range(m)] for _ in range(n)]
         unique_islands = set()
