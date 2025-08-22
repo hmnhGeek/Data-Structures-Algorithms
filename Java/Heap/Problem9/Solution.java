@@ -91,5 +91,13 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(reorganizeStrings("aab"));
         System.out.println(reorganizeStrings("aaab"));
+        System.out.println(reorganizeStrings("address"));
+        System.out.println(reorganizeStrings("mississippi"));
+        System.out.println(reorganizeStrings("aaabc"));
+        System.out.println(reorganizeStrings("aaabb"));
+        System.out.println(reorganizeStrings("aa"));
+        System.out.println(reorganizeStrings("aaaabc"));
+        System.out.println(reorganizeStrings("abaab"));
+        System.out.println(reorganizeStrings("bbbbbb"));
     }
 }
