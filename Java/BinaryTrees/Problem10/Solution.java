@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/right-view-of-binary-tree/1
+
+
 package BinaryTrees.Problem10;
 
 
@@ -54,6 +57,9 @@ class QueueElement<T> {
 
 public class Solution {
     public static <T> List<T> getRightView(Node<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Queue<QueueElement<T>> queue = new Queue<>();
         queue.push(new QueueElement<>(root, 0));
         Integer currentLevel = 0;
