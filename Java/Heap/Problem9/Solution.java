@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/rearrange-characters-string-no-two-adjacent/
+
+
 package Heap.Problem9;
 
 
@@ -40,6 +43,10 @@ class HeapElement implements Comparable<HeapElement> {
 
 public class Solution {
     public static String reorganizeStrings(String string) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
+
         // get the frequencies of the characters in the string in O(n) time and O(n) space.
         Map<Character, Integer> characterCounts = getCharacterCount(string);
 
