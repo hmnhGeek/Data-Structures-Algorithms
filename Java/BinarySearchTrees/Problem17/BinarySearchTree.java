@@ -99,14 +99,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
         this.diameter = 0;
     }
 
-    public void insert(T x) {
+    public Node<T> insert(T x) {
         Node<T> node = new Node<>(x);
         if (this.root == null) {
             this.root = node;
             this.diameter = 1;
-            return;
+            return node;
         }
         insert(this.root, node);
+        return node;
     }
 
     private void recalcAugmentation(Node<T> parent) {
@@ -136,7 +137,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             recalcAugmentation(start);
             return;
         }
-        if (node.getLeft() != null) {
+        if (start.getLeft() != null) {
             insert(start.getLeft(), node);
             return;
         }
@@ -161,7 +162,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return node;
     }
 
-    private Node<T> getSuccessor(Node<T> node) {
+    public Node<T> getSuccessor(Node<T> node) {
         if (node == null) return null;
 
         if (node.getRight() != null) {
@@ -178,7 +179,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return parent;
     }
 
-    private Node<T> getPredecessor(Node<T> node) {
+    public Node<T> getPredecessor(Node<T> node) {
         if (node == null) return null;
 
         if (node.getLeft() != null) {
