@@ -194,4 +194,56 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
         return parent;
     }
+
+    private void delete(Node<T> node) {
+        if (node == null) return;
+        if (node.getLeft() == null && node.getRight() == null) {
+            Node<T> parent = node.getParent();
+            if (parent != null) {
+                if (parent.getLeft() == node) {
+                    parent.setLeft(null);
+                } else {
+                    parent.setRight(null);
+                }
+            } else {
+                this.root = null;
+                this.diameter = 0;
+            }
+            this.recalcAugmentation(parent);
+            return;
+        }
+        if (node.getRight() != null) {
+            Node<T> successor = getSuccessor(node);
+            T data = successor.getData();
+            successor.setData(node.getData());
+            node.setData(data);
+            delete(successor);
+            return;
+        }
+        Node<T> predecessor = getPredecessor(node);
+        T data = predecessor.getData();
+        predecessor.setData(node.getData());
+        node.setData(data);
+        delete(predecessor);
+    }
+
+    public void delete(T x) {
+        Node<T> node = getNode(this.root, x);
+        if (node != null) {
+            delete(node);
+        }
+    }
+
+    public Node<T> getNode(Node<T> root, T x) {
+        if (root == null || x == null) {
+            return null;
+        }
+        if (x.compareTo(root.getData()) == 0) {
+            return root;
+        }
+        if (x.compareTo(root.getData()) > 0) {
+            return getNode(root.getRight(), x);
+        }
+        return getNode(root.getLeft(), x);d
+    }
 }
