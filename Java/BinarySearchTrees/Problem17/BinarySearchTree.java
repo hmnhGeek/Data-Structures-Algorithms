@@ -246,4 +246,24 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
         return getNode(root.getLeft(), x);
     }
+
+    private void show(Node<T> root) {
+        if (root != null) {
+            this.show(root.getLeft());
+            StringBuilder s = new StringBuilder("Data =");
+            if (root == this.root) {
+                s.append(String.format(" %s (root), ", root.getData()));
+            } else {
+                s.append(String.format(" %s, ", root.getData()));
+            }
+            s.append(String.format("size = %d, height = %d, diameter = %d", root.getSize(), root.getHeight(), root.getDiameter()));
+            System.out.println(s);
+            this.show(root.getRight());
+        }
+    }
+
+    public void show() {
+        this.show(this.root);
+        System.out.println();
+    }
 }
