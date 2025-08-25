@@ -244,6 +244,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (x.compareTo(root.getData()) > 0) {
             return getNode(root.getRight(), x);
         }
-        return getNode(root.getLeft(), x);d
+        return getNode(root.getLeft(), x);
     }
 }
