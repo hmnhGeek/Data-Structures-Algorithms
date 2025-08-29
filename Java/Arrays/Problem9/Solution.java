@@ -14,15 +14,31 @@ public class Solution {
          */
         if (k <= 0) return null;
         QuickSort.sort(arr);
+
+        // store the max ans in min `ans` variable for now.
         Integer ans = arr.getLast() - arr.getFirst();
+
+        // we will always increase the 0th value and shrink the last value.
         Integer smallest = arr.getFirst() + k, largest = arr.getLast() - k;
+
+        // initialize tracking variables.
         Integer mi = 0, mx = 0;
+
+        // update logic (moving the pivot; i denotes pivot index)
         for (int i = 0; i < arr.size() - 1; i += 1) {
+            // update `mi` based on the pivot index
             mi = Math.min(smallest, arr.get(i + 1) - k);
+            // do the same for `mx`.
             mx = Math.max(largest, arr.get(i) + k);
+
+            // we will not take negative heights
             if (mi < 0) continue;
+
+            // update the answer.
             ans = Math.min(ans, mx - mi);
         }
+
+        // return the answer.
         return ans;
     }
 
