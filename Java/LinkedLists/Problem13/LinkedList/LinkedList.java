@@ -10,6 +10,14 @@ public class LinkedList<T extends Comparable<T>> {
         this.length = 0;
     }
 
+    public Integer getLength() {
+        return this.length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
     public Node<T> getHead() {
         return head;
     }
