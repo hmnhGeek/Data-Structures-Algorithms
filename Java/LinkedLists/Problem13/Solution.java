@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/sort-a-linked-list/1
+// Solution - https://www.youtube.com/watch?v=8ocB7a_c-Cc
+
+
 package LinkedLists.Problem13;
 
 import LinkedLists.Problem13.LinkedList.LinkedList;
@@ -15,21 +19,43 @@ public class Solution {
     }
     
     public static <T extends Comparable<T>> LinkedList<T> sort(LinkedList<T> linkedList) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
+
+        // if there is no node or only a single node in the linked list, return the linked list as is, because it is
+        // already sorted.
         if (linkedList.getLength().equals(0) || linkedList.getLength().equals(1)) {
             return linkedList;
         }
+
+        // get the middle node of the linked list in O(n/2) time.
         Node<T> midNode = getMiddleNode(linkedList);
+
+        // construct the left part of the divided linked lists.
         LinkedList<T> leftPart = new LinkedList<>();
         leftPart.setHead(linkedList.getHead());
         leftPart.setTail(midNode);
+
+        // only left part length can be asymmetrical based on the linked list's length.
         leftPart.setLength(linkedList.getLength() % 2 == 0 ? linkedList.getLength()/2 : linkedList.getLength()/2 + 1);
+
+        // similarly, construct the right part of the linked list.
         LinkedList<T> rightPart = new LinkedList<>();
         rightPart.setHead(midNode.getNext());
         rightPart.setTail(linkedList.getTail());
+
+        // its length will always be l/2.
         rightPart.setLength(linkedList.getLength()/2);
+
+        // break the main linked list at mid-node.
         midNode.setNext(null);
+
+        // sort the left and right linked lists.
         leftPart = sort(leftPart);
         rightPart = sort(rightPart);
+
+        // finally, merge them and return the merged sorted list.
         return merge(leftPart, rightPart);
     }
 
