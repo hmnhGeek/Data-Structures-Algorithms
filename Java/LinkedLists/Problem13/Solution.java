@@ -88,5 +88,17 @@ public class Solution {
         System.out.println(l1);
         l1 = sort(l1);
         System.out.println(l1);
+
+        LinkedList<Integer> l2 = new LinkedList<>();
+        l2.build(40, 20, 60, 10, 50, 30);
+        System.out.println(l2);
+        l2 = sort(l2);
+        System.out.println(l2);
+
+        LinkedList<Integer> l3 = new LinkedList<>();
+        l3.build(9, 5, 2, 8);
+        System.out.println(l3);
+        l3 = sort(l3);
+        System.out.println(l3);
     }
 }
