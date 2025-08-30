@@ -30,6 +30,10 @@ public class NStacks<T> {
     }
 
     public void push(T x, int stack) {
+        /*
+            Time complexity is O(1) and space complexity is O(2n + k).
+         */
+
         // check if we have free space to push in a new element. If freeIndex becomes -1, then it means that the
         // original array is full.
         if (freeIndex.equals(-1)) return;
@@ -57,6 +61,10 @@ public class NStacks<T> {
     }
 
     public T pop(int stack) {
+        /*
+            Time complexity is O(1) and space complexity is O(2n + k).
+         */
+
         // get the stack index.
         int s = stack - 1;
 
