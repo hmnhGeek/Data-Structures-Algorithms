@@ -30,25 +30,59 @@ public class NStacks<T> {
     }
 
     public void push(T x, int stack) {
+        // check if we have free space to push in a new element. If freeIndex becomes -1, then it means that the
+        // original array is full.
+        if (freeIndex.equals(-1)) return;
+
+        // get the stack index in 0-based format.
         int s = stack - 1;
+
+        // store index of the free slot.
         int index = freeIndex;
+
+        // put the element x into the free slot.
         this.stackArray.set(index, x);
+
+        // update free to point to next slot in free list
         freeIndex = this.next.get(index);
+
+        // update next to point to the previous element index of the stack s.
         this.next.set(index, this.tops.get(s));
+
+        // update top to point at the current filled index.
         this.tops.set(s, index);
+
+        // print the stack only for informational purposes.
         System.out.println(this.stackArray);
     }
 
     public T pop(int stack) {
+        // get the stack index.
         int s = stack - 1;
+
+        // if the stack's top is -1, its empty.
         if (this.tops.get(s).equals(-1)) return null;
+
+        // get index of top item in stack s.
         int index = this.tops.get(s);
+
+        // get the element at index and set the value as null in the original array.
         T elem = this.stackArray.get(index);
         this.stackArray.set(index, null);
+
+        // since next points to previous element, update top with it.
         this.tops.set(s, this.next.get(index));
+
+        // set next to the free available index.
         this.next.set(index, freeIndex);
+
+        // update free index to the current index because it got free just now.
         freeIndex = index;
+
+        // print the stack
         System.out.println(this.stackArray);
+
+        // return the element.
         return elem;
     }
 }
