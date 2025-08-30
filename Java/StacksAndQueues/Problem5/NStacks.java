@@ -46,7 +46,7 @@ public class NStacks<T> {
         T elem = this.stackArray.get(index);
         this.stackArray.set(index, null);
         this.tops.set(s, this.next.get(index));
-        this.next.set(index, index + 1);
+        this.next.set(index, freeIndex);
         freeIndex = index;
         System.out.println(this.stackArray);
         return elem;
