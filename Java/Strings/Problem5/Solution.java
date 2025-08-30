@@ -25,5 +25,7 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(getRle("11"));
         System.out.println(getRle("3322251"));
+        System.out.println(getRle("AAAABBBCCDAA"));
+        System.out.println(getRle("WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW"));
     }
 }
