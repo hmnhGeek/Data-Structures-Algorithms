@@ -8,15 +8,7 @@ public class Solution {
         return 0;
     }
 
-    public static <T> Boolean isBipartite(Map<T, List<T>> graph) {
-        Map<T, Boolean> visited = new HashMap<>();
-        getBlankVisitedArray(visited, graph);
-
-        Map<T, Integer> colors = new HashMap<>();
-        getBlankColorsArray(colors, graph);
-
-        Queue<T> queue = new Queue<>();
-        T startNode = graph.keySet().stream().toList().getFirst();
+    public static <T> Boolean isBipartite(T startNode, Map<T, Boolean> visited, Map<T, Integer> colors, Queue<T> queue, Map<T, List<T>> graph) {
         queue.push(startNode);
         visited.put(startNode, true);
         int initialColor = 0;
@@ -30,7 +22,7 @@ public class Solution {
                     colors.put(adjNode, toggleColor(colors.get(node)));
                     queue.push(adjNode);
                 } else {
-                    if (colors.get(node) == colors.get(adjNode)) {
+                    if (Objects.equals(colors.get(node), colors.get(adjNode))) {
                         return false;
                     }
                 }
@@ -49,6 +41,24 @@ public class Solution {
         for (T node : graph.keySet()) {
             colors.putIfAbsent(node, null);
         }
+    }
+
+    public static <T> Boolean isGraphBipartite(Map<T, List<T>> graph) {
+        Map<T, Boolean> visited = new HashMap<>();
+        getBlankVisitedArray(visited, graph);
+
+        Map<T, Integer> colors = new HashMap<>();
+        getBlankColorsArray(colors, graph);
+
+        Queue<T> queue = new Queue<>();
+        for (T node : graph.keySet()) {
+            if (!visited.get(node)) {
+                if (!isBipartite(node, visited, colors, queue, graph)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {
@@ -102,7 +112,7 @@ public class Solution {
         )));
 
         for (Map<Integer, List<Integer>> graph : graphs) {
-            System.out.println(isBipartite(graph));
+            System.out.println(isGraphBipartite(graph));
         }
     }
 }
