@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/is-graph-bipartite/description/
+// Solution - https://www.youtube.com/watch?v=-vu34sct1g8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=17
+
 package Graphs.G17;
 
 import java.util.*;
@@ -44,6 +47,9 @@ public class Solution {
     }
 
     public static <T> Boolean isGraphBipartite(Map<T, List<T>> graph) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
         Map<T, Boolean> visited = new HashMap<>();
         getBlankVisitedArray(visited, graph);
 
