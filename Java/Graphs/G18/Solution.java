@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/is-graph-bipartite/description/
+// Solution - https://www.youtube.com/watch?v=9twcmtQj4DU&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=19&pp=iAQB
+
+
 package Graphs.G18;
 
 import java.util.*;
@@ -34,6 +38,9 @@ public class Solution {
     }
 
     public static <T> Boolean isGraphBipartite(Map<T, List<T>> graph) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
         Map<T, Integer> nodeColors = getColorsMap(graph);
         for (T node : graph.keySet()) {
             if (nodeColors.get(node) == null) {
