@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/subarrays-with-k-different-integers/description/
+// Solution - https://www.youtube.com/watch?v=7wYGbV_LsX4&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=11
+
+
 package SlidingWindows.L11;
 
 import java.util.Arrays;
@@ -44,6 +48,9 @@ public class Solution {
     }
 
     public static Integer getSubArrayCount(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         return getLessThanEqualsTo(arr, k) - getLessThanEqualsTo(arr, k - 1);
     }
 
