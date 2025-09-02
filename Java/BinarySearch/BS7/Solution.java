@@ -1,6 +1,5 @@
-// Problem link - https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
-// Solution - https://www.youtube.com/watch?v=nhEMDKMB44g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=7
-
+// Problem Link - https://www.naukri.com/code360/problems/rotation_7449070
+// Solution - https://www.youtube.com/watch?v=jtSiWTPLwd0&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=8
 
 package BinarySearch.BS7;
 
