@@ -46,3 +46,85 @@ class BinarySearchTree:
         self.recalc_augmentation(start)
         return
 
+    def get_leftmost_leaf(self, node):
+        if node is None:
+            return
+        while node.left is not None:
+            node = node.left
+        return node
+
+    def get_rightmost_leaf(self, node):
+        if node is None:
+            return
+        while node.right is not None:
+            node = node.right
+        return node
+
+    def get_successor(self, node):
+        if node is None:
+            return
+        if node.right is not None:
+            return self.get_leftmost_leaf(node.right)
+        parent = node.parent
+        if parent is None:
+            return
+        while parent.left != node:
+            node = node.parent
+            parent = parent.parent
+            if parent is None:
+                return
+        return parent
+
+    def get_predecessor(self, node):
+        if node is None:
+            return
+        if node.left is not None:
+            return self.get_rightmost_leaf(node.left)
+        parent = node.parent
+        if parent is None:
+            return
+        while parent.right != node:
+            node = node.parent
+            parent = parent.parent
+            if parent is None:
+                return
+        return parent
+
+    def _delete(self, node):
+        if node is None:
+            return
+        if node.left is None and node.right is None:
+            parent = node.parent
+            if parent is not None:
+                if parent.left == node:
+                    parent.left = None
+                else:
+                    parent.right = None
+            else:
+                self.root = None
+                self.d = 0
+            del node
+            self.recalc_augmentation(parent)
+            return
+        if node.right is not None:
+            successor = self.get_successor(node)
+            successor.data, node.data = node.data, successor.data
+            return self._delete(successor)
+        predecessor = self.get_predecessor(node)
+        predecessor.data, node.data = node.data, predecessor.data
+        return self._delete(predecessor)
+
+    def delete(self, x):
+        node = self.get_node(self.root, x)
+        if node is not None:
+            return self._delete(node)
+
+    def get_node(self, start, x):
+        if start is None or x is None:
+            return
+        if start.data == x:
+            return start
+        if x > start.data:
+            return self.get_node(start.right, x)
+        return self.get_node(start.left, x)
+
