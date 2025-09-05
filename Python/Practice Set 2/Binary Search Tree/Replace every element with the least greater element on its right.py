@@ -26,8 +26,9 @@ class BinarySearchTree:
         if self.root is None:
             self.root = node
             self.d = 1
-            return
-        return self._insert(self.root, node)
+            return node
+        self._insert(self.root, node)
+        return node
 
     def _insert(self, start, node):
         if start is None or node is None:
@@ -139,3 +140,17 @@ class BinarySearchTree:
         print()
 
 
+class Solution:
+    @staticmethod
+    def replace(arr):
+        bst = BinarySearchTree()
+        result = []
+        for i in range(-1, -len(arr)-1, -1):
+            node = bst.insert(arr[i])
+            successor = bst.get_successor(node)
+            result.append(successor.data if successor else -1)
+        result = result[-1:-len(result)-1:-1]
+        return result
+
+
+print(Solution.replace([8, 58, 71, 18, 31, 32, 63, 92, 43, 3, 91, 93, 25, 80, 28]))
