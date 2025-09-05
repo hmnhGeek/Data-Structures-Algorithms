@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/sort-a-linked-list/1
+# Solution - https://www.youtube.com/watch?v=8ocB7a_c-Cc
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -51,6 +55,9 @@ class MergeSort:
 
     @staticmethod
     def sort(l: LinkedList):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
         if l.length == 1:
             return l
         middle_node = MergeSort.find_middle_node(l)
@@ -86,3 +93,16 @@ class MergeSort:
             j = j.next
         return merged
 
+
+l = LinkedList()
+l.build(40, 20, 60, 10, 50, 30)
+print(l)
+l = MergeSort.sort(l)
+print(l)
+
+print()
+
+l2 = LinkedList()
+l2.build(9, 5, 2, 8)
+print(l2)
+print(MergeSort.sort(l2))
