@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/replace-every-element-with-the-least-greater-element-on-its-right/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -143,6 +146,9 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def replace(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(log(n)).
+        """
         bst = BinarySearchTree()
         result = []
         for i in range(-1, -len(arr)-1, -1):
