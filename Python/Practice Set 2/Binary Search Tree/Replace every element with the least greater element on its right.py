@@ -14,7 +14,7 @@ class BinarySearchTree:
         self.d = 0
         while parent is not None:
             left_sz, right_sz = parent.left.size if parent.left else 0, parent.right.size if parent.right else 0
-            left_ht, right_ht = parent.left.ht if parent.left else 0, parent.right.ht if parent.right else 0
+            left_ht, right_ht = parent.left.height if parent.left else 0, parent.right.height if parent.right else 0
             parent.size = 1 + left_sz + right_sz
             parent.height = 1 + max(left_ht, right_ht)
             parent.d = 1 + left_ht + right_ht
@@ -127,4 +127,15 @@ class BinarySearchTree:
         if x > start.data:
             return self.get_node(start.right, x)
         return self.get_node(start.left, x)
+
+    def _show(self, start):
+        if start:
+            self._show(start.left)
+            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, height = {start.height}, d = {start.d}")
+            self._show(start.right)
+
+    def show(self):
+        self._show(self.root)
+        print()
+
 
