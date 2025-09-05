@@ -38,3 +38,51 @@ class LinkedList:
         result += f"{self.tail.data}]"
         return result
 
+
+class MergeSort:
+    @staticmethod
+    def find_middle_node(l: LinkedList):
+        slow = l.head
+        fast = l.head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+    @staticmethod
+    def sort(l: LinkedList):
+        if l.length == 1:
+            return l
+        middle_node = MergeSort.find_middle_node(l)
+        left = LinkedList()
+        left.head = l.head
+        left.tail = middle_node
+        left.length = l.length//2 + 1 if l.length % 2 == 1 else l.length//2
+        right = LinkedList()
+        right.head = middle_node.next
+        right.tail = l.tail
+        right.length = l.length//2
+        middle_node.next = None
+        left = MergeSort.sort(left)
+        right = MergeSort.sort(right)
+        return MergeSort.merge(left, right)
+
+    @staticmethod
+    def merge(left, right):
+        merged = LinkedList()
+        i, j = left.head, right.head
+        while i is not None and j is not None:
+            if i.data <= j.data:
+                merged.push(i.data)
+                i = i.next
+            else:
+                merged.push(j.data)
+                j = j.next
+        while i is not None:
+            merged.push(i.data)
+            i = i.next
+        while j is not None:
+            merged.push(j.data)
+            j = j.next
+        return merged
+
