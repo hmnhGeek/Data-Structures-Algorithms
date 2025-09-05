@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/right-view-of-binary-tree/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -39,6 +42,9 @@ class TreeNode:
 class Solution:
     @staticmethod
     def get_right_view(root: TreeNode):
+        """
+            Time complexity is O(n) and space complexity is O(n)
+        """
         queue = Queue()
         queue.push((root, 0))
         curr_level = 0
