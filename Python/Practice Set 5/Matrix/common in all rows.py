@@ -1,9 +1,15 @@
+# Problem link - https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/
+
+
 from collections import Counter
 
 
 class Solution:
     @staticmethod
     def find_commons(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(m)
+        """
         n, m = len(mtx), len(mtx[0])
         temp = dict(Counter(mtx[0]))
         for i in range(1, n):
