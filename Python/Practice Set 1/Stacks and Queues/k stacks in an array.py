@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/efficiently-implement-k-stacks-single-array/
+# Solution - https://www.youtube.com/watch?v=lrSXKLmnMV8
+
+
 class KStacks:
     def __init__(self, n, k):
         self.arr = [None] * n
@@ -26,12 +30,24 @@ class KStacks:
     def pop(self, m):
         if self.tops[m] == -1:
             return None
+
+        # get the top of the stack and retrieve the item from the stack
         index = self.tops[m]
         item = self.arr[index]
+
+        # make the arr at this index null.
         self.arr[index] = None
+
+        # update the top to the next index.
         self.tops[m] = self.next[index]
+
+        # update the next to free spot
         self.next[index] = self.free_spot
+
+        # update the free spot to the index value.
         self.free_spot = index
+
+        # return the item
         return item
 
 
