@@ -27,3 +27,23 @@ class QuickSort:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
+class Solution:
+    @staticmethod
+    def minimize_the_heights(arr, k):
+        QuickSort.sort(arr)
+        n = len(arr)
+        smallest, largest = arr[0] + k, arr[-1] - k
+        result = largest - smallest
+        mini, maxi = 0, 0
+        for i in range(n - 1):
+            mini = min(smallest, arr[i + 1] - k)
+            maxi = max(largest, arr[i] + k)
+            if mini < 0:
+                continue
+            result = min(result, maxi - mini)
+        return result
+
+
+print(Solution.minimize_the_heights([5, 8, 10, 1], 2))
+print(Solution.minimize_the_heights([3, 9, 12, 16, 20], 3))
