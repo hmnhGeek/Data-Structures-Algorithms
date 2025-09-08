@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimize-the-heights3351/1
+# Solution - https://www.youtube.com/watch?v=30vDmZg5MZ8
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -31,6 +34,9 @@ class QuickSort:
 class Solution:
     @staticmethod
     def minimize_the_heights(arr, k):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
         QuickSort.sort(arr)
         n = len(arr)
         smallest, largest = arr[0] + k, arr[-1] - k
