@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/subarrays-with-k-different-integers/description/
+# Solution - https://www.youtube.com/watch?v=7wYGbV_LsX4&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=11
+
+
 class Solution:
     @staticmethod
     def get_less_than_equal_to(arr, k):
