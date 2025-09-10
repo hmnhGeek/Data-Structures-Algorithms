@@ -15,5 +15,14 @@ class Solution:
             i = j
         return result
 
+    @staticmethod
+    def count_and_say(n):
+        if n == 1:
+            return "1"
+        return Solution.get_run_length_encoding(Solution.count_and_say(n - 1))
 
-print(Solution.get_run_length_encoding("3322251"))
+
+print(Solution.count_and_say(4))
+print(Solution.count_and_say(1))
+print(Solution.count_and_say(3))
+print(Solution.count_and_say(5))
