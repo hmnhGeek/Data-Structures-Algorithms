@@ -1,6 +1,12 @@
+# Problem link - https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+# Solution - https://www.youtube.com/watch?v=nhEMDKMB44g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=7
+
 class Solution:
     @staticmethod
     def get_min_in_rotated(arr):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         n = len(arr)
         low = 0
         high = n - 1
