@@ -57,4 +57,69 @@ def recursive():
     print(min_path_sum([[1, 2, 3], [4, 5, 6]]))
 
 
+def memoized():
+    def min_path_sum(mtx):
+        """
+            Time complexity is O(mn) and space complexity is O(m + n + mn).
+        """
+        n, m = len(mtx), len(mtx[0])
+        dp = {i: {j: None for j in range(m)} for i in range(n)}
+        return solve(mtx, n - 1, m - 1, dp)
+
+    def solve(mtx, i, j, dp):
+        if i == 0 and j == 0:
+            return mtx[0][0]
+        if dp[i][j] is not None:
+            return dp[i][j]
+        left = 1e6
+        if 0 <= j - 1:
+            left = mtx[i][j] + solve(mtx, i, j - 1, dp)
+        right = 1e6
+        if 0 <= i - 1:
+            right = mtx[i][j] + solve(mtx, i - 1, j, dp)
+        dp[i][j] = min(left, right)
+        return dp[i][j]
+
+    print(
+        min_path_sum(
+            [
+                [5, 9, 6],
+                [11, 5, 2]
+            ]
+        )
+    )
+
+    print(
+        min_path_sum(
+            [
+                [5]
+            ]
+        )
+    )
+
+    print(
+        min_path_sum(
+            [
+                [1, 2, 3],
+                [4, 5, 4],
+                [7, 5, 9]
+            ]
+        )
+    )
+
+    print(
+        min_path_sum(
+            [
+                [5, 6],
+                [1, 2]
+            ]
+        )
+    )
+
+    print(min_path_sum([[1, 3, 1], [1, 5, 1], [4, 2, 1]]))
+    print(min_path_sum([[1, 2, 3], [4, 5, 6]]))
+
+
 recursive()
+print()
+memoized()
