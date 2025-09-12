@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/is-graph-bipartite/description/
+# Solution - https://www.youtube.com/watch?v=-vu34sct1g8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=17
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,10 @@ class Queue:
 class Solution:
     @staticmethod
     def is_bipartite(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         # create a node colors dictionary which will act as visited also. This will take O(V) space.
         node_colors = {i: None for i in graph}
         for node in graph:
