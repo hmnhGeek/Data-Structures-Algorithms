@@ -35,26 +35,43 @@ class Queue:
 class Solution:
     @staticmethod
     def is_bipartite(graph):
+        # create a node colors dictionary which will act as visited also. This will take O(V) space.
         node_colors = {i: None for i in graph}
         for node in graph:
             if node_colors[node] is None:
+                # This is a component and if it is not bipartite, simply return False.
                 if not Solution._bfs_bipartite_check(node, node_colors, graph):
                     return False
+
+        # if all the components are bipartite, return True.
         return True
 
     @staticmethod
     def _bfs_bipartite_check(start_node, node_colors, graph):
+        # For a given component of the original graph, initialize a queue to perform BFS.
         queue = Queue()
+
+        # push the start node with color 0.
         queue.push((start_node, 0))
+
+        # typical BFS...
         while not queue.is_empty():
+            # pop the current node with its color and color it.
             node, color = queue.pop()
             node_colors[node] = color
+
+            # loop in the neighbours
             for adj_node in graph[node]:
+                # if the adjacent node is colored and the color is same as of this node's color,
+                # the graph is not bipartite, therefore, return False.
                 if node_colors[adj_node] is not None:
                     if node_colors[adj_node] == color:
                         return False
                 else:
+                    # if the adj_node is not colored, push it to queue with toggled color value.
                     queue.push((adj_node, 0 if color == 1 else 1))
+
+        # return True if queue got empty as it is a bipartite graph.
         return True
 
 
