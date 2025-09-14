@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/bipartite-graph/1
+# Solution - https://www.youtube.com/watch?v=KG5YFfR0j8A&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=18
+
+
 class Solution:
     @staticmethod
     def _dfs(graph, node, parent, color, node_colors):
@@ -24,6 +28,10 @@ class Solution:
 
     @staticmethod
     def is_bipartite(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
+
         # store the colors of the node
         node_colors = {i: None for i in graph}
 
