@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(getLeftmostOccurrence(Arrays.asList(1, 3, 5, 5, 5, 5, 67, 123, 125), 5));
+        System.out.println(getRightmostOccurrence(Arrays.asList(1, 3, 5, 5, 5, 5, 67, 123, 125), 5));
 
     }
 
@@ -20,5 +20,18 @@ public class Solution {
             }
         }
         return low;
+    }
+
+    private static int getRightmostOccurrence(List<Integer> arr, Integer x) {
+        int low = 0, high = arr.size() - 1;
+        while (low <= high) {
+            int mid = (low + (high - low)/2);
+            if (arr.get(mid) <= x) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return high;
     }
 }
