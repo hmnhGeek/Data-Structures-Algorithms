@@ -1,6 +1,7 @@
-package BinaryTrees.Problem11;
+// Problem link - https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1
+// Solution - https://www.youtube.com/watch?v=Et9OCDNvJ78&t=206s
 
-import com.sun.source.tree.Tree;
+package BinaryTrees.Problem11;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,6 +82,9 @@ public class Solution {
     }
 
     public static <T> void getTopView(TreeNode<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Map<Integer, T> d = new HashMap<>();
         Integer leftMostLevel = Integer.MAX_VALUE, rightMostLevel = Integer.MIN_VALUE;
         Queue<Element<TreeNode<T>>> queue = new Queue<>();
