@@ -1,3 +1,6 @@
+// Problem link - https://www.naukri.com/code360/problems/first-and-last-position-of-an-element-in-sorted-array_1082549
+
+
 package SearchingAndSorting.Problem1;
 
 import java.util.Arrays;
@@ -15,6 +18,10 @@ public class Solution {
         System.out.println(getOccurrences(arr, 15));
         System.out.println(getOccurrences(arr, 16));
         System.out.println(getOccurrences(arr, 5));
+
+        System.out.println(getOccurrences(Arrays.asList(1, 3, 5, 5, 5, 5, 67, 123, 125), 5));
+        System.out.println(getOccurrences(Arrays.asList(1, 3, 5, 5, 5, 5, 7, 123, 125), 7));
+        System.out.println(getOccurrences(Arrays.asList(1, 2, 3), 4));
     }
 
     private static int getLeftmostOccurrence(List<Integer> arr, Integer x) {
@@ -50,6 +57,9 @@ public class Solution {
     }
 
     public static List<Integer> getOccurrences(List<Integer> arr, Integer x) {
+        /**
+         * Time complexity is O(2 * log(n)) and space complexity is O(1).
+         */
         Integer leftmostIndex = getLeftmostOccurrence(arr, x);
         if (leftmostIndex == -1) return List.of(-1, -1);
         Integer rightmostIndex = getRightmostOccurrence(arr, x);
