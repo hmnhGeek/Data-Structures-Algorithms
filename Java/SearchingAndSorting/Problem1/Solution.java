@@ -5,8 +5,16 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(getRightmostOccurrence(Arrays.asList(1, 3, 5, 5, 5, 5, 67, 123, 125), 5));
+        List<Integer> arr = Arrays.asList(2, 4, 6, 6, 8, 8, 8, 11, 13, 13, 15);
 
+        System.out.println(getOccurrences(arr, 2));
+        System.out.println(getOccurrences(arr, 6));
+        System.out.println(getOccurrences(arr, 8));
+        System.out.println(getOccurrences(arr, 13));
+        System.out.println(getOccurrences(arr, 11));
+        System.out.println(getOccurrences(arr, 15));
+        System.out.println(getOccurrences(arr, 16));
+        System.out.println(getOccurrences(arr, 5));
     }
 
     private static int getLeftmostOccurrence(List<Integer> arr, Integer x) {
@@ -19,7 +27,10 @@ public class Solution {
                 low = mid + 1;
             }
         }
-        return low;
+        if (0 <= low && low < arr.size() && arr.get(low) == x) {
+            return low;
+        }
+        return -1;
     }
 
     private static int getRightmostOccurrence(List<Integer> arr, Integer x) {
@@ -32,6 +43,16 @@ public class Solution {
                 high = mid - 1;
             }
         }
-        return high;
+        if (0 <= high && high < arr.size() && arr.get(high) == x) {
+            return high;
+        }
+        return -1;
+    }
+
+    public static List<Integer> getOccurrences(List<Integer> arr, Integer x) {
+        Integer leftmostIndex = getLeftmostOccurrence(arr, x);
+        if (leftmostIndex == -1) return List.of(-1, -1);
+        Integer rightmostIndex = getRightmostOccurrence(arr, x);
+        return List.of(leftmostIndex, rightmostIndex);
     }
 }
