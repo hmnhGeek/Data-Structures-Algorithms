@@ -1,7 +1,7 @@
 package Heap.Problem10;
 
 
-class Node<T> {
+class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
     private T data;
     private Node<T> next;
 
@@ -25,10 +25,15 @@ class Node<T> {
     public void setNext(Node<T> next) {
         this.next = next;
     }
+
+    @Override
+    public int compareTo(Node<T> o) {
+        return this.data.compareTo(o.getData());
+    }
 }
 
 
-public class LinkedList<T> {
+public class LinkedList<T extends Comparable<T>> {
     private Node<T> head;
     private Node<T> tail;
     private Integer length;
@@ -36,6 +41,30 @@ public class LinkedList<T> {
     public LinkedList() {
         this.head = this.tail = null;
         this.length = 0;
+    }
+
+    public void setHead(Node<T> head) {
+        this.head = head;
+    }
+
+    public void setTail(Node<T> tail) {
+        this.tail = tail;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
+    public Node<T> getHead() {
+        return head;
+    }
+
+    public Node<T> getTail() {
+        return tail;
+    }
+
+    public Integer getLength() {
+        return length;
     }
 
     public boolean isEmpty() {
