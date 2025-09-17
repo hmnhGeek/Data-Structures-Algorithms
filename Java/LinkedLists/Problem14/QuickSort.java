@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/quick-sort-on-linked-list/1
+// Solution - https://www.youtube.com/watch?v=ByUiqQGz5_w
+
+
 package LinkedLists.Problem14;
 
 import java.util.Arrays;
@@ -32,6 +36,10 @@ public class QuickSort {
     }
 
     public static <T extends Comparable<T>> LinkedList<T> sort(LinkedList<T> linkedList) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
+
         // if there is a single element in the list, or none, then we can return the list as is because it is already sorted.
         if (linkedList.head == linkedList.tail) {
             return linkedList;
