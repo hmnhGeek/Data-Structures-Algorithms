@@ -1,121 +1,97 @@
-// Problem link - https://www.geeksforgeeks.org/problems/quick-sort-on-linked-list/1
-// Solution - https://www.youtube.com/watch?v=ByUiqQGz5_w
-
-
 package LinkedLists.Problem14;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class QuickSort {
-    public static <T extends Comparable<T>> List<Node<T>> findPartition(Node<T> pivot, Node<T> left, Node<T> right) {
-        // point the temp to the next node of pivot.
-        Node<T> temp = pivot.next;
 
-        // loop the temp until it becomes null (temp is next to pivot at start).
-        while (temp != null) {
-            // store the next of temp so that we don't lose the sequence.
-            Node<T> nextOfTemp = temp.next;
+    // Partition the list around pivot; return head and tail for left and right sublists
+    private static <T extends Comparable<T>> List<Node<T>> partition(Node<T> head) {
+        T pivotVal = head.data;
+        Node<T> current = head.next;
+        head.next = null; // detach pivot
 
-            // if temp's data <= pivot's data, push temp node to left partition.
-            if (temp.data.compareTo(pivot.data) <= 0) {
-                temp.next = left;
-                left = temp;
+        Node<T> leftHead = null, leftTail = null;
+        Node<T> rightHead = null, rightTail = null;
+
+        while (current != null) {
+            Node<T> nextNode = current.next;
+            current.next = null;
+            if (current.data.compareTo(pivotVal) <= 0) {
+                if (leftHead == null) {
+                    leftHead = leftTail = current;
+                } else {
+                    leftTail.next = current;
+                    leftTail = current;
+                }
             } else {
-                // else push to right partition.
-                temp.next = right;
-                right = temp;
+                if (rightHead == null) {
+                    rightHead = rightTail = current;
+                } else {
+                    rightTail.next = current;
+                    rightTail = current;
+                }
             }
-
-            // update temp
-            temp = nextOfTemp;
+            current = nextNode;
         }
-
-        // return the starting points of left and right partitions.
-        return Arrays.asList(left, right);
+        return Arrays.asList(leftHead, leftTail, rightHead, rightTail, head);
     }
 
-    public static <T extends Comparable<T>> LinkedList<T> sort(LinkedList<T> linkedList) {
-        /*
-            Time complexity is O(n * log(n)) and space complexity is O(n).
-         */
-
-        // if there is a single element in the list, or none, then we can return the list as is because it is already sorted.
-        if (linkedList.head == linkedList.tail) {
-            return linkedList;
+    public static <T extends Comparable<T>> LinkedList<T> sort(LinkedList<T> list) {
+        if (list.head == null || list.head.next == null) {
+            return list; // already sorted
         }
 
-        // store the current head for later use.
-        Node<T> originalHead = linkedList.head;
+        // Partition list around pivot (first node)
+        List<Node<T>> parts = partition(list.head);
+        Node<T> leftHead = parts.get(0);
+        Node<T> leftTail = parts.get(1);
+        Node<T> rightHead = parts.get(2);
+        Node<T> rightTail = parts.get(3);
+        Node<T> pivot = parts.get(4);
 
-        // store left and right nodes for keeping the heads of the left partition and right partition lists.
-        Node<T> left = null, right = null;
+        // Create sublists for left and right
+        LinkedList<T> leftList = new LinkedList<>();
+        LinkedList<T> rightList = new LinkedList<>();
 
-        // get the heads of the partitioned lists.
-        List<Node<T>> partitionedResult = findPartition(linkedList.head, left, right);
-        left = partitionedResult.getFirst();
-        right = partitionedResult.getLast();
+        leftList.head = leftHead;
+        leftList.tail = leftTail;
+        rightList.head = rightHead;
+        rightList.tail = rightTail;
 
-        // construct the left partition list and right partition list.
-        LinkedList<T> leftLinkedList = new LinkedList<>(), rightLinkedList = new LinkedList<>();
-        leftLinkedList.head = left;
-        rightLinkedList.head = right;
-
-        // update the tail of the left partition.
-        Node<T> leftHead = left;
-        Integer leftListLength = 1;
-        while (leftHead != null && leftHead.next != null) {
-            leftListLength += 1;
-            leftHead = leftHead.next;
-        }
-        if (leftHead != null) {
-            leftLinkedList.length = leftListLength;
-            leftLinkedList.tail = leftHead;
+        // Recursively sort left list
+        if (leftList.head != null) {
+            leftList = sort(leftList);
         }
 
-        // update the tail of the right partition.
-        Node<T> rightHead = right;
-        Integer rightListLength = 1;
-        while (rightHead != null && rightHead.next != null) {
-            rightListLength += 1;
-            rightHead = rightHead.next;
-        }
-        if (rightHead != null) {
-            rightLinkedList.length = rightListLength;
-            rightLinkedList.tail = rightHead;
+        // Recursively sort right list
+        if (rightList.head != null) {
+            rightList = sort(rightList);
         }
 
-        // sort the left and right partitions now.
-        leftLinkedList = sort(leftLinkedList);
-        rightLinkedList = sort(rightLinkedList);
-
-        // Now the left and right partitions are sorted and the current head node is at its correct position.
-        // So, we just need to wire the nodes correctly now to get the complete sorted list.
-
-        // if left partition is present
-        if (!leftLinkedList.isEmpty()) {
-            // connect the left partition's tail to the head node of the list.
-            leftLinkedList.tail.next = linkedList.head;
-
-            // wire the head node of the list to the right partition's head.
-            linkedList.head.next = rightLinkedList.head;
-
-            // update the head of the original list to the left partition's head.
-            linkedList.head = leftLinkedList.head;
-        }
-
-        // note that if the left partition is empty, the original head is the correct head already.
-
-        // if the right partition is not empty
-        if (!rightLinkedList.isEmpty()) {
-            // update the tail of the list to right partition's tail
-            linkedList.tail = rightLinkedList.tail;
+        // Connect left list -> pivot -> right list
+        // Address edge cases:
+        // 1. Left list empty, so pivot is the start
+        // 2. Left list exists, connect tail to pivot
+        // 3. Pivot's next to right list's head
+        if (leftList.head != null) {
+            leftList.tail.next = pivot;
+            list.head = leftList.head;
         } else {
-            // otherwise, the tail of the original list will be same as original head.
-            linkedList.tail = originalHead;
+            list.head = pivot; // pivot is the start
         }
 
-        // return the completed sorted list
-        return linkedList;
+        // Connect pivot to right list
+        pivot.next = rightList.head;
+
+        // Update list tail
+        if (rightList.tail != null) {
+            list.tail = rightList.tail;
+        } else {
+            list.tail = pivot;
+        }
+
+        return list;
     }
 }
+
