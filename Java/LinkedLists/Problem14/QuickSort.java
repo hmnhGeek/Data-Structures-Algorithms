@@ -38,6 +38,10 @@ public class QuickSort {
     }
 
     public static <T extends Comparable<T>> LinkedList<T> sort(LinkedList<T> list) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
+
         if (list.head == null || list.head.next == null) {
             return list; // already sorted
         }

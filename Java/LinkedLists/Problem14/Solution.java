@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/quick-sort-on-linked-list/1
+// Solution - https://www.youtube.com/watch?v=ByUiqQGz5_w
+
 package LinkedLists.Problem14;
 
 public class Solution {
