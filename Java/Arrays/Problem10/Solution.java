@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1
+// Solution - https://www.youtube.com/watch?v=fyQpHH3rP_0
+
+
 package Arrays.Problem10;
 
 import java.util.Arrays;
@@ -5,6 +9,10 @@ import java.util.List;
 
 public class Solution {
     public static int minJumps(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
+
         int maxReach = 0, lastIndex = 0, jumps = 0;
         int n = arr.size();
         if (n == 1) {
