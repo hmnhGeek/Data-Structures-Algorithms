@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/valid-parentheses/description/
+// Solution - https://www.youtube.com/watch?v=xwjS0iZhw4I
+
+
 package StacksAndQueues.Problem6;
 
 import java.util.Arrays;
@@ -28,6 +32,10 @@ public class Solution {
     }
 
     public static boolean isValidParenthesis(String brackets) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
+
         Stack<Character> stack = new Stack<>();
         Map<Character, Character> bracketsMapping = getBracketsMapping();
         List<Character> openingBrackets = Arrays.asList('(', '[', '{');
