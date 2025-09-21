@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/given-n-appointments-find-conflicting-appointments/
+
+
 package BinarySearchTrees.Problem18;
 
 import java.util.Arrays;
@@ -33,6 +36,9 @@ public class Solution {
     }
 
     public static void printConflictingAppointments(List<Appointment> appointments) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(1).
+         */
         for (int i = 1; i < appointments.size(); i += 1) {
             Appointment currentAppointment = appointments.get(i);
             for (int j = i - 1; j >= 0; j -= 1) {
