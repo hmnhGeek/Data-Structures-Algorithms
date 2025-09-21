@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1
+// Solution - https://www.youtube.com/watch?v=XYQecbcd6_c
+
+
 package Strings.Problem6;
 
 public class Solution {
@@ -9,6 +13,10 @@ public class Solution {
     }
 
     public static String longestPalindromicSubstring(String string) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(1).
+         */
+
         String result = "";
         Integer resultLength = 0;
 
