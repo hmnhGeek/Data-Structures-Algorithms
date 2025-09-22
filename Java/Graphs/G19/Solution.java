@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+// Solution - https://www.youtube.com/watch?v=9twcmtQj4DU&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=19
+
+
 package Graphs.G19;
 
 import java.util.HashMap;
@@ -30,6 +34,10 @@ public class Solution {
     }
 
     public static <T> boolean hasCycle(Map<T, List<T>> graph) {
+        /*
+            This is a typical DFS, and so, the time complexity is O(V + E) and space complexity is O(V).
+         */
+
         Map<T, Boolean> visited = getVisitedMap(graph);
         Map<T, Boolean> pathVisited = getVisitedMap(graph);
         for (T node : graph.keySet()) {
