@@ -11,7 +11,7 @@ import java.util.Map;
 public class MemoizedSolution {
     public static Integer getMaxFallingSum(List<List<Integer>> mtx) {
         /*
-            Time complexity is O(2^{m + n}) and space complexity is O(m + n).
+            Time complexity is O(m^2 * n) and space complexity is O(mn).
          */
         int n = mtx.size(), m = mtx.getFirst().size();
         Integer result = Integer.MIN_VALUE;
