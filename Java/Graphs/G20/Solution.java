@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/eventual-safe-states/1
+// Solution - https://www.youtube.com/watch?v=uRbJ1OF9aYM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=20
+
+
 package Graphs.G20;
 
 import java.util.Arrays;
@@ -52,6 +56,9 @@ public class Solution {
     }
 
     public static <T> Map<T, Boolean> getSafeNodes(Map<T, List<T>> graph) {
+        /*
+            Overall time complexity is O(V + E) and space is O(3V).
+         */
         Map<T, Boolean> visited = getVisited(graph);
         Map<T, Boolean> pathVisited = getVisited(graph);
         Map<T, Boolean> safeNodes = getVisited(graph);
@@ -66,21 +73,19 @@ public class Solution {
     private static <T> boolean hasCycle(Map<T, List<T>> graph, T node, Map<T, Boolean> visited, Map<T, Boolean> pathVisited, Map<T, Boolean> safeNodes) {
         visited.put(node, true);
         pathVisited.put(node, true);
-        boolean cycleFound = false;
 
         for (T adjNode : graph.get(node)) {
             if (!visited.get(adjNode)) {
                 if (hasCycle(graph, adjNode, visited, pathVisited, safeNodes)) {
                     return true;
                 }
-            } else if (!pathVisited.get(adjNode)) {
-                continue;
-            } else {
+            } else if (pathVisited.get(adjNode)) {
                 return true;
             }
         }
 
         pathVisited.put(node, false);
+        // mark this node as safe as no adjacent node gave a cycle.
         safeNodes.put(node, true);
         return false;
     }
