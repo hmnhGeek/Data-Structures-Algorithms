@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/ninja-and-his-friends_3125885?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=QGfn7JeXK54&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=14
+
+
 package DynamicProgramming.DP13;
 
 import java.util.Arrays;
