@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/find-a-peak-in-a-given-array/
+// Solution - https://www.youtube.com/watch?v=cXxmbemS6XM&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=10
+
+
 package BinarySearch.BS9;
 
 import java.util.List;
@@ -15,6 +19,9 @@ public class Solution {
     }
 
     public static Integer getPeakElement(List<Integer> arr) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(1).
+         */
         int n = arr.size();
         if (n == 1) return arr.getFirst();
 
