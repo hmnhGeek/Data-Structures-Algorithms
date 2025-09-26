@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/unique-element-in-sorted-array_1112654
+// Solution - https://www.youtube.com/watch?v=AZOmHuHadxQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=9
+
+
 package BinarySearch.BS8;
 
 import java.util.List;
@@ -15,6 +19,9 @@ public class Solution {
     }
 
     public static Integer getSingleElement(List<Integer> arr) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(1).
+         */
         int n = arr.size();
         if (n == 1) return arr.getFirst();
         if (arr.getFirst() != arr.get(1)) return arr.getFirst();
