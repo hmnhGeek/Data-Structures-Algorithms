@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/minimum-window-substring/description/
+// Solution - https://www.youtube.com/watch?v=WJaij9ffOIY&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=12
+
+
 package SlidingWindows.L12;
 
 import java.util.HashMap;
@@ -5,6 +9,9 @@ import java.util.Map;
 
 public class Solution {
     public static String getMinWindowSubstring(String s, String t) {
+        /*
+            Overall time complexity is O(26n) and space complexity is O(26).
+         */
         Map<Character, Integer> d = getCharacterMap(s);
         Map<Character, Integer> d0 = getCharacterMap(t);
         for (Character c : t.toCharArray()) {
