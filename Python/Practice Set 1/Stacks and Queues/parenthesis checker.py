@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/valid-parentheses/description/
+# Solution - https://www.youtube.com/watch?v=xwjS0iZhw4I
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -40,6 +44,9 @@ class Stack:
 class Solution:
     @staticmethod
     def balanced_parenthesis(brackets):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         stack = Stack()
         d = {"}": "{", "]": "[", ")": "("}
         opening_brackets = ["[", "{", "("]
