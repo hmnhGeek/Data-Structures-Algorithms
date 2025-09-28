@@ -31,3 +31,35 @@ class Stack:
         self.length -= 1
         return item
 
+    def top(self):
+        if self.is_empty():
+            return
+        return self.head.data
+
+
+class Solution:
+    @staticmethod
+    def balanced_parenthesis(brackets):
+        stack = Stack()
+        d = {"}": "{", "]": "[", ")": "("}
+        opening_brackets = ["[", "{", "("]
+        for i in range(len(brackets)):
+            bracket = brackets[i]
+            if bracket in opening_brackets:
+                stack.push(bracket)
+                continue
+            top_bracket = stack.top()
+            if d[bracket] != top_bracket:
+                return False
+            stack.pop()
+        return stack.is_empty()
+
+
+print(Solution.balanced_parenthesis("())"))
+print(Solution.balanced_parenthesis("[()]{}{[()()]()}"))
+print(Solution.balanced_parenthesis("{([])}"))
+print(Solution.balanced_parenthesis("()"))
+print(Solution.balanced_parenthesis("([]"))
+print(Solution.balanced_parenthesis("[(])"))
+print(Solution.balanced_parenthesis("()[]{}"))
+print(Solution.balanced_parenthesis("(]"))
