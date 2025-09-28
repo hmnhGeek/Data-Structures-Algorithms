@@ -1,7 +1,16 @@
+from typing import List
+
+
 class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+
+    def __lt__(self, other):
+        return self.data < other.data
+
+    def __gt__(self, other):
+        return self.data > other.data
 
 
 class LinkedList:
@@ -102,3 +111,49 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def merge_sorted_linked_lists(linked_lists: List[LinkedList]) -> LinkedList:
+        result = LinkedList()
+        dummy_node = Node(None)
+        temp = dummy_node
+        pq = MinHeap()
+
+        for linked_list in linked_lists:
+            result.length += linked_list.length
+            pq.insert(linked_list.head)
+
+        while not pq.is_empty():
+            node = pq.pop()
+            temp.next = node
+            if node.next is not None:
+                pq.insert(node.next)
+            temp = node
+            temp.next = None
+
+        result.head = dummy_node.next
+        result.tail = temp
+
+        return result
+
+
+# Example 1
+l1 = LinkedList()
+l1.build(1, 2, 3)
+l2 = LinkedList()
+l2.build(4, 5)
+l3 = LinkedList()
+l3.build(5, 6)
+l4 = LinkedList()
+l4.build(7, 8)
+merged = Solution.merge_sorted_linked_lists([l1, l2, l3, l4])
+print(merged)
+
+# Example 2
+l1, l2, l3 = LinkedList(), LinkedList(), LinkedList()
+l1.build(1, 3)
+l2.build(4, 5, 6)
+l3.build(8)
+merged = Solution.merge_sorted_linked_lists([l1, l2, l3])
+print(merged)
