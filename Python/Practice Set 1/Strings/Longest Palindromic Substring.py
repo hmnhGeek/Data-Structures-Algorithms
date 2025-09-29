@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/problems/longest-palindrome-in-a-string3411/1
+# Solution - https://www.youtube.com/watch?v=XYQecbcd6_c
+
+
 class Solution:
     @staticmethod
     def get_longest_substring(string):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
+
         result = ""
         length = 0
 
@@ -25,3 +33,5 @@ class Solution:
 
 
 print(Solution.get_longest_substring("forgeeksskeegfor"))
+print(Solution.get_longest_substring("Geeks"))
+print(Solution.get_longest_substring("abc"))
