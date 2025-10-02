@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/given-n-appointments-find-conflicting-appointments/
+
+
 class Appointment:
     def __init__(self, s, e):
         self.start_time = s
@@ -10,6 +13,10 @@ class Appointment:
 class Solution:
     @staticmethod
     def find_conflicting_appointments(appointments):
+        """
+            Time complexity is O(n^2) and space complexity is O(1).
+        """
+
         for i in range(1, len(appointments)):
             appointment = appointments[i]
             for j in range(i - 1, -1, -1):
