@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/quick-sort-on-linked-list/1
+# Solution - https://www.youtube.com/watch?v=ByUiqQGz5_w
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -40,6 +44,10 @@ class LinkedList:
 class Solution:
     @staticmethod
     def quick_sort(linked_list: LinkedList):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
+
         # if the linked list is either empty or just has 1 element, then return the linked list as is.
         if linked_list.length == 0 or linked_list.length == 1:
             return linked_list
