@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1
+# Solution - https://www.youtube.com/watch?v=Et9OCDNvJ78&t=206s
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -41,6 +45,9 @@ class TreeNode:
 class Solution:
     @staticmethod
     def get_top_view(root: TreeNode):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         d = dict()
         mi, ma = 1e6, -1e6
         stack = Stack()
