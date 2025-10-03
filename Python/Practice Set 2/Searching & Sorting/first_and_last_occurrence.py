@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/first-and-last-occurrences-of-x3116/1
+
+
 class Solution:
     @staticmethod
     def get_first_occurrence(arr, x):
@@ -25,6 +28,9 @@ class Solution:
 
     @staticmethod
     def get_occurrences(arr, x):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         n = len(arr)
         first = Solution.get_first_occurrence(arr, x)
         last = Solution.get_last_occurrence(arr, x)
