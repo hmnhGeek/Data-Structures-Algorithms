@@ -136,6 +136,76 @@ def memoized():
     )
 
 
+def tabulation():
+    def max_falling_path(mtx):
+        """
+            Time complexity is O(m^2 * n) and space complexity is O(mn).
+        """
+        n, m = len(mtx), len(mtx[0])
+        result = -1e6
+        for k in range(m):
+            dp = {i: {j: -1e6 for j in range(m)} for i in range(n)}
+            for j in range(m):
+                dp[0][j] = mtx[0][j]
+
+            for i in range(1, n):
+                for j in range(m):
+                    left, up, right = -1e6, -1e6, -1e6
+                    if 0 <= i - 1 < n and 0 <= j - 1 < m:
+                        left = dp[i - 1][j - 1]
+                    if 0 <= i - 1 < n:
+                        up = dp[i - 1][j]
+                    if 0 <= i - 1 < n and 0 <= j + 1 < m:
+                        right = dp[i - 1][j + 1]
+                    dp[i][j] = mtx[i][j] + max(left, up, right)
+
+            sub_result = dp[n - 1][k]
+            result = max(result, sub_result)
+        return result
+
+    print(
+        max_falling_path(
+            [
+                [1, 2, 10, 4],
+                [100, 3, 2, 1],
+                [1, 1, 20, 2],
+                [1, 2, 2, 1]
+            ]
+        )
+    )
+
+    print(
+        max_falling_path(
+            [
+                [10, 2, 3],
+                [3, 7, 2],
+                [8, 1, 5]
+            ]
+        )
+    )
+
+    print(
+        max_falling_path(
+            [
+                [1, 2, 3],
+                [9, 8, 7],
+                [4, 5, 6]
+            ]
+        )
+    )
+
+    print(
+        max_falling_path(
+            [
+                [10, 10, 2, -13, 20, 4],
+                [1, -9, -81, 30, 2, 5],
+                [0, 10, 4, -79, 2, -10],
+                [1, -5, 2, 20, -11, 4]
+            ]
+        )
+    )
+
+
 recursive()
 print()
 memoized()
