@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+# Solution - https://www.youtube.com/watch?v=9twcmtQj4DU&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=19
+
+
 class Solution:
     @staticmethod
     def _dfs(graph, node, visited, path_visited):
@@ -13,6 +17,9 @@ class Solution:
 
     @staticmethod
     def has_cycle(graph):
+        """
+            This is a typical DFS, and so, the time complexity is O(V + E) and space complexity is O(V).
+        """
         visited = {i: False for i in graph}
         path_visited = {i: False for i in graph}
         for node in graph:
