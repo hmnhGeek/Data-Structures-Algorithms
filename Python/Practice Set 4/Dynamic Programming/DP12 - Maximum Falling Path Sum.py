@@ -209,4 +209,6 @@ def tabulation():
 recursive()
 print()
 memoized()
-
+print()
+tabulation()
+print()
