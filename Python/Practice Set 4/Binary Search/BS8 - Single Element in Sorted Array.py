@@ -1,6 +1,13 @@
+# Problem link - https://www.naukri.com/code360/problems/unique-element-in-sorted-array_1112654
+# Solution - https://www.youtube.com/watch?v=AZOmHuHadxQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=9
+
+
 class Solution:
     @staticmethod
     def get_single_element(arr):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         n = len(arr)
         if n == 0:
             return
