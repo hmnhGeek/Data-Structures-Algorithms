@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/find-a-peak-in-a-given-array/
+# Solution - https://www.youtube.com/watch?v=cXxmbemS6XM&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=10
+
+
 class Solution:
     @staticmethod
     def get_peak(arr):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         n = len(arr)
         if n == 0:
             return
