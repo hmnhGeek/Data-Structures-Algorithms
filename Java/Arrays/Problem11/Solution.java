@@ -1,11 +1,17 @@
+// Problem link - https://leetcode.com/problems/find-the-duplicate-number/description/
+// Solution - https://www.youtube.com/watch?v=49HrEGt6D2s
+
+
 package Arrays.Problem11;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
     public static Integer getDuplicate(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         int n = arr.size();
         if (n == 0) return -1;
         int slow = arr.get(0);
