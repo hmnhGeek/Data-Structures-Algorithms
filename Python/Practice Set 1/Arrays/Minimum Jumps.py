@@ -1,24 +1,42 @@
 class Solution:
     @staticmethod
     def get_min_jumps(arr):
+        # base cases
         n = len(arr)
         if n == 0:
             return -1
         if n == 1:
             return 0
 
+        # max reach denotes the maximum index that can be reached within a range.
         max_reach = 0
+
+        # the last index after making a jump
         last_index = 0
+
+        # jumps count
         jumps = 0
+
+        # loop on the indices
         for i in range(n):
+            # update the max reach
             max_reach = max(max_reach, i + arr[i])
+
+            # if i = last index, it is time to make a jump
             if i == last_index:
+                # however, if i = max reach then no further jumps can be made, return -1
                 if max_reach == i:
                     return -1
+
+                # else make the jump and update the last index from previous range.
                 last_index = max_reach
                 jumps += 1
+
+                # if you can reach the end already, simply return the jumps count
                 if max_reach >= n - 1:
                     return jumps
+
+        # finally return the jumps count.
         return jumps
     
 
