@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1
+# Solution - https://www.youtube.com/watch?v=fyQpHH3rP_0
+
+
 class Solution:
     @staticmethod
     def get_min_jumps(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
         # base cases
         n = len(arr)
         if n == 0:
