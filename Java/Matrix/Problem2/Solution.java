@@ -1,7 +1,7 @@
 // Problem link - https://leetcode.com/problems/search-a-2d-matrix/description/
 
 
-package PracticeSet1.Matrix.Problem2;
+package Matrix.Problem2;
 
 import java.util.Arrays;
 import java.util.List;
