@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/search-a-2d-matrix/description/
+
+
 package PracticeSet1.Matrix.Problem2;
 
 import java.util.Arrays;
@@ -5,6 +8,9 @@ import java.util.List;
 
 public class Solution {
     public static boolean getElementFromMatrix(List<List<Integer>> mtx, Integer x) {
+        /*
+            Time complexity is O(log(mn)) and space complexity is O(1).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         int low = 0;
         int high = n*m - 1;
