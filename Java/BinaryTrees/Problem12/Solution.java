@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
+// Solution - https://www.youtube.com/watch?v=0FtVY6I4pB8
+
+
 package BinaryTrees.Problem12;
 
 
@@ -31,6 +35,9 @@ class Element<T> {
 
 public class Solution {
     public static <T> List<T> getBottomView(TreeNode<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Stack<Element<TreeNode<T>>> stack = new Stack<>();
         stack.push(new Element<>(root, 0));
         List<T> result = new ArrayList<>();
