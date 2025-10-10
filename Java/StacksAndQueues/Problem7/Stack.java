@@ -44,4 +44,31 @@ public class Stack<T> {
         this.length -= 1;
         return item;
     }
+
+    public void reverse() {
+        Node<T> prev = null, curr = this.head;
+        while (curr != null) {
+            Node<T> nextCurr = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextCurr;
+        }
+        Node<T> orgHead = this.head, orgTail = this.tail;
+        this.head = orgTail;
+        this.tail = orgHead;
+    }
+
+    @Override
+    public String toString() {
+        if (isEmpty()) return "[]";
+        Node<T> curr = this.head;
+        StringBuilder stringBuilder = new StringBuilder("]");
+        while (curr != this.tail) {
+            stringBuilder.append(String.format("%s, ", curr.data));
+            curr = curr.next;
+        }
+        stringBuilder.append(String.format("%s[", this.tail.data));
+        stringBuilder.reverse();
+        return stringBuilder.toString();
+    }
 }
