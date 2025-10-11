@@ -172,4 +172,27 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return getNode(start.left, x);
     }
 
+    public void show(Node<T> start) {
+        if (start != null) {
+            show(start.left);
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(String.format("Data = %s", start.data));
+            if (start == root) {
+                stringBuilder.append(" (root), ");
+            } else {
+                stringBuilder.append(", ");
+            }
+            stringBuilder.append(String.format("size = %d, ", start.size));
+            stringBuilder.append(String.format("height = %d, ", start.height));
+            stringBuilder.append(String.format("diameter = %d", start.diameter));
+            System.out.println(stringBuilder);
+            show(start.right);
+        }
+    }
+
+    public void show() {
+        show(root);
+        System.out.println();
+    }
+
 }
