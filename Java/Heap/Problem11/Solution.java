@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/find-smallest-range-containing-elements-from-k-lists/1
+// Solution - https://youtu.be/0IqFMBatlhU
+
+
 package Heap.Problem11;
 
 import java.util.Arrays;
@@ -14,9 +18,33 @@ public class Solution {
                         )
                 )
         );
+
+        System.out.println(
+                getSmallestRange(
+                        Arrays.asList(
+                                Arrays.asList(1, 3, 5, 7, 9),
+                                Arrays.asList(0, 2, 4, 6, 8),
+                                Arrays.asList(2, 3, 5, 7, 11)
+                        )
+                )
+        );
+
+        System.out.println(
+                getSmallestRange(
+                        Arrays.asList(
+                                Arrays.asList(2, 4),
+                                Arrays.asList(1, 7),
+                                Arrays.asList(20, 40)
+                        )
+                )
+        );
     }
 
     public static List<Integer> getSmallestRange(List<List<Integer>> lists) {
+        /*
+            Time complexity is O(n * log(k)) and space complexity is O(k).
+         */
+
         MinHeap<Element<Integer>> minHeap = new MinHeap<>();
         Integer maxElement = Integer.MIN_VALUE;
         Integer minElement = Integer.MAX_VALUE;
