@@ -8,6 +8,7 @@ public class Solution {
         /*
             Time complexity is O(log(n)) and space complexity is O(1).
          */
+
         int low = 0, high = number;
         while (low <= high) {
             int mid = (low + (high - low)/2);
