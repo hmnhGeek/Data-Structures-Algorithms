@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/subset-sum-equal-to-k_1550954?leftPanelTab=1%3Fsource%3Dyoutube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=fWX9xDmIzRI&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=15
+
+
 package DynamicProgramming.DP14;
 
 import java.util.List;
