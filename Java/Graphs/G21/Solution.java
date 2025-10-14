@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/topological-sort/1
+// Solution - https://www.youtube.com/watch?v=5lZ0iJMrUMk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=21
+
+
 package Graphs.G21;
 
 import java.util.*;
@@ -31,6 +35,9 @@ public class Solution {
     }
 
     public static <T> List<T> getTopologicalSort(Map<T, List<T>> graph) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
         Map<T, Boolean> visited = getVisitedMap(graph);
         Stack<T> stack = new Stack<>();
         List<T> result = new ArrayList<>();
