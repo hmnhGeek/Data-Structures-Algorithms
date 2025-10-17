@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/topological-sort/1
+// Solution - https://www.youtube.com/watch?v=73sneFXuTEg&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=22
+
+
 package Graphs.G22;
 
 import java.util.ArrayList;
@@ -7,6 +11,10 @@ import java.util.Map;
 
 public class Solution {
     public static <T> List<T> topologicalSort(Map<T, List<T>> graph) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
+
         Map<T, Integer> indegrees = new HashMap<>();
         for (T node : graph.keySet()) {
             indegrees.putIfAbsent(node, 0);
