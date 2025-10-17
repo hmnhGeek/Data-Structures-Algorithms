@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class RecursiveSolution {
+    /*
+        Time complexity is exponential and space complexity is O(k).
+     */
     public static boolean subsetSum(List<Integer> arr) {
         int n = arr.size();
         int k = arr.stream().mapToInt(Integer::intValue).sum();
