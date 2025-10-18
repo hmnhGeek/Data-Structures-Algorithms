@@ -1,6 +1,13 @@
+# Problem link - https://www.naukri.com/code360/problems/search-in-a-2d-matrix_980531
+
+
 class Solution:
     @staticmethod
     def search(mtx, element):
+        """
+            Time complexity is O(log(mn)) and space complexity is O(1).
+        """
+
         n, m = len(mtx), len(mtx[0])
         low = 0
         high = n*m - 1
