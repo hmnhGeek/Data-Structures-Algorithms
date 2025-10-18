@@ -1,6 +1,13 @@
+# Problem link - https://leetcode.com/problems/find-the-duplicate-number/description/
+# Solution - https://www.youtube.com/watch?v=49HrEGt6D2s
+
+
 class Solution:
     @staticmethod
     def find_duplicate_number(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         slow = fast = arr[0]
         while 1:
             slow = arr[slow]
