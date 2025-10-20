@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/preorder-to-postorder4423/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -138,3 +141,35 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def bst_from_preorder(preorder):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+        bst = BinarySearchTree()
+        for i in preorder:
+            bst.insert(i)
+        return bst
+
+
+# Example 1
+bst1 = Solution.bst_from_preorder([10, 5, 1, 7, 40, 50])
+bst1.show()
+
+# Example 2
+bst2 = Solution.bst_from_preorder([1, 2])
+bst2.show()
+
+# Example 3
+bst3 = Solution.bst_from_preorder([2, 1])
+bst3.show()
+
+# Example 4
+bst4 = Solution.bst_from_preorder([22, 12, 8, 20, 30, 25, 40])
+bst4.show()
+
+# Example 5
+bst5 = Solution.bst_from_preorder([100, 20, 10, 30, 200, 150, 300])
+bst5.show()
