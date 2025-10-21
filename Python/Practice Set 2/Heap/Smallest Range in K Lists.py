@@ -63,3 +63,53 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_smallest_range(mtx):
+        n = len(mtx)
+        pq = MinHeap()
+        mi, ma = 1e6, -1e6
+        for i in range(n):
+            l = mtx[i]
+            mi = min(mi, l[0])
+            ma = max(ma, l[0])
+            pq.insert((l[0], i, 0))
+        result = [mi, ma]
+        while not pq.is_empty():
+            elem, i, j = pq.pop()
+            if ma - elem < result[1] - result[0]:
+                result = [elem, ma]
+            elif ma - elem == result[1] - result[0] and elem < result[0]:
+                result = [elem, ma]
+            l = mtx[i]
+            if j + 1 < len(l):
+                ma = max(ma, l[j + 1])
+                pq.insert((l[j + 1], i, j + 1))
+            else:
+                break
+        return result
+
+
+print(
+    Solution.get_smallest_range(
+        [
+            [1, 3, 5, 7, 9],
+            [0, 2, 4, 6, 8],
+            [2, 3, 5, 7, 11]
+        ]
+    )
+)
+
+print(
+    Solution.get_smallest_range(
+        [
+            [1, 2, 3, 4],
+            [5, 6, 7, 8],
+            [9, 10, 11, 12]
+        ]
+    )
+)
+
+print(Solution.get_smallest_range([[4, 10, 15, 24, 26], [0, 9, 12, 20], [5, 18, 22, 30]]))
+print(Solution.get_smallest_range([[1, 2, 3], [1, 2, 3], [1, 2, 3]]))
