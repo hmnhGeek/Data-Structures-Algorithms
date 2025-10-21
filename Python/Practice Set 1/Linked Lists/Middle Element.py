@@ -3,6 +3,9 @@ class Node:
         self.data = data
         self.next = None
 
+    def __str__(self):
+        return f"{self.data}"
+
 
 class LinkedList:
     def __init__(self):
@@ -36,3 +39,20 @@ class LinkedList:
         result += f"{self.tail.data}]"
         return result
 
+    def get_middle_node(self):
+        if self.is_empty():
+            return
+        slow, fast = self.head, self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+
+l = LinkedList()
+l.build(1, 2, 3, 4, 5)
+print(l.get_middle_node())
+
+l1 = LinkedList()
+l1.build(1, 2, 3, 4, 5, 6)
+print(l1.get_middle_node())
