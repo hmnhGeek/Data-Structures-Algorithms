@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-smallest-range-containing-elements-from-k-lists/1
+# Solution - https://www.youtube.com/watch?v=0IqFMBatlhU
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -67,6 +71,9 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_smallest_range(mtx):
+        """
+            Time complexity is O(n * log(k)) and space complexity is O(k).
+        """
         n = len(mtx)
         pq = MinHeap()
         mi, ma = 1e6, -1e6
