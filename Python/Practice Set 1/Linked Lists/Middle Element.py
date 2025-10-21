@@ -1,3 +1,6 @@
+# Problem link - https://leetcode.com/problems/middle-of-the-linked-list/description/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -40,6 +43,9 @@ class LinkedList:
         return result
 
     def get_middle_node(self):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         if self.is_empty():
             return
         slow, fast = self.head, self.head
@@ -56,3 +62,7 @@ print(l.get_middle_node())
 l1 = LinkedList()
 l1.build(1, 2, 3, 4, 5, 6)
 print(l1.get_middle_node())
+
+l2 = LinkedList()
+l2.build(1)
+print(l2.get_middle_node())
