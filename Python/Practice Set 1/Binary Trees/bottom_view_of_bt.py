@@ -50,12 +50,22 @@ class Solution:
             node, level, vertical = stack.pop()
             mini = min(mini, vertical)
             maxi = max(maxi, vertical)
+
+            # if the vertical is found for the first time, update it in dictionary.
             if vertical not in d:
                 d[vertical] = (node, level)
+
+            # if the popped node is on the same level, don't do any update, because the right node is automatically
+            # pushed first in the stack and so, on the same level, the right most node is already updated in the
+            # dictionary.
             elif level == d[vertical][1]:
                 pass
+
+            # if however, a greater level is found for this vertical, then update the dictionary for this vertical.
             elif level > d[vertical][1]:
                 d[vertical] = (node, level)
+
+            # push left and right nodes respectively.
             if node.left is not None:
                 stack.push((node.left, level + 1, vertical - 1))
             if node.right is not None:
