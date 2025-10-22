@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/reverse-a-string-using-stack/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +38,9 @@ class Stack:
 class Solution:
     @staticmethod
     def reverse(string):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         stack = Stack()
         for i in string:
             stack.push(i)
