@@ -31,3 +31,18 @@ class Stack:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def reverse(string):
+        stack = Stack()
+        for i in string:
+            stack.push(i)
+        reversed = ""
+        while not stack.is_empty():
+            reversed += stack.pop()
+        return reversed
+
+
+print(Solution.reverse("GeeksforGeeks"))
+print(Solution.reverse("Geek"))
