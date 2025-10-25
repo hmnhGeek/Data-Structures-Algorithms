@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/topological-sort/1
+# Solution - https://www.youtube.com/watch?v=73sneFXuTEg&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=22
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -41,7 +45,9 @@ class Solution:
 
     @staticmethod
     def topo_sort(graph):
-        visited = {i: False for i in graph}
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
         indegrees = {i: 0 for i in graph}
         Solution._populate_indegrees(graph, indegrees)
         queue = Queue()
