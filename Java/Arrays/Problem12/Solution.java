@@ -1,6 +1,9 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/merge-two-sorted-arrays-o1-extra-space/#better-approach-1-using-nth-smallest-in-the-two-sorted-on-logn-m-logm-time-and-o1-space
+// Solution - https://www.youtube.com/watch?v=n7uwj04E0I4
+
+
 package Arrays.Problem12;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +17,9 @@ public class Solution {
     }
 
     public static void merge(List<Integer> a, List<Integer> b) {
+        /*
+            Time complexity is O({n + m} * log(n + m)) and space complexity is O(1).
+         */
         int n = a.size(), m = b.size();
         int totalLength = n + m;
         int gap = (totalLength / 2) + (totalLength % 2);
@@ -53,6 +59,14 @@ public class Solution {
     public static void main(String[] args) {
         test(
                 Arrays.asList(2, 4, 7, 10),
+                Arrays.asList(2, 3)
+        );
+        test(
+                Arrays.asList(1, 5, 9, 10, 15, 20),
+                Arrays.asList(2, 3, 8, 13)
+        );
+        test(
+                Arrays.asList(0, 1),
                 Arrays.asList(2, 3)
         );
     }
