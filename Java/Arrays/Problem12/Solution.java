@@ -69,5 +69,17 @@ public class Solution {
                 Arrays.asList(0, 1),
                 Arrays.asList(2, 3)
         );
+        test(
+                Arrays.asList(),
+                Arrays.asList(1, 2, 3)
+        );
+        test(
+                Arrays.asList(1, 2, 3),
+                Arrays.asList()
+        );
+        test(
+                Arrays.asList(),
+                Arrays.asList()
+        );
     }
 }
