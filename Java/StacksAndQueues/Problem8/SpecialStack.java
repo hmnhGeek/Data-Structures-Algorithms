@@ -18,8 +18,9 @@ public class SpecialStack {
             minValue = x;
             stack.push(x);
         } else if (x < minValue) {
+            Integer valToPush = 2*x - minValue;
             minValue = x;
-            stack.push(2*x - minValue);
+            stack.push(valToPush);
         } else {
             stack.push(x);
         }
@@ -37,6 +38,12 @@ public class SpecialStack {
         if (stack.isEmpty()) {
             minValue = Integer.MAX_VALUE;
         }
+        return top;
+    }
+
+    public Integer getTop() {
+        Integer top = pop();
+        push(top);
         return top;
     }
 
