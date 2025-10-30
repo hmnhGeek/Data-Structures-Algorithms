@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/print-subsequences-string/#pick-and-dont-pick-recursive-approach
+
+
 package Strings.Problem10;
 
 import java.util.ArrayList;
@@ -5,6 +8,9 @@ import java.util.List;
 
 public class Solution {
     public static List<String> getAllSubsequences(String string) {
+        /*
+            Time complexity is exponential and space complexity is O(n).
+         */
         List<String> result = new ArrayList<>();
         solve(string, string.length() - 1, new ArrayList<>(), result);
         return result;
@@ -24,5 +30,6 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(getAllSubsequences("ab"));
         System.out.println(getAllSubsequences("geeks"));
+        System.out.println(getAllSubsequences("abc"));
     }
 }
