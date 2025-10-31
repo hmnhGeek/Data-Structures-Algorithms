@@ -44,7 +44,7 @@ public class LinkedList<T> {
         if (this.length == 0) return "[]";
         Node<T> curr = this.head;
         StringBuilder result = new StringBuilder("[");
-        while (curr.next != this.tail) {
+        while (curr != this.tail) {
             result.append(String.format("%s, ", curr.data));
             curr = curr.next;
         }
