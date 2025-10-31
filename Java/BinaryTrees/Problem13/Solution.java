@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/zigzag-tree-traversal/1
+// Solution - https://www.youtube.com/watch?v=3OXWEdlIGl4
+
+
 package BinaryTrees.Problem13;
 
 
@@ -91,6 +95,9 @@ public class Solution {
     }
 
     public static <T> List<T> zigZagTraversal(TreeNode<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Map<Integer, List<T>> levels = new HashMap<>();
         Queue<Element<T>> queue = new Queue<>();
         queue.push(new Element<>(root, 0));
