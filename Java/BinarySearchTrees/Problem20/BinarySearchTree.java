@@ -74,4 +74,95 @@ public class BinarySearchTree<T extends Comparable<T>> {
         recalcAugmentation(start);
         return;
     }
+
+    public Node<T> getLeftmostLeaf(Node<T> node) {
+        if (node == null) return null;
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+
+    public Node<T> getRightmostLeaf(Node<T> node) {
+        if (node == null) return null;
+        while (node.right != null) {
+            node = node.right;
+        }
+        return node;
+    }
+
+    public void delete(Node<T> node) {
+        if (node == null) return null;
+        if (node.left == null && node.right == null) {
+            Node<T> parent = node.parent;
+            if (parent != null) {
+                if (parent.left == node) {
+                    parent.left = null;
+                } else {
+                    parent.right = null;
+                }
+            } else {
+                root = null;
+                diameter = 0;
+            }
+            recalcAugmentation(parent);
+            return;
+        }
+        if (node.right != null) {
+            Node<T> successor = getSuccessor(node);
+            T temp = node.data;
+            node.data = successor.data;
+            successor.data = temp;
+            delete(successor);
+            return;
+        }
+        Node<T> predecessor = getPredecessor(node);
+        T temp = node.data;
+        node.data = predecessor.data;
+        predecessor.data = temp;
+        delete(predecessor);
+        return;
+    }
+
+    public Node<T> getSuccessor(Node<T> node) {
+        if (node == null) return null;
+        if (node.right != null) return getLeftmostLeaf(node.right);
+        Node<T> parent = node.parent;
+        if (parent == null) return null;
+        while (parent.left != node) {
+            parent = parent.parent;
+            node = node.parent;
+            if (parent == null) {
+                return null;
+            }
+        }
+        return parent;
+    }
+
+    public Node<T> getPredecessor(Node<T> node) {
+        if (node == null) return null;
+        if (node.left != null) getRightmostLeaf(node.left);
+        Node<T> parent = node.parent;
+        if (parent == null) return null;
+        while (parent.right != node) {
+            parent = parent.parent;
+            node = node.parent;
+            if (parent == null) {
+                return null;
+            }
+        }
+        return parent;
+    }
+
+    public void delete(T x) {
+        Node<T> node = getNode(root, x);
+        if (node != null) delete(node);
+    }
+
+    public Node<T> getNode(Node<T> start, T x) {
+        if (start == null || x == null) return null;
+        if (start.data == x) return start;
+        if (x.compareTo(start.data) > 0) return getNode(start.right, x);
+        return getNode(start.left, x);
+    }
 }
