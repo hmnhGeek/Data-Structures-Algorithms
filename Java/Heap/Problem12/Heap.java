@@ -13,6 +13,11 @@ public interface Heap<T extends Comparable<T>> {
         return getHeap().isEmpty();
     }
 
+    default T top() {
+        if (isEmpty()) return null;
+        return getHeap().getFirst();
+    }
+
     default Integer getLci(Integer pi) {
         Integer lci = 2*pi + 1;
         if (0 <= lci && lci < getHeap().size()) {
