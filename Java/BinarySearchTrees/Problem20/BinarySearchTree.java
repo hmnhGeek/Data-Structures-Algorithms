@@ -92,7 +92,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     public void delete(Node<T> node) {
-        if (node == null) return null;
+        if (node == null) return;
         if (node.left == null && node.right == null) {
             Node<T> parent = node.parent;
             if (parent != null) {
@@ -183,5 +183,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public void show() {
         show(root);
+        System.out.println();
     }
 }
