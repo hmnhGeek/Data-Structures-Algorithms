@@ -16,6 +16,9 @@ public class MedianFinder<T extends Number & Comparable<T>> {
     }
 
     public void insert(T x) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(n).
+         */
         if (maxHeap.isEmpty()) {
             maxHeap.push(x);
         } else if (maxHeap.top().compareTo(x) >= 0) {
@@ -33,6 +36,9 @@ public class MedianFinder<T extends Number & Comparable<T>> {
     }
 
     public double getMedian() {
+        /*
+            Time complexity is O(1) and space complexity is O(1).
+         */
         if (getLength().equals(0)) {
             return -1;
         }
