@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum_842494?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=GS_OqZb2CWc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=17
+
+
 package DynamicProgramming.DP16;
 
 import java.util.Arrays;
@@ -54,6 +58,7 @@ public class Solution {
     }
 
     public static Integer getMinAbsDiff(List<Integer> arr) {
+        // Time complexity is O(sum^2 * n) and space complexity is O(sum).
         Integer sum = getSum(arr);
         Integer minSum = Integer.MAX_VALUE;
         for (int target = 0; target <= (int) Math.floor(sum/2) + 1; target += 1) {
