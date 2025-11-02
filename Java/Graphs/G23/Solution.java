@@ -1,12 +1,18 @@
+// Problem link - https://www.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1
+// Solution - https://www.youtube.com/watch?v=iTBaI90lpDQ&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=23
+
+
 package Graphs.G23;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Solution {
     public static <T> boolean detectCycle(Map<T, List<T>> graph) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
         Map<T, Integer> indegrees = getIndegrees(graph);
         Queue<T> queue = new Queue<>();
         for (T node : indegrees.keySet()) {
