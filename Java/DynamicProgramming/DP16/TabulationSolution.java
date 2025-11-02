@@ -34,16 +34,4 @@ public class TabulationSolution {
         }
         return dp.get(n - 1).get(target);
     }
-
-    public static boolean solve(List<Integer> arr, int i, int j, Map<Integer, Map<Integer, Boolean>> dp) {
-        if (j == 0) return true;
-        if (i == 0) {
-            return arr.getFirst() == j;
-        }
-        if (dp.get(i).get(j) != null) {
-            return dp.get(i).get(j);
-        }
-
-        return dp.get(i).get(j);
-    }
 }
