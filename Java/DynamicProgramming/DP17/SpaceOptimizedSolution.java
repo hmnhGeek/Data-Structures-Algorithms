@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/number-of-subsets_3952532?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=ZHyb-A2Mte4&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=18
+
+
 package DynamicProgramming.DP17;
 
 import java.util.HashMap;
