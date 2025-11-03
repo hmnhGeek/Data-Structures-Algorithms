@@ -1,3 +1,7 @@
+// # Problem link - https://www.geeksforgeeks.org/problems/course-schedule/1
+//# Solution - https://www.youtube.com/watch?v=WAOfKpxYHR8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=24
+
+
 package Graphs.G24;
 
 import java.util.ArrayList;
@@ -7,6 +11,9 @@ import java.util.Map;
 
 public class Solution {
     public static <T> List<T> courseSchedule(List<List<T>> courses) {
+        /*
+            Overall time complexity is O(V + E) and space complexity is O(V).
+         */
         return getOrder(formulateGraph(courses));
     }
 
