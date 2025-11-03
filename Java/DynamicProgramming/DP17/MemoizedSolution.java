@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class MemoizedSolution {
     /*
-        Time complexity is exponential and space complexity is O(n).
+        Time complexity is O(n*target) and space complexity is O(n + n*target).
      */
     public static Integer getCount(List<Integer> arr, Integer target) {
         int n = arr.size();
