@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/minimum-rate-to-eat-bananas_7449064
+// Solution - https://www.youtube.com/watch?v=qyfekrNni90&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=13
+
+
 package BinarySearch.BS12;
 
 import java.util.Arrays;
@@ -15,6 +19,9 @@ public class Solution {
     }
 
     public static Integer getMinHours(List<Integer> bananas, Integer maxHoursAllowed) {
+        /*
+            Time complexity is O(n*log(max(arr))) and space complexity is O(1).
+         */
         int low = 1, high = Collections.max(bananas);
         while (low <= high) {
             int mid = (low + (high - low)/2);
