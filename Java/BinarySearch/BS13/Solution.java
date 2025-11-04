@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/minimum-days-to-make-m-bouquets/1
+// Solution - https://www.youtube.com/watch?v=TXAuxeYBTdg&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=14
+
+
 package BinarySearch.BS13;
 
 import java.util.Arrays;
@@ -16,6 +20,9 @@ public class Solution {
     }
 
     public static Integer getMinDays(List<Integer> arr, Integer m, Integer k) {
+        /*
+            Overall time complexity is O(n * log(max - min)) and space complexity is O(1).
+         */
         int n = arr.size();
         if (n < m * k) return -1;
         int low = 0, high = Collections.max(arr);
