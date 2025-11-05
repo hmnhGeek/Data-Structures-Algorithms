@@ -1,6 +1,13 @@
+# Problem link - https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+# Solution - https://www.youtube.com/watch?v=-zSxTJkcdAo&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=3
+
+
 class Solution:
     @staticmethod
     def get_longest(string):
+        """
+            Time complexity is O(26n) and space complexity is O(26).
+        """
         n = len(string)
         left = right = 0
         length = 0
