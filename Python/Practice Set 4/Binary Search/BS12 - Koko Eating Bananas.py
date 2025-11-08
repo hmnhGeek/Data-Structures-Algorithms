@@ -1,9 +1,16 @@
+# Problem link - https://www.naukri.com/code360/problems/minimum-rate-to-eat-bananas_7449064
+# Solution - https://www.youtube.com/watch?v=qyfekrNni90&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=13
+
+
 from math import ceil
 
 
 class Solution:
     @staticmethod
     def koko(arr, h):
+        """
+            Time complexity is O(n * log(max(arr))) and space complexity is O(1).
+        """
         n = len(arr)
         if h < n:
             return -1
