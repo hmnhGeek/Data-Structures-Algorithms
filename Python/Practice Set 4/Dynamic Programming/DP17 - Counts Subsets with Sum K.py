@@ -95,9 +95,44 @@ def tabulation():
     print(count_subsets([35, 2, 8, 22], 0))
 
 
+def space_optimized():
+    def count_subsets(arr, k):
+        """
+            Time complexity is O(nk) and space complexity is O(k).
+        """
+        n = len(arr)
+        prev = {j: 0 for j in range(k + 1)}
+        prev[0] = 1
+        prev[arr[0]] = 1
+        for i in range(1, n):
+            curr = {j: 0 for j in range(k + 1)}
+            curr[0] = 1
+            for j in range(k + 1):
+                left = 0
+                if arr[i] <= j:
+                    left = prev[j - arr[i]]
+                right = prev[j]
+                curr[j] = left + right
+            prev = curr
+        return prev[k]
+
+    print(count_subsets([1, 2, 2, 3], 3))
+    print(count_subsets([1, 1, 4, 5], 5))
+    print(count_subsets([1, 1, 1], 2))
+    print(count_subsets([2, 34, 5], 40))
+    print(count_subsets([1, 2, 3, 3], 6))
+    print(count_subsets([1, 1, 1, 1], 1))
+    print(count_subsets([5, 2, 3, 10, 6, 8], 10))
+    print(count_subsets([2, 5, 1, 4, 3], 10))
+    print(count_subsets([5, 7, 8], 3))
+    print(count_subsets([35, 2, 8, 22], 0))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
