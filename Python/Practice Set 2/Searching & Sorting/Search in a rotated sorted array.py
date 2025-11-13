@@ -1,6 +1,12 @@
+# Problem link - https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+
+
 class Solution:
     @staticmethod
     def search(arr, target):
+        """
+            Time complexity is O(log(n)) and space is O(1).
+        """
         n = len(arr)
         low, high = 0, n - 1
         while low <= high:
