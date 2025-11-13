@@ -25,3 +25,31 @@ class QuickSort:
         arr[j], arr[low] = arr[low], arr[j]
         return j
 
+
+class PointerSolution:
+    """
+        Time complexity is O(n*log(n) + m*log(m)) and space complexity is O(1).
+    """
+    @staticmethod
+    def merge(arr1, arr2):
+        n, m = len(arr1), len(arr2)
+        i, j = n - 1, 0
+        while i >= 0 and j < m:
+            if arr1[i] > arr2[j]:
+                temp = arr1[i]
+                arr1[i] = arr2[j]
+                arr2[j] = temp
+                i -= 1
+                j += 1
+            else:
+                break
+        QuickSort.sort(arr1)
+        QuickSort.sort(arr2)
+        return arr1, arr2
+
+
+print(PointerSolution.merge([1, 3, 4, 5], [2, 4, 6, 8]))
+print(PointerSolution.merge([5, 8, 9], [4, 7, 8]))
+print(PointerSolution.merge([2, 4, 7, 10], [2, 3]))
+print(PointerSolution.merge([1, 5, 9, 10, 15, 20], [2, 3, 8, 13]))
+print(PointerSolution.merge([0, 1], [2, 3]))
