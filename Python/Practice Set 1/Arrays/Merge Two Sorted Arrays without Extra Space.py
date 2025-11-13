@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/merge-two-sorted-arrays/#using-merge-of-mergesort
+# Solution - https://www.youtube.com/watch?v=n7uwj04E0I4
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -48,8 +52,49 @@ class PointerSolution:
         return arr1, arr2
 
 
+class GapMethod:
+    @staticmethod
+    def _swap(arr1, i, arr2, j):
+        if arr1[i] > arr2[j]:
+            arr1[i], arr2[j] = arr2[j], arr1[i]
+
+    @staticmethod
+    def merge(arr1, arr2):
+        """
+            Time complexity is O({n + m} * log(n + m)) and space complexity is O(1).
+        """
+        n, m = len(arr1), len(arr2)
+        length = n + m
+        gap = (n + m)//2 + (n + m)%2
+        while gap > 0:
+            left = 0
+            right = left + gap
+            while right < length:
+                if left < n and right < n:
+                    # both are on a1 arr
+                    GapMethod._swap(arr1, left, arr1, right)
+                elif left < n and right >= n:
+                    # left on a1 and right on a2
+                    GapMethod._swap(arr1, left, arr2, right - n)
+                else:
+                    # both are on a2 arr
+                    GapMethod._swap(arr2, left - n, arr2, right - n)
+                left += 1
+                right += 1
+            if gap == 1:
+                break
+            gap = (gap//2) + (gap%2)
+        return arr1, arr2
+
+
 print(PointerSolution.merge([1, 3, 4, 5], [2, 4, 6, 8]))
 print(PointerSolution.merge([5, 8, 9], [4, 7, 8]))
 print(PointerSolution.merge([2, 4, 7, 10], [2, 3]))
 print(PointerSolution.merge([1, 5, 9, 10, 15, 20], [2, 3, 8, 13]))
 print(PointerSolution.merge([0, 1], [2, 3]))
+print()
+print(GapMethod.merge([1, 3, 4, 5], [2, 4, 6, 8]))
+print(GapMethod.merge([5, 8, 9], [4, 7, 8]))
+print(GapMethod.merge([2, 4, 7, 10], [2, 3]))
+print(GapMethod.merge([1, 5, 9, 10, 15, 20], [2, 3, 8, 13]))
+print(GapMethod.merge([0, 1], [2, 3]))
