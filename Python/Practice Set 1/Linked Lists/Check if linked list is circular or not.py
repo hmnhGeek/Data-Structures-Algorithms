@@ -32,6 +32,8 @@ class LinkedList:
         """
             Time complexity is O(1) and space complexity is O(1).
         """
+        if self.is_empty():
+            return False
         return self.tail.next is not None
 
 
