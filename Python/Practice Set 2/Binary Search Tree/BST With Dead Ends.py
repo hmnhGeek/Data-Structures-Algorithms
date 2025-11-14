@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/check-whether-bst-contains-dead-end/1
+# Solution - https://www.youtube.com/watch?v=eZMCRBrMznA
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -138,3 +142,47 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def find_dead_ends(bst: BinarySearchTree):
+        """
+            Overall time complexity is O(n) and space complexity is O(n).
+        """
+        dead_ends = []
+        Solution._solve(bst.root, 1, 1e6, dead_ends)
+        return dead_ends
+    
+    @staticmethod
+    def _solve(node, low, high, dead_ends):
+        if node is None:
+            return
+        if node.data == low == high:
+            dead_ends.append(node.data)
+        Solution._solve(node.left, low, node.data - 1, dead_ends)
+        Solution._solve(node.right, node.data + 1, high, dead_ends)
+        
+
+# Example 1
+bst = BinarySearchTree()
+for i in [8, 5, 9, 2, 7, 1]:
+    bst.insert(i)
+print(Solution.find_dead_ends(bst))
+
+# Example 2
+bst = BinarySearchTree()
+for i in [8, 7, 10, 2, 9, 13]:
+    bst.insert(i)
+print(Solution.find_dead_ends(bst))
+
+# Example 3
+bst = BinarySearchTree()
+for i in [10, 6, 12, 2, 8, 11, 15]:
+    bst.insert(i)
+print(Solution.find_dead_ends(bst))
+
+# Example 4
+bst = BinarySearchTree()
+for i in [7, 4, 8]:
+    bst.insert(i)
+print(Solution.find_dead_ends(bst))
