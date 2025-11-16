@@ -31,3 +31,46 @@ class Stack:
         self.length -= 1
         return item
 
+    def top(self):
+        if self.is_empty():
+            return
+        return self.head.data
+
+
+class SpecialStack:
+    def __init__(self):
+        self.stack = Stack()
+
+    def push(self, x):
+        if self.stack.is_empty():
+            self.stack.push((x, x))
+            return
+        if self.stack.top()[1] > x:
+            self.stack.push((x, x))
+        else:
+            self.stack.push((x, self.stack.top()[1]))
+
+    def pop(self):
+        if self.stack.is_empty():
+            return
+        item = self.stack.pop()[0]
+        return item
+
+    def get_min(self):
+        if self.stack.is_empty():
+            return
+        return self.stack.top()[1]
+
+
+class Solution:
+    @staticmethod
+    def test(*args):
+        stack = SpecialStack()
+        for i in args:
+            stack.push(i)
+            print(stack.get_min())
+
+
+Solution.test(18, 19, 29, 15, 16)
+print()
+Solution.test(34, 335, 1814, 86)
