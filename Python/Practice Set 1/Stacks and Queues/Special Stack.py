@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/special-stack/1
+# Solution - https://www.youtube.com/watch?v=NdDIaH91P0g
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -74,3 +78,12 @@ class Solution:
 Solution.test(18, 19, 29, 15, 16)
 print()
 Solution.test(34, 335, 1814, 86)
+print()
+stack = SpecialStack()
+stack.push(12)
+stack.push(15)
+stack.push(10)
+print(stack.get_min())
+print(stack.pop())
+print(stack.get_min())
+stack.push(10)
