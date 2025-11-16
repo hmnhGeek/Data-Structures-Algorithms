@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/1
+# Solution - https://www.youtube.com/watch?v=Yv2jzDzYlp8
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -137,19 +141,34 @@ class MedianFinder:
         self.length = 0
 
     def push(self, x):
+        """
+            Time complexity is O(log(n)) and space complexity is O(n).
+        """
+
+        # always try to first push into max heap. That is, if max heap is empty or if x < maxheap's top, then x should
+        # be inserted on left part.
         if self.max_heap.is_empty():
             self.max_heap.insert(x)
         elif x < self.max_heap.heap[0]:
             self.max_heap.insert(x)
+
+        # else, insert on right part for now.
         else:
             self.min_heap.insert(x)
+
+        # now check the balancing.
         if len(self.min_heap.heap) > len(self.max_heap.heap):
             self.max_heap.insert(self.min_heap.pop())
         elif len(self.max_heap.heap) - len(self.min_heap.heap) >= 2:
             self.min_heap.insert(self.max_heap.pop())
+
+        # increase the length of the stream.
         self.length += 1
 
     def median(self):
+        """
+            Time complexity is O(1) and space complexity is O(1).
+        """
         if self.length == 0:
             return
         if self.length % 2 == 1:
