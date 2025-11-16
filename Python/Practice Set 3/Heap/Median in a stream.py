@@ -137,11 +137,17 @@ class MedianFinder:
         self.length = 0
 
     def push(self, x):
-        self.max_heap.insert(x)
+        if self.max_heap.is_empty():
+            self.max_heap.insert(x)
+        elif x < self.max_heap.heap[0]:
+            self.max_heap.insert(x)
+        else:
+            self.min_heap.insert(x)
+        if len(self.min_heap.heap) > len(self.max_heap.heap):
+            self.max_heap.insert(self.min_heap.pop())
+        elif len(self.max_heap.heap) - len(self.min_heap.heap) >= 2:
+            self.min_heap.insert(self.max_heap.pop())
         self.length += 1
-        if len(self.max_heap.heap) - len(self.min_heap.heap) >= 2:
-            item = self.max_heap.pop()
-            self.min_heap.insert(item)
 
     def median(self):
         if self.length == 0:
@@ -163,3 +169,5 @@ class Solution:
 
 
 print(Solution.run(5, 15, 1, 3, 2, 8))
+print(Solution.run(2, 2, 2, 2))
+print(Solution.run(2, 1, 8, 6, 3, 4))
