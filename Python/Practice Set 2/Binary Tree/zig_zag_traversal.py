@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/zigzag-tree-traversal/1
+# Solution - https://www.youtube.com/watch?v=3OXWEdlIGl4
+
+
 class QueueNode:
     def __init__(self, data):
         self.data = data
@@ -41,11 +45,17 @@ class TreeNode:
 class Solution:
     @staticmethod
     def get_zig_zag_traversal(root: TreeNode):
+        """
+            Overall time complexity is O(2n) and space complexity is O(2n).
+        """
+
         traversal = []
         d = {}
         queue = Queue()
         queue.push((root, 0))
         max_level = -1
+
+        # Standard level order traversal will take O(n) time and O(n) space.
         while not queue.is_empty():
             node, level = queue.pop()
             max_level = max(level, max_level)
@@ -57,6 +67,8 @@ class Solution:
                 queue.push((node.left, level + 1))
             if node.right is not None:
                 queue.push((node.right, level + 1))
+
+        # This will also take O(n) time
         left_to_right = True
         for level in range(max_level + 1):
             if left_to_right:
