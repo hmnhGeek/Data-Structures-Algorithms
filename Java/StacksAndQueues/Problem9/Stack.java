@@ -44,4 +44,9 @@ public class Stack<T> {
         this.length -= 1;
         return item;
     }
+
+    public T top() {
+        if (isEmpty()) return null;
+        return this.head.data;
+    }
 }
