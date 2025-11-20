@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/1
+// Solution - https://www.youtube.com/watch?v=HCL4_bOd3-4
+
+
 package Arrays.Problem13;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer kadane(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         int currSum = 0, maxSum = 0;
         int i = 0, n = arr.size();
         while (i < n) {
