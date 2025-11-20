@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/next-larger-element-1587115620/1
+
+
 package StacksAndQueues.Problem9;
 
 import java.util.ArrayList;
@@ -6,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static List<Integer> getNextGreaterElements(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         int i = arr.size() - 1;
         Stack<Integer> stack = new Stack<>();
         List<Integer> result = new ArrayList<>();
