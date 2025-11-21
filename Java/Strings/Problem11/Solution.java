@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/permutations-of-a-given-string2041/1
+
+
 package Strings.Problem11;
 
 import java.util.ArrayList;
@@ -6,6 +9,9 @@ import java.util.stream.Stream;
 
 public class Solution {
     public static List<String> getAllPermutations(String string) {
+        /*
+            Time complexity is O(n * n!) and space complexity is O(n) for the list.
+         */
         int n = string.length();
         List<String> result = new ArrayList<>();
         for (int i = 0; i < n; i += 1) {
