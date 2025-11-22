@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/largest-bst/1
+// Solution - https://www.youtube.com/watch?v=X0oXMdtUDwo
+
+
 package BinarySearchTrees.Problem21;
 
 
@@ -16,6 +20,9 @@ class Element {
 
 public class Solution {
     public static Integer getLargestBst(TreeNode<Integer> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         return solve(root).size;
     }
 
