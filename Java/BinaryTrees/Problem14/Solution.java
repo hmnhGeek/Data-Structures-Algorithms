@@ -1,3 +1,6 @@
+// # Video - https://www.youtube.com/watch?v=Yt50Jfbd8Po&list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&index=16
+
+
 package BinaryTrees.Problem14;
 
 
@@ -18,6 +21,9 @@ class TreeNode<T> {
 
 public class Solution {
     public static boolean isBalanced(TreeNode<Integer> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         List<Boolean> flag = Arrays.asList(true);
         solve(root, flag);
         return flag.getFirst();
