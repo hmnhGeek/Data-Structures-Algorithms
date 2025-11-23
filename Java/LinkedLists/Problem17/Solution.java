@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1
+
+
 package LinkedLists.Problem17;
 
 import java.util.ArrayList;
@@ -18,6 +21,9 @@ public class Solution {
     }
 
     public static <T> List<CircularLinkedList<T>> split(CircularLinkedList<T> circularLinkedList) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         if (circularLinkedList.isEmpty()) return new ArrayList<>();
         if (circularLinkedList.head == circularLinkedList.tail) return List.of(circularLinkedList, null);
 
