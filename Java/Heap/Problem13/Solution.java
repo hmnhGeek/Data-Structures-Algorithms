@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/is-binary-tree-heap/1
+// Solution - https://www.youtube.com/watch?v=jX-UP7b2bkk
+
+
 package Heap.Problem13;
 
 
@@ -18,7 +22,7 @@ public class Solution {
         // in O(n) time and O(n) space, count the number of nodes in the tree.
         Integer numNodes = getNumberOfNodesInTree(root);
 
-        // if the tree is empty, its a max heap already.
+        // if the tree is empty, it's a max heap already.
         if (root == null) return true;
 
         // otherwise, check if the tree is complete binary tree and also follows the max heap property.
