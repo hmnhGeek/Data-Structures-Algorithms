@@ -15,26 +15,67 @@ class TreeNode<T> {
 
 public class Solution {
     public static boolean isHeap(TreeNode<Integer> root) {
+        // in O(n) time and O(n) space, count the number of nodes in the tree.
         Integer numNodes = getNumberOfNodesInTree(root);
+
+        // if the tree is empty, its a max heap already.
         if (root == null) return true;
+
+        // otherwise, check if the tree is complete binary tree and also follows the max heap property.
         return isCompleteBinaryTree(root, 0, numNodes) && isMaxHeap(root);
     }
 
+    /**
+     *
+     * @param root Node from the binary tree
+     * @return True if the max heap property is satisfied, else returns false.
+     */
     private static boolean isMaxHeap(TreeNode<Integer> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
+
+        // A null node is always following the max heap property.
         if (root == null) return true;
+
+        // if either the left or the right child is greater than the root, return false.
         if (root.left != null && root.left.data > root.data) return false;
         if (root.right != null && root.right.data > root.data) return false;
+
+        // return true if the left and right subtrees follow max heap property together.
         return isMaxHeap(root.left) && isMaxHeap(root.right);
     }
 
+    /**
+     *
+     * @param root Root node of the binary tree.
+     * @return The count of the nodes in the tree.
+     */
     private static Integer getNumberOfNodesInTree(TreeNode<Integer> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         if (root == null) return 0;
         return 1 + getNumberOfNodesInTree(root.left) + getNumberOfNodesInTree(root.right);
     }
 
+    /**
+     *
+     * @param root The root node of the binary tree.
+     * @param i Corresponds to hypothetical index of the node in its level order traversal.
+     * @param numNodes The total nodes in the overall binary tree.
+     * @return True if the binary tree at root node is complete, else returns false.
+     */
     private static boolean isCompleteBinaryTree(TreeNode<Integer> root, int i, Integer numNodes) {
+        // A null node is always complete.
         if (root == null) return true;
-        if (i > numNodes) return false;
+
+        // at any point, if the index + 1 (the position of node in 1-based indexing, which will correspond to the
+        // 1-based indexed count from the original tree) of the root node becomes larger than the total number of nodes
+        // then it is an incomplete binary tree.
+        if (i + 1 > numNodes) return false;
+
+        // both left and right subtrees should be complete.
         return isCompleteBinaryTree(root.left, 2*i + 1, numNodes) && isCompleteBinaryTree(root.right, 2*i + 2, numNodes);
     }
 
