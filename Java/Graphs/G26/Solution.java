@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/alien-dictionary/1
+// Solution - https://www.youtube.com/watch?v=U3N_je7tWAs&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=26
+
+
 package Graphs.G26;
 
 import java.util.ArrayList;
@@ -42,6 +46,9 @@ public class Solution {
     }
 
     public static List<Character> getAlienDictionary(List<String> words) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V + E).
+         */
         Map<Character, List<Character>> graph = getGraph(words);
         List<Character> topologicalSort = getTopologicalSort(graph);
         if (topologicalSort.size() == graph.size()) {
@@ -92,5 +99,7 @@ public class Solution {
         System.out.println(Solution.getAlienDictionary(
                 List.of("a", "aa", "aaa")
         ));
+
+        System.out.println(Solution.getAlienDictionary(List.of("hello", "leetcode")));
     }
 }
