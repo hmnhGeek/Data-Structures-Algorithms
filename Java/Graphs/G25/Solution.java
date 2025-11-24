@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/eventual-safe-states/1
+// Solution - https://www.youtube.com/watch?v=2gtg3VsDGyc&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=25
+
+
 package Graphs.G25;
 
 import java.util.ArrayList;
@@ -7,6 +11,9 @@ import java.util.Map;
 
 public class Solution {
     public static <T> List<T> getSafeNodes(Map<T, List<T>> graph) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V + E).
+         */
         Map<T, List<T>> reversedGraph = reverse(graph);
         Map<T, Integer> indegrees = getIndegrees(reversedGraph);
         Queue<T> queue = new Queue<>();
