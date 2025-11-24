@@ -40,4 +40,57 @@ public class Solution {
         }
         return indegrees;
     }
+
+    public static List<Character> getAlienDictionary(List<String> words) {
+        Map<Character, List<Character>> graph = getGraph(words);
+        List<Character> topologicalSort = getTopologicalSort(graph);
+        if (topologicalSort.size() == graph.size()) {
+            return topologicalSort;
+        }
+        return new ArrayList<>();
+    }
+
+    private static Map<Character, List<Character>> getGraph(List<String> words) {
+        Map<Character, List<Character>> graph = new HashMap<>();
+        for (String word : words) {
+            for (Character character : word.toCharArray()) {
+                graph.putIfAbsent(character, new ArrayList<>());
+            }
+        }
+        for (int i = 0; i < words.size() - 1; i += 1) {
+            String first = words.get(i);
+            String second = words.get(i + 1);
+            int minLength = Math.min(first.length(), second.length());
+            for (int j = 0; j < minLength; j += 1) {
+                if (first.charAt(j) != second.charAt(j)) {
+                    graph.get(first.charAt(j)).add(second.charAt(j));
+                    break;
+                }
+            }
+        }
+        return graph;
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println(Solution.getAlienDictionary(
+                List.of("baa","abcd","abca","cab","cad")
+        ));
+
+        System.out.println(Solution.getAlienDictionary(
+                List.of("caa","aaa","aab")
+        ));
+
+        System.out.println(Solution.getAlienDictionary(
+                List.of("dhhid", "dahi", "cedg", "fg", "gdah", "i", "gbdei", "hbgf", "e", "ddde")
+        ));
+
+        System.out.println(Solution.getAlienDictionary(
+                List.of("abc","bat","ade")
+        ));
+
+        System.out.println(Solution.getAlienDictionary(
+                List.of("a", "aa", "aaa")
+        ));
+    }
 }
