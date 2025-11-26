@@ -1,6 +1,7 @@
 package DynamicProgramming.DP18;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Utils {
@@ -18,5 +19,13 @@ public class Utils {
             subMap.put(j, defaultValue);
         }
         return subMap;
+    }
+
+    public static Integer getSum(List<Integer> arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.size(); i += 1) {
+            sum += arr.get(i);
+        }
+        return sum;
     }
 }
