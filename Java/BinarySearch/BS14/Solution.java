@@ -9,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer getSmallestDivisor(List<Integer> arr, Integer threshold) {
+        /*
+            Time complexity is O(n * log(max)) and space complexity is O(1).
+         */
         int low = 1, high = Collections.max(arr);
         while (low <= high) {
             int mid = (low + (high - low)/2);
