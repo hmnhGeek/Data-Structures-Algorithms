@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/smallest-divisor-with-the-given-limit_1755882
+// Solution - https://www.youtube.com/watch?v=UvBKTVaG6U8&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=15
+
+
 package BinarySearch.BS14;
 
 import java.util.Collections;
