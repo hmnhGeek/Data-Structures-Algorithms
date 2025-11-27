@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/capacity-to-ship-packages-within-d-days_1229379
+// Solution - https://www.youtube.com/watch?v=MG-Ac4TAvTY&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=17
+
+
 package BinarySearch.BS15;
 
 import java.util.Collections;
@@ -13,6 +17,9 @@ public class Solution {
     }
 
     public static Integer getLeastShipCapacity(List<Integer> items, Integer daysUpperLimit) {
+        /*
+            Time complexity is O(n * (sum - max)) and space complexity is O(1).
+         */
         if (daysUpperLimit <= 0) return null;
         int low = Collections.max(items), high = getSum(items);
         while (low <= high) {
