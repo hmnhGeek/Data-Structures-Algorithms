@@ -35,7 +35,6 @@ public class Solution {
             }
             right += 1;
         }
-
         if (startIndex != -1) {
             return arr.subList(startIndex, startIndex + length);
         }
