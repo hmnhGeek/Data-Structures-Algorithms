@@ -24,3 +24,6 @@ class Solution:
 print(Solution.kadane([2, 3, -8, 7, -1, 2, 3]))
 print(Solution.kadane([-2, -4]))
 print(Solution.kadane([5, 4, 1, 7, 8]))
+print(Solution.kadane([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+print(Solution.kadane([1]))
+print(Solution.kadane([5, 4, -1, 7, 8]))
