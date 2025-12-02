@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/split-a-circular-linked-list-into-two-halves/1
+
+
 from math import ceil
 
 
@@ -49,6 +52,9 @@ class CircularLinkedList:
         return slow
 
     def split(self):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         if self.length == 0 or self.length == 1:
             return
         middle_node = self.get_middle_node()
