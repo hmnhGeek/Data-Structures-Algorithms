@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/next-larger-element-1587115620/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -39,6 +42,9 @@ class Stack:
 class Solution:
     @staticmethod
     def get_next_greater_elements(arr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         n = len(arr)
         stack = Stack()
         result = [None] * n
