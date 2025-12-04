@@ -1,3 +1,6 @@
+# Video - https://www.youtube.com/watch?v=Yt50Jfbd8Po&list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&index=16
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +10,9 @@ class Node:
 class Solution:
     @staticmethod
     def check_if_balanced(root: Node) -> bool:
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         status = [True]
         Solution._is_balanced(root, status)
         return status[0]
