@@ -52,7 +52,34 @@ def memoized():
     print(knapsack([5, 4, 6, 3], [10, 40, 30, 50], 5))
 
 
+def tabulation():
+    """
+        Time complexity is O(n*k) and space complexity is O(nk).
+    """
+    def knapsack(weights, values, capacity):
+        n = len(weights)
+        dp = {i: {j: 0 for j in range(capacity + 1)} for i in range(n)}
+        for j in dp[0]:
+            if j >= weights[0]:
+                dp[0][j] = values[0]
+        for i in range(1, n):
+            for j in range(capacity + 1):
+                left = 0
+                if j >= weights[i]:
+                    left = values[i] + dp[i - 1][j - weights[i]]
+                right = dp[i - 1][j]
+                dp[i][j] = max(left, right)
+        return dp[n - 1][capacity]
+
+    print(knapsack([1, 2, 4, 5], [5, 4, 8, 6], 5))
+    print(knapsack([4, 5, 1], [1, 2, 3], 4))
+    print(knapsack([4, 5, 6], [1, 2, 3], 3))
+    print(knapsack([5, 4, 6, 3], [10, 40, 30, 50], 5))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
 print()
