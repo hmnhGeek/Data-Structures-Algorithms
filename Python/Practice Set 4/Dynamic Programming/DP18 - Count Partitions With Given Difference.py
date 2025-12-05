@@ -1,3 +1,10 @@
+# Problem link - https://www.naukri.com/code360/problems/partitions-with-given-difference_3751628?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=zoilQD1kYSg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=19
+
+
+from math import floor
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
@@ -128,11 +135,43 @@ def space_optimized():
     print(get_partition_count([35, 2, 8, 22], 0))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
-print()
+class Solution:
+    @staticmethod
+    def _get_partition_count(arr, target):
+        n = len(arr)
+        prev = {j: 0 for j in range(target + 1)}
+        prev[0] = 1
+        prev[arr[0]] = 1
+        for i in range(1, n):
+            curr = {j: 0 for j in range(target + 1)}
+            curr[0] = 1
+            for j in range(target + 1):
+                left = 0
+                if arr[i] <= j:
+                    left = prev[j - arr[i]]
+                right = prev[j]
+                curr[j] = left + right
+            prev = curr
+        return prev[target]
+
+    @staticmethod
+    def count_partition_with_difference(arr, diff):
+        """
+            Time complexity is O(s^2*n) and space complexity is O(s).
+        """
+        s = sum(arr)
+        count = 0
+        for s1 in range(s, -1, -1):
+            s2 = s - s1
+            if s1 >= s2 and s1 - s2 == diff:
+                count += Solution._get_partition_count(arr, s1)
+        return count
+
+
+print(Solution.count_partition_with_difference([5, 2, 6, 4], 3))
+print(Solution.count_partition_with_difference([1, 1, 1, 1], 0))
+print(Solution.count_partition_with_difference([4, 6, 3], 1))
+print(Solution.count_partition_with_difference([3, 1, 1, 2, 1], 0))
+print(Solution.count_partition_with_difference([3, 2, 2, 5, 1], 1))
+print(Solution.count_partition_with_difference([1, 2, 1, 0, 1, 3, 3], 11))
+print(Solution.count_partition_with_difference([1, 2, 3, 1, 2], 1))
