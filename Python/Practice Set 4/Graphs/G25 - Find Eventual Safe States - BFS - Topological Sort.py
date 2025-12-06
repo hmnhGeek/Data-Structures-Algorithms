@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/eventual-safe-states/1
+# Solution - https://www.youtube.com/watch?v=2gtg3VsDGyc&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=25
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -68,6 +72,9 @@ class Solution:
 
     @staticmethod
     def get_safe_nodes(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V).
+        """
         return Solution.topological_sort(Solution.reverse_graph(graph))
 
 
