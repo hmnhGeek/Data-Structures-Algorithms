@@ -32,3 +32,11 @@ class Queue:
         return item
 
 
+class Solution:
+    @staticmethod
+    def reverse_graph(graph):
+        reversed_graph = {i: [] for i in graph}
+        for node in graph:
+            for adj_node in graph:
+                reversed_graph[adj_node].append(node)
+        return reversed_graph
