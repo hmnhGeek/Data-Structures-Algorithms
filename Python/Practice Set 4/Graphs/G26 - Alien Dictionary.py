@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/alien-dictionary/1
+# Solution - https://www.youtube.com/watch?v=U3N_je7tWAs&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=26
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -78,6 +82,9 @@ class Solution:
 
     @staticmethod
     def get_alien_dictionary(strings):
+        """
+            Overall time complexity is O(k + E) and space complexity is O(k).
+        """
         graph = Solution.get_graph_from_words(strings)
         topological_sort = Solution.get_topological_sort(graph)
         if len(topological_sort) == len(graph):
