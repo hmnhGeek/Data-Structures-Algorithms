@@ -75,3 +75,21 @@ class Solution:
             for adj_node in graph[node]:
                 indegrees[adj_node] += 1
         return indegrees
+
+    @staticmethod
+    def get_alien_dictionary(strings):
+        graph = Solution.get_graph_from_words(strings)
+        topological_sort = Solution.get_topological_sort(graph)
+        if len(topological_sort) == len(graph):
+            return topological_sort
+        return []
+
+
+print(Solution.get_alien_dictionary(["baa", "abcd", "abca", "cab", "cad"]))
+print(Solution.get_alien_dictionary(["caa", "aaa", "aab"]))
+print(Solution.get_alien_dictionary(["dhhid", "dahi", "cedg", "fg", "gdah", "i", "gbdei", "hbgf", "e", "ddde"]))
+print(Solution.get_alien_dictionary(["abc", "bat", "ade"]))
+print(Solution.get_alien_dictionary(["a", "aa", "aaa"]))
+print(Solution.get_alien_dictionary(["hello", "leetcode"]))
+print(Solution.get_alien_dictionary(["hrn", "hrf", "er", "enn", "rfnn"]))
+print(Solution.get_alien_dictionary(["z", "o"]))
