@@ -48,3 +48,63 @@ class Solution:
             for adj_node in graph[node]:
                 indegrees[adj_node] += 1
         return indegrees
+
+    @staticmethod
+    def topological_sort(graph):
+        indegrees = Solution.get_indegrees(graph)
+        queue = Queue()
+        safe_nodes = []
+        for node in indegrees:
+            if indegrees[node] == 0:
+                queue.push(node)
+        while not queue.is_empty():
+            node = queue.pop()
+            safe_nodes.append(node)
+            for adj_node in graph[node]:
+                indegrees[adj_node] -= 1
+                if indegrees[adj_node] == 0:
+                    queue.push(adj_node)
+        return safe_nodes
+
+    @staticmethod
+    def get_safe_nodes(graph):
+        return Solution.topological_sort(Solution.reverse_graph(graph))
+
+
+print(
+    Solution.get_safe_nodes(
+        {
+            0: [1, 2],
+            1: [3],
+            2: [5],
+            3: [0],
+            4: [5],
+            5: [],
+            6: [],
+            7: [1]
+        }
+    )
+)
+
+print(
+    Solution.get_safe_nodes(
+        {
+            0: [1],
+            1: [2],
+            2: [0, 3],
+            3: []
+        }
+    )
+)
+
+print(
+    Solution.get_safe_nodes(
+        {
+            0: [1],
+            1: [3],
+            2: [4],
+            3: [0, 2],
+            4: []
+        }
+    )
+)
