@@ -37,6 +37,14 @@ class Solution:
     def reverse_graph(graph):
         reversed_graph = {i: [] for i in graph}
         for node in graph:
-            for adj_node in graph:
+            for adj_node in graph[node]:
                 reversed_graph[adj_node].append(node)
         return reversed_graph
+
+    @staticmethod
+    def get_indegrees(graph):
+        indegrees = {i: 0 for i in graph}
+        for node in graph:
+            for adj_node in graph[node]:
+                indegrees[adj_node] += 1
+        return indegrees
