@@ -31,3 +31,23 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_graph_from_words(strings):
+        graph = {}
+        for string in strings:
+            for character in string:
+                graph[character] = []
+        n = len(strings)
+        for i in range(n - 1):
+            first_string, second_string = strings[i], strings[i + 1]
+            min_length = min(len(first_string), len(second_string))
+            j = 0
+            while j < min_length:
+                if first_string[j] != second_string[j]:
+                    graph[first_string[j]].append(second_string[j])
+                    break
+                j += 1
+        return graph
+
