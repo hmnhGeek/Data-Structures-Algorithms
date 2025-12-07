@@ -36,7 +36,6 @@ class Solution:
             i += 1
         if capacity > 0:
             days_taken += 1
-            # for code readability only
             capacity = 0
         return days_taken
 
