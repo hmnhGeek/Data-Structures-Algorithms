@@ -52,7 +52,7 @@ public class Utility {
         for (int i = 0; i < n; i += 1) {
             List<T> row = new ArrayList<>();
             for (int j = 0; j < n; j += 1) {
-                row.add(arr.get(i*n + j))
+                row.add(arr.get(i*n + j));
             }
             matrix.add(row);
         }
