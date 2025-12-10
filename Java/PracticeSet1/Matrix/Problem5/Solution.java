@@ -1,6 +1,5 @@
 // Problem link - https://www.geeksforgeeks.org/problems/sorted-matrix2333/1
 
-
 package PracticeSet1.Matrix.Problem5;
 
 import java.util.Arrays;
