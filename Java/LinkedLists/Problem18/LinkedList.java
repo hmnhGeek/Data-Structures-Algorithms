@@ -51,4 +51,15 @@ public class LinkedList<T> {
         stringBuilder.append(String.format("%s]", this.tail.data));
         return stringBuilder.toString();
     }
+
+    public Node<T> getMiddleNode() {
+        if (length == 0) return null;
+        Node<T> slow = this.head;
+        Node<T> fast = this.head.next;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
 }
