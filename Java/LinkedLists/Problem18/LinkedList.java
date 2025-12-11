@@ -56,10 +56,22 @@ public class LinkedList<T> {
         if (length == 0) return null;
         Node<T> slow = this.head;
         Node<T> fast = this.head.next;
-        while (fast.next != null && fast.next.next != null) {
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
         return slow;
+    }
+
+    public Node<T> reverseSection(Node<T> startNode) {
+        Node<T> prev = null;
+        Node<T> curr = startNode;
+        while (curr != null) {
+            Node<T> nextCurr = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextCurr;
+        }
+        return prev;
     }
 }
