@@ -1,7 +1,8 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/diagonal-traversal-of-binary-tree/
+
+
 package BinaryTrees.Problem15;
 
-
-import com.sun.source.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,6 +147,9 @@ public class Solution {
     }
 
     public static <T> List<T> diagonalTraversal(TreeNode<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         if (root == null) return new ArrayList<>();
         List<T> result = new ArrayList<>();
         Queue<TreeNode<T>> queue = new Queue<>();
