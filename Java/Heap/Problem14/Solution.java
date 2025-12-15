@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1
+
+
 package Heap.Problem14;
 
 import java.util.Arrays;
@@ -14,6 +17,9 @@ public class Solution {
     }
 
     public static Integer connectRopes(List<Integer> ropes) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         MinHeap<Integer> minHeap = new MinHeap<>();
         for (Integer ropeLength : ropes) {
             minHeap.insert(ropeLength);
