@@ -76,10 +76,10 @@ public class Solution {
         n7 = new TreeNode<>(7);
         n8 = new TreeNode<>(8);
         n9 = new TreeNode<>(9);
-        TreeNode<Integer> n10 = new TreeNode<>(9);
-        TreeNode<Integer> n11 = new TreeNode<>(9);
-        TreeNode<Integer> n12 = new TreeNode<>(9);
-        TreeNode<Integer> n13 = new TreeNode<>(9);
+        TreeNode<Integer> n10 = new TreeNode<>(10);
+        TreeNode<Integer> n11 = new TreeNode<>(11);
+        TreeNode<Integer> n12 = new TreeNode<>(12);
+        TreeNode<Integer> n13 = new TreeNode<>(13);
         n1.left = n2;
         n2.left = n4;
         n4.left = n7;
@@ -128,13 +128,21 @@ public class Solution {
         }
     }
 
-    private static <T> TreeNode<T> traverseRightBoundary(TreeNode<T> node, List<T> traversal) {
-        if (node == null) return null;
-        TreeNode<T> subNode = traverseRightBoundary(node.right, traversal);
-        if (!(node.left == null && node.right == null)) {
-            traversal.add(node.data);
+    private static <T> void traverseRightBoundary(TreeNode<T> node, List<T> traversal) {
+        if (node == null) return;
+        Stack<T> stack = new Stack<>();
+        while (node != null) {
+            if (node.left == null && node.right == null) break;
+            stack.push(node.data);
+            if (node.right != null) {
+                node = node.right;
+            } else {
+                node = node.left;
+            }
         }
-        return subNode;
+        while (!stack.isEmpty()) {
+            traversal.add(stack.pop());
+        }
     }
 
 }
