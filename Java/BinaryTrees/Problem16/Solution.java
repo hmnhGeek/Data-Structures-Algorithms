@@ -1,7 +1,9 @@
+// Problem link - https://www.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1
+// Solution - https://www.youtube.com/watch?v=0ca1nvR0be4
+
+
 package BinaryTrees.Problem16;
 
-
-import com.sun.source.tree.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +98,9 @@ public class Solution {
     }
 
     public static <T> List<T> getBoundaryTraversal(TreeNode<T> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(h).
+         */
         if (root == null) return new ArrayList<>();
         List<T> traversal = new ArrayList<>();
         traversal.add(root.data);
