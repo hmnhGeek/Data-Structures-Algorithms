@@ -1,8 +1,6 @@
 package Arrays.Problem14;
 
-import java.util.Comparator;
-
-public class Interval implements Comparator<Interval> {
+public class Interval implements Comparable<Interval> {
     public Integer startTime;
     public Integer endTime;
 
@@ -12,12 +10,19 @@ public class Interval implements Comparator<Interval> {
     }
 
     @Override
-    public int compare(Interval o1, Interval o2) {
-        return o1.startTime - o2.startTime;
+    public String toString() {
+        return String.format("(%d, %d)", startTime, endTime);
     }
 
     @Override
-    public String toString() {
-        return String.format("(%d, %d)", startTime, endTime);
+    public int compareTo(Interval o) {
+        int diff = startTime - o.startTime;
+        if (diff < 0) {
+            return -1;
+        } else if (diff > 0) {
+            return 1;
+        } else {
+            return endTime.compareTo(o.endTime);
+        }
     }
 }
