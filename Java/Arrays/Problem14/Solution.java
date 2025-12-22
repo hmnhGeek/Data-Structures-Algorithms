@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/merging-intervals/
+// Solution - https://www.youtube.com/watch?v=IexN60k62jo
+
+
 package Arrays.Problem14;
 
 import java.util.ArrayList;
@@ -30,6 +34,9 @@ public class Solution {
     }
 
     public static List<Interval> mergeIntervals(List<Interval> intervals) {
+        /*
+            Time complexity is O(n*log(n)) and space complexity is O(n).
+         */
         if (intervals.isEmpty() || intervals.size() == 1) {
             return intervals;
         }
