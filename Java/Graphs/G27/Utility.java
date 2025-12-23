@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Utility {
-    public static <T> Stack<T> getTopologicalSort(Map<T, List<T>> graph) {
+    public static <T> Stack<T> getTopologicalSort(Map<T, List<GraphElement<T>>> graph) {
         Map<T, Boolean> visited = new HashMap<>();
         Stack<T> stack = new Stack<>();
         for (T node : graph.keySet()) {
@@ -19,9 +19,10 @@ public class Utility {
         return stack;
     }
 
-    private static <T> void dfs(Map<T, List<T>> graph, T node, Stack<T> stack, Map<T, Boolean> visited) {
+    private static <T> void dfs(Map<T, List<GraphElement<T>>> graph, T node, Stack<T> stack, Map<T, Boolean> visited) {
         visited.put(node, true);
-        for (T adjNode : graph.get(node)) {
+        for (GraphElement<T> graphElement : graph.get(node)) {
+            T adjNode = graphElement.adjNode;
             if (!visited.get(adjNode)) {
                 dfs(graph, adjNode, stack, visited);
             }
