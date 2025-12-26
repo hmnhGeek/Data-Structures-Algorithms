@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/aggressive-cows/0
+// Solution - https://www.youtube.com/watch?v=R_Mfw4ew-Vo&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=18
+
+
 package BinarySearch.BS17;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer aggressiveCows(List<Integer> arr, Integer cows) {
+        /*
+            Time complexity is O(n * log(n) + log(max(arr) - min(arr))) and space complexity is O(1).
+         */
         if (cows <= 0) return null;
         QuickSort.sort(arr);
         int low = 0, high = arr.getLast() - arr.getFirst();
