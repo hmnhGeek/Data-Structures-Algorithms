@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/fruit-into-baskets/description/
+// Solution - https://www.youtube.com/watch?v=e3bs0uA1NhQ&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=5
+
+
 package SlidingWindows.L5;
 
 import java.util.*;
@@ -14,6 +18,9 @@ public class Solution {
     }
 
     public static <T> List<T> fruitsIntoBasket(List<T> fruits) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         Map<T, Integer> baskets = new HashMap<>();
         for (int i = 0; i < fruits.size(); i += 1) {
             baskets.putIfAbsent(fruits.get(i), 0);
