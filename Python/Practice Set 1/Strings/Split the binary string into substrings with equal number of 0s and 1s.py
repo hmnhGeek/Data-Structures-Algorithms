@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/split-the-binary-string-into-substrings-with-equal-number-of-0s-and-1s/
+# Use first solution from problem link. Don't refer to any video.
+
+
 class Solution:
     @staticmethod
     def split_binary_string(string):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         counter = -1 if string[0] == "0" else 1
         i = 1
         last_index = 0
