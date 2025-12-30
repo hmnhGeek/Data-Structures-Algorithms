@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1
+# Solution - https://www.youtube.com/watch?v=0ca1nvR0be4&t=305s
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -76,6 +80,9 @@ class Solution:
 
     @staticmethod
     def boundary_traversal(root: TreeNode):
+        """
+            Time complexity will be O(N) and space complexity is O(N) using recursion for inorder traversal.
+        """
         result = []
         Solution._update_left_boundary(root, result)
         Solution._update_bottom_boundary(root, result)
