@@ -1,3 +1,6 @@
+# Problem link - https://www.naukri.com/code360/problems/diagonal-traversal_893029
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -39,6 +42,9 @@ class Queue:
 class Solution:
     @staticmethod
     def print_diagonal_traversal(root):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         queue = Queue()
         while root is not None:
             queue.push(root)
