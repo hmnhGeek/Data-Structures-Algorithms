@@ -113,9 +113,50 @@ def tabulation():
     print(min_coins([4, 6, 2], 5))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n*target) and space complexity is O(target).
+    """
+    def min_coins(arr, target):
+        n = len(arr)
+        prev = {j: 1e6 for j in range(target + 1)}
+        prev[0] = 0
+        for j in prev:
+            if j % arr[0] == 0:
+                prev[j] = j // arr[0]
+        for i in range(1, n):
+            curr = {j: 1e6 for j in range(target + 1)}
+            curr[0] = 0
+            for j in range(target + 1):
+                left = 1e6
+                if j >= arr[i]:
+                    left = 1 + curr[j - arr[i]]
+                right = prev[j]
+                curr[j] = min(left, right)
+            prev = curr
+        coins = prev[target]
+        if coins == 1e6:
+            return -1
+        return coins
+
+    print(min_coins([1, 2, 3], 7))
+    print(min_coins([1], 0))
+    print(min_coins([12, 1, 3], 4))
+    print(min_coins([2, 1], 11))
+    print(min_coins([1, 2, 5], 11))
+    print(min_coins([2], 3))
+    print(min_coins([1, ], 0))
+    print(min_coins([25, 10, 5], 30))
+    print(min_coins([9, 6, 5, 1], 19))
+    print(min_coins([5, 1], 0))
+    print(min_coins([4, 6, 2], 5))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
