@@ -80,7 +80,36 @@ def space_optimized():
     print(target_sum([1, 2, 3, 1], 3))
 
 
-recursive()
-memoized()
-memoized()
-space_optimized()
+class Solution:
+    @staticmethod
+    def target_sum(arr, target):
+        n = len(arr)
+        prev = {j: 0 for j in range(target + 1)}
+        prev[0] = 1
+        prev[arr[0]] = 1
+        for i in range(1, n):
+            curr = {j: 0 for j in range(target + 1)}
+            curr[0] = 1
+            for j in range(target + 1):
+                left = 0
+                if j >= arr[i]:
+                    left = prev[j - arr[i]]
+                right = prev[j]
+                curr[j] = left + right
+            prev = curr
+        return prev[target]
+
+    @staticmethod
+    def get_target_sum(arr, target):
+        s = sum(arr)
+        if (s + target) % 2 != 0:
+            return
+        actual_target = (s + target) // 2
+        return Solution.target_sum(arr, actual_target)
+
+
+print(Solution.get_target_sum([1, 1, 1, 1, 1], 3))
+print(Solution.get_target_sum([1, 2, 3, 1], 3))
+print(Solution.get_target_sum([1, 2, 3], 2))
+print(Solution.get_target_sum([1, 1], 0))
+print(Solution.get_target_sum([1], 1))
