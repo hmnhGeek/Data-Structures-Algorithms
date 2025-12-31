@@ -31,3 +31,30 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Util:
+    @staticmethod
+    def get_indegrees(graph):
+        indegrees = {i: 0 for i in graph}
+        for node in graph:
+            for adj_node in graph[node]:
+                indegrees[adj_node] += 1
+        return indegrees
+
+    @staticmethod
+    def get_topological_sort(graph):
+        queue = Queue()
+        result = []
+        indegrees = Util.get_indegrees(graph)
+        for node in indegrees:
+            if indegrees[node] == 0:
+                queue.push(node)
+        while not queue.is_empty():
+            node = queue.pop()
+            result.append(node)
+            for adj_node in graph[node]:
+                indegrees[adj_node] -= 1
+                if indegrees[adj_node] == 0:
+                    queue.push(adj_node)
+        return result
+
