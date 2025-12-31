@@ -40,5 +40,25 @@ def memoized():
     print(target_sum([1, 2, 3, 1], 3))
 
 
+def tabulation():
+    def target_sum(arr, target):
+        n = len(arr)
+        dp = {i: {j: 0 for j in range(target + 1)} for i in range(n)}
+        for i in dp:
+            dp[i][0] = 1
+        dp[0][arr[0]] = 1
+        for i in range(1, n):
+            for j in range(target + 1):
+                left = 0
+                if j >= arr[i]:
+                    left = dp[i - 1][j - arr[i]]
+                right = dp[i - 1][j]
+                dp[i][j] = left + right
+        return dp[n - 1][target]
+
+    print(target_sum([1, 2, 3, 1], 3))
+
+
 recursive()
+memoized()
 memoized()
