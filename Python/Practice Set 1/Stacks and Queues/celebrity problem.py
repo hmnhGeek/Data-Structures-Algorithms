@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/the-celebrity-problem/#expected-approach-using-two-pointers-on-time-and-o1-space
+# Solution - https://www.youtube.com/watch?v=cEadsbTeze4
+
+
 class Solution:
     @staticmethod
     def find_celebrity(mtx):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         n = len(mtx)
         top, down = 0, n - 1
         while top < down:
