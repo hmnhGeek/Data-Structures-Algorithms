@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -69,3 +72,24 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_min_cost(ropes):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+        pq = MinHeap()
+        for i in ropes:
+            pq.insert(i)
+        cost = 0
+        while len(pq.heap) != 1:
+            a, b = pq.pop(), pq.pop()
+            cost += (a + b)
+            pq.insert(a + b)
+        return cost
+
+
+print(Solution.get_min_cost([4, 3, 2, 6]))
+print(Solution.get_min_cost([4, 2, 7, 6, 9]))
+print(Solution.get_min_cost([10]))
