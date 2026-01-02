@@ -9,7 +9,7 @@ class Solution:
     @staticmethod
     def merge_intervals(intervals: List[List[int]]):
         """
-            Time complexity is O(n) and space complexity is O(n).
+            Time complexity is O(n*log(n)) and space complexity is O(n).
         """
         if len(intervals) == 0:
             return []
