@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/check-if-linked-list-is-pallindrome/1
+# Solution - https://www.youtube.com/watch?v=lRY_G-u_8jk
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -61,11 +65,22 @@ class LinkedList:
 class Solution:
     @staticmethod
     def check_palindrome(l: LinkedList) -> bool:
+        """
+            Overall time complexity is O(n) and space complexity is O(1).
+        """
+
+        # no need to check if empty or just contains 1 element.
         if l.length == 0 or l.length == 1:
             return True
+
+        # find middle node in O(n) time.
         middle_node = l.get_middle_node()
+
+        # break the list at this point
         next_to_middle = middle_node.next
         middle_node.next = None
+
+        # reverse the later half.
         sub_list = LinkedList()
         sub_list.head = next_to_middle
         sub_list.tail = l.tail
@@ -74,6 +89,8 @@ class Solution:
         middle_node.next = sub_list.head
         l.tail = sub_list.tail
         i, j = l.head, sub_list.head
+
+        # check if the list is palindrome or not in O(n) time.
         is_palindrome = True
         print("Partly reversed list: ", l)
         while j is not None:
@@ -82,6 +99,8 @@ class Solution:
                 break
             i = i.next
             j = j.next
+
+        # restore the original list
         middle_node.next = None
         sub_list.reverse()
         middle_node.next = sub_list.head
