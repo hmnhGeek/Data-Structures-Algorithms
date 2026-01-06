@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/k-th-missing-element-in-sorted-array/
+# Solution - https://www.youtube.com/watch?v=uZ0N_hZpyps&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=17
+
+
 class Solution:
     @staticmethod
     def get_kth_missing(arr, k):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         if k <= 0:
             return
         low, high = 0, len(arr) - 1
