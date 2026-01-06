@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/aggressive-cows/0
+# Solution - https://www.youtube.com/watch?v=R_Mfw4ew-Vo&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=18
+
+
 class MergeSort:
     @staticmethod
     def sort(arr):
@@ -41,6 +45,9 @@ class MergeSort:
 class Solution:
     @staticmethod
     def aggressive_cows(arr, k):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
         if k <= 0:
             return
         n = len(arr)
