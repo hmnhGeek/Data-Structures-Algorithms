@@ -45,3 +45,33 @@ class Solution:
             return
         n = len(arr)
         low, high = 0, max(arr) - min(arr)
+        MergeSort.sort(arr)
+        while low <= high:
+            mid = int(low + (high - low)/2)
+            placed_cows = Solution._get_placed_cows_count(arr, mid)
+            if placed_cows < k:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return high
+
+    @staticmethod
+    def _get_placed_cows_count(arr, mid):
+        last_placed_at = 0
+        cows_placed = 1
+        i = 1
+        while i < len(arr):
+            if arr[i] - arr[last_placed_at] >= mid:
+                last_placed_at = i
+                cows_placed += 1
+            i += 1
+        return cows_placed
+
+
+print(Solution.aggressive_cows([0, 3, 4, 7, 9, 10], 4))
+print(Solution.aggressive_cows([1, 2, 3], 2))
+print(Solution.aggressive_cows([4, 2, 1, 3, 6], 2))
+print(Solution.aggressive_cows([1, 2, 4, 8, 9], 3))
+print(Solution.aggressive_cows([10, 1, 2, 7, 5], 3))
+print(Solution.aggressive_cows([2, 12, 11, 3, 26, 7], 5))
+print(Solution.aggressive_cows([6, 7,  9, 11, 13, 15], 4))
