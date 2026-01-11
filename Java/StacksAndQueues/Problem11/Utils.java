@@ -24,4 +24,26 @@ public class Utils {
         }
         return postfix;
     }
+
+    public static Integer evaluatePostfix(String postfix) {
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < postfix.length(); i += 1) {
+            Character character = postfix.charAt(i);
+            if (operators.contains(character)) {
+                Integer a = stack.pop(), b = stack.pop();
+                if (character == '+') {
+                    stack.push(a + b);
+                } else if (character == '-') {
+                    stack.push(b - a);
+                } else if (character == '/') {
+                    stack.push(b / a);
+                } else {
+                    stack.push(a * b);
+                }
+            } else {
+                stack.push(Integer.parseInt(character.toString()));
+            }
+        }
+        return stack.top();
+    }
 }
