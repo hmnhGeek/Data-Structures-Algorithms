@@ -96,4 +96,48 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
         return parent;
     }
+
+    public Node<T> getNode(Node<T> start, T x) {
+        if (x == null || start == null) return null;
+        if (start.data == x) return start;
+        if (x.compareTo(start.data) > 0) return getNode(start.right, x);
+        return getNode(start.left, x);
+    }
+
+    private void delete(Node<T> node) {
+        if (node == null) return;
+        if (node.left == null && node.right == null) {
+            Node<T> parent = node.parent;
+            if (parent != null) {
+                if (parent.left == node) {
+                    parent.left = null;
+                } else {
+                    parent.right = null;
+                }
+            } else {
+                this.root = null;
+                this.diameter = 0;
+            }
+            recalcAugmentation(parent);
+            return;
+        }
+        if (node.right != null) {
+            Node<T> successor = getSuccessor(node);
+            T temp = successor.data;
+            successor.data = node.data;
+            node.data = temp;
+            delete(successor);
+            return;
+        }
+        Node<T> predecessor = getPredecessor(node);
+        T temp = predecessor.data;
+        predecessor.data = node.data;
+        node.data = temp;
+        delete(predecessor);
+    }
+
+    public void delete(T x) {
+        Node<T> node = getNode(root, x);
+        if (node != null) delete(node);
+    }
 }
