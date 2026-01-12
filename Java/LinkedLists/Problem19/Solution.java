@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/deletion-circular-linked-list/
+
+
 package LinkedLists.Problem19;
 
 
@@ -14,6 +17,24 @@ public class Solution {
         System.out.println(circularLinkedList.head.data);
         System.out.println(circularLinkedList.tail.data);
         System.out.println(circularLinkedList.tail.next.data);
+
+        // Example 2
+        circularLinkedList = buildList(1, 2, 3, 4);
+        System.out.println(circularLinkedList);
+        deleteNode(circularLinkedList, 3);
+        System.out.println(circularLinkedList);
+        System.out.println(circularLinkedList.head.data);
+        System.out.println(circularLinkedList.tail.data);
+        System.out.println(circularLinkedList.tail.next.data);
+
+        // Example 3
+        circularLinkedList = buildList(1, 2, 3, 4);
+        System.out.println(circularLinkedList);
+        deleteNode(circularLinkedList, 4);
+        System.out.println(circularLinkedList);
+        System.out.println(circularLinkedList.head.data);
+        System.out.println(circularLinkedList.tail.data);
+        System.out.println(circularLinkedList.tail.next.data);
     }
 
     private static <T> CircularLinkedList<T> buildList(T...args) {
@@ -25,6 +46,9 @@ public class Solution {
     }
 
     public static <T> void deleteNode(CircularLinkedList<T> circularLinkedList, T item) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         Map<String, Node<T>> map = getNode(circularLinkedList, item);
         if (map == null) return;
         Node<T> prev = map.get("prev"), curr = map.get("curr");
@@ -54,6 +78,8 @@ public class Solution {
             curr = curr.next;
         }
         if (circularLinkedList.tail.data == item) {
+            map.put("prev", prev);
+            map.put("curr", curr);
             return map;
         }
         return null;
