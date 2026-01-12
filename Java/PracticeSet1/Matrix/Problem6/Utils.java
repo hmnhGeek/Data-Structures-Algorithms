@@ -1,6 +1,5 @@
 package PracticeSet1.Matrix.Problem6;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Utils {
