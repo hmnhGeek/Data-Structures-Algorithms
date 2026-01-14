@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/next-permutation/description/
+// Solution - https://www.youtube.com/watch?v=JDOXKqF60RQ&t=976s
+
+
 package Arrays.Problem15;
 
 import java.util.Arrays;
@@ -15,13 +19,23 @@ public class Solution {
     }
 
     public static List<Integer> getNextPermutation(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
+
         int n = arr.size();
+
+        // this will take O(n) time.
         int breakpointIndex = getBreakpointIndex(arr, n);
         if (breakpointIndex == -1) {
             return arr.reversed();
         }
+
+        // this will take O(n) time.
         Integer justGreaterElementIdx = getJustGreaterElemIdx(arr, breakpointIndex);
         Collections.swap(arr, justGreaterElementIdx, breakpointIndex);
+
+        // This will also take O(n) time.
         reversePart(arr, breakpointIndex + 1);
         return arr;
     }
