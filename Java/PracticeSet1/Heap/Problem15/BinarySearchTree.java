@@ -37,4 +37,35 @@ public class BinarySearchTree<T extends Comparable<T>> {
             parent = parent.parent;
         }
     }
+
+    public void insert(T x) {
+        Node<T> node = new Node<>(x);
+        if (root == null) {
+            root = node;
+            diameter = 1;
+            return;
+        }
+        insert(root, node);
+    }
+
+    public void insert(Node<T> start, Node<T> node) {
+        if (start == null || root == null) return;
+        if (node.data.compareTo(start.data) >= 0) {
+            if (start.right != null) {
+                insert(start.right, node);
+                return;
+            }
+            start.right = node;
+            node.parent = start;
+            recalcAugmentation(start);
+            return;
+        }
+        if (start.left != null) {
+            insert(start.left, node);
+            return;
+        }
+        start.left = node;
+        node.parent = start;
+        recalcAugmentation(start);
+    }
 }
