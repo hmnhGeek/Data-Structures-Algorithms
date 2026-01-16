@@ -1,7 +1,9 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/convert-bst-min-heap/
+
+
 package PracticeSet1.Heap.Problem15;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
@@ -21,6 +23,9 @@ public class Solution {
     }
 
     public static <T extends Comparable<T>> void convertBstToMinHeap(BinarySearchTree<T> binarySearchTree) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         List<Node<T>> preorder = new ArrayList<>();
         getPreorder(binarySearchTree.root, preorder);
 
