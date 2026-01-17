@@ -11,5 +11,9 @@ print(Solution.word_ladder(["hot","dot","dog","lot","log","cog"], "hit", "cog"))
 print(Solution.word_ladder(["hot","dot","dog","lot","log"], "hit", "cog"))
          */
         System.out.println(WordLadder.getWordLadder(Arrays.asList("des","der","dfr","dgt","dfs"), "der", "dfs"));
+        System.out.println(WordLadder.getWordLadder(Arrays.asList("geek", "gefk"), "gedk", "geek"));
+        System.out.println(WordLadder.getWordLadder(Arrays.asList("hot","dot","dog","lot","log","cog"), "hit", "cog"));
+        System.out.println(WordLadder.getWordLadder(Arrays.asList("hot","dot","dog","lot","log"), "hit", "cog"));
+
     }
 }
