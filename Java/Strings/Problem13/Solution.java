@@ -6,6 +6,7 @@ public class Solution {
     public static void main(String[] args) {
         recursive();
         memoized();
+        tabulation();
     }
 
     private static void recursive() {
@@ -17,6 +18,12 @@ public class Solution {
     private static void memoized() {
         System.out.println(MemoizedSolution.getMinCost(Arrays.asList(3, 2, 2, 5), 6));
         System.out.println(MemoizedSolution.getMinCost(Arrays.asList(3, 2, 2), 4));
+        System.out.println();
+    }
+
+    private static void tabulation() {
+        System.out.println(TabulationSolution.getMinCost(Arrays.asList(3, 2, 2, 5), 6));
+        System.out.println(TabulationSolution.getMinCost(Arrays.asList(3, 2, 2), 4));
         System.out.println();
     }
 }
