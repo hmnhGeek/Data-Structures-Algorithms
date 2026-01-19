@@ -6,7 +6,7 @@ public class Utility {
     }
 
     public static Double getDistanceFromLine(Point point, Line line) {
-        Integer numerator = Math.abs(point.x*line.a + point.y*line.b + line.c);
+        Double numerator = Math.abs(point.x*line.a + point.y*line.b + line.c);
         Double denominator = Math.sqrt(line.a*line.a + line.b*line.b);
         return numerator/denominator;
     }

@@ -1,10 +1,10 @@
 package SearchingAndSorting.Problem6;
 
 public class Point {
-    public Integer x;
-    public Integer y;
+    public Double x;
+    public Double y;
 
-    public Point(Integer x, Integer y) {
+    public Point(Double x, Double y) {
         this.x = x;
         this.y = y;
     }
