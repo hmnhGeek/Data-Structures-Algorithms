@@ -8,6 +8,9 @@ import java.util.List;
 
 public class Solution {
     public static double getMinDistance(Line line, List<Point> points) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(n).
+         */
         double eps = 1e-9;
         double low = -1e6;
         double high = 1e6;
