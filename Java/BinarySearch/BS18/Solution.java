@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/allocate-books_1090540
+// Solution - https://www.youtube.com/watch?v=Z0hwjftStI4&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=19
+
+
 package BinarySearch.BS18;
 
 import java.util.Arrays;
@@ -7,9 +11,18 @@ import java.util.List;
 public class Solution {
     public static void main(String[] args) {
         System.out.println(allocateBooks(Arrays.asList(25, 46, 28, 49, 24), 4));
+        System.out.println(allocateBooks(Arrays.asList(12, 34, 67, 90), 2));
+        System.out.println(allocateBooks(Arrays.asList(15, 17, 20), 2));
+        System.out.println(allocateBooks(Arrays.asList(22, 23, 67), 1));
+        System.out.println(allocateBooks(Arrays.asList(15, 17, 20), 5));
+
     }
 
     public static Integer allocateBooks(List<Integer> pages, Integer numStudents) {
+        /*
+            Time complexity is O(n*log(sum - max)) and space complexity is O(1).
+         */
+        if (numStudents > pages.size()) return -1;
         int n = pages.size();
         int low = Collections.max(pages);
         int high = pages.stream().mapToInt(Integer::intValue).sum();
@@ -21,7 +34,7 @@ public class Solution {
             } else if (allocatedStudents < numStudents) {
                 high = mid - 1;
             } else {
-                low = mid + 1;
+                high = mid - 1;
             }
         }
         return low;
