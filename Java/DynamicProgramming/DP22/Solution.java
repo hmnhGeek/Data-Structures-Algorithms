@@ -38,4 +38,14 @@ public class Solution {
         System.out.println(TabulationSolution.getNumWays(Arrays.asList(2, 5, 3, 6), 10));
         System.out.println();
     }
+
+    private static void spaceOptimized() {
+        System.out.println(SpaceOptimizedSolution.getNumWays(Arrays.asList(1, 2, 3), 4));
+        System.out.println(SpaceOptimizedSolution.getNumWays(Arrays.asList(5, 3, 2), 1));
+        System.out.println(SpaceOptimizedSolution.getNumWays(Arrays.asList(1, 2, 5), 5));
+        System.out.println(SpaceOptimizedSolution.getNumWays(Arrays.asList(2), 3));
+        System.out.println(SpaceOptimizedSolution.getNumWays(Arrays.asList(10), 10));
+        System.out.println(SpaceOptimizedSolution.getNumWays(Arrays.asList(2, 5, 3, 6), 10));
+        System.out.println();
+    }
 }
