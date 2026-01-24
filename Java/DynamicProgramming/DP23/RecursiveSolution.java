@@ -27,6 +27,4 @@ public class RecursiveSolution {
         Integer right = solve(weights, values, i - 1, j);
         return Math.max(left, right);
     }
-
-
 }
