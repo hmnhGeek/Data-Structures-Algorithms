@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1
+// Solution - https://www.youtube.com/watch?v=OgvOZ6OrJoY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=24
+
+
 package DynamicProgramming.DP23;
 
 import java.util.Arrays;
