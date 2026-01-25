@@ -1,3 +1,6 @@
+# Problem link - https://leetcode.com/problems/delete-node-in-a-bst/description/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -160,5 +163,5 @@ class Solution:
         print()
 
 
-# Example 1
 Solution.test(5, 3, 6, 2, 4, 7, 3)
+Solution.test(5, 2, 6, 4, 7, 0)
