@@ -101,9 +101,9 @@ class BinarySearchTree:
             parent = node.parent
             if parent is not None:
                 if parent.left == node:
-                    parent.left = node
+                    parent.left = None
                 else:
-                    parent.right = node
+                    parent.right = None
             else:
                 self.root = None
                 self.d = 0
@@ -131,15 +131,34 @@ class BinarySearchTree:
 
     def delete(self, x):
         node = self.get_node(self.root, x)
-        self._delete(node)
-        return
+        if node is not None:
+            self._delete(node)
 
     def _show(self, start):
         if start:
             self._show(start.left)
-            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.hright}, d = {start.d}")
+            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.height}, d = {start.d}")
             self._show(start.right)
 
     def show(self):
         self._show(self.root)
         print()
+
+
+class Solution:
+    @staticmethod
+    def test(*args):
+        x = args[-1]
+        bst = BinarySearchTree()
+        for i in range(len(args) - 1):
+            bst.insert(args[i])
+        print("Original BST")
+        bst.show()
+        bst.delete(x)
+        print("New BST")
+        bst.show()
+        print()
+
+
+# Example 1
+Solution.test(5, 3, 6, 2, 4, 7, 3)
