@@ -133,3 +133,13 @@ class BinarySearchTree:
         node = self.get_node(self.root, x)
         self._delete(node)
         return
+
+    def _show(self, start):
+        if start:
+            self._show(start.left)
+            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.hright}, d = {start.d}")
+            self._show(start.right)
+
+    def show(self):
+        self._show(self.root)
+        print()
