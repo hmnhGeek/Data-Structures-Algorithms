@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/optimum-location-point-minimize-total-distance/
+
+
 class Point:
     def __init__(self, x, y):
         self.x = x
@@ -25,6 +28,9 @@ class Line:
 class Solution:
     @staticmethod
     def get_optimum_point_location(line: Line, points):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
         eps = 1e-9
         x_low, x_high = -1e6, 1e6
         while x_high - x_low > eps:
