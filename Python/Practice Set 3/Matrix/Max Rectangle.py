@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/max-rectangle/1
+
+
 from typing import List
 
 
@@ -77,10 +80,14 @@ class Solution:
 
     @staticmethod
     def max_rectangle(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(m).
+        """
         n, m = len(mtx), len(mtx[0])
         prev_row = [0]*m
         max_area = 0
         for i in range(n):
+            # O(m) time and O(m) space
             histogram = Solution.get_histogram(mtx[i], prev_row, m)
             area = Utility.get_max_area_in_histogram(histogram)
             max_area = max(max_area, area)
