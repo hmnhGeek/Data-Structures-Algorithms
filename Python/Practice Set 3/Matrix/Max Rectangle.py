@@ -63,3 +63,85 @@ class Utility:
 
 print(Utility.get_max_area_in_histogram([60, 20, 50, 40, 10, 50, 60]))
 print(Utility.get_max_area_in_histogram([3, 5, 1, 7, 5, 9]))
+
+
+class Solution:
+    @staticmethod
+    def get_histogram(row, prev, m):
+        for j in range(m):
+            if row[j] == 0:
+                prev[j] = 0
+            else:
+                prev[j] += row[j]
+        return prev
+
+    @staticmethod
+    def max_rectangle(mtx):
+        n, m = len(mtx), len(mtx[0])
+        prev_row = [0]*m
+        max_area = 0
+        for i in range(n):
+            histogram = Solution.get_histogram(mtx[i], prev_row, m)
+            area = Utility.get_max_area_in_histogram(histogram)
+            max_area = max(max_area, area)
+            prev = histogram
+        return max_area
+
+
+print(
+    Solution.max_rectangle(
+        [
+            [0, 1, 1, 0],
+            [1, 1, 1, 1],
+            [1, 1, 1, 1],
+            [1, 1, 0, 0]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [[0, 1, 1],
+         [1, 1, 1],
+         [0, 1, 1]]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [
+            [1, 0, 1, 0, 0],
+            [1, 0, 1, 1, 1],
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 1, 0]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [
+            [0]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [
+            [1]
+        ]
+    )
+)
+
+print(
+    Solution.max_rectangle(
+        [
+            [1, 0, 1, 1],
+            [1, 0, 1, 1],
+            [0, 1, 0, 1],
+            [1, 1, 1, 1],
+            [0, 0, 0, 1]
+        ]
+    )
+)
