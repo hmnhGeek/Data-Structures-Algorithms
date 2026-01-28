@@ -63,4 +63,27 @@ class CircularLinkedList:
         prev.next = curr.next
         self.length -= 1
 
+    def build(self, *args):
+        for i in args:
+            self.push(i)
 
+    def __str__(self):
+        if self.length == 0:
+            return "[]"
+        if self.length == 1:
+            return f"[{self.head.data}] (next = {self.head.data})"
+        curr = self.head
+        result = "["
+        while curr != self.tail:
+            result += f"{curr.data}, "
+            curr = curr.next
+        result += f"{self.tail.data}] (next = {self.tail.next.data})"
+        return result
+
+
+# Example 1
+l1 = CircularLinkedList()
+l1.build(1, 2, 2, 3)
+print(l1)
+l1.delete(2)
+print(l1)
