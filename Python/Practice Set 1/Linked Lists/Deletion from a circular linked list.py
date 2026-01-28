@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/deletion-circular-linked-list/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -28,6 +31,7 @@ class CircularLinkedList:
             next_head = self.head.next
             node = self.head
             del node
+            self.head = next_head
             self.tail.next = next_head
         self.length -= 1
 
@@ -42,6 +46,7 @@ class CircularLinkedList:
                 prev = prev.next
             node = self.tail
             prev.next = self.head
+            self.tail = prev
             del node
         self.length -= 1
 
@@ -87,3 +92,10 @@ l1.build(1, 2, 2, 3)
 print(l1)
 l1.delete(2)
 print(l1)
+
+# Example 2
+l2 = CircularLinkedList()
+l2.build(1, 2, 3, 4)
+print(l2)
+l2.delete(0)
+print(l2)
