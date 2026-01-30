@@ -56,5 +56,26 @@ class Solution:
                 result += expr[i]
         return result
 
+    @staticmethod
+    def evaluate(expr):
+        operators = ["+", "-", "*", "/"]
+        postfix = Solution.convert_to_postfix(expr)
+        stack = Stack()
+        n = len(postfix)
+        for i in range(n):
+            if postfix[i] in operators:
+                a, b = int(stack.pop()), int(stack.pop())
+                if postfix[i] == "+":
+                    stack.push(str(b + a))
+                elif postfix[i] == "-":
+                    stack.push(str(b - a))
+                elif postfix[i] == "*":
+                    stack.push(str(b * a))
+                else:
+                    stack.push(str(b / a))
+            else:
+                stack.push(postfix[i])
+        return stack.top()
 
-print(Solution.convert_to_postfix("(2+4)*(4+6)"))
+
+print(Solution.evaluate("((2+4)*(4+6))"))
