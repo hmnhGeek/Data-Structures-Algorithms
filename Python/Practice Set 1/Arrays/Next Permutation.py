@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/next-permutation/description/
+# Solution - https://www.youtube.com/watch?v=JDOXKqF60RQ&t=976s
+
+
 class Utility:
     @staticmethod
     def sort(arr, i):
@@ -25,9 +29,13 @@ class Utility:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
 class Solution:
     @staticmethod
     def get_next_permutation(arr):
+        """
+            Overall time complexity is O(n) and space complexity is O(1).
+        """
         n = len(arr)
         breakpoint_index = Solution._get_breakpoint_index(arr, n)
         if breakpoint_index < 0:
