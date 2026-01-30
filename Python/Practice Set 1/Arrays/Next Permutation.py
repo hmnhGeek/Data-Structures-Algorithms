@@ -51,3 +51,17 @@ class Solution:
             if arr[i] > element:
                 return i
         return -1
+
+
+def test(*args):
+    l = [i for i in args]
+    result = Solution.get_next_permutation(l)
+    print(result)
+
+
+test(1, 2, 3)
+test(1, 1, 5)
+test(3, 2, 1)
+test(2, 4, 1, 7, 5, 0)
+test(3, 4, 2, 5, 1)
+test(2, 3, 1, 5, 4)
