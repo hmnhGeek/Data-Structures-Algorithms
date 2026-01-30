@@ -30,3 +30,31 @@ class Stack:
         del node
         return item
 
+    def top(self):
+        if self.is_empty():
+            return
+        return self.head.data
+
+
+class Solution:
+    @staticmethod
+    def convert_to_postfix(expr):
+        operators = ["+", "-", "*", "/"]
+        result = ""
+        if expr[0] != "(":
+            expr = "(" + expr + ")"
+        n = len(expr)
+        stack = Stack()
+        for i in range(n):
+            if expr[i] == "(" or expr[i] in operators:
+                stack.push(expr[i])
+            elif expr[i] == ")":
+                while not stack.top() == "(":
+                    result += stack.pop()
+                stack.pop()
+            else:
+                result += expr[i]
+        return result
+
+
+print(Solution.convert_to_postfix("(2+4)*(4+6)"))
