@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/arithmetic-expression-evalution/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -58,6 +61,9 @@ class Solution:
 
     @staticmethod
     def evaluate(expr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         operators = ["+", "-", "*", "/"]
         postfix = Solution.convert_to_postfix(expr)
         stack = Stack()
@@ -72,10 +78,12 @@ class Solution:
                 elif postfix[i] == "*":
                     stack.push(str(b * a))
                 else:
-                    stack.push(str(b / a))
+                    stack.push(str(b // a))
             else:
                 stack.push(postfix[i])
         return stack.top()
 
 
 print(Solution.evaluate("((2+4)*(4+6))"))
+print(Solution.evaluate("(6-4)"))
+print(Solution.evaluate("((2*7)-(6/2))"))
