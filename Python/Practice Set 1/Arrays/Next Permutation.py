@@ -1,3 +1,30 @@
+class Utility:
+    @staticmethod
+    def sort(arr, i):
+        Utility._sort(arr, i, len(arr) - 1)
+
+    @staticmethod
+    def _sort(arr, low, high):
+        if low >= high:
+            return
+        partition_index = Utility._get_partition_index(arr, low, high)
+        Utility._sort(arr, low, partition_index - 1)
+        Utility._sort(arr, partition_index + 1, high)
+
+    @staticmethod
+    def _get_partition_index(arr, low, high):
+        pivot = arr[low]
+        i, j = low, high
+        while i < j:
+            while arr[i] <= pivot and i <= high - 1:
+                i += 1
+            while arr[j] > pivot and j >= low + 1:
+                j -= 1
+            if i < j:
+                arr[i], arr[j] = arr[j], arr[i]
+        arr[low], arr[j] = arr[j], arr[low]
+        return j
+
 class Solution:
     @staticmethod
     def get_next_permutation(arr):
@@ -7,7 +34,7 @@ class Solution:
             return arr[-1:-n-1:-1]
         just_greater_element_index = Solution._get_just_greater(arr, breakpoint_index, n)
         arr[breakpoint_index], arr[just_greater_element_index] = arr[just_greater_element_index], arr[breakpoint_index]
-        Utility._sort(arr, breakpoint_index + 1)
+        Utility.sort(arr, breakpoint_index + 1)
         return arr
 
     @staticmethod
