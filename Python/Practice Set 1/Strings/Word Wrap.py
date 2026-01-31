@@ -55,7 +55,7 @@ def memoized():
 
 def tabulation():
     """
-        Time complexity is O(nk) and space complexity is O(nk).
+        Time complexity is O(nk) and space complexity is O(k).
     """
     def word_wrap(arr, k):
         dp = {i: {j: 1e6 for j in range(k + 1)} for i in range(len(arr) + 1)}
@@ -79,9 +79,36 @@ def tabulation():
     print(word_wrap([3, 2, 2], 4))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nk) and space complexity is O(nk).
+    """
+    def word_wrap(arr, k):
+        nxt = {j: 0 for j in range(k + 1)}
+        for i in range(len(arr) - 1, 0, -1):
+            curr = {j: 1e6 for j in range(k + 1)}
+            for j in range(k + 1):
+                # staying on the same line
+                stays_on_same_line = 1e6
+                new_consumed_spaces = j + 1 + arr[i]
+                if new_consumed_spaces <= k:
+                    stays_on_same_line = nxt[new_consumed_spaces]
+
+                # moving to the next line
+                moving_to_next_line = (k - j) ** 2 + nxt[arr[i]]
+                curr[j] = min(stays_on_same_line, moving_to_next_line)
+            nxt = curr
+        return nxt[arr[0]]
+
+    print(word_wrap([3, 2, 2, 5], 6))
+    print(word_wrap([3, 2, 2], 4))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
