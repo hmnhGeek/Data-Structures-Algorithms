@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/convert-bst-min-heap/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -61,6 +64,9 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def convert_to_min_heap(bst: BinarySearchTree):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         preorder = []
         Solution._get_preorder(bst.root, preorder)
         inorder = []
@@ -95,3 +101,5 @@ class Solution:
 # Example 1
 Solution.test(4, 2, 6, 1, 3, 5, 7)
 
+# Example 2
+Solution.test(6, 4, 8, 1, 5, 7, 10)
