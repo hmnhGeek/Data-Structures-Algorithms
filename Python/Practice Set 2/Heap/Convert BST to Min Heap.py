@@ -46,3 +46,14 @@ class BinarySearchTree:
         start.left = node
         node.parent = start
         self.recalc_aug(start)
+
+    def _show(self, start):
+        if start:
+            self._show(start.left)
+            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, height = {start.height}, d = {start.d}")
+            self._show(start.right)
+
+    def show(self):
+        self._show(self.root)
+        print()
+
