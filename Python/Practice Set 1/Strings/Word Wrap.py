@@ -53,7 +53,35 @@ def memoized():
     print(word_wrap([3, 2, 2], 4))
 
 
+def tabulation():
+    """
+        Time complexity is O(nk) and space complexity is O(nk).
+    """
+    def word_wrap(arr, k):
+        dp = {i: {j: 1e6 for j in range(k + 1)} for i in range(len(arr) + 1)}
+        for j in range(k + 1):
+            dp[len(arr)][j] = 0
+
+        for i in range(len(arr) - 1, -1, -1):
+            for j in range(k + 1):
+                # staying on the same line
+                stays_on_same_line = 1e6
+                new_consumed_spaces = j + 1 + arr[i]
+                if new_consumed_spaces <= k:
+                    stays_on_same_line = dp[i + 1][new_consumed_spaces]
+
+                # moving to the next line
+                moving_to_next_line = (k - j) ** 2 + dp[i + 1][arr[i]]
+                dp[i][j] = min(stays_on_same_line, moving_to_next_line)
+        return dp[1][arr[0]]
+
+    print(word_wrap([3, 2, 2, 5], 6))
+    print(word_wrap([3, 2, 2], 4))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
 print()
