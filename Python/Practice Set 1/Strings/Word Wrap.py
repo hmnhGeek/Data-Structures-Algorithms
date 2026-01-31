@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/word-wrap-problem-dp-19/
+# Solution - https://www.youtube.com/watch?v=1oKMVPryX18&t=655s
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
