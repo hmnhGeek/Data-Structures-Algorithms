@@ -89,9 +89,42 @@ def tabulation():
     print(coin_change_2([2, 5, 3, 6], 10))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nk) and space complexity is O(k).
+    """
+    def coin_change_2(arr, target):
+        n = len(arr)
+        prev = {j: 0 for j in range(target + 1)}
+        prev[0] = 1
+        for j in range(target + 1):
+            if j % arr[0] == 0:
+                prev[j] = 1
+        for i in range(1, n):
+            curr = {j: 0 for j in range(target + 1)}
+            curr[0] = 1
+            for j in range(target + 1):
+                left = 0
+                if arr[i] <= j:
+                    left = curr[j - arr[i]]
+                right = prev[j]
+                curr[j] = left + right
+            prev = curr
+        return prev[target]
+
+    print(coin_change_2([1, 2, 3], 4))
+    print(coin_change_2([5, 3, 2], 1))
+    print(coin_change_2([1, 2, 5], 5))
+    print(coin_change_2([2], 3))
+    print(coin_change_2([10], 10))
+    print(coin_change_2([2, 5, 3, 6], 10))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
