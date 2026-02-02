@@ -31,3 +31,33 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def word_ladder(word_list, start_word, end_word):
+        word_list_set = set(word_list)
+        queue = Queue()
+        queue.push((start_word, 1))
+        if start_word in word_list_set:
+            word_list_set.remove(start_word)
+        while not queue.is_empty():
+            word, level = queue.pop()
+            if word == end_word:
+                return level
+            new_word = [i for i in word]
+            for i in range(len(new_word)):
+                for character in "abcdefghijklmnopqrstuvwxyz":
+                    new_word[i] = character
+                    if "".join(new_word) in word_list_set:
+                        queue.push(("".join(new_word), level + 1))
+                        if "".join(new_word) in word_list_set:
+                            word_list_set.remove("".join(new_word))
+                new_word = [i for i in word]
+        return -1
+
+
+print(Solution.word_ladder(["des","der","dfr","dgt","dfs"], "der", "dfs"))
+print(Solution.word_ladder(["geek", "gefk"], "gedk", "geek"))
+print(Solution.word_ladder(["poon", "plee", "same", "poie","plea","plie","poin"], "toon", "plea"))
+print(Solution.word_ladder(["hot","dot","dog","lot","log","cog"], "hit", "cog"))
+print(Solution.word_ladder(["hot","dot","dog","lot","log"], "hit", "cog"))
