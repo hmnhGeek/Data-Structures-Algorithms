@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1
+# Solution - https://www.youtube.com/watch?v=Z0hwjftStI4&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=19
+
+
 class Solution:
     @staticmethod
     def allocate(arr, k):
+        """
+            Time complexity is O(n * log(sum - max)) and space complexity is O(1).
+        """
         if k <= 0 or len(arr) < k:
             return
         low, high = max(arr), sum(arr)
