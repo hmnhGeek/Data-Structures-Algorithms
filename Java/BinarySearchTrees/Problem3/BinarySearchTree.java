@@ -126,7 +126,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     }
 
     private void delete(Node<T> node) {
-        if (node != null) {
+        if (node == null) {
             return;
         }
         if (node.left == null && node.right == null) {
@@ -161,7 +161,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public void delete(T x) {
         Node<T> node = getNode(root, x);
-        if (node != null) delete(node);
+        delete(node);
     }
 
     private Node<T> getNode(Node<T> start, T x) {
@@ -171,5 +171,25 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (x == start.data) return start;
         if (x.compareTo(start.data) > 0) return getNode(start.right, x);
         return getNode(start.left, x);
+    }
+
+    private void show(Node<T> start) {
+        if (start != null) {
+            show(start.left);
+            StringBuilder sb = new StringBuilder(String.format("Data = %s", start.data));
+            if (start == root) {
+                sb.append(" (root), ");
+            } else {
+                sb.append(", ");
+            }
+            sb.append(String.format("size = %d, height = %d, diameter = %d", start.size, start.height, start.diameter));
+            System.out.println(sb);
+            show(start.right);
+        }
+    }
+
+    public void show() {
+        show(root);
+        System.out.println();
     }
 }
