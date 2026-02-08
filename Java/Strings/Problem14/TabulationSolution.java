@@ -38,6 +38,6 @@ public class TabulationSolution {
                 }
             }
         }
-        return dp.get(n - 1).get(m - 1);
+        return dp.get(n).get(m);
     }
 }

@@ -28,9 +28,19 @@ public class Solution {
         System.out.println();
     }
 
+    private static void spaceOptimized() {
+        System.out.println(SpaceOptimizedSolution.getMinOps("abc", "dc"));
+        System.out.println(SpaceOptimizedSolution.getMinOps("whgtdwhgtdg", "aswcfg"));
+        System.out.println(SpaceOptimizedSolution.getMinOps("geek", "gesek"));
+        System.out.println(SpaceOptimizedSolution.getMinOps("cat", "cut"));
+        System.out.println(SpaceOptimizedSolution.getMinOps("sunday", "saturday"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
         memoized();
         tabulation();
+        spaceOptimized();
     }
 }
