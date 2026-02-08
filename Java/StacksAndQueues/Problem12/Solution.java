@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/evaluation-of-postfix-expression1735/1
+
+
 package StacksAndQueues.Problem12;
 
 import java.util.Arrays;
@@ -15,6 +18,9 @@ public class Solution {
     }
 
     public static String evaluate(List<String> postfix) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Stack<String> stack = new Stack<>();
         Set<String> operators = new HashSet<>(Arrays.asList("+", "-", "/", "^", "*"));
         for (String string : postfix) {
