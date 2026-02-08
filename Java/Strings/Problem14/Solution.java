@@ -19,8 +19,18 @@ public class Solution {
         System.out.println();
     }
 
+    private static void tabulation() {
+        System.out.println(TabulationSolution.getMinOps("abc", "dc"));
+        System.out.println(TabulationSolution.getMinOps("whgtdwhgtdg", "aswcfg"));
+        System.out.println(TabulationSolution.getMinOps("geek", "gesek"));
+        System.out.println(TabulationSolution.getMinOps("cat", "cut"));
+        System.out.println(TabulationSolution.getMinOps("sunday", "saturday"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
         memoized();
+        tabulation();
     }
 }
