@@ -1,4 +1,4 @@
-package PracticeSet1.Heap.Problem15;
+package Heap.Problem15;
 
 
 class Node<T> {

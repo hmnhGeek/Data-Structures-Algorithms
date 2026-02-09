@@ -1,7 +1,7 @@
 // Problem link - https://www.geeksforgeeks.org/dsa/convert-bst-min-heap/
 
 
-package PracticeSet1.Heap.Problem15;
+package Heap.Problem15;
 
 import java.util.ArrayList;
 import java.util.List;
