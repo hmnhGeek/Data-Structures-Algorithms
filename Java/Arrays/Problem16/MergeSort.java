@@ -15,6 +15,9 @@ class InversionCounter {
 
 public class MergeSort {
     public static <T extends Comparable<T>> Integer getInversionCount(List<T> arr) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         int n = arr.size();
         InversionCounter inversionCounter = new InversionCounter(0);
         sort(arr, 0, n - 1, inversionCounter);
