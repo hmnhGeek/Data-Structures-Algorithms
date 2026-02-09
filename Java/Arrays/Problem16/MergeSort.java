@@ -3,18 +3,30 @@ package Arrays.Problem16;
 import java.util.ArrayList;
 import java.util.List;
 
+
+class InversionCounter {
+    public Integer count;
+
+    public InversionCounter(Integer count) {
+        this.count = count;
+    }
+}
+
+
 public class MergeSort {
-    public static <T extends Comparable<T>> void sort(List<T> arr) {
+    public static <T extends Comparable<T>> Integer getInversionCount(List<T> arr) {
         int n = arr.size();
-        sort(arr, 0, n - 1);
+        InversionCounter inversionCounter = new InversionCounter(0);
+        sort(arr, 0, n - 1, inversionCounter);
+        return inversionCounter.count;
     }
 
-    private static <T extends Comparable<T>> void sort(List<T> arr, int low, int high) {
+    private static <T extends Comparable<T>> void sort(List<T> arr, int low, int high, InversionCounter inversionCounter) {
         if (low >= high) return;
         int mid = (low + (high - low)/2);
-        sort(arr, low, mid);
-        sort(arr, mid + 1, high);
-        List<T> merged = merge(arr, low, high);
+        sort(arr, low, mid, inversionCounter);
+        sort(arr, mid + 1, high, inversionCounter);
+        List<T> merged = merge(arr, low, high, inversionCounter);
         int counter = 0;
         for (int i = low; i <= high; i += 1) {
             arr.set(i, merged.get(counter));
@@ -22,7 +34,7 @@ public class MergeSort {
         }
     }
 
-    private static <T extends Comparable<T>> List<T> merge(List<T> arr, int low, int high) {
+    private static <T extends Comparable<T>> List<T> merge(List<T> arr, int low, int high, InversionCounter inversionCounter) {
         int mid = (low + (high - low)/2);
         List<T> left = arr.subList(low, mid + 1), right = arr.subList(mid + 1, high + 1);
         int i = 0, j = 0;
@@ -34,6 +46,7 @@ public class MergeSort {
                 i += 1;
             } else {
                 merged.add(right.get(j));
+                inversionCounter.count += (left.size() - i);
                 j += 1;
             }
         }
