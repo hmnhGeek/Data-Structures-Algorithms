@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+// Solution - https://www.youtube.com/watch?v=xtqN4qlgr8s&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=7
+
+
 package PracticeSet1.SlidingWindows.L7;
 
 import java.util.HashMap;
@@ -13,6 +17,9 @@ public class Solution {
     }
 
     public static Integer allThreeCharacters(String string) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         Map<Character, Integer> d = new HashMap<>();
         d.put('a', 0);
         d.put('b', 0);
