@@ -1,8 +1,10 @@
+// Problem link - https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+// Solution - https://www.youtube.com/watch?v=V6H1qAeB-l4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=32
+
+
 package Graphs.G32;
 
-import Graphs.G32.MinHeap.Heap;
 import Graphs.G32.MinHeap.MinHeap;
-
 import java.util.*;
 
 
@@ -93,6 +95,9 @@ public class Solution {
     }
 
     public static <T extends Comparable<T>> Map<T, Integer> getMinDistances(Map<T, List<Edge<T>>> graph, T sourceNode) {
+        /*
+            Time complexity is O(E * log(V)) and space complexity is O(V).
+         */
         if (!graph.containsKey(sourceNode)) return null;
         MinHeap<HeapElement<T>> minHeap = new MinHeap<>();
         minHeap.insert(new HeapElement<>(0, sourceNode));
