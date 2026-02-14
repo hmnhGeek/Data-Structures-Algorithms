@@ -23,8 +23,20 @@ public class Solution {
         System.out.println();
     }
 
+    private static void tabulation() {
+        System.out.println(TabulationSolution.getLcs("adebc", "dcadb"));
+        System.out.println(TabulationSolution.getLcs("ab", "defg"));
+        System.out.println(TabulationSolution.getLcs("abcde", "ace"));
+        System.out.println(TabulationSolution.getLcs("abc", "abc"));
+        System.out.println(TabulationSolution.getLcs("abc", "acd"));
+        System.out.println(TabulationSolution.getLcs("AGGTAB", "GXTXAYB"));
+        System.out.println(TabulationSolution.getLcs("ABC", "CBA"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
         memoized();
+        tabulation();
     }
 }
