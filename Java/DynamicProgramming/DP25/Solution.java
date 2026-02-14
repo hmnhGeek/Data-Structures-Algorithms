@@ -12,7 +12,19 @@ public class Solution {
         System.out.println();
     }
 
+    private static void memoized() {
+        System.out.println(MemoizedSolution.getLcs("adebc", "dcadb"));
+        System.out.println(MemoizedSolution.getLcs("ab", "defg"));
+        System.out.println(MemoizedSolution.getLcs("abcde", "ace"));
+        System.out.println(MemoizedSolution.getLcs("abc", "abc"));
+        System.out.println(MemoizedSolution.getLcs("abc", "acd"));
+        System.out.println(MemoizedSolution.getLcs("AGGTAB", "GXTXAYB"));
+        System.out.println(MemoizedSolution.getLcs("ABC", "CBA"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
+        memoized();
     }
 }
