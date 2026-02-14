@@ -34,6 +34,17 @@ public class Solution {
         System.out.println();
     }
 
+    private static void spaceOptimized() {
+        System.out.println(SpaceOptimizedSolution.getLcs("adebc", "dcadb"));
+        System.out.println(SpaceOptimizedSolution.getLcs("ab", "defg"));
+        System.out.println(SpaceOptimizedSolution.getLcs("abcde", "ace"));
+        System.out.println(SpaceOptimizedSolution.getLcs("abc", "abc"));
+        System.out.println(SpaceOptimizedSolution.getLcs("abc", "acd"));
+        System.out.println(SpaceOptimizedSolution.getLcs("AGGTAB", "GXTXAYB"));
+        System.out.println(SpaceOptimizedSolution.getLcs("ABC", "CBA"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
         memoized();
