@@ -13,8 +13,13 @@ public class Solution {
     }
 
     private static Double placeGasStations(List<Integer> coordinates, Integer numStationsToBePlaced) {
+        /*
+            Time complexity is O({n + k} * log(n)) and space complexity is O(n).
+         */
         if (numStationsToBePlaced <= 0) return null;
         MaxHeap<HeapElement> maxHeap = new MaxHeap<>();
+
+        // This will take O(n * log(n)) time and O(n) space.
         populateMaxHeap(maxHeap, coordinates, coordinates.size());
         while (numStationsToBePlaced != 0) {
             HeapElement heapElement = maxHeap.pop();
