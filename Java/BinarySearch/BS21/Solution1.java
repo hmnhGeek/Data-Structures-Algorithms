@@ -15,6 +15,9 @@ public class Solution1 {
     }
 
     public static Double getMedian(List<Integer> arr1, List<Integer> arr2) {
+        /*
+            Time complexity is O(m + n) and space complexity is O(1).
+         */
         int n1 = arr1.size(), n2 = arr2.size();
         if (n1 == 0) return getMedian(arr2);
         if (n2 == 0) return getMedian(arr1);
