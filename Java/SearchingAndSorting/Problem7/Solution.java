@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
+// Solution - https://www.youtube.com/watch?v=2D0D8HE6uak&t=1529s
+
+
 package SearchingAndSorting.Problem7;
 
 import java.util.Arrays;
@@ -13,6 +17,9 @@ public class Solution {
     }
 
     public static List<Integer> getMissingAndRepeating(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         int n = arr.size();
         List<Integer> sums = getSumOfArray(arr, n);
         Integer sigma = sums.getFirst();
