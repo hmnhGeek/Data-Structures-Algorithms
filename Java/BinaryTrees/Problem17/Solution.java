@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/construct-binary-tree-string-bracket-representation/
+
+
 package BinaryTrees.Problem17;
 
 public class Solution {
@@ -7,6 +10,11 @@ public class Solution {
         // Example 1
         Node<Integer> tree1 = getBinaryTree("1(2)(3)" );
         printInorder(tree1);
+        System.out.println();
+
+        // Example 2
+        Node<Integer> tree2 = getBinaryTree("4(2(3)(1))(6(5))");
+        printInorder(tree2);
         System.out.println();
     }
 
@@ -19,6 +27,9 @@ public class Solution {
     }
 
     public static Node<Integer> getBinaryTree(String s) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(n).
+         */
         i = 0;
         Node<Integer> root = new Node<>(null);
         solve(root, s);
