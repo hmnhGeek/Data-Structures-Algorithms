@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+# Solution - https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+
+
 class InversionCounter:
     def __init__(self, count):
         self.count = count
@@ -6,6 +10,9 @@ class InversionCounter:
 class Solution:
     @staticmethod
     def count_inversions(arr):
+        """
+            Time complexity is O(nlog(n)) and space complexity is O(n).
+        """
         inversion_counter = InversionCounter(0)
         Solution._sort(arr, 0, len(arr) - 1, inversion_counter)
         return inversion_counter.count
