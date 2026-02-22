@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/find-a-specific-pair-in-matrix/
+# Solution - https://www.youtube.com/watch?v=aUhR_T5J9is&t=1771s
+
+
 class Solution:
     @staticmethod
     def find_specific_pair(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
         n = len(mtx)
         max_mtx = [[None for _ in range(n)] for _ in range(n)]
         max_mtx[n - 1][n - 1] = mtx[n - 1][n - 1]
