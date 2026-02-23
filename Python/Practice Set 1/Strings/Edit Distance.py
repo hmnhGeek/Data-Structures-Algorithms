@@ -99,9 +99,46 @@ def tabulation():
     print(edit_distance("whgtdwhgtdg", "aswcfg"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nm) and space complexity is O(m).
+    """
+
+    def edit_distance(s, t):
+        n, m = len(s), len(t)
+        prev = {j: 0 for j in range(m + 1)}
+        for j in range(m + 1):
+            prev[j] = j
+        prev[0] = 0
+        for i in range(1, n + 1):
+            curr = {j: 0 for j in range(m + 1)}
+            curr[0] = i
+            for j in range(1, m + 1):
+                if s[i - 1] == t[j - 1]:
+                    curr[j] = prev[j - 1]
+                else:
+                    curr[j] = min(
+                        1 + prev[j],
+                        1 + curr[j - 1],
+                        1 + prev[j - 1]
+                    )
+            prev = curr
+        return prev[m]
+
+    print(edit_distance("geek", "gesek"))
+    print(edit_distance("gfg", "gfg"))
+    print(edit_distance("abc", "def"))
+    print(edit_distance("horse", "ros"))
+    print(edit_distance("intention", "execution"))
+    print(edit_distance("abc", "dc"))
+    print(edit_distance("whgtdwhgtdg", "aswcfg"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
