@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
+# Solution - https://www.youtube.com/watch?v=2D0D8HE6uak
+
+
 class Solution:
     @staticmethod
     def find_repeating_and_missing(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         n = len(arr)
         sum_of_n_natural_numbers = n*(n + 1)/2
         sum_sq_of_n_natural_numbers = n * (n + 1) * (2*n + 1)/6
