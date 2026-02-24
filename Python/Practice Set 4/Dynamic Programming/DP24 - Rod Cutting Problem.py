@@ -2,7 +2,6 @@
 # Solution - https://www.youtube.com/watch?v=mO8XpGoJwuo&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=25
 
 
-
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
