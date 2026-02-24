@@ -85,9 +85,40 @@ def tabulation():
     print(lcs("ABC", "CBA"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nm) and space complexity is O(m).
+    """
+    def lcs(s1, s2):
+        n, m = len(s1), len(s2)
+        prev = {j: 0 for j in range(m + 1)}
+        for i in range(1, n + 1):
+            curr = {j: 0 for j in range(m + 1)}
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    curr[j] = 1 + prev[j - 1]
+                else:
+                    curr[j] = max(
+                        prev[j],
+                        curr[j - 1]
+                    )
+            prev = curr
+        return prev[m]
+
+    print(lcs("adebc", "dcadb"))
+    print(lcs("ab", "defg"))
+    print(lcs("abcde", "ace"))
+    print(lcs("abc", "abc"))
+    print(lcs("abc", "acd"))
+    print(lcs("AGGTAB", "GXTXAYB"))
+    print(lcs("ABC", "CBA"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
