@@ -26,5 +26,39 @@ def recursive():
     print(lcs("ABC", "CBA"))
 
 
+def memoized():
+    """
+        Time complexity is O(nm) and space complexity is O(n + m + nm).
+    """
+    def lcs(s1, s2):
+        n, m = len(s1), len(s2)
+        dp = {i: {j: None for j in range(m + 1)} for i in range(n + 1)}
+        return solve(s1, n, s2, m, dp)
+
+    def solve(s1, i, s2, j, dp):
+        if i == 0 or j == 0:
+            return 0
+        if dp[i][j] is not None:
+            return dp[i][j]
+        if s1[i - 1] == s2[j - 1]:
+            dp[i][j] = 1 + solve(s1, i - 1, s2, j - 1, dp)
+        else:
+            dp[i][j] = max(
+                solve(s1, i - 1, s2, j, dp),
+                solve(s1, i, s2, j - 1, dp)
+            )
+        return dp[i][j]
+
+    print(lcs("adebc", "dcadb"))
+    print(lcs("ab", "defg"))
+    print(lcs("abcde", "ace"))
+    print(lcs("abc", "abc"))
+    print(lcs("abc", "acd"))
+    print(lcs("AGGTAB", "GXTXAYB"))
+    print(lcs("ABC", "CBA"))
+
+
 recursive()
+print()
+memoized()
 print()
