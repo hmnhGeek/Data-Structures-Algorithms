@@ -69,3 +69,70 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class HeapNode:
+    def __init__(self, distance, node):
+        self.distance = distance
+        self.node = node
+
+    def __lt__(self, other):
+        return self.distance < other.distance
+
+    def __gt__(self, other):
+        return self.distance > other.distance
+
+
+class Solution:
+    @staticmethod
+    def get_shortest_path(graph, source_node):
+        if source_node not in graph:
+            return
+        distances = {node: 1e6 for node in graph}
+        distances[source_node] = 0
+        pq = MinHeap()
+        pq.insert(HeapNode(distances[source_node], source_node))
+        while not pq.is_empty():
+            heap_node = pq.pop()
+            distance, node = heap_node.distance, heap_node.node
+            for adj_node, weight in graph[node]:
+                if distances[adj_node] > distance + weight:
+                    distances[adj_node] = distance + weight
+                    pq.insert(HeapNode(distances[adj_node], adj_node))
+        return distances
+
+
+print(
+    Solution.get_shortest_path(
+        {
+            0: [[1, 4], [2, 4]],
+            1: [[0, 4], [2, 2]],
+            2: [[0, 4], [1, 2], [3, 3], [5, 6], [4, 1]],
+            3: [[2, 3], [5, 2]],
+            4: [[2, 1], [5, 3]],
+            5: [[3, 2], [2, 6], [4, 3]]
+        },
+        0
+    )
+)
+
+
+print(
+    Solution.get_shortest_path(
+        {
+            0: [[1, 9]],
+            1: [[0, 9]]
+        },
+        0
+    )
+)
+
+print(
+    Solution.get_shortest_path(
+        {
+            0: [[1, 1], [2, 6]],
+            1: [[0, 1], [2, 3]],
+            2: [[0, 6], [1, 3]]
+        },
+        2
+    )
+)
