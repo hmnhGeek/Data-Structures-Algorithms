@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+# Solution - https://www.youtube.com/watch?v=V6H1qAeB-l4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=32
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -85,6 +89,9 @@ class HeapNode:
 class Solution:
     @staticmethod
     def get_shortest_path(graph, source_node):
+        """
+            Time complexity is O(E * log(V)) and space complexity is O(V).
+        """
         if source_node not in graph:
             return
         distances = {node: 1e6 for node in graph}
