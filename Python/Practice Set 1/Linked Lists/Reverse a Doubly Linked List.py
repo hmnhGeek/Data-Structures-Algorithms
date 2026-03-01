@@ -12,6 +12,10 @@ class DoublyLinkedList:
     def is_empty(self):
         return self.length == 0
 
+    def build(self, *args):
+        for i in args:
+            self.push(i)
+
     def push(self, x):
         node = Node(x)
         if self.is_empty():
@@ -33,3 +37,45 @@ class DoublyLinkedList:
         result += f"{self.tail.data}]"
         return result
 
+    def reverse(self):
+        if self.is_empty() or self.length == 1:
+            return
+        prev, curr = None, self.head
+        while curr is not None:
+            next_curr = curr.next
+            curr.next = prev
+            curr.prev = next_curr
+            prev = curr
+            curr = next_curr
+        self.head, self.tail = self.tail, self.head
+
+
+dll = DoublyLinkedList()
+dll.build(3, 4, 5)
+print(dll)
+dll.reverse()
+print(dll)
+
+print()
+
+dll = DoublyLinkedList()
+dll.build(75, 122, 59, 196)
+print(dll)
+dll.reverse()
+print(dll)
+
+print()
+
+dll = DoublyLinkedList()
+dll.build(1)
+print(dll)
+dll.reverse()
+print(dll)
+
+print()
+
+dll = DoublyLinkedList()
+dll.build()
+print(dll)
+dll.reverse()
+print(dll)
