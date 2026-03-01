@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-element-in-bst/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -139,3 +142,23 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+    def get_min_max(self):
+        if self.root is None:
+            return None, None
+        return self.get_leftmost_leaf(self.root).data, self.get_rightmost_leaf(self.root).data
+
+
+class Solution:
+    @staticmethod
+    def get_min_max(*args):
+        """
+            Time complexity is O(log(n)) and space complexity is O(n).
+        """
+        bst = BinarySearchTree()
+        for i in args:
+            bst.insert(i)
+        return bst.get_min_max()
+
+
+print(Solution.get_min_max(5, 4, 6, 3, 7, 1))
+print(Solution.get_min_max(10, 5, 20, 2))
