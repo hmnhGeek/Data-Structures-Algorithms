@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/construct-binary-tree-string-bracket-representation/
+# Solution - https://www.youtube.com/watch?v=hZnDglRWunk
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -22,6 +26,9 @@ class Utility:
 class Solution:
     @staticmethod
     def get_binary_tree(string: str) -> Node:
+        """
+            Time complexity is O(n) and space complexity is O(h + n).
+        """
         tracker = IndexTracker()
         return Solution._solve(tracker, string, len(string))
 
