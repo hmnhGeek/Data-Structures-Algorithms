@@ -45,3 +45,16 @@ class Solution:
             node.right = Solution._solve(tracker, string, n)
         tracker.index += 1
         return node
+
+    @staticmethod
+    def show(root: Node):
+        if root:
+            Solution.show(root.left)
+            print(root.data, end=" ")
+            Solution.show(root.right)
+
+
+print(Solution.show(Solution.get_binary_tree("1(2)(3)")))
+print(Solution.show(Solution.get_binary_tree("4(2(3)(1))(6(5))")))
+print(Solution.show(Solution.get_binary_tree("4(2(3(1)))(5)")))
+print(Solution.show(Solution.get_binary_tree("1(2(4)(5))(3(6)(7))")))
