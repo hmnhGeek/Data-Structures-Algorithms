@@ -118,7 +118,7 @@ class BinarySearchTree:
 
     def delete(self, x):
         node = self._get_node(self.root, x)
-        self.delete(node)
+        self._delete(node)
 
     def _get_node(self, root, x):
         if root is None or x is None:
@@ -128,3 +128,14 @@ class BinarySearchTree:
         if x > root.data:
             return self._get_node(root.right, x)
         return self._get_node(root.left, x)
+
+    def _show(self, start):
+        if start:
+            self._show(start.left)
+            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, ht = {start.height}, d = {start.d}")
+            self._show(start.right)
+
+    def show(self):
+        self._show(self.root)
+        print()
+
