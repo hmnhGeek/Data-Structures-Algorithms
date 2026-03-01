@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/evaluation-of-postfix-expression1735/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -50,6 +53,9 @@ class Utility:
 class Solution:
     @staticmethod
     def evaluate(expr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         stack = Stack()
         for i in range(len(expr)):
             character = expr[i]
