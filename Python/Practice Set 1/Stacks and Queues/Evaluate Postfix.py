@@ -36,3 +36,42 @@ class Stack:
             return
         return self.head.data
 
+
+class Utility:
+    @staticmethod
+    def is_digit(x):
+        try:
+            float(x)
+            return True
+        except:
+            return False
+
+
+class Solution:
+    @staticmethod
+    def evaluate(expr):
+        stack = Stack()
+        for i in range(len(expr)):
+            character = expr[i]
+            if Utility.is_digit(character):
+                stack.push(character)
+                continue
+            a, b = float(stack.pop()), float(stack.pop())
+            if character == "+":
+                stack.push(str(a + b))
+            elif character == "-":
+                stack.push(str(b - a))
+            elif character == "*":
+                stack.push(str(b * a))
+            elif character == "/":
+                stack.push(str(b / a))
+            else:
+                stack.push(str(b ** a))
+        return stack.top()
+
+
+print(Solution.evaluate(["2", "3", "1", "*", "+", "9", "-"]))
+print(Solution.evaluate(["2", "3", "^", "1", "+"]))
+print(Solution.evaluate(["2", "3", "1", "*", "+", "9", "-"]))
+print(Solution.evaluate(["1", "2", "3", "+", "*", "8", "-"]))
+print(Solution.evaluate(["100", "200", "+", "2", "/", "5", "*", "7", "+"]))
