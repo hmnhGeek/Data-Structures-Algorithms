@@ -91,3 +91,40 @@ class BinarySearchTree:
             if parent is None:
                 return
         return parent
+
+    def _delete(self, node):
+        if node is None:
+            return
+        if node.left is None and node.right is None:
+            parent = node.parent
+            if parent is not None:
+                if parent.left == node:
+                    parent.left = None
+                else:
+                    parent.right = None
+            else:
+                self.root = None
+                self.d = 0
+            del node
+            self.recalc_augmentation(parent)
+            return
+        if node.right is not None:
+            successor = self.get_successor(node)
+            successor.data, node.data = node.data, successor.data
+            return self._delete(successor)
+        predecessor = self.get_predecessor(node)
+        predecessor.data, node.data = node.data, predecessor.data
+        return self._delete(predecessor)
+
+    def delete(self, x):
+        node = self._get_node(self.root, x)
+        self.delete(node)
+
+    def _get_node(self, root, x):
+        if root is None or x is None:
+            return
+        if x == root.data:
+            return root
+        if x > root.data:
+            return self._get_node(root.right, x)
+        return self._get_node(root.left, x)
