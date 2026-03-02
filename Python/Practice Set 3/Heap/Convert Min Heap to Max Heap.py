@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/convert-min-heap-to-max-heap/
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -129,3 +132,28 @@ class MaxHeap:
         self.heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def convert_to_max_heap(min_heap: MinHeap) -> MaxHeap:
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+        result = MaxHeap()
+        while not min_heap.is_empty():
+            result.insert(min_heap.pop())
+        return result
+
+    @staticmethod
+    def test(arr):
+        min_heap = MinHeap()
+        for i in arr:
+            min_heap.insert(i)
+        result = Solution.convert_to_max_heap(min_heap)
+        while not result.is_empty():
+            print(result.pop(), end=" ")
+        print()
+
+
+Solution.test([3, 5, 9, 6, 8, 20, 10, 12, 18, 9])
+Solution.test([3, 4, 8, 11, 13])
