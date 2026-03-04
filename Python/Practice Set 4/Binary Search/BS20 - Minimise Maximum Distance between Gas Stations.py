@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimize-max-distance-to-gas-station/1
+# Solution - https://www.youtube.com/watch?v=kMSBvlZ-_HA&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=21
+
+
 class Utility:
     @staticmethod
     def swap(arr, i, j):
@@ -90,10 +94,17 @@ class Element:
 class Solution:
     @staticmethod
     def place_gas_stations(arr, k):
+        """
+            Time complexity is O({n + k} * log(n)) and space complexity is O(n).
+        """
         if k <= 0:
             return
         pq = MaxHeap()
+
+        # takes O(n * log(n)) time
         Solution._initialize_pq(pq, arr)
+
+        # takes O(k * log(n)) time
         while k > 0:
             element = pq.pop()
             distance, index, placed_count = element.d, element.i, element.p
