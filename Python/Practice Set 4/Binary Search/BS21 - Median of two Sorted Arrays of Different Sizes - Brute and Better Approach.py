@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/median-of-two-sorted-arrays-of-different-sizes/
+# Solution - https://www.youtube.com/watch?v=F9c7LpRZWVQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
+
+
 class Solution:
     @staticmethod
     def get_median(arr1, arr2):
+        """
+            Time complexity is O(n + m) and space complexity is O(1).
+        """
         n, m = len(arr1), len(arr2)
         elem1, elem2 = None, None
         counter = 0
