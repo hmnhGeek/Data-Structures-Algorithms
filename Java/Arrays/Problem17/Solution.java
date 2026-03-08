@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+// Solution - https://www.youtube.com/watch?v=excAOvwF_Wk
+
+
 package Arrays.Problem17;
 
 import java.util.Arrays;
@@ -16,6 +20,9 @@ public class Solution {
     }
 
     public static Integer getMaxProfit(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         int mini = arr.getFirst();
         int maxProfit = 0;
         for (int i = 0; i < arr.size(); i += 1) {
