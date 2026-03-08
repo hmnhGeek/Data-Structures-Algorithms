@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/find-pairs-given-sum-doubly-linked-list/#expected-approach-using-two-pointer-technique-on-time-and-o1-space
+
+
 package LinkedLists.Problem21;
 
 import java.util.ArrayList;
@@ -23,6 +26,9 @@ public class Solution {
     }
 
     public static List<List<Integer>> getPairs(DoublyLinkedList<Integer> dll, Integer target) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         Node<Integer> i = dll.head, j = dll.tail;
         List<List<Integer>> result = new ArrayList<>();
         while (i != j && j.next != i) {
