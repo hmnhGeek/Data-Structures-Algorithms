@@ -1,6 +1,8 @@
+// Problem link - https://www.geeksforgeeks.org/problems/predecessor-and-successor/1
+
+
 package BinarySearchTrees.Problem4;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
@@ -15,6 +17,9 @@ public class Solution {
     }
 
     public static List<Integer> getPredSucc(BinarySearchTree<Integer> bst, Integer val) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(log(n)).
+         */
         Node<Integer> node = bst.getNode(bst.root, val);
         if (node == null) {
             bst.insert(val);
