@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/longest-repeating-character-replacement/1
+// Solution - https://www.youtube.com/watch?v=_eNhaDCr6P0&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=8
+
+
 package PracticeSet1.SlidingWindows.L8;
 
 import java.util.Collections;
@@ -7,6 +11,12 @@ import java.util.Map;
 public class Solution {
     public static void main(String[] args) {
         System.out.println(getLongestRepeating("AABABBA", 2));
+        System.out.println(getLongestRepeating("ABAB", 2));
+        System.out.println(getLongestRepeating("AABABBA", 1));
+        System.out.println(getLongestRepeating("ADBD", 1));
+        System.out.println(getLongestRepeating("AAABBCCD", 2));
+        System.out.println(getLongestRepeating("ABABA", 2));
+        System.out.println(getLongestRepeating("HHHHHH", 4));
     }
 
     private static Integer getMaxFromValues(Map<Character, Integer> d) {
@@ -22,6 +32,9 @@ public class Solution {
     }
 
     public static String getLongestRepeating(String string, Integer k) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         if (k < 0) return null;
         Map<Character, Integer> freqMap = getFreqMap(string);
         Integer length = 0;
