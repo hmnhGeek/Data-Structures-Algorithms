@@ -92,7 +92,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return node;
     }
 
-    private Node<T> getSuccessor(Node<T> node) {
+    public Node<T> getSuccessor(Node<T> node) {
         if (node == null) return null;
         if (node.right != null) return getLeftmostLeaf(node.right);
         Node<T> parent = node.parent;
@@ -105,7 +105,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return parent;
     }
 
-    private Node<T> getPredecessor(Node<T> node) {
+    public Node<T> getPredecessor(Node<T> node) {
         if (node == null) return null;
         if (node.left != null) return getRightmostLeaf(node.left);
         Node<T> parent = node.parent;
@@ -181,5 +181,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
     public void show() {
         show(root);
         System.out.println();
+    }
+
+    public void build(T...args) {
+        for (T t : args) {
+            this.insert(t);
+        }
     }
 }
