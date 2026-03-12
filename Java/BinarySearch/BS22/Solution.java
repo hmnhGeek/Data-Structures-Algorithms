@@ -1,5 +1,5 @@
-// Problem link - https://leetcode.com/problems/median-of-two-sorted-arrays/description/
-// Solution - https://www.youtube.com/watch?v=F9c7LpRZWVQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
+// Problem link - https://www.naukri.com/code360/problems/k-th-element-of-2-sorted-array_1164159
+// Solution - https://www.youtube.com/watch?v=D1oDwWCq50g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=24
 
 
 package BinarySearch.BS22;
