@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/median-of-two-sorted-arrays/description/
+// Solution - https://www.youtube.com/watch?v=F9c7LpRZWVQ&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=23
+
+
 package BinarySearch.BS21;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution2 {
     public static Double getMedian(List<Integer> arr1, List<Integer> arr2) {
+        /*
+            Overall time complexity is O(log(n1)) and space complexity is O(1).
+         */
         if (arr2.size() < arr1.size()) return getMedian(arr2, arr1);
         int low = 0, high = arr1.size();
         int n1 = arr1.size(), n2 = arr2.size();
