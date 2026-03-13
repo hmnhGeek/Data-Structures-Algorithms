@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/rotate-a-matrix-by-90-degree-in-clockwise-direction-without-using-any-extra-space/
+
+
 package PracticeSet1.Matrix.Problem8;
 
 import java.util.Arrays;
@@ -23,6 +26,9 @@ public class Solution {
     }
 
     public static void rotate(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(1).
+         */
         transpose(mtx);
         reverseRows(mtx);
         System.out.println(mtx);
