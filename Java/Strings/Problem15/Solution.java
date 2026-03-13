@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/next-permutation/description/
+// Solution - https://www.youtube.com/watch?v=JDOXKqF60RQ&t=976s
+
+
 package Strings.Problem15;
 
 import java.util.ArrayList;
@@ -7,6 +11,9 @@ import java.util.List;
 
 public class Solution {
     public static List<Integer> getNextPermutation(List<Integer> list) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         List<Integer> arr = new ArrayList<>(list);
         int n = arr.size();
         arr.addFirst(Integer.MIN_VALUE);
