@@ -33,7 +33,7 @@ public class Solution {
     }
 
     private static int getSwapWithIndex(List<Integer> arr, Integer breakpointElement, Integer breakpointIndex, int n) {
-        for (int i = n - 1; i >= breakpointIndex; i -= 1) {
+        for (int i = n; i >= breakpointIndex; i -= 1) {
             if (arr.get(i) > breakpointElement) {
                 return i;
             }
@@ -51,9 +51,11 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(getNextPermutation(Arrays.asList(2, 4, 1, 7, 5, 0)));
-        System.out.println(getNextPermutation(Arrays.asList(3, 2, 1)));
-        System.out.println(getNextPermutation(Arrays.asList(3, 4, 2, 5, 1)));
-
+        System.out.println(Solution.getNextPermutation(Arrays.asList(1, 2, 3)));
+        System.out.println(Solution.getNextPermutation(Arrays.asList(1, 1, 5)));
+        System.out.println(Solution.getNextPermutation(Arrays.asList(3, 2, 1)));
+        System.out.println(Solution.getNextPermutation(Arrays.asList(2, 4, 1, 7, 5, 0)));
+        System.out.println(Solution.getNextPermutation(Arrays.asList(3, 4, 2, 5, 1)));
+        System.out.println(Solution.getNextPermutation(Arrays.asList(2, 3, 1, 5, 4)));
     }
 }
