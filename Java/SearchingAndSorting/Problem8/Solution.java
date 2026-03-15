@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/majority-element-1587115620/1
+// Solution - https://www.youtube.com/watch?v=nP_ns3uSh80
+
+
 package SearchingAndSorting.Problem8;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer getMajorityElement(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         Integer count = 0, element = null;
         int mainCount = 0;
         for (int i = 0; i < arr.size(); i += 1) {
