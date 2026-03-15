@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/binary-tree-to-dll/1
+// Solution - https://www.youtube.com/watch?v=nGNoTdav5bQ
+
+
 package BinaryTrees.Problem18;
 
 
@@ -25,21 +29,33 @@ class TraversalTracker<T> {
 
 public class Solution {
     public static <T> void convertBtToDll(TraversalTracker<T> traversalTracker) {
+        /*
+            Time complexity is O(n) and space complexity is O(h).
+         */
+
+        // Base condition
         if (traversalTracker.curr == null) return;
 
+        // store previous curr to simulate recursion
         Node<T> prevCurr = traversalTracker.curr;
+        // go to left node and recurse
         traversalTracker.curr = traversalTracker.curr.left;
         convertBtToDll(traversalTracker);
+        // restore to previous curr
         traversalTracker.curr = prevCurr;
 
+        // if prev is null, it's the first node of DLL.
         if (traversalTracker.prev == null) {
             traversalTracker.head = traversalTracker.curr;
         } else {
+            // else connect the list
             traversalTracker.curr.left = traversalTracker.prev;
             traversalTracker.prev.right = traversalTracker.curr;
         }
+        // update prev to curr
         traversalTracker.prev = traversalTracker.curr;
 
+        // same logic as for left node.
         prevCurr = traversalTracker.curr;
         traversalTracker.curr = traversalTracker.curr.right;
         convertBtToDll(traversalTracker);
