@@ -69,5 +69,48 @@ public class Solution {
             head = head.right;
         }
         System.out.println();
+
+        // Example 2
+        Node<Integer> n10 = new Node<>(10), n12 = new Node<>(12), n15 = new Node<>(15),
+                n25 = new Node<>(25), n30 = new Node<>(30), n36 = new Node<>(36);
+        n10.left = n12;
+        n10.right = n15;
+        n12.left = n25;
+        n12.right = n30;
+        n15.left = n36;
+        head = getLeftmostLeaf(n10);
+        convertBtToDll(new TraversalTracker<>(null, n10));
+        while (head != null) {
+            System.out.print(head.data + " ");
+            head = head.right;
+        }
+        System.out.println();
+
+        // Example 3
+        Node<Integer> n1 = new Node<>(1), n2 = new Node<>(2), n3 = new Node<>(3);
+        n1.left = n2;
+        n1.right = n3;
+        head = getLeftmostLeaf(n1);
+        convertBtToDll(new TraversalTracker<>(null, n1));
+        while (head != null) {
+            System.out.print(head.data + " ");
+            head = head.right;
+        }
+        System.out.println();
+
+        // Example 4
+        Node<Integer> node10 = new Node<>(10), node20 = new Node<>(20), node30 = new Node<>(30),
+                node40 = new Node<>(40), node60 = new Node<>(60);
+        node10.left = node20;
+        node10.right = node30;
+        node20.left = node40;
+        node20.right = node60;
+        head = getLeftmostLeaf(node10);
+        convertBtToDll(new TraversalTracker<>(null, node10));
+        while (head != null) {
+            System.out.print(head.data + " ");
+            head = head.right;
+        }
+        System.out.println();
     }
 }
