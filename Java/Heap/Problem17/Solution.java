@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/rearrange-characters-string-no-two-adjacent/
+
+
 package Heap.Problem17;
 
 import java.util.Arrays;
@@ -14,12 +17,21 @@ public class Solution {
     }
 
     public static String rearrangeCharacters(String string) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
+
+        // takes O(n) time and O(n) space.
         Map<Character, Integer> d = new HashMap<>();
         getFrequencies(string, d);
+
+        // takes O(n * log(n)) time and O(n) space.
         MaxHeap<HeapElement> maxHeap = new MaxHeap<>();
         for (Character c : d.keySet()) {
             maxHeap.insert(new HeapElement(c, d.get(c)));
         }
+
+        // takes O(n * log(n)) time
         HeapElement prev = null;
         StringBuilder result = new StringBuilder();
         while (!maxHeap.isEmpty()) {
