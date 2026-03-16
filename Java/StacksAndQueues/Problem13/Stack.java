@@ -45,4 +45,15 @@ public class Stack<T> {
         this.length -= 1;
         return item;
     }
+
+    public void insertAtBottom(T x) {
+        Node<T> node = new Node<>(x);
+        if (isEmpty()) {
+            this.head = this.tail = node;
+        } else {
+            this.tail.next = node;
+            this.tail = node;
+        }
+        this.length += 1;
+    }
 }
