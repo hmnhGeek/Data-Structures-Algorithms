@@ -32,6 +32,15 @@ public class Solution {
         System.out.println(TabulationSolution.getLcsLength("ABC", "CBA"));
         System.out.println();
 
+        System.out.println(SpaceOptimizedSolution.getLcsLength("adebc", "dcadb"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("ab", "defg"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("abcde", "ace"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("abc", "abc"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("abc", "acd"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("AGGTAB", "GXTXAYB"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("ABC", "CBA"));
+        System.out.println();
+
         // main solution
         System.out.println(getLcs("adebc", "dcadb"));
         System.out.println(getLcs("ab", "defg"));
