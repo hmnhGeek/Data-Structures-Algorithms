@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/longest-common-subsequence_624879?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=-zI4mrF2Pb4&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=27
+
+
 package DynamicProgramming.DP26;
 
 import java.util.HashMap;
@@ -53,6 +57,9 @@ public class Solution {
     }
 
     public static String getLcs(String s1, String s2) {
+        /*
+            Time complexity is O(n1 * n2) and space complexity is O(n1 * n2).
+         */
         int n1 = s1.length(), n2 = s2.length();
         Map<Integer, Map<Integer, Integer>> dp = new HashMap<>();
         for (int i = 0; i <= n1; i += 1) {
