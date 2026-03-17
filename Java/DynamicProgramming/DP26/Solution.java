@@ -10,5 +10,14 @@ public class Solution {
         System.out.println(RecursiveSolution.getLcsLength("AGGTAB", "GXTXAYB"));
         System.out.println(RecursiveSolution.getLcsLength("ABC", "CBA"));
         System.out.println();
+
+        System.out.println(MemoizedSolution.getLcsLength("adebc", "dcadb"));
+        System.out.println(MemoizedSolution.getLcsLength("ab", "defg"));
+        System.out.println(MemoizedSolution.getLcsLength("abcde", "ace"));
+        System.out.println(MemoizedSolution.getLcsLength("abc", "abc"));
+        System.out.println(MemoizedSolution.getLcsLength("abc", "acd"));
+        System.out.println(MemoizedSolution.getLcsLength("AGGTAB", "GXTXAYB"));
+        System.out.println(MemoizedSolution.getLcsLength("ABC", "CBA"));
+        System.out.println();
     }
 }
