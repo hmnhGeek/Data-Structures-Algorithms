@@ -19,5 +19,14 @@ public class Solution {
         System.out.println(MemoizedSolution.getLcsLength("AGGTAB", "GXTXAYB"));
         System.out.println(MemoizedSolution.getLcsLength("ABC", "CBA"));
         System.out.println();
+
+        System.out.println(TabulationSolution.getLcsLength("adebc", "dcadb"));
+        System.out.println(TabulationSolution.getLcsLength("ab", "defg"));
+        System.out.println(TabulationSolution.getLcsLength("abcde", "ace"));
+        System.out.println(TabulationSolution.getLcsLength("abc", "abc"));
+        System.out.println(TabulationSolution.getLcsLength("abc", "acd"));
+        System.out.println(TabulationSolution.getLcsLength("AGGTAB", "GXTXAYB"));
+        System.out.println(TabulationSolution.getLcsLength("ABC", "CBA"));
+        System.out.println();
     }
 }
