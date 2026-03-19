@@ -30,5 +30,38 @@ public class Solution {
         System.out.println(
                 TabulationSolution.getLongestCommonSubstringLength("abc", "")
         );
+
+
+        System.out.println();
+
+
+        // Space Optimized Solution
+        System.out.println(
+                SpaceOptimizedSolution.getLongestCommonSubstringLength("abcd", "abzd")
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getLongestCommonSubstringLength("abcjklp", "acjkp")
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getLongestCommonSubstringLength("wasdijkl", "wsdjkl")
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getLongestCommonSubstringLength("tyfg", "cvbnuty")
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getLongestCommonSubstringLength("GeeksforGeeks", "GeeksQuiz")
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getLongestCommonSubstringLength("abcdxyz", "xyzabcd")
+        );
+
+        System.out.println(
+                SpaceOptimizedSolution.getLongestCommonSubstringLength("abc", "")
+        );
     }
 }

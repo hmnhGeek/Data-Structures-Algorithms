@@ -5,6 +5,9 @@ import java.util.Map;
 
 public class TabulationSolution {
     public static Integer getLongestCommonSubstringLength(String s1, String s2) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
         int n = s1.length(), m = s2.length();
         Map<Integer, Map<Integer, Integer>> dp = new HashMap<>();
         updateDefaultDP(dp, n, m);
