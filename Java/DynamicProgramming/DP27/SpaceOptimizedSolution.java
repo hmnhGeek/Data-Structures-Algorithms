@@ -6,7 +6,7 @@ import java.util.Map;
 public class SpaceOptimizedSolution {
     public static Integer getLongestCommonSubstringLength(String s1, String s2) {
         /*
-            Time complexity is O(nm) and space complexity is O(nm).
+            Time complexity is O(nm) and space complexity is O(m).
          */
         int n = s1.length(), m = s2.length();
         Map<Integer, Integer> prev = new HashMap<>();
