@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/shortest-path-in-weighted-undirected-graph/1
+// Solution - https://www.youtube.com/watch?v=rp1SMw7HSO8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=35
+
+
 package Graphs.G35;
 
 import java.util.ArrayList;
@@ -30,6 +34,9 @@ class QueueElement<T> {
 
 public class Solution {
     public static <T> List<T> getShortestPath(Map<T, List<Edge<T>>> graph, T source, T destination) {
+        /*
+            Overall time complexity is O(E * log(V)) and space complexity is O(V).
+         */
         if (!graph.containsKey(source) || !graph.containsKey(destination)) return null;
         Queue<QueueElement<T>> queue = new Queue<>();
 
