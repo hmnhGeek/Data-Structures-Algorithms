@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/shortest-path-in-a-binary-maze-1655453161/1
+// Solution - https://www.youtube.com/watch?v=U5Mw4eyUmw4&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=36
+
+
 package Graphs.G36;
 
 import java.util.ArrayList;
@@ -17,6 +21,9 @@ class Element {
 
 public class Solution {
     public static Integer getMinDistance(List<List<Integer>> graph, int sourceX, int sourceY, int dstX, int dstY) {
+        /*
+            Overall time complexity is O(m*n) and space complexity is O(m*n).
+         */
         int n = graph.size(), m = graph.getFirst().size();
         if (cellNotInGraph(sourceX, sourceY, n, m) || cellNotInGraph(dstX, dstY, n, m)) return null;
         List<List<Integer>> distances = getDistancesMatrix(n, m, sourceX, sourceY);
