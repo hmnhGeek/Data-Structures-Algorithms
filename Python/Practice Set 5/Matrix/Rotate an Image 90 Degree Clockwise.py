@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/rotate-a-matrix-by-90-degree-in-clockwise-direction-without-using-any-extra-space/
+
+
 class Solution:
     @staticmethod
     def _transpose(mtx):
@@ -22,6 +25,9 @@ class Solution:
 
     @staticmethod
     def rotate(mtx):
+        """
+            Overall time complexity is O(n^2) and space is O(1).
+        """
         Solution._transpose(mtx)
         Solution._lateral_invert(mtx)
         print(mtx)
