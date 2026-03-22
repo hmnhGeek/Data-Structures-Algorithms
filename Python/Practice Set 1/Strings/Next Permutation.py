@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/next-permutation/description/
+# Solution - https://www.youtube.com/watch?v=JDOXKqF60RQ&t=976s
+
+
 class Solution:
     @staticmethod
     def breakpoint_index(arr):
@@ -26,6 +30,9 @@ class Solution:
 
     @staticmethod
     def get_next_permutation(arr):
+        """
+            Overall time complexity is O(n) and space complexity is O(1).
+        """
         if len(arr) == 0 or len(arr) == 1:
             return
         bp_index = Solution.breakpoint_index(arr)
