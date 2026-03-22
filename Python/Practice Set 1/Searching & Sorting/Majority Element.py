@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/majority-element-1587115620/1
+# Solution - https://www.youtube.com/watch?v=nP_ns3uSh80
+
+
 class Solution:
     @staticmethod
     def find_majority_element(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         count = 0
         elem = None
         possible_count = 0
