@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/binary-tree-to-dll/1
+# Solution - https://www.youtube.com/watch?v=nGNoTdav5bQ
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -10,6 +14,9 @@ class Solution:
 
     @staticmethod
     def convert_to_dll(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         Solution.prev = Solution.head = Solution.tail = None
         Solution._solve(root)
         curr = Solution.head
