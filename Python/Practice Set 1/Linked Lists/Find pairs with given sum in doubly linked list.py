@@ -26,3 +26,35 @@ class DoublyLinkedList:
         for i in args:
             self.push(i)
 
+
+class Solution:
+    @staticmethod
+    def find_pairs(dll: DoublyLinkedList, target: int):
+        pairs = []
+        if dll.is_empty():
+            return pairs
+        i, j = dll.head, dll.tail
+        while i != j and j.next != i:
+            _sum = i.data + j.data
+            if _sum == target:
+                pairs.append((i.data, j.data))
+                i = i.next
+                j = j.prev
+            elif _sum > target:
+                j = j.prev
+            else:
+                i = i.next
+        return pairs
+
+
+def test(l, target):
+    dll = DoublyLinkedList()
+    dll.build(*l)
+    print(Solution.find_pairs(dll, target))
+    print()
+
+
+test([1, 5, 6], 6)
+test([1, 2, 4, 5, 6, 8, 9], 7)
+test([1, 2, 3, 4, 9], 5)
+test([1, 10, 11, 12, 27], 7)
