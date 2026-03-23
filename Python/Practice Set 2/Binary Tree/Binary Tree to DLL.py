@@ -43,3 +43,28 @@ curr = n25
 while curr is not None:
     print(curr.data, end=" ")
     curr = curr.right
+print()
+
+# Example 2
+n10, n20, n30, n40, n60 = Node(10), Node(20), Node(30), Node(40), Node(60)
+n10.left = n20
+n10.right = n30
+n20.left = n40
+n20.right = n60
+Solution.convert_to_dll(n10)
+curr = n40
+while curr is not None:
+    print(curr.data, end=" ")
+    curr = curr.right
+print()
+
+# Example 3
+n1, n2, n3 = Node(1), Node(2), Node(3)
+n1.left = n2
+n1.right = n3
+Solution.convert_to_dll(n1)
+curr = n2
+while curr is not None:
+    print(curr.data, end=" ")
+    curr = curr.right
+print()
