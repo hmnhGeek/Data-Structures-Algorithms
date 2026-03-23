@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/find-pairs-given-sum-doubly-linked-list/#expected-approach-using-two-pointer-technique-on-time-and-o1-space
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -30,6 +33,9 @@ class DoublyLinkedList:
 class Solution:
     @staticmethod
     def find_pairs(dll: DoublyLinkedList, target: int):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         pairs = []
         if dll.is_empty():
             return pairs
