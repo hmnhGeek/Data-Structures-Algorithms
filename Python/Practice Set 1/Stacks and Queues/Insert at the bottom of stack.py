@@ -28,3 +28,20 @@ class Stack:
         self.head = self.head.next
         self.length -= 1
         return item
+
+    def insert_at_bottom(self, x):
+        node = Node(x)
+        if self.is_empty():
+            self.push(x)
+            return
+        self.tail.next = node
+        self.tail = node
+        self.length += 1
+
+
+stack = Stack()
+for i in [1, 2, 3, 4]:
+    stack.push(i)
+stack.insert_at_bottom(10)
+while not stack.is_empty():
+    print(stack.pop(), end= " ")
