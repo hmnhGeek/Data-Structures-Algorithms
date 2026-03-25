@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/predecessor-and-successor/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -146,6 +149,9 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def get_predecessor_and_successor(arr, x):
+        """
+            Time complexity is O(log(n)) and space complexity is O(log(n)).
+        """
         bst = Solution.get_bst(arr)
         node = bst.get_node(bst.root, x)
         if node is None:
