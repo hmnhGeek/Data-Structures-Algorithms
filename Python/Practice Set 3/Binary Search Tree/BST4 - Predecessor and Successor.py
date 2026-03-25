@@ -141,3 +141,35 @@ class BinarySearchTree:
     def show(self):
         self._show(self.root)
         print()
+
+
+class Solution:
+    @staticmethod
+    def get_predecessor_and_successor(arr, x):
+        bst = Solution.get_bst(arr)
+        node = bst.get_node(bst.root, x)
+        if node is None:
+            bst.insert(x)
+            nd = bst.get_node(bst.root, x)
+            predecessor = bst.get_predecessor(nd)
+            successor = bst.get_successor(nd)
+            p = predecessor.data if predecessor is not None else None
+            s = successor.data if successor is not None else None
+            bst.delete(x)
+            return [p, s]
+        predecessor = bst.get_predecessor(node)
+        successor = bst.get_successor(node)
+        p = predecessor.data if predecessor is not None else None
+        s = successor.data if successor is not None else None
+        return [p, s]
+
+    @staticmethod
+    def get_bst(arr):
+        bst = BinarySearchTree()
+        for i in arr:
+            bst.insert(i)
+        return bst
+
+
+print(Solution.get_predecessor_and_successor([50, 30, 70, 20, 40, 60, 80], 65))
+print(Solution.get_predecessor_and_successor([8, 1, 9, 4, 10, 3], 8))
