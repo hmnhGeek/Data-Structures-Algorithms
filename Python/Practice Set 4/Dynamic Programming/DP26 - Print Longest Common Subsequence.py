@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-common-subsequence_624879?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=-zI4mrF2Pb4&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=27
+
+
 def recursive():
     def get_lcs(s1, s2):
         n1, n2 = len(s1), len(s2)
@@ -76,6 +80,9 @@ def tabulation():
 class Solution:
     @staticmethod
     def lcs(s1, s2):
+        """
+            Time complexity is O(n1 * n2) and space complexity is O(n1 * n2).
+        """
         n1, n2 = len(s1), len(s2)
         dp = {i: {j: 0 for j in range(n2 + 1)} for i in range(n1 + 1)}
         for i in range(1, n1 + 1):
