@@ -51,4 +51,24 @@ def memoized():
     print(get_lcs("AGGTAB", "GXTXAYB"))
     print(get_lcs("ABC", "CBA"))
 
-memoized()
+
+def tabulation():
+    def get_lcs(s1, s2):
+        n1, n2 = len(s1), len(s2)
+        dp = {i: {j: 0 for j in range(n2 + 1)} for i in range(n1 + 1)}
+        for i in range(1, n1 + 1):
+            for j in range(1, n2 + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    dp[i][j] = 1 + dp[i - 1][j - 1]
+                else:
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+        return dp[n1][n2]
+
+    print(get_lcs("adebc", "dcadb"))
+    print(get_lcs("ab", "defg"))
+    print(get_lcs("abcde", "ace"))
+    print(get_lcs("abc", "abc"))
+    print(get_lcs("abc", "acd"))
+    print(get_lcs("AGGTAB", "GXTXAYB"))
+    print(get_lcs("ABC", "CBA"))
+
