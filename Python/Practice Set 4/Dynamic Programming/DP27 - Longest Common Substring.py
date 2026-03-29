@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-common-substring_1235207?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=_wP9mWNPL5w&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=28
+
+
 class Solution:
     @staticmethod
     def longest_common_substring(s1, s2):
