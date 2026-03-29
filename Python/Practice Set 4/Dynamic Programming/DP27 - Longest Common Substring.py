@@ -17,6 +17,26 @@ class Solution:
                     dp[i][j] = 0
         return result
 
+    @staticmethod
+    def optimized_lcs(s1, s2):
+        """
+            Time complexity is O(n1 * n2) and space complexity is O(n2).
+        """
+        n = len(s1)
+        m = len(s2)
+        prev = {j: 0 for j in range(m + 1)}
+        result = 0
+        for i in range(1, n + 1):
+            curr = {j: 0 for j in range(m + 1)}
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    curr[j] = 1 + prev[j - 1]
+                    result = max(result, curr[j])
+                else:
+                    curr[j] = 0
+            prev = curr
+        return result
+
 
 print(Solution.longest_common_substring("abcd", "abzd"))
 print(Solution.longest_common_substring("abcjklp", "acjkp"))
@@ -25,3 +45,11 @@ print(Solution.longest_common_substring("tyfg", "cvbnuty"))
 print(Solution.longest_common_substring("GeeksforGeeks", "GeeksQuiz"))
 print(Solution.longest_common_substring("abcdxyz", "xyzabcd"))
 print(Solution.longest_common_substring("abc", ""))
+print()
+print(Solution.optimized_lcs("abcd", "abzd"))
+print(Solution.optimized_lcs("abcjklp", "acjkp"))
+print(Solution.optimized_lcs("wasdijkl", "wsdjkl"))
+print(Solution.optimized_lcs("tyfg", "cvbnuty"))
+print(Solution.optimized_lcs("GeeksforGeeks", "GeeksQuiz"))
+print(Solution.optimized_lcs("abcdxyz", "xyzabcd"))
+print(Solution.optimized_lcs("abc", ""))
