@@ -33,6 +33,7 @@ public class Stack<T> {
             node.next = this.head;
             this.head = node;
         }
+        this.length += 1;
     }
 
     public T pop() {
@@ -41,5 +42,34 @@ public class Stack<T> {
         this.head = this.head.next;
         this.length -= 1;
         return item;
+    }
+
+    public void reverse() {
+        reverseStack(null, this.head);
+        Node<T> temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+    }
+
+    private void reverseStack(Node<T> prev, Node<T> curr) {
+        if (curr == null) {
+            return;
+        }
+        Node<T> nextCurr = curr.next;
+        curr.next = prev;
+        reverseStack(curr, nextCurr);
+    }
+
+    @Override
+    public String toString() {
+        if (this.length == 0) return "[]";
+        StringBuilder sb = new StringBuilder("[");
+        Node<T> curr = this.head;
+        while (curr.next != null) {
+            sb.append(String.format("%s, ", curr.data));
+            curr = curr.next;
+        }
+        sb.append(String.format("%s]", this.tail.data));
+        return sb.toString();
     }
 }
