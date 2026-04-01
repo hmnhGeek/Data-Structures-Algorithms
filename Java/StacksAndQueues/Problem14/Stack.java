@@ -52,6 +52,9 @@ public class Stack<T> {
     }
 
     private void reverseStack(Node<T> prev, Node<T> curr) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         if (curr == null) {
             return;
         }
