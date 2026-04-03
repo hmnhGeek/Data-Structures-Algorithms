@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1
+// Solution - https://www.youtube.com/watch?v=UXDSeD9mN-k
+
+
 package Arrays.Problem18;
 
 import java.util.ArrayList;
@@ -11,6 +15,9 @@ public class Solution {
     }
 
     public static List<List<Integer>> getPairs(List<Integer> arr, Integer target) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+         */
         int i = 0, j = arr.size() - 1;
         QuickSort.sort(arr);
         List<List<Integer>> pairs = new ArrayList<>();
