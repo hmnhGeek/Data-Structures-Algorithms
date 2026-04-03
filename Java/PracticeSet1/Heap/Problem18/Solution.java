@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/minimum-sum4058/1
+
+
 package PracticeSet1.Heap.Problem18;
 
 import java.util.Arrays;
@@ -15,9 +18,16 @@ public class Solution {
     }
 
     public static String getMinimumSum(List<Integer> arr) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
+
+        // This takes O(n * log(n)) and space complexity is O(n).
         MinHeap<Integer> pq = new MinHeap<>(arr);
         Integer n1 = 0, n2 = 0;
         boolean addToFirst = true;
+
+        // This takes O(n * log(n))
         while (!pq.isEmpty()) {
             Integer minDigit = pq.pop();
             if (addToFirst) {
