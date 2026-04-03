@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/searching-array-adjacent-differ-k/
+// Solution - https://www.youtube.com/watch?v=KtrAWsfyBaA
+
+
 package SearchingAndSorting.Problem9;
 
 import java.util.Arrays;
@@ -11,6 +15,9 @@ public class Solution {
     }
 
     public static Integer search(List<Integer> arr, Integer x, Integer k) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         int i = 0;
         while (i < arr.size()){
             if (Objects.equals(arr.get(i), x)) {
