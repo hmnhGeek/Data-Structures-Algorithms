@@ -11,6 +11,13 @@ public class MinHeap<T extends Comparable<T>> {
         this.heap = new ArrayList<>();
     }
 
+    public MinHeap(List<T> arr) {
+        this.heap = new ArrayList<>();
+        for (T x : arr) {
+            insert(x);
+        }
+    }
+
     public boolean isEmpty() {
         return this.heap.isEmpty();
     }
