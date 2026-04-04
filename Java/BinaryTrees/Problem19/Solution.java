@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/transform-to-sum-tree/1
+
+
 package BinaryTrees.Problem19;
 
 public class Solution {
@@ -7,6 +10,9 @@ public class Solution {
     }
 
     public Integer convertToSumTree(Node<Integer> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(h).
+         */
         if (root == null) {
             return 0;
         }
