@@ -1,7 +1,14 @@
+// Problem link - https://www.geeksforgeeks.org/problems/check-for-bst/1
+// Solution - https://www.youtube.com/watch?v=f-sj7I5oXEI
+
+
 package BinarySearchTrees.Problem5;
 
 public class Solution {
     private static <T extends Comparable<T>> Boolean isBst(Node<T> node, T low, T high) {
+        /*
+            Time complexity is O(n) and space complexity is O(h).
+         */
         if (node == null) return Boolean.TRUE;
         if (!(low.compareTo(node.data) <= 0 && high.compareTo(node.data) >= 0)) return Boolean.FALSE;
         Boolean leftSubtreeIsBst = isBst(node.left, low, node.data);
