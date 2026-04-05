@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/path-with-minimum-effort/1
+// Solution - https://www.youtube.com/watch?v=0ytpZyiZFhA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=37
+
+
 package Graphs.G37;
 
 import java.util.ArrayList;
@@ -5,6 +9,10 @@ import java.util.List;
 
 public class Solution {
     public static Integer getMinimumEffort(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(mn log(mn)) and space complexity is O(mn).
+         */
+
         int n = mtx.size(), m = mtx.getFirst().size();
         MinHeap<HeapElement<Integer>> pq = new MinHeap<>();
         List<List<Integer>> distances = getDistancesMtx(n, m);
