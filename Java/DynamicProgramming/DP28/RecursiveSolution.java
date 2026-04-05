@@ -1,6 +1,9 @@
 package DynamicProgramming.DP28;
 
 public class RecursiveSolution {
+    /*
+        Time complexity is exponential and space complexity is O(n1 + n2).
+     */
     public static Integer getLcsLength(String s1, String s2) {
         int n1 = s1.length(), n2 = s2.length();
         return solve(s1, n1, s2, n2);
