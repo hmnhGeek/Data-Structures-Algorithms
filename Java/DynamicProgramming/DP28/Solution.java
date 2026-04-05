@@ -48,11 +48,15 @@ public class Solution {
         System.out.println(getLCS("abc", "acd"));
         System.out.println(getLCS("AGGTAB", "GXTXAYB"));
         System.out.println(getLCS("ABC", "CBA"));
+
+        System.out.println();
+        System.out.println(getLongestPalindromicSubsequence("bbbab"));
+        System.out.println(getLongestPalindromicSubsequence("bbabcbcab"));
     }
 
     public static String getLCS(String s1, String s2) {
         /*
-            Time complexity is O(mn) and space complexity is O(mn).
+            Time complexity is O(n^2) and space complexity is O(n^2).
          */
             int n1 = s1.length(), n2 = s2.length();
             Map<Integer, Map<Integer, Integer>> dp = new HashMap<>();
@@ -93,5 +97,19 @@ public class Solution {
             }
             result.reverse();
             return result.toString();
+    }
+
+    public static String getLongestPalindromicSubsequence(String s) {
+        String reversed = reverse(s);
+        return getLCS(s, reversed);
+    }
+
+    private static String reverse(String s) {
+        int n = s.length();
+        StringBuilder sb = new StringBuilder();
+        for (int i = n - 1; i >= 0; i -= 1) {
+            sb.append(s.charAt(i));
+        }
+        return sb.toString();
     }
 }
