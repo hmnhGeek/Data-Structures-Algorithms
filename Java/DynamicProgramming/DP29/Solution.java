@@ -31,9 +31,20 @@ public class Solution {
         System.out.println();
     }
 
+    public static void spaceOptimized() {
+        System.out.println(SpaceOptimizedSolution.getMinCharToMakePalindrome("abca"));
+        System.out.println(SpaceOptimizedSolution.getMinCharToMakePalindrome("abcdefg"));
+        System.out.println(SpaceOptimizedSolution.getMinCharToMakePalindrome("aaaaa"));
+        System.out.println(SpaceOptimizedSolution.getMinCharToMakePalindrome("zzazz"));
+        System.out.println(SpaceOptimizedSolution.getMinCharToMakePalindrome("mbadm"));
+        System.out.println(SpaceOptimizedSolution.getMinCharToMakePalindrome("leetcode"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
         memoized();
         tabulation();
+        spaceOptimized();
     }
 }
