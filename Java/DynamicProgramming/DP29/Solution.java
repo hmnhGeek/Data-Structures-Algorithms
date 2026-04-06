@@ -11,7 +11,18 @@ public class Solution {
         System.out.println();
     }
 
+    public static void memoized() {
+        System.out.println(MemoizedSolution.getMinCharToMakePalindrome("abca"));
+        System.out.println(MemoizedSolution.getMinCharToMakePalindrome("abcdefg"));
+        System.out.println(MemoizedSolution.getMinCharToMakePalindrome("aaaaa"));
+        System.out.println(MemoizedSolution.getMinCharToMakePalindrome("zzazz"));
+        System.out.println(MemoizedSolution.getMinCharToMakePalindrome("mbadm"));
+        System.out.println(MemoizedSolution.getMinCharToMakePalindrome("leetcode"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
+        memoized();
     }
 }
