@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/cheapest-flights-within-k-stops/1
+// Solution - https://www.youtube.com/watch?v=9XybHVqTHcQ&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=38
+
+
 package Graphs.G38;
 
 import java.util.HashMap;
@@ -8,6 +12,10 @@ import java.util.Objects;
 public class Solution {
     public static Integer getCheapestFlight(Map<Integer, List<List<Integer>>> graph,
                                            Integer source, Integer destination, Integer k) {
+        /*
+            Time complexity with O(E) in case of queue and O(E * log(V)) in min heap approach.
+            Space complexity will be O(V) in both the cases.
+         */
         if (!(graph.containsKey(source) && graph.containsKey(destination))) return null;
         MinHeap<HeapElement<Integer>> pq = new MinHeap<>();
         Map<Integer, Integer> distances = new HashMap<>();
