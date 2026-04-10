@@ -1,9 +1,16 @@
+// Problem link - https://www.geeksforgeeks.org/find-the-row-with-maximum-number-1s/
+// Solution - https://www.youtube.com/watch?v=SCz-1TtYxDI&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=25
+
+
 package PracticeSet1.BinarySearch.BS23;
 
 import java.util.List;
 
 public class Solution {
     public static Integer getRowWithMaximumOnes(List<List<Integer>> matrix) {
+        /*
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+         */
         int n = matrix.size(), m = matrix.getFirst().size();
         Integer maxOnes = 0, rowIndex = null;
         for (int i = 0; i < n; i += 1) {
