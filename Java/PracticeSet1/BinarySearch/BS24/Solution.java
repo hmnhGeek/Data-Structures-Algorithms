@@ -1,9 +1,16 @@
+// Problem link - https://leetcode.com/problems/search-a-2d-matrix/
+// Solution - https://www.youtube.com/watch?v=JXU4Akft7yk&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=26
+
+
 package PracticeSet1.BinarySearch.BS24;
 
 import java.util.List;
 
 public class Solution {
     public static List<Integer> search(List<List<Integer>> mtx, Integer target) {
+        /*
+            Time complexity is O(log(mn)) and space complexity is O(1).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         int low = 0, high = (n * m) - 1;
         while (low <= high) {
