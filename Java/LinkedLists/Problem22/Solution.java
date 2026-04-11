@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/count-triplets-sorted-doubly-linked-list-whose-sum-equal-given-value-x/#expected-approach-using-two-pointers-on2-time-and-o1-space
+// Solution - https://www.youtube.com/watch?v=jn2oe9GhkRg
+
+
 package LinkedLists.Problem22;
 
 import java.util.ArrayList;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static List<List<Integer>> getTriplets(DoublyLinkedList<Integer> dll, Integer target) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(1).
+         */
         if (dll.length == 0 || dll.length == 1 || dll.length == 2) return null;
         Node<Integer> i = dll.head, j = i.next, k = dll.tail;
         List<List<Integer>> result = new ArrayList<>();
