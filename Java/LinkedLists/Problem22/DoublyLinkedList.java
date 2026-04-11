@@ -32,4 +32,10 @@ public class DoublyLinkedList<T> {
         }
         this.length += 1;
     }
+
+    public void build(T...args) {
+        for (T x : args) {
+            push(x);
+        }
+    }
 }
