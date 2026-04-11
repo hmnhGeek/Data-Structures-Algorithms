@@ -1,6 +1,8 @@
+// Problem link - https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1
+
+
 package Strings.Problem16;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class Solution {
@@ -11,6 +13,9 @@ public class Solution {
     );
 
     public static boolean isBalanced(String string) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Stack<Character> stack = new Stack<>();
         for (Character bracket : string.toCharArray()) {
             if (bracket == '(' || bracket == '[' || bracket == '{') {
