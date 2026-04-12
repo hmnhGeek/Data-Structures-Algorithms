@@ -1,9 +1,16 @@
+// Problem link - https://leetcode.com/problems/count-number-of-nice-subarrays/
+// Solution - https://www.youtube.com/watch?v=j_QOv9OT9Og&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=10
+
+
 package PracticeSet1.SlidingWindows.L10;
 
 import java.util.List;
 
 public class Solution {
     public static Integer getCountLessThanEqualTo(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         if (k < 0) return 0;
         int left = 0, right = 0;
         int count = 0, sum = 0;
