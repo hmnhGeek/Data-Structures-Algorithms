@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/binary-subarrays-with-sum/
+// Solution - https://www.youtube.com/watch?v=XnMdNUkX6VM&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=9
+
+
 package PracticeSet1.SlidingWindows.L9;
 
 import java.util.List;
@@ -21,6 +25,9 @@ public class Solution {
     }
 
     public static Integer getSubArrayCount(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         int x = getLessThanEqualToCount(arr, k);
         int y = getLessThanEqualToCount(arr, k - 1);
         return  x - y;
