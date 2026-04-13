@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/transform-to-sum-tree/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +10,9 @@ class Node:
 class Solution:
     @staticmethod
     def convert_to_sum_tree(node):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
         if node is None:
             return 0
         data = node.data
