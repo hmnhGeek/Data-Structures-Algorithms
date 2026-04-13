@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/reverse-a-stack-using-recursion/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -43,6 +46,9 @@ class Stack:
         return result
 
     def reverse(self):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         self._reverse(None, self.head)
         self.head, self.tail = self.tail, self.head
 
