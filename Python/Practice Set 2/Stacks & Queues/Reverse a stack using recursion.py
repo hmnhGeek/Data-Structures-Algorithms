@@ -42,3 +42,23 @@ class Stack:
         result += f"{self.tail.data}]"
         return result
 
+    def reverse(self):
+        self._reverse(None, self.head)
+        self.head, self.tail = self.tail, self.head
+
+    def _reverse(self, prev, curr):
+        if curr is None:
+            return
+        next_curr = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next_curr
+        self._reverse(prev, curr)
+
+
+s1 = Stack()
+for i in [1, 2, 3, 4]:
+    s1.push(i)
+print(s1)
+s1.reverse()
+print(s1)
