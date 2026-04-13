@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/check-for-bst/1
+# Solution - https://www.youtube.com/watch?v=f-sj7I5oXEI
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +11,9 @@ class Node:
 class Solution:
     @staticmethod
     def is_bst(node):
+        """
+            Time complexity is O(n) and space complexity is O(H).
+        """
         return Solution._solve(node, -1e6, 1e6)
 
     @staticmethod
