@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/parenthesis-checker2744/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -46,6 +49,9 @@ class Solution:
 
     @staticmethod
     def balanced_parenthesis(string: str) -> bool:
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         stack = Stack()
         for i in range(len(string)):
             bracket = string[i]
