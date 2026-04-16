@@ -76,3 +76,51 @@ class HeapElement:
     def __gt__(self, other):
         return self.data > other.data
 
+
+class Solution:
+    @staticmethod
+    def _insert_first_column(pq: MinHeap, mtx):
+        n = len(mtx)
+        for i in range(n):
+            pq.insert(HeapElement(mtx[i][0], i, 0))
+
+    @staticmethod
+    def get_kth_element(mtx, k):
+        if k <= 0:
+            return
+        pq = MinHeap()
+        counter = 0
+        m = len(mtx[0])
+
+        # insert first column into heap
+        Solution._insert_first_column(pq, mtx)
+
+        while not pq.is_empty():
+            heap_element = pq.pop()
+            counter += 1
+            if counter == k:
+                return heap_element.data
+            if 0 <= heap_element.j + 1 < m:
+                pq.insert(HeapElement(mtx[heap_element.i][heap_element.j + 1], heap_element.i, heap_element.j + 1))
+
+        return None
+
+
+print(
+    Solution.get_kth_element(
+        [[16, 28, 60, 64],
+         [22, 41, 63, 91],
+         [27, 50, 87, 93],
+         [36, 78, 87, 94]],
+        3
+    )
+)
+
+print(
+    Solution.get_kth_element(
+        [[10, 20, 30, 40],
+         [15, 25, 35, 45],
+         [24, 29, 37, 48],
+         [32, 33, 39, 50]], 7
+    )
+)
