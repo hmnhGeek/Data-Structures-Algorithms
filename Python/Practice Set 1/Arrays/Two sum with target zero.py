@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -29,7 +32,12 @@ class QuickSort:
 class Solution:
     @staticmethod
     def two_sum(arr):
-        arr.sort()
+        """
+            Time complexity is O(n * log(n)) time and space complexity is O(1).
+        """
+
+        # This will take O(n * log(n)) time.
+        QuickSort.sort(arr)
         i = 0
         j = len(arr) - 1
         result = []
