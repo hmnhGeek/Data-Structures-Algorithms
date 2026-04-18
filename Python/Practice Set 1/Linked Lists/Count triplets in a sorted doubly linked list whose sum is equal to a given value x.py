@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/count-triplets-sorted-doubly-linked-list-whose-sum-equal-given-value-x/#expected-approach-using-two-pointers-on2-time-and-o1-space
+# Solution - https://www.youtube.com/watch?v=jn2oe9GhkRg
+
+
 from typing import List
 
 
@@ -33,6 +37,9 @@ class DoublyLinkedList:
 class Solution:
     @staticmethod
     def count_triplets(dll: DoublyLinkedList, target: int):
+        """
+            Time complexity is O(n^2) and space complexity is O(1).
+        """
         if dll.is_empty() or dll.length == 1 or dll.length == 2:
             return []
         result = []
