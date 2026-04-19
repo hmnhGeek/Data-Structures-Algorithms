@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-common-subsequence_624879?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=6i_T5kkfv4A&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=29
+
+
 def recursive():
     def lcs(s1, s2):
         n = len(s1)
@@ -125,6 +129,9 @@ class Solution:
 
     @staticmethod
     def longest_palindromic_subsequence(string):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
         reversed = string[-1:-len(string)-1:-1]
         dp = Solution.lcs2(string, reversed)
         i, j = len(string), len(string)
