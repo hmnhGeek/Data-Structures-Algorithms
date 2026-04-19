@@ -1,3 +1,7 @@
+# Problem link - https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/description/
+# Solution - https://www.youtube.com/watch?v=xPBLEj41rFU&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=30
+
+
 class Solution:
     @staticmethod
     def lcs2(s1, s2):
