@@ -81,3 +81,64 @@ class HeapElement:
 
     def __gt__(self, other):
         return self.d > other.d
+
+
+class Solution:
+    @staticmethod
+    def _get_neighbours(mtx, i, j, n, m):
+        neighbours = []
+        if 0 <= i - 1 < n:
+            neighbours.append((i - 1, j))
+        if 0 <= j + 1 < m:
+            neighbours.append((i, j + 1))
+        if 0 <= i + 1 < n:
+            neighbours.append((i + 1, j))
+        if 0 <= j - 1 < m:
+            neighbours.append((i, j - 1))
+        return neighbours
+
+    @staticmethod
+    def get_min_effort(mtx):
+        n, m = len(mtx), len(mtx[0])
+        pq = MinHeap()
+        distances = [[1e6 for _ in range(m)] for _ in range(n)]
+        distances[0][0] = 0
+        pq.insert(HeapElement(0, 0, 0))
+        while not pq.is_empty():
+            heap_element = pq.pop()
+            distance, x, y = heap_element.d, heap_element.i, heap_element.j
+            if x == n - 1 and y == m - 1:
+                return distance
+            neighbours = Solution._get_neighbours(mtx, x, y, n, m)
+            for neighbour in neighbours:
+                d = abs(mtx[neighbour[0]][neighbour[1]] - mtx[x][y])
+                path_effort = max(d, distance)
+                if path_effort < distances[neighbour[0]][neighbour[1]]:
+                    distances[neighbour[0]][neighbour[1]] = path_effort
+                    pq.insert(HeapElement(path_effort, *neighbour))
+        return -1
+
+
+print()
+print("Optimal Solution")
+print(
+    Solution.get_min_effort(
+        [
+            [1, 2, 2],
+            [3, 8, 2],
+            [5, 3, 5]
+        ]
+    )
+)
+
+print(Solution.get_min_effort([[7, 7], [7, 7]]))
+print(Solution.get_min_effort([[1, 2, 3], [3, 8, 4], [5, 3, 5]]))
+print(Solution.get_min_effort([[1, 2, 1, 1, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 2, 1, 2, 1], [1, 1, 1, 2, 1]]))
+print(Solution.get_min_effort([[1, 8, 8], [3, 8, 9], [5, 3, 5]]))
+print(Solution.get_min_effort(
+    [
+        [1, 3, 1],
+        [9, 9, 3],
+        [9, 9, 1]
+    ]
+))
