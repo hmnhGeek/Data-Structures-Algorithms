@@ -69,3 +69,15 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class HeapElement:
+    def __init__(self, distance, i, j):
+        self.d = distance
+        self.i = i
+        self.j = j
+
+    def __lt__(self, other):
+        return self.d < other.d
+
+    def __gt__(self, other):
+        return self.d > other.d
