@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/cheapest-flights-within-k-stops/1
+# Solution - https://www.youtube.com/watch?v=9XybHVqTHcQ&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=38
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,13 @@ class Queue:
 class Solution:
     @staticmethod
     def get_cheapest_flight(graph, source, destination, k):
+        """
+            We should use a normal queue in this problem because the stops will increment by 1 everytime. So there is
+            no need for a min heap. It will only add a log(V) factor to the complexity.
+
+            Time complexity with O(E) in case of queue and O(E * log(V)) in min heap approach.
+            Space complexity will be O(V) in both the cases.
+        """
         n = len(graph)
         if source not in range(n) or destination not in range(n):
             return
