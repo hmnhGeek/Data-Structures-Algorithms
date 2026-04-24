@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/find-the-row-with-maximum-number-1s/
+# Solution - https://www.youtube.com/watch?v=SCz-1TtYxDI&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=25
+
+
 class Solution:
     @staticmethod
     def get_count_of_ones(row):
