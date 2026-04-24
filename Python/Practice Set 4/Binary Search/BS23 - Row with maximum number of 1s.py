@@ -13,6 +13,9 @@ class Solution:
 
     @staticmethod
     def get_row_with_maximum_1s(mtx):
+        """
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+        """
         n = len(mtx)
         row_idx = -1
         max_ones = 0
