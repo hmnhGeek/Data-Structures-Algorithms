@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/common-elements1132/1
+// Solution - https://www.youtube.com/watch?v=ajWCEu1razQ
+
+
 package Arrays.Problem19;
 
 import java.util.*;
@@ -6,6 +10,9 @@ public class Solution {
     public static List<Integer> getCommonInThreeArrays(
             List<Integer> arr1, List<Integer> arr2, List<Integer> arr3
     ) {
+        /*
+            Time complexity is O(n1 + n2 + n3) and space complexity is O(1).
+         */
         int n1 = arr1.size(), n2 = arr2.size(), n3 = arr3.size();
         int i = 0, j = 0, k = 0;
         List<Integer> result = new ArrayList<>();
