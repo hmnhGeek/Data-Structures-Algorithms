@@ -1,7 +1,14 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/sort-k-sorted-doubly-linked-list/
+// Solution - https://www.youtube.com/watch?v=9jdqdhsynmA
+
+
 package LinkedLists.Problem23;
 
 public class Solution {
     public static void sortDoublyLinkedList(DoublyLinkedList<Integer> dll, Integer k) {
+        /*
+            Time complexity is O(n * log(k)) and space complexity is O(k).
+         */
         MinHeap<Node<Integer>> pq = new MinHeap<>();
         // move first k integers in min heap
         Node<Integer> curr = dll.head;
