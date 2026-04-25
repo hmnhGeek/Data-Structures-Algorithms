@@ -33,5 +33,13 @@ public class Solution {
         System.out.println(dll1);
         sortDoublyLinkedList(dll1, 2);
         System.out.println(dll1);
+
+        System.out.println();
+
+        DoublyLinkedList<Integer> dll2 = new DoublyLinkedList<>();
+        dll2.build(5, 6, 7, 3, 4, 4);
+        System.out.println(dll2);
+        sortDoublyLinkedList(dll2, 3);
+        System.out.println(dll2);
     }
 }
