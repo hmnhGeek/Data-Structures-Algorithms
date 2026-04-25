@@ -42,6 +42,12 @@ public class DoublyLinkedList<T extends Comparable<T>> {
         this.length += 1;
     }
 
+    public void build(T...args) {
+        for (T x : args) {
+            push(x);
+        }
+    }
+
     @Override
     public String toString() {
         if (isEmpty()) return "[]";
