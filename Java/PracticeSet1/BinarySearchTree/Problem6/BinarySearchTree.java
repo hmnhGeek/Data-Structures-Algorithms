@@ -60,21 +60,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (root == null || node == null) return;
         if (node.data.compareTo(root.data) >= 0) {
             if (root.right != null) {
-                root.right = node;
-                node.parent = root;
-                recalcAugmentation(root);
+                insert(root.right, node);
                 return;
             }
-            insert(root.right, node);
-            return;
-        }
-        if (node.left != null) {
-            root.left = node;
+            root.right = node;
             node.parent = root;
             recalcAugmentation(root);
             return;
         }
-        insert(root.left, node);
+        if (node.left != null) {
+            insert(root.left, node);
+            return;
+        }
+        root.left = node;
+        node.parent = root;
+        recalcAugmentation(root);
     }
 
     public Node<T> getLeftmostNode(Node<T> node) {
@@ -97,7 +97,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (node == null) {
             return null;
         }
-        if (node.right != null) return getLeftmostNode(node);
+        if (node.right != null) return getLeftmostNode(node.right);
         Node<T> parent = node.parent;
         if (parent == null) return null;
         while (parent.left != node) {
@@ -112,7 +112,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (node == null) {
             return null;
         }
-        if (node.left != null) return getRightmostNode(node);
+        if (node.left != null) return getRightmostNode(node.left);
         Node<T> parent = node.parent;
         if (parent == null) return null;
         while (parent.right != node) {
@@ -169,5 +169,25 @@ public class BinarySearchTree<T extends Comparable<T>> {
             return getNode(root.right, x);
         }
         return getNode(root.left, x);
+    }
+
+    private void show(Node<T> node) {
+        if (node != null) {
+            show(node.left);
+            StringBuilder sb = new StringBuilder(String.format("Data = %s", node.data));
+            if (node == root) {
+                sb.append(" (root), ");
+            } else {
+                sb.append(", ");
+            }
+            sb.append(String.format("size = %d, height = %d, diameter = %d", node.size, node.height, node.diameter));
+            System.out.println(sb);
+            show(node.right);
+        }
+    }
+
+    public void show() {
+        show(this.root);
+        System.out.println();
     }
 }
