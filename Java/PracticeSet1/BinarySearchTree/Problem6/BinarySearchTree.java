@@ -1,0 +1,79 @@
+package PracticeSet1.BinarySearchTree.Problem6;
+
+
+class Node<T extends Comparable<T>> {
+    public T data;
+    public Node<T> left, right, parent;
+    public Integer size, height, diameter;
+
+    public Node(T data) {
+        this.data = data;
+        this.left = this.right = this.parent = null;
+        this.size = this.height = this.diameter = 1;
+    }
+}
+
+
+public class BinarySearchTree<T extends Comparable<T>> {
+    public Node<T> root;
+    public Integer diameter;
+
+    public BinarySearchTree() {
+        this.root = null;
+        this.diameter = 0;
+    }
+
+    public void recalcAugmentation(Node<T> parent) {
+        this.diameter = 0;
+        while (parent != null) {
+            Integer leftSize = 0;
+            Integer leftHeight = 0;
+            if (parent.left != null) {
+                leftSize = parent.left.size;
+                leftHeight = parent.left.height;
+            }
+            Integer rightSize = 0;
+            Integer rightHeight = 0;
+            if (parent.right != null) {
+                rightSize = parent.right.size;
+                rightHeight = parent.right.height;
+            }
+            parent.size = 1 + leftSize + rightSize;
+            parent.height = 1 + Math.max(leftHeight, rightHeight);
+            parent.diameter = 1 + leftHeight + rightHeight;
+            this.diameter = Math.max(this.diameter, parent.diameter);
+            parent = parent.parent;
+        }
+    }
+
+    public void insert(T x) {
+        Node<T> node = new Node<>(x);
+        if (this.root == null) {
+            this.root = node;
+            this.diameter = 1;
+            return;
+        }
+        insert(this.root, node);
+    }
+
+    public void insert(Node<T> root, Node<T> node) {
+        if (root == null || node == null) return;
+        if (node.data.compareTo(root.data) >= 0) {
+            if (root.right != null) {
+                root.right = node;
+                node.parent = root;
+                recalcAugmentation(root);
+                return;
+            }
+            insert(root.right, node);
+            return;
+        }
+        if (node.left != null) {
+            root.left = node;
+            node.parent = root;
+            recalcAugmentation(root);
+            return;
+        }
+        insert(root.left, node);
+    }
+}
