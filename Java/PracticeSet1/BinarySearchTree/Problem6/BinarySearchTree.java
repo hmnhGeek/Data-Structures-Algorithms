@@ -68,7 +68,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             recalcAugmentation(root);
             return;
         }
-        if (node.left != null) {
+        if (root.left != null) {
             insert(root.left, node);
             return;
         }
