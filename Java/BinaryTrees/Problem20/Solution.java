@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/construct-tree-1/1
+// Solution - https://www.youtube.com/watch?v=aZNaLrVebKQ
+
+
 package BinaryTrees.Problem20;
 
 import java.util.Arrays;
@@ -19,6 +23,9 @@ public class Solution {
             List<Integer> preorder, int preStart, int preEnd,
             Map<Integer, Integer> map
     ) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         if (inStart > inEnd || preStart > preEnd) return null;
         Node<Integer> root = new Node<>(preorder.get(preStart));
         Integer inRoot = map.get(root.data);
