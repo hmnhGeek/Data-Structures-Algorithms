@@ -76,4 +76,50 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
         insert(root.left, node);
     }
+
+    public Node<T> getLeftmostNode(Node<T> node) {
+        if (node == null) return null;
+        while (node.left != null) {
+            node = node.left;
+        }
+        return node;
+    }
+
+    public Node<T> getRightmostNode(Node<T> node) {
+        if (node == null) return null;
+        while (node.right != null) {
+            node = node.right;
+        }
+        return node;
+    }
+
+    public Node<T> getSuccessor(Node<T> node) {
+        if (node == null) {
+            return null;
+        }
+        if (node.right != null) return getLeftmostNode(node);
+        Node<T> parent = node.parent;
+        if (parent == null) return null;
+        while (parent.left != node) {
+            parent = parent.parent;
+            node = node.parent;
+            if (parent == null) return null;
+        }
+        return parent;
+    }
+
+    public Node<T> getPredecessor(Node<T> node) {
+        if (node == null) {
+            return null;
+        }
+        if (node.left != null) return getRightmostNode(node);
+        Node<T> parent = node.parent;
+        if (parent == null) return null;
+        while (parent.right != node) {
+            parent = parent.parent;
+            node = node.parent;
+            if (parent == null) return null;
+        }
+        return parent;
+    }
 }
