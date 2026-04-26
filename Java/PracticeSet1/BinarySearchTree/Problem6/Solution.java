@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1
+
+
 package PracticeSet1.BinarySearchTree.Problem6;
 
 import java.util.ArrayList;
@@ -6,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static List<Integer> getInorderSuccessors(List<Integer> nodes) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
         for (Integer x : nodes) {
             bst.insert(x);
