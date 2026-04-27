@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/sort-a-stack/1
+// Solution - https://www.youtube.com/watch?v=8ocB7a_c-Cc
+
+
 package StacksAndQueues.Problem15;
 
 import java.util.Arrays;
@@ -12,6 +16,9 @@ public class Solution {
     }
 
     private static void test(Integer...args) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         Stack<Integer> s1 = new Stack<>();
         for (Integer i : Arrays.asList(args)) {
             s1.push(i);
