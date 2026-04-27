@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/find-pair-given-difference1559/1
+// Solution - https://www.youtube.com/watch?v=5IUyc7cPD9E
+
+
 package SearchingAndSorting.Problem10;
 
 import java.util.Arrays;
@@ -11,6 +15,9 @@ public class Solution {
     }
 
     public static boolean detectPairs(List<Integer> arr, Integer target) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+         */
         QuickSort.sort(arr);
         for (Integer i : arr) {
             if (isPresent(i + target, arr)) return true;
