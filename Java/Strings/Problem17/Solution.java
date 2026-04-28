@@ -1,3 +1,8 @@
+// Problem link - https://www.geeksforgeeks.org/problems/word-break1352/1
+// Solution - https://www.youtube.com/watch?v=oBUpyPZ08zU
+// Solution (Front Partitioning Logic) - https://www.youtube.com/watch?v=_H8V5hJUGd0
+
+
 package Strings.Problem17;
 
 import java.util.Arrays;
