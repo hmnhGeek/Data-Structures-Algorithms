@@ -91,10 +91,56 @@ public class Solution {
         );
     }
 
+    private static void tabulation() {
+        System.out.println(
+                TabulationSolution.wordBreak(
+                        "ilike",
+                        Arrays.asList("i", "like", "sam", "sung", "samsung", "mobile")
+                )
+        );
+
+        System.out.println(
+                TabulationSolution.wordBreak(
+                        "ilikesamsung",
+                        Arrays.asList("i", "like", "sam", "sung", "samsung", "mobile")
+                )
+        );
+
+        System.out.println(
+                TabulationSolution.wordBreak(
+                        "catsandog",
+                        Arrays.asList("cats", "dog", "sand", "and", "cat")
+                )
+        );
+
+        System.out.println(
+                TabulationSolution.wordBreak(
+                        "storybook",
+                        Arrays.asList("story", "book")
+                )
+        );
+
+        System.out.println(
+                TabulationSolution.wordBreak(
+                        "monkeyandonkey",
+                        Arrays.asList("monkey", "donkey", "and")
+                )
+        );
+
+        System.out.println(
+                TabulationSolution.wordBreak(
+                        "applepenapple",
+                        Arrays.asList("apple", "pen")
+                )
+        );
+    }
+
     public static void main(String[] args) {
         recursive();
         System.out.println();
         memoized();
+        System.out.println();
+        tabulation();
         System.out.println();
     }
 }
