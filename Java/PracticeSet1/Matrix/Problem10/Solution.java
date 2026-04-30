@@ -1,33 +1,53 @@
+// Problem link - https://www.geeksforgeeks.org/common-elements-in-all-rows-of-a-given-matrix/
+
+
 package PracticeSet1.Matrix.Problem10;
 
 import java.util.*;
 
 public class Solution {
     public static Set<Integer> findCommonElements(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(nm) and space complexity is O(m).
+         */
+
         int n = mtx.size(), m = mtx.getFirst().size();
+
+        // get the unique elements in first row of the matrix in O(m) time.
         Set<Integer> result = new HashSet<>(mtx.getFirst());
+
+        // mark the first row elements as not visited in O(m) time.
         Map<Integer, Boolean> visited = new HashMap<>();
         for (Integer i : mtx.getFirst()) {
             visited.put(i, false);
         }
+
+        // this will take O(n * m) time.
         for (int i = 1; i < n; i += 1) {
             for (int j = 0; j < m; j += 1) {
                 Integer elem = mtx.get(i).get(j);
+
+                // if this row contains the element from first row, mark the visited section as true.
                 if (result.contains(elem)) {
                     visited.put(elem, true);
                 }
             }
 
+            // remove all non-appearing elements from result set.
             for (Integer e : visited.keySet()) {
                 if (visited.get(e).equals(false)) {
                     result.remove(e);
                 }
             }
 
+            // remove all false values
             visited.entrySet().removeIf(entry -> !entry.getValue());
 
+            // reset the visited map to false.
             visited.replaceAll((k, v) -> false);
         }
+
+        // return the common elements.
         return visited.keySet();
     }
 
