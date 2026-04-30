@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/subarrays-with-at-most-k-distinct-values_1473804
+// Solution - https://www.youtube.com/watch?v=7wYGbV_LsX4&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=11
+
+
 package PracticeSet1.SlidingWindows.L11;
 
 import java.util.HashMap;
@@ -35,6 +39,7 @@ public class Solution {
     }
 
     public static Integer getSubArrayCountWithKDifferentIntegers(List<Integer> arr, Integer k) {
+        // Time complexity is O(2n) and space complexity is O(n).
         return Solution.getLessThanCount(arr, k) - Solution.getLessThanCount(arr, k - 1);
     }
 
