@@ -6,6 +6,9 @@ public class Solution {
         recursive();
         System.out.println();
         memoized();
+        System.out.println();
+        tabulation();
+        System.out.println();
     }
 
     private static void recursive() {
@@ -26,5 +29,15 @@ public class Solution {
         System.out.println(MemoizedSolution.getLcsLength("abc", "acd"));
         System.out.println(MemoizedSolution.getLcsLength("AGGTAB", "GXTXAYB"));
         System.out.println(MemoizedSolution.getLcsLength("ABC", "CBA"));
+    }
+
+    private static void tabulation() {
+        System.out.println(TabulationSolution.getLcsLength("adebc", "dcadb"));
+        System.out.println(TabulationSolution.getLcsLength("ab", "defg"));
+        System.out.println(TabulationSolution.getLcsLength("abcde", "ace"));
+        System.out.println(TabulationSolution.getLcsLength("abc", "abc"));
+        System.out.println(TabulationSolution.getLcsLength("abc", "acd"));
+        System.out.println(TabulationSolution.getLcsLength("AGGTAB", "GXTXAYB"));
+        System.out.println(TabulationSolution.getLcsLength("ABC", "CBA"));
     }
 }
