@@ -9,6 +9,8 @@ public class Solution {
         System.out.println();
         tabulation();
         System.out.println();
+        spaceOptimized();
+        System.out.println();
     }
 
     private static void recursive() {
@@ -39,5 +41,15 @@ public class Solution {
         System.out.println(TabulationSolution.getLcsLength("abc", "acd"));
         System.out.println(TabulationSolution.getLcsLength("AGGTAB", "GXTXAYB"));
         System.out.println(TabulationSolution.getLcsLength("ABC", "CBA"));
+    }
+
+    private static void spaceOptimized() {
+        System.out.println(SpaceOptimizedSolution.getLcsLength("adebc", "dcadb"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("ab", "defg"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("abcde", "ace"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("abc", "abc"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("abc", "acd"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("AGGTAB", "GXTXAYB"));
+        System.out.println(SpaceOptimizedSolution.getLcsLength("ABC", "CBA"));
     }
 }
