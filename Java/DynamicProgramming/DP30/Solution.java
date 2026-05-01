@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/can-you-make_4244510?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=yMnH0jrir0Q&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=31
+
+
 package DynamicProgramming.DP30;
 
 
@@ -11,6 +15,12 @@ public class Solution {
         System.out.println();
         spaceOptimized();
         System.out.println();
+
+        System.out.println(Solution.getMinOps("abcd", "anc"));
+        System.out.println(Solution.getMinOps("aaa", "aa"));
+        System.out.println(Solution.getMinOps("edl", "xcqja"));
+        System.out.println(Solution.getMinOps("heap", "pea"));
+        System.out.println(Solution.getMinOps("geeksforgeeks", "geeks"));
     }
 
     private static void recursive() {
@@ -51,5 +61,10 @@ public class Solution {
         System.out.println(SpaceOptimizedSolution.getLcsLength("abc", "acd"));
         System.out.println(SpaceOptimizedSolution.getLcsLength("AGGTAB", "GXTXAYB"));
         System.out.println(SpaceOptimizedSolution.getLcsLength("ABC", "CBA"));
+    }
+
+    public static Integer getMinOps(String s1, String s2) {
+        int lcsLength = SpaceOptimizedSolution.getLcsLength(s1, s2);
+        return s1.length() + s2.length() - 2*lcsLength;
     }
 }
