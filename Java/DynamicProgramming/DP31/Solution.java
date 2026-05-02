@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/shortest-supersequence_4244493?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=xElxAuBcvsU&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=32
+
+
 package DynamicProgramming.DP31;
 
 import java.util.HashMap;
@@ -5,6 +9,9 @@ import java.util.Map;
 
 public class Solution {
     public static String getShortestCommonSuperSequence(String s1, String s2) {
+        /*
+            Time complexity is O(nm + n + m) and space complexity is O(nm).
+         */
         int n = s1.length(), m = s2.length();
         Map<Integer, Map<Integer, Integer>> dp = new HashMap<>();
         for (int i = 0; i <= n; i += 1) {
