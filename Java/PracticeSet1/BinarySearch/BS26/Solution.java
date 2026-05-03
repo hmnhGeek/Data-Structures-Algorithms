@@ -1,9 +1,16 @@
+// Problem link - https://www.geeksforgeeks.org/find-peak-element-2d-array/
+// Solution - https://www.youtube.com/watch?v=nGGp5XBzC4g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=28
+
+
 package PracticeSet1.BinarySearch.BS26;
 
 import java.util.List;
 
 public class Solution {
     public static List<Integer> getPeak(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         int low = 0, high = m - 1;
         while (low <= high) {
