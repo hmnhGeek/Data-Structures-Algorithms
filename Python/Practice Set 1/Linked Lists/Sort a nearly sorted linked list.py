@@ -111,3 +111,40 @@ class DoublyLinkedList:
         result += f"{self.tail.data}]"
         return result
 
+
+class Solution:
+    @staticmethod
+    def sort_dll(dll: DoublyLinkedList, k: int):
+        pq = MinHeap()
+        curr = dll.head
+        counter = 0
+        while counter != k + 1:
+            pq.insert(curr)
+            curr = curr.next
+            counter += 1
+        dummy = Node(None)
+        temp = dummy
+        while not pq.is_empty():
+            node = pq.pop()
+            temp.next = node
+            node.prev = temp
+            temp = temp.next
+            if curr is not None:
+                pq.insert(curr)
+                curr = curr.next
+        dll.head = dummy.next
+        dll.tail = temp
+
+    @staticmethod
+    def test(*args):
+        k = args[-1]
+        dll = DoublyLinkedList()
+        dll.build(*args[:-1])
+        print("Before: ", dll)
+        Solution.sort_dll(dll, k)
+        print("After: ", dll)
+        print()
+
+
+Solution.test(3, 2, 1, 5, 6, 4, 2)
+
