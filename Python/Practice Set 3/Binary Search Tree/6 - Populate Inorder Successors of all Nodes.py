@@ -49,3 +49,47 @@ class BinarySearchTree:
             parent.d = 1 + left_ht + right_ht
             self.d = max(self.d, parent.d)
             parent = parent.parent
+
+    def get_leftmost_node(self, node):
+        if node is None:
+            return
+        while node.left is not None:
+            node = node.left
+        return node
+
+    def get_rightmost_node(self, node):
+        if node is None:
+            return
+        while node.right is not None:
+            node = node.right
+        return node
+
+    def get_successor(self, node):
+        if node is None:
+            return
+        if node.right is not None:
+            return self.get_leftmost_node(node.right)
+        parent = node.parent
+        if parent is None:
+            return
+        while parent.left != node:
+            node = node.parent
+            parent = parent.parent
+            if parent is None:
+                return
+        return parent
+
+    def get_predecessor(self, node):
+        if node is None:
+            return
+        if node.left is not None:
+            return self.get_rightmost_node(node.left)
+        parent = node.parent
+        if parent is None:
+            return
+        while parent.right != node:
+            node = node.parent
+            parent = parent.parent
+            if parent is None:
+                return
+        return parent
