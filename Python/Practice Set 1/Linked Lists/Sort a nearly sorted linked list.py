@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/sort-k-sorted-doubly-linked-list/
+# Solution - https://www.youtube.com/watch?v=9jdqdhsynmA
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -115,15 +119,24 @@ class DoublyLinkedList:
 class Solution:
     @staticmethod
     def sort_dll(dll: DoublyLinkedList, k: int):
+        """
+            Time complexity is O(n * log(k)) and space complexity is O(k).
+        """
+
         pq = MinHeap()
         curr = dll.head
         counter = 0
+
+        # store k + 1 elements and not k because each node is k units from its sorted position.
         while counter != k + 1:
             pq.insert(curr)
             curr = curr.next
             counter += 1
+
         dummy = Node(None)
         temp = dummy
+
+        # This will take O(n * log(k)) time.
         while not pq.is_empty():
             node = pq.pop()
             temp.next = node
