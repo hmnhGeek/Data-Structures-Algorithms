@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/populate-inorder-successor-for-all-nodes/1
+
+
 from typing import List
 
 
@@ -157,6 +160,9 @@ class Solution:
 
     @staticmethod
     def print_all_successors(bst: BinarySearchTree) -> str:
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
         inorder = []
         Solution._get_inorder(bst.root, inorder)
         result = ""
