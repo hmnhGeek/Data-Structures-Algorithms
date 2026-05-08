@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -142,3 +145,33 @@ class BinarySearchTree:
     def show(self):
         self._show(self.root)
         print()
+
+
+class Solution:
+    @staticmethod
+    def _get_inorder(root: Node, inorder: List[Node]):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root)
+            Solution._get_inorder(root.right, inorder)
+
+    @staticmethod
+    def print_all_successors(bst: BinarySearchTree) -> str:
+        inorder = []
+        Solution._get_inorder(bst.root, inorder)
+        result = ""
+        for node in inorder:
+            successor = bst.get_successor(node)
+            result += f"{node.data} -> {successor.data if successor is not None else '-1'} "
+        return result
+
+    @staticmethod
+    def test(*args):
+        bst = BinarySearchTree()
+        for i in args:
+            bst.insert(i)
+        print(Solution.print_all_successors(bst))
+
+
+Solution.test(10, 8, 12, 3)
+Solution.test(1, 2, 3)
