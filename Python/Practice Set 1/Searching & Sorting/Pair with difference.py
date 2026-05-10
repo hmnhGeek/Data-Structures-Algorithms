@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-pair-given-difference1559/1
+# Solution - https://www.youtube.com/watch?v=5IUyc7cPD9E
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -29,6 +33,9 @@ class QuickSort:
 class Solution:
     @staticmethod
     def pair_with_difference(arr, diff):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
         QuickSort.sort(arr)
         for i in arr:
             if Solution._find(arr, i + diff):
