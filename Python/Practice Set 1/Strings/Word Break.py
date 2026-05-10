@@ -24,9 +24,12 @@ def recursive():
 
 
 def memoized():
+    """
+        Time complexity is O(n^2) and space complexity is O(2n).
+    """
     def word_break(string, dictionary):
         n = len(string)
-        dp = {i: None for i in range(2*n + 1)}
+        dp = {i: None for i in range(n + 1)}
         return solve(0, string, dictionary, n, dp)
 
     def solve(i, string, dictionary, n, dp):
@@ -34,24 +37,16 @@ def memoized():
         # after it. So, return True.
         if i == n:
             return True
-
         if dp[i] is not None:
             return dp[i]
-
-        # before moving to partitioning, check if the whole string is present in the dictionary or not.
-        if string in dictionary:
-            return True
-
-        # now, partition by length
-        for length in range(1, n + 1):
-            # get the substring and check for the second part.
-            substring = string[i:i+length]
-            if substring in dictionary and solve(i + length, string, dictionary, n, dp):
+        temp = ""
+        for j in range(i, n):
+            temp += string[j]
+            if temp in dictionary and solve(j + 1, string, dictionary, n, dp):
                 dp[i] = True
-
-        # return false if second part is not found in the dictionary.
+                return True
         dp[i] = False
-        return dp[i]
+        return False
 
     print(word_break("ilike", ["i", "like", "sam", "sung", "samsung", "mobile"]))
     print(word_break("ilikesamsung", ["i", "like", "sam", "sung", "samsung", "mobile"]))
@@ -63,5 +58,5 @@ def memoized():
 
 recursive()
 print()
-# memoized()
+memoized()
 print()
