@@ -1,3 +1,11 @@
+# Problem link - https://www.geeksforgeeks.org/problems/sort-a-stack/1
+# Solution - https://www.youtube.com/watch?v=8ocB7a_c-Cc
+
+"""
+    Time complexity is O(n * log(n)) and space complexity is O(n).
+"""
+
+
 class Node:
     def __init__(self, data):
         self.data = data
