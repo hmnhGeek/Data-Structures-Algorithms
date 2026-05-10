@@ -31,11 +31,22 @@ class Stack:
         self.length -= 1
         return item
 
+    def __str__(self):
+        if self.is_empty():
+            return "[]"
+        curr = self.head
+        result = "["
+        while curr != self.tail:
+            result += f"{curr.data}, "
+            curr = curr.next
+        result += f"{self.tail.data}]"
+        return result
+
 
 class Solution:
     @staticmethod
     def sort(stack: Stack):
-        Solution._sort(stack.head)
+        return Solution._sort(stack)
 
     @staticmethod
     def _sort(stack: Stack):
@@ -72,17 +83,36 @@ class Solution:
         while i is not None and j is not None:
             if i.data <= j.data:
                 temp.next = i
+                i = i.next
             else:
                 temp.next = j
+                j = j.next
             temp = temp.next
         while i is not None:
             temp.next = i
+            i = i.next
             temp = temp.next
         while j is not None:
             temp.next = j
+            j = j.next
             temp = temp.next
         result = Stack()
         result.head = dummy_node.next
         result.tail = temp
         result.length = first.length + second.length
         return result
+
+
+def test(*args):
+    global i
+    stack = Stack()
+    for i in args:
+        stack.push(i)
+    print(stack)
+    stack = Solution.sort(stack)
+    print(stack)
+    print()
+
+
+test(41, 3, 32, 2, 11)
+test(3, 2, 1)
