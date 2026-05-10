@@ -24,3 +24,31 @@ class QuickSort:
                 arr[i], arr[j] = arr[j], arr[i]
         arr[j], arr[low] = arr[low], arr[j]
         return j
+
+
+class Solution:
+    @staticmethod
+    def pair_with_difference(arr, diff):
+        QuickSort.sort(arr)
+        for i in arr:
+            if Solution._find(arr, i + diff):
+                return i, i + diff
+        return -1
+
+    @staticmethod
+    def _find(arr, x):
+        low, high = 0, len(arr) - 1
+        while low <= high:
+            mid = int(low + (high - low)/2)
+            if arr[mid] == x:
+                return True
+            if arr[mid] > x:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return False
+
+
+print(Solution.pair_with_difference([5, 20, 3, 2, 5, 80], 78))
+print(Solution.pair_with_difference([90, 70, 20, 80, 50], 45))
+print(Solution.pair_with_difference([1], 1))
