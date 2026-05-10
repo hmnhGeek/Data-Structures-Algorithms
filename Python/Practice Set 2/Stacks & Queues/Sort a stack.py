@@ -55,3 +55,34 @@ class Solution:
         first = Solution._sort(first)
         second = Solution._sort(second)
         return Solution._merge(first, second)
+
+    @staticmethod
+    def _get_middle_node(stack: Stack) -> Node:
+        slow, fast = stack.head, stack.head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+    @staticmethod
+    def _merge(first: Stack, second: Stack) -> Stack:
+        dummy_node = Node(None)
+        temp = dummy_node
+        i, j = first.head, second.head
+        while i is not None and j is not None:
+            if i.data <= j.data:
+                temp.next = i
+            else:
+                temp.next = j
+            temp = temp.next
+        while i is not None:
+            temp.next = i
+            temp = temp.next
+        while j is not None:
+            temp.next = j
+            temp = temp.next
+        result = Stack()
+        result.head = dummy_node.next
+        result.tail = temp
+        result.length = first.length + second.length
+        return result
