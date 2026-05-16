@@ -1,6 +1,12 @@
+# Problem link - https://www.geeksforgeeks.org/problems/common-elements1132/1
+
+
 class Solution:
     @staticmethod
     def find_common(a, b, c):
+        """
+            Time complexity is O({n, m, p}) and space complexity is O(1).
+        """
         i, j, k = 0, 0, 0
         result = []
         n, m, p = len(a), len(b), len(c)
