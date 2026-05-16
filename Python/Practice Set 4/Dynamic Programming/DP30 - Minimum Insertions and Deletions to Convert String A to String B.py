@@ -102,10 +102,29 @@ def space_optimized():
     print(get_lcs_length("ABC", "CBA"))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
+class Solution:
+    @staticmethod
+    def _get_lcs_length(s1, s2):
+        n, m = len(s1), len(s2)
+        prev = {j: 0 for j in range(m + 1)}
+        for i in range(1, n + 1):
+            curr = {j: 0 for j in range(m + 1)}
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    curr[j] = 1 + prev[j - 1]
+                else:
+                    curr[j] = max(prev[j], curr[j - 1])
+            prev = curr
+        return prev[m]
+
+    @staticmethod
+    def get_min_ops(s1, s2):
+        lcs_length = Solution._get_lcs_length(s1, s2)
+        return len(s1) + len(s2) - (2 * lcs_length)
+
+
+print(Solution.get_min_ops("abcd", "anc"))
+print(Solution.get_min_ops("aaa", "aa"))
+print(Solution.get_min_ops("edl", "xcqja"))
+print(Solution.get_min_ops("heap", "pea"))
+print(Solution.get_min_ops("geeksforgeeks", "geeks"))
