@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/minimum-steps-to-reach-end-from-start-by-performing-multiplication-and-mod-operations-with-array-elements/
+# Solution - https://www.youtube.com/watch?v=_BvEJ3VIDWw&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=39
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -35,6 +39,9 @@ class Queue:
 class Solution:
     @staticmethod
     def get_min_multiplications(start, multipliers, end):
+        """
+            Time complexity is O(10**5 * n) and space complexity is O(10**5), where n is the size of array.
+        """
         START, END = 1, 10**5
         if not (start in range(START, END + 1) and end in range(START, END + 1)):
             return
