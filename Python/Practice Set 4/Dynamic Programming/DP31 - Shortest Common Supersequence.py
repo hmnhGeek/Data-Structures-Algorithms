@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/shortest-supersequence_4244493?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=xElxAuBcvsU&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=32
+
+
 def recursive():
     def lcs(s1, s2):
         n, m = len(s1), len(s2)
@@ -102,11 +106,47 @@ def space_optimized():
     print(lcs("ABC", "CBA"))
 
 
-recursive()
-print()
-memoized()
-print()
-tabulation()
-print()
-space_optimized()
-print()
+class Solution:
+    @staticmethod
+    def get_shortest_common_super_sequence(s1, s2):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
+        n, m = len(s1), len(s2)
+        dp = {i: {j: 0 for j in range(m + 1)} for i in range(n + 1)}
+        for i in range(1, n + 1):
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1]:
+                    dp[i][j] = 1 + dp[i - 1][j - 1]
+                else:
+                    dp[i][j] = max(
+                        dp[i - 1][j],
+                        dp[i][j - 1]
+                    )
+        scs = ""
+        i, j = n, m
+        while i > 0 and j > 0:
+            if s1[i - 1] == s2[j - 1]:
+                scs += s1[i - 1]
+                i -= 1
+                j -= 1
+            elif dp[i - 1][j] > dp[i][j - 1]:
+                scs += s1[i - 1]
+                i -= 1
+            else:
+                scs += s2[j - 1]
+                j -= 1
+        while i > 0:
+            scs += s1[i - 1]
+            i -= 1
+        while j > 0:
+            scs += s2[j - 1]
+            j -= 1
+        result = scs[-1:-len(scs)-1:-1]
+        return result
+
+
+print(Solution.get_shortest_common_super_sequence("brute", "groot"))
+print(Solution.get_shortest_common_super_sequence("bleed", "blue"))
+print(Solution.get_shortest_common_super_sequence("coding", "ninjas"))
+print(Solution.get_shortest_common_super_sequence("blinding", "lights"))
