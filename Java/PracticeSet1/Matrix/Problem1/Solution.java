@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/1
+
+
 package PracticeSet1.Matrix.Problem1;
 
 import java.util.ArrayList;
@@ -6,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static List<Integer> getSpiralTraversal(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(nm) and space complexity is O(1).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         int left = 0, top = 0, right = m - 1, down = n - 1;
         Character direction = 'R';
