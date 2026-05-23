@@ -8,6 +8,10 @@ import java.util.Objects;
 public class Solution {
     public static void main(String[] args) {
         System.out.println(getFourSum(Arrays.asList(0, 0, 2, 1, 1), 3));
+        System.out.println(getFourSum(Arrays.asList(10, 2, 3, 4, 5, 7, 8), 23));
+        System.out.println(getFourSum(Arrays.asList(0, 0, 2, 1, 1), 2));
+        System.out.println(getFourSum(Arrays.asList(1,0,-1,0,-2,2), 0));
+        System.out.println(getFourSum(Arrays.asList(2,2,2,2,2), 8));
     }
 
     public static List<List<Integer>> getFourSum(List<Integer> arr, Integer target) {
