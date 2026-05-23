@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/find-all-four-sum-numbers1732/1
+// Solution - https://www.youtube.com/watch?v=eD95WRfh81c
+
+
 package SearchingAndSorting.Problem11;
 
 import java.util.ArrayList;
@@ -15,6 +19,9 @@ public class Solution {
     }
 
     public static List<List<Integer>> getFourSum(List<Integer> arr, Integer target) {
+        /*
+            Time complexity is O(n^3) and space complexity is O(1).
+         */
         QuickSort.sort(arr);
         List<List<Integer>> result = new ArrayList<>();
         for (int i = 0; i < arr.size(); i += 1) {
