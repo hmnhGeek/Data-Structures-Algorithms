@@ -39,5 +39,8 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(rabinKarp("ababdabacdababcabab", "ababcabab"));
         System.out.println(rabinKarp("geeksforgeeks", "geek"));
+        System.out.println(rabinKarp("aabaacaadaabaaba", "aaba"));
+        System.out.println(rabinKarp("ababcabcababc", "abc"));
+        System.out.println(rabinKarp("hello", "ll"));
     }
 }
