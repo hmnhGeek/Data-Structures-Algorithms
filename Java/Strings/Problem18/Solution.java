@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/rabin-karp-algorithm-for-pattern-searching/
+
+
 package Strings.Problem18;
 
 import java.util.ArrayList;
@@ -21,12 +24,27 @@ public class Solution {
     }
 
     public static List<Integer> rabinKarp(String text, String pattern) {
+        /*
+            Time complexity is O(nm) and space complexity is O(m).
+         */
+
+        // get the lengths of text and pattern for later use.
         int textLength = text.length(), patternLength = pattern.length();
+
+        // we will store the start index of every match in a list and return it.
         List<Integer> matches = new ArrayList<>();
+
+        // compute the pattern hash which will remain the same for entire run.
         int patternHash = computeHash(pattern, Boolean.FALSE);
+
+        // starting from 0th index, go up till text_length - pattern_length in the text for computing
+        // window hashes.
         for (int i = 0; i <= textLength - patternLength; i += 1) {
+            // extract the window and compute its hash value.
             String currentWindow = text.substring(i, i + patternLength);
             int currentWindowHash = computeHash(currentWindow, Boolean.FALSE);
+
+            // if the hash value matches and the window matches with pattern, add it to the result list.
             if (currentWindowHash == patternHash) {
                 if (currentWindow.equals(pattern)) {
                     matches.add(i);
