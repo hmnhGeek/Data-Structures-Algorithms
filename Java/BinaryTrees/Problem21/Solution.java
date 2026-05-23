@@ -1,7 +1,12 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/minimum-swap-required-convert-binary-tree-binary-search-tree/
+// Solution - https://www.youtube.com/watch?v=SyIzeO39ZPk
+// Solution - https://www.youtube.com/watch?v=-2_c4lG7k_M
+// Solution - https://www.youtube.com/watch?v=1BxbBgNSwHo
+
+
 package BinaryTrees.Problem21;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -53,6 +58,12 @@ public class Solution {
         root.left.right = new Node<>(9);
         root.right.left = new Node<>(10);
         root.right.right = new Node<>(11);
+        System.out.println(getMinSwapsToMakeBst(root));
+
+        // Example 2
+        root = new Node<>(2);
+        root.left = new Node<>(1);
+        root.right = new Node<>(3);
         System.out.println(getMinSwapsToMakeBst(root));
     }
 }
