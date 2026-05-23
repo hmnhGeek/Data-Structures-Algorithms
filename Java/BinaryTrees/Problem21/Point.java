@@ -1,16 +1,16 @@
 package BinaryTrees.Problem21;
 
 
-public class Vector implements Comparable<Vector> {
+public class Point implements Comparable<Point> {
     public Integer value, index;
 
-    public Vector(Integer value, Integer index) {
+    public Point(Integer value, Integer index) {
         this.value = value;
         this.index = index;
     }
 
     @Override
-    public int compareTo(Vector o) {
+    public int compareTo(Point o) {
         return this.value.compareTo(o.value);
     }
 }
