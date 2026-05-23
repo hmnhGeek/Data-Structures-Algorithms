@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/rearrange-array-alternating-positive-negative-items-o1-extra-space/
+// Problem link - https://leetcode.com/problems/rearrange-array-elements-by-sign/
+
+
 package Arrays.Problem20;
 
 import java.util.Arrays;
@@ -46,5 +50,9 @@ public class Solution {
     public static void main(String[] args) {
         alternateNumbers(Arrays.asList(1, 2, 3, -4, -1, 4));
         alternateNumbers(Arrays.asList(-5, -2, 5, 2, 4, 7, 1, 8, 0, -8));
+        alternateNumbers(Arrays.asList(3,1,-2,-5,2,-4));
+        alternateNumbers(Arrays.asList(-1,1));
+        alternateNumbers(Arrays.asList(1,2,-4,-5));
+        alternateNumbers(Arrays.asList(1,2,3,-1,-2,-3));
     }
 }
