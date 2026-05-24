@@ -34,7 +34,7 @@ public class MinHeap<T extends Comparable<T>> {
     public Integer getPi(Integer ci) {
         Integer pi = (ci - 1)/2;
         if (0 <= pi && pi < heap.size()) {
-            return ci;
+            return pi;
         }
         return null;
     }
