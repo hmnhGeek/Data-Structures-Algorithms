@@ -1,6 +1,8 @@
-package PracticeSet1.BinarySearchTree.Problem7;
+// Problem link - https://www.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
+// Solution - https://www.youtube.com/watch?v=cX_kPV_foZc
 
-import java.util.Objects;
+
+package PracticeSet1.BinarySearchTree.Problem7;
 
 public class Solution {
     public static void main(String[] args) {
