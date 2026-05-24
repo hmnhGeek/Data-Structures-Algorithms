@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/heap-sort/
+
+
 package PracticeSet1.Heap.Problem2;
 
 import java.util.Arrays;
@@ -5,6 +8,9 @@ import java.util.List;
 
 public class Solution {
     public static <T extends Comparable<T>> void sort(List<T> arr) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         MinHeap<T> minHeap = new MinHeap<>();
         for (T x : arr) {
             minHeap.insert(x);
