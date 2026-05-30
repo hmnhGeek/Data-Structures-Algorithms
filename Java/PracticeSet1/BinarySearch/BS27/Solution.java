@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
+
+
 package PracticeSet1.BinarySearch.BS27;
 
 import java.util.Arrays;
@@ -40,6 +43,9 @@ public class Solution {
     }
 
     public static Integer getMedianFromMatrix(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(nm * log(n)) and space complexity is O(n).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         int totalIntegers = n*m;
         MinHeap<HeapElement<Integer>> pq = new MinHeap<>();
