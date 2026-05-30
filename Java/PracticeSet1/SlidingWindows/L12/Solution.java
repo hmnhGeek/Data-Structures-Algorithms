@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/minimum-window-substring/description/
+// Solution - https://www.youtube.com/watch?v=WJaij9ffOIY&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=12
+
+
 package PracticeSet1.SlidingWindows.L12;
 
 import java.util.HashMap;
@@ -5,6 +9,9 @@ import java.util.Map;
 
 public class Solution {
     public static String getMinWindowSubstring(String string, String pattern) {
+        /*
+            Overall time complexity is O(26n) and space complexity is O(26).
+         */
         Map<Character, Integer> t = getDictionary(pattern, Boolean.TRUE);
         Map<Character, Integer> d = getDictionary(string, Boolean.FALSE);
         Integer startIndex = -1, left = 0, right = 0, length = 0;
@@ -47,6 +54,12 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.println(getMinWindowSubstring("ddaaabbca", "abc"));
+        System.out.println(SlidingWindows.L12.Solution.getMinWindowSubstring("ddaaabbca", "abc"));
+        System.out.println(SlidingWindows.L12.Solution.getMinWindowSubstring("timetopractice", "toc"));
+        System.out.println(SlidingWindows.L12.Solution.getMinWindowSubstring("zoomlazapzo", "oza"));
+        System.out.println(SlidingWindows.L12.Solution.getMinWindowSubstring("ADOBECODEBANC", "ABC"));
+        System.out.println(SlidingWindows.L12.Solution.getMinWindowSubstring("a", "a"));
+        System.out.println(SlidingWindows.L12.Solution.getMinWindowSubstring("a", "aa"));
+        System.out.println(SlidingWindows.L12.Solution.getMinWindowSubstring("ABBXC", "BXC"));
     }
 }
