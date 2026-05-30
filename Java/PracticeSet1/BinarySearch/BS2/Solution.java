@@ -21,6 +21,10 @@ public class Solution {
         System.out.println(getInsertPosition(Arrays.asList(1, 2, 4, 7), 9));
         System.out.println(getInsertPosition(Arrays.asList(2, 5, 7), 1));
         System.out.println(getInsertPosition(Arrays.asList(1, 2, 4, 7), 2));
+        System.out.println("Floor");
+        System.out.println(getFloor(Arrays.asList(10, 20, 30, 40, 50), 25));
+        System.out.println(getFloor(Arrays.asList(10, 20, 30, 40, 50), 30));
+        System.out.println(getFloor(Arrays.asList(10, 20, 30, 40, 50), 15));
     }
 
     public static int getLowerBound(List<Integer> arr, Integer x) {
@@ -59,5 +63,25 @@ public class Solution {
 
     public static int getInsertPosition(List<Integer> arr, Integer x) {
         return getLowerBound(arr, x);
+    }
+
+    public static int getCeil(List<Integer> arr, Integer x) {
+        return getLowerBound(arr, x);
+    }
+
+    public static Integer getFloor(List<Integer> arr, Integer x) {
+        /*
+            Time complexity is O(log(arr.size())) and space complexity is O(1).
+         */
+        int low = 0, high = arr.size() - 1;
+        while (low <= high) {
+            int mid = (low + (high - low)/2);
+            if (arr.get(mid).compareTo(x) > 0) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return 0 <= high && high < arr.size() ? arr.get(high) : null;
     }
 }
