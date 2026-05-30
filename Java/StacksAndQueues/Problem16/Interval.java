@@ -13,4 +13,9 @@ public class Interval implements Comparable<Interval> {
     public int compareTo(Interval o) {
         return this.startTime - o.startTime;
     }
+
+    @Override
+    public String toString() {
+        return String.format("(%d, %d)", startTime, endTime);
+    }
 }
