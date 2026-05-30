@@ -1,3 +1,6 @@
+// Problem link - https://leetcode.com/problems/merge-intervals/description/
+// Solution - https://www.youtube.com/watch?v=IexN60k62jo
+
 package StacksAndQueues.Problem16;
 
 import java.util.ArrayList;
@@ -6,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static List<Interval> mergeIntervals(List<Interval> intervals) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         intervals.sort(null);
         int n = intervals.size();
         List<Interval> merged = new ArrayList<>();
