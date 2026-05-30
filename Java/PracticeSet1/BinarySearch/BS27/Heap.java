@@ -1,4 +1,4 @@
-package PracticeSet1.BinarySearch;
+package PracticeSet1.BinarySearch.BS27;
 
 import java.util.Collections;
 import java.util.List;
