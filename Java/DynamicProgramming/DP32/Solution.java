@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/subsequence-counting_3755256?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=nVG7eTiD2bY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=33
+
+
 package DynamicProgramming.DP32;
 
 public class Solution {
