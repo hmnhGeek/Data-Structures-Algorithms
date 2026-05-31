@@ -4,6 +4,7 @@ public class Solution {
     public static void main(String[] args) {
         recursive();
         memoized();
+        tabulation();
     }
 
     private static void recursive() {
@@ -25,6 +26,17 @@ public class Solution {
         System.out.println(MemoizedSolution.getDistinctSubsequencesCount("rabbbit", "rabbit"));
         System.out.println(MemoizedSolution.getDistinctSubsequencesCount("banana", "ban"));
         System.out.println(MemoizedSolution.getDistinctSubsequencesCount("geeksforgeeks", "ge"));
+        System.out.println();
+    }
+
+    private static void tabulation() {
+        System.out.println(TabulationSolution.getDistinctSubsequencesCount("babgbag", "bag"));
+        System.out.println(TabulationSolution.getDistinctSubsequencesCount("brootgroot", "brt"));
+        System.out.println(TabulationSolution.getDistinctSubsequencesCount("dingdingdingding", "ing"));
+        System.out.println(TabulationSolution.getDistinctSubsequencesCount("aaaaa", "a"));
+        System.out.println(TabulationSolution.getDistinctSubsequencesCount("rabbbit", "rabbit"));
+        System.out.println(TabulationSolution.getDistinctSubsequencesCount("banana", "ban"));
+        System.out.println(TabulationSolution.getDistinctSubsequencesCount("geeksforgeeks", "ge"));
         System.out.println();
     }
 }
