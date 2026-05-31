@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TabulationSolution {
     /*
-        Time complexity is O(nm) and space complexity is O(n + m).
+        Time complexity is O(nm) and space complexity is O(nm).
      */
     public static Integer getDistinctSubsequencesCount(String s1, String s2) {
         int n = s1.length(), m = s2.length();

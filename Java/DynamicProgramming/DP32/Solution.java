@@ -5,6 +5,7 @@ public class Solution {
         recursive();
         memoized();
         tabulation();
+        spaceOptimized();
     }
 
     private static void recursive() {
@@ -37,6 +38,17 @@ public class Solution {
         System.out.println(TabulationSolution.getDistinctSubsequencesCount("rabbbit", "rabbit"));
         System.out.println(TabulationSolution.getDistinctSubsequencesCount("banana", "ban"));
         System.out.println(TabulationSolution.getDistinctSubsequencesCount("geeksforgeeks", "ge"));
+        System.out.println();
+    }
+
+    private static void spaceOptimized() {
+        System.out.println(SpaceOptimizedSolution.getDistinctSubsequencesCount("babgbag", "bag"));
+        System.out.println(SpaceOptimizedSolution.getDistinctSubsequencesCount("brootgroot", "brt"));
+        System.out.println(SpaceOptimizedSolution.getDistinctSubsequencesCount("dingdingdingding", "ing"));
+        System.out.println(SpaceOptimizedSolution.getDistinctSubsequencesCount("aaaaa", "a"));
+        System.out.println(SpaceOptimizedSolution.getDistinctSubsequencesCount("rabbbit", "rabbit"));
+        System.out.println(SpaceOptimizedSolution.getDistinctSubsequencesCount("banana", "ban"));
+        System.out.println(SpaceOptimizedSolution.getDistinctSubsequencesCount("geeksforgeeks", "ge"));
         System.out.println();
     }
 }
