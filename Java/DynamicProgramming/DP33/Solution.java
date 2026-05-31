@@ -12,7 +12,19 @@ public class Solution {
         System.out.println();
     }
 
+    private static void memoized() {
+        System.out.println(MemoizedSolution.getMinOps("horse", "ros"));
+        System.out.println(MemoizedSolution.getMinOps("abc", "dc"));
+        System.out.println(MemoizedSolution.getMinOps("whgtdwhgtdg", "aswcfg"));
+        System.out.println(MemoizedSolution.getMinOps("intention", "execution"));
+        System.out.println(MemoizedSolution.getMinOps("geek", "gesek"));
+        System.out.println(MemoizedSolution.getMinOps("cat", "cut"));
+        System.out.println(MemoizedSolution.getMinOps("sunday", "saturday"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
+        memoized();
     }
 }
