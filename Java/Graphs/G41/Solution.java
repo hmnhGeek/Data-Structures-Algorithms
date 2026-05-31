@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1
+// Solution - https://www.youtube.com/watch?v=0vVofAhAYjc&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=41
+
+
 package Graphs.G41;
 
 import java.util.ArrayList;
@@ -8,6 +12,9 @@ import java.util.Map;
 
 public class Solution {
     public static <T> Map<T, Integer> getShortestPaths(Map<T, List<AdjacentNode<T>>> graph, T source) {
+        /*
+            Time complexity is O(VE) and space complexity is O(V + E).
+         */
         if (!graph.containsKey(source)) return null;
         int n = graph.size();
 
