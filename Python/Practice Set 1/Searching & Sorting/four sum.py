@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/4sum_5713771
+# Solution - https://www.youtube.com/watch?v=eD95WRfh81c
+
+
 class MergeSort:
     @staticmethod
     def sort(arr):
@@ -38,6 +42,10 @@ class MergeSort:
 class Solution:
     @staticmethod
     def four_sum(arr, target):
+        """
+            Time complexity is O(n^3 + nlog(n)) and space complexity is O(1).
+        """
+
         MergeSort.sort(arr)
         i = 0
         n = len(arr)
@@ -56,6 +64,10 @@ class Solution:
                         result.append((arr[i], arr[j], arr[k], arr[l]))
                         k += 1
                         l -= 1
+                        while k < l and arr[k - 1] == arr[k]:
+                            k += 1
+                        while k < l and arr[l] == arr[l + 1]:
+                            l -= 1
                     elif _sum < target:
                         k += 1
                     else:
