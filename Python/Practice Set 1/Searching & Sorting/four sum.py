@@ -43,7 +43,11 @@ class Solution:
         n = len(arr)
         result = []
         for i in range(n):
+            if i != 0 and arr[i - 1] == arr[i]:
+                continue
             for j in range(i + 1, n):
+                if j != i + 1 and arr[j - 1] == arr[j]:
+                    continue
                 k = j + 1
                 l = n - 1
                 while k < l:
