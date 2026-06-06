@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/rearrange-array-alternating-positive-negative-items-o1-extra-space/
+
+
 class Solution:
     @staticmethod
     def _find_first_positive(arr, i, n):
@@ -17,6 +20,9 @@ class Solution:
 
     @staticmethod
     def rearrange(arr):
+        """
+            Time complexity is O(n^2) and space complexity is O(1).
+        """
         n = len(arr)
         is_positive = True
         for i in range(n):
