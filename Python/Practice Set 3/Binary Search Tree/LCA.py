@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -169,13 +172,24 @@ class Solution:
 
     @staticmethod
     def get_lca(bst: BinarySearchTree, n1, n2):
+        """
+            Time complexity is O(log(n)) and space complexity is O(log(n)).
+        """
+
+        # finding nodes take O(log(n)) time and O(log(n)) space.
         node1 = bst._get_node(bst.root, n1)
         node2 = bst._get_node(bst.root, n2)
         if node1 is None or node2 is None:
             return
+
+        # finding depth takes O(log(n)) time
         depth1 = Solution._get_depth(bst, node1)
         depth2 = Solution._get_depth(bst, node2)
+
+        # This process also takes O(log(n)) time.
         node1, node2 = Solution._get_common_starting_pt(node1, depth1, node2, depth2)
+
+        # This process takes O(log(n)) time.
         while node1 != node2:
             node1 = node1.parent
             node2 = node2.parent
