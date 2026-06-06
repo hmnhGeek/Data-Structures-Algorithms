@@ -146,3 +146,79 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def _get_common_starting_pt(node1, depth1, node2, depth2):
+        diff = abs(depth2 - depth1)
+        if depth1 < depth2:
+            for _ in range(diff):
+                node2 = node2.parent
+        elif depth1 > depth2:
+            for _ in range(diff):
+                node1 = node1.parent
+        return node1, node2
+
+    @staticmethod
+    def _get_depth(bst, node):
+        depth = 0
+        while node != bst.root:
+            node = node.parent
+            depth += 1
+        return depth
+
+    @staticmethod
+    def get_lca(bst: BinarySearchTree, n1, n2):
+        node1 = bst._get_node(bst.root, n1)
+        node2 = bst._get_node(bst.root, n2)
+        if node1 is None or node2 is None:
+            return
+        depth1 = Solution._get_depth(bst, node1)
+        depth2 = Solution._get_depth(bst, node2)
+        node1, node2 = Solution._get_common_starting_pt(node1, depth1, node2, depth2)
+        while node1 != node2:
+            node1 = node1.parent
+            node2 = node2.parent
+        return node1.data
+
+
+# Example 1
+bst1 = BinarySearchTree()
+for i in [5, 4, 6, 3, 7, 8]:
+    bst1.insert(i)
+print(Solution.get_lca(bst1, 7, 8))
+
+# Example 2
+bst2 = BinarySearchTree()
+for i in [20, 8, 22, 4, 12, 10, 14]:
+    bst2.insert(i)
+print(Solution.get_lca(bst2, 8, 14))
+
+# Example 3
+bst3 = BinarySearchTree()
+for i in [2, 1, 3]:
+    bst3.insert(i)
+print(Solution.get_lca(bst3, 1, 3))
+
+# Example 4
+t1 = BinarySearchTree()
+for i in [5, 4, 6, 3, 7, 8]:
+    t1.insert(i)
+print(Solution.get_lca(t1, 7, 8))
+print(Solution.get_lca(t1, 7, 3))
+print(Solution.get_lca(t1, 4, 4))
+
+# Example 5
+t2 = BinarySearchTree()
+for i in [2, 1, 3]:
+    t2.insert(i)
+print(Solution.get_lca(t2, 1, 3))
+print(Solution.get_lca(t2, 1, 7))
+print(Solution.get_lca(t2, 9, 7))
+
+# Example 6
+t3 = BinarySearchTree()
+for i in [6, 2, 8, 0, 4, 7, 9, 3, 5]:
+    t3.insert(i)
+print(Solution.get_lca(t3, 2, 8))
+print(Solution.get_lca(t3, 2, 4))
