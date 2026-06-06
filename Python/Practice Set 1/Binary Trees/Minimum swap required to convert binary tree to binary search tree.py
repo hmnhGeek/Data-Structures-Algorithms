@@ -26,3 +26,22 @@ class QuickSort:
         arr[j], arr[low] = arr[low], arr[j]
         return j
 
+
+class Util:
+    @staticmethod
+    def _swap(arr, i, j):
+        arr[i], arr[j] = arr[j], arr[i]
+
+    @staticmethod
+    def min_swaps_to_sort(arr):
+        n = len(arr)
+        helper_arr = [(arr[i], i) for i in range(n)]
+        QuickSort.sort(helper_arr)
+        count_swaps = 0
+        for i in range(n):
+            if helper_arr[i][1] != i:
+                Util._swap(helper_arr, i, helper_arr[i][1])
+                count_swaps += 1
+                i -= 1
+        return count_swaps
+
