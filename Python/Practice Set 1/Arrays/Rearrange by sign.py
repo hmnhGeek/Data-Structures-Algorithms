@@ -45,3 +45,7 @@ class Solution:
 
 Solution.rearrange([1, 2, 3, -4, -1, 4])
 Solution.rearrange([-5, -2, 5, 2, 4, 7, 1, 8, 0, -8])
+Solution.rearrange([3, 1, -2, -5, 2, -4])
+Solution.rearrange([-1, 1])
+Solution.rearrange([1, 2, -4, -5])
+Solution.rearrange([1, 2, 3, -1, -2, -3])
