@@ -1,6 +1,12 @@
+# Problem Link - https://www.geeksforgeeks.org/problems/spirally-traversing-a-matrix-1587115621/1
+
+
 class Solution:
     @staticmethod
     def spiral_traversal(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
         n = len(mtx)
         m = len(mtx[0])
         left = top = 0
