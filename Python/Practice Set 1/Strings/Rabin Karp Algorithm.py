@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/rabin-karp-algorithm-for-pattern-searching/
+
+
 class Solution:
     @staticmethod
     def _compute_hash(string):
@@ -9,6 +12,9 @@ class Solution:
 
     @staticmethod
     def rabin_karp(text, pattern):
+        """
+            Time complexity is O(nm) and space complexity is O(m).
+        """
         n = len(text)
         m = len(pattern)
         matches = []
