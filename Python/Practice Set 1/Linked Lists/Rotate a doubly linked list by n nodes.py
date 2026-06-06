@@ -37,3 +37,32 @@ class DoublyLinkedList:
         result += f"{self.tail.data}]"
         return result
 
+    def rotate(self, p):
+        if p < 0 or p >= self.length:
+            return
+        curr = self.head
+        counter = 1
+        while counter != p:
+            curr = curr.next
+            counter += 1
+        next_node = curr.next
+        next_node.prev = None
+        self.tail.next = self.head
+        self.head.prev = self.tail
+        curr.next = None
+        self.head = next_node
+        self.tail = curr
+
+
+class Solution:
+    @staticmethod
+    def test(p, *args):
+        dll = DoublyLinkedList()
+        dll.build(*args)
+        print(dll)
+        dll.rotate(p)
+        print(dll)
+
+
+Solution.test(2, 1, 2, 3, 4, 5)
+Solution.test(3, 2, 6, 5, 4)
