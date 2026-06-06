@@ -34,3 +34,32 @@ class MergeSort:
             j += 1
         return merged
 
+
+class Solution:
+    @staticmethod
+    def four_sum(arr, target):
+        MergeSort.sort(arr)
+        i = 0
+        n = len(arr)
+        result = []
+        for i in range(n):
+            for j in range(i + 1, n):
+                k = j + 1
+                l = n - 1
+                while k < l:
+                    _sum = arr[i] + arr[j] + arr[k] + arr[l]
+                    if _sum == target:
+                        result.append((arr[i], arr[j], arr[k], arr[l]))
+                        k += 1
+                        l -= 1
+                    elif _sum < target:
+                        k += 1
+                    else:
+                        l -= 1
+        return result
+
+
+print(Solution.four_sum([2, 2, 2, 2, 1, 3], 8))
+print(Solution.four_sum([1, 1, 1, 0], 4))
+print(Solution.four_sum([1, 0, -1, 0, -2, 2], 0))
+print(Solution.four_sum([2, 2, 2, 2, 2], 8))
