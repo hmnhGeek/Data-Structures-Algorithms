@@ -135,3 +135,14 @@ class BinarySearchTree:
         if x >= start.data:
             return self._get_node(start.right, x)
         return self._get_node(start.left, x)
+
+    def _show(self, start):
+        if start:
+            self._show(start.left)
+            print(f"Data = {start.data}{' (root),' if start == self.root else ','} size = {start.size}, height = {start.height}, d = {start.diameter}")
+            self._show(start.right)
+
+    def show(self):
+        self._show(self.root)
+        print()
+
