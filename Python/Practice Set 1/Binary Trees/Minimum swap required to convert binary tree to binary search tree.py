@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/minimum-swap-required-convert-binary-tree-binary-search-tree/
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -55,6 +58,9 @@ class Node:
 class Solution:
     @staticmethod
     def min_swaps_to_bst(root: Node) -> int:
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
         inorder = []
         Solution._get_inorder(root, inorder)
         return Util.min_swaps_to_sort(inorder)
