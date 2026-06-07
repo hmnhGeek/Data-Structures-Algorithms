@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/merging-intervals/#expected-approach-checking-overlapping-intervals-only-onlogn-time-and-o1-space
+# Solution - https://www.youtube.com/watch?v=IexN60k62jo&t=1s
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -66,11 +70,19 @@ class QuickSort:
 class Solution:
     @staticmethod
     def merge_overlapping_intervals(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+        # sorting takes O(n log(n)) time.
         QuickSort.sort(arr)
+
+        # constant time operations
         merged_intervals = []
         stack = Stack()
         stack.push(arr[0])
         n = len(arr)
+
+        # This will run for O(n) time.
         for i in range(1, n):
             current_interval = arr[i]
             last_interval = stack.top()
@@ -83,6 +95,8 @@ class Solution:
                 stack.push(new_last_interval)
             else:
                 stack.push(current_interval)
+
+        # these (with return statements) will run for O(n) time.
         while not stack.is_empty():
             merged_intervals.append(stack.pop())
         return merged_intervals[-1:-len(merged_intervals)-1:-1]
