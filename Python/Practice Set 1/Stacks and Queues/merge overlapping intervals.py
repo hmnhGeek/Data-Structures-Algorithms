@@ -61,3 +61,56 @@ class QuickSort:
                 arr[i], arr[j] = arr[j], arr[i]
         arr[j], arr[low] = arr[low], arr[j]
         return j
+
+
+class Solution:
+    @staticmethod
+    def merge_overlapping_intervals(arr):
+        QuickSort.sort(arr)
+        merged_intervals = []
+        stack = Stack()
+        stack.push(arr[0])
+        n = len(arr)
+        for i in range(1, n):
+            current_interval = arr[i]
+            last_interval = stack.top()
+            if current_interval[0] <= last_interval[1]:
+                new_last_interval = (
+                    min(last_interval[0], current_interval[0]),
+                    max(last_interval[1], current_interval[1])
+                )
+                stack.pop()
+                stack.push(new_last_interval)
+            else:
+                stack.push(current_interval)
+        while not stack.is_empty():
+            merged_intervals.append(stack.pop())
+        return merged_intervals[-1:-len(merged_intervals)-1:-1]
+
+
+print(Solution.merge_overlapping_intervals([
+    [1, 3],
+    [2, 6],
+    [8, 9],
+    [9, 11],
+    [8, 10],
+    [2, 4],
+    [15, 18],
+    [16, 17]
+]))
+
+print(
+    Solution.merge_overlapping_intervals([[1, 3], [2, 4], [6, 8], [9, 10]])
+)
+
+print(
+    Solution.merge_overlapping_intervals([[7, 8], [1, 5], [2, 4], [4, 6]])
+)
+
+print(
+    Solution.merge_overlapping_intervals([[1, 3], [2, 6], [8, 10], [15, 18]])
+)
+
+print(
+    Solution.merge_overlapping_intervals([[1, 4], [4, 5]])
+)
