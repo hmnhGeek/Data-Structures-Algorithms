@@ -6,7 +6,7 @@ class MinHeap:
         return len(self.heap) == 0
 
     def get_lci(self, pi):
-        lci = 2*pi + 1
+        lci = 2 * pi + 1
         if 0 <= lci < len(self.heap):
             return lci
         return None
@@ -20,7 +20,7 @@ class MinHeap:
     def get_pi(self, ci):
         if ci == 0:
             return
-        pi = int((ci - 1)/2)
+        pi = int((ci - 1) / 2)
         if 0 <= pi < len(self.heap):
             return pi
         return None
@@ -72,3 +72,19 @@ class MinHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def heap_sort(arr):
+        pq = MinHeap()
+        for i in arr:
+            pq.insert(i)
+        counter = 0
+        while not pq.is_empty():
+            arr[counter] = pq.pop()
+            counter += 1
+
+
+# Example
+arr = [2, 1, 4, 6, 8, 3, 2, 6, 3, 2]
+Solution.heap_sort(arr)
+print(arr)
