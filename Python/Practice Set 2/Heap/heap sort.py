@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/heap-sort/
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -75,6 +78,9 @@ class MinHeap:
 class Solution:
     @staticmethod
     def heap_sort(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
         pq = MinHeap()
         for i in arr:
             pq.insert(i)
