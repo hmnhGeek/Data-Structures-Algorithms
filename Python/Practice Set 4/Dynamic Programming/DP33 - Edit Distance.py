@@ -86,9 +86,42 @@ def tabulation():
     print(edit_distance("sunday", "saturday"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(nm) and space complexity is O(m).
+    """
+
+    def edit_distance(s, p):
+        n, m = len(s), len(p)
+        prev = {j: 1e6 for j in range(m + 1)}
+        prev[0] = 0
+        for j in range(m + 1):
+            prev[j] = j
+        for i in range(1, n + 1):
+            curr = {j: 1e6 for j in range(m + 1)}
+            curr[0] = i
+            for j in range(1, m + 1):
+                if s[i - 1] == p[j - 1]:
+                    curr[j] = prev[j - 1]
+                else:
+                    curr[j] = 1 + min(curr[j - 1], prev[j], prev[j - 1])
+            prev = curr
+        return prev[m]
+
+    print(edit_distance("horse", "ros"))
+    print(edit_distance("abc", "dc"))
+    print(edit_distance("whgtdwhgtdg", "aswcfg"))
+    print(edit_distance("intention", "execution"))
+    print(edit_distance("geek", "gesek"))
+    print(edit_distance("cat", "cut"))
+    print(edit_distance("sunday", "saturday"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
