@@ -25,5 +25,39 @@ def recursive():
     print(edit_distance("sunday", "saturday"))
 
 
+def memoized():
+    """
+        Time complexity is O(nm) and space complexity is O(n + m + nm).
+    """
+
+    def edit_distance(s, p):
+        n, m = len(s), len(p)
+        dp = {i: {j: None for j in range(m + 1)} for i in range(n + 1)}
+        return solve(s, n, p, m, dp)
+
+    def solve(s, i, p, j, dp):
+        if j == 0:
+            return i
+        if i == 0:
+            return j
+        if dp[i][j] is not None:
+            return dp[i][j]
+        if s[i - 1] == p[j - 1]:
+            dp[i][j] = solve(s, i - 1, p, j - 1, dp)
+        else:
+            dp[i][j] = 1 + min(solve(s, i, p, j - 1, dp), solve(s, i - 1, p, j, dp), solve(s, i - 1, p, j - 1, dp))
+        return dp[i][j]
+
+    print(edit_distance("horse", "ros"))
+    print(edit_distance("abc", "dc"))
+    print(edit_distance("whgtdwhgtdg", "aswcfg"))
+    print(edit_distance("intention", "execution"))
+    print(edit_distance("geek", "gesek"))
+    print(edit_distance("cat", "cut"))
+    print(edit_distance("sunday", "saturday"))
+
+
 recursive()
+print()
+memoized()
 print()
