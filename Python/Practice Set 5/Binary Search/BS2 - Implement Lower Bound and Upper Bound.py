@@ -1,3 +1,10 @@
+# Problem link and solution - https://www.youtube.com/watch?v=6zhGS79oQ4k&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=3
+
+"""
+    All these operations will take O(log(n)) time and O(1) space.
+"""
+
+
 class Solution:
     @staticmethod
     def get_lower_bound(arr, x):
