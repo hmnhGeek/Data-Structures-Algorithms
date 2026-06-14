@@ -31,6 +31,10 @@ class Solution:
                 low = mid + 1
         return low if low in range(n) else -1
 
+    @staticmethod
+    def get_search_position(arr, x):
+        return Solution.get_lower_bound(arr, x)
+
 
 print("Lower Bound")
 print(Solution.get_lower_bound([3, 5, 8, 15, 19], 5))
