@@ -1,0 +1,56 @@
+// Problem link - https://leetcode.com/problems/search-a-2d-matrix/description/
+
+
+package PracticeSet1.Matrix.Problem2;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class Solution {
+    public static List<Integer> search(List<List<Integer>> mtx, Integer x) {
+        /*
+            Time complexity is O(log(mn)) and space complexity is O(1).
+         */
+        int n = mtx.size(), m = mtx.getFirst().size();
+        int low = 0, high = m*n - 1;
+        while (low <= high) {
+            int mid = (low + (high - low)/2);
+            int row = mid / m, col = mid % m;
+            Integer elem = mtx.get(row).get(col);
+            if (elem.equals(x)) {
+                return List.of(row, col);
+            }
+            if (elem > x) {
+                high = mid - 1;
+            }
+            else {
+                low = mid + 1;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(
+                search(
+                        Arrays.asList(
+                                Arrays.asList(1, 3, 5, 7),
+                                Arrays.asList(10, 11, 16, 20),
+                                Arrays.asList(23, 30, 34, 60)
+                        ),
+                        3
+                )
+        );
+
+        System.out.println(
+                search(
+                        Arrays.asList(
+                                Arrays.asList(1, 3, 5, 7),
+                                Arrays.asList(10, 11, 16, 20),
+                                Arrays.asList(23, 30, 34, 60)
+                        ),
+                        13
+                )
+        );
+    }
+}
