@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/stickler-theif-1587115621/1
+// Solution (better than this one) - https://www.youtube.com/watch?v=GrMBfJNk_NY&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=6
+
+
 package SearchingAndSorting.Problem12;
 
 import java.util.Arrays;
