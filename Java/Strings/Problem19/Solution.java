@@ -23,6 +23,9 @@ public class Solution {
     }
 
     public static List<Integer> getKMPMatch(String text, String pattern) {
+        /*
+            Time complexity is O(n + m) and space complexity is O(m).
+         */
         List<Integer> lps = Utils.getLPS(pattern);
         List<Integer> result = new ArrayList<>();
         int i = 0, j = 0;
