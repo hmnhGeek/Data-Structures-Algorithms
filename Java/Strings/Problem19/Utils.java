@@ -23,7 +23,7 @@ public class Utils {
                 length += 1;
                 lps.set(i, length);
                 i += 1;
-            } else  if (length - 1 >= 0) {
+            } else if (length - 1 >= 0) {
                 length = lps.get(length - 1);
             } else {
                 length = 0;
