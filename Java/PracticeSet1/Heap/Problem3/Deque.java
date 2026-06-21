@@ -51,7 +51,20 @@ public class Deque<T> {
         if (isEmpty()) return null;
         T item = this.tail.data;
         this.tail = this.tail.prev;
-        this.tail.next = null;
+        if (this.tail != null) {
+            this.tail.next = null;
+        }
+        this.length -= 1;
+        return item;
+    }
+
+    public T popFront() {
+        if (isEmpty()) return null;
+        T item = this.head.data;
+        this.head = this.head.next;
+        if (this.head != null) {
+            this.head.prev = null;
+        }
         this.length -= 1;
         return item;
     }
