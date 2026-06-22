@@ -43,4 +43,19 @@ public class DoublyLinkedList<T> {
         sb.append(String.format("%s]", this.tail.data));
         return sb.toString();
     }
+
+    public void reverse() {
+        if (isEmpty()) return;
+        Node<T> prev = null, curr = this.head;
+        while (curr != null) {
+            Node<T> nextCurr = curr.next;
+            curr.next = prev;
+            curr.prev = nextCurr;
+            prev = curr;
+            curr = nextCurr;
+        }
+        Node<T> currHead = this.head;
+        this.head = this.tail;
+        this.tail = currHead;
+    }
 }

@@ -5,5 +5,7 @@ public class Solution {
         DoublyLinkedList<Integer> db = new DoublyLinkedList<>();
         db.build(1, 2, 2, -1, -1, 0, 3, 4, 5);
         System.out.println(db);
+        db.reverse();
+        System.out.println(db);
     }
 }
