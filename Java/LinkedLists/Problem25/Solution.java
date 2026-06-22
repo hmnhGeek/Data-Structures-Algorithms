@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/reverse-doubly-linked-list-groups-given-size/
+
+
 package LinkedLists.Problem25;
 
 import java.util.List;
@@ -16,10 +19,20 @@ class Part<T> {
 
 public class Solution {
     public static void main(String[] args) {
+        test(4, 1, 2, 3, 4, 5, 6);
+        test(3, 2, 1, 1, 2, 2, 1, -1, 0, 5);
+        test(3, 2,1,6,1,2,7,3,2);
+        test(1, 1);
+    }
+
+    private static void test(int k, Integer...args) {
         DoublyLinkedList<Integer> db = new DoublyLinkedList<>();
-        db.build(1, 2, 3, 4, 5, 6);
+        db.build(args);
         System.out.println(db);
-        reverseInParts(db, 4);
+        if (k == 1) {
+            return;
+        }
+        reverseInParts(db, k);
         System.out.println(db);
     }
 
