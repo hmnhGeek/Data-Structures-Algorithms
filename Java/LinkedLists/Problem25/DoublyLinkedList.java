@@ -1,5 +1,7 @@
 package LinkedLists.Problem25;
 
+import java.util.List;
+
 public class DoublyLinkedList<T> {
     public Node<T> head, tail;
     public Integer length;
@@ -44,8 +46,8 @@ public class DoublyLinkedList<T> {
         return sb.toString();
     }
 
-    public void reverse() {
-        if (isEmpty()) return;
+    public List<Node<T>> reverse() {
+        if (isEmpty()) return List.of(null, null);
         Node<T> prev = null, curr = this.head;
         while (curr != null) {
             Node<T> nextCurr = curr.next;
@@ -57,5 +59,6 @@ public class DoublyLinkedList<T> {
         Node<T> currHead = this.head;
         this.head = this.tail;
         this.tail = currHead;
+        return List.of(this.head, this.tail);
     }
 }
