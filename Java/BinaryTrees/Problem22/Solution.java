@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/sum-tree/1
+
+
 package BinaryTrees.Problem22;
 
 
@@ -14,6 +17,9 @@ class Result {
 
 public class Solution {
     public static Boolean isBTSumTree(Node<Integer> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(h).
+         */
         Result result = isSumTree(root);
         return result.flag;
     }
