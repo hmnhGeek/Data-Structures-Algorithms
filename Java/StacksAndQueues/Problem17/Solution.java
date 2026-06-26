@@ -1,9 +1,15 @@
+// Problem link - https://www.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram-1587115620/1
+
+
 package StacksAndQueues.Problem17;
 
 import java.util.List;
 
 public class Solution {
     public static Integer maxAreaInHistogram(List<Integer> histogram) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Stack<Integer> stack = new Stack<>();
         int maxArea = 0;
         for (int i = 0; i < histogram.size(); i += 1) {
