@@ -25,8 +25,21 @@ public class Solution {
         System.out.println();
     }
 
+    private static void tabulation() {
+        System.out.println(TabulationSolution.isMatching("?ay", "ray"));
+        System.out.println(TabulationSolution.isMatching("ab*cd", "abdefcd"));
+        System.out.println(TabulationSolution.isMatching("ab?d", "abcc"));
+        System.out.println(TabulationSolution.isMatching("ba*a?", "baaabab"));
+        System.out.println(TabulationSolution.isMatching("a", "aa"));
+        System.out.println(TabulationSolution.isMatching("*", "aa"));
+        System.out.println(TabulationSolution.isMatching("?a", "cb"));
+        System.out.println(TabulationSolution.isMatching("**", ""));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
         memoized();
+        tabulation();
     }
 }
