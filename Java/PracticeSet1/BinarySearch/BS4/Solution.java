@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+// Solution - https://www.youtube.com/watch?v=5qGrJbHhqFs&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=5
+
+
 package PracticeSet1.BinarySearch.BS4;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer findInRotatedSortedArray(List<Integer> arr, Integer x) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(1).
+         */
         int low = 0, high = arr.size() - 1;
         while (low <= high) {
             int mid = (low + (high - low)/2);
