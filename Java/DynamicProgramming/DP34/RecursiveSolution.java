@@ -1,6 +1,9 @@
 package DynamicProgramming.DP34;
 
 public class RecursiveSolution {
+    /*
+        Time complexity is exponential and space complexity is O(n + m).
+     */
     public static boolean isMatching(String s1, String s2) {
         int n = s1.length(), m = s2.length();
         return solve(s1, n, s2, m);
