@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
+// Solution - https://www.youtube.com/watch?v=pBWCOCS636U&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=2
+
+
 package PracticeSet1.SlidingWindows.L1;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer getMaxPointsFromCards(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is O(k) and space complexity is O(1).
+         */
         int sum = 0;
         for (int i = 0; i < k; i += 1) {
             sum += arr.get(i);
