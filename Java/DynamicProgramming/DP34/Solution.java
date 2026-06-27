@@ -37,9 +37,22 @@ public class Solution {
         System.out.println();
     }
 
+    private static void spaceOptimized() {
+        System.out.println(SpaceOptimizedSolution.isMatching("?ay", "ray"));
+        System.out.println(SpaceOptimizedSolution.isMatching("ab*cd", "abdefcd"));
+        System.out.println(SpaceOptimizedSolution.isMatching("ab?d", "abcc"));
+        System.out.println(SpaceOptimizedSolution.isMatching("ba*a?", "baaabab"));
+        System.out.println(SpaceOptimizedSolution.isMatching("a", "aa"));
+        System.out.println(SpaceOptimizedSolution.isMatching("*", "aa"));
+        System.out.println(SpaceOptimizedSolution.isMatching("?a", "cb"));
+        System.out.println(SpaceOptimizedSolution.isMatching("**", ""));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
         memoized();
         tabulation();
+        spaceOptimized();
     }
 }
