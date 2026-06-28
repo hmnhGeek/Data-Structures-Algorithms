@@ -1,4 +1,4 @@
-package Graphs;
+package Graphs.G44;
 
 import java.util.ArrayList;
 import java.util.Collections;
