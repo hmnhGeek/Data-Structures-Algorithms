@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+// Solution - https://www.youtube.com/watch?v=mJcZjjKzeqk&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=45
+
+
 package Graphs.G45;
 
 import java.util.ArrayList;
@@ -19,6 +23,9 @@ class Edge<T> {
 
 public class Solution {
     public static <T> List<List<T>> getMST(Map<T, List<Edge<T>>> graph, T sourceNode) {
+        /*
+            Time complexity is O(E log(E)) and space complexity is O(V + E).
+         */
         MinHeap<HeapElement<T>> pq = new MinHeap<>();
         List<List<T>> mst = new ArrayList<>();
         pq.insert(new HeapElement<>(0, sourceNode, null));
