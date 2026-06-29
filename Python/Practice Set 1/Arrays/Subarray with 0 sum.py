@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/subarray-with-0-sum-1587115621/1
+# Solution - https://www.youtube.com/watch?v=xvNwoz-ufXA
+
+
 class Solution:
     @staticmethod
     def has_zero_sum(arr, k = 0):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         d = {0: 1}
         prefix_sum = count = i = 0
         n = len(arr)
