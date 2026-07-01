@@ -46,7 +46,29 @@ def memoized():
     print(house_robber([5, 3, 4, 11, 2]))
 
 
+def tabulation():
+    """
+        Time complexity is O(n) and space complexity is O(n).
+    """
+    def house_robber(arr):
+        n = len(arr)
+        dp = {i: 0 for i in range(-2, n)}
+        for i in range(n):
+            take = arr[i] + dp[i - 2]
+            not_take = dp[i - 1]
+            dp[i] = max(take, not_take)
+        return dp[n - 1]
+
+    print(house_robber([6, 5, 5, 7, 4]))
+    print(house_robber([1, 5, 3]))
+    print(house_robber([4, 4, 4, 4]))
+    print(house_robber([6, 7, 1, 3, 8, 2, 4]))
+    print(house_robber([5, 3, 4, 11, 2]))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
 print()
