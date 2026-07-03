@@ -32,7 +32,6 @@ class Solution:
             if j == m:
                 results.append(i - j)
                 j = lps[j - 1]
-                i += 1
             elif string[i] != pattern[j]:
                 if j > 0:
                     j = lps[j - 1]
@@ -41,3 +40,7 @@ class Solution:
         return results
 
 
+print(Solution.find_pattern("abcab", "ab"))
+print(Solution.find_pattern("aabaacaadaabaaba", "aaba"))
+print(Solution.find_pattern("abracadabra", "abra"))
+print(Solution.find_pattern("abcabcabc", "abc"))
