@@ -1,6 +1,14 @@
+# Problem link - https://www.geeksforgeeks.org/problems/longest-prefix-suffix2527/1
+# Solution - https://www.youtube.com/watch?v=qases-9gOpk
+# Problem link - https://www.geeksforgeeks.org/dsa/kmp-algorithm-for-pattern-searching/
+
+
 class Solution:
     @staticmethod
     def get_lps(pattern):
+        """
+            Time complexity is O(m) and space complexity is O(1).
+        """
         m = len(pattern)
         lps = [None] * m
         lps[0] = 0
@@ -21,6 +29,9 @@ class Solution:
 
     @staticmethod
     def find_pattern(string, pattern):
+        """
+            Time complexity is O(n + m) and space complexity is O(m).
+        """
         n, m = len(string), len(pattern)
         lps = Solution.get_lps(pattern)
         i = j = 0
