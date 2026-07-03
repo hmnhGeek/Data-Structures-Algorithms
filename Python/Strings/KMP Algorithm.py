@@ -18,3 +18,26 @@ class Solution:
                     lps[i] = 0
                     i += 1
         return lps
+
+    @staticmethod
+    def find_pattern(string, pattern):
+        n, m = len(string), len(pattern)
+        lps = Solution.get_lps(pattern)
+        i = j = 0
+        results = []
+        while i < n:
+            if string[i] == pattern[j]:
+                i += 1
+                j += 1
+            if j == m:
+                results.append(i - j)
+                j = lps[j - 1]
+                i += 1
+            elif string[i] != pattern[j]:
+                if j > 0:
+                    j = lps[j - 1]
+                else:
+                    i += 1
+        return results
+
+
