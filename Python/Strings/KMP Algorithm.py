@@ -7,7 +7,7 @@ class Solution:
         i = 1
         length = 0
         while i < m:
-            if pattern[i] == pattern[lps[length]]:
+            if pattern[i] == pattern[length]:
                 length += 1
                 lps[i] = length
                 i += 1
