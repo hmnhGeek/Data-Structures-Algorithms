@@ -37,3 +37,21 @@ class DoublyLinkedList:
         result += f"{self.tail.data}]"
         return result
 
+    def reverse(self):
+        if self.is_empty() or self.length == 1:
+            return
+        prev, curr = None, self.head
+        while curr is not None:
+            next_curr = curr.next
+            curr.next = prev
+            curr.prev = next_curr
+            prev = curr
+            curr = next_curr
+        self.head, self.tail = self.tail, self.head
+
+
+class Solution:
+    # @staticmethod
+    # def reverse(dll: DoublyLinkedList, k: int = 0):
+    pass
+
