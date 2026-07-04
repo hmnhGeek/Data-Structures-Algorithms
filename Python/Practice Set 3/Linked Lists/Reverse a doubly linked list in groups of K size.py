@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/reverse-doubly-linked-list-groups-given-size/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -54,8 +57,15 @@ class DoublyLinkedList:
 class Solution:
     @staticmethod
     def reverse(dll: DoublyLinkedList, k: int = 0):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
+
+        # no need to reverse in case of k = 1.
         if k == 1:
             return
+
+        # create prev variable to reconnect the part with last sublist.
         curr = temp = dll.head
         prev = None
 
