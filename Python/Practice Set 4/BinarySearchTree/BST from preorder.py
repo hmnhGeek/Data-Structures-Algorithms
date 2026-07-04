@@ -142,3 +142,15 @@ class BinarySearchTree:
     def show(self):
         self._show(self.root)
         print()
+
+
+class Solution:
+    @staticmethod
+    def from_preorder(preorder):
+        bst = BinarySearchTree()
+        for i in preorder:
+            bst.insert(i)
+        bst.show()
+
+
+Solution.from_preorder([40, 30, 35, 80, 100])
