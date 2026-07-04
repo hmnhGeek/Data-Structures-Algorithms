@@ -1,3 +1,6 @@
+# Problem link - Problem link - https://www.geeksforgeeks.org/problems/sum-tree/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +10,9 @@ class Node:
 class Solution:
     @staticmethod
     def is_sum_tree(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
         if root is None:
             return 0, True
         if root.left is None and root.right is None:
