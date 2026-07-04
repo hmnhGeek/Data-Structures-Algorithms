@@ -48,10 +48,58 @@ class DoublyLinkedList:
             prev = curr
             curr = next_curr
         self.head, self.tail = self.tail, self.head
+        return self.head, self.tail
 
 
 class Solution:
-    # @staticmethod
-    # def reverse(dll: DoublyLinkedList, k: int = 0):
-    pass
+    @staticmethod
+    def reverse(dll: DoublyLinkedList, k: int = 0):
+        curr = temp = dll.head
+        prev = None
 
+        while curr is not None:
+            # establish the part
+            counter = 1
+            length = 1
+            while counter != k and temp is not None:
+                temp = temp.next
+                counter += 1
+                length += 1
+            next_curr = temp.next if temp is not None else None
+
+            # disconnect the part from the rest of the DLL
+            if temp is not None:
+                temp.next = None
+
+            # create a DLL out of the part
+            sublist = DoublyLinkedList()
+            sublist.head = curr
+            sublist.tail = temp
+            sublist.length = length
+
+            # reverse the sublist part
+            _head, _tail = sublist.reverse()
+
+            if _tail == dll.head:
+                dll.head = _head
+
+            if _head == dll.tail:
+                dll.tail = _tail
+
+            # reconnect to the rest of DLL
+            if prev is not None:
+                prev.next = _head
+                _head.prev = prev
+            sublist.tail.next = next_curr
+            if next_curr is not None:
+                next_curr.prev = sublist.tail
+
+            prev = _tail
+            curr = temp = next_curr
+
+
+dll = DoublyLinkedList()
+dll.build(2, 1, 4, 3, 6, 5)
+print(dll)
+Solution.reverse(dll, 2)
+print(dll)
