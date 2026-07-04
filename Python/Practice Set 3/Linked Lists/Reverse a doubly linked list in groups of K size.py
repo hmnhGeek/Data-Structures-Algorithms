@@ -61,11 +61,11 @@ class Solution:
             # establish the part
             counter = 1
             length = 1
-            while counter != k and temp is not None:
+            while counter != k and temp.next is not None:
                 temp = temp.next
                 counter += 1
                 length += 1
-            next_curr = temp.next if temp is not None else None
+            next_curr = temp.next if temp.next is not None else None
 
             # disconnect the part from the rest of the DLL
             if temp is not None:
@@ -98,8 +98,13 @@ class Solution:
             curr = temp = next_curr
 
 
-dll = DoublyLinkedList()
-dll.build(2, 1, 4, 3, 6, 5)
-print(dll)
-Solution.reverse(dll, 2)
-print(dll)
+def test(k, *args):
+    dll = DoublyLinkedList()
+    dll.build(*args)
+    print(dll)
+    Solution.reverse(dll, k)
+    print(dll)
+
+
+test(2, 2, 1, 4, 3, 6, 5)
+test(4, 1, 2, 3, 4, 5, 6)
