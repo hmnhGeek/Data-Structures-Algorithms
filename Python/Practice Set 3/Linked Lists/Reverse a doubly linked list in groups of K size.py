@@ -54,6 +54,8 @@ class DoublyLinkedList:
 class Solution:
     @staticmethod
     def reverse(dll: DoublyLinkedList, k: int = 0):
+        if k == 1:
+            return
         curr = temp = dll.head
         prev = None
 
@@ -108,3 +110,6 @@ def test(k, *args):
 
 test(2, 2, 1, 4, 3, 6, 5)
 test(4, 1, 2, 3, 4, 5, 6)
+test(0, 1, 2, 3)
+test(3, 1, 2, 3, 4, 5, 6, 7, 8)
+test(1, 1, 2, 3, 4, 5)
