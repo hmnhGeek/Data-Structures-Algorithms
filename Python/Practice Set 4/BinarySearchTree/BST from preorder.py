@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/construct-bst-from-given-preorder-traversa/#expected-approach-2-using-iterative-monotonic-stack-approach-on-time-oh-space
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -145,6 +148,9 @@ class BinarySearchTree:
 
 
 class Solution:
+    """
+        Time complexity is O(n * log(n)) and space complexity is O(1).
+    """
     @staticmethod
     def from_preorder(preorder):
         bst = BinarySearchTree()
@@ -154,3 +160,4 @@ class Solution:
 
 
 Solution.from_preorder([40, 30, 35, 80, 100])
+Solution.from_preorder([10, 5, 1, 7, 40, 50])
