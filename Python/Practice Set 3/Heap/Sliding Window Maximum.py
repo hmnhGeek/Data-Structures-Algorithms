@@ -58,3 +58,25 @@ class Deque:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_sliding_window_maximum(arr, k):
+        deque = Deque()
+        i, n = 0, len(arr)
+        result = []
+        for i in range(n):
+            while not deque.is_empty() and deque.front() <= i - k:
+                deque.pop_front()
+            while not deque.is_empty() and arr[i] > arr[deque.back()]:
+                deque.pop_back()
+            deque.push_back(i)
+            if i >= k - 1:
+                result.append(arr[deque.front()])
+        return result
+
+
+print(Solution.get_sliding_window_maximum([1, 2, 3, 1, 4, 5, 2, 3, 6], 3))
+print(Solution.get_sliding_window_maximum([5, 1, 3, 4, 2, 6], 1))
+print(Solution.get_sliding_window_maximum([1, 3, 2, 1, 7, 3], 3))
+print(Solution.get_sliding_window_maximum([1, 3, -1, -3, 5, 3, 6, 7], 3))
