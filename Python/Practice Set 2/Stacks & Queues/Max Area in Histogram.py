@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/maximum-rectangular-area-in-a-histogram-1587115620/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -40,9 +43,14 @@ class Stack:
 class Solution:
     @staticmethod
     def get_max_area(arr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+
         max_area = 0
         stack = Stack()
         n = len(arr)
+
         for i in range(n):
             while not stack.is_empty() and arr[stack.top()] >= arr[i]:
                 bar = arr[stack.pop()]
