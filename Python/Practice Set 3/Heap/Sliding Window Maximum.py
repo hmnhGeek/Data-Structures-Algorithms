@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/#better-approach-1-using-maxheap-n-log-n-time-and-on-space
+# Solution - https://www.youtube.com/watch?v=29OnjVQ-fk4
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -62,15 +66,23 @@ class Deque:
 class Solution:
     @staticmethod
     def get_sliding_window_maximum(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(k).
+        """
         deque = Deque()
         i, n = 0, len(arr)
         result = []
         for i in range(n):
+            # remove all the elements which are not the part of current window
             while not deque.is_empty() and deque.front() <= i - k:
                 deque.pop_front()
+
+            # keep the deque in monotonically decreasing fashion
             while not deque.is_empty() and arr[i] > arr[deque.back()]:
                 deque.pop_back()
             deque.push_back(i)
+
+            # if first window is achieved, start storing the results.
             if i >= k - 1:
                 result.append(arr[deque.front()])
         return result
