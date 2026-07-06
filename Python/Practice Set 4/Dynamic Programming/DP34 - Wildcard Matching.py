@@ -76,7 +76,44 @@ def memoized():
     print(wildcard_matching("?a", "cb"))
 
 
+def tabulation():
+    """
+        Time complexity is O(nm) and space complexity is O(nm).
+    """
+
+    def wildcard_matching(s1, s2):
+        n, m = len(s1), len(s2)
+        dp = {i: {j: False for j in range(m + 1)} for i in range(n + 1)}
+        dp[0][0] = True
+        for i in range(1, n + 1):
+            all_stars = True
+            for k in range(i):
+                if s1[k - 1] != "*":
+                    all_stars = False
+            dp[i][0] = all_stars
+        for i in range(1, n + 1):
+            for j in range(1, m + 1):
+                if s1[i - 1] == s2[j - 1] or s1[i - 1] == "?":
+                    dp[i][j] = dp[i - 1][j - 1]
+                elif s1[i - 1] == "*":
+                    dp[i][j] = dp[i - 1][j] or dp[i][j - 1]
+                else:
+                    dp[i][j] = False
+        return dp[n][m]
+
+    print(wildcard_matching("ab*cd", "abdefcd"))
+    print(wildcard_matching("ab?d", "abcc"))
+    print(wildcard_matching("?ay", "ray"))
+    print(wildcard_matching("ba*a?", "baaabab"))
+    print(wildcard_matching("*", "abc"))
+    print(wildcard_matching("a*ab", "baaabab"))
+    print(wildcard_matching("a?c*", "abcde"))
+    print(wildcard_matching("?a", "cb"))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
 print()
