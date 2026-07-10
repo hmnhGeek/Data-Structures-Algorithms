@@ -62,3 +62,77 @@ class MinHeap:
         del self.heap[-1]
         self.min_heapify_down(0)
         return item
+
+
+class Edge:
+    def __init__(self, wt, node, parent):
+        self.wt = wt
+        self.node = node
+        self.parent = parent
+
+    def __lt__(self, other):
+        return self.wt < other.wt
+
+    def __gt__(self, other):
+        return self.wt > other.wt
+
+
+class Solution:
+    @staticmethod
+    def get_mst(graph, source):
+        if source not in graph:
+            return
+        pq = MinHeap()
+        pq.insert(Edge(0, source, -1))
+        visited = {i: False for i in graph}
+        mst = []
+        while not pq.is_empty():
+            edge = pq.pop()
+            weight, node, parent = edge.wt, edge.node, edge.parent
+            if visited[node]:
+                continue
+            if parent != -1:
+                mst.append((parent, node))
+            visited[node] = True
+            for adj in graph[node]:
+                adj_node, wt = adj
+                if not visited[adj_node]:
+                    pq.insert(Edge(wt, adj_node, node))
+        return mst
+
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 2], [2, 1]],
+            1: [[0, 2], [2, 1]],
+            2: [[0, 1], [1, 1], [4, 2], [3, 2]],
+            3: [[2, 2], [4, 1]],
+            4: [[2, 2], [3, 1]]
+        },
+        0
+    )
+)
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 5], [2, 1]],
+            1: [[0, 5], [2, 3]],
+            2: [[0, 1], [1, 3]]
+        },
+        0
+    )
+)
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 1], [2, 3], [3, 4]],
+            1: [[0, 1], [2, 2]],
+            2: [[1, 2], [0, 3], [3, 5]],
+            3: [[0, 4], [2, 5]]
+        },
+        0
+    )
+)
