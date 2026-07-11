@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/factorials-of-large-numbers2508/1
+
+
 package Arrays.Problem22;
 
 import java.util.ArrayList;
@@ -5,6 +8,9 @@ import java.util.List;
 
 public class Solution {
     public static List<Integer> getFactorial(Integer n) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(n).
+         */
         List<Integer> result = new ArrayList<>();
         result.add(1);
 
