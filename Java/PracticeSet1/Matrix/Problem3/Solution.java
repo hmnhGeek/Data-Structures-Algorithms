@@ -62,6 +62,9 @@ public class Solution {
     }
 
     public static Integer getMedianFromMatrix(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(nm * log(n)) and space complexity is O(n).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         int counterLimit = (n*m/2) + 1;
         int counter = 0;
