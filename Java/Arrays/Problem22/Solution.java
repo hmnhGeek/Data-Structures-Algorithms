@@ -57,5 +57,8 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(getFactorial(5));
         System.out.println(getFactorial(10));
+        System.out.println(getFactorial(0));
+        System.out.println(getFactorial(1));
+        System.out.println(getFactorial(15));
     }
 }
