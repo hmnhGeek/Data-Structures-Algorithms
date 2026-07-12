@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/convert-sentence-equivalent-mobile-numeric-keypad-sequence/
+
+
 package Strings.Problem20;
 
 import java.util.HashMap;
@@ -5,9 +8,13 @@ import java.util.HashMap;
 public class Solution {
     public static void main(String[] args) {
         System.out.println(getNumericRepresentation("GEEKSFORGEEKS"));
+        System.out.println(getNumericRepresentation("HELLO WORLD"));
     }
 
     public static String getNumericRepresentation(String string) {
+        /*
+            Time complexity is O(n) and space complexity is O(27).
+         */
         HashMap<Character, String> map = new HashMap<>();
         populateMap(map);
         StringBuilder sb = new StringBuilder();
@@ -44,5 +51,6 @@ public class Solution {
         map.put('X', "99");
         map.put('Y', "999");
         map.put('Z', "9999");
+        map.put(' ', "0");
     }
 }
