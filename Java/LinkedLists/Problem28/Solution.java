@@ -33,6 +33,42 @@ public class Solution {
     }
 
     public static void main(String[] args) {
+        example1();
+        example2();
+    }
+
+    private static void example1() {
+        Node<Integer> head = new Node<>(5);
+        Node<Integer> n10 = new Node<>(10);
+        Node<Integer> n19 = new Node<>(19);
+        Node<Integer> n28 = new Node<>(28);
+
+        // Connect next pointers
+        head.next = n10;
+        n10.next = n19;
+        n19.next = n28;
+
+        // Bottom list of 5 -> 7 -> 8 -> 30
+        head.bottom = new Node<>(7);
+        head.bottom.bottom = new Node<>(8);
+        head.bottom.bottom.bottom = new Node<>(30);
+
+        // 10 has no bottom node
+
+        // Bottom list of 19 -> 22 -> 50
+        n19.bottom = new Node<>(22);
+        n19.bottom.bottom = new Node<>(50);
+
+        Node<Integer> flattened = flatten(head);
+        Node<Integer> curr = flattened;
+        while (curr != null) {
+            System.out.println(curr.data);
+            curr = curr.bottom;
+        }
+        System.out.println();
+    }
+
+    private static void example2() {
         // Top-level nodes
         Node<Integer> head = new Node<>(5);
         Node<Integer> n10 = new Node<>(10);
@@ -63,5 +99,6 @@ public class Solution {
             System.out.println(curr.data);
             curr = curr.bottom;
         }
+        System.out.println();
     }
 }
