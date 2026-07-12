@@ -1,7 +1,14 @@
+// Problem link - https://www.geeksforgeeks.org/problems/flattening-a-linked-list/1
+// Solution - https://www.youtube.com/watch?v=ykelywHJWLg
+
+
 package LinkedLists.Problem28;
 
 public class Solution {
     private static Node<Integer> merge(Node<Integer> head1, Node<Integer> head2) {
+        /*
+            Time complexity is O(n * n * m) and space complexity is O(1).
+         */
         Node<Integer> dummy = new Node<>(null);
         Node<Integer> temp = dummy;
         while (head1 != null && head2 != null) {
