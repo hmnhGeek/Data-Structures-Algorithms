@@ -46,6 +46,9 @@ public class Solution {
     }
 
     public static <T extends Comparable<T>> void convertToBst(Node<T> root) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         List<T> inorder = new ArrayList<>();
         List<Node<T>> nodeInorder = new ArrayList<>();
         populateInorder(root, inorder, nodeInorder);
