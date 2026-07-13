@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/leaf-at-same-level/1
+
+
 package BinaryTrees.Problem23;
 
 
@@ -20,15 +23,27 @@ public class Solution {
     }
 
     private static <T> void solve(Node<T> root, Integer level, Flag fl) {
+        /*
+            Time complexity is O(n) and space complexity is O(h).
+         */
+
         if (root == null) return;
+
+        // if the flag is already false, then there is no need to check for further leaves.
         if (fl.flag == Boolean.FALSE) return;
+
+        // if the root node is a leaf node...
         if (root.left == null && root.right == null) {
+            // and if it's the first leaf node, then simply update the flag's level to this leaf's level.
             if (fl.level == null) {
                 fl.level = level;
             } else {
+                // otherwise, update the flag to false if level's don't match with previous leaves' level.
                 fl.flag = fl.level.equals(level);
             }
         }
+
+        // recursively solve for children.
         solve(root.left, level + 1, fl);
         solve(root.right, level + 1, fl);
     }
