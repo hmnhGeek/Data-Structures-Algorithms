@@ -1,7 +1,13 @@
+// Problem link - https://www.geeksforgeeks.org/problems/valid-substring0624/1
+
+
 package StacksAndQueues.Problem18;
 
 public class Solution {
     public static Integer getValidSubstringLength(String brackets) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Stack<Character> stack = new Stack<>();
         int count = 0;
         int longestSubstring = 0;
