@@ -2,7 +2,7 @@
 // Solution - https://www.youtube.com/watch?v=pBWCOCS636U&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=2
 
 
-package PracticeSet1.SlidingWindows.L1;
+package PracticeSet1.SlidingWindows.L2;
 
 import java.util.Arrays;
 import java.util.List;
