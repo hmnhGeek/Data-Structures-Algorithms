@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/longest-substring-without-repeating-characters/description/
+// Solution - https://www.youtube.com/watch?v=-zSxTJkcdAo&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=3
+
+
 package PracticeSet1.SlidingWindows.L3;
 
 import java.util.HashMap;
@@ -5,6 +9,9 @@ import java.util.Map;
 
 public class Solution {
     public static String getLongestSubstring(String string) {
+        /*
+            Time complexity is O(26*n) and space complexity is O(26).
+         */
         int left = 0, right = 0;
         int startIndex = -1;
         int length = 0;
