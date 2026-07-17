@@ -9,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Boolean findInRotatedSortedArray(List<Integer> arr, Integer x) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(1).
+         */
         int low = 0, high = arr.size() - 1;
         while (low <= high) {
             int mid = (low + (high - low)/2);
