@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+// Solution - https://www.youtube.com/watch?v=nhEMDKMB44g&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=7
+
+
 package PracticeSet1.BinarySearch.BS6;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer getMinValue(List<Integer> arr) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(1).
+         */
         int low = 0, high = arr.size() - 1;
         int ans = Integer.MAX_VALUE;
         while (low <= high) {
