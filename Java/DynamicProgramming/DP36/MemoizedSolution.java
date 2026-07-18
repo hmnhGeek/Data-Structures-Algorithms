@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class MemoizedSolution {
     /*
-        Time complexity is exponential and space complexity is O(n).
+        Time complexity is O(n) and space complexity is O(2n).
      */
     public static Integer getMaxProfit(List<Integer> arr) {
         int n = arr.size();
