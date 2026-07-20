@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+// Solution - https://www.youtube.com/watch?v=DMnDM_sxVig&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=47
+
+
 package Graphs.G47;
 
 
