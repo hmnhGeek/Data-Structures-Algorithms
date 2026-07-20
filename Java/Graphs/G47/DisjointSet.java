@@ -18,8 +18,8 @@ public class DisjointSet<T> {
     }
 
     public T getUltimateParent(T node) {
-        if (node == getUltimateParent(node)) return node;
-        this.parents.put(node, getUltimateParent(node));
+        if (node == this.parents.get(node)) return node;
+        this.parents.put(node, getUltimateParent(this.parents.get(node)));
         return this.parents.get(node);
     }
 

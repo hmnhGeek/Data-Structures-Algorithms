@@ -14,4 +14,9 @@ public class Edge<T> implements Comparable<Edge<T>> {
     public int compareTo(Edge<T> o) {
         return this.weight.compareTo(o.weight);
     }
+
+    @Override
+    public String toString() {
+        return String.format("(%s, %s, %d)", u, v, weight);
+    }
 }
