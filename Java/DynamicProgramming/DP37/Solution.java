@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
+// Solution - https://www.youtube.com/watch?v=-uQGzhYj8BQ&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=38
+
+
 package DynamicProgramming.DP37;
 
 import java.util.Arrays;
