@@ -1,6 +1,12 @@
+# Problem link - https://www.geeksforgeeks.org/problems/factorials-of-large-numbers2508/1
+
+
 class Solution:
     @staticmethod
     def get_factorial(n):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
         if n < 0:
             return None
         result = [1]
