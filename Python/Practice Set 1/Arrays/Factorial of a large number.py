@@ -1,7 +1,11 @@
 class Solution:
     @staticmethod
     def get_factorial(n):
+        if n < 0:
+            return None
         result = [1]
+        if n == 0 or n == 1:
+            return result
         while n != 1:
             result = Solution._multiply(result, n)
             n -= 1
@@ -23,3 +27,7 @@ class Solution:
 
 
 print(Solution.get_factorial(5))
+print(Solution.get_factorial(10))
+print(Solution.get_factorial(0))
+print(Solution.get_factorial(1))
+print(Solution.get_factorial(15))
