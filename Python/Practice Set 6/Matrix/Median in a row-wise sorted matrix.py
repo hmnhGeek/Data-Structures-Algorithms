@@ -63,3 +63,26 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_median(mtx):
+        pq = MinHeap()
+        n, m = len(mtx), len(mtx[0])
+        median_pt = ((n * m) // 2) + 1
+        for i in range(n):
+            pq.insert((mtx[i][0], i, 0))
+        counter = 0
+        while not pq.is_empty():
+            elem, i, j = pq.pop()
+            counter += 1
+            if counter == median_pt:
+                return elem
+            if 0 <= j + 1 < m:
+                pq.insert((mtx[i][j + 1], i, j + 1))
+        return -1
+
+
+print(Solution.get_median([[1, 3, 5], [2, 6, 9], [3, 6, 9]]))
+print(Solution.get_median([[1], [2], [3]]))
+print(Solution.get_median([[3], [5], [8]]))
