@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/convert-sentence-equivalent-mobile-numeric-keypad-sequence/
+
+
 class Solution:
     keypad = {
         'A': '2',
@@ -31,6 +34,9 @@ class Solution:
 
     @staticmethod
     def convert_to_numeric_repr(string):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         result = ""
         for i in string:
             result += Solution.keypad[i]
