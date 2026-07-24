@@ -25,3 +25,27 @@ class QuickSort:
         arr[j], arr[low] = arr[low], arr[j]
         return j
 
+
+class Solution:
+    @staticmethod
+    def triplets_with_smaller_sum(arr, target):
+        QuickSort.sort(arr)
+        n = len(arr)
+        result = []
+        for i in range(n - 2):
+            j = i + 1
+            k = n - 1
+            while j < k:
+                _sum = arr[i] + arr[j] + arr[k]
+                if _sum < target:
+                    result.append((arr[i], arr[j], arr[k]))
+                    for p in range(k - 1, j, -1):
+                        result.append((arr[i], arr[j], arr[p]))
+                    j += 1
+                else:
+                    k -= 1
+        return result
+
+
+print(Solution.triplets_with_smaller_sum([-2, 0, 1, 3], 2))
+print(Solution.triplets_with_smaller_sum([5, 1, 3, 4, 7], 12))
