@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/count-triplets-with-sum-smaller-than-x5549/1
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -29,6 +32,9 @@ class QuickSort:
 class Solution:
     @staticmethod
     def triplets_with_smaller_sum(arr, target):
+        """
+            Time complexity is O(n^2 + nlog(n)) and space complexity is O(1).
+        """
         QuickSort.sort(arr)
         n = len(arr)
         result = []
