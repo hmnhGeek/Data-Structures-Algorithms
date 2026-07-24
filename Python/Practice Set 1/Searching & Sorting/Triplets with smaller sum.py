@@ -55,3 +55,4 @@ class Solution:
 
 print(Solution.triplets_with_smaller_sum([-2, 0, 1, 3], 2))
 print(Solution.triplets_with_smaller_sum([5, 1, 3, 4, 7], 12))
+print(Solution.triplets_with_smaller_sum([1, 5, 2, 3, 4, 6, 7], 9))
