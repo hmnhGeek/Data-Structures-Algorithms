@@ -32,3 +32,65 @@ class QuickSort:
         arr[j], arr[low] = arr[low], arr[j]
         return j
 
+
+class Solution:
+    @staticmethod
+    def convert_to_bst(root: Node):
+        inorder = []
+        Solution._get_inorder_data(root, inorder)
+        QuickSort.sort(inorder)
+        nodes = []
+        Solution._get_nodes(root, nodes)
+        i = 0
+        for node in nodes:
+            node.data = inorder[i]
+            i += 1
+    
+    @staticmethod
+    def show(root: Node):
+        if root is not None:
+            Solution.show(root.left)
+            print(root.data)
+            Solution.show(root.right)
+
+    @staticmethod
+    def _get_inorder_data(root, inorder):
+        if root:
+            Solution._get_inorder_data(root.left, inorder)
+            inorder.append(root.data)
+            Solution._get_inorder_data(root.right, inorder)
+
+    @staticmethod
+    def _get_nodes(root, nodes):
+        if root:
+            Solution._get_nodes(root.left, nodes)
+            nodes.append(root)
+            Solution._get_nodes(root.right, nodes)
+            
+
+# Example 1
+n1, n2, n3 = Node(1), Node(2), Node(3)
+n1.left = n2
+n1.right = n3
+Solution.convert_to_bst(n1)
+Solution.show(n1)
+print()
+
+# Example 2
+n1, n2, n3, n4 = Node(1), Node(2), Node(3), Node(4)
+n1.left = n2
+n2.left = n4
+n1.right = n3
+Solution.convert_to_bst(n1)
+Solution.show(n1)
+print()
+
+# Example 3
+n10, n2, n7, n8, n4 = Node(10), Node(2), Node(7), Node(8), Node(4)
+n10.left = n2
+n10.right = n7
+n2.left = n8
+n2.right = n4
+Solution.convert_to_bst(n10)
+Solution.show(n10)
+print()
