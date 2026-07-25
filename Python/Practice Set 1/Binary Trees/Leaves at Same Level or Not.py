@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/check-leaves-level/
+
+
 class LevelTracker:
     def __init__(self):
         self.level = None
@@ -13,6 +16,9 @@ class Node:
 class Solution:
     @staticmethod
     def at_same_level(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
         obj = LevelTracker()
         Solution._solve(root, 0, obj)
         return obj.same_level
