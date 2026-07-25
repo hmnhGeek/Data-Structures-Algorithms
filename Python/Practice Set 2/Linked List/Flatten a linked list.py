@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/flattening-a-linked-list/1
+# Solution - https://www.youtube.com/watch?v=ykelywHJWLg
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -16,6 +20,10 @@ class Solution:
 
     @staticmethod
     def flatten(head: Node) -> Node:
+        """
+            Time complexity is O(n * n * m) and space complexity is O(1).
+        """
+
         if head.next is None:
             return head
         flattened_head = Solution.flatten(head.next)
