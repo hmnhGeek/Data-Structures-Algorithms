@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/binary-tree-to-bst/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -36,6 +39,9 @@ class QuickSort:
 class Solution:
     @staticmethod
     def convert_to_bst(root: Node):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
         inorder = []
         Solution._get_inorder_data(root, inorder)
         QuickSort.sort(inorder)
