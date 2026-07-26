@@ -89,3 +89,5 @@ class Solution:
 print(Solution.get_k_largest_elements([12, 5, 787, 1, 23], 2))
 print(Solution.get_k_largest_elements([1, 23, 12, 9, 30, 2, 50], 3))
 print(Solution.get_k_largest_elements([12, 23], 1))
+print(Solution.get_k_largest_elements([11, 5, 12, 9, 44, 17, 2], 2))
+print(Solution.get_k_largest_elements([11, 3, 4, 6], 3))
