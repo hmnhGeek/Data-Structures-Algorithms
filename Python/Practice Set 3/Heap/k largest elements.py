@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/k-largest-elements4206/1
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -65,6 +68,9 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_k_largest_elements(arr, k):
+        """
+            Time complexity is O(n * log(k)) and space complexity is O(k).
+        """
         pq = MinHeap()
         for i in range(k):
             pq.insert(arr[i])
