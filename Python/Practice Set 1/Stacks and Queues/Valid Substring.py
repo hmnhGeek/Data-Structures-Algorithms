@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/valid-substring0624/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -33,6 +36,9 @@ class Stack:
 class Solution:
     @staticmethod
     def get_valid_substring(brackets):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         stack = Stack()
         max_length = 0
         counter = 0
