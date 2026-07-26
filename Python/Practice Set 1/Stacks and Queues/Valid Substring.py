@@ -29,3 +29,36 @@ class Stack:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_valid_substring(brackets):
+        stack = Stack()
+        max_length = 0
+        counter = 0
+        for i in range(len(brackets)):
+            bracket = brackets[i]
+            if bracket == "(":
+                stack.push(bracket)
+            else:
+                if not stack.is_empty():
+                    stack.pop()
+                    counter += 2
+                else:
+                    max_length = max(max_length, counter)
+                    counter = 0
+        max_length = max(max_length, counter)
+        return max_length
+
+
+print(Solution.get_valid_substring("(()("))
+print(Solution.get_valid_substring("()(())("))
+print(Solution.get_valid_substring("(()())"))
+print(Solution.get_valid_substring(")())"))
+print(Solution.get_valid_substring("(()"))
+print(Solution.get_valid_substring(")()())"))
+print(Solution.get_valid_substring(""))
+print(Solution.get_valid_substring("()))((())"))
+print(Solution.get_valid_substring("))(("))
+print(Solution.get_valid_substring("()))((((())))))"))
+print(Solution.get_valid_substring(")(()"))
