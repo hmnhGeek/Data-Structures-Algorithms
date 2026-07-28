@@ -62,7 +62,38 @@ def memoized():
     print(max_profit([4, 2, 2, 2, 4]))
 
 
+def tabulation():
+    def max_profit(arr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+        n = len(arr)
+        dp = {i: {True: 0, False: 0} for i in range(n + 1)}
+        for i in range(n - 1, -1, -1):
+            for j in [True, False]:
+                if j:
+                    dp[i][j] = max(
+                        -arr[i] + dp[i + 1][not j],
+                        dp[i + 1][j]
+                    )
+                else:
+                    dp[i][j] = max(
+                        arr[i] + dp[i + 1][not j],
+                        dp[i + 1][j]
+                    )
+        return dp[0][True]
+
+    print(max_profit([7, 1, 5, 3, 6, 4]))
+    print(max_profit([1, 2, 3, 4, 5, 6, 7]))
+    print(max_profit([7, 6, 5, 4, 3, 2, 1]))
+    print(max_profit([1, 2, 3, 4, 5]))
+    print(max_profit([100, 180, 260, 310, 40, 535, 695]))
+    print(max_profit([4, 2, 2, 2, 4]))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
 print()
