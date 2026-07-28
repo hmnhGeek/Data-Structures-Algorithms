@@ -89,9 +89,42 @@ def tabulation():
     print(max_profit([7, 1, 5, 3, 6, 4]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(3*2*n) and space complexity is O(6).
+    """
+    def max_profit(arr):
+        n = len(arr)
+        nxt = {j: {k: 0 for k in range(3)} for j in [True, False]}
+        for i in range(n - 1, -1, -1):
+            curr = {j: {k: 0 for k in range(3)} for j in [True, False]}
+            for j in [True, False]:
+                for k in range(1, 3):
+                    if j:
+                        curr[j][k] = max(
+                            -arr[i] + nxt[not j][k],
+                            nxt[j][k]
+                        )
+                    else:
+                        curr[j][k] = max(
+                            arr[i] + nxt[not j][k - 1],
+                            nxt[j][k]
+                        )
+            nxt = curr
+        return nxt[True][2]
+
+    print(max_profit([3, 3, 5, 0, 0, 3, 1, 4]))
+    print(max_profit([1, 3, 1, 2, 4, 8]))
+    print(max_profit([5, 4, 3, 2, 1]))
+    print(max_profit([1, 2, 3, 4, 5]))
+    print(max_profit([7, 1, 5, 3, 6, 4]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
