@@ -1,5 +1,8 @@
 def recursive():
     def max_profit(arr):
+        """
+            Time complexity is exponential and space complexity is O(n).
+        """
         n = len(arr)
         return solve(arr, 0, True, n)
 
@@ -25,5 +28,41 @@ def recursive():
     print(max_profit([4, 2, 2, 2, 4]))
 
 
+def memoized():
+    def max_profit(arr):
+        """
+            Time complexity is O(n) and space complexity is O(2n).
+        """
+        n = len(arr)
+        dp = {i: {True: None, False: None} for i in range(n + 1)}
+        return solve(arr, 0, True, n, dp)
+
+    def solve(arr, i, j, n, dp):
+        if i >= n:
+            return 0
+        if dp[i][j] is not None:
+            return dp[i][j]
+        if j:
+            dp[i][j] = max(
+                -arr[i] + solve(arr, i + 1, not j, n, dp),
+                solve(arr, i + 1, j, n, dp)
+            )
+        else:
+            dp[i][j] = max(
+                arr[i] + solve(arr, i + 1, not j, n, dp),
+                solve(arr, i + 1, j, n, dp)
+            )
+        return dp[i][j]
+
+    print(max_profit([7, 1, 5, 3, 6, 4]))
+    print(max_profit([1, 2, 3, 4, 5, 6, 7]))
+    print(max_profit([7, 6, 5, 4, 3, 2, 1]))
+    print(max_profit([1, 2, 3, 4, 5]))
+    print(max_profit([100, 180, 260, 310, 40, 535, 695]))
+    print(max_profit([4, 2, 2, 2, 4]))
+
+
 recursive()
+print()
+memoized()
 print()
