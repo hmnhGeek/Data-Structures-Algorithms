@@ -40,3 +40,16 @@ class Edge:
         return self.wt > other.wt
 
 
+class Solution:
+    @staticmethod
+    def kruskal(graph):
+        edges = Solution._get_edges(graph)
+        QuickSort.sort(edges)
+
+    @staticmethod
+    def _get_edges(graph):
+        edges = []
+        for node in graph:
+            for adj_node, wt in graph[node]:
+                edges.append(Edge(wt, node, adj_node))
+        return edges
