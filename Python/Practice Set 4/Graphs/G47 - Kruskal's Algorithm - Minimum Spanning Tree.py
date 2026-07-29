@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+# Solution - https://www.youtube.com/watch?v=DMnDM_sxVig&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=47
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -83,6 +87,9 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def get_mst(graph):
+        """
+            Time complexity is O(V + 2E + E*log(E)) and space complexity is O(V + E).
+        """
         edges = Solution._get_edges(graph)
         QuickSort.sort(edges)
         ds = DisjointSet([node for node in graph])
