@@ -36,8 +36,20 @@ class Edge:
     def __lt__(self, other):
         return self.wt < other.wt
 
+    def __le__(self, other):
+        return self.wt <= other.wt
+
     def __gt__(self, other):
         return self.wt > other.wt
+
+    def __ge__(self, other):
+        return self.wt >= other.wt
+
+    def __eq__(self, other):
+        return self.wt == other.wt
+
+    def __ne__(self, other):
+        return self.wt != other.wt
 
 
 class DisjointSet:
@@ -70,9 +82,18 @@ class DisjointSet:
 
 class Solution:
     @staticmethod
-    def kruskal(graph):
+    def get_mst(graph):
         edges = Solution._get_edges(graph)
         QuickSort.sort(edges)
+        ds = DisjointSet([node for node in graph])
+        mst, mst_wt = [], 0
+        for edge in edges:
+            w, s, d = edge.wt, edge.src, edge.dst
+            if not ds.in_same_components(s, d):
+                ds.union(s, d)
+                mst_wt += w
+                mst.append((s, d))
+        return mst, mst_wt
 
     @staticmethod
     def _get_edges(graph):
@@ -81,3 +102,27 @@ class Solution:
             for adj_node, wt in graph[node]:
                 edges.append(Edge(wt, node, adj_node))
         return edges
+
+
+print(
+    Solution.get_mst(
+        {
+            1: [[2, 2], [4, 1], [5, 4]],
+            2: [[1, 2], [3, 3], [4, 3], [6, 7]],
+            3: [[2, 3], [4, 5], [6, 8]],
+            4: [[5, 9], [1, 1], [2, 3], [3, 5]],
+            5: [[1, 4], [4, 9]],
+            6: [[2, 7], [3, 8]]
+        }
+    )
+)
+
+print(
+    Solution.get_mst(
+        {
+            0: [[1, 5], [2, 1]],
+            1: [[0, 5], [2, 3]],
+            2: [[0, 1], [1, 3]]
+        }
+    )
+)
