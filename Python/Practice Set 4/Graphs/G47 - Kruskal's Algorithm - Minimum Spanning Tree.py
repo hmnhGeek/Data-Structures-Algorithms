@@ -26,3 +26,17 @@ class QuickSort:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
+class Edge:
+    def __init__(self, wt, source, destination):
+        self.wt = wt
+        self.src = source
+        self.dst = destination
+
+    def __lt__(self, other):
+        return self.wt < other.wt
+
+    def __gt__(self, other):
+        return self.wt > other.wt
+
+
