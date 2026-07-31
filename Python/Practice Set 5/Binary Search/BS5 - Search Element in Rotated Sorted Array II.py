@@ -1,6 +1,13 @@
+# Problem link - https://www.naukri.com/code360/problems/search-in-a-rotated-sorted-array-ii_7449547
+# Solution - https://www.youtube.com/watch?v=w2G2W8l__pc&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=6
+
+
 class Solution:
     @staticmethod
     def search(arr, x):
+        """
+            Time complexity is O(log(n)) and space complexity is O(1).
+        """
         n = len(arr)
         low, high = 0, n - 1
         while low <= high:
