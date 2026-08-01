@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/find-the-row-with-maximum-number-1s/
+// Solution - https://www.youtube.com/watch?v=SCz-1TtYxDI&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=25
+
+
 package PracticeSet2.Matrix.Problem4;
 
 import java.util.Arrays;
@@ -19,6 +23,9 @@ public class Solution {
     }
 
     public static Integer getRowIndexWithMax1s(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+         */
         int rowIndex = -1;
         int maxOnes = 0;
         for (int i = 0; i < mtx.size(); i += 1) {
