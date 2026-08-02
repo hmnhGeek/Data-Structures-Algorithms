@@ -1,7 +1,14 @@
+// Problem link - https://www.geeksforgeeks.org/problems/count-the-reversals0401/1
+// Solution - https://www.youtube.com/watch?v=-n_CsIL3Ts4
+
+
 package Strings.Problem21;
 
 public class Solution {
     public static Integer minSwapsForBalancing(String brackets) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         int n = brackets.length();
         Stack<Character> stack = new Stack<>();
         if (n % 2 == 1) return -1;
@@ -34,5 +41,7 @@ public class Solution {
     public static void main(String[] args) {
         System.out.println(minSwapsForBalancing("}{{}}{{{"));
         System.out.println(minSwapsForBalancing("{{}{{{}{{}}{{"));
+        System.out.println(minSwapsForBalancing("{{"));
+        System.out.println(minSwapsForBalancing("}{}{"));
     }
 }
