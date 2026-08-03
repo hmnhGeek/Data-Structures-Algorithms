@@ -1,7 +1,13 @@
+// Problem link - https://www.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1
+
+
 package LinkedLists.Problem29;
 
 public class Solution {
     public static void sort(LinkedList<Integer> linkedList) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         Node<Integer> zeroDummy = new Node<>(null);
         Node<Integer> zeroTemp = zeroDummy;
 
