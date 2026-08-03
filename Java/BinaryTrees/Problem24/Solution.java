@@ -1,9 +1,17 @@
+// Problem link - # Problem link - https://www.geeksforgeeks.org/problems/duplicate-subtree-in-binary-tree/1
+// Solution - https://www.youtube.com/watch?v=m0dG99f5ct4
+
+
 package BinaryTrees.Problem24;
 
 import java.util.*;
 
 public class Solution {
     public static Set<String> getDuplicates(Node<Integer> root) {
+        /*
+            Time complexity is O(N^2) because we are visiting every node again and again for each subtree
+            Space complexity is O(N).
+         */
         Map<String, Integer> mp = new HashMap<>();
         Set<String> result = new HashSet<>();
         solve(root, mp, result);
