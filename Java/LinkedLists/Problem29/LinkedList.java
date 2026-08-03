@@ -36,6 +36,12 @@ public class LinkedList<T> {
         this.length += 1;
     }
 
+    public void build(T...args) {
+        for (T arg:args) {
+            push(arg);
+        }
+    }
+
     @Override
     public String toString() {
         if (isEmpty()) return "[]";
