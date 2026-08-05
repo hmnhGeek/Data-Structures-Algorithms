@@ -1,11 +1,16 @@
+// Problem link - https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/
+
+
 package PracticeSet1.BinarySearchTree.Problem10;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
     public static <T extends Comparable<T>> BinarySearchTree<T> getBalancedBst(BinarySearchTree<T> bst) {
+        /*
+            Time complexity is O(n) and space complexity is O(n + log(n)) where log(n) comes from recursion.
+         */
         List<T> inorder = new ArrayList<>();
         getInorder(bst.root, inorder);
         BinarySearchTree<T> balancedBst = new BinarySearchTree<>();
