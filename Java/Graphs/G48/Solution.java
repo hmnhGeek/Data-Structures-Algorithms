@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/find-the-number-of-states_1377943
+// Solution - https://www.youtube.com/watch?v=ZGr5nX-Gi6Y&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=48
+
+
 package Graphs.G48;
 
 import java.util.ArrayList;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer getNumProvinces(List<List<Integer>> graph) {
+        /*
+            Time complexity is O(V^2) and space complexity is O(V).
+         */
         int n = graph.size();
         List<Integer> nodes = new ArrayList<>();
         for (int i = 0; i < n; i += 1) {
