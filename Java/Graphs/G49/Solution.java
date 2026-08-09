@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/connecting-the-graph/1
+// Solution - https://www.youtube.com/watch?v=FYrl7iz9_ZU&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=49
+
+
 package Graphs.G49;
 
 import java.util.ArrayList;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer getMinOps(List<List<Integer>> edges, int n) {
+        /*
+            Time complexity is O(n + E) and space complexity is O(n).
+         */
         List<Integer> nodes = new ArrayList<>();
         for (int i = 0; i < n; i += 1) {
             nodes.add(i);
