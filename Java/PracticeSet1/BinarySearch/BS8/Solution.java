@@ -1,0 +1,40 @@
+package PracticeSet1.BinarySearch.BS8;
+
+import java.util.List;
+
+public class Solution {
+    public static Integer getSingleElement(List<Integer> arr) {
+        if (arr.isEmpty()) return -1;
+        if (arr.size() == 1) return arr.getFirst();
+        if (arr.getFirst() != arr.get(1)) return arr.getFirst();
+        if (arr.getLast() != arr.get(arr.size() - 2)) return arr.getLast();
+        int low = 1, high = arr.size() - 2;
+        while (low <= high) {
+            int mid = (low + (high - low)/2);
+            if (
+                    arr.get(mid - 1) != arr.get(mid) &&
+                            arr.get(mid) != arr.get(mid + 1)
+            ) {
+                return arr.get(mid);
+            }
+            if (
+                    (mid % 2 == 1 && arr.get(mid - 1) == arr.get(mid)) ||
+                            (mid % 2 == 0 && arr.get(mid) == arr.get(mid + 1))
+            ) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Solution.getSingleElement(List.of(1, 1, 2, 2, 3, 3, 4, 5, 5, 6, 6)));
+        System.out.println(Solution.getSingleElement(List.of(1, 1, 2)));
+        System.out.println(Solution.getSingleElement(List.of(1, 2, 2)));
+        System.out.println(Solution.getSingleElement(List.of(1, 1, 2, 2, 4, 5, 5)));
+        System.out.println(Solution.getSingleElement(List.of(1, 1, 3, 5, 5)));
+        System.out.println(Solution.getSingleElement(List.of(1, 1, 4, 4, 15)));
+    }
+}
