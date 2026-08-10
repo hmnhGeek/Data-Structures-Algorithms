@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/rotation_7449070
+// Solution - https://www.youtube.com/watch?v=jtSiWTPLwd0&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=8
+
+
 package PracticeSet1.BinarySearch.BS7;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer getNumRotations(List<Integer> arr) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(1).
+         */
         int n = arr.size();
         int low = 0, high = n - 1;
         Integer ans = 0;
