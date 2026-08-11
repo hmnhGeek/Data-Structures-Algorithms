@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/maximum-product-subarray3604/1
+# Solution - https://www.youtube.com/watch?v=hnswaLJvr6g
+
+
 class Solution:
     @staticmethod
     def get_max_product(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         prefix = suffix = 1
         i, j = 0, len(arr) - 1
         max_product = -1e6
