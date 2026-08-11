@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/row-with-max-1s0023/1
+
+
 class Solution:
     @staticmethod
     def _get_ones_count(arr, m):
@@ -12,6 +15,9 @@ class Solution:
 
     @staticmethod
     def get_row_with_max_1s(mtx):
+        """
+            Time complexity is O(n * log(m)) and space complexity is O(1).
+        """
         n, m = len(mtx), len(mtx[0])
         row_index = -1
         max_ones = 0
