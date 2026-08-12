@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/count-the-reversals0401/1
+# Solution - https://www.youtube.com/watch?v=-n_CsIL3Ts4
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -33,6 +37,9 @@ class Stack:
 class Solution:
     @staticmethod
     def min_reversals(brackets):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         n = len(brackets)
         if n % 2 == 1:
             return
