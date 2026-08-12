@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/sort-a-linked-list-of-0s-1s-or-2s/
+# Solution - https://www.youtube.com/watch?v=gRII7LhdJWc&t=1214s
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -40,6 +44,9 @@ class LinkedList:
 class Solution:
     @staticmethod
     def sort(linked_list: LinkedList):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         dummy_zero = temp_zero = Node(None)
         dummy_one = temp_one = Node(None)
         dummy_two = temp_two = Node(None)
