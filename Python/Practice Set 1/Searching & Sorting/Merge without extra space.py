@@ -26,3 +26,23 @@ class QuickSort:
         arr[low], arr[j] = arr[j], arr[low]
         return j
 
+
+class Solution:
+    @staticmethod
+    def merge_without_extra_space(arr1, arr2):
+        i, j = len(arr1) - 1, 0
+        while i >= 0 and j < len(arr2):
+            if arr1[i] > arr2[j]:
+                temp = arr1[i]
+                arr1[i] = arr2[j]
+                arr2[j] = temp
+            else:
+                break
+            i -= 1
+            j += 1
+        QuickSort.sort(arr1)
+        QuickSort.sort(arr2)
+        print(arr1, arr2)
+
+
+Solution.merge_without_extra_space([2, 4, 7, 10], [2, 3])
