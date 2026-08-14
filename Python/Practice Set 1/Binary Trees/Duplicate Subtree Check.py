@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/duplicate-subtrees/1
+# Solution - https://www.youtube.com/watch?v=m0dG99f5ct4
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +11,8 @@ class Node:
 class Solution:
     @staticmethod
     def find_duplicate_subtrees(root: Node):
+        # Time complexity is O(N^2) because we are visiting every node again and again for each subtree
+        # Space complexity is O(N).
         mp = {}
         result = []
         Solution.solve(root, mp, result)
