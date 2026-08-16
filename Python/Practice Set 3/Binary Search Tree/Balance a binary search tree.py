@@ -34,7 +34,7 @@ class BinarySearchTree:
     def _insert(self, start, node):
         if start is None or node is None:
             return
-        if start.data >= node.data:
+        if node.data >= start.data:
             if start.right is not None:
                 self._insert(start.right, node)
                 return
