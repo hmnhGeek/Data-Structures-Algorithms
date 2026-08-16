@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -145,6 +148,9 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def balance_bst(bst: BinarySearchTree):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         balanced_bst = BinarySearchTree()
         inorder = []
         Solution._get_inorder(bst.root, inorder)
