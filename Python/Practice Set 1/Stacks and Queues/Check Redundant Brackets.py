@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/expression-contains-redundant-bracket-not/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -36,6 +39,9 @@ class Stack:
 class Solution:
     @staticmethod
     def check_redundant_brackets(expr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         stack = Stack()
         for i in range(len(expr)):
             character = expr[i]
@@ -52,3 +58,4 @@ class Solution:
 
 print(Solution.check_redundant_brackets("((a+b))"))
 print(Solution.check_redundant_brackets("((a+b)*c)"))
+print(Solution.check_redundant_brackets("(a+(b)/c)"))
