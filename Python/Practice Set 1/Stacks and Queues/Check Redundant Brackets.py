@@ -29,3 +29,26 @@ class Stack:
         self.length -= 1
         return item
 
+    def top(self):
+        return self.head.data if self.head else None
+
+
+class Solution:
+    @staticmethod
+    def check_redundant_brackets(expr):
+        stack = Stack()
+        for i in range(len(expr)):
+            character = expr[i]
+            if character == '(' or character in ['+', '-', '/', '*']:
+                stack.push(character)
+            elif character == ')':
+                if stack.top() == '(':
+                    return True
+                while not stack.top() == '(':
+                    stack.pop()
+                stack.pop()
+        return False
+
+
+print(Solution.check_redundant_brackets("((a+b))"))
+print(Solution.check_redundant_brackets("((a+b)*c)"))
