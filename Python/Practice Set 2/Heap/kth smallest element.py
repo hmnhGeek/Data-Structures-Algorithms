@@ -64,3 +64,28 @@ class MaxHeap:
         return item
 
 
+class Solution:
+    @staticmethod
+    def get_kth_smallest(arr, k):
+        if k <= 0:
+            return
+        pq = MaxHeap()
+        for i in range(k):
+            pq.insert(arr[i])
+        i = k
+        while i < len(arr):
+            if arr[i] < pq.heap[0]:
+                pq.pop()
+                pq.insert(arr[i])
+            i += 1
+        return pq.pop()
+
+
+print(Solution.get_kth_smallest([7, 10, 4, 3, 20, 15], 3))
+print(Solution.get_kth_smallest([7, 10, 4, 3, 20, 15], 4))
+print(Solution.get_kth_smallest([1, 2, 6, 4, 5, 3], 3))
+print(Solution.get_kth_smallest([1, 2, 6, 4, 5], 3))
+print(Solution.get_kth_smallest([3, 2, 1, 5, 6, 4], 2))
+print(Solution.get_kth_smallest([3, 2, 3, 1, 2, 4, 5, 5, 6], 4))
+print(Solution.get_kth_smallest([1, 23, 12, 9, 30, 2, 50], 3))
+print(Solution.get_kth_smallest([11, 5, 12, 9, 44, 17, 2], 2))
