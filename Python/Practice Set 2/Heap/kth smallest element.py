@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/kth-smallest-largest-element-in-unsorted-array/
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -67,6 +70,9 @@ class MaxHeap:
 class Solution:
     @staticmethod
     def get_kth_smallest(arr, k):
+        """
+            Time complexity is O(n * log(k)) and space complexity is O(k).
+        """
         if k <= 0:
             return
         pq = MaxHeap()
