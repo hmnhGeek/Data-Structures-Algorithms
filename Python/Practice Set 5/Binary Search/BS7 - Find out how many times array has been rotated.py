@@ -1,6 +1,13 @@
+# Problem link - https://www.naukri.com/code360/problems/rotation_7449070
+# Solution - https://www.youtube.com/watch?v=jtSiWTPLwd0&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=8
+
+
 class Solution:
     @staticmethod
     def get_min_in_rotated(arr):
+        """
+           Time complexity is O(log(n)) and space complexity is O(1).
+        """
         low = 0
         high = len(arr) - 1
         min_val = 1e6
