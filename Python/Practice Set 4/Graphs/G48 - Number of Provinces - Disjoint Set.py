@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/find-the-number-of-states_1377943
+# Solution - https://www.youtube.com/watch?v=ZGr5nX-Gi6Y&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=48
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.ranks = {i: 0 for i in nodes}
@@ -38,6 +42,9 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def get_number_of_provinces(mtx):
+        """
+            Time complexity is O(V^2) and space complexity is O(V).
+        """
         n = len(mtx)
         ds = DisjointSet([i for i in range(n)])
         for i in range(n):
