@@ -34,3 +34,58 @@ class DisjointSet:
                 count += 1
         return count
 
+
+class Solution:
+    @staticmethod
+    def get_number_of_provinces(mtx):
+        n = len(mtx)
+        ds = DisjointSet([i for i in range(n)])
+        for i in range(n):
+            for j in range(n):
+                if i == j:
+                    continue
+                if mtx[i][j] == 1:
+                    ds.union(i, j)
+        return ds.get_num_components()
+    
+
+print(
+    Solution.get_number_of_provinces(
+        [
+            [0, 1, 0, 0, 0, 0, 0],
+            [1, 0, 1, 0, 0, 0, 0],
+            [0, 1, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0],
+            [0, 0, 0, 1, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 0, 1, 0]
+        ]
+    )
+)
+
+print(
+    Solution.get_number_of_provinces(
+        [
+            [1, 0, 1],
+            [0, 1, 0],
+            [1, 0, 1]
+        ]
+    )
+)
+
+print(
+    Solution.get_number_of_provinces(
+        [
+            [1, 1],
+            [1, 1]
+        ]
+    )
+)
+
+print(Solution.get_number_of_provinces([[1, 0, 0], [0, 1, 0], [0, 0, 1]]))
+print(Solution.get_number_of_provinces(
+    [[1, 1, 1, 0],
+     [1, 1, 1, 0],
+     [1, 1, 1, 0],
+     [0, 0, 0, 1]]
+))
