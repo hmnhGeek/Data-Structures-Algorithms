@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/sorted-matrix2333/1
+
+
 package PracticeSet2.Matrix.Problem5;
 
 
@@ -7,6 +10,9 @@ import java.util.List;
 
 public class Solution {
     public static List<List<Integer>> sortMatrix(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(nm * log(nm)) and space complexity is O(nm).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         List<Integer> flattened = flatten(mtx);
         QuickSort.sort(flattened);
