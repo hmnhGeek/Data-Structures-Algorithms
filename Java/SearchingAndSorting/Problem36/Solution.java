@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/zero-sum-subarrays1825/1
+// Solution - https://www.youtube.com/watch?v=xvNwoz-ufXA
+
+
 package SearchingAndSorting.Problem36;
 
 import java.util.Arrays;
@@ -7,6 +11,9 @@ import java.util.Map;
 
 public class Solution {
     public static Integer getZeroSumSubArraysCount(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Map<Integer, Integer> map = new HashMap<>();
         map.put(0, 1);
         int prefixSum = 0;
