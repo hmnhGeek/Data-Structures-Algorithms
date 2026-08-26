@@ -27,8 +27,22 @@ public class Solution {
         System.out.println();
     }
 
+    private static void tabulation() {
+        System.out.println(TabulationSolution.countPalindromicSubsequences("abcd"));
+        System.out.println(TabulationSolution.countPalindromicSubsequences("aab"));
+        System.out.println(TabulationSolution.countPalindromicSubsequences("b"));
+        System.out.println(TabulationSolution.countPalindromicSubsequences("103301"));
+        System.out.println(TabulationSolution.countPalindromicSubsequences("0000000"));
+        System.out.println(TabulationSolution.countPalindromicSubsequences("9999900000"));
+        System.out.println(TabulationSolution.countPalindromicSubsequences("bccb"));
+        System.out.println(TabulationSolution.countPalindromicSubsequences("pqqr"));
+        System.out.println(TabulationSolution.countPalindromicSubsequences("aaaa"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
         memoized();
+        tabulation();
     }
 }
