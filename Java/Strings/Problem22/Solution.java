@@ -40,9 +40,23 @@ public class Solution {
         System.out.println();
     }
 
+    private static void spaceOptimized() {
+        System.out.println(SpaceOptimizedSolution.countPalindromicSubsequences("abcd"));
+        System.out.println(SpaceOptimizedSolution.countPalindromicSubsequences("aab"));
+        System.out.println(SpaceOptimizedSolution.countPalindromicSubsequences("b"));
+        System.out.println(SpaceOptimizedSolution.countPalindromicSubsequences("103301"));
+        System.out.println(SpaceOptimizedSolution.countPalindromicSubsequences("0000000"));
+        System.out.println(SpaceOptimizedSolution.countPalindromicSubsequences("9999900000"));
+        System.out.println(SpaceOptimizedSolution.countPalindromicSubsequences("bccb"));
+        System.out.println(SpaceOptimizedSolution.countPalindromicSubsequences("pqqr"));
+        System.out.println(SpaceOptimizedSolution.countPalindromicSubsequences("aaaa"));
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         recursive();
         memoized();
         tabulation();
+        spaceOptimized();
     }
 }
