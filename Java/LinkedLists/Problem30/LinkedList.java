@@ -25,7 +25,7 @@ public class LinkedList<T> {
         return this.length.equals(0);
     }
 
-    public void push(T x) {
+    public Node<T> push(T x) {
         Node<T> node = new Node<>(x);
         if (isEmpty()) {
             this.head = this.tail = node;
@@ -34,6 +34,7 @@ public class LinkedList<T> {
             this.tail = node;
         }
         this.length += 1;
+        return node;
     }
 
     public void build(T...args) {
