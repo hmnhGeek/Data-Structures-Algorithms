@@ -15,8 +15,16 @@ public class Solution {
     }
 
     public static <T> LinkedList<T> copyList(LinkedList<T> linkedList) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
+
         Map<Node<T>, Node<T>> map = new HashMap<>();
+
+        // This will take O(n) time and O(n) space.
         LinkedList<T> resultList = buildLinearList(linkedList, map);
+
+        // This will take O(n) time and O(1) space.
         updateRandomPointers(linkedList, resultList, map);
         return resultList;
     }
@@ -26,8 +34,9 @@ public class Solution {
         while (curr != null) {
             Node<T> originalRandomNodeAtCurr = curr.random;
             Node<T> newNodeAtCurrPlace = map.get(curr);
-            Node<T> newRandomNode = map.get(originalRandomNodeAtCurr);
-            newNodeAtCurrPlace.random = newRandomNode;
+            if (originalRandomNodeAtCurr != null) {
+                newNodeAtCurrPlace.random = map.get(originalRandomNodeAtCurr);
+            }
             curr = curr.next;
         }
     }
