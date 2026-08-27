@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/check-mirror-in-n-ary-tree1528/1
+// Solution - https://www.youtube.com/watch?v=oH63SpSshm0
+
+
 package BinaryTrees.Problem25;
 
 import java.util.Arrays;
@@ -7,6 +11,9 @@ import java.util.Map;
 
 public class Solution {
     public static boolean checkMirror(List<Integer> tree, List<Integer> mirror) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Map<Integer, Stack<Integer>> map = new HashMap<>();
 
         for (int i = 0; i < tree.size(); i += 2) {
