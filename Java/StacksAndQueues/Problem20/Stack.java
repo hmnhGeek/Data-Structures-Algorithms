@@ -10,6 +10,9 @@ public class Stack<T> {
     }
 
     public void push(T x) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         while (!q1.isEmpty()) {
             q2.enqueue(q1.dequeue());
         }
@@ -20,15 +23,24 @@ public class Stack<T> {
     }
 
     public T top() {
+        /*
+            T : O(1) and S : O(1)
+         */
         if (q1.isEmpty()) return null;
         return q1.front();
     }
 
     public Integer size() {
+        /*
+            T : O(1) and S : O(1)
+         */
         return q1.length;
     }
 
     public T pop() {
+        /*
+            T : O(1) and S : O(1)
+         */
         if (q1.isEmpty()) return null;
         return q1.dequeue();
     }
