@@ -1,5 +1,7 @@
 package PracticeSet1.SlidingWindows.L5;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,5 +27,27 @@ public class Solution {
             return arr.subList(startIndex, startIndex + collectedFruitsCount);
         }
         return null;
+    }
+
+    private static <T> int getUsedBaskets(Map<T, Integer> basketsRequired) {
+        int count = 0;
+        for (T fruit : basketsRequired.keySet()) {
+            if (basketsRequired.get(fruit) > 0) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+
+    private static <T> Map<T, Integer> getRequiredBaskets(List<T> arr) {
+        Map<T, Integer> d = new HashMap<>();
+        for (T elem : arr) {
+            d.put(elem, 0);
+        }
+        return d;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getMaxFruits(Arrays.asList(3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4), 2));
     }
 }
