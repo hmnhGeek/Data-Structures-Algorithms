@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/fruit-into-baskets/description/
+// Solution - https://www.youtube.com/watch?v=e3bs0uA1NhQ&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=5
+
+
 package PracticeSet1.SlidingWindows.L5;
 
 import java.util.Arrays;
@@ -7,6 +11,9 @@ import java.util.Map;
 
 public class Solution {
     public static <T> List<T> getMaxFruits(List<T> arr, int k) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         if (k <= 0) return null;
         Map<T, Integer> basketsRequired = getRequiredBaskets(arr);
         int left = 0, right = 0, collectedFruitsCount = 0, startIndex = -1;
