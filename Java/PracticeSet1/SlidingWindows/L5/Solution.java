@@ -49,5 +49,11 @@ public class Solution {
 
     public static void main(String[] args) {
         System.out.println(getMaxFruits(Arrays.asList(3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4), 2));
+        System.out.println(getMaxFruits(Arrays.asList(1, 2, 1), 2));
+        System.out.println(getMaxFruits(Arrays.asList(0, 1, 2, 2), 2));
+        System.out.println(getMaxFruits(Arrays.asList(1, 2, 3, 2, 2), 2));
+        System.out.println(getMaxFruits(Arrays.asList(3, 1, 2, 2, 2, 2), 2));
+        System.out.println(getMaxFruits(Arrays.asList(1, 1, 2, 3), 2));
+        System.out.println(getMaxFruits(Arrays.asList(1, 2, 3, 4), 2));
     }
 }
