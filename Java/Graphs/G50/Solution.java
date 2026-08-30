@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/accounts-merge/description/
+// Solution - https://www.youtube.com/watch?v=FMwpt_aQOGw&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=50
+
+
 package Graphs.G50;
 
 import java.util.*;
