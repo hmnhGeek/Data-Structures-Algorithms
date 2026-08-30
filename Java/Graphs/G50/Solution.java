@@ -67,5 +67,28 @@ public class Solution {
                         )
                 )
         );
+
+        System.out.println(
+                accountsMerge(
+                        Arrays.asList(
+                                Arrays.asList("John", "johnsmith@mail.com", "john_newyork@mail.com"),
+                                Arrays.asList("John", "johnsmith@mail.com", "john00@mail.com"),
+                                Arrays.asList("Mary", "mary@mail.com"),
+                                Arrays.asList("John", "johnnybravo@mail.com")
+                        )
+                )
+        );
+
+        System.out.println(
+                accountsMerge(
+                        Arrays.asList(
+                                Arrays.asList("Gabe", "Gabe0@m.co", "Gabe3@m.co", "Gabe1@m.co"),
+                                Arrays.asList("Kevin", "Kevin3@m.co", "Kevin5@m.co", "Kevin0@m.co"),
+                                Arrays.asList("Ethan", "Ethan5@m.co", "Ethan4@m.co", "Ethan0@m.co"),
+                                Arrays.asList("Hanzo", "Hanzo3@m.co", "Hanzo1@m.co", "Hanzo0@m.co"),
+                                Arrays.asList("Fern", "Fern5@m.co", "Fern1@m.co", "Fern0@m.co")
+                        )
+                )
+        );
     }
 }
