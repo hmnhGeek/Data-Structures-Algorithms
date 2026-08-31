@@ -13,10 +13,15 @@ public class Solution {
         DisjointSet<Integer> disjointSet = new DisjointSet<>(nodes);
         for (List<Integer> cell : cells) {
             int i = cell.getFirst(), j = cell.getLast();
-            mtx.get(i).set(j, 1);
-            Integer node = getNeighbourNodeWhichIsAnIsland(i, j, n, m, mtx);
-            if (node != null) {
-                disjointSet.union(node, getNode(cell, m));
+            Integer node = getNode(cell, m);
+            if (mtx.get(i).get(j) == 0) {
+                mtx.get(i).set(j, 1);
+                List<Integer> neighbors = getNeighbourNodesWhichIsAnIsland(i, j, n, m, mtx);
+                for (Integer neighbor : neighbors) {
+                    if (!disjointSet.inSameComponents(neighbor, node)) {
+                        disjointSet.union(neighbor, node);
+                    }
+                }
             }
             result.add(getNumIslandsFromDSU(disjointSet, mtx, m));
         }
@@ -26,7 +31,7 @@ public class Solution {
     private static Integer getNumIslandsFromDSU(DisjointSet<Integer> disjointSet, List<List<Integer>> mtx, int m) {
         int count = 0;
         for (Integer node : disjointSet.parents.keySet()) {
-            if (Objects.equals(disjointSet.parents.get(node), node) && mtx.get(node / m).get(node % m) == 1) {
+            if (disjointSet.parents.get(node) == node && mtx.get(node / m).get(node % m) == 1) {
                 count += 1;
             }
         }
@@ -45,17 +50,21 @@ public class Solution {
         return mtx;
     }
 
-    private static Integer getNeighbourNodeWhichIsAnIsland(int i, int j, int n, int m, List<List<Integer>> mtx) {
+    private static List<Integer> getNeighbourNodesWhichIsAnIsland(int i, int j, int n, int m, List<List<Integer>> mtx) {
+        List<Integer> neighbours = new ArrayList<>();
         if (0 <= i - 1 && i - 1 < n && mtx.get(i - 1).get(j) == 1) {
-            return getNode(List.of(i - 1, j), m);
-        } else if (0 <= j + 1 && j + 1 < m && mtx.get(i).get(j + 1) == 1) {
-            return getNode(List.of(i, j + 1), m);
-        } else if (0 <= i + 1 && i + 1 < n && mtx.get(i + 1).get(j) == 1) {
-            return getNode(List.of(i + 1, j), m);
-        } else if (0 <= j - 1 && j - 1 < m && mtx.get(i).get(j - 1) == 1) {
-            return getNode(List.of(i, j - 1), m);
+            neighbours.add(getNode(List.of(i - 1, j), m));
         }
-        return null;
+        if (0 <= j + 1 && j + 1 < m && mtx.get(i).get(j + 1) == 1) {
+            neighbours.add(getNode(List.of(i, j + 1), m));
+        }
+        if (0 <= i + 1 && i + 1 < n && mtx.get(i + 1).get(j) == 1) {
+            neighbours.add(getNode(List.of(i + 1, j), m));
+        }
+        if (0 <= j - 1 && j - 1 < m && mtx.get(i).get(j - 1) == 1) {
+            neighbours.add(getNode(List.of(i, j - 1), m));
+        }
+        return neighbours;
     }
 
     private static Integer getNode(List<Integer> cell, int m) {
@@ -72,13 +81,76 @@ public class Solution {
 
     public static void main(String[] args) {
         System.out.println(
-                findNumIslands(
+                Solution.findNumIslands(
                         4, 5,
                         Arrays.asList(
                                 Arrays.asList(1, 1),
                                 Arrays.asList(0, 1),
                                 Arrays.asList(3, 3),
                                 Arrays.asList(3, 4)
+                        )
+                )
+        );
+
+        System.out.println(
+                Solution.findNumIslands(
+                        4, 5,
+                        Arrays.asList(
+                                Arrays.asList(0, 0),
+                                Arrays.asList(1, 1),
+                                Arrays.asList(2, 2),
+                                Arrays.asList(3, 3)
+                        )
+                )
+        );
+
+        System.out.println(
+                Solution.findNumIslands(
+                        3, 3,
+                        Arrays.asList(
+                                Arrays.asList(0, 1),
+                                Arrays.asList(0, 1),
+                                Arrays.asList(1, 2),
+                                Arrays.asList(2, 1)
+                        )
+                )
+        );
+
+        System.out.println(
+                Solution.findNumIslands(
+                        2, 2,
+                        Arrays.asList(
+                                Arrays.asList(0, 0),
+                                Arrays.asList(1, 1)
+                        )
+                )
+        );
+
+        System.out.println(
+                Solution.findNumIslands(
+                        1, 1,
+                        Arrays.asList(
+                                Arrays.asList(0, 0)
+                        )
+                )
+        );
+
+        System.out.println(
+                Solution.findNumIslands(
+                        4, 5,
+                        Arrays.asList(
+                                Arrays.asList(0, 0),
+                                Arrays.asList(0, 0),
+                                Arrays.asList(1, 1),
+                                Arrays.asList(1, 0),
+                                Arrays.asList(0, 1),
+                                Arrays.asList(0, 3),
+                                Arrays.asList(1, 3),
+                                Arrays.asList(0, 4),
+                                Arrays.asList(3, 2),
+                                Arrays.asList(2, 2),
+                                Arrays.asList(1, 2),
+                                Arrays.asList(0, 2)
                         )
                 )
         );
