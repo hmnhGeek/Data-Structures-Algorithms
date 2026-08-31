@@ -13,6 +13,7 @@ public class Solution {
         /*
             Time complexity is O(nm) and space complexity is O(nm).
          */
+
         List<List<Integer>> mtx = getMtx(n, m);
         List<Integer> nodes = getNodes(cells, m);
         List<Integer> result = new ArrayList<>();
