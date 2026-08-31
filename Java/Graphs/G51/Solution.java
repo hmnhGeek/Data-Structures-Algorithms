@@ -1,12 +1,18 @@
+// Problem link - https://www.geeksforgeeks.org/problems/number-of-islands/1
+// Solution - https://www.youtube.com/watch?v=Rn6B-Q4SNyA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=51
+
+
 package Graphs.G51;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class Solution {
     public static List<Integer> findNumIslands(Integer n, Integer m, List<List<Integer>> cells) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
         List<List<Integer>> mtx = getMtx(n, m);
         List<Integer> nodes = getNodes(cells, m);
         List<Integer> result = new ArrayList<>();
