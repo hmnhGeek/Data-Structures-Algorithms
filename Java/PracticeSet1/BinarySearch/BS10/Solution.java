@@ -1,7 +1,13 @@
+// Problem link - https://www.youtube.com/watch?v=Bsv3FPUX_BA&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=11
+
+
 package PracticeSet1.BinarySearch.BS10;
 
 public class Solution {
     public static Integer findSqrt(int n) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(1).
+         */
         if (n < 0) return null;
         if (n == 0) return 0;
         int low = 1, high = n;
