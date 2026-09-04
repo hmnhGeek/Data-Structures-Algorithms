@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/longest-consecutive-subsequence2449/1
+# Solution - https://www.youtube.com/watch?v=oO5uLE7EUlM
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -30,6 +34,9 @@ class QuickSort:
 class Solution:
     @staticmethod
     def get_longest_consecutive_length(arr):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         mp = set()
         longest_length = 0
         for i in arr:
@@ -47,6 +54,9 @@ class Solution:
 
     @staticmethod
     def get_lcs(arr):
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+        """
         QuickSort.sort(arr)
         longest_length = 0
         count = 1
