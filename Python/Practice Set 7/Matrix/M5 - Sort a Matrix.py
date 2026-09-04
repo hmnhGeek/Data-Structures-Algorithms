@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/sorted-matrix2333/1
+
+
 class MergeSort:
     @staticmethod
     def sort(arr):
@@ -43,6 +46,9 @@ class MergeSort:
 class Solution:
     @staticmethod
     def sort_matrix(mtx):
+        """
+            Time complexity is O(nm * log(nm)) and space complexity is O(nm).
+        """
         n, m = len(mtx), len(mtx[0])
         flattened_mtx = Solution._flatten(mtx, n, m)
         MergeSort.sort(flattened_mtx)
