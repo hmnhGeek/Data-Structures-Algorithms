@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/merge-two-sorted-arrays-1587115620/1
+# Solution - https://www.youtube.com/watch?v=n7uwj04E0I4
+
+
 class QuickSort:
     @staticmethod
     def sort(arr):
@@ -30,6 +34,9 @@ class QuickSort:
 class Solution:
     @staticmethod
     def merge_without_extra_space(a, b):
+        """
+            Time complexity is O(nlog(n) + mlog(m)) and space complexity is O(1).
+        """
         i = len(a) - 1
         j = 0
         while i >= 0 and j < len(b):
