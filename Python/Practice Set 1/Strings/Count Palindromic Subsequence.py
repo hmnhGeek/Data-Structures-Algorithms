@@ -73,9 +73,37 @@ def tabulation():
     print(count("bccb"))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n).
+    """
+    def count(string):
+        n = len(string)
+        nxt = {j: 0 for j in range(n)}
+        nxt[0] = 1
+        for i in range(n - 2, -1, -1):
+            curr = {j: 0 for j in range(n)}
+            curr[i] = 1
+            for j in range(i + 1, n):
+                if string[i] == string[j]:
+                    curr[j] = 1 + nxt[j] + curr[j - 1]
+                else:
+                    curr[j] = nxt[j] + curr[j - 1] - nxt[j - 1]
+            nxt = curr
+        return nxt[n - 1]
+
+    print(count("abcd"))
+    print(count("aab"))
+    print(count("geeksforgeeks"))
+    print(count("103301"))
+    print(count("bccb"))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
