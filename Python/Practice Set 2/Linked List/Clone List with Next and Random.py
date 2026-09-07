@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/clone-a-linked-list-with-next-and-random-pointer/1
+# Solution - https://www.youtube.com/watch?v=q570bKdrnlw
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -41,6 +45,9 @@ class LinkedList:
 class Solution:
     @staticmethod
     def clone(linked_list: LinkedList) -> LinkedList:
+        """
+            Time complexity is O(3n) and space complexity is O(1).
+        """
         cloned_linked_list = LinkedList()
         Solution.linear_clone(linked_list)
         Solution.clone_random_pointers(linked_list)
