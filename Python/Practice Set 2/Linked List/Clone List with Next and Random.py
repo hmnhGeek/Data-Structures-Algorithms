@@ -38,6 +38,46 @@ class LinkedList:
         return result
 
 
+class Solution:
+    @staticmethod
+    def clone(linked_list: LinkedList) -> LinkedList:
+        cloned_linked_list = LinkedList()
+        Solution.linear_clone(linked_list)
+        Solution.clone_random_pointers(linked_list)
+        Solution.extract_cloned_list(cloned_linked_list, linked_list)
+        return cloned_linked_list
+
+    @staticmethod
+    def extract_cloned_list(cloned_linked_list, linked_list):
+        dummy = temp = Node(None)
+        curr = linked_list.head
+        while curr is not None:
+            temp.next = curr.next
+            curr.next = curr.next.next
+            temp = temp.next
+            curr = curr.next
+        cloned_linked_list.head = dummy.next
+        cloned_linked_list.tail = temp
+        cloned_linked_list.length = linked_list.length
+
+    @staticmethod
+    def clone_random_pointers(linked_list: LinkedList):
+        curr = linked_list.head
+        while curr is not None:
+            curr.next.random = curr.random.next if curr.random else None
+            curr = curr.next.next
+
+    @staticmethod
+    def linear_clone(linked_list: LinkedList):
+        curr = linked_list.head
+        while curr is not None:
+            cloned_curr = Node(curr.data)
+            next_curr = curr.next
+            curr.next = cloned_curr
+            cloned_curr.next = next_curr
+            curr = next_curr
+
+
 # Example 1
 l = LinkedList()
 for i in [1, 2, 3, 4, 5]:
@@ -47,9 +87,9 @@ l.head.next.random = l.head
 l.head.next.next.next.random = l.head.next.next
 l.tail.random = l.head.next
 print(l)
-# cloned = Solution.clone(l)
-# cloned.show()
-# print()
+cloned = Solution.clone(l)
+print(cloned)
+print()
 
 # Example 2
 l = LinkedList()
@@ -60,5 +100,5 @@ l.head.next.next.random = l.tail
 l.head.next.next.next.random = l.head.next.next
 l.tail.random = l.head
 print(l)
-# cloned = Solution.clone(l)
-# cloned.show()
+cloned = Solution.clone(l)
+print(cloned)
