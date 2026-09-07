@@ -28,3 +28,22 @@ class Stack:
         self.head = self.head.next
         self.length -= 1
         return item
+
+
+class Solution:
+    @staticmethod
+    def check_mirror(arr, mirror):
+        mp = {}
+        for i in arr:
+            mp[i] = Stack()
+        n = len(arr)
+        for i in range(0, n, 2):
+            mp[arr[i]].push(arr[i + 1])
+        for i in range(0, n, 2):
+            if mirror[i + 1] != mp[arr[i]].pop():
+                return False
+        return True
+
+
+print(Solution.check_mirror([1, 2, 1, 3], [1, 3, 1, 2]))
+print(Solution.check_mirror([1, 2, 1, 3], [1, 2, 1, 3]))
