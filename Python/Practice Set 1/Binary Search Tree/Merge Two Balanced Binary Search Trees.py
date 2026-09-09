@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/merge-two-balanced-binary-search-trees/
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -152,14 +155,22 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def merge_bsts(bst1: BinarySearchTree, bst2: BinarySearchTree) -> BinarySearchTree:
+        """
+            Time complexity is O(n + m) and space complexity is O(n + m).
+        """
+
+        # This takes O(n) time and O(log(n)) space.
         inorder1 = []
         Solution._get_inorder(bst1.root, inorder1)
 
+        # This takes O(m) time and O(log(m)) space.
         inorder2 = []
         Solution._get_inorder(bst2.root, inorder2)
 
+        # This takes O(n + m) time and O(n + m) space.
         inorder = Solution._merge(inorder1, inorder2)
 
+        # This takes O(log(n + m)) time and O(n + m) space.
         return Solution._construct_balanced_bst(inorder)
 
     @staticmethod
