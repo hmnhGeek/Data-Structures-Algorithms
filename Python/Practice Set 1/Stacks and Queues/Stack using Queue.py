@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/stack-using-two-queues/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
