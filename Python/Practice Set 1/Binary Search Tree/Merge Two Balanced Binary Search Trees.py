@@ -148,3 +148,130 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def merge_bsts(bst1: BinarySearchTree, bst2: BinarySearchTree) -> BinarySearchTree:
+        inorder1 = []
+        Solution._get_inorder(bst1.root, inorder1)
+
+        inorder2 = []
+        Solution._get_inorder(bst2.root, inorder2)
+
+        inorder = Solution._merge(inorder1, inorder2)
+
+        return Solution._construct_balanced_bst(inorder)
+
+    @staticmethod
+    def _get_inorder(root: Node, inorder):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._get_inorder(root.right, inorder)
+
+    @staticmethod
+    def _merge(left, right):
+        i, j = 0, 0
+        merged = []
+        while i < len(left) and j < len(right):
+            if left[i] <= right[j]:
+                merged.append(left[i])
+                i += 1
+            else:
+                merged.append(right[j])
+                j += 1
+        while i < len(left):
+            merged.append(left[i])
+            i += 1
+        while j < len(right):
+            merged.append(right[j])
+            j += 1
+        return merged
+
+    @staticmethod
+    def _construct_balanced_bst(inorder) -> BinarySearchTree:
+        bst = BinarySearchTree()
+        n = len(inorder)
+        Solution._balanced_insert(bst, inorder, 0, n - 1)
+        return bst
+
+    @staticmethod
+    def _balanced_insert(bst, inorder, low, high):
+        if low > high:
+            return
+        mid = int(low + (high - low)/2)
+        bst.insert(inorder[mid])
+        Solution._balanced_insert(bst, inorder, low, mid - 1)
+        Solution._balanced_insert(bst, inorder, mid + 1, high)
+
+
+def example1():
+    t1 = BinarySearchTree()
+    t1.insert(3)
+    t1.insert(1)
+    t1.insert(5)
+
+    t2 = BinarySearchTree()
+    t2.insert(4)
+    t2.insert(2)
+    t2.insert(6)
+
+    mt = Solution.merge_bsts(t1, t2)
+    mt.show()
+
+
+def example2():
+    t1 = BinarySearchTree()
+    t1.insert(5)
+    t1.insert(3)
+    t1.insert(0)
+
+    t2 = BinarySearchTree()
+    t2.insert(8)
+    t2.insert(2)
+    t2.insert(1)
+    t2.insert(10)
+
+    merged = Solution.merge_bsts(t1, t2)
+    merged.show()
+
+
+def example3():
+    t1 = BinarySearchTree()
+    t1.insert(3)
+    t1.insert(2)
+    t1.insert(1)
+    t1.insert(5)
+
+    t2 = BinarySearchTree()
+    t2.insert(4)
+    t2.insert(1)
+    t2.insert(2)
+    t2.insert(7)
+    t2.insert(9)
+
+    merged = Solution.merge_bsts(t2, t1)
+    merged.show()
+
+
+def example4():
+    t1 = BinarySearchTree()
+    t1.insert(2)
+    t1.insert(1)
+    t1.insert(3)
+
+    t2 = BinarySearchTree()
+    t2.insert(4)
+
+    merged = Solution.merge_bsts(t1, t2)
+    merged.show()
+
+
+example1()
+print()
+example2()
+print()
+example3()
+print()
+example4()
+print()
