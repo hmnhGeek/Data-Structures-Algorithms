@@ -1,6 +1,13 @@
+# Problem link - https://www.naukri.com/code360/problems/distinct-characters_2221410
+# Solution - https://www.youtube.com/watch?v=teM9ZsVRQyc&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=6
+
+
 class Solution:
     @staticmethod
     def fruits_into_baskets(arr):
+        """
+            Time complexity is O(n) and space complexity is O(1).
+        """
         n = len(arr)
         start_index = -1
         length = 0
