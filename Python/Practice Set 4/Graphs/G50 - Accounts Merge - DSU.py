@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/account-merge/1
+# Solution - https://www.youtube.com/watch?v=FMwpt_aQOGw&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=50
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.parents = {i: i for i in nodes}
@@ -28,10 +32,23 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def accounts_merge(mtx):
+        """
+            Time complexity is O(nm * log(m)) and space complexity is O(nm).
+        """
+
+        # This will take O(n) space
         disjoint_set = DisjointSet([i for i in range(len(mtx))])
+
+        # This will take O(n) time and O(n) space.
         nodes_to_name_mapping = Solution._get_nodes_to_name_mapping(mtx)
+
+        # Time taken is O(mn) and space is O(mn).
         emails_to_node_mapping = Solution._get_emails_to_node_mapping(mtx, disjoint_set)
+
+        # Time will be O(mn) and space will be O(mn).
         merged_nodes_to_emails_mapping = Solution._get_merged_mapping(emails_to_node_mapping, disjoint_set, nodes_to_name_mapping)
+
+        # construct the final DSU result in O(nm) time and O(nm*log(m)) space.
         return Solution._merged_result(merged_nodes_to_emails_mapping, nodes_to_name_mapping)
 
     @staticmethod
