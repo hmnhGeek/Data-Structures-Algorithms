@@ -59,7 +59,38 @@ def memoized():
     print(buy_and_sell([7, 1, 5, 3, 6, 4], 1))
 
 
+def tabulation():
+    def buy_and_sell(arr, transaction_fee):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
+        n = len(arr)
+        dp = {i: {j: 0 for j in [True, False]} for i in range(n + 1)}
+        for i in range(n - 1, -1, -1):
+            for j in [True, False]:
+                if j:
+                    dp[i][j] = max(
+                        -arr[i] + dp[i + 1][not j],
+                        dp[i + 1][j]
+                    )
+                else:
+                    dp[i][j] = max(
+                        arr[i] - transaction_fee + dp[i + 1][not j],
+                        dp[i + 1][j]
+                    )
+        return dp[0][True]
+
+    print(buy_and_sell([1, 3, 2, 8, 4, 9], 2))
+    print(buy_and_sell([1, 2, 3], 1))
+    print(buy_and_sell([1, 3, 5, 6], 2))
+    print(buy_and_sell([1, 3, 7, 5, 10, 3], 3))
+    print(buy_and_sell([6, 1, 7, 2, 8, 4], 2))
+    print(buy_and_sell([7, 1, 5, 3, 6, 4], 1))
+
+
 recursive()
 print()
 memoized()
+print()
+tabulation()
 print()
