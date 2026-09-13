@@ -25,5 +25,41 @@ def recursive():
     print(buy_and_sell([7, 1, 5, 3, 6, 4], 1))
 
 
+def memoized():
+    def buy_and_sell(arr, transaction_fee):
+        """
+            Time complexity is O(n) and space complexity is O(n + n).
+        """
+        n = len(arr)
+        dp = {i: {j: None for j in [True, False]} for i in range(n)}
+        return solve(arr, 0, True, transaction_fee, n, dp)
+
+    def solve(arr, i, j, k, n, dp):
+        if i >= n:
+            return 0
+        if dp[i][j] is not None:
+            return dp[i][j]
+        if j:
+            dp[i][j] = max(
+                -arr[i] + solve(arr, i + 1, not j, k, n, dp),
+                solve(arr, i + 1, j, k, n, dp)
+            )
+        else:
+            dp[i][j] = max(
+                arr[i] - k + solve(arr, i + 1, not j, k, n, dp),
+                solve(arr, i + 1, j, k, n, dp)
+            )
+        return dp[i][j]
+
+    print(buy_and_sell([1, 3, 2, 8, 4, 9], 2))
+    print(buy_and_sell([1, 2, 3], 1))
+    print(buy_and_sell([1, 3, 5, 6], 2))
+    print(buy_and_sell([1, 3, 7, 5, 10, 3], 3))
+    print(buy_and_sell([6, 1, 7, 2, 8, 4], 2))
+    print(buy_and_sell([7, 1, 5, 3, 6, 4], 1))
+
+
 recursive()
+print()
+memoized()
 print()
