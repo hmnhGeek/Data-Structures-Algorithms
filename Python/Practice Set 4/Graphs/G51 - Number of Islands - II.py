@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/number-of-islands/1
+# Solution - https://www.youtube.com/watch?v=Rn6B-Q4SNyA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=51
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.parents = {i: i for i in nodes}
@@ -29,6 +33,9 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def num_islands_2(n, m, cells):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
         visited = [[0 for _ in range(m)] for _ in range(n)]
         nodes = [(m * cell[0]) + cell[1] for cell in cells]
         disjoint_set = DisjointSet(nodes)
