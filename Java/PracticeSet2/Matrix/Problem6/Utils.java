@@ -4,6 +4,9 @@ import java.util.List;
 
 public class Utils {
     public static Integer maxAreaInHistogram(List<Integer> histogram) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Stack<Integer> stack = new Stack<>();
         int n = histogram.size();
         Integer maxArea = 0;

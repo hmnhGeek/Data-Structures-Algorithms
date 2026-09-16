@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/max-rectangle/1
+// Solution -
+
 package PracticeSet2.Matrix.Problem6;
 
 import java.util.ArrayList;
@@ -6,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer maxRectangle(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(nm) and space complexity is O(m).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         List<Integer> prev = getBlankPrevRow(m);
         Integer maxArea = 0;
