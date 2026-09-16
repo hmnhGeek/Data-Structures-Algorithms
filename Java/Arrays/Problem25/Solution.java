@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/given-an-array-of-of-size-n-finds-all-the-elements-that-appear-more-than-nk-times/#expected-solution-for-small-k-moores-voting-algorithm-on-x-k-time-and-ok-space
+
+
 package Arrays.Problem25;
 
 import java.util.Arrays;
@@ -7,6 +10,9 @@ import java.util.Map;
 
 public class Solution {
     public static Integer countFrequentElement(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         int n = arr.size();
         int threshold = n / k;
         Map<Integer, Integer> map = new HashMap<>();
