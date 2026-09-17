@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/find-count-number-given-string-present-2d-character-array/
+// Solution - https://www.youtube.com/watch?v=ZYeVllg0D7E
+
+
 package Strings.Problem23;
 
 import java.util.Arrays;
