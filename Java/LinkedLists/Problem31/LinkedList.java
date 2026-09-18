@@ -1,7 +1,7 @@
 package LinkedLists.Problem31;
 
 
-class Node<T> {
+class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
     public T data;
     public Node<T> next;
 
@@ -9,10 +9,15 @@ class Node<T> {
         this.data = data;
         this.next = null;
     }
+
+    @Override
+    public int compareTo(Node<T> o) {
+        return this.data.compareTo(o.data);
+    }
 }
 
 
-public class LinkedList<T> {
+public class LinkedList<T extends Comparable<T>> {
     public Node<T> head, tail;
     public Integer length;
 
