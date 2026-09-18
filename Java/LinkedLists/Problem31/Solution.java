@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/merge-k-sorted-linked-lists/1
+
+
 package LinkedLists.Problem31;
 
 import java.util.Arrays;
@@ -14,6 +17,16 @@ public class Solution {
         l3.build(9);
         LinkedList<Integer> merged1 = mergeSortedLinkedLists(Arrays.asList(l1, l2, l3));
         System.out.println(merged1);
+
+        // Example 2
+        LinkedList<Integer> l4 = new LinkedList<>();
+        l4.build(1, 3);
+        LinkedList<Integer> l5 = new LinkedList<>();
+        l5.build(8);
+        LinkedList<Integer> l6 = new LinkedList<>();
+        l6.build(4, 5, 6);
+        LinkedList<Integer> merged2 = mergeSortedLinkedLists(Arrays.asList(l4, l5, l6));
+        System.out.println(merged2);
     }
 
     public static <T extends Comparable<T>> LinkedList<T> mergeSortedLinkedLists(List<LinkedList<T>> linkedLists) {
