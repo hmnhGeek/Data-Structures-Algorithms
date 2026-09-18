@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/sum-of-the-longest-bloodline-of-a-tree/1
+// Solution - https://www.youtube.com/watch?v=NazCRmhUsPc
+
+
 package BinaryTrees.Problem26;
 
 
@@ -25,6 +29,9 @@ class Vector {
 
 public class Solution {
     public static Integer getMaxPathSum(Node<Integer> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         Vector vector = solve(root);
         return vector.sum;
     }
