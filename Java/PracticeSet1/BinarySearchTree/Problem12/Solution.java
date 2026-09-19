@@ -5,12 +5,16 @@ import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
-        // Example 1
+        test(Arrays.asList(4, 2, 9), 2);
+        test(Arrays.asList(10, 2, 11, 1, 5, 3, 6, 4), 7);
+    }
+
+    private static void test(List<Integer> elements, Integer k) {
         BinarySearchTree<Integer> bst = new BinarySearchTree<>();
-        for (Integer i : Arrays.asList(4, 2, 9)) {
+        for (Integer i : elements) {
             bst.insert(i);
         }
-        System.out.println(getKthLargest(bst, 2));
+        System.out.println(getKthLargest(bst, k));
     }
 
     public static Integer getKthLargest(BinarySearchTree<Integer> bst, Integer k) {
