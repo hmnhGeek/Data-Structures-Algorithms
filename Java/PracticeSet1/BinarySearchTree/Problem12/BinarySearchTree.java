@@ -1,5 +1,8 @@
 package PracticeSet1.BinarySearchTree.Problem12;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class BinarySearchTree<T extends Comparable<T>> {
     public Node<T> root;
     public Integer diameter;
@@ -173,5 +176,19 @@ public class BinarySearchTree<T extends Comparable<T>> {
     public void show() {
         show(this.root);
         System.out.println();
+    }
+
+    public Integer getNumNodes() {
+        List<Integer> count = Arrays.asList(0);
+        getNumNodes(this.root, count);
+        return count.getFirst();
+    }
+
+    private void getNumNodes(Node<T> start, List<Integer> count) {
+        if (start != null) {
+            getNumNodes(start.left, count);
+            count.set(0, count.getFirst() + 1);
+            getNumNodes(start.right, count);
+        }
     }
 }
