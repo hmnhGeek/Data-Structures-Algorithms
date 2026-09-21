@@ -1,7 +1,14 @@
+// Problem link - https://www.geeksforgeeks.org/problems/find-nth-root-of-m5843/1
+// Solution - https://www.youtube.com/watch?v=rjEJeYCasHs&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=12
+
+
 package PracticeSet1.BinarySearch.BS11;
 
 public class Solution {
     public static Integer findNthRoot(Integer m, Integer n) {
+        /*
+            Time complexity is O(log(m) * n) and space complexity is O(1).
+         */
         if (n <= 1) return -1;
         int low = 1, high = m;
         while (low <= high) {
