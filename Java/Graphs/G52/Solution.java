@@ -1,9 +1,16 @@
+// Problem link - https://www.geeksforgeeks.org/problems/maximum-connected-group/1
+// Solution - https://www.youtube.com/watch?v=lgiz0Oup6gM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=52
+
+
 package Graphs.G52;
 
 import java.util.*;
 
 public class Solution {
     public static Integer getLargestIsland(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(nm) and space complexity is O(nm).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         List<Integer> nodes = getNodes(mtx, n, m);
         DisjointSet<Integer> disjointSet = new DisjointSet<>(nodes);
