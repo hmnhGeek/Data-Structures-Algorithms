@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/printing-longest-increasing-subsequence_8360670
+// Solution - https://www.youtube.com/watch?v=IFfYfonAFGc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=43
+
+
 package DynamicProgramming.DP42;
 
 import java.util.ArrayList;
@@ -7,6 +11,9 @@ import java.util.Map;
 
 public class Solution {
     public static List<Integer> getLIS(List<Integer> arr) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(2n).
+         */
         Map<Integer, Integer> dp = new HashMap<>();
         for (int i = 0; i < arr.size(); i += 1) {
             dp.put(i, 1);
