@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/maximum-stone-removal-1662179442/1
+// Solution - https://www.youtube.com/watch?v=OwMNX8SPavM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
+
+
 package PracticeSet1.Graphs.G53;
 
 import java.util.ArrayList;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer removeStones(List<List<Integer>> stones) {
+        /*
+            Time complexity is O(m + n) and space complexity is O(m + n).
+         */
         List<Integer> dimensions = getMaxDimensions(stones);
         DisjointSet<Integer> disjointSet = getDisjointSet(stones, dimensions);
         int maxCol = dimensions.getLast();
