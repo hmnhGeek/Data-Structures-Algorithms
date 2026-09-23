@@ -3,7 +3,20 @@ package DynamicProgramming.DP44;
 import java.util.*;
 
 public class Solution {
+    private static void recursive() {
+        System.out.println(RecursiveSolution.getLDSLength(Arrays.asList(1, 16, 7, 8, 4)));
+        System.out.println(RecursiveSolution.getLDSLength(Arrays.asList(1, 2, 5)));
+        System.out.println(RecursiveSolution.getLDSLength(Arrays.asList(3, 3, 3)));
+        System.out.println(RecursiveSolution.getLDSLength(Arrays.asList(1, 2, 4, 8)));
+        System.out.println(RecursiveSolution.getLDSLength(Arrays.asList(1, 2, 3)));
+        System.out.println(RecursiveSolution.getLDSLength(Arrays.asList(2, 4, 3, 8)));
+        System.out.println();
+    }
+
     public static List<Integer> getLDS(List<Integer> arr) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(n).
+         */
         int n = arr.size();
         Map<Integer, Integer> size = new HashMap<>();
         Map<Integer, Integer> parent = new HashMap<>();
@@ -46,6 +59,7 @@ public class Solution {
     }
 
     public static void main(String[] args) {
+        recursive();
         System.out.println(Solution.getLDS(Arrays.asList(1, 16, 7, 8, 4)));
         System.out.println(Solution.getLDS(Arrays.asList(1, 2, 5)));
         System.out.println(Solution.getLDS(Arrays.asList(3, 3, 3)));
