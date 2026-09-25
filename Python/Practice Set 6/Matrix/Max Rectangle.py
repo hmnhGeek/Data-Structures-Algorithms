@@ -34,3 +34,31 @@ class Stack:
             return
         return self.head.data
 
+
+class Utility:
+    @staticmethod
+    def get_max_area_in_histogram(histogram):
+        """
+            Time complexity is O(n) and space complexity is O(n)
+        """
+        stack = Stack()
+        max_area = 0
+        for i in range(len(histogram)):
+            while not stack.is_empty() and histogram[stack.top()] > histogram[i]:
+                bar = histogram[stack.pop()]
+                rb = i
+                lb = stack.top() if not stack.is_empty() else -1
+                area = bar * (rb - lb - 1)
+                max_area = max(max_area, area)
+            stack.push(i)
+        while not stack.is_empty():
+            bar = histogram[stack.pop()]
+            rb = len(histogram)
+            lb = stack.top() if not stack.is_empty() else -1
+            area = bar * (rb - lb - 1)
+            max_area = max(max_area, area)
+        return max_area
+
+
+print(Utility.get_max_area_in_histogram([60, 20, 50, 40, 10, 50, 60]))
+print(Utility.get_max_area_in_histogram([3, 5, 1, 7, 5, 9]))
