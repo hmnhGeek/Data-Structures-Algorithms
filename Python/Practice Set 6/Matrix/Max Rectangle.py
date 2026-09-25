@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/max-rectangle/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -63,11 +66,19 @@ class Utility:
 class Solution:
     @staticmethod
     def max_rectangle(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(m).
+        """
+
         n, m = len(mtx), len(mtx[0])
         prev = [0] * m
         max_area = 0
+
+        # runs for order n times
         for i in range(n):
+            # takes O(m) time and O(m) space
             histogram = Solution._get_histogram(mtx[i], prev, m)
+            # takes O(m) time and O(m) space
             area = Utility.get_max_area_in_histogram(histogram)
             max_area = max(max_area, area)
             prev = [j for j in histogram]
