@@ -1,6 +1,12 @@
+# Problem link - https://www.geeksforgeeks.org/dsa/given-an-array-of-of-size-n-finds-all-the-elements-that-appear-more-than-nk-times/
+
+
 class Solution:
     @staticmethod
     def count_frequent(arr, k):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         mp = {i: 0 for i in arr}
         for i in arr:
             mp[i] += 1
