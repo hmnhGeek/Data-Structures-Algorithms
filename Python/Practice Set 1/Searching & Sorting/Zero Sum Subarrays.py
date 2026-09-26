@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/zero-sum-subarrays1825/1
+# Solution - https://www.youtube.com/watch?v=xvNwoz-ufXA&t=857s
+
+
 class Solution:
     @staticmethod
     def get_subarray_count(arr, k = 0):
+        """
+            Overall time complexity is O(n) and space complexity is O(n).
+        """
         mp = {0: 1}
         _sum = count = 0
         for i in range(len(arr)):
