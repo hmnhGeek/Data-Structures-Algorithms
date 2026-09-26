@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/find-count-number-given-string-present-2d-character-array/
+# Solution - https://www.youtube.com/watch?v=ZYeVllg0D7E&t=437s
+
+
 class Solution:
     @staticmethod
     def count_of(mtx, word):
