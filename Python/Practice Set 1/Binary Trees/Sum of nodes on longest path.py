@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/sum-of-the-longest-bloodline-of-a-tree/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,6 +10,9 @@ class Node:
 class Solution:
     @staticmethod
     def get_max_path_sum(root: Node):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
         if root is None:
             return 0, 0
         left_ht, left_sum = Solution.get_max_path_sum(root.left)
