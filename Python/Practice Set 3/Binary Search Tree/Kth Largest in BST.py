@@ -140,3 +140,37 @@ class BinarySearchTree:
         print()
 
 
+class Solution:
+    @staticmethod
+    def get_kth_largest(bst: BinarySearchTree, k: int, n: int):
+        counter = [0, None]
+        Solution._solve(bst.root, counter, n - k + 1)
+        return counter[1].data if counter[1] is not None else None
+
+    @staticmethod
+    def _solve(start, counter, k):
+        if start:
+            Solution._solve(start.left, counter, k)
+            counter[0] += 1
+            if counter[0] == k:
+                counter[1] = start
+            Solution._solve(start.right, counter, k)
+
+
+# Example 1
+bst = BinarySearchTree()
+for i in [4, 2, 9]:
+    bst.insert(i)
+print(Solution.get_kth_largest(bst, 2, 3))
+
+# Example 2
+bst = BinarySearchTree()
+for i in [9, 10]:
+    bst.insert(i)
+print(Solution.get_kth_largest(bst, 1, 2))
+
+# Example 3
+bst = BinarySearchTree()
+for i in [6, 2, 7, 3, 4, 9]:
+    bst.insert(i)
+print(Solution.get_kth_largest(bst, 5, 6))
