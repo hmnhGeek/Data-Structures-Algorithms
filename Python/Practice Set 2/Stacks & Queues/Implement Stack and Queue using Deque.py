@@ -39,6 +39,7 @@ class Deque:
         node = self.head
         self.head = self.head.next
         del node
+        self.length -= 1
         if self.head is not None:
             self.head.prev = None
         return item
@@ -50,7 +51,32 @@ class Deque:
         node = self.tail
         self.tail = self.tail.prev
         del node
+        self.length -= 1
         if self.tail is not None:
             self.tail.next = None
         return item
 
+
+class Stack:
+    def __init__(self):
+        self.deque = Deque()
+
+    def is_empty(self):
+        return self.deque.is_empty()
+
+    def length(self):
+        return self.deque.length
+
+    def push(self, x):
+        self.deque.push_back(x)
+
+    def pop(self):
+        return self.deque.pop_back()
+
+
+stack = Stack()
+for i in [1, 2, 3, 4]:
+    stack.push(i)
+
+while not stack.is_empty():
+    print(stack.pop())
