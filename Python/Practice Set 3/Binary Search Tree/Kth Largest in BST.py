@@ -1,3 +1,6 @@
+# Problem link - Problem link - https://www.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -143,6 +146,9 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def get_kth_largest(bst: BinarySearchTree, k: int, n: int):
+        """
+            Time complexity is O(n) and space complexity is O(log(n)).
+        """
         counter = [0, None]
         Solution._solve(bst.root, counter, n - k + 1)
         return counter[1].data if counter[1] is not None else None
