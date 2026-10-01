@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/maximum-connected-group/1
+# Solution - https://www.youtube.com/watch?v=lgiz0Oup6gM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=52
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.size = {i: 1 for i in nodes}
@@ -30,6 +34,9 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def make_large_island(mtx):
+        """
+            Time complexity is O(nm) and space complexity is O(nm).
+        """
         n, m = len(mtx), len(mtx[0])
         nodes = Solution._get_nodes_from_island(mtx, n, m)
         disjoint_set = DisjointSet(nodes)
