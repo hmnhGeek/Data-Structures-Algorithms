@@ -1,6 +1,13 @@
+# Problem link - https://www.naukri.com/code360/problems/printing-longest-increasing-subsequence_8360670
+# Solution - https://www.youtube.com/watch?v=IFfYfonAFGc&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=43
+
+
 class Solution:
     @staticmethod
     def print_lis(arr):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
         n = len(arr)
         dp = {i: 1 for i in range(n)}
         parent = {i: i for i in range(n)}
