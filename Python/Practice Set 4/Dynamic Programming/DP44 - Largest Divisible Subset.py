@@ -28,4 +28,35 @@ def recursive():
     print(get_lds_length([2, 4, 3, 8]))
 
 
+def memoized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n + n^2).
+    """
+    def get_lds_length(arr):
+        n = len(arr)
+        dp = {i: {j: None for j in range(1, n + 1)} for i in range(n)}
+        return solve(arr, n - 1, n, dp)
+
+    def solve(arr, i, j, dp):
+        if i == 0:
+            return 1 if is_divisible(arr, i, j) else 0
+        if dp[i][j] is not None:
+            return dp[i][j]
+        if is_divisible(arr, i, j):
+            dp[i][j] = max(1 + solve(arr, i - 1, i, dp), solve(arr, i - 1, j, dp))
+        else:
+            dp[i][j] = solve(arr, i - 1, j, dp)
+        return dp[i][j]
+
+    print(get_lds_length([1, 16, 7, 8, 4]))
+    print(get_lds_length([1, 2, 5]))
+    print(get_lds_length([3, 3, 3]))
+    print(get_lds_length([1, 2, 4, 8]))
+    print(get_lds_length([1, 2, 3]))
+    print(get_lds_length([2, 4, 3, 8]))
+
+
 recursive()
+print()
+memoized()
+print()
