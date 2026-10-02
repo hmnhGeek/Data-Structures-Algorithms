@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/problems/maximum-stone-removal-1662179442/1
+# Solution - https://www.youtube.com/watch?v=OwMNX8SPavM&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
+
+
 class DisjointSet:
     def __init__(self, nodes):
         self.size = {i: 1 for i in nodes}
@@ -28,6 +32,9 @@ class DisjointSet:
 class Solution:
     @staticmethod
     def remove_stones(arr):
+        """
+            Time complexity is O(m + n) and space complexity is O(m + n).
+        """
         n, m = Solution._find_dimensions(arr)
         nodes = [i for i in range(n)] + [n + j for j in range(m)]
         disjoint_set = DisjointSet(nodes)
