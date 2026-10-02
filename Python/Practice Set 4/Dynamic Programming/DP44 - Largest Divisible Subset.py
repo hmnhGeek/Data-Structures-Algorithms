@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/divisible-set_3754960?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=gDuZwBW9VvM&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=45
+
+
 def is_divisible(arr, i, j):
     if j == len(arr):
         return True
@@ -110,6 +114,30 @@ def space_optimized():
     print(get_lds_length([2, 4, 3, 8]))
 
 
+class Solution:
+    @staticmethod
+    def print_lds(arr):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
+        n = len(arr)
+        dp = {i: 1 for i in range(n)}
+        parent = {i: i for i in range(n)}
+        for i in range(n):
+            for j in range(i + 1, n):
+                if is_divisible(arr, i, j) and 1 + dp[j] > dp[i]:
+                    dp[i] = 1 + dp[j]
+                    parent[i] = j
+        lds_length = max(dp, key=dp.get)
+        lds = []
+        start_index = lds_length
+        while start_index != parent[start_index]:
+            lds.append(arr[start_index])
+            start_index = parent[start_index]
+        lds.append(arr[start_index])
+        return lds
+
+
 recursive()
 print()
 memoized()
@@ -118,3 +146,10 @@ tabulation()
 print()
 space_optimized()
 print()
+print("Printing LDS")
+print(Solution.print_lds([1, 16, 7, 8, 4]))
+print(Solution.print_lds([1, 2, 5]))
+print(Solution.print_lds([3, 3, 3]))
+print(Solution.print_lds([1, 2, 4, 8]))
+print(Solution.print_lds([1, 2, 3]))
+print(Solution.print_lds([2, 4, 3, 8]))
