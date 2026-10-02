@@ -82,9 +82,39 @@ def tabulation():
     print(get_lds_length([2, 4, 3, 8]))
 
 
+def space_optimized():
+    """
+        Time complexity is O(n^2) and space complexity is O(n).
+    """
+    def get_lds_length(arr):
+        n = len(arr)
+        prev = {j: 0 for j in range(1, n + 1)}
+        for j in range(1, n + 1):
+            if is_divisible(arr, 0, j):
+                prev[j] = 1
+        for i in range(1, n):
+            curr = {j: 0 for j in range(1, n + 1)}
+            for j in range(1, n + 1):
+                if is_divisible(arr, i, j):
+                    curr[j] = max(1 + prev[i], prev[j])
+                else:
+                    curr[j] = prev[j]
+            prev = curr
+        return prev[n]
+
+    print(get_lds_length([1, 16, 7, 8, 4]))
+    print(get_lds_length([1, 2, 5]))
+    print(get_lds_length([3, 3, 3]))
+    print(get_lds_length([1, 2, 4, 8]))
+    print(get_lds_length([1, 2, 3]))
+    print(get_lds_length([2, 4, 3, 8]))
+
+
 recursive()
 print()
 memoized()
 print()
 tabulation()
+print()
+space_optimized()
 print()
