@@ -1,7 +1,7 @@
 def is_divisible(arr, i, j):
-    if j is None:
+    if j == len(arr):
         return True
-    return arr[i] % j == 0 or j % arr[i] == 0
+    return arr[i] % arr[j] == 0 or arr[j] % arr[i] == 0
 
 
 def recursive():
@@ -10,15 +10,13 @@ def recursive():
     """
     def get_lds_length(arr):
         n = len(arr)
-        return solve(arr, n - 1, None)
+        return solve(arr, n - 1, n)
 
     def solve(arr, i, j):
         if i == 0:
             return 1 if is_divisible(arr, i, j) else 0
-        if j is None:
-            return max(1 + solve(arr, i - 1, arr[i]), solve(arr, i - 1, None))
         if is_divisible(arr, i, j):
-            return max(1 + solve(arr, i - 1, arr[i]), solve(arr, i - 1, j))
+            return max(1 + solve(arr, i - 1, i), solve(arr, i - 1, j))
         else:
             return solve(arr, i - 1, j)
 
