@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/find-a-specific-pair-in-matrix/
+// Solution - https://www.youtube.com/watch?v=aUhR_T5J9is
+
+
 package PracticeSet2.Matrix.Problem7;
 
 import java.util.ArrayList;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer getSpecificPairDifference(List<List<Integer>> mtx) {
+        /*
+            Time complexity is O(mn) and space complexity is O(mn).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         List<List<Integer>> maxMtx = getMaxMtx(n, m);
         maxMtx.get(n - 1).set(m - 1, mtx.getLast().getLast());
