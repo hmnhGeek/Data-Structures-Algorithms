@@ -3,8 +3,10 @@ package Arrays.Problem26;
 import java.util.List;
 
 public class RecursiveSolution {
+    /*
+        Time complexity is exponential and space complexity is O(n).
+     */
     public static Integer getMaxProfit(List<Integer> arr) {
-        int n = arr.size();
         return solve(arr, 0, true, 2);
     }
 
