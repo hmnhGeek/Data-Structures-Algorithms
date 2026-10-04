@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/find-the-string-in-grid0111/1
+// Solution - https://www.youtube.com/watch?v=lM4bTtF6yuk
+
+
 package Strings.Problem24;
 
 import java.util.ArrayList;
@@ -6,6 +10,9 @@ import java.util.List;
 
 public class Solution {
     public static List<List<Integer>> getAllOccurrences(List<List<Character>> mtx, String word) {
+        /*
+            Time complexity is O(mnk) and space complexity is O(1)
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         List<Integer> dr = Arrays.asList(-1, -1, 0, 1, 1, 1, 0, -1);
         List<Integer> dc = Arrays.asList(0, 1, 1, 1, 0, -1, -1, -1);
