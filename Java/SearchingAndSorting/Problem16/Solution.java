@@ -1,12 +1,18 @@
+// Problem link - https://www.geeksforgeeks.org/problems/product-array-puzzle4525/1
+// Solution - https://www.youtube.com/watch?v=ku4oITayEmk
+
+
 package SearchingAndSorting.Problem16;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
     public static List<Integer> getProductExceptSelf(List<Integer> arr) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         List<Integer> result = new ArrayList<>();
         result.add(1);
         for (int i = 1; i < arr.size(); i += 1) {
