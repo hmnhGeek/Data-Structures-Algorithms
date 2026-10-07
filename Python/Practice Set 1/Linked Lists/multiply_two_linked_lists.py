@@ -35,7 +35,7 @@ class LinkedList:
             curr = curr.next
         print()
 
-    defget_number(self):
+    def get_number(self):
         """
             In O(n) time and O(1) space, this method returns the number represented by the linked list.
         """
