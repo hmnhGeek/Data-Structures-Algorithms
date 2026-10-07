@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/multiply-two-linked-lists/1
+
+
 package LinkedLists.Problem32;
 
 public class Solution {
@@ -6,9 +9,17 @@ public class Solution {
         l1.build(3, 2);
         l2.build(2);
         System.out.println(multiply(l1, l2));
+
+        LinkedList<Integer> l3 = new LinkedList<>(), l4 = new LinkedList<>();
+        l3.build(1, 0, 0);
+        l4.build(1, 0);
+        System.out.println(multiply(l3, l4));
     }
 
     public static Integer multiply(LinkedList<Integer> l1, LinkedList<Integer> l2) {
+        /*
+            Time complexity is O(max(l1, l2)) and space complexity is O(1).
+         */
         if (l1 == null || l2 == null) {
             throw new IllegalArgumentException("Linked list(s) cannot be null.");
         }
