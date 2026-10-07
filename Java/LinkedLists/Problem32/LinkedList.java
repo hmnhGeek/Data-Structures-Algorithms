@@ -54,4 +54,18 @@ public class LinkedList<T> {
         sb.append(String.format("%s]", this.tail.data));
         return sb.toString();
     }
+
+    public void reverse() {
+        reverse(null, this.head);
+        Node<T> prevHead = this.head;
+        this.head = this.tail;
+        this.tail = prevHead;
+    }
+
+    private void reverse(Node<T> prev, Node<T> curr) {
+        if (curr == null) return;
+        Node<T> nextCurr = curr.next;
+        curr.next = prev;
+        reverse(curr, nextCurr);
+    }
 }
