@@ -105,7 +105,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         predecessor.data = node.data;
         node.data = temp;
         delete(predecessor);
-        return;
     }
 
     private Node<T> getSuccessor(Node<T> node) {
@@ -160,5 +159,25 @@ public class BinarySearchTree<T extends Comparable<T>> {
         if (start.data.equals(x)) return start;
         if (x.compareTo(start.data) >= 0) return getNode(start.right, x);
         return getNode(start.left, x);
+    }
+
+    private void show(Node<T> start) {
+        if (start != null) {
+            show(start.left);
+            StringBuilder stringBuilder = new StringBuilder(String.format("Data = %s", start.data));
+            if (this.root == start) {
+                stringBuilder.append(" (root), ");
+            } else {
+                stringBuilder.append(", ");
+            }
+            stringBuilder.append(String.format("size = %d, height = %d, diameter = %d", start.size, start.height, start.diameter));
+            System.out.println(stringBuilder);
+            show(start.right);
+        }
+    }
+
+    public void show() {
+        show(this.root);
+        System.out.println();
     }
 }
