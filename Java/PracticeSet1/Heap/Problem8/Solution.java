@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/k-th-largest-sum-contiguous-subarray/#-2
+
+
 package PracticeSet1.Heap.Problem8;
 
 
@@ -27,6 +30,9 @@ public class Solution {
     }
 
     public static Integer getKthSmallest(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is O(n^2 * log(k)) and space complexity is O(n^2 + k).
+         */
         List<Integer> sums = getSubArraySums(arr);
         MinHeap<Integer> minHeap = new MinHeap<>();
         for (int i = 0; i < k; i += 1) {
