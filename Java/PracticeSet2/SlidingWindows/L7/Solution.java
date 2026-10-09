@@ -1,3 +1,7 @@
+// Problem link - https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+// Solution - https://www.youtube.com/watch?v=xtqN4qlgr8s&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=7
+
+
 package PracticeSet2.SlidingWindows.L7;
 
 import java.util.HashMap;
@@ -6,9 +10,16 @@ import java.util.Map;
 public class Solution {
     public static void main(String[] args) {
         System.out.println(getSubString("bbacba"));
+        System.out.println(getSubString("abcabc"));
+        System.out.println(getSubString("aaacb"));
+        System.out.println(getSubString("abc"));
+        System.out.println(getSubString("aabbabab"));
     }
 
     public static Integer getSubString(String string) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         return getCountLessThan(string, 3) - getCountLessThan(string, 2);
     }
 
