@@ -8,6 +8,9 @@ import java.util.List;
 public class Solution {
     public static void main(String[] args) {
         System.out.println(getKthSmallest(Arrays.asList(20, -5, -1), 3));
+        System.out.println(getKthSmallest(Arrays.asList(10, -10, 20, -40), 6));
+        System.out.println(getKthSmallest(Arrays.asList(2, 6, 4, 1), 3));
+        System.out.println(getKthSmallest(Arrays.asList(3, 2, 1), 2));
     }
 
     private static List<Integer> getSubArraySums(List<Integer> arr) {
@@ -30,10 +33,10 @@ public class Solution {
             minHeap.insert(sums.get(i));
         }
         int i = k;
-        while (i < arr.size()) {
-            if (arr.get(i) > minHeap.getHeap().getFirst()) {
+        while (i < sums.size()) {
+            if (sums.get(i) > minHeap.getHeap().getFirst()) {
                 minHeap.pop();
-                minHeap.insert(arr.get(i));
+                minHeap.insert(sums.get(i));
             }
             i += 1;
         }
