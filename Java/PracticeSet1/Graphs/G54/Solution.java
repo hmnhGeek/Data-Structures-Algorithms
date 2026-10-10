@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/strongly-connected-components/
+// Solution - https://www.youtube.com/watch?v=R6uoSjZ2imo&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
+
+
 package PracticeSet1.Graphs.G54;
 
 import java.util.ArrayList;
@@ -7,6 +11,9 @@ import java.util.Map;
 
 public class Solution {
     public static <T> List<List<T>> getStronglyConnectedComponents(Map<T, List<T>> graph) {
+        /*
+            Overall time complexity is O(V + E) and space complexity is O(V + E).
+         */
         Stack<T> stack = getSortedGraph(graph);
         Map<T, List<T>> reversedGraph = reverseGraph(graph);
         List<List<T>> scc = getSCCs(reversedGraph, stack);
