@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/longest-string-chain_3752111?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=YY8iBaYcc4g&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=46
+
+
 package DynamicProgramming.DP45;
 
 import java.util.*;
@@ -19,6 +23,9 @@ public class Solution {
     }
 
     public static List<String> getLongestStringChain(List<String> strings) {
+        /*
+            Time complexity is O(n^3) and space complexity is O(n).
+         */
         strings.sort(Comparator.comparingInt(String::length));
         Map<Integer, Integer> dp = new HashMap<>();
         Map<Integer, Integer> parent = new HashMap<>();
