@@ -50,11 +50,15 @@ public class Solution {
     private static List<Integer> getDecreasingSequence(List<Integer> arr, List<Integer> parent2, int indexOfMax) {
         int startIndex = parent2.get(indexOfMax);
         List<Integer> decreasingSequence = new ArrayList<>();
+        boolean emptySequence = true;
         while (startIndex != parent2.get(startIndex)) {
+            emptySequence = false;
             decreasingSequence.add(arr.get(startIndex));
             startIndex = parent2.get(startIndex);
         }
-        decreasingSequence.add(arr.get(startIndex));
+        if (!emptySequence) {
+            decreasingSequence.add(arr.get(startIndex));
+        }
         return decreasingSequence;
     }
 
@@ -80,5 +84,10 @@ public class Solution {
 
     public static void main(String[] args) {
         System.out.println(getLongestBitonicSequence(Arrays.asList(1, 11, 2, 10, 4, 5, 2, 1)));
+        System.out.println(getLongestBitonicSequence(Arrays.asList(1, 2, 1, 2, 1)));
+        System.out.println(getLongestBitonicSequence(Arrays.asList(1, 2, 1, 3, 4)));
+        System.out.println(getLongestBitonicSequence(Arrays.asList(12, 11, 40, 5, 3, 1)));
+        System.out.println(getLongestBitonicSequence(Arrays.asList(80, 60, 30)));
+        System.out.println(getLongestBitonicSequence(Arrays.asList(10, 10, 10)));
     }
 }
