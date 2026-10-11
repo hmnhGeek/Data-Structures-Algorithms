@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/longest-bitonic-sequence_1062688?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=y4vN0WNdrlg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=47
+
+
 package DynamicProgramming.DP46;
 
 import java.util.ArrayList;
@@ -25,9 +29,15 @@ public class Solution {
     }
 
     public static List<Integer> getLongestBitonicSequence(List<Integer> arr) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(n).
+         */
+
+        // This takes O(n^2) time and O(n) space.
         List<List<Integer>> info1 = getDpAndParentInfo(arr);
         List<Integer> dp1 = info1.getFirst(), parent1 = info1.getLast();
 
+        // This takes O(n^2) time and O(n) space.
         List<Integer> reversed = arr.reversed();
         List<List<Integer>> info2 = getDpAndParentInfo(reversed);
         List<Integer> dp2 = info2.getFirst(), parent2 = info2.getLast();
@@ -37,6 +47,7 @@ public class Solution {
             parent2.set(i, arr.size() - parent2.get(i) - 1);
         }
 
+        // This takes O(n) time and O(n) space.
         List<Integer> dp = getBitonicDp(arr, dp1, dp2);
         int indexOfMax = dp.indexOf(Collections.max(dp));
         List<Integer> increasingSequence = getIncreasingSequence(arr, indexOfMax, parent1);
