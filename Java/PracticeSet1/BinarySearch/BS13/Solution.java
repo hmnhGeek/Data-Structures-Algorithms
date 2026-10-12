@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/rose-garden_2248080
+// Solution - https://www.youtube.com/watch?v=TXAuxeYBTdg&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=14
+
+
 package PracticeSet1.BinarySearch.BS13;
 
 import java.util.Collections;
@@ -25,6 +29,9 @@ public class Solution {
     }
 
     public static Integer getMinDayToBloom(List<Integer> arr, int m, int k) {
+        /*
+            Time complexity is O(n * log(max - min)) and space complexity is O(1).
+         */
         if (m * k > arr.size()) return -1;
         int low = Collections.min(arr), high = Collections.max(arr);
         while (low <= high) {
