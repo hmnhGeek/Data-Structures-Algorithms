@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/smallest-divisor-with-the-given-limit_1755882
+// Solution - https://www.youtube.com/watch?v=UvBKTVaG6U8&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=15
+
+
 package PracticeSet1.BinarySearch.BS14;
 
 import java.util.Collections;
@@ -14,6 +18,9 @@ public class Solution {
     }
 
     public static Integer getSmallestDivisor(List<Integer> arr, int threshold) {
+        /*
+            Time complexity is O(n * log(max)) and space complexity is O(1).
+         */
         int low = 1, high = Collections.max(arr);
         while (low <= high) {
             int mid = (low + (high - low)/2);
