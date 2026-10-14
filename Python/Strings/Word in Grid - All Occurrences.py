@@ -1,6 +1,13 @@
+# Problem link - https://www.geeksforgeeks.org/problems/find-the-string-in-grid0111/1
+# Solution - https://www.youtube.com/watch?v=lM4bTtF6yuk
+
+
 class Solution:
     @staticmethod
     def get_all_occurrences(mtx, word):
+        """
+            Time complexity is O(n * m * k) and space complexity is O(k).
+        """
         result = []
         n, m = len(mtx), len(mtx[0])
         dir_x = [-1, -1, 0, 1, 1, 1, 0, -1]
