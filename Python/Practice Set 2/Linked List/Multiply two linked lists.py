@@ -21,3 +21,21 @@ class LinkedList:
             self.tail = node
         self.length += 1
 
+    def build(self, *args):
+        for i in args:
+            self.push(i)
+
+    def get_num(self):
+        curr = self.head
+        num = 0
+        while curr is not None:
+            num = (num * 10) + curr.data
+            curr = curr.next
+        return num
+
+
+class Solution:
+    @staticmethod
+    def multiply(l1: LinkedList, l2: LinkedList) -> int:
+        pass
+
