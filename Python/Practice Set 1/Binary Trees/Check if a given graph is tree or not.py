@@ -29,3 +29,69 @@ class Queue:
         self.length -= 1
         return item
 
+
+class Solution:
+    @staticmethod
+    def is_graph_tree(edges, n, m):
+        if m != n - 1:
+            return False
+        graph = Solution._get_graph(edges)
+        queue = Queue()
+        start_node = list(graph.keys())[0]
+        visited = {i: False for i in graph}
+        visited[start_node] = True
+        queue.enqueue((start_node, None))
+        while not queue.is_empty():
+            node, parent = queue.dequeue()
+            for adj_node in graph[node]:
+                if adj_node == parent:
+                    continue
+                if visited[adj_node]:
+                    return False
+                queue.enqueue((adj_node, node))
+                visited[adj_node] = True
+        return True
+
+    @staticmethod
+    def _get_graph(edges):
+        graph = {}
+        for edge in edges:
+            node, adj_node = edge
+            graph[node] = []
+            graph[adj_node] = []
+        for edge in edges:
+            node, adj_node = edge
+            graph[node].append(adj_node)
+            graph[adj_node].append(node)
+        return graph
+
+
+if __name__ == "__main__":
+    print(Solution.is_graph_tree([
+        [0, 1],
+        [0, 2],
+        [1, 2],
+        [2, 3]
+    ], 4, 4))
+
+    print(Solution.is_graph_tree([
+        [0, 1],
+        [1, 2],
+        [2, 3]
+    ], 4, 3))
+
+    print(Solution.is_graph_tree([
+        [0, 1],
+        [0, 2],
+        [0, 3],
+        [4, 1]
+    ], 5, 4))
+
+    print(Solution.is_graph_tree([
+        [0, 1],
+        [1, 2],
+        [1, 4],
+        [2, 3],
+        [1, 3]
+    ], 5, 5))
+
