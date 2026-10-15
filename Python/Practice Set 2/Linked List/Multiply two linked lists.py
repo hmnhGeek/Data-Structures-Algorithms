@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/multiply-two-linked-lists/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -37,6 +40,9 @@ class LinkedList:
 class Solution:
     @staticmethod
     def multiply(l1: LinkedList, l2: LinkedList) -> int:
+        """
+            Time complexity is O(n + m) and space complexity is O(1).
+        """
         n1 = l1.get_num()
         n2 = l2.get_num()
         return (n1 * n2) % (10**9 + 7)
