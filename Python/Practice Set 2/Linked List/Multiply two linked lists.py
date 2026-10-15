@@ -37,5 +37,19 @@ class LinkedList:
 class Solution:
     @staticmethod
     def multiply(l1: LinkedList, l2: LinkedList) -> int:
-        pass
+        n1 = l1.get_num()
+        n2 = l2.get_num()
+        return (n1 * n2) % (10**9 + 7)
 
+
+# Example 1
+l1, l2 = LinkedList(), LinkedList()
+l1.build(3, 2)
+l2.build(2)
+print(Solution.multiply(l1, l2))
+
+# Example 2
+l1, l2 = LinkedList(), LinkedList()
+l1.build(1, 0, 0)
+l2.build(1, 0)
+print(Solution.multiply(l1, l2))
