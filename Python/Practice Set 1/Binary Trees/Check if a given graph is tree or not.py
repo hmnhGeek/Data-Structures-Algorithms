@@ -37,19 +37,11 @@ class Solution:
             return False
         graph = Solution._get_graph(edges)
         queue = Queue()
-        start_node = list(graph.keys())[0]
         visited = {i: False for i in graph}
-        visited[start_node] = True
-        queue.enqueue((start_node, None))
-        while not queue.is_empty():
-            node, parent = queue.dequeue()
-            for adj_node in graph[node]:
-                if adj_node == parent:
-                    continue
-                if visited[adj_node]:
+        for node in graph:
+            if not visited[node]:
+                if Solution._has_cycle(graph, node, visited, queue):
                     return False
-                queue.enqueue((adj_node, node))
-                visited[adj_node] = True
         return True
 
     @staticmethod
@@ -64,6 +56,21 @@ class Solution:
             graph[node].append(adj_node)
             graph[adj_node].append(node)
         return graph
+
+    @staticmethod
+    def _has_cycle(graph, start_node, visited, queue):
+        visited[start_node] = True
+        queue.enqueue((start_node, None))
+        while not queue.is_empty():
+            node, parent = queue.dequeue()
+            for adj_node in graph[node]:
+                if adj_node == parent:
+                    continue
+                if visited[adj_node]:
+                    return True
+                queue.enqueue((adj_node, node))
+                visited[adj_node] = True
+        return False
 
 
 if __name__ == "__main__":
