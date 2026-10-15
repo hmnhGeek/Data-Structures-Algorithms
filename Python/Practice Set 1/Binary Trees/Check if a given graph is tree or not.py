@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/is-it-a-tree/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
