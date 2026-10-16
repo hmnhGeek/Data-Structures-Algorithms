@@ -139,3 +139,38 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def get_kth_smallest(bst: BinarySearchTree, k: int):
+        if k <= 0:
+            return
+        inorder = []
+        Solution._populate_inorder(bst.root, inorder)
+        return inorder[k - 1]
+
+    @staticmethod
+    def _populate_inorder(root, inorder):
+        if root:
+            Solution._populate_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._populate_inorder(root.right, inorder)
+
+
+# Example 1
+bst = BinarySearchTree()
+for i in [4, 2, 9]:
+    bst.insert(i)
+print(Solution.get_kth_smallest(bst, 2))
+
+# Example 2
+bst = BinarySearchTree()
+for i in [9, 10]:
+    bst.insert(i)
+print(Solution.get_kth_smallest(bst, 1))
+
+# Example 3
+bst = BinarySearchTree()
+for i in [4, 2, 9]:
+    bst.insert(i)
+print(Solution.get_kth_smallest(bst, 3))
