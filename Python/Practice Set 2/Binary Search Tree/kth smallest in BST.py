@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -143,8 +146,13 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def get_kth_smallest(bst: BinarySearchTree, k: int):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         if k <= 0:
             return
+
+        # This will take O(n) time and O(n) space.
         inorder = []
         Solution._populate_inorder(bst.root, inorder)
         return inorder[k - 1]
