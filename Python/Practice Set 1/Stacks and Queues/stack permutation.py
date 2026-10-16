@@ -29,3 +29,27 @@ class Stack:
         self.length -= 1
         return item
 
+    def top(self):
+        if self.is_empty():
+            return None
+        return self.head.data
+
+
+class Solution:
+    @staticmethod
+    def is_stack_permutation(a, b):
+        stack = Stack()
+        i, j = 0, 0
+        while i < len(a):
+            stack.push(a[i])
+            i += 1
+            while j < len(b) and stack.top() == b[j]:
+                stack.pop()
+                j += 1
+        return stack.is_empty()
+
+
+print(Solution.is_stack_permutation([1, 2, 3], [2, 1, 3]))
+print(Solution.is_stack_permutation([1, 2, 3], [3, 1, 2]))
+print(Solution.is_stack_permutation([1, 2, 3, 4, 5], [4, 5, 3, 2, 1]))
+print(Solution.is_stack_permutation([1, 2, 3, 4, 5], [4, 3, 5, 1, 2]))
