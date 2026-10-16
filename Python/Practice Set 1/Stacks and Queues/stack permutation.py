@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/stack-permutations-check-if-an-array-is-stack-permutation-of-other/
+# Solution - https://www.youtube.com/watch?v=q4CbTMLogyk&t=663s
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -38,6 +42,9 @@ class Stack:
 class Solution:
     @staticmethod
     def is_stack_permutation(a, b):
+        """
+            Time complexity is O(n) and space complexity is O(n).
+        """
         stack = Stack()
         i, j = 0, 0
         while i < len(a):
