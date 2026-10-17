@@ -3,7 +3,7 @@ class MinHeap:
         self.heap = []
 
     def is_empty(self):
-        return len(self.heap)
+        return len(self.heap) == 0
 
     def get_lci(self, pi):
         ci = 2*pi + 1
@@ -72,12 +72,27 @@ class Solution:
         sub_array_sums = Solution._get_sub_array_sums(arr)
         pq = MinHeap()
         for i in range(k):
-            pq.insert(arr[i])
+            pq.insert(sub_array_sums[i])
         i = k
-        while i < len(arr):
-            if arr[i] > pq.heap[0]:
+        while i < len(sub_array_sums):
+            if sub_array_sums[i] > pq.heap[0]:
                 pq.pop()
-                pq.insert(arr[i])
+                pq.insert(sub_array_sums[i])
             i += 1
         return pq.pop()
 
+    @staticmethod
+    def _get_sub_array_sums(arr):
+        n = len(arr)
+        result = []
+        for i in range(n):
+            result.append(arr[i])
+            _sum = arr[i]
+            for j in range(i + 1, n):
+                _sum += arr[j]
+                result.append(_sum)
+        return result
+
+
+print(Solution.get_kth_largest_sum([20, -5, -1], 3))
+print(Solution.get_kth_largest_sum([10, -10, 20, -40], 6))
