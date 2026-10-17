@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/k-th-largest-sum-contiguous-subarray/
+# Solution - https://www.youtube.com/watch?v=Rb4jGawY0MA&t=367s
+
+
 class MinHeap:
     def __init__(self):
         self.heap = []
@@ -65,6 +69,9 @@ class MinHeap:
 class Solution:
     @staticmethod
     def get_kth_largest_sum(arr, k):
+        """
+            Time complexity is O(n^2 * log(k)) and space complexity is O(n^2 + k).
+        """
         if arr is None or len(arr) == 0:
             return
         if k is None or k <= 0:
@@ -96,3 +103,9 @@ class Solution:
 
 print(Solution.get_kth_largest_sum([20, -5, -1], 3))
 print(Solution.get_kth_largest_sum([10, -10, 20, -40], 6))
+print(Solution.get_kth_largest_sum([3, 2, 1], 2))
+print(Solution.get_kth_largest_sum([2, 6, 4, 1], 3))
+print(Solution.get_kth_largest_sum([1, -2, 3, -4, 5], 2))
+print(Solution.get_kth_largest_sum([3, -2, 5], 3))
+print(Solution.get_kth_largest_sum([4, 1], 2))
+print(Solution.get_kth_largest_sum([5, 4, -8, 6], 10))
