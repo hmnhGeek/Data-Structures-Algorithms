@@ -61,3 +61,23 @@ class MinHeap:
         self.min_heapify_down(0)
         return item
 
+
+class Solution:
+    @staticmethod
+    def get_kth_largest_sum(arr, k):
+        if arr is None or len(arr) == 0:
+            return
+        if k is None or k <= 0:
+            return
+        sub_array_sums = Solution._get_sub_array_sums(arr)
+        pq = MinHeap()
+        for i in range(k):
+            pq.insert(arr[i])
+        i = k
+        while i < len(arr):
+            if arr[i] > pq.heap[0]:
+                pq.pop()
+                pq.insert(arr[i])
+            i += 1
+        return pq.pop()
+
