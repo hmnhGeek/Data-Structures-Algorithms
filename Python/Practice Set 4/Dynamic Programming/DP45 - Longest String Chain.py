@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/find-the-length-of-the-longest-possible-word-chain/
+# Solution - https://www.youtube.com/watch?v=YY8iBaYcc4g&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=46
+
+
 class Solution:
     @staticmethod
     def _unit_diff(curr, prev):
@@ -14,6 +18,9 @@ class Solution:
 
     @staticmethod
     def longest_string_chain(strings):
+        """
+            Overall time complexity is O(n^2 * l) and space complexity is O(n).
+        """
         n = len(strings)
         strings.sort(key = len)
         dp = {i: 1 for i in range(n)}
