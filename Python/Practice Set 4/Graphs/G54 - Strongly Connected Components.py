@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/strongly-connected-components/
+# Solution - https://www.youtube.com/watch?v=R6uoSjZ2imo&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=54
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -33,6 +37,9 @@ class Stack:
 class Solution:
     @staticmethod
     def get_strongly_connected_components(graph):
+        """
+            Time complexity is O(V + E) and space complexity is O(V + E).
+        """
         stack = Solution._get_sorted_order(graph)
         reversed_graph = Solution._get_reversed_graph(graph)
         return Solution._get_scc(reversed_graph, stack)
