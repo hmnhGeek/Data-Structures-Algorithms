@@ -1,13 +1,26 @@
 class Solution:
     @staticmethod
-    def get_longest_string_chain(strings):
+    def _unit_diff(curr, prev):
+        if len(curr) != len(prev) + 1:
+            return False
+        i, j = 0, 0
+        while i < len(curr):
+            if j < len(prev) and curr[i] == prev[j]:
+                i += 1
+                j += 1
+            else:
+                i += 1
+        return i >= len(curr) and j >= len(prev)
+
+    @staticmethod
+    def longest_string_chain(strings):
         n = len(strings)
         strings.sort(key = len)
         dp = {i: 1 for i in range(n)}
         parent = {i: i for i in range(n)}
         for i in range(n):
             for prev in range(i):
-                if unit_diff(strings[i], strings[prev]) and 1 + dp[prev] > dp[i]:
+                if Solution._unit_diff(strings[i], strings[prev]) and 1 + dp[prev] > dp[i]:
                     dp[i] = 1 + dp[prev]
                     parent[i] = prev
         start_index = max(dp, key=dp.get)
@@ -18,3 +31,10 @@ class Solution:
         result.append(strings[start_index])
         return result[-1:-len(result)-1:-1]
 
+
+print(Solution.longest_string_chain(["x", "xx", "y", "xyx"]))
+print(Solution.longest_string_chain(["m", "nm", "mmm"]))
+print(Solution.longest_string_chain(["a", "bc", "ad", "adc", "bcd"]))
+print(Solution.longest_string_chain(["xbc", "pcxbcf", "xb", "cxbc", "pcxbc"]))
+print(Solution.longest_string_chain(["a", "b", "ba", "bca", "bda", "bdca"]))
+print(Solution.longest_string_chain(["abcd", "dbqca"]))
