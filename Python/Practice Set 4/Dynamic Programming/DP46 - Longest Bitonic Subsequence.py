@@ -1,6 +1,13 @@
+# Problem link - https://www.naukri.com/code360/problems/longest-bitonic-sequence_1062688?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=y4vN0WNdrlg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=47
+
+
 class Solution:
     @staticmethod
-    def get_longest_bitonic_subsequence(arr):
+    def longest_bitonic_subsequence(arr):
+        """
+            Time complexity is O(n^2) and space complexity is O(n).
+        """
         n = len(arr)
         dp1, parent1 = Solution._get_dp_info(arr, n)
         dp2, parent2 = Solution._get_dp_info(arr[-1:-n-1:-1], n)
@@ -44,4 +51,10 @@ class Solution:
         return result
 
 
-print(Solution.get_longest_bitonic_subsequence([1, 11, 2, 10, 4, 5, 2, 1]))
+print(Solution.longest_bitonic_subsequence([1, 11, 2, 10, 4, 5, 2, 1]))
+print(Solution.longest_bitonic_subsequence([1, 2, 1, 2, 1]))
+print(Solution.longest_bitonic_subsequence([1, 3, 5, 3, 2]))
+print(Solution.longest_bitonic_subsequence([1, 2, 1, 3, 4]))
+print(Solution.longest_bitonic_subsequence([12, 11, 40, 5, 3, 1]))
+print(Solution.longest_bitonic_subsequence([80, 60, 30]))
+print(Solution.longest_bitonic_subsequence([10, 10, 10]))
