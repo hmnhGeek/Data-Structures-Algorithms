@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/sort-by-set-bit-count1153/1
+// Solution - https://www.youtube.com/watch?v=2owpaafBIgw
+
+
 package SearchingAndSorting.Problem17;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static void sortBySetBits(List<Integer> arr) {
+        /*
+            Time complexity is O(n * log(n)) and space complexity is O(1).
+         */
         arr.sort((a, b) -> {
             int setBitsInA = Integer.bitCount(a);
             int setBitsInB = Integer.bitCount(b);
