@@ -1,9 +1,17 @@
+// Problem link - https://www.geeksforgeeks.org/problems/roman-number-to-integer3201/1
+// Solution - https://www.youtube.com/watch?v=3jdxYj3DD98
+
+
 package Strings.Problem26;
 
 import java.util.Map;
 
 public class Solution {
     public static Integer getIntVal(String roman) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
+
         Map<Character, Integer> map = Map.of(
                 'I', 1,
                 'V', 5,
