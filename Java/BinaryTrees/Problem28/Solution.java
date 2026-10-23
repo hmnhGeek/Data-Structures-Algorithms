@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/find-largest-subtree-sum-tree/
+// Solution - https://www.youtube.com/watch?v=zm5CykXlxaA
+
+
 package BinaryTrees.Problem28;
 
 
@@ -17,6 +21,9 @@ class Node<T> {
 
 public class Solution {
     public static Integer getMaxSum(Node<Integer> root) {
+        /*
+            Time complexity is O(n) and space complexity is O(n).
+         */
         List<Integer> maxSum = Arrays.asList(0);
         solve(root, maxSum);
         return maxSum.getFirst();
