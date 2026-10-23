@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/delete-nodes-having-greater-value-on-right/1
+
+
 package LinkedLists.Problem33;
 
 public class Solution {
@@ -16,6 +19,9 @@ public class Solution {
     }
 
     public static void deleteSmallOnLeft(LinkedList<Integer> linkedList) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         reverse(linkedList);
         Node<Integer> curr = linkedList.head;
         Integer maxValue = Integer.MIN_VALUE;
