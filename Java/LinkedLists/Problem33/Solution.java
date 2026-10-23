@@ -5,7 +5,8 @@ public class Solution {
         LinkedList<Integer> linkedList = new LinkedList<>();
         linkedList.build(1, 1, -1, 2, -10, 0);
         System.out.println(linkedList);
-        reverse(linkedList);
+//        reverse(linkedList);
+        delete(linkedList, linkedList.head.next.next.next.next, linkedList.head.next.next.next.next.next);
         System.out.println(linkedList);
     }
 
@@ -18,12 +19,26 @@ public class Solution {
             if (curr.data > maxValue) {
                 maxValue = curr.data;
             } else {
-//                delete(linkedList, prev, curr);
+                delete(linkedList, prev, curr);
             }
             curr = curr.next;
         }
         reverse(linkedList);
         System.out.println(linkedList);
+    }
+
+    private static void delete(LinkedList<Integer> linkedList, Node<Integer> prev, Node<Integer> curr) {
+        if (prev == null) {
+            // deleting head node
+            linkedList.head = linkedList.head.next;
+        } else if (curr.next == null) {
+            // deleting tail node
+            prev.next = null;
+            linkedList.tail = prev;
+        } else {
+            prev.next = curr.next;
+        }
+        linkedList.length -= 1;
     }
 
     private static void reverse(LinkedList<Integer> linkedList) {
