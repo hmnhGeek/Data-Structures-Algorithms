@@ -2,12 +2,17 @@ package LinkedLists.Problem33;
 
 public class Solution {
     public static void main(String[] args) {
+        test(1, 1, -1, 2, -10, 0);
+        test(12, 15, 10, 11, 5, 6, 2, 3);
+        test(10, 20, 30, 40, 50, 60);
+    }
+
+    private static void test(Integer...args) {
         LinkedList<Integer> linkedList = new LinkedList<>();
-        linkedList.build(1, 1, -1, 2, -10, 0);
+        linkedList.build(args);
         System.out.println(linkedList);
-//        reverse(linkedList);
-        delete(linkedList, linkedList.head.next.next.next.next, linkedList.head.next.next.next.next.next);
-        System.out.println(linkedList);
+        deleteSmallOnLeft(linkedList);
+        System.out.println();
     }
 
     public static void deleteSmallOnLeft(LinkedList<Integer> linkedList) {
@@ -18,16 +23,18 @@ public class Solution {
         while (curr != null) {
             if (curr.data > maxValue) {
                 maxValue = curr.data;
+                prev = curr;
+                curr = curr.next;
             } else {
-                delete(linkedList, prev, curr);
+                curr = delete(linkedList, prev, curr);
             }
-            curr = curr.next;
         }
         reverse(linkedList);
         System.out.println(linkedList);
     }
 
-    private static void delete(LinkedList<Integer> linkedList, Node<Integer> prev, Node<Integer> curr) {
+    private static Node<Integer> delete(LinkedList<Integer> linkedList, Node<Integer> prev, Node<Integer> curr) {
+        Node<Integer> nextCurr = curr.next;
         if (prev == null) {
             // deleting head node
             linkedList.head = linkedList.head.next;
@@ -39,6 +46,7 @@ public class Solution {
             prev.next = curr.next;
         }
         linkedList.length -= 1;
+        return nextCurr;
     }
 
     private static void reverse(LinkedList<Integer> linkedList) {
