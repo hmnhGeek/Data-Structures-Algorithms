@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/brothers-from-different-root/1
+
+
 package PracticeSet1.BinarySearchTree.Problem14;
 
 import java.util.ArrayList;
@@ -44,6 +47,9 @@ public class Solution {
     }
 
     public static Integer getCountOfPairs(BinarySearchTree<Integer> bst1, BinarySearchTree<Integer> bst2, Integer k) {
+        /*
+            Time complexity is O(n + m) and space complexity is O(n + m).
+         */
         List<Integer> inorder1 = new ArrayList<>();
         getInorder(bst1.root, inorder1);
         List<Integer> inorder2 = new ArrayList<>();
