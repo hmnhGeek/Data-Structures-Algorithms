@@ -16,6 +16,16 @@ public class Solution {
                 Arrays.asList(2, 6),
                 9
         );
+        test(
+                Arrays.asList(5, 3, 7, 2, 4, 6, 8),
+                Arrays.asList(10, 6, 15, 3, 8, 11, 18),
+                16
+        );
+        test(
+                Arrays.asList(1, 3, 2),
+                Arrays.asList(3, 2, 4, 1),
+                4
+        );
     }
 
     private static void test(List<Integer> arr1, List<Integer> arr2, Integer k) {
