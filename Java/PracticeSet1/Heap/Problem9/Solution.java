@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/rearrange-characters-string-no-two-adjacent/
+
+
 package PracticeSet1.Heap.Problem9;
 
 import java.util.HashMap;
@@ -18,15 +21,24 @@ public class Solution {
     }
 
     public static String reorganizeString(String string) {
+        /*
+            Overall time complexity is O(n * log(n)) and space complexity is O(n).
+         */
         MaxHeap<Element> pq = new MaxHeap<>();
+
+        // this takes O(n * log(n)) time and O(n) space.
         populatePriorityQueue(pq, string);
         Element prev = null;
         StringBuilder result = new StringBuilder();
+
+        // This will run for n times
         while (!pq.isEmpty()) {
+            // This takes O(log(n)) time.
             Element element = pq.pop();
             result.append(element.character);
             element.count -= 1;
             if (prev != null) {
+                // takes O(log(n)) time.
                 pq.insert(prev);
             }
             if (element.count > 0) {
