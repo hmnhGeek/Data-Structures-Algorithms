@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/longest-repeating-character-replacement/1
+// Solution - https://www.youtube.com/watch?v=_eNhaDCr6P0&list=PLgUwDviBIf0q7vrFA_HEWcqRqMpCXzYAL&index=8
+
+
 package PracticeSet2.SlidingWindows.L8;
 
 import java.util.Collections;
@@ -6,6 +10,9 @@ import java.util.Map;
 
 public class Solution {
     public static String getLongestRepeating(String string, Integer k) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         Map<Character, Integer> freqMap = getFreq(string);
         int left = 0, right = 0, length = 0, startIndex = -1;
         while (right < string.length()) {
