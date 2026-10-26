@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MinHeap<T extends Comparable<T>> implements Heap<T> {
+public class MaxHeap<T extends Comparable<T>> implements Heap<T> {
     public List<T> heap;
 
-    public MinHeap() {
+    public MaxHeap() {
         this.heap = new ArrayList<>();
     }
 
@@ -22,7 +22,7 @@ public class MinHeap<T extends Comparable<T>> implements Heap<T> {
         if (lci == null) return rci;
         if (rci == null) return lci;
         Integer mci = lci;
-        if (getHeap().get(rci).compareTo(getHeap().get(mci)) < 0) {
+        if (getHeap().get(rci).compareTo(getHeap().get(mci)) > 0) {
             mci = rci;
         }
         return mci;
@@ -35,10 +35,10 @@ public class MinHeap<T extends Comparable<T>> implements Heap<T> {
         }
         Integer pi = getPi(startIndex);
         Integer lci = getLci(pi), rci = getRci(pi);
-        Integer minChildIndex = getChildIndex(lci, rci);
-        if (minChildIndex != null) {
-            if (getHeap().get(pi).compareTo(getHeap().get(minChildIndex)) > 0) {
-                Collections.swap(getHeap(), pi, minChildIndex);
+        Integer maxChildIndex = getChildIndex(lci, rci);
+        if (maxChildIndex != null) {
+            if (getHeap().get(pi).compareTo(getHeap().get(maxChildIndex)) < 0) {
+                Collections.swap(getHeap(), pi, maxChildIndex);
             }
             heapifyUp(pi);
         }
@@ -47,12 +47,12 @@ public class MinHeap<T extends Comparable<T>> implements Heap<T> {
     @Override
     public void heapifyDown(Integer pi) {
         Integer lci = getLci(pi), rci = getRci(pi);
-        Integer minChildIndex = getChildIndex(lci, rci);
-        if (minChildIndex != null) {
-            if (getHeap().get(pi).compareTo(getHeap().get(minChildIndex)) > 0) {
-                Collections.swap(getHeap(), pi, minChildIndex);
+        Integer maxChildIndex = getChildIndex(lci, rci);
+        if (maxChildIndex != null) {
+            if (getHeap().get(pi).compareTo(getHeap().get(maxChildIndex)) < 0) {
+                Collections.swap(getHeap(), pi, maxChildIndex);
             }
-            heapifyDown(minChildIndex);
+            heapifyDown(maxChildIndex);
         }
     }
 }
