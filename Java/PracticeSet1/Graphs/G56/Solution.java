@@ -1,5 +1,5 @@
-// Problem link - https://leetcode.com/problems/critical-connections-in-a-network/description/
-// Solution - https://www.youtube.com/watch?v=qrAub5z8FeA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=55
+// Problem link - https://www.naukri.com/code360/library/articulation-points-in-a-graph#:~:text=An%20articulation%20point%20in%20a,also%20known%20as%20cut%20vertices.
+// Solution - https://www.youtube.com/watch?v=64KK9K4RpKE
 
 
 package PracticeSet1.Graphs.G56;
