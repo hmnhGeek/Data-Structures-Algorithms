@@ -1,9 +1,16 @@
+// Problem link - https://www.naukri.com/code360/problems/number-of-longest-increasing-subsequence_3751627?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=cKVl1TFdNXg&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=48
+
+
 package DynamicProgramming.DP47;
 
 import java.util.*;
 
 public class Solution {
     public static Integer getLISCount(List<Integer> arr) {
+        /*
+            Time complexity is O(n^2) and space complexity is O(n).
+         */
         int n = arr.size();
         Map<Integer, Integer> dp = new HashMap<>();
         Map<Integer, Integer> count = new HashMap<>();
