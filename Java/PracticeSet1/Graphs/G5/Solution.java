@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1
+// Solution - https://www.youtube.com/watch?v=-tgVpUgsQ5k&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn
+
+
 package PracticeSet1.Graphs.G5;
 
 import java.util.ArrayList;
@@ -7,6 +11,9 @@ import java.util.Map;
 
 public class Solution {
     public static <T> List<T> bfs(Map<T, List<T>> graph, T startNode) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
         Map<T, Boolean> visited = getBlankVisitedArray(graph);
         Queue<T> queue = new Queue<>();
         queue.enqueue(startNode);
