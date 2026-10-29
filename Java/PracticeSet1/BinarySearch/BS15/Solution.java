@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/capacity-to-ship-packages-within-d-days_1229379
+// Solution - https://www.youtube.com/watch?v=MG-Ac4TAvTY&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=17
+
+
 package PracticeSet1.BinarySearch.BS15;
 
 import java.util.Collections;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer getShipCapacity(List<Integer> weights, Integer numDaysThreshold) {
+        /*
+            Time complexity is O(n * log(sum - max)) and space complexity is O(1).
+         */
         int low = Collections.max(weights), high = weights.stream()
                 .mapToInt(Integer::intValue)
                 .sum();
