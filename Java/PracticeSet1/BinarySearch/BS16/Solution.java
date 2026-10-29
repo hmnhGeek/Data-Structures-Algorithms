@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/k-th-missing-element-in-sorted-array/
+// Solution - https://www.youtube.com/watch?v=uZ0N_hZpyps&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=17
+
+
 package PracticeSet1.BinarySearch.BS16;
 
 import java.util.Arrays;
@@ -5,6 +9,9 @@ import java.util.List;
 
 public class Solution {
     public static Integer findMissingWholeNumber(List<Integer> arr, Integer k) {
+        /*
+            Time complexity is O(log(n)) and space complexity is O(1).
+         */
         if (k <= 0) return null;
         int low = 0, high = arr.size() - 1;
         while (low <= high) {
