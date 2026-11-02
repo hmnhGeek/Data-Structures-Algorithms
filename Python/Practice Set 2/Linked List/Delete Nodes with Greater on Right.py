@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/delete-nodes-having-greater-value-on-right/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -49,6 +52,9 @@ class LinkedList:
 class Solution:
     @staticmethod
     def delete_right(linked_list: LinkedList):
+        """
+            Overall time complexity is O(n) and space complexity is O(1).
+        """
         print(linked_list)
         linked_list.reverse()
         max_val = -1e6
