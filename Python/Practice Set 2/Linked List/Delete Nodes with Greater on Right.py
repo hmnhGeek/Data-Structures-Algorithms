@@ -36,3 +36,12 @@ class LinkedList:
         result += f"{self.tail.data}]"
         return result
 
+    def reverse(self):
+        prev, curr = None, self.head
+        while curr is not None:
+            next_curr = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next_curr
+        self.head, self.tail = self.tail, self.head
+
