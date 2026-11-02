@@ -1,3 +1,7 @@
+# Problem link - https://www.geeksforgeeks.org/find-largest-subtree-sum-tree/#expected-approach-2-using-bfs-on-time-and-on-space
+# Solution - https://www.youtube.com/watch?v=zm5CykXlxaA
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -13,6 +17,9 @@ class Solution:
 
     @staticmethod
     def _solve(root, _sum):
+        """
+            Time complexity is O(n) and space complexity is O(h).
+        """
         if root is None:
             return 0
         left_sum = Solution._solve(root.left, _sum)
