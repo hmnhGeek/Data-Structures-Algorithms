@@ -45,3 +45,48 @@ class LinkedList:
             curr = next_curr
         self.head, self.tail = self.tail, self.head
 
+
+class Solution:
+    @staticmethod
+    def delete_right(linked_list: LinkedList):
+        print(linked_list)
+        linked_list.reverse()
+        max_val = -1e6
+        prev = None
+        curr = linked_list.head
+        while curr is not None:
+            if max_val <= curr.data:
+                max_val = curr.data
+                prev = curr
+                curr = curr.next
+            else:
+                next_curr = curr.next
+                Solution._delete_node(linked_list, prev, curr)
+                curr = next_curr
+
+        linked_list.reverse()
+        print(linked_list)
+        print()
+
+    @staticmethod
+    def _delete_node(linked_list, prev, curr):
+        if curr == linked_list.head:
+            linked_list.head = linked_list.head.next
+        elif curr == linked_list.tail:
+            prev.next = None
+            linked_list.tail = prev
+        else:
+            prev.next = curr.next
+        linked_list.length -= 1
+
+    @staticmethod
+    def test(*args):
+        linked_list = LinkedList()
+        linked_list.build(*args)
+        Solution.delete_right(linked_list)
+
+
+Solution.test(12, 15, 10, 11, 5, 6, 2, 3)
+Solution.test(10, 20, 30, 40, 50, 60)
+Solution.test(5, 2, 13, 3, 8)
+Solution.test(1, 1, 1, 1)
