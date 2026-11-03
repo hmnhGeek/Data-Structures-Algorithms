@@ -141,3 +141,49 @@ class BinarySearchTree:
         self._show(self.root)
         print()
 
+
+class Solution:
+    @staticmethod
+    def get_pairs(bst1: BinarySearchTree, bst2: BinarySearchTree, x: int) -> int:
+        pairs_count = 0
+        inorder1, inorder2 = [], []
+        Solution._get_inorder(bst1.root, inorder1)
+        Solution._get_inorder(bst2.root, inorder2)
+
+        i = len(inorder1) - 1
+        j = 0
+        while i >= 0 and j < len(inorder2):
+            _sum = inorder1[i] + inorder2[j]
+            if _sum == x:
+                pairs_count += 1
+                i -= 1
+                j += 1
+            elif _sum < x:
+                j += 1
+            else:
+                i -= 1
+        return pairs_count
+
+    @staticmethod
+    def _get_inorder(root, inorder):
+        if root:
+            Solution._get_inorder(root.left, inorder)
+            inorder.append(root.data)
+            Solution._get_inorder(root.right, inorder)
+
+
+def test(arr1, arr2, x):
+    bst1 = BinarySearchTree()
+    for i in arr1:
+        bst1.insert(i)
+    bst2 = BinarySearchTree()
+    for i in arr2:
+        bst2.insert(i)
+    print(Solution.get_pairs(bst1, bst2, x))
+
+
+if __name__ == "__main__":
+    test([2, 1, 3], [5, 4, 6], 6)
+    test([7, 5, 10, 1], [2, 6], 9)
+    test([5, 3, 7, 2, 4, 6, 8], [10, 6, 15, 3, 8, 11, 18], 16)
+    test([1, 3, 2], [3, 2, 4, 1], 4)
