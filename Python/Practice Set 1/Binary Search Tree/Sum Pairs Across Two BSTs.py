@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/problems/brothers-from-different-root/1
+
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -145,11 +148,19 @@ class BinarySearchTree:
 class Solution:
     @staticmethod
     def get_pairs(bst1: BinarySearchTree, bst2: BinarySearchTree, x: int) -> int:
+        """
+            Time complexity is O(n + m) and space complexity is O(n + m).
+        """
         pairs_count = 0
+
+        # these will take O(n + m) space
         inorder1, inorder2 = [], []
+
+        # These both take O(n + m) time and O(log(n) + log(m)) time.
         Solution._get_inorder(bst1.root, inorder1)
         Solution._get_inorder(bst2.root, inorder2)
 
+        # This will run for O(n + m) time
         i = len(inorder1) - 1
         j = 0
         while i >= 0 and j < len(inorder2):
