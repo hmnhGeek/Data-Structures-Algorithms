@@ -37,3 +37,40 @@ class Stack:
         return self.head.data
 
 
+class Queue:
+    def __init__(self):
+        self.s1 = Stack()
+        self.s2 = Stack()
+
+    def enqueue(self, x):
+        while not self.s1.is_empty():
+            self.s2.push(self.s1.pop())
+        self.s1.push(x)
+        while not self.s2.is_empty():
+            self.s1.push(self.s2.pop())
+
+    def dequeue(self):
+        return self.s1.pop()
+
+    def front(self):
+        return self.s1.top()
+
+    def size(self):
+        return self.s1.length
+
+
+# Example 1
+q1 = Queue()
+q1.enqueue(5)
+q1.enqueue(3)
+q1.enqueue(4)
+print(q1.front())
+print(q1.dequeue())
+print(q1.size())
+print(q1.front())
+
+# Example 2
+q2 = Queue()
+print(q2.front())
+print(q2.size())
+q2.enqueue(10)
