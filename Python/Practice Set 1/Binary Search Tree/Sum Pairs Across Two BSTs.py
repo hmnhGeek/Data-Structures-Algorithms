@@ -51,14 +51,14 @@ class BinarySearchTree:
         return
 
     def get_leftmost_node(self, node):
-        if node is not None:
+        if node is None:
             return
         while node.left is not None:
             node = node.left
         return node
 
     def get_rightmost_node(self, node):
-        if node is not None:
+        if node is None:
             return
         while node.right is not None:
             node = node.right
@@ -130,4 +130,14 @@ class BinarySearchTree:
         if x > start.data:
             return self.get_node(start.right, x)
         return self.get_node(start.left, x)
+
+    def _show(self, start):
+        if start:
+            self._show(start.left)
+            print(f"Data = {start.data}{' (root)' if start == self.root else ''}, size = {start.size}, height = {start.height}, diameter = {start.diameter}")
+            self._show(start.right)
+
+    def show(self):
+        self._show(self.root)
+        print()
 
