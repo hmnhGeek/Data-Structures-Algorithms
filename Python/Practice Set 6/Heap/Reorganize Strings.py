@@ -1,3 +1,6 @@
+# Problem link - https://www.geeksforgeeks.org/rearrange-characters-string-no-two-adjacent/
+
+
 from collections import Counter
 
 
@@ -82,10 +85,16 @@ class HeapElement:
 class Solution:
     @staticmethod
     def reorganize_string(string: str) -> str:
+        """
+            Time complexity is O(n * log(n)) and space complexity is O(n).
+        """
+
         max_heap = MaxHeap()
         prev = None
         result = ""
         Solution._initiate_heap(max_heap, string)
+
+        # This will run for n-iterations and thus, takes O(n * log(n)) time.
         while not max_heap.is_empty():
             heap_element = max_heap.pop()
             character, freq = heap_element.character, heap_element.count
@@ -101,6 +110,9 @@ class Solution:
 
     @staticmethod
     def _initiate_heap(max_heap, string):
+        """
+            Time: O(n * log(n)) and Space: O(n).
+        """
         d = dict(Counter(string))
         for key, val in d.items():
             max_heap.insert(HeapElement(key, val))
