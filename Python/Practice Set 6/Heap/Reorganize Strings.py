@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 class MaxHeap:
     def __init__(self):
         self.heap = []
@@ -62,3 +65,54 @@ class MaxHeap:
         del self.heap[-1]
         self.max_heapify_down(0)
         return item
+
+
+class HeapElement:
+    def __init__(self, character, count):
+        self.character = character
+        self.count = count
+
+    def __lt__(self, other):
+        return self.count < other.count
+
+    def __gt__(self, other):
+        return self.count > other.count
+
+
+class Solution:
+    @staticmethod
+    def reorganize_string(string: str) -> str:
+        max_heap = MaxHeap()
+        prev = None
+        result = ""
+        Solution._initiate_heap(max_heap, string)
+        while not max_heap.is_empty():
+            heap_element = max_heap.pop()
+            character, freq = heap_element.character, heap_element.count
+            result += character
+            if prev is not None:
+                max_heap.insert(prev)
+                prev = None
+            if freq - 1 > 0:
+                prev = HeapElement(character, freq - 1)
+        if prev is not None:
+            return ""
+        return result
+
+    @staticmethod
+    def _initiate_heap(max_heap, string):
+        d = dict(Counter(string))
+        for key, val in d.items():
+            max_heap.insert(HeapElement(key, val))
+
+
+print(Solution.reorganize_string("aab"))
+print(Solution.reorganize_string("aaab"))
+print(Solution.reorganize_string("address"))
+print(Solution.reorganize_string("mississippi"))
+print(Solution.reorganize_string("aaabc"))
+print(Solution.reorganize_string("aaabb"))
+print(Solution.reorganize_string("aa"))
+print(Solution.reorganize_string("aaaabc"))
+print(Solution.reorganize_string("abaab"))
+print(Solution.reorganize_string("bbbbbb"))
