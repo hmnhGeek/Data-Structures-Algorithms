@@ -1,3 +1,7 @@
+# Problem link - https://www.naukri.com/code360/problems/matrix-chain-multiplication_975344?source=youtube&campaign=striver_dp_videos
+# Solution - https://www.youtube.com/watch?v=vRVfmbCFW7Y&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=49
+
+
 def recursive():
     """
         Time complexity is exponential and space complexity is O(n).
