@@ -1,6 +1,13 @@
+# Problem link - https://www.naukri.com/code360/problems/capacity-to-ship-packages-within-d-days_1229379
+# Solution - https://www.youtube.com/watch?v=MG-Ac4TAvTY&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=17
+
+
 class Solution:
     @staticmethod
     def get_least_ship_capacity(arr, threshold):
+        """
+            Time complexity is O(n * log(sum - max)) and space complexity is O(1).
+        """
         if threshold <= 0:
             return -1
         low = max(arr)
