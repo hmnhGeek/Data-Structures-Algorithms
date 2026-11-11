@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/kth-element-in-matrix/1
+
+
 package PracticeSet2.Matrix.Problem9;
 
 import java.util.List;
@@ -66,6 +69,9 @@ public class Solution {
     }
 
     public static Integer getKthSmallest(List<List<Integer>> mtx, Integer k) {
+        /*
+            Time complexity is O({n + k} * log(n)) time and space complexity is O(n).
+         */
         int n = mtx.size(), m = mtx.getFirst().size();
         MinHeap<HeapElement<Integer>> pq = new MinHeap<>();
         initiateMinHeap(mtx, n, pq);
