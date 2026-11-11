@@ -7,6 +7,7 @@ public interface Heap<T extends Comparable<T>> {
     List<T> getHeap();
     void heapifyUp(Integer startIndex);
     void heapifyDown(Integer pi);
+    Integer getChildIndex(Integer lci, Integer rci);
 
     default boolean isEmpty() {
         return getHeap().isEmpty();
