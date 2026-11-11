@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1
+// Solution - https://www.youtube.com/watch?v=DhFh8Kw7ymk
+
+
 package Arrays.Problem28;
 
 import java.util.ArrayList;
@@ -14,6 +18,9 @@ public class Solution {
     }
 
     public static List<List<Integer>> getTriplets(List<Integer> arr, Integer target) {
+        /*
+            Time complexity is O(n*log(n) + n^2) and space complexity is O(1).
+         */
         QuickSort.sort(arr);
         int i = 0, n = arr.size();
         List<List<Integer>> result = new ArrayList<>();
