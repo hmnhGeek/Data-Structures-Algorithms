@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/product-array-puzzle4525/1
+
+
 package SearchingAndSorting.Problem37;
 
 import java.util.Arrays;
