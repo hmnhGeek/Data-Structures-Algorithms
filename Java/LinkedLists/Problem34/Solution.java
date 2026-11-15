@@ -82,7 +82,7 @@ public class Solution {
             linkedList.head = oddStart.next;
             linkedList.tail = oddTemp;
         } else {
-            // nothing to do here.
+            // nothing to do here, if both are empty.
         }
     }
 }
