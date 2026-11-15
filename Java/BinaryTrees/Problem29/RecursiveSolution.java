@@ -1,7 +1,10 @@
 package BinaryTrees.Problem29;
 
-public class Solution {
+public class RecursiveSolution {
     public static Integer getMaxNonAdjacentSum(Node<Integer> root) {
+        /*
+            Time complexity is exponential and space complexity is O(h).
+         */
         return Math.max(solve(root, true), solve(root, false));
     }
 
