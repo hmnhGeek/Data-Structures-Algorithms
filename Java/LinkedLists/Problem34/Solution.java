@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/problems/segregate-even-and-odd-nodes-in-a-linked-list5035/1
+
+
 package LinkedLists.Problem34;
 
 public class Solution {
@@ -46,6 +49,9 @@ public class Solution {
     }
 
     public static void segregate(LinkedList<Integer> linkedList) {
+        /*
+            Time complexity is O(n) and space complexity is O(1).
+         */
         if (linkedList.isEmpty() || linkedList.length.equals(1)) return;
         Node<Integer> evenStart = new Node<>(null);
         Node<Integer> evenTemp = evenStart;
