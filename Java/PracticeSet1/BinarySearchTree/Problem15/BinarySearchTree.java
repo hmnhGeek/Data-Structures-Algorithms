@@ -9,6 +9,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
         this.diameter = 0;
     }
 
+    public BinarySearchTree(T...args) {
+        this.root = null;
+        this.diameter = 0;
+        for (T x : args) {
+            insert(x);
+        }
+    }
+
     public void recalculateAugmentation(Node<T> parent) {
         this.diameter = 0;
         while (parent != null) {
