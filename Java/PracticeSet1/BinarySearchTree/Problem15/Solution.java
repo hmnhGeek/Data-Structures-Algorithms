@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/find-median-bst-time-o1-space/
+
+
 package PracticeSet1.BinarySearchTree.Problem15;
 
 import java.util.ArrayList;
@@ -27,6 +30,9 @@ public class Solution {
     }
 
     private static Double getMedian(BinarySearchTree<Double> bst) {
+        /*
+            Time complexity is O(n) and space complexity is O(log(n)).
+         */
         return getMedian(bst, (a, b) -> (a + b) / 2);
     }
 
@@ -41,8 +47,12 @@ public class Solution {
     public static <T extends Comparable<T>> T getMedian(BinarySearchTree<T> bst, BiFunction<T, T, T> averageFunction) {
         // This will take O(n) time and O(log(n)) stack space.
         Integer numNodes = getNumNodesInBST(bst);
+
+        // tracking variables, takes constant space.
         List<Node<T>> medianNodes = new ArrayList<>();
         List<Integer> counter = Arrays.asList(0);
+
+        // This will take O(n/2) time and O(log(n)) stack space.
         getMedian(bst.root, (numNodes / 2) + 1, counter, medianNodes);
         if (numNodes % 2 == 1) {
             return medianNodes.getLast().data;
@@ -54,6 +64,9 @@ public class Solution {
     private static <T extends Comparable<T>> void getMedian(Node<T> root, int medianPosition, List<Integer> counter, List<Node<T>> medianNodes) {
         if (root != null) {
             getMedian(root.left, medianPosition, counter, medianNodes);
+
+            // no further iterations are required if both median nodes have been found.
+            if (medianNodes.size() == 2) return;
             counter.set(0, counter.getFirst() + 1);
             if (counter.getFirst().equals(medianPosition - 1) || counter.getFirst().equals(medianPosition)) {
                 medianNodes.add(root);
