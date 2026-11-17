@@ -23,6 +23,16 @@ public class Solution {
         queues.enqueue(0, 10);
         queues.enqueue(0, 20);
         queues.enqueue(0, 30);
+        queues.enqueue(3, 100);
+        queues.enqueue(1, -10);
+        queues.enqueue(2, -20);
+        queues.enqueue(2, -30);
+        queues.enqueue(2, -40);
+        System.out.println(queues.dequeue(0));
+        System.out.println(queues.dequeue(0));
+        System.out.println(queues.dequeue(0));
+        System.out.println(queues.dequeue(3));
+        System.out.println(queues.dequeue(2));
         System.out.println(queues.getArr());
     }
 }

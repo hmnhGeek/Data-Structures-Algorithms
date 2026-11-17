@@ -54,14 +54,13 @@ public class KQueues<T> {
         return Objects.equals(f, b) && this.arr.get(b) == null;
     }
 
-    private int getStartIndexOfQueueFromArray(int qn) {
-        return qn * this.queueSize;
+    public boolean isFull(int qn) {
+        int f = getFront(qn), b = getBack(qn);
+        return Objects.equals(f, b) &&  this.arr.get(b) != null;
     }
 
-    public boolean isFull(int qn) {
-        int f = getFront(qn);
-        int b = getBack(qn);
-        return Objects.equals(f, b) && this.arr.get(b) != null;
+    private int getStartIndexOfQueueFromArray(int qn) {
+        return qn * this.queueSize;
     }
 
     private void incrementBack(int qn) {
@@ -72,7 +71,9 @@ public class KQueues<T> {
         else if (idx + 1 == getStartIndexOfQueueFromArray(qn + 1)) {
             this.pointers.get(qn).put(Pointer.BACK, this.queueSize * qn);
         }
-        this.pointers.get(qn).put(Pointer.BACK, this.pointers.get(qn).get(Pointer.BACK) + 1);
+        else {
+            this.pointers.get(qn).put(Pointer.BACK, this.pointers.get(qn).get(Pointer.BACK) + 1);
+        }
     }
 
     private void incrementFront(int qn) {
@@ -83,12 +84,14 @@ public class KQueues<T> {
         else if (idx + 1 == getStartIndexOfQueueFromArray(qn + 1)) {
             this.pointers.get(qn).put(Pointer.FRONT, this.queueSize * qn);
         }
-        this.pointers.get(qn).put(Pointer.FRONT, this.pointers.get(qn).get(Pointer.FRONT) + 1);
+        else {
+            this.pointers.get(qn).put(Pointer.FRONT, this.pointers.get(qn).get(Pointer.FRONT) + 1);
+        }
     }
 
     public void enqueue(int qn, T x) {
         if (isFull(qn)) {
-            System.out.printf("The {%d} queue is full. Cannot insert element.%n", qn);
+            System.out.printf("The queue %d is full. Cannot insert element %s.%n", qn, x);
             return;
         }
         this.arr.set(getBack(qn), x);
