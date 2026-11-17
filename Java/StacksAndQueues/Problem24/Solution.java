@@ -1,3 +1,6 @@
+// Problem link - https://www.geeksforgeeks.org/dsa/efficiently-implement-k-queues-single-array/
+
+
 package StacksAndQueues.Problem24;
 
 public class Solution {
