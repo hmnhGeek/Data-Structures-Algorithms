@@ -1,4 +1,4 @@
-package PracticeSet1.Heap.Problem10;
+package PracticeSet1.Heap.Problem10.LinkedList;
 
 public class LinkedList<T> {
     public Node<T> head, tail;
