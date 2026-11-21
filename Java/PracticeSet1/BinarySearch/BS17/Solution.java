@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/aggressive-cows/0
+// Solution - https://www.youtube.com/watch?v=R_Mfw4ew-Vo&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=18
+
+
 package PracticeSet1.BinarySearch.BS17;
 
 import PracticeSet1.BinarySearch.BS17.Sorting.*;
@@ -17,6 +21,9 @@ public class Solution {
     }
 
     public static Integer aggressiveCows(List<Integer> arr, Integer cowsCount) {
+        /*
+            Time complexity is O(n * log(n) + n * log(max(arr))) and space complexity is O(1).
+         */
         if (cowsCount <= 0 || arr.isEmpty()) return null;
         Sort<Integer> quickSort = new QuickSort<>();
         quickSort.sort(arr);
