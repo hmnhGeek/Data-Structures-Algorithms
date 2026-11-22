@@ -1,3 +1,6 @@
+// Problem link - https://www.naukri.com/code360/problems/allocate-books_1090540
+// Solution - https://www.youtube.com/watch?v=Z0hwjftStI4&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=19
+
 package PracticeSet1.BinarySearch.BS18;
 
 import java.util.Arrays;
@@ -13,6 +16,9 @@ public class Solution {
     }
 
     public static Integer allocateBooks(List<Integer> pages, Integer numStudents) {
+        /*
+            Time complexity is O(n*log(sum)) and space complexity is O(1).
+         */
         if (numStudents <= 0 || pages.size() < numStudents) return null;
         int low = 0, high = pages.stream().mapToInt(Integer::intValue).sum();
         while (low <= high) {
