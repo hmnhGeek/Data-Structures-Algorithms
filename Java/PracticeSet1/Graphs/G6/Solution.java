@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1
+// Solution - https://www.youtube.com/watch?v=Qzf1a--rhp8&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=6
+
+
 package PracticeSet1.Graphs.G6;
 
 import java.util.ArrayList;
@@ -16,7 +20,7 @@ public class Solution {
         graph1.put(6, List.of(2));
         graph1.put(7, List.of(3, 8));
         graph1.put(8, List.of(4, 7));
-        System.out.println(Graphs.G6.Solution.dfs(graph1));
+        System.out.println(Solution.getDFS(graph1));
 
         Map<Integer, List<Integer>> graph2 = new HashMap<>();
         graph2.put(0, List.of(1, 2, 3));
@@ -24,7 +28,7 @@ public class Solution {
         graph2.put(2, List.of(0, 4));
         graph2.put(3, List.of(0));
         graph2.put(4, List.of(2));
-        System.out.println(Graphs.G6.Solution.dfs(graph2));
+        System.out.println(Solution.getDFS(graph2));
 
         Map<Integer, List<Integer>> graph3 = new HashMap<>();
         graph3.put(0, List.of(1, 2));
@@ -32,7 +36,7 @@ public class Solution {
         graph3.put(2, List.of(1, 0, 3, 4));
         graph3.put(3, List.of(2));
         graph3.put(4, List.of(2));
-        System.out.println(Graphs.G6.Solution.dfs(graph3));
+        System.out.println(Solution.getDFS(graph3));
 
         Map<Integer, List<Integer>> graph4 = new HashMap<>();
         graph4.put(0, List.of(1));
@@ -40,10 +44,13 @@ public class Solution {
         graph4.put(2, List.of(1));
         graph4.put(3, List.of(4));
         graph4.put(4, List.of(3));
-        System.out.println(Graphs.G6.Solution.dfs(graph4));
+        System.out.println(Solution.getDFS(graph4));
     }
 
     public static <T> List<T> getDFS(Map<T, List<T>> graph) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
         Map<T, Boolean> visited = getBlankVisitedMap(graph);
         List<T> traversal = new ArrayList<>();
         for (T node : graph.keySet()) {
