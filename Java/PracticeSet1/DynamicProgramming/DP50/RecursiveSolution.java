@@ -5,6 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RecursiveSolution {
+    /*
+        Time complexity is exponential and space complexity is O(n).
+     */
     public static Integer getMinCostToCutSticks(List<Integer> cuts, Integer rodSize) {
         int n = cuts.size();
         List<Integer> modifiedCuts = new ArrayList<>(Arrays.asList(0));
