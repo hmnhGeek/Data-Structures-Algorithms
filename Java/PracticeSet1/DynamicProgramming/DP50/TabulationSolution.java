@@ -11,14 +11,19 @@ public class TabulationSolution {
         List<Integer> modifiedCuts = new ArrayList<>(Arrays.asList(0));
         modifiedCuts.addAll(cuts);
         modifiedCuts.add(rodSize);
+        Collections.sort(modifiedCuts); // Fix 1: Sort cuts in ascending order
+
         Map<Integer, Map<Integer, Integer>> dp = initDP(n, Integer.MAX_VALUE);
         putBaseCaseInTabulationDP(n, dp);
+
         for (int i = n; i >= 1; i -= 1) {
             for (int j = 1; j <= n; j += 1) {
                 if (i > j) continue;
                 Integer minCost = Integer.MAX_VALUE;
                 for (int k = i; k <= j; k += 1) {
-                    Integer cost = (modifiedCuts.get(j + 1) - modifiedCuts.get(i - 1)) + dp.get(i).get(k - 1) + dp.get(k + 1).get(j);
+                    Integer cost = (modifiedCuts.get(j + 1) - modifiedCuts.get(i - 1))
+                            + dp.get(i).get(k - 1)
+                            + dp.get(k + 1).get(j);
                     minCost = Math.min(minCost, cost);
                 }
                 dp.get(i).put(j, minCost);
@@ -28,8 +33,9 @@ public class TabulationSolution {
     }
 
     private static void putBaseCaseInTabulationDP(int n, Map<Integer, Map<Integer, Integer>> dp) {
-        for (int i = 1; i <= n; i += 1) {
-            for (int j = n; j >= 1; j -= 1) {
+        // Fix 2: Include 0 and n + 1 so base cases cover out-of-bounds lookups
+        for (int i = 0; i <= n + 1; i += 1) {
+            for (int j = n + 1; j >= 0; j -= 1) {
                 if (i > j) dp.get(i).put(j, 0);
             }
         }
@@ -37,9 +43,10 @@ public class TabulationSolution {
 
     private static Map<Integer, Map<Integer, Integer>> initDP(int n, Integer v) {
         Map<Integer, Map<Integer, Integer>> dp = new HashMap<>();
-        for (int i = 1; i <= n; i += 1) {
+        // Fix 3: Initialize map keys from 0 to n + 1
+        for (int i = 0; i <= n + 1; i += 1) {
             Map<Integer, Integer> subMap = new HashMap<>();
-            for (int j = n; j >= 1; j -= 1) {
+            for (int j = n + 1; j >= 0; j -= 1) {
                 subMap.put(j, v);
             }
             dp.put(i, subMap);

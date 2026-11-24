@@ -11,6 +11,7 @@ public class MemoizedSolution {
         List<Integer> modifiedCuts = new ArrayList<>(Arrays.asList(0));
         modifiedCuts.addAll(cuts);
         modifiedCuts.add(rodSize);
+        Collections.sort(modifiedCuts);
         Map<Integer, Map<Integer, Integer>> dp = initDP(n, null);
         return solve(modifiedCuts, 1, n, dp);
     }

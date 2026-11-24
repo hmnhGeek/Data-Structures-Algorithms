@@ -2,6 +2,7 @@ package PracticeSet1.DynamicProgramming.DP50;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class RecursiveSolution {
@@ -13,6 +14,7 @@ public class RecursiveSolution {
         List<Integer> modifiedCuts = new ArrayList<>(Arrays.asList(0));
         modifiedCuts.addAll(cuts);
         modifiedCuts.add(rodSize);
+        Collections.sort(modifiedCuts);
         return solve(modifiedCuts, 1, n);
     }
 
