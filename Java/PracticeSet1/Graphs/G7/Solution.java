@@ -1,3 +1,7 @@
+// Problem link - https://www.geeksforgeeks.org/problems/number-of-provinces/1
+// Solution - https://www.youtube.com/watch?v=ACzkVtewUYA&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn&index=7
+
+
 package PracticeSet1.Graphs.G7;
 
 import java.util.Arrays;
@@ -38,6 +42,9 @@ public class Solution {
     }
 
     public static <T> Integer getNumProvinces(Map<T, List<T>> graph) {
+        /*
+            Time complexity is O(V + E) and space complexity is O(V).
+         */
         Map<T, Boolean> visited = initVisitedMap(graph);
         int numProvinces = 0;
         for (T node : graph.keySet()) {
