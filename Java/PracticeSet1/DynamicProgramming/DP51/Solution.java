@@ -1,3 +1,7 @@
+// Problem link - https://www.naukri.com/code360/problems/mining-diamonds_4244494?source=youtube&campaign=striver_dp_videos
+// Solution - https://www.youtube.com/watch?v=Yz4LlDSlkns&list=PLgUwDviBIf0qUlt5H_kiKYaNSqJ81PMMY&index=52
+
+
 package PracticeSet1.DynamicProgramming.DP51;
 
 import java.util.Arrays;
